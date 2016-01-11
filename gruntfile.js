@@ -6,7 +6,8 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         clean: {
-            dist: ['dist/Electron.app/Contents/Resources/app']
+            dist: ['dist'],
+            electron: ['dist/Electron.app/Contents/Resources/app/']
         },
         wiredep: {
             task: {
@@ -27,12 +28,18 @@ module.exports = function(grunt) {
             }
         },
         copy: {
+            electron: {
+                expand: true,
+                cwd: 'node_modules/electron-prebuilt/dist/',
+                src: ['**'],
+                dest: 'dist/'
+
+            },
             dist: {
                 expand: true,
-                cwd: '/',
-                src: ['**', '!dist', '.git'],
-                dest: 'dist/Electron.app/Contents/Resources/app/',
-                flatten: true
+                cwd: '',
+                src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json'],
+                dest: 'dist/Electron.app/Contents/Resources/app/'
             }
         }
     });
@@ -45,9 +52,11 @@ module.exports = function(grunt) {
     // Default task(s).
     grunt.registerTask('dist', function() {
         grunt.task.run([
-            'clean:dist',
+            //'clean:dist',
+            'clean:electron',
             'wiredep',
             'sass',
+            //'copy:electron',
             'copy:dist'
         ]);
     });
