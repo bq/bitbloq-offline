@@ -1,0 +1,17 @@
+{
+  "name": "bitbloq-offline",
+  "version": "0.0.1",
+  "main": "main.js",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-sass": "^1.1.0",
+    "jquery": "^2.2.0"
+  },
+  "devDependencies": {
+    "electron-prebuilt": "^0.36.3",
+    "grunt-contrib-clean": "^0.7.0",
+    "grunt-contrib-copy": "^0.8.2",
+    "grunt-wiredep": "^2.0.0",
+    "load-grunt-tasks": "^3.4.0"
+  }
+}

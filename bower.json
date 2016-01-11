@@ -1,0 +1,12 @@
+{
+  "name": "bitbloq-offline",
+  "version": "0.0.1",
+  "description": "",
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-route": "~1.4.7",
+    "angular-websocket": "~1.0.14",
+    "lodash": "~3.10.1",
+    "bloqs": "dev"
+  }
+}
