@@ -49,11 +49,11 @@ module.exports = function(grunt) {
         watch: {
             scripts: {
                 files: ['app/**/*.*'],
+                //twice "stop_electron" or not close :( 
                 tasks: ['exec:stop_electron', 'exec:stop_electron', 'exec:electron'],
                 options: {
                     atBegin: true,
-                    interrupt: true,
-                    spawn: false
+                    interrupt: true
                 }
             },
         },
