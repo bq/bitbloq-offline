@@ -10,14 +10,20 @@
 angular.module('bitbloqOffline')
     .factory('web2board', function($rootScope, $websocket, $log, $q, _, $timeout, common) {
 
+        /** Variables */
+
         var web2board = this,
-            ws, modalObj;
+            ws, modalObj,
+            boardReadyPromise = null,
+            versionPromise = $q.defer(),
+            libVersionPromise = $q.defer();
 
         web2board.config = {
             wsHost: 'localhost',
             wsPort: 9876,
             serialPort: ''
         };
+
         /**
          * [connect ws connecting]
          * @param  {[object]} config [{port:myport,host:myhost}]
@@ -63,7 +69,6 @@ angular.module('bitbloqOffline')
             return ws.send(message);
         };
 
-        var boardReadyPromise = null;
         web2board._setBoard = function(boardMCU) {
             boardReadyPromise = $q.defer();
             var defaultBoard = boardMCU || 'uno';
@@ -140,6 +145,9 @@ angular.module('bitbloqOffline')
                     case 'SERIALMONITOROPENED':
                         $rootScope.$emit('web2board:serial-monitor-opened', msgParsed);
                         break;
+                    case 'SETTED VERSION':
+                        $rootScope.$emit('web2board:bitbloqlibs-setted', msgParsed);
+                        break;
                     default:
                         throw 'WTF?!? ' + evt.data;
                 }
@@ -151,6 +159,72 @@ angular.module('bitbloqOffline')
             }
 
             return true;
+        };
+
+        web2board._checkVersion = function() {
+            web2board._send('version');
+            return versionPromise.promise;
+        };
+
+        web2board._checkLibVersion = function() {
+            var version = common.properties.bitbloqLibsVersion || '0.0.1';
+            web2board._send('setBitbloqLibsVersion ' + version);
+            return libVersionPromise.promise;
+        };
+
+        web2board._openCommunication = function(instructions) {
+            //It is not mandatory to have a board connected to verify the code
+            web2board._connect().then(function() {
+                web2board._checkVersion().then(function() {
+                    web2board._checkLibVersion().then(function() {
+                        if (instructions) {
+                            instructions();
+                        }
+                    });
+                });
+
+            }).catch(function(evt) {
+                if (evt.target.readyState === 3) {
+                    // Create link.
+                    var tempA = document.createElement('a');
+                    tempA.setAttribute('href', 'web2board://');
+                    document.body.appendChild(tempA);
+                    tempA.click();
+                    document.body.removeChild(tempA);
+
+                    $timeout(function() {
+                        web2board._connect().then(function() {
+                            web2board._checkVersion().then(function() {
+                                web2board._checkLibVersion().then(function() {
+                                    if (instructions) {
+                                        instructions();
+                                    }
+                                });
+                            });
+                        }).catch(function(evt) {
+                            $rootScope.$emit('web2board:no-web2board');
+                            if (evt.target.readyState === 3) {
+                                var parent = $rootScope,
+                                    modalOptions = parent.$new();
+                                _.extend(modalOptions, {
+                                    contentTemplate: '/views/modals/download-web2board.html',
+                                    modalTitle: 'modal-download-web2board-title',
+                                    modalText: 'modal-download-web2board-text'
+                                });
+                                modalOptions.envData = envData;
+                                if (!modalObj || !ngDialog.isOpen(modalObj.id)) {
+                                    modalObj = ngDialog.open({
+                                        template: '/views/modals/modal.html',
+                                        className: 'modal--container modal--download-web2board',
+                                        scope: modalOptions,
+                                        showClose: true
+                                    });
+                                }
+                            }
+                        });
+                    }, 6000);
+                }
+            });
         };
 
         /**
@@ -187,10 +261,9 @@ angular.module('bitbloqOffline')
             }
         });
 
-        var dfd = $q.defer();
         $rootScope.$on('web2board:version', function(evt, data) {
             if (parseInt(data.replace(/\./g, ''), 10) < parseInt(common.properties.web2boardVersion.replace(/\./g, ''), 10)) {
-                dfd.reject();
+                versionPromise.reject();
                 var parent = $rootScope,
                     modalOptions = parent.$new();
                 _.extend(modalOptions, {
@@ -198,73 +271,24 @@ angular.module('bitbloqOffline')
                     modalTitle: 'modal-update-web2board-title',
                     modalText: 'modal-download-web2board-text'
                 });
-                //modalOptions.envData = envData;
+                modalOptions.envData = envData;
                 ngDialog.closeAll();
                 ngDialog.open({
                     template: '/views/modals/modal.html',
                     className: 'modal--container modal--download-web2board',
                     scope: modalOptions,
-                    showClose: false
+                    showClose: true
                 });
                 $rootScope.$emit('web2board:wrong-version');
             } else {
-                dfd.resolve();
+                versionPromise.resolve();
             }
         });
 
-        web2board._checkVersion = function() {
-            web2board._send('version');
-            return dfd.promise;
-        };
-
-        web2board._openCommunication = function(instructions) {
-            //It is not mandatory to have a board connected to verify the code
-            web2board._connect().then(
-                function() {
-                    web2board._checkVersion().then(
-                        function() {
-                            instructions();
-                        });
-                }).catch(function(evt) {
-                if (evt.target.readyState === 3) {
-                    // Create link.
-                    var tempA = document.createElement('a');
-                    tempA.setAttribute('href', 'web2board://');
-                    document.body.appendChild(tempA);
-                    tempA.click();
-                    document.body.removeChild(tempA);
-
-                    $timeout(function() {
-                        web2board._connect().then(
-                            function() {
-                                web2board._checkVersion().then(
-                                    function() {
-                                        instructions();
-                                    });
-                            }).catch(function(evt) {
-                            if (evt.target.readyState === 3) {
-                                var parent = $rootScope,
-                                    modalOptions = parent.$new();
-                                _.extend(modalOptions, {
-                                    contentTemplate: '/views/modals/download-web2board.html',
-                                    modalTitle: 'modal-download-web2board-title',
-                                    modalText: 'modal-download-web2board-text'
-                                });
-                                //modalOptions.envData = envData;
-                                if (!modalObj || !ngDialog.isOpen(modalObj.id)) {
-                                    modalObj = ngDialog.open({
-                                        template: '/views/modals/modal.html',
-                                        className: 'modal--container modal--download-web2board',
-                                        scope: modalOptions,
-                                        showClose: false
-                                    });
-                                }
-                            }
-                        });
-                    }, 3000);
-                }
-            });
-        };
+        $rootScope.$on('web2board:bitbloqlibs-setted', function(evt, data) {
+            $log.debug(evt.name + data);
+            libVersionPromise.resolve();
+        });
 
         /** Public functions */
 
@@ -295,10 +319,15 @@ angular.module('bitbloqOffline')
             });
         };
 
+        web2board.version = function() {
+            web2board._openCommunication();
+        };
+
         return {
             verify: web2board.verify,
             upload: web2board.upload,
-            serialMonitor: web2board.serialMonitor
+            serialMonitor: web2board.serialMonitor,
+            version: web2board.version
         };
 
     });

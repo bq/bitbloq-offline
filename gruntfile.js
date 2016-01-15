@@ -48,7 +48,7 @@ module.exports = function(grunt) {
         },
         watch: {
             scripts: {
-                files: ['app/**/*.*'],
+                files: ['app/**/*.*', 'bower.json'],
                 //twice "stop_electron" or not close :( 
                 tasks: ['exec:stop_electron', 'exec:stop_electron', 'exec:electron'],
                 options: {
