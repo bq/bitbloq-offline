@@ -41,12 +41,29 @@ module.exports = function(grunt) {
                 src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json'],
                 dest: 'dist/Electron.app/Contents/Resources/app/'
             }
-        }
+        },
+        exec: {
+            electron: 'electron .',
+            stop_electron: 'ps aux | grep \'[E]lectron \.\' | awk \'{print $2}\' | xargs kill || true'
+        },
+        watch: {
+            scripts: {
+                files: ['app/**/*.*'],
+                tasks: ['exec:stop_electron', 'exec:stop_electron', 'exec:electron'],
+                options: {
+                    atBegin: true,
+                    interrupt: true,
+                    spawn: false
+                }
+            },
+        },
     });
 
     // Default task(s).
     grunt.registerTask('default', function() {
-        console.log('hi');
+        grunt.task.run([
+            'dist'
+        ]);
     });
 
     // Default task(s).
