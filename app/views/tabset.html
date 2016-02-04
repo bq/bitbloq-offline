@@ -1,0 +1,8 @@
+<div role="tabpanel">
+  <ul role="tablist">
+    <li role="presentation" ng-repeat="tab in tabset.tabs" ng-class="{'active': tab.active, 'disabled': tab.disabled}">
+      <button role="tab" ng-click="tabset.select(tab)">{{tab.heading}}</button>
+    </li>
+  </ul>
+  <ng-transclude></ng-transclude>
+</div>

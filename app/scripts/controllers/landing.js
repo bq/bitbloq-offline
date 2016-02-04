@@ -8,6 +8,7 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-    .controller('LandingCtrl', function($scope) {
-        console.log('landing ctrl');
-    });
+  .controller('LandingCtrl', function($scope, $window) {
+    console.log('landing ctrl');
+
+  });

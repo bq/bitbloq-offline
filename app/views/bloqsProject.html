@@ -1,16 +1,14 @@
 <div data-ng-controller="BloqsProjectCtrl">
-    <div class="header">
-        <button data-ng-click="verifyCode()">Launch web2board</button>
-    </div>
-    <div class="body">
-        <div class="tabs">
-            <button data-ng-click="tab='hardware'">Hardware</button>
-            <button data-ng-click="tab='software'">Software</button>
-        </div>
-        <div data-ng-show="tab==='hardware'" class="container hardware">
-            <p>hardware</p>
-        </div>
-        <div data-ng-show="tab==='software'" class="container software" data-ng-include="'views/bloqsTab.html'">
-        </div>
-    </div>
+  <div class="header">
+    <button data-ng-click="verifyCode()">Launch web2board</button>
+  </div>
+  <tabset>
+    <tab heading="Hardware">
+      <p>hardware</p>
+    </tab>
+    <tab heading="Software">
+      <div class="container software" data-ng-include="'views/bloqsTab.html'">
+    </tab>
+  </tabset>
+  </div>
 </div>
