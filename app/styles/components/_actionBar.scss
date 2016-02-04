@@ -1,0 +1,68 @@
+.actionbar {
+  border-bottom: 1px solid #ebebeb;
+
+  .actionbar__menu__left,
+  .actionbar__menu__right {
+    display       : inline-block;
+    vertical-align: middle;
+  }
+
+  .actionbar__menu__left {
+    dropdown {
+      .dropdown__menu {
+        .menu {
+          display : inline-block;
+          position: relative;
+
+          .menu__heading {
+            display   : block;
+            padding   : 20px 10px;
+            transition: background-color 120ms;
+
+            &.active {
+              background-color: #ebebeb;
+            }
+
+            &:hover {
+              background-color: #ebebeb;
+            }
+
+            h3 {
+              font-size  : 14px;
+              font-weight: normal;
+            }
+          }
+
+          .menu__dropdown {
+            position        : absolute;
+            background-color: white;
+            top             : 40px;
+            left            : 0;
+            white-space     : nowrap;
+            border          : 1px solid #ebebeb;
+
+            .menu__dropdown__item {
+              .menu__dropdown__item__button {
+                padding   : 10px;
+                width     : 100%;
+                text-align: left;
+
+                &:hover {
+                  background-color: #ebebeb;
+                }
+
+                svg {}
+
+                span {
+                  margin-left: 5px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .actionbar__menu__right {}
+}

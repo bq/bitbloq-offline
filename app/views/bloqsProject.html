@@ -1,9 +1,9 @@
 <div data-ng-controller="BloqsProjectCtrl as bloqsProject">
-  <div class="header" ng-controller="ActionBarCtrl">
-    <div class="header__menu__left">
+  <div class="actionbar" ng-controller="ActionBarCtrl">
+    <div class="actionbar__menu__left">
       <dropdown tree="menuTree"></dropdown>
     </div>
-    <div class="header__menu__right">
+    <div class="actionbar__menu__right">
       <ul>
         <li>
           <button ng-click="verifyCode()">
@@ -13,13 +13,15 @@
       </ul>
     </div>
   </div>
-  <tabset>
-    <tab heading="Hardware">
-      <p>hardware</p>
-    </tab>
-    <tab heading="Software">
-      <div class="container software" data-ng-include="'views/bloqsTab.html'">
-    </tab>
-  </tabset>
+  <div class="main--with-header">
+    <tabset>
+      <tab heading="Hardware">
+        <p>hardware</p>
+      </tab>
+      <tab heading="Software">
+        <div class="container software" data-ng-include="'views/bloqsTab.html'">
+      </tab>
+    </tabset>
+    </div>
   </div>
 </div>

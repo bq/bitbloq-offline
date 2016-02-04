@@ -66,19 +66,19 @@ module.exports = function(grunt) {
       stop_electron: 'killall electron || true'
     },
     watch: {
+      sass: {
+        files: ['app/styles/{,**/}*.{scss}', '!app/styles/main.css'],
+        tasks: ['sass']
+      },
       scripts: {
-        files: ['app/**/*.*', 'bower.json'],
-        tasks: ['exec:stop_electron', 'svgstore', 'exec:electron'],
+        files: ['app/**/*.*', 'bower.json', '!app/styles/main.css'],
+        tasks: ['exec:stop_electron', 'sass', 'exec:electron'],
         options: {
           atBegin: true,
           interrupt: true
-        },
-        sass: {
-          files: ['app/styles/{,**/}*.{scss}'],
-          tasks: ['sass']
         }
-      },
-    },
+      }
+    }
   });
 
   // Default task(s).

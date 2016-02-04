@@ -57,7 +57,7 @@ angular.module('bitbloqOffline')
           disabled: false
         }, {
           name: 'Cambiar idioma',
-          icon: '#cambiaridioma',
+          icon: '#cambiarIdioma',
           action: changeLanguage,
           disabled: false
         }]
