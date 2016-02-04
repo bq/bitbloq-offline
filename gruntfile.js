@@ -17,6 +17,25 @@ module.exports = function(grunt) {
         exclude: ['bower_components/jquery/dist/jquery.js']
       }
     },
+    svgstore: {
+      options: {
+        svg: {
+          viewBox: '0 0 100 100',
+          xmlns: 'http://www.w3.org/2000/svg'
+        },
+        includedemo: false,
+        formatting: {
+          indent_size: 2
+        },
+        cleanup: true
+      },
+      dev: {
+        files: [{
+          src: 'app/images/icons/{,*/}*.svg',
+          dest: 'app/images/sprite.svg'
+        }]
+      }
+    },
     sass: {
       options: {
         sourceMap: false
@@ -49,7 +68,7 @@ module.exports = function(grunt) {
     watch: {
       scripts: {
         files: ['app/**/*.*', 'bower.json'],
-        tasks: ['exec:stop_electron', 'exec:electron'],
+        tasks: ['exec:stop_electron', 'svgstore', 'exec:electron'],
         options: {
           atBegin: true,
           interrupt: true
@@ -76,6 +95,7 @@ module.exports = function(grunt) {
       'clean:electron',
       'wiredep',
       'sass',
+      'svgstore',
       //'copy:electron',
       'copy:dist'
     ]);

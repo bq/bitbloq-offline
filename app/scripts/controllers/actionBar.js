@@ -27,37 +27,37 @@ angular.module('bitbloqOffline')
         name: 'Archivo',
         items: [{
           name: 'Nuevo Proyecto',
-          icon: '',
+          icon: '#nuevoProyecto',
           action: newProject,
           disabled: false
         }, {
           name: 'Abrir Proyecto',
-          icon: '',
+          icon: '#abrirProyecto',
           action: openProject,
           disabled: false
         }, {
           name: 'Cambiar nombre',
-          icon: '',
+          icon: '#edit',
           action: changeName,
           disabled: false
         }, {
           name: 'Crear una copia',
-          icon: '',
+          icon: '#duplicar',
           action: cloneProject,
           disabled: false
         }, {
           name: 'Guardar proyecto',
-          icon: '',
+          icon: '#guardar',
           action: saveProject,
           disabled: false
         }, {
           name: 'Exportar código Arduino',
-          icon: '',
+          icon: '#exportcode',
           action: exportArduinoCode,
           disabled: false
         }, {
           name: 'Cambiar idioma',
-          icon: '',
+          icon: '#cambiaridioma',
           action: changeLanguage,
           disabled: false
         }]
@@ -66,17 +66,17 @@ angular.module('bitbloqOffline')
         name: 'Editar',
         items: [{
           name: 'Deshacer',
-          icon: '',
+          icon: '#deshacer',
           action: undo,
           disabled: false
         }, {
           name: 'Rehacer',
-          icon: '',
+          icon: '#rehacer',
           action: redo,
           disabled: false
         }, {
           name: 'Copiar código al portapapeles',
-          icon: '',
+          icon: '#copiarTexto',
           action: copyCodeToClipboard,
           disabled: false
         }]

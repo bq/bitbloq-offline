@@ -1,18 +1,17 @@
 <div data-ng-controller="BloqsProjectCtrl as bloqsProject">
   <div class="header" ng-controller="ActionBarCtrl">
-    <ul class="header__menu__left">
-      <li>
-        <dropdown tree="menuTree"></dropdown>
-      </li>
-
-    </ul>
-    <ul class="header__menu__right">
-      <li>
-        <button ng-click="verifyCode()">
-          <span>Verificar</span>
-        </button>
-      </li>
-    </ul>
+    <div class="header__menu__left">
+      <dropdown tree="menuTree"></dropdown>
+    </div>
+    <div class="header__menu__right">
+      <ul>
+        <li>
+          <button ng-click="verifyCode()">
+            <span>Verificar</span>
+          </button>
+        </li>
+      </ul>
+    </div>
   </div>
   <tabset>
     <tab heading="Hardware">

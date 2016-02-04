@@ -16,7 +16,7 @@ angular.module('bitbloqOffline')
             return;
           }
           if (self.activeMenu === menu) {
-            self.activeMenu = null
+            self.activeMenu = null;
           } else {
             self.activeMenu = menu;
           }
