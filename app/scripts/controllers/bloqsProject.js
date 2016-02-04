@@ -18,6 +18,7 @@ angular.module('bitbloqOffline')
       loopBloq: null
     };
 
+
     $scope.verifyCode = function(code) {
       code = code || '';
       web2board.verify(code);

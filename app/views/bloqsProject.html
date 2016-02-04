@@ -1,6 +1,18 @@
-<div data-ng-controller="BloqsProjectCtrl">
-  <div class="header">
-    <button data-ng-click="verifyCode()">Launch web2board</button>
+<div data-ng-controller="BloqsProjectCtrl as bloqsProject">
+  <div class="header" ng-controller="ActionBarCtrl">
+    <ul class="header__menu__left">
+      <li>
+        <dropdown tree="menuTree"></dropdown>
+      </li>
+
+    </ul>
+    <ul class="header__menu__right">
+      <li>
+        <button ng-click="verifyCode()">
+          <span>Verificar</span>
+        </button>
+      </li>
+    </ul>
   </div>
   <tabset>
     <tab heading="Hardware">

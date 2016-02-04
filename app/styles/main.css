@@ -3,3 +3,30 @@
   background-color: #EBEBEB;
   width: 1500px;
   height: 650px; }
+
+.icon--vsmall {
+  width: 13px;
+  height: 13px; }
+
+.icon--small {
+  width: 18px;
+  height: 18px; }
+
+.icon--medium {
+  width: 24px;
+  height: 24px; }
+
+.icon--large {
+  width: 27px;
+  height: 27px; }
+
+.icon--vlarge {
+  width: 50px;
+  height: 50px; }
+
+.icon--text {
+  display: inline-block;
+  vertical-align: middle; }
+
+dropdown .menu .menu__dropdown {
+  list-style: none; }

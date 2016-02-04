@@ -21,7 +21,7 @@ module.exports = function(grunt) {
       options: {
         sourceMap: false
       },
-      dist: {
+      all: {
         files: {
           'app/styles/main.css': 'app/styles/main.scss'
         }
@@ -49,10 +49,14 @@ module.exports = function(grunt) {
     watch: {
       scripts: {
         files: ['app/**/*.*', 'bower.json'],
-        tasks: ['exec:stop_electron', 'sass', 'exec:electron'],
+        tasks: ['exec:stop_electron', 'exec:electron'],
         options: {
           atBegin: true,
           interrupt: true
+        },
+        sass: {
+          files: ['app/styles/{,**/}*.{scss}'],
+          tasks: ['sass']
         }
       },
     },

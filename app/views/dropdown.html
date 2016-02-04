@@ -1,0 +1,18 @@
+<ul class="dropdown__menu">
+  <li role="menu" class="menu" ng-repeat="menu in tree">
+    <button class="menu__heading" ng-click="dropdown.select(menu.name)" ng-class="{'disabled': menu.disabled}">
+      <h3>{{menu.name}}</h3>
+    </button>
+    <ul role="group" class="menu__dropdown" ng-show="dropdown.activeMenu === menu.name">
+      <li class="menu__dropdown__item" ng-repeat="item in menu.items">
+        <button ng-click="item.action()">
+          <svg class="icon--vsmall icon--text">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{{item.icon}}"></use>
+          </svg>
+          <span>{{item.name}}</span>
+        </button>
+      </li>
+    </ul>
+    </div>
+  </li>
+</ul>
