@@ -1,8 +1,9 @@
-body {
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-}
+
 
 .disabled {
   pointer-events: none;
+}
+
+.inline {
+  display: inline-block;
 }

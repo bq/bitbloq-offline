@@ -1,0 +1,14 @@
+.tablist {
+  height : $main-content-with-header-height;
+  width  : $bloqs-tabs-width;
+  display: block;
+  float  : left;
+}
+
+.tabcontent {
+  display: block;
+  width  : $bloqs-container-width;
+  height : $main-content-with-header-height;
+  float  : right;
+  position: relative;
+}

@@ -12,7 +12,7 @@
 /*
 From top to bottom: Dialogs 9 , Toasts 8, Dropdowns 7...
 */
-    
+
 @mixin generate-zindex($class-slug) {
   @for $i from 1 to 10 {
     .#{$class-slug}-#{$i} {
@@ -20,4 +20,5 @@ From top to bottom: Dialogs 9 , Toasts 8, Dropdowns 7...
     };
   }
 }
-@include generate-zindex("layer");
+
+@include generate-zindex('layer');

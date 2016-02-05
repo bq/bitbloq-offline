@@ -9,13 +9,10 @@ angular.module('bitbloqOffline')
       controllerAs: 'dropdown',
       controller: function($scope, $element, $attrs) {
         var self = this;
+        var mainContent;
         self.activeMenu = null;
 
         self.select = function(menu) {
-          event.stopPropagation();
-          if (menu.disabled) {
-            return;
-          }
           if (self.activeMenu === menu) {
             self.activeMenu = null;
           } else {
@@ -23,28 +20,18 @@ angular.module('bitbloqOffline')
           }
         };
 
-        self.closeDropdown = function(noQuestions) {
-          if (noQuestions) {
+        self.closeDropdown = function() {
+          $timeout(function() {
             self.activeMenu = null;
-          }
-          var target = event.target;
-          console.log(target.closest('dropdown'));
-
-          if (!target.closest('dropdown')) {
-            $scope.$apply(function() {
-              self.activeMenu = null;
-            });
-
-          }
+          }, 0);
         };
 
-        $timeout(function() {
-          // Timeout is to prevent the click handler from immediately
-          // firing upon opening the popover.
-          $(document).on("click", self.closeDropdown);
-        });
-        $scope.$on("$destroy", function() {
-          $(document).off("click", self.closeDropdown);
+
+        $(document).on('click', function() {
+          if ($(event.target).closest('dropdown').length > 0) {
+            return false;
+          }
+          self.closeDropdown();
         });
       }
     };

@@ -1,36 +1,7 @@
 <div data-ng-controller="BloqsProjectCtrl as bloqsProject">
-  <div class="actionbar" ng-controller="ActionBarCtrl">
-    <div class="actionbar__menu__left">
-      <dropdown tree="menuTree"></dropdown>
-    </div>
-    <div class="actionbar__menu__right">
-      <ul class="actionbar__software__actions">
-        <li class="actionbar__software__actions__item">
-          <button class="actionbar__software__actions__item__button" ng-click="actions.verifyCode()">
-            <svg class="icon--large icon--text">
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#verificar"></use>
-            </svg>
-          </button>
-        </li>
-        <li class="actionbar__software__actions__item">
-          <button class="actionbar__software__actions__item__button" ng-click="actions.loadToBoard()">
-            <svg class="icon--large icon--text">
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cargar"></use>
-            </svg>
-          </button>
-        </li>
-      </ul>
-    </div>
+  <div ng-include="'views/action-bar.html'"></div>
+  <div id="main-content" class="main__content main__content--with-header">
+    <div ng-include="'views/bloqs-tabs.html'"></div>
   </div>
-  <div class="main__content main__content--with-header">
-    <tabset>
-      <tab heading="Hardware">
-        <p>hardware</p>
-      </tab>
-      <tab heading="Software">
-        <div class="container software" data-ng-include="'views/bloqsTab.html'">
-      </tab>
-    </tabset>
-    </div>
-  </div>
+</div>
 </div>
