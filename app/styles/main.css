@@ -233,10 +233,43 @@ body {
 .disabled {
   pointer-events: none; }
 
-.main--with-header {
+.main__content {
+  position: relative; }
+
+.main__content--with-header {
   display: block;
   height: calc(100vh - 41px);
   overflow: auto; }
+
+/*
+From top to bottom: Dialogs 9 , Toasts 8, Dropdowns 7...
+*/
+.layer-1 {
+  z-index: 1; }
+
+.layer-2 {
+  z-index: 2; }
+
+.layer-3 {
+  z-index: 3; }
+
+.layer-4 {
+  z-index: 4; }
+
+.layer-5 {
+  z-index: 5; }
+
+.layer-6 {
+  z-index: 6; }
+
+.layer-7 {
+  z-index: 7; }
+
+.layer-8 {
+  z-index: 8; }
+
+.layer-9 {
+  z-index: 9; }
 
 #bloqs--field {
   overflow-y: auto;
@@ -269,7 +302,12 @@ body {
   vertical-align: middle; }
 
 .actionbar {
-  border-bottom: 1px solid #ebebeb; }
+  border-bottom: 1px solid #ebebeb;
+  height: 40px; }
+  .actionbar button {
+    transition: background-color 120ms; }
+    .actionbar button:hover {
+      background-color: #ebebeb; }
   .actionbar .actionbar__menu__left,
   .actionbar .actionbar__menu__right {
     display: inline-block;
@@ -279,8 +317,7 @@ body {
     position: relative; }
     .actionbar .actionbar__menu__left dropdown .dropdown__menu .menu .menu__heading {
       display: block;
-      padding: 20px 10px;
-      transition: background-color 120ms; }
+      padding: 20px 10px; }
       .actionbar .actionbar__menu__left dropdown .dropdown__menu .menu .menu__heading.active {
         background-color: #ebebeb; }
       .actionbar .actionbar__menu__left dropdown .dropdown__menu .menu .menu__heading:hover {
@@ -299,10 +336,18 @@ body {
         padding: 10px;
         width: 100%;
         text-align: left; }
-        .actionbar .actionbar__menu__left dropdown .dropdown__menu .menu .menu__dropdown .menu__dropdown__item .menu__dropdown__item__button:hover {
-          background-color: #ebebeb; }
         .actionbar .actionbar__menu__left dropdown .dropdown__menu .menu .menu__dropdown .menu__dropdown__item .menu__dropdown__item__button span {
           margin-left: 5px; }
+  .actionbar .actionbar__menu__right {
+    float: right; }
+    .actionbar .actionbar__menu__right .actionbar__software__actions .actionbar__software__actions__item {
+      display: inline-block;
+      vertical-align: middle;
+      float: left;
+      border: 1px solid #ebebeb;
+      border-right: 0; }
+      .actionbar .actionbar__menu__right .actionbar__software__actions .actionbar__software__actions__item .actionbar__software__actions__item__button {
+        padding: 6px 15px; }
 
 dropdown .menu .menu__dropdown {
   list-style: none; }

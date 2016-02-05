@@ -4,16 +4,25 @@
       <dropdown tree="menuTree"></dropdown>
     </div>
     <div class="actionbar__menu__right">
-      <ul>
-        <li>
-          <button ng-click="verifyCode()">
-            <span>Verificar</span>
+      <ul class="actionbar__software__actions">
+        <li class="actionbar__software__actions__item">
+          <button class="actionbar__software__actions__item__button" ng-click="actions.verifyCode()">
+            <svg class="icon--large icon--text">
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#verificar"></use>
+            </svg>
+          </button>
+        </li>
+        <li class="actionbar__software__actions__item">
+          <button class="actionbar__software__actions__item__button" ng-click="actions.loadToBoard()">
+            <svg class="icon--large icon--text">
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cargar"></use>
+            </svg>
           </button>
         </li>
       </ul>
     </div>
   </div>
-  <div class="main--with-header">
+  <div class="main__content main__content--with-header">
     <tabset>
       <tab heading="Hardware">
         <p>hardware</p>

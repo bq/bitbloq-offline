@@ -8,7 +8,7 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-  .controller('BloqsProjectCtrl', function($scope, bloqsUtils, web2board) {
+  .controller('BloqsProjectCtrl', function($scope, bloqsUtils) {
     console.log('bloqsproject ctrl');
 
     $scope.componentsArray = bloqsUtils.getEmptyComponentsArray();
@@ -19,8 +19,5 @@ angular.module('bitbloqOffline')
     };
 
 
-    $scope.verifyCode = function(code) {
-      code = code || '';
-      web2board.verify(code);
-    };
+
   });

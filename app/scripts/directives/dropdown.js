@@ -1,5 +1,5 @@
 angular.module('bitbloqOffline')
-  .directive('dropdown', function() {
+  .directive('dropdown', function($parse, $timeout) {
     return {
       restrict: 'E',
       templateUrl: 'file://' + __dirname + '/views/dropdown.html',
@@ -12,6 +12,7 @@ angular.module('bitbloqOffline')
         self.activeMenu = null;
 
         self.select = function(menu) {
+          event.stopPropagation();
           if (menu.disabled) {
             return;
           }
@@ -22,6 +23,29 @@ angular.module('bitbloqOffline')
           }
         };
 
+        self.closeDropdown = function(noQuestions) {
+          if (noQuestions) {
+            self.activeMenu = null;
+          }
+          var target = event.target;
+          console.log(target.closest('dropdown'));
+
+          if (!target.closest('dropdown')) {
+            $scope.$apply(function() {
+              self.activeMenu = null;
+            });
+
+          }
+        };
+
+        $timeout(function() {
+          // Timeout is to prevent the click handler from immediately
+          // firing upon opening the popover.
+          $(document).on("click", self.closeDropdown);
+        });
+        $scope.$on("$destroy", function() {
+          $(document).off("click", self.closeDropdown);
+        });
       }
     };
   });

@@ -8,7 +8,7 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-  .controller('ActionBarCtrl', function($scope) {
+  .controller('ActionBarCtrl', function($scope, web2board) {
     $scope.actions = {
       newProject: newProject,
       openProject: openProject,
@@ -19,7 +19,9 @@ angular.module('bitbloqOffline')
       changeLanguage: changeLanguage,
       undo: undo,
       redo: redo,
-      copyCodeToClipboard: copyCodeToClipboard
+      copyCodeToClipboard: copyCodeToClipboard,
+      verifyCode: verifyCode,
+      loadToBoard: loadToBoard
     }
 
     $scope.menuTree = {
@@ -123,5 +125,14 @@ angular.module('bitbloqOffline')
 
     function copyCodeToClipboard() {
       console.log(this.name);
+    }
+
+    function loadToBoard() {
+      console.log(this);
+    }
+
+    function verifyCode(code) {
+      code = code || '';
+      web2board.verify(code);
     }
   });

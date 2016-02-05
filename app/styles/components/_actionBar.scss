@@ -1,5 +1,14 @@
 .actionbar {
   border-bottom: 1px solid #ebebeb;
+  height       : 40px;
+
+  button {
+    transition: background-color 120ms;
+
+    &:hover {
+      background-color: #ebebeb;
+    }
+  }
 
   .actionbar__menu__left,
   .actionbar__menu__right {
@@ -15,9 +24,8 @@
           position: relative;
 
           .menu__heading {
-            display   : block;
-            padding   : 20px 10px;
-            transition: background-color 120ms;
+            display: block;
+            padding: 20px 10px;
 
             &.active {
               background-color: #ebebeb;
@@ -47,10 +55,6 @@
                 width     : 100%;
                 text-align: left;
 
-                &:hover {
-                  background-color: #ebebeb;
-                }
-
                 svg {}
 
                 span {
@@ -64,5 +68,21 @@
     }
   }
 
-  .actionbar__menu__right {}
+  .actionbar__menu__right {
+    float: right;
+
+    .actionbar__software__actions {
+      .actionbar__software__actions__item {
+        display       : inline-block;
+        vertical-align: middle;
+        float         : left;
+        border        : 1px solid #ebebeb;
+        border-right  : 0;
+
+        .actionbar__software__actions__item__button {
+          padding: 6px 15px;
+        }
+      }
+    }
+  }
 }
