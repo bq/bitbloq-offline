@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bloqs Simple Web</title>
+    <!--Add bloqs css-->
+    <link rel="stylesheet" href="./../../dist/bloqs.css" />
+    <style type="text/css">
+    body {
+        margin: 0;
+    }
+    
+    #code--field {
+        width: 100%;
+        height: 500px;
+    }
+    
+    #bloqs--field {
+        overflow-y: auto;
+        background-color: #EBEBEB;
+        width: 1500px;
+        height: 650px;
+    }
+    </style>
+</head>
+
+<body>
+    <h1 class="header">bloqs demo</h1>
+    <!-- begin demo markup -->
+    <div id="bloqs--field" class="theme-colors"></div>
+    <button id="saveProject">Show Bloqs structure()</button>
+    <div id="code--field"></div>
+    <!-- end demo markup -->
+    <p>See the <a href="http://bq.github.io/bloqs">project homepage</a>.</p>
+    <p>Check out the <a href="https://github.com/bq/bloqs">project repo</a>.</p>
+    <p>BQ 2015</p>
+    <script src="http://localhost:9000/livereload.js"></script>
+    <!--Load Scripts-->
+    <script src="./../../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./../../bower_components/lodash/lodash.min.js"></script>
+    <!--Add bloqs js compiled-->
+    <!--<script src="./../../dist/bloqs.min.js"></script>-->
+    <!--Or add bloqs js without compile-->
+    <script src="./../../src/scripts/bloqs-languages.js"></script>
+    <script src="./../../src/scripts/bloqs-utils.js"></script>
+    <script src="./../../src/scripts/bloqs.js"></script>
+    <script>
+    /**
+     * Set options like the offset from the field.
+     */
+    window.bloqs.setOptions({
+        fieldOffsetLeft: 0,
+        fieldOffsetTopForced: 0
+    });
+
+    //load Bloqs
+    $.getJSON('./../../dist/bloqsmap.json', function(bloqSchemas) {
+
+        var componentsArray = window.bloqsUtils.getEmptyComponentsArray(),
+            arduinoMainBloqs = {
+                varsBloq: null,
+                setupBloq: null,
+                loopBloq: null
+            };
+
+        var $field = $('#bloqs--field');
+        // Create the main arduino bloqs
+        //firsttime set componentsArray and field
+        arduinoMainBloqs.varsBloq = new bloqs.Bloq({
+            bloqData: bloqSchemas['varsBloq'],
+            componentsArray: componentsArray,
+            $field: $field
+        });
+        $field.append(arduinoMainBloqs.varsBloq.$bloq);
+        arduinoMainBloqs.varsBloq.enable(true);
+        arduinoMainBloqs.varsBloq.doConnectable();
+
+        arduinoMainBloqs.setupBloq = new bloqs.Bloq({
+            bloqData: bloqSchemas['setupBloq'],
+            componentsArray: componentsArray,
+            $field: $field
+        });
+        $field.append(arduinoMainBloqs.setupBloq.$bloq);
+        arduinoMainBloqs.setupBloq.enable(true);
+        arduinoMainBloqs.setupBloq.doConnectable();
+
+
+        arduinoMainBloqs.loopBloq = new bloqs.Bloq({
+            bloqData: bloqSchemas['loopBloq'],
+            componentsArray: componentsArray,
+            $field: $field
+        });
+        $field.append(arduinoMainBloqs.loopBloq.$bloq);
+        arduinoMainBloqs.loopBloq.enable(true);
+        arduinoMainBloqs.loopBloq.doConnectable();
+
+        //start build bloqs!
+
+        //Create a if bloq from the bloqsSchemas loaded
+        var bloq1 = new bloqs.Bloq({
+            bloqData: bloqSchemas['if'],
+            componentsArray: componentsArray,
+            $field: $field
+        });
+        //append it to the field
+        $field.append(bloq1.$bloq);
+        //enable if you want
+        bloq1.enable(true);
+        //do connectable to allow anothers bloqs to connect to them
+        bloq1.doConnectable();
+
+
+        var bloq2 = new bloqs.Bloq({
+            bloqData: bloqSchemas['for-v1'],
+            componentsArray: componentsArray,
+            $field: $field
+        });
+        $field.append(bloq2.$bloq);
+        bloq2.enable(true);
+        bloq2.doConnectable();
+
+        var bloq3 = new bloqs.Bloq({
+            bloqData: bloqSchemas['number'],
+            componentsArray: componentsArray,
+            $field: $field
+        });
+        $field.append(bloq3.$bloq);
+        bloq3.enable(true);
+        bloq3.doConnectable();
+
+
+
+        $('#saveProject').click(function() {
+            var actualProjectSoftware = {
+                vars: arduinoMainBloqs.varsBloq.getBloqsStructure(),
+                setup: arduinoMainBloqs.setupBloq.getBloqsStructure(),
+                loop: arduinoMainBloqs.loopBloq.getBloqsStructure()
+            };
+            //now you can store that project and load in another moment.
+            $('#code--field').html(JSON.stringify(actualProjectSoftware));
+        });
+
+    });
+    </script>
+</body>
+
+</html>

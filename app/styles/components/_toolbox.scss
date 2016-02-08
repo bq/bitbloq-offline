@@ -1,6 +1,8 @@
 $toobox-icons-color: #b9bdc8;
 $toobox-item-border-color: #edf1f2;
 $toolbox-content-item-height: calc(100vh - 90px);
+$toolbox-width: 200px;
+$toolbox-width-level-1: 250px;
 
 .toolbox {
   background-color: $color-white;
@@ -9,7 +11,7 @@ $toolbox-content-item-height: calc(100vh - 90px);
   position        : absolute;
   right           : 0;
   top             : 0;
-  width           : 200px;
+  width           : $toolbox-width;
 }
 
 .toolbox__level--1 {
@@ -25,7 +27,7 @@ $toolbox-content-item-height: calc(100vh - 90px);
       position        : absolute;
       right           : 0;
       top             : 0;
-      width           : 250px;
+      width           : $toolbox-width-level-1;
     }
   }
 }
@@ -35,7 +37,7 @@ $toolbox-content-item-height: calc(100vh - 90px);
   position        : absolute;
   right           : 0;
   top             : 0;
-  width           : 200px;
+  width           : $toolbox-width;
 
   &.active {
     height    : 100%;

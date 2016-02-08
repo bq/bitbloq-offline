@@ -1,0 +1,12 @@
+#bloqs--field {
+    &.theme-basic {
+        .bloq {
+            @include createBloqsTheme(true);
+        }
+    }
+    &.theme-colors {
+        .bloq {
+            @include createBloqsTheme(false);
+        }
+    }
+}

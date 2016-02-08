@@ -470,27 +470,30 @@ dropdown .menu .menu__dropdown {
   display: block;
   float: left;
   height: calc(100vh - 41px);
-  width: 67px; }
+  width: 48px; }
 
 .tabcontent {
   display: block;
   float: right;
   height: calc(100vh - 41px);
   position: relative;
-  width: calc(100% - 67px); }
+  width: calc(100% - 48px);
+  background-color: #ebebeb; }
 
 .tabpanel {
   overflow: hidden; }
 
 .tablist__item.active .tablist__item__button {
-  background-color: #1e1f21; }
+  background-color: #ebebeb; }
+  .tablist__item.active .tablist__item__button:hover svg {
+    fill: #000; }
 
 .tablist__item.active svg {
-  fill: #fff; }
+  fill: #000; }
 
 .tablist__item__button {
   border-bottom: 1px solid #797c81;
-  padding: 20px;
+  padding: 15px;
   transition: background-color 120ms; }
   .tablist__item__button svg {
     fill: #797c81;

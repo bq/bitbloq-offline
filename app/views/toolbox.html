@@ -2,7 +2,7 @@
   <ul class="toolbox__list">
     <li class="toolbox__list__item" ng-repeat="item in tree.toolboxTitles track by $index">
       <button class="toolbox__list__item__button" ng-click="toolbox.select(item.contentId)" ng-class="{'active':toolbox.activeMenu === item.contentId}">
-        <svg class="{{item.iconSize}} icon--text">
+        <svg ng-if="item.iconSize" class="{{item.iconSize}} icon--text">
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{{item.iconName}}"></use>
         </svg>
         <span>{{item.title}}</span>
@@ -16,7 +16,7 @@
         <li class="content__list__item" ng-repeat="item in itemContainer.items track by $index">
           <div ng-if="item.title" class="title"><span>{{item.title}}</span></div>
           <div ng-if="item.image"><img class="toolbox__item__image" src="images/{{item.image}}" alt=""></div>
-          <div ng-if="item.bloq" class="title"><span>{{item.bloq}}</span></div>
+          <div ng-if="item.name" class="title"><span>{{item.name}}</span></div>
         </li>
       </ul>
     </div>

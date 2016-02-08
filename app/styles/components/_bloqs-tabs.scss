@@ -1,8 +1,8 @@
 $bloqs-tabs-icon-color: #797c81;
-$bloqs-tabs-button-padding: 20px;
-$bloqs-tabs-tablist-item-active-color: #1e1f21;
+$bloqs-tabs-button-padding: 15px;
+$bloqs-tabs-tablist-item-active-color: #ebebeb;
 $bloqs-left-tabbar-color: #3b3e45;
-$bloqs-tabs-width: 67px;
+$bloqs-tabs-width: 48px;
 $bloqs-container-width: calc(100% - #{$bloqs-tabs-width});
 
 .tab {
@@ -19,11 +19,12 @@ $bloqs-container-width: calc(100% - #{$bloqs-tabs-width});
 }
 
 .tabcontent {
-  display : block;
-  float   : right;
-  height  : $main-content-with-header-height;
-  position: relative;
-  width   : $bloqs-container-width;
+  display         : block;
+  float           : right;
+  height          : $main-content-with-header-height;
+  position        : relative;
+  width           : $bloqs-container-width;
+  background-color: #ebebeb;
 }
 
 .tabpanel {
@@ -32,11 +33,17 @@ $bloqs-container-width: calc(100% - #{$bloqs-tabs-width});
 
 .tablist__item.active {
   .tablist__item__button {
-    background-color: $bloqs-tabs-tablist-item-active-color;
+    background-color: #ebebeb;
+
+    &:hover {
+      svg {
+        fill: $color-black;
+      }
+    }
   }
 
   svg {
-    fill: $color-white;
+    fill: $color-black;
   }
 }
 
