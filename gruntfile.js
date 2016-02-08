@@ -29,7 +29,7 @@ module.exports = function(grunt) {
         },
         cleanup: true
       },
-      dev: {
+      all: {
         files: [{
           src: 'app/images/icons/{,*/}*.svg',
           dest: 'app/images/sprite.svg'

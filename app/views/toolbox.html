@@ -1,0 +1,24 @@
+<div class="toolbox" ng-class="{'toolbox__level--1':toolbox.activeMenu !== null}">
+  <ul class="toolbox__list">
+    <li class="toolbox__list__item" ng-repeat="item in tree.toolboxTitles track by $index">
+      <button class="toolbox__list__item__button" ng-click="toolbox.select(item.contentId)" ng-class="{'active':toolbox.activeMenu === item.contentId}">
+        <svg class="{{item.iconSize}} icon--text">
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{{item.iconName}}"></use>
+        </svg>
+        <span>{{item.title}}</span>
+      </button>
+    </li>
+  </ul>
+  <div class="toolbox__content" ng-class="{'active': toolbox.activeMenu !== null}">
+    <div class="toolbox__content__item" ng-repeat="itemContainer in tree.toolboxContents track by $index" ng-show="itemContainer.titleId === toolbox.activeMenu">
+      <h3>{{itemContainer.title}}</h3>
+      <ul class="content__list">
+        <li class="content__list__item" ng-repeat="item in itemContainer.items track by $index">
+          <div ng-if="item.title" class="title"><span>{{item.title}}</span></div>
+          <div ng-if="item.image"><img class="toolbox__item__image" src="images/{{item.image}}" alt=""></div>
+          <div ng-if="item.bloq" class="title"><span>{{item.bloq}}</span></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

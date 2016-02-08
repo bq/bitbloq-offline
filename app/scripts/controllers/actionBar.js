@@ -12,9 +12,6 @@ angular.module('bitbloqOffline')
     $scope.actions = {
       newProject: newProject,
       openProject: openProject,
-      changeName: changeName,
-      cloneProject: cloneProject,
-      saveProject: saveProject,
       exportArduinoCode: exportArduinoCode,
       changeLanguage: changeLanguage,
       undo: undo,
@@ -22,7 +19,7 @@ angular.module('bitbloqOffline')
       copyCodeToClipboard: copyCodeToClipboard,
       verifyCode: verifyCode,
       loadToBoard: loadToBoard
-    }
+    };
 
     $scope.menuTree = {
       fileMenuItems: {
@@ -36,21 +33,6 @@ angular.module('bitbloqOffline')
           name: 'Abrir Proyecto',
           icon: '#abrirProyecto',
           action: openProject,
-          disabled: false
-        }, {
-          name: 'Cambiar nombre',
-          icon: '#edit',
-          action: changeName,
-          disabled: false
-        }, {
-          name: 'Crear una copia',
-          icon: '#duplicar',
-          action: cloneProject,
-          disabled: false
-        }, {
-          name: 'Guardar proyecto',
-          icon: '#guardar',
-          action: saveProject,
           disabled: false
         }, {
           name: 'Exportar código Arduino',
@@ -92,18 +74,6 @@ angular.module('bitbloqOffline')
     }
 
     function openProject() {
-      console.log(this.name);
-    }
-
-    function changeName() {
-      console.log(this.name);
-    }
-
-    function cloneProject() {
-      console.log(this.name);
-    }
-
-    function saveProject() {
       console.log(this.name);
     }
 

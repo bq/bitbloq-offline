@@ -329,7 +329,7 @@ video {
 .main__content--with-header {
   display: block;
   height: calc(100vh - 41px);
-  overflow: auto; }
+  overflow-y: auto; }
 
 /*
 From top to bottom: Dialogs 9 , Toasts 8, Dropdowns 7...
@@ -362,10 +362,10 @@ From top to bottom: Dialogs 9 , Toasts 8, Dropdowns 7...
   z-index: 9; }
 
 #bloqs--field {
-  overflow-y: auto;
   background-color: #EBEBEB;
-  width: 1500px;
-  height: 650px; }
+  width: 100%;
+  height: calc(100vh - 41px);
+  overflow: auto; }
 
 .h1 {
   font-size: 24px; }
@@ -452,12 +452,18 @@ body {
       vertical-align: middle; }
       .actionbar .actionbar__menu__right .actionbar__software__actions__item .actionbar__software__actions__item__button {
         border: 1px solid #ebebeb;
-        border-right: 0;
         border-bottom: 0;
+        border-right: 0;
         padding: 7px 15px; }
+        .actionbar .actionbar__menu__right .actionbar__software__actions__item .actionbar__software__actions__item__button svg {
+          fill: #3b3e45; }
 
 dropdown .menu .menu__dropdown {
   list-style: none; }
+
+.tab {
+  overflow-y: auto;
+  max-height: 100%; }
 
 .tablist {
   background-color: #3b3e45;
@@ -473,6 +479,9 @@ dropdown .menu .menu__dropdown {
   position: relative;
   width: calc(100% - 67px); }
 
+.tabpanel {
+  overflow: hidden; }
+
 .tablist__item.active .tablist__item__button {
   background-color: #1e1f21; }
 
@@ -486,7 +495,69 @@ dropdown .menu .menu__dropdown {
   .tablist__item__button svg {
     fill: #797c81;
     transition: fill 120ms; }
-  .tablist__item__button:hover {
-    background-color: #1e1f21; }
-    .tablist__item__button:hover svg {
-      fill: #fff; }
+  .tablist__item__button:hover svg {
+    fill: #fff; }
+
+.toolbox {
+  background-color: #fff;
+  border-left: 1px solid #edf1f2;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 200px; }
+
+.toolbox__level--1 {
+  width: 250px; }
+  .toolbox__level--1 .toolbox__list:after {
+    background-color: #000;
+    content: '';
+    height: 100%;
+    opacity: .5;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 250px; }
+
+.toolbox__content {
+  background-color: #fff;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 200px; }
+  .toolbox__content.active {
+    height: 100%;
+    overflow-y: auto; }
+
+.content__list {
+  max-height: calc(100vh - 90px);
+  overflow-y: auto; }
+
+.content__list__item {
+  margin-bottom: 10px; }
+
+.toolbox__content__item {
+  border-left: 1px solid #edf1f2;
+  text-align: center; }
+  .toolbox__content__item h3,
+  .toolbox__content__item .title {
+    text-align: left; }
+  .toolbox__content__item h3 {
+    border-bottom: 1px solid #edf1f2;
+    padding: 16px 10px; }
+  .toolbox__content__item .title {
+    padding: 10px; }
+
+.toolbox__list__item__button {
+  border-bottom: 1px solid #edf1f2;
+  padding: 10px;
+  text-align: left;
+  width: 100%; }
+  .toolbox__list__item__button svg {
+    fill: #b9bdc8; }
+  .toolbox__list__item__button span {
+    margin-left: 10px; }
+
+.toolbox-hw .toolbox__item__image {
+  max-width: 150px; }

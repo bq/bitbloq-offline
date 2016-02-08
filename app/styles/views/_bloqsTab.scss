@@ -1,6 +1,6 @@
 #bloqs--field {
-    overflow-y: auto;
     background-color: #EBEBEB;
-    width: 1500px;
-    height: 650px;
+    width: 100%;
+    height: calc(100vh - 41px);
+    overflow: auto;
 }

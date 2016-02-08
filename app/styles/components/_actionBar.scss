@@ -72,9 +72,13 @@ $menu-item-hover-background: #ebebeb;
 
       .actionbar__software__actions__item__button {
         border       : 1px solid $menu-item-hover-background;
-        border-right : 0;
         border-bottom: 0;
+        border-right : 0;
         padding      : 7px 15px;
+
+        svg {
+          fill: $bloqs-left-tabbar-color;
+        }
       }
     }
   }

@@ -1,0 +1,60 @@
+{
+  "toolboxTitles": [{
+    "title": "Placas",
+    "iconSize": "icon--large",
+    "iconName": "#placas",
+    "contentId": "boards"
+  }, {
+    "title": "Componentes",
+    "iconSize": "icon--large",
+    "iconName": "#componentes",
+    "contentId": "components"
+  }, {
+    "title": "Robots",
+    "iconSize": "icon--large",
+    "iconName": "#robots",
+    "contentId": "robots"
+  }],
+  "toolboxContents": [{
+    "title": "Placas",
+    "titleId": "boards",
+    "items": [{
+      "title": "bq ZUM",
+      "image": "boards/bqZUM.png"
+    }, {
+      "title": "Freaduino UNO",
+      "image": "boards/FreaduinoUNO.png"
+    }, {
+      "title": "Arduino UNO",
+      "image": "boards/ArduinoUNO.png"
+    }]
+  },{
+    "title": "Componentes",
+    "titleId": "components",
+    "items": [{
+      "title": "BlueTooth",
+      "image": "components/bt.png"
+    }, {
+      "title": "Botonera",
+      "image": "components/buttons.png"
+    }, {
+      "title": "Zumbador",
+      "image": "components/buzz.png"
+    }, {
+      "title": "Encoder",
+      "image": "components/encoder.png"
+    }, {
+      "title": "hts221",
+      "image": "components/hts221.png"
+    }, {
+      "title": "Sensor infrarrojo",
+      "image": "components/irs.png"
+    }, {
+      "title": "Joystick",
+      "image": "components/joystick.png"
+    }, {
+      "title": "LCD",
+      "image": "components/lcd.png"
+    }]
+  }]
+}

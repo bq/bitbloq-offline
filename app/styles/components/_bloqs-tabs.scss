@@ -5,6 +5,11 @@ $bloqs-left-tabbar-color: #3b3e45;
 $bloqs-tabs-width: 67px;
 $bloqs-container-width: calc(100% - #{$bloqs-tabs-width});
 
+.tab {
+  overflow-y: auto;
+  max-height: 100%;
+}
+
 .tablist {
   background-color: $bloqs-left-tabbar-color;
   display         : block;
@@ -21,6 +26,10 @@ $bloqs-container-width: calc(100% - #{$bloqs-tabs-width});
   width   : $bloqs-container-width;
 }
 
+.tabpanel {
+  overflow: hidden;
+}
+
 .tablist__item.active {
   .tablist__item__button {
     background-color: $bloqs-tabs-tablist-item-active-color;
@@ -34,16 +43,14 @@ $bloqs-container-width: calc(100% - #{$bloqs-tabs-width});
 .tablist__item__button {
   border-bottom: 1px solid $bloqs-tabs-icon-color;
   padding      : $bloqs-tabs-button-padding;
-  transition   : background-color 120ms;
+  transition   : background-color $transition-duration;
 
   svg {
-    fill: $bloqs-tabs-icon-color;
-    transition   : fill 120ms;
+    fill      : $bloqs-tabs-icon-color;
+    transition: fill $transition-duration;
   }
 
   &:hover {
-    background-color: $bloqs-tabs-tablist-item-active-color;
-
     svg {
       fill: $color-white;
     }

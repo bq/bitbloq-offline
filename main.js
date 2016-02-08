@@ -45,4 +45,5 @@ app.on('ready', function() {
     // when you should delete the corresponding element.
     mainWindow = null;
   });
+  mainWindow.setMenu(null);
 });
