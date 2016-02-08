@@ -1,3 +1,4 @@
 dist
 node_modules
 app/images/sprite.svg
+bower_components
