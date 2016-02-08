@@ -4,7 +4,7 @@
 
 .main__content--with-header {
   display : block;
-  height  : calc(100vh - 41px);
+  height  : $main-content-with-header-height;
   overflow: auto;
 }
 

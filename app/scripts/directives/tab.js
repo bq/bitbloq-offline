@@ -6,7 +6,9 @@ angular.module('bitbloqOffline')
       templateUrl: 'file://' + __dirname + '/views/tab.html',
       require: '^tabset',
       scope: {
-        heading: '='
+        heading: '=',
+        icon: '=',
+        iconSize: '='
       },
       link: function(scope, elem, attr, tabsetCtrl) {
         scope.active = false;

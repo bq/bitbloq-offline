@@ -1,14 +1,51 @@
+$bloqs-tabs-icon-color: #797c81;
+$bloqs-tabs-button-padding: 20px;
+$bloqs-tabs-tablist-item-active-color: #1e1f21;
+$bloqs-left-tabbar-color: #3b3e45;
+$bloqs-tabs-width: 67px;
+$bloqs-container-width: calc(100% - #{$bloqs-tabs-width});
+
 .tablist {
-  height : $main-content-with-header-height;
-  width  : $bloqs-tabs-width;
-  display: block;
-  float  : left;
+  background-color: $bloqs-left-tabbar-color;
+  display         : block;
+  float           : left;
+  height          : $main-content-with-header-height;
+  width           : $bloqs-tabs-width;
 }
 
 .tabcontent {
-  display: block;
-  width  : $bloqs-container-width;
-  height : $main-content-with-header-height;
-  float  : right;
+  display : block;
+  float   : right;
+  height  : $main-content-with-header-height;
   position: relative;
+  width   : $bloqs-container-width;
+}
+
+.tablist__item.active {
+  .tablist__item__button {
+    background-color: $bloqs-tabs-tablist-item-active-color;
+  }
+
+  svg {
+    fill: $color-white;
+  }
+}
+
+.tablist__item__button {
+  border-bottom: 1px solid $bloqs-tabs-icon-color;
+  padding      : $bloqs-tabs-button-padding;
+  transition   : background-color 120ms;
+
+  svg {
+    fill: $bloqs-tabs-icon-color;
+    transition   : fill 120ms;
+  }
+
+  &:hover {
+    background-color: $bloqs-tabs-tablist-item-active-color;
+
+    svg {
+      fill: $color-white;
+    }
+  }
 }
