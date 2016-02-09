@@ -11,24 +11,9 @@ angular.module('bitbloqOffline')
     .controller('BloqsProjectCtrl', function($scope, $rootScope, bloqsUtils, common, _, $log) {
         console.log('bloqsproject ctrl', $scope.$parent.$id);
 
-        function _emptyComponentsArray() {
-            return {
-                leds: [],
-                rgbs: [],
-                sensors: [],
-                buzzers: [],
-                servos: [],
-                continuousServos: [],
-                oscillators: [],
-                lcds: [],
-                serialElements: [],
-                clocks: [],
-                hts221: [],
-                robot: []
-            };
+        $scope.setProject = function(project) {
+            $scope.project = project;
         }
-
-
         $scope.updateBloqs = function() {
 
             // if ($scope.bloqs.varsBloq) {

@@ -8,12 +8,44 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-    .controller('SoftwareTabCtrl', function($scope, common) {
+    .controller('SoftwareTabCtrl', function($scope, common, bloqs) {
         console.log('SoftwareTabCtrl', $scope.$parent.$id);
+
+        $scope.init = function() {
+            if (mainBloqs.varsBloq) {
+                bloqs.removeBloq(mainBloqs.varsBloq.uuid, true);
+                mainBloqs.varsBloq = null;
+                bloqs.removeBloq(mainBloqs.setupBloq.uuid, true);
+                mainBloqs.setupBloq = null;
+                bloqs.removeBloq(mainBloqs.loopBloq.uuid, true);
+                mainBloqs.loopBloq = null;
+            }
+
+            mainBloqs.varsBloq = bloqs.buildBloqWithContent($scope.project.software.vars, $scope.componentsArray, bloqsSchemas, $field);
+            mainBloqs.setupBloq = bloqs.buildBloqWithContent($scope.project.software.setup, $scope.componentsArray, bloqsSchemas);
+            mainBloqs.loopBloq = bloqs.buildBloqWithContent($scope.project.software.loop, $scope.componentsArray, bloqsSchemas);
+
+            $field.append(mainBloqs.varsBloq.$bloq, mainBloqs.setupBloq.$bloq, mainBloqs.loopBloq.$bloq);
+            mainBloqs.varsBloq.enable(true);
+            mainBloqs.varsBloq.doConnectable();
+
+            mainBloqs.setupBloq.enable(true);
+            mainBloqs.setupBloq.doConnectable();
+
+            mainBloqs.loopBloq.enable(true);
+            mainBloqs.loopBloq.doConnectable();
+
+            bloqs.updateDropdowns();
+        };
 
         var fs = require('fs'),
             bloqsSchemas = null,
-            $field;
+            mainBloqs = {
+                varsBloq: null,
+                setupBloq: null,
+                loopBloq: null
+            },
+            $field = $('#bloqs--field').last();
         //load Bloqs
         // console.log(common.appPath);
         // console.log(common.webPath);
@@ -24,87 +56,26 @@ angular.module('bitbloqOffline')
                     if (err) {
                         throw err;
                     } else {
-                        initializeBloqs(data);
+                        bloqsSchemas = JSON.parse(data.toString());
+                        $scope.$watch('project.software', function(newValue) {
+                            if (newValue) {
+                                console.log('refersh project software');
+                                $scope.init();
+                            }
+                        });
+                        $scope.init();
 
                     }
                 });
             } else {
-                initializeBloqs(data);
+                bloqsSchemas = JSON.parse(data.toString());
+                $scope.$watch('project.software', function(newValue) {
+                    if (newValue) {
+                        console.log('refersh project software');
+                        $scope.init();
+                    }
+                });
+                $scope.init();
             }
         });
-
-        function initializeBloqs(data) {
-            bloqsSchemas = JSON.parse(data.toString());
-            // console.log($scope.arduinoMainBloqs);
-            $field = $('#bloqs--field');
-            // Create the main arduino bloqs
-            //firsttime set componentsArray and field
-            $scope.arduinoMainBloqs.varsBloq = new bloqs.Bloq({
-                bloqData: bloqsSchemas['varsBloq'],
-                componentsArray: $scope.componentsArray,
-                $field: $field
-            });
-            $field.append($scope.arduinoMainBloqs.varsBloq.$bloq);
-            $scope.arduinoMainBloqs.varsBloq.enable(true);
-            $scope.arduinoMainBloqs.varsBloq.doConnectable();
-
-            $scope.arduinoMainBloqs.setupBloq = new bloqs.Bloq({
-                bloqData: bloqsSchemas['setupBloq'],
-                componentsArray: $scope.componentsArray,
-                $field: $field
-            });
-            $field.append($scope.arduinoMainBloqs.setupBloq.$bloq);
-            $scope.arduinoMainBloqs.setupBloq.enable(true);
-            $scope.arduinoMainBloqs.setupBloq.doConnectable();
-
-
-            $scope.arduinoMainBloqs.loopBloq = new bloqs.Bloq({
-                bloqData: bloqsSchemas['loopBloq'],
-                componentsArray: $scope.componentsArray,
-                $field: $field
-            });
-            $field.append($scope.arduinoMainBloqs.loopBloq.$bloq);
-            $scope.arduinoMainBloqs.loopBloq.enable(true);
-            $scope.arduinoMainBloqs.loopBloq.doConnectable();
-
-            $('#getcodebutton').click(function() {
-                $('#code--field').html(window.bloqsUtils.getCode(componentsArray, $scope.arduinoMainBloqs));
-            });
-
-
-            //start build bloqs!
-
-            //Create a if bloq from the bloqsSchemas loaded
-            var bloq1 = new bloqs.Bloq({
-                bloqData: bloqsSchemas['if'],
-                componentsArray: $scope.componentsArray,
-                $field: $field
-            });
-            //append it to the field
-            $field.append(bloq1.$bloq);
-            //enable if you want
-            bloq1.enable(true);
-            //do connectable to allow anothers bloqs to connect to them
-            bloq1.doConnectable();
-
-
-            var bloq2 = new bloqs.Bloq({
-                bloqData: bloqsSchemas['for-v1'],
-                componentsArray: $scope.componentsArray,
-                $field: $field
-            });
-            $field.append(bloq2.$bloq);
-            bloq2.enable(true);
-            bloq2.doConnectable();
-
-            var bloq3 = new bloqs.Bloq({
-                bloqData: bloqsSchemas['number'],
-                componentsArray: $scope.componentsArray,
-                $field: $field
-            });
-            $field.append(bloq3.$bloq);
-            bloq3.enable(true);
-            bloq3.doConnectable();
-        }
-
     });
