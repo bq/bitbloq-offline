@@ -6,6 +6,7 @@
     "angular": "~1.4.7",
     "angular-route": "~1.4.7",
     "angular-websocket": "~1.0.14",
+    "angular-clipboard": "~1.2.0",
     "lodash": "~3.10.1",
     "jsplumb": "2.0.5",
     "bloqs": "dev"

@@ -8,8 +8,9 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-  .controller('ActionBarCtrl', function($scope, web2board) {
+  .controller('ActionBarCtrl', function($scope, web2board, clipboard, bloqsUtils) {
     console.log('ActionBarCtrl', $scope.$parent.$id);
+
     $scope.actions = {
       newProject: newProject,
       openProject: openProject,
@@ -96,6 +97,8 @@ angular.module('bitbloqOffline')
 
     function copyCodeToClipboard() {
       console.log(this.name);
+      var code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
+      clipboard.copyText(code);
     }
 
     function loadToBoard() {

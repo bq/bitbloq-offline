@@ -17,8 +17,10 @@ angular.module('bitbloqOffline')
     }, function(err) {
       console.log('Hubo un error: ', err);
     });
+    
     exports.webPath = process.mainModule.filename.substring(0, process.mainModule.filename.lastIndexOf("/"));
     exports.appPath = exports.webPath.substring(0, exports.webPath.lastIndexOf("/"));
+    exports.resourcesPath = process.resourcesPath;
     return exports;
 
   });

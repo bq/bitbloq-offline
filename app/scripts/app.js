@@ -11,7 +11,8 @@
 angular
   .module('bitbloqOffline', [
     'ngRoute',
-    'ngWebSocket'
+    'ngWebSocket',
+    'angular-clipboard'
   ]).config(['$routeProvider',
     function($routeProvider) {
       $routeProvider

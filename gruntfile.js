@@ -47,18 +47,62 @@ module.exports = function(grunt) {
       }
     },
     copy: {
-      electron: {
-        expand: true,
-        cwd: 'node_modules/electron-prebuilt/dist/',
-        src: ['**'],
-        dest: 'dist/'
-
+      windows: {
+        files: [{
+          expand: true,
+          cwd: 'res/win32-prebuilt',
+          src: ['**'],
+          dest: 'dist/windows32/'
+        }, {
+          expand: true,
+          cwd: '',
+          src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json'],
+          dest: 'dist/windows32/resources/app/'
+        }, {
+          expand: true,
+          cwd: 'res/win64-prebuilt',
+          src: ['**'],
+          dest: 'dist/windows64/'
+        }, {
+          expand: true,
+          cwd: '',
+          src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json'],
+          dest: 'dist/windows64/resources/app/'
+        }]
       },
-      dist: {
-        expand: true,
-        cwd: '',
-        src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json'],
-        dest: 'dist/Electron.app/Contents/Resources/app/'
+      linux: {
+        files: [{
+          expand: true,
+          cwd: 'node_modules/electron-prebuilt/dist/',
+          src: ['**'],
+          dest: 'dist/linux/'
+        }, {
+          expand: true,
+          cwd: '',
+          src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json'],
+          dest: 'dist/linux/resources/app/'
+        }]
+      },
+      mac: {
+        files: [{
+          expand: true,
+          cwd: 'res/mac-prebuilt',
+          src: ['**'],
+          dest: 'dist/mac/'
+        }, {
+          expand: true,
+          cwd: '',
+          src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json'],
+          dest: 'dist/mac/Electron.app/Contents/Resources/app/'
+        }]
+      }
+    },
+    chmod: {
+      options: {
+        mode: '755'
+      },
+      target1: {
+        src: ['dist/linux/electron']
       }
     },
     exec: {
@@ -91,13 +135,15 @@ module.exports = function(grunt) {
   // Default task(s).
   grunt.registerTask('dist', function() {
     grunt.task.run([
-      //'clean:dist',
+      'clean:dist',
       'clean:electron',
       'wiredep',
       'sass',
       'svgstore',
-      //'copy:electron',
-      'copy:dist'
+      'copy:linux',
+      'copy:windows',
+      'copy:mac',
+      'chmod'
     ]);
   });
 

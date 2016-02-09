@@ -17,7 +17,8 @@ angular.module('bitbloqOffline')
     //load Bloqs
     // console.log(common.appPath);
     // console.log(common.webPath);
-    fs.readFile(common.appPath + '/bower_components/bloqs/dist/bloqsmap.json', function(err, data) {
+    // console.log(common.resourcesPath);
+    fs.readFile(common.resourcesPath + '/app/bower_components/bloqs/dist/bloqsmap.json', function(err, data) {
       if (err) {
         throw err;
       } else {
