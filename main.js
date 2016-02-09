@@ -28,8 +28,8 @@ app.on('window-all-closed', function() {
 app.on('ready', function() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 1024,
-    height: 768
+    width: 1200,
+    height: 1024
   });
 
   // and load the index.html of the app.
@@ -45,5 +45,5 @@ app.on('ready', function() {
     // when you should delete the corresponding element.
     mainWindow = null;
   });
-  mainWindow.setMenu(null);
+  // mainWindow.setMenu(null);
 });

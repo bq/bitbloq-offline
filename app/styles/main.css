@@ -501,6 +501,49 @@ dropdown .menu .menu__dropdown {
   .tablist__item__button:hover svg {
     fill: #fff; }
 
+.toolbox-hw .toolbox {
+  width: 200px; }
+
+.toolbox-hw .toolbox__list:after {
+  width: 250px; }
+
+.toolbox-hw .toolbox__content {
+  width: 200px; }
+
+.toolbox-hw .toolbox__item__image {
+  max-width: 150px; }
+
+.toolbox-hw .toolbox__level--1 {
+  width: 250px; }
+
+.toolbox-hw .toolbox__content.active {
+  width: 200px; }
+
+.toolbox-sw .toolbox {
+  width: 250px; }
+
+.toolbox-sw .toolbox__list:after {
+  width: 450px; }
+
+.toolbox-sw .toolbox__content {
+  width: 250px; }
+
+.toolbox-sw .toolbox__item__image {
+  max-width: 150px; }
+
+.toolbox-sw .toolbox__level--1 {
+  width: 450px; }
+
+.toolbox-sw .toolbox__content.active {
+  width: 400px; }
+
+.toolbox-sw .content__list {
+  padding-top: 10px; }
+
+.toolbox-sw .content__list__item {
+  text-align: left;
+  padding: 5px 15px; }
+
 .toolbox {
   background-color: #fff;
   border-left: 1px solid #edf1f2;
@@ -508,37 +551,35 @@ dropdown .menu .menu__dropdown {
   position: absolute;
   right: 0;
   top: 0;
-  width: 200px; }
+  z-index: 7; }
 
-.toolbox__level--1 {
-  width: 250px; }
-  .toolbox__level--1 .toolbox__list:after {
-    background-color: #000;
-    content: '';
-    height: 100%;
-    opacity: .5;
-    pointer-events: none;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 250px; }
+.toolbox__level--1 .toolbox__list:after {
+  background-color: #000;
+  content: '';
+  height: 100%;
+  opacity: .5;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0; }
 
 .toolbox__content {
   background-color: #fff;
   position: absolute;
   right: 0;
-  top: 0;
-  width: 200px; }
+  top: 0; }
   .toolbox__content.active {
     height: 100%;
     overflow-y: auto; }
 
 .content__list {
-  max-height: calc(100vh - 90px);
+  height: calc(100vh - 100px);
   overflow-y: auto; }
 
 .content__list__item {
   margin-bottom: 10px; }
+  .content__list__item .bloq {
+    position: relative; }
 
 .toolbox__content__item {
   border-left: 1px solid #edf1f2;
@@ -561,6 +602,3 @@ dropdown .menu .menu__dropdown {
     fill: #b9bdc8; }
   .toolbox__list__item__button span {
     margin-left: 10px; }
-
-.toolbox-hw .toolbox__item__image {
-  max-width: 150px; }

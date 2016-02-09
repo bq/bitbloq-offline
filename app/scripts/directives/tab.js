@@ -3,7 +3,7 @@ angular.module('bitbloqOffline')
     return {
       restrict: 'E',
       transclude: true,
-      templateUrl: 'file://' + __dirname + '/views/tab.html',
+      templateUrl: 'file://' + __dirname + '/views/components/tab.html',
       require: '^tabset',
       scope: {
         heading: '=',

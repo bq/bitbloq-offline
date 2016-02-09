@@ -10,10 +10,30 @@
     "contentId": "variables"
   }, {
     "title": "Código",
-    "contentId": "code"
+    "contentId": "codes"
+  }, {
+    "title": "Clases"
   }, {
     "title": "Matemáticas",
     "contentId": "maths"
+  }, {
+    "title": "Textos",
+    "contentId": "texts"
+  }, {
+    "title": "Control",
+    "contentId": "controls"
+  }, {
+    "title": "Lógica",
+    "contentId": "logics"
+  }, {
+    "title": "Comunicaciones",
+    "contentId": "communications"
+  }, {
+    "title": "Zowi",
+    "contentId": "zowi"
+  }, {
+    "title": "Evolution",
+    "contentId": "evolution"
   }],
   "toolboxContents": [{
     "title": "Componentes",

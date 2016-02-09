@@ -2,9 +2,10 @@ angular.module('bitbloqOffline')
   .directive('toolbox', function($parse, $timeout) {
     return {
       restrict: 'E',
-      templateUrl: 'file://' + __dirname + '/views/toolbox.html',
+      templateUrl: 'file://' + __dirname + '/views/components/toolbox.html',
       scope: {
-        tree: '='
+        tree: '=',
+        type: '@'
       },
       controllerAs: 'toolbox',
       controller: function($scope, $element, $attrs) {

@@ -1,11 +1,11 @@
 <tabset>
   <tab icon="'#hardware'" icon-size="'small'">
-    <p>hardware</p>
+    <div ng-include="'views/hardware-tab.html'"></div>
     <div ng-include="'views/toolbox-hw.html'"></div>
   </tab>
   <tab icon="'#software'" icon-size="'small'">
     <div ng-include="'views/toolbox-sw.html'"></div>
-    <!-- <div class="container software" data-ng-include="'views/bloqsTab.html'"></div> -->
+    <div class="container software" data-ng-include="'views/software-tab.html'"></div>
   </tab>
   <tab icon="'#codigo'" icon-size="'small'">
     <p>Codigo</p>

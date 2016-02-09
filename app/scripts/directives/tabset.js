@@ -4,7 +4,7 @@ angular.module('bitbloqOffline')
       restrict: 'E',
       transclude: true,
       scope: {},
-      templateUrl: 'file://' + __dirname + '/views/tabset.html',
+      templateUrl: 'file://' + __dirname + '/views/components/tabset.html',
       bindToController: true,
       controllerAs: 'tabset',
       controller: function() {

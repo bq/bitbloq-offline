@@ -2,6 +2,7 @@
   <ul class="toolbox__list">
     <li class="toolbox__list__item" ng-repeat="item in tree.toolboxTitles track by $index">
       <button class="toolbox__list__item__button" ng-click="toolbox.select(item.contentId)" ng-class="{'active':toolbox.activeMenu === item.contentId}">
+        <span ng-if="type === 'software'" class="toolbox__title--color {{item.contentId}}"></span>
         <svg ng-if="item.iconSize" class="{{item.iconSize}} icon--text">
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{{item.iconName}}"></use>
         </svg>
@@ -13,10 +14,10 @@
     <div class="toolbox__content__item" ng-repeat="itemContainer in tree.toolboxContents track by $index" ng-show="itemContainer.titleId === toolbox.activeMenu">
       <h3>{{itemContainer.title}}</h3>
       <ul class="content__list">
-        <li class="content__list__item" ng-repeat="item in itemContainer.items track by $index">
+        <li ng-if="type === 'software'" class="content__list__item" ng-repeat="item in itemContainer.items track by $index" bitbloq-bloq-creator bloq-schema="item.name"></li>
+        <li ng-if="type === 'hardware'" class="content__list__item" ng-repeat="item in itemContainer.items track by $index">
           <div ng-if="item.title" class="title"><span>{{item.title}}</span></div>
           <div ng-if="item.image"><img class="toolbox__item__image" src="images/{{item.image}}" alt=""></div>
-          <div ng-if="item.name" class="title"><span>{{item.name}}</span></div>
         </li>
       </ul>
     </div>

@@ -2,7 +2,7 @@ angular.module('bitbloqOffline')
   .directive('dropdown', function($parse, $timeout) {
     return {
       restrict: 'E',
-      templateUrl: 'file://' + __dirname + '/views/dropdown.html',
+      templateUrl: 'file://' + __dirname + '/views/components/dropdown.html',
       scope: {
         tree: '='
       },

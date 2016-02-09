@@ -1,8 +1,79 @@
 $toobox-icons-color: #b9bdc8;
 $toobox-item-border-color: #edf1f2;
-$toolbox-content-item-height: calc(100vh - 90px);
-$toolbox-width: 200px;
-$toolbox-width-level-1: 250px;
+$toolbox-content-item-height: calc(100vh - 100px);
+$toolbox-hw-width: 200px;
+$toolbox-hw-width-level-1: 250px;
+$toolbox-sw-width: 250px;
+$toolbox-sw-width-level-1: 450px;
+
+.toolbox-hw {
+  .toolbox {
+    width: $toolbox-hw-width;
+  }
+
+  .toolbox__list {
+    &:after {
+      width: $toolbox-hw-width-level-1;
+    }
+  }
+
+  .toolbox__content {
+    width: $toolbox-hw-width;
+  }
+
+  .toolbox__item__image {
+    max-width: 150px;
+  }
+
+  .toolbox__level--1 {
+    width: $toolbox-hw-width-level-1;
+  }
+
+  .toolbox__content {
+    &.active {
+      width: $toolbox-hw-width;
+    }
+  }
+}
+
+.toolbox-sw {
+  .toolbox {
+    width: $toolbox-sw-width;
+  }
+
+  .toolbox__list {
+    &:after {
+      width: $toolbox-sw-width-level-1;
+    }
+  }
+
+  .toolbox__content {
+    width: $toolbox-sw-width;
+  }
+
+  .toolbox__item__image {
+    max-width: 150px;
+  }
+
+  .toolbox__level--1 {
+    width: $toolbox-sw-width-level-1;
+  }
+
+  .toolbox__content {
+    &.active {
+      width: 400px;
+    }
+  }
+
+  .content__list {
+    padding-top: 10px;
+  }
+
+  .content__list__item {
+    text-align: left;
+    padding   : 5px 15px;
+  }
+}
 
 .toolbox {
   background-color: $color-white;
@@ -11,12 +82,10 @@ $toolbox-width-level-1: 250px;
   position        : absolute;
   right           : 0;
   top             : 0;
-  width           : $toolbox-width;
+  z-index         : 7;
 }
 
 .toolbox__level--1 {
-  width: 250px;
-
   .toolbox__list {
     &:after {
       background-color: $color-black;
@@ -27,7 +96,6 @@ $toolbox-width-level-1: 250px;
       position        : absolute;
       right           : 0;
       top             : 0;
-      width           : $toolbox-width-level-1;
     }
   }
 }
@@ -37,7 +105,6 @@ $toolbox-width-level-1: 250px;
   position        : absolute;
   right           : 0;
   top             : 0;
-  width           : $toolbox-width;
 
   &.active {
     height    : 100%;
@@ -46,12 +113,16 @@ $toolbox-width-level-1: 250px;
 }
 
 .content__list {
-  max-height: $toolbox-content-item-height;
+  height    : $toolbox-content-item-height;
   overflow-y: auto;
 }
 
 .content__list__item {
   margin-bottom: 10px;
+
+  .bloq {
+    position: relative;
+  }
 }
 
 .toolbox__content__item {
@@ -85,11 +156,5 @@ $toolbox-width-level-1: 250px;
 
   span {
     margin-left: 10px;
-  }
-}
-
-.toolbox-hw {
-  .toolbox__item__image {
-    max-width: 150px;
   }
 }

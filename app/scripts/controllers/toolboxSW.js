@@ -15,4 +15,5 @@ angular.module('bitbloqOffline')
     }, function(err) {
       console.log('Hubo un error: ', err);
     });
+
   });
