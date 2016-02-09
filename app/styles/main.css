@@ -317,9 +317,6 @@ video {
   src: local("Roboto Black Italic"), local("Roboto-BlackItalic"), url("../fonts/roboto-v15-cyrillic_vietnamese_cyrillic-ext_greek-ext_latin-ext_latin_greek-900italic.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-v15-cyrillic_vietnamese_cyrillic-ext_greek-ext_latin-ext_latin_greek-900italic.woff2") format("woff2"), url("../fonts/roboto-v15-cyrillic_vietnamese_cyrillic-ext_greek-ext_latin-ext_latin_greek-900italic.woff") format("woff"), url("../fonts/roboto-v15-cyrillic_vietnamese_cyrillic-ext_greek-ext_latin-ext_latin_greek-900italic.ttf") format("truetype"), url("../fonts/roboto-v15-cyrillic_vietnamese_cyrillic-ext_greek-ext_latin-ext_latin_greek-900italic.svg#Roboto") format("svg");
   /* Legacy iOS */ }
 
-.disabled {
-  pointer-events: none; }
-
 .inline {
   display: inline-block; }
 
