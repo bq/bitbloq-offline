@@ -35,6 +35,9 @@
       "title": "BlueTooth",
       "image": "components/bt.png"
     }, {
+      "title": "Botón",
+      "image": "components/button.png"
+    }, {
       "title": "Botonera",
       "image": "components/buttons.png"
     }, {
@@ -44,7 +47,7 @@
       "title": "Encoder",
       "image": "components/encoder.png"
     }, {
-      "title": "hts221",
+      "title": "Sensor de Humedad y Temperatura",
       "image": "components/hts221.png"
     }, {
       "title": "Sensor infrarrojo",
@@ -55,6 +58,42 @@
     }, {
       "title": "LCD",
       "image": "components/lcd.png"
+    }, {
+      "title": "Sensor de luz",
+      "image": "components/ldrs.png"
+    }, {
+      "title": "Led",
+      "image": "components/led.png"
+    }, {
+      "title": "Final de carrera",
+      "image": "components/limitswitch.png"
+    }, {
+      "title": "Potenciometro",
+      "image": "components/pot.png"
+    }, {
+      "title": "Led RGB",
+      "image": "components/RGBled.png"
+    }, {
+      "title": "Reloj de tiempo real",
+      "image": "components/rtc.png"
+    }, {
+      "title": "Servo",
+      "image": "components/servo.png"
+    }, {
+      "title": "Servo continuo",
+      "image": "components/servocont.png"
+    }, {
+      "title": "Sensor de sonido",
+      "image": "components/sound.png"
+    }, {
+      "title": "Puerto serie",
+      "image": "components/sp.png"
+    }, {
+      "title": "Sensor ultrasonidos",
+      "image": "components/us.png"
+    }, {
+      "title": "Sigue lineas",
+      "image": "components/irs2.png"
     }]
   }]
 }
