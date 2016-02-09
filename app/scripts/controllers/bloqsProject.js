@@ -8,8 +8,8 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-  .controller('BloqsProjectCtrl', function($scope, bloqsUtils) {
-    console.log('bloqsproject ctrl');
+  .controller('BloqsProjectCtrl', function($scope, $rootScope, bloqsUtils) {
+    console.log('bloqsproject ctrl', $scope.$parent.$id);
 
     $scope.componentsArray = bloqsUtils.getEmptyComponentsArray();
     $scope.arduinoMainBloqs = {
@@ -17,7 +17,4 @@ angular.module('bitbloqOffline')
       setupBloq: null,
       loopBloq: null
     };
-
-
-
   });

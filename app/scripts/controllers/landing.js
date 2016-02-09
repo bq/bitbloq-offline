@@ -9,6 +9,6 @@
  */
 angular.module('bitbloqOffline')
   .controller('LandingCtrl', function($scope, $window) {
-    console.log('landing ctrl');
+    console.log('landing ctrl', $scope.$parent.$id);
 
   });

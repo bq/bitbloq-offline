@@ -9,6 +9,7 @@
  */
 angular.module('bitbloqOffline')
   .controller('ActionBarCtrl', function($scope, web2board) {
+    console.log('ActionBarCtrl', $scope.$parent.$id);
     $scope.actions = {
       newProject: newProject,
       openProject: openProject,

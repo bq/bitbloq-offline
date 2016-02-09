@@ -8,21 +8,21 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-  .controller('BloqsTabCtrl', function($scope, common) {
-    console.log('bloqstab ctrl');
+  .controller('SoftwareTabCtrl', function($scope, common) {
+    console.log('SoftwareTabCtrl', $scope.$parent.$id);
 
     var fs = require('fs'),
       bloqsSchemas = null,
       $field;
     //load Bloqs
-    console.log(common.appPath);
-    console.log(common.webPath);
+    // console.log(common.appPath);
+    // console.log(common.webPath);
     fs.readFile(common.appPath + '/bower_components/bloqs/dist/bloqsmap.json', function(err, data) {
       if (err) {
         throw err;
       } else {
         bloqsSchemas = JSON.parse(data.toString());
-        console.log($scope.arduinoMainBloqs);
+        // console.log($scope.arduinoMainBloqs);
         $field = $('#bloqs--field');
         // Create the main arduino bloqs
         //firsttime set componentsArray and field

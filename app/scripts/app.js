@@ -37,5 +37,5 @@ angular
     });
     window.$ = window.JQuery = require('jquery');
     console.log('Start Bitbloq Offline');
-    console.log(process);
+    // console.log(process);
   })

@@ -14,7 +14,6 @@ angular.module('bitbloqOffline')
 
     $http.get('../bower_components/bloqs/dist/bloqsmap.json').then(function(res) {
       exports.bloqsSchemas = res.data;
-      console.log(res.data);
     }, function(err) {
       console.log('Hubo un error: ', err);
     });

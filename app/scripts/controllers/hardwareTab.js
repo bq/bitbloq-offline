@@ -8,7 +8,8 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-  .controller('hardwareTabCtrl', function($scope, bloqsUtils) {
+  .controller('hardwareTabCtrl', function($scope) {
     var self = this;
-    this.posi = true;
+    self.posi = true;
+    console.log('hardwareTabCtrl controller', $scope.$parent.$id);
   });
