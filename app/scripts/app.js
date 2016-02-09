@@ -12,9 +12,10 @@ angular
   .module('bitbloqOffline', [
     'ngRoute',
     'ngWebSocket',
+    'pascalprecht.translate',
     'angular-clipboard'
-  ]).config(['$routeProvider',
-    function($routeProvider) {
+  ]).config(['$routeProvider', '$translateProvider',
+    function($routeProvider, $translateProvider) {
       $routeProvider
         .when('/', {
           templateUrl: 'views/landing.html',
@@ -26,7 +27,17 @@ angular
         .otherwise({
           redirectTo: '/'
         });
+      $translateProvider.useStaticFilesLoader({
+        prefix: 'res/locales/',
+        suffix: '.json'
+      });
+
+      //indicamos el idioma inicial
+      $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
+      $translateProvider.preferredLanguage('es-ES');
+      // $translateProvider.fallbackLanguage('en-GB');
     }
+
   ])
   .run(function(_, bloqs, bloqsUtils, bloqsLanguages) {
     // Make sure _ is invoked at runtime. This does nothing but force the "_" to
@@ -39,4 +50,5 @@ angular
     window.$ = window.JQuery = require('jquery');
     console.log('Start Bitbloq Offline');
     // console.log(process);
-  })
+
+  });

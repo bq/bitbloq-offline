@@ -9,6 +9,8 @@
     "angular-clipboard": "~1.2.0",
     "lodash": "~3.10.1",
     "jsplumb": "2.0.5",
-    "bloqs": "dev"
+    "bloqs": "dev",
+    "angular-translate": "~2.9.0",
+    "angular-translate-loader-static-files": "~2.9.0"
   }
 }

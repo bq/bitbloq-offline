@@ -1,3 +1,69 @@
-<div data-ng-controller="hardwareTabCtrl as hardwareTab" ng-cloak>
-  <p>{{this}}</p>
-</div>
+<div class="hardware-tab tab--make" data-ng-controller="hardwareTabCtrl" ng-cloak>
+
+      <div class="protocanvas" droppable drop="drop" drop-offset-left="70" drop-offset-top="offsetTop" ng-click="detectElement($event)" data-ng-keydown="onKeyPress($event)">
+
+          <div class="name--container">
+              <div class="component-name__container" ng-class="{opaque:componentSelected}">
+                  <span class="form--input form--input--reset">
+                      <label for="componentName" class="component-name__label">{{'name' | translate}}</label>
+                      <input id="componentName" class="component-name__input" type="text" placeholder="{{'insert-name' | translate}}" data-ng-model="componentSelected.name" data-ng-model-options="{ debounce: { 'default': 500, 'blur': 0 } }">
+                      <span ng-if="componentSelected.oscillator !== undefined" class="input input--checkbox input--checkbox__oscillator form--input--reset">
+                          <label for="sample--checkbox" class="component-name__label">{{'make-hardware-component-oscillator' | translate}}</label>
+                          <input type="checkbox" id="oscillator--checkbox" class="oscillator--checkbox" name="oscillator--checkbox" data-ng-model="componentSelected.oscillator">
+                      </span>
+                      <span ng-if="componentSelected.baudRate" class="form--input--reset baudrate__container">
+                          <label for="componentBaudRate" class="component-name__label">{{'make-hardware-component-baudrate' | translate}}</label>
+                          <common-dropdown class="baudrate__dropdown" options="baudRates" options-click="setBaudRate" heading-option="componentSelected.baudRate" ng-model="componentSelected.baudRate" class="form--input--reset" />
+                      </span>
+                  </span>
+              </div>
+          </div>
+
+          <div class="component__container" ng-class="{'component__container--visible':(project.hardware.components.length === 0 && project.hardware.board) && !project.hardware.robot ,'component__container--pseudovisible':(project.hardware.components.length !== 0) && project.hardware.board && !project.hardware.robot}" >
+              <p class="component__message">{{'make-hardware-component-container' | translate}}</p>
+          </div>
+
+          <div id="boardSchema" class="board" ng-class="{'board--present':project.hardware.board, 'board--selected':boardSelected, 'opaque':!project.hardware.robot}">
+              <p class="board__message">{{'make-hardware-board-container' | translate}}</p>
+          </div>
+
+          <div id="robotSchema" class="robot" ng-class="{'robot--present':project.hardware.robot , 'robot--selected':robotSelected, 'opaque':project.hardware.robot}"></div>
+
+      </div>
+
+      <div id="component-context-menu" class="hw-context-menu">
+          <ul class="menu">
+              <li class="menu__item">
+                  <button data-ng-click="duplicateComponent()" tabindex="0" data-element="hw-contextmenu-component-duplicate">{{'make-hardware-component-duplicate' | translate}}</button>
+              </li>
+              <li class="menu__item">
+                  <button data-ng-show="componentSelected.connected" data-ng-click="disconnectComponent()" data-element="hw-contextmenu-component-disconnect">{{'make-hardware-component-disconnect' | translate}}</button>
+              </li>
+              <hr>
+              <li class="menu__item">
+                  <button data-ng-click="deleteComponent($event)" data-element="hw-contextmenu-component-delete">{{'make-hardware-component-delete' | translate}}</button>
+              </li>
+          </ul>
+      </div>
+
+      <div id="board-context-menu" class="hw-context-menu">
+          <ul class="menu">
+              <li class="menu__item">
+                  <button data-ng-show="anyComponent(true) || componentsArray.serialElements.length >0" data-ng-click="disconnectAllComponents()" data-element="hw-contextmenu-board-disconnect">{{'make-hardware-component-disconnect' | translate}}</button>
+              </li>
+              <hr>
+              <li class="menu__item">
+                  <button data-ng-click="deleteBoard($event)" data-element="hw-contextmenu-board-delete">{{'make-hardware-component-delete' | translate}}</button>
+              </li>
+          </ul>
+      </div>
+
+      <div id="robot-context-menu" class="hw-context-menu">
+          <ul class="menu">
+              <li class="menu__item">
+                  <button data-ng-click="deleteRobot($event)" data-element="hw-contextmenu-robot-delete">{{'make-hardware-component-delete' | translate}}</button>
+              </li>
+          </ul>
+      </div>
+
+  </div>

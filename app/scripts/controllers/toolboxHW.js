@@ -8,10 +8,7 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-  .controller('toolboxHW', function($scope, $http) {
-    $http.get('res/menus/hwtoolbox.json').then(function(res) {
-      $scope.hwToolboxMenu = res.data;
-    }, function(err) {
-      console.log('Hubo un error: ', err);
-    });
+  .controller('toolboxHW', function($scope, common) {
+    var fs = require('fs');
+    $scope.hwToolboxMenu = JSON.parse(fs.readFileSync(common.appPath + '/app/res/menus/hwtoolbox.json', 'utf8'));
   });

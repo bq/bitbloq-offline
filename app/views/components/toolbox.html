@@ -17,7 +17,7 @@
         <li ng-if="type === 'software'" class="content__list__item" ng-repeat="item in itemContainer.items track by $index" bitbloq-bloq-creator bloq-schema="item.name"></li>
         <li ng-if="type === 'hardware'" class="content__list__item" ng-repeat="item in itemContainer.items track by $index">
           <div ng-if="item.title" class="title"><span>{{item.title}}</span></div>
-          <div ng-if="item.image"><img class="toolbox__item__image" src="images/{{item.image}}" alt=""></div>
+          <div ng-if="item.image"><img class="toolbox__item__image" src="images/{{item.image}}" alt="{{item.title}}" draggable="true" dragId="{{item.title}}" dragtype="boards"></div>
         </li>
       </ul>
     </div>
