@@ -40,8 +40,8 @@ angular
         // be loaded after bootstrap. This is done so the "_" factory has a chance to
         // "erase" the global reference to the lodash library.
         bloqs.setOptions({
-            fieldOffsetLeft: 0,
-            fieldOffsetTopSource: []
+            fieldOffsetLeft: 48,
+            fieldOffsetTopForced: 41
         });
         window.$ = window.JQuery = require('jquery');
         console.log('Start Bitbloq Offline');
