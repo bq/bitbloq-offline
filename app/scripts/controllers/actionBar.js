@@ -95,6 +95,7 @@ angular.module('bitbloqOffline')
         }
 
         function exportArduinoCode() {
+
             console.log(this.name);
         }
 
@@ -113,6 +114,7 @@ angular.module('bitbloqOffline')
         function copyCodeToClipboard() {
             console.log(this.name);
             var code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
+            console.log(code);
             clipboard.copyText(code);
         }
 
