@@ -8,7 +8,7 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-    .controller('ActionBarCtrl', function($scope, $route, web2board, clipboard, bloqsUtils) {
+    .controller('ActionBarCtrl', function($scope, $route, web2board, clipboard, bloqsUtils, utils, projectApi) {
         console.log('ActionBarCtrl', $scope.$parent.$id);
 
         $scope.actions = {
@@ -23,6 +23,79 @@ angular.module('bitbloqOffline')
             loadToBoard: loadToBoard
         };
 
+
+        function newProject() {
+            $route.reload();
+        }
+
+        function openProject() {
+            console.log(this.name);
+            var filePath = dialog.showOpenDialog({
+                properties: ['openFile', 'openDirectory', 'createDirectory'],
+                filters: [{
+                    name: 'Bitbloq',
+                    extensions: ['json']
+                }, {
+                    name: 'All Files',
+                    extensions: ['*']
+                }]
+            });
+
+            if (filePath) {
+                fs.readFile(filePath[0], function(err, data) {
+                    if (err) {
+                        throw err;
+                    } else {
+                        $scope.setProject(JSON.parse(data));
+                        $scope.$apply();
+                    }
+                });
+            }
+        }
+
+        function saveProject() {
+            console.log($scope.project);
+            projectApi.download($scope.project);
+        }
+
+
+        function exportArduinoCode() {
+
+            console.log(this.name);
+        }
+
+        function changeLanguage() {
+            console.log(this.name);
+        }
+
+        function undo() {
+            console.log(this.name);
+        }
+
+        function redo() {
+            console.log(this.name);
+        }
+
+        function copyCodeToClipboard() {
+            console.log(this.name);
+            var code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
+            console.log(code);
+            clipboard.copyText(code);
+        }
+
+        function loadToBoard() {
+            console.log(this);
+        }
+
+        function verifyCode(code) {
+            code = code || '';
+            web2board.verify(code);
+        }
+
+        var remote = require('remote'),
+            dialog = remote.require('dialog'),
+            fs = require('fs');
+
         $scope.menuTree = {
             fileMenuItems: {
                 name: 'Archivo',
@@ -35,6 +108,11 @@ angular.module('bitbloqOffline')
                     name: 'Abrir Proyecto',
                     icon: '#abrirProyecto',
                     action: openProject,
+                    disabled: false
+                }, {
+                    name: 'Guardar Proyecto',
+                    icon: '#guardar',
+                    action: saveProject,
                     disabled: false
                 }, {
                     name: 'Exportar código Arduino',
@@ -69,61 +147,4 @@ angular.module('bitbloqOffline')
             }
 
         };
-
-
-        function newProject() {
-            $route.reload();
-        }
-
-        function openProject() {
-            console.log(this.name);
-            var remote = require('remote'),
-                dialog = remote.require('dialog'),
-                fs = require('fs'),
-                filePath = dialog.showOpenDialog({
-                    properties: ['openFile', 'openDirectory']
-                });
-            console.log(filePath);
-            fs.readFile(filePath[0], function(err, data) {
-                if (err) {
-                    throw err;
-                } else {
-                    $scope.setProject(JSON.parse(data));
-                    $scope.$apply();
-                }
-            });
-        }
-
-        function exportArduinoCode() {
-
-            console.log(this.name);
-        }
-
-        function changeLanguage() {
-            console.log(this.name);
-        }
-
-        function undo() {
-            console.log(this.name);
-        }
-
-        function redo() {
-            console.log(this.name);
-        }
-
-        function copyCodeToClipboard() {
-            console.log(this.name);
-            var code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
-            console.log(code);
-            clipboard.copyText(code);
-        }
-
-        function loadToBoard() {
-            console.log(this);
-        }
-
-        function verifyCode(code) {
-            code = code || '';
-            web2board.verify(code);
-        }
     });
