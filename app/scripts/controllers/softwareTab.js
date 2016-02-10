@@ -12,39 +12,34 @@ angular.module('bitbloqOffline')
         console.log('SoftwareTabCtrl', $scope.$parent.$id);
 
         $scope.init = function() {
-            if (mainBloqs.varsBloq) {
-                bloqs.removeBloq(mainBloqs.varsBloq.uuid, true);
-                mainBloqs.varsBloq = null;
-                bloqs.removeBloq(mainBloqs.setupBloq.uuid, true);
-                mainBloqs.setupBloq = null;
-                bloqs.removeBloq(mainBloqs.loopBloq.uuid, true);
-                mainBloqs.loopBloq = null;
+            if ($scope.arduinoMainBloqs.varsBloq) {
+                bloqs.removeBloq($scope.arduinoMainBloqs.varsBloq.uuid, true);
+                $scope.arduinoMainBloqs.varsBloq = null;
+                bloqs.removeBloq($scope.arduinoMainBloqs.setupBloq.uuid, true);
+                $scope.arduinoMainBloqs.setupBloq = null;
+                bloqs.removeBloq($scope.arduinoMainBloqs.loopBloq.uuid, true);
+                $scope.arduinoMainBloqs.loopBloq = null;
             }
 
-            mainBloqs.varsBloq = bloqs.buildBloqWithContent($scope.project.software.vars, $scope.componentsArray, bloqsSchemas, $field);
-            mainBloqs.setupBloq = bloqs.buildBloqWithContent($scope.project.software.setup, $scope.componentsArray, bloqsSchemas);
-            mainBloqs.loopBloq = bloqs.buildBloqWithContent($scope.project.software.loop, $scope.componentsArray, bloqsSchemas);
+            $scope.arduinoMainBloqs.varsBloq = bloqs.buildBloqWithContent($scope.project.software.vars, $scope.componentsArray, bloqsSchemas, $field);
+            $scope.arduinoMainBloqs.setupBloq = bloqs.buildBloqWithContent($scope.project.software.setup, $scope.componentsArray, bloqsSchemas);
+            $scope.arduinoMainBloqs.loopBloq = bloqs.buildBloqWithContent($scope.project.software.loop, $scope.componentsArray, bloqsSchemas);
 
-            $field.append(mainBloqs.varsBloq.$bloq, mainBloqs.setupBloq.$bloq, mainBloqs.loopBloq.$bloq);
-            mainBloqs.varsBloq.enable(true);
-            mainBloqs.varsBloq.doConnectable();
+            $field.append($scope.arduinoMainBloqs.varsBloq.$bloq, $scope.arduinoMainBloqs.setupBloq.$bloq, $scope.arduinoMainBloqs.loopBloq.$bloq);
+            $scope.arduinoMainBloqs.varsBloq.enable(true);
+            $scope.arduinoMainBloqs.varsBloq.doConnectable();
 
-            mainBloqs.setupBloq.enable(true);
-            mainBloqs.setupBloq.doConnectable();
+            $scope.arduinoMainBloqs.setupBloq.enable(true);
+            $scope.arduinoMainBloqs.setupBloq.doConnectable();
 
-            mainBloqs.loopBloq.enable(true);
-            mainBloqs.loopBloq.doConnectable();
+            $scope.arduinoMainBloqs.loopBloq.enable(true);
+            $scope.arduinoMainBloqs.loopBloq.doConnectable();
 
             bloqs.updateDropdowns();
         };
 
         var fs = require('fs'),
             bloqsSchemas = null,
-            mainBloqs = {
-                varsBloq: null,
-                setupBloq: null,
-                loopBloq: null
-            },
             $field = $('#bloqs--field').last();
         //load Bloqs
         // console.log(common.appPath);
