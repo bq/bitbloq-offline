@@ -25,9 +25,10 @@ angular.module('bitbloqOffline')
         };
 
         exports.download = function(projectRef) {
-            var project = exports.getCleanProject(projectRef);
-            var filename = utils.removeDiacritics(projectRef.name);
+            var project = exports.getCleanProject(projectRef),
+                filename = utils.removeDiacritics(projectRef.name);
 
+            project.exportedFromBitbloqOffline = true;
             nodeUtils.downloadFile(filename.substring(0, 30) + '.json', JSON.stringify(project));
         };
         return exports;
