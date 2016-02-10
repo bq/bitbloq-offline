@@ -9,6 +9,6 @@
  */
 angular.module('bitbloqOffline')
   .controller('toolboxHW', function($scope, common) {
-    var fs = require('fs');
-    $scope.hwToolboxMenu = JSON.parse(fs.readFileSync(common.appPath + '/app/res/menus/hwtoolbox.json', 'utf8'));
+    $scope.hwToolboxMenu = common.hardware;
+    $scope.hwToolboxMenu.componentSorteded = $scope.hardware.componentSortered;
   });

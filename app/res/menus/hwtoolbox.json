@@ -20,7 +20,23 @@
     "titleId": "boards",
     "items": [{
       "title": "bq ZUM",
-      "image": "boards/bqZUM.png"
+      "image": "boards/bqZUM.png",
+      "id": "bqZUM",
+      "mcu": "bt328",
+      "pinSize": {
+        "digital": {
+          "w": 9,
+          "h": 37
+        },
+        "analog": {
+          "w": 9,
+          "h": 37
+        },
+        "serial": {
+          "w": 15,
+          "h": 35
+        }
+      }
     }, {
       "title": "Freaduino UNO",
       "image": "boards/FreaduinoUNO.png"

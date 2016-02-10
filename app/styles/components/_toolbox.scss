@@ -1,6 +1,6 @@
 $toobox-icons-color: #b9bdc8;
 $toobox-item-border-color: #edf1f2;
-$toolbox-content-item-height: calc(100vh - 100px);
+$toolbox-content-item-height: calc(100vh - 40px);
 $toolbox-hw-width: 200px;
 $toolbox-hw-width-level-1: 250px;
 $toolbox-sw-width: 250px;
@@ -15,6 +15,11 @@ $toolbox-sw-width-level-1: 450px;
     &:after {
       width: $toolbox-hw-width-level-1;
     }
+  }
+
+  .content__list__item {
+    text-align: left;
+    padding   : 20px;
   }
 
   .toolbox__content {
@@ -33,6 +38,14 @@ $toolbox-sw-width-level-1: 450px;
     &.active {
       width: $toolbox-hw-width;
     }
+  }
+
+  .board-image {
+    width: 175px;
+  }
+
+  .component-image {
+    max-width: 60%;
   }
 }
 
@@ -73,6 +86,60 @@ $toolbox-sw-width-level-1: 450px;
     text-align: left;
     padding   : 5px 15px;
   }
+
+  .toolbox__title {
+    display: block;
+    width  : calc(100% - 20px);
+    float  : left;
+  }
+
+  .toolbox__title--color {
+    height      : 100%;
+    display     : block;
+    width       : 10px;
+    float       : left;
+    margin-right: 10px;
+
+    &.components {
+      background-color: #cf1c22;
+    }
+
+    &.functions {
+      background-color: #dd5a0a;
+    }
+
+    &.variables {
+      background-color: #d9b032;
+    }
+
+    &.codes {
+      background-color: #58b42d;
+    }
+
+    &.maths {
+      background-color: #01c0c8;
+    }
+
+    &.texts {
+      background-color: #0294cf;
+    }
+
+    &.controls {
+      background-color: #11489a;
+    }
+
+    &.logics {
+      background-color: #7c0dd6;
+    }
+
+    &.communications {
+      background-color: #e30b9a;
+    }
+
+    &.classes {
+      background-color: #9b0769;
+    }
+  }
 }
 
 .toolbox {
@@ -112,11 +179,6 @@ $toolbox-sw-width-level-1: 450px;
   }
 }
 
-.content__list {
-  height    : $toolbox-content-item-height;
-  overflow-y: auto;
-}
-
 .content__list__item {
   margin-bottom: 10px;
 
@@ -146,15 +208,13 @@ $toolbox-sw-width-level-1: 450px;
 
 .toolbox__list__item__button {
   border-bottom: 1px solid $toobox-item-border-color;
-  padding      : 10px;
   text-align   : left;
   width        : 100%;
+  height       : 50px;
+  line-height  : 50px;
 
   svg {
-    fill: $toobox-icons-color;
-  }
-
-  span {
     margin-left: 10px;
+    fill       : $toobox-icons-color;
   }
 }

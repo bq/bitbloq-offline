@@ -14,12 +14,10 @@ angular.module('bitbloqOffline')
     var $boardContextMenu = $('#board-context-menu');
     var $robotContextMenu = $('#robot-context-menu');
     var hwBasicsLoaded = $q.defer();
-    var fs = require('fs');
-    var hwJSON = JSON.parse(fs.readFileSync(common.webPath + '/res/hw.json', 'utf8'));
-
+    var hwJSON = common.hardware;
 
     function _initialize() {
-      console.log('HWJSN', hwJSON)
+      console.log('HWJSN', hwJSON);
       $scope.hardware.componentList = hwJSON.components;
       $scope.hardware.boardList = hwJSON.boards;
       $scope.hardware.robotList = hwJSON.robots;
@@ -69,7 +67,7 @@ angular.module('bitbloqOffline')
 
     function _contextMenuDocumentHandler(ev) {
       if (ev.target.classList.contains('component')) {
-        if ((angular.element($window).height() - event.pageY) > $componentContextMenu.height()) {
+        if (($window.innerHeight - event.pageY) > $componentContextMenu.height()) {
           $componentContextMenu.css({
             display: 'block',
             left: event.pageX + 'px',
@@ -156,6 +154,7 @@ angular.module('bitbloqOffline')
     };
 
     var _addBoard = function(board) {
+      console.log('board', board)
 
       if ($scope.project.hardware.board === board.name && !$scope.project.hardware.robot) {
         return false;
@@ -207,6 +206,7 @@ angular.module('bitbloqOffline')
     };
 
     function _addComponent(data) {
+      console.log('DATA', data)
       var component = _.find($scope.hardware.componentList[data.category], function(component) {
         return component.id === data.id;
       });
@@ -425,9 +425,10 @@ angular.module('bitbloqOffline')
 
 
     $scope.drop = function(data) {
+      console.log('DATA', data)
       if (data.type === 'boards') {
         var board = _.find($scope.hardware.boardList, function(board) {
-          return board.name === data.id;
+          return board.id === data.id;
         });
         _addBoard(board);
       } else if (data.type === 'components') {

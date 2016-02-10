@@ -1,8 +1,5 @@
 {
   "toolboxTitles": [{
-    "title": "Componentes",
-    "contentId": "components"
-  }, {
     "title": "Funciones",
     "contentId": "functions"
   }, {
@@ -11,9 +8,6 @@
   }, {
     "title": "Código",
     "contentId": "codes"
-  }, {
-    "title": "Clases",
-    "contentId": "classes"
   }, {
     "title": "Matemáticas",
     "contentId": "maths"
@@ -26,21 +20,218 @@
   }, {
     "title": "Lógica",
     "contentId": "logics"
+  }],
+  "components": [{
+    "title": "components",
+    "titleId": "components",
+    "items": [{
+      "name": "hts221Temperature"
+    }, {
+      "name": "hts221Humidity"
+    }, {
+      "name": "buzzer"
+    }, {
+      "name": "continuousServoStart"
+    }, {
+      "name": "continuousServoStop"
+    }, {
+      "name": "lcdTurnOnOff"
+    }, {
+      "name": "lcdWrite"
+    }, {
+      "name": "lcdWritePosition"
+    }, {
+      "name": "lcdClear"
+    }, {
+      "name": "led"
+    }, {
+      "name": "rgbLedSimple"
+    }, {
+      "name": "rgbLed"
+    }, {
+      "name": "rgbLedFade"
+    }, {
+      "name": "clockRTCInit"
+    }, {
+      "name": "clockRTC"
+    }, {
+      "name": "clockRTCAdvanced"
+    }, {
+      "name": "oscillator"
+    }, {
+      "name": "oscillatorStart"
+    }, {
+      "name": "oscillatorStop"
+    }, {
+      "name": "readSensor"
+    }, {
+      "name": "servoNormal"
+    }],
+    "advancedItems": [{
+      "name": "hwVariable"
+    }, {
+      "name": "buzzerAdvanced"
+    }, {
+      "name": "continuousServoStartAdvanced-v1"
+    }, {
+      "name": "continuousServoStopAdvanced"
+    }, {
+      "name": "lcdTurnOnOffAdvanced"
+    }, {
+      "name": "lcdWriteAdvanced"
+    }, {
+      "name": "ledAdvanced"
+    }, {
+      "name": "rgbLedAdvanced"
+    }, {
+      "name": "oscillatorAdvanced"
+    }, {
+      "name": "oscillatorStartAdvanced"
+    }, {
+      "name": "oscillatorStopAdvanced"
+    }, {
+      "name": "digitalReadAdvanced"
+    }, {
+      "name": "analogReadAdvanced"
+    }, {
+      "name": "analogWrite"
+    }, {
+      "name": "digitalWrite"
+    }, {
+      "name": "readAdvanced"
+    }, {
+      "name": "servoNormalAdvanced"
+    }, {
+      "name": "turnOnOffAdvanced"
+    }, {
+      "name": "lcdWritePositionAdvanced-v1"
+    }],
+    "functions": [{
+      "name": "voidFunction"
+    }, {
+      "name": "invokeFunction"
+    }, {
+      "name": "returnFunction"
+    }, {
+      "name": "invokeReturnFunction"
+    }]
+  }],
+  "classes": [{
+    "title": "classes",
+    "titleId": "classes",
+
+    "items": [{
+      "name": "class"
+    }, {
+      "name": "invokeClass"
+    }, {
+      "name": "constructorClass"
+    }, {
+      "name": "invokeClassFunction"
+    }, {
+      "name": "invokeClassReturnFunction"
+    }, {
+      "name": "setClassVariable"
+    }, {
+      "name": "selectClassVariable"
+    }],
+    "advancedItems": [{
+      "name": "classChildren"
+    }, {
+      "name": "constructorClassArguments"
+    }, {
+      "name": "invokeArgumentsClass"
+    }, {
+      "name": "public"
+    }, {
+      "name": "protected"
+    }, {
+      "name": "private"
+    }, {
+      "name": "invokeClassFunctionWithArguments"
+    }, {
+      "name": "invokeClassReturnFunctionWithArguments"
+    }, {
+      "name": "arrayClassVariable"
+    }, {
+      "name": "setClassArrayVariable"
+    }]
+  }],
+  "communications": [{
+    "title": "communications",
+    "titleId": "communications",
+    "items": [{
+      "name": "serialReceive"
+    }, {
+      "name": "serialSend-v1"
+    }]
+  }],
+  "robots": [{
+    "title": "zowi",
+    "titleId": "zowi",
+    "items": [{
+      "name": "zowiHome"
+    }, {
+      "name": "zowiMovementsSimple"
+    }, {
+      "name": "zowiGestures"
+    }, {
+      "name": "zowiMouth"
+    }, {
+      "name": "zowiSounds"
+    }, {
+      "name": "zowiIfButtons"
+    }, {
+      "name": "zowiIfSound"
+    }, {
+      "name": "zowiIfDistance"
+    }],
+    "advancedItems": [{
+      "name": "zowiMovementsFront"
+    }, {
+      "name": "zowiMovementsSides"
+    }, {
+      "name": "zowiMovementsHeightFront"
+    }, {
+      "name": "zowiMovementsHeightSides"
+    }, {
+      "name": "zowiMovementsNoDir-v1"
+    }, {
+      "name": "zowiButtons"
+    }, {
+      "name": "zowiSound"
+    }, {
+      "name": "zowiDistance"
+    }]
   }, {
-    "title": "Comunicaciones",
-    "contentId": "communications"
-  }, {
-    "title": "Zowi",
-    "contentId": "zowi"
-  }, {
-    "title": "Evolution",
-    "contentId": "evolution"
+    "title": "evolution",
+    "titleId": "evolution",
+    "items": [{
+      "name": "evolutionHome"
+    }, {
+      "name": "evolutionMovementsSimple"
+    }, {
+      "name": "evolutionHead"
+    }, {
+      "name": "evolutionBuzzer"
+    }, {
+      "name": "evolutionIfLine"
+    }, {
+      "name": "evolutionIfLight"
+    }, {
+      "name": "evolutionIfDistance"
+    }],
+    "advancedItems": [{
+      "name": "evolutionHeadAdvance"
+    }, {
+      "name": "evolutionLine"
+    }, {
+      "name": "evolutionLight"
+    }, {
+      "name": "evolutionDistance"
+    }]
   }],
   "toolboxContents": [{
-    "title": "Componentes",
-    "titleId": "components",
-    "items": []
-  }, {
     "title": "Funciones",
     "titleId": "functions",
     "items": [{
@@ -95,45 +286,6 @@
       "name": "comment"
     }, {
       "name": "code"
-    }]
-  }, {
-    "title": "classes",
-    "titleId": "classes",
-    "items": [{
-      "name": "class"
-    }, {
-      "name": "invokeClass"
-    }, {
-      "name": "constructorClass"
-    }, {
-      "name": "invokeClassFunction"
-    }, {
-      "name": "invokeClassReturnFunction"
-    }, {
-      "name": "setClassVariable"
-    }, {
-      "name": "selectClassVariable"
-    }],
-    "advancedItems": [{
-      "name": "classChildren"
-    }, {
-      "name": "constructorClassArguments"
-    }, {
-      "name": "invokeArgumentsClass"
-    }, {
-      "name": "public"
-    }, {
-      "name": "protected"
-    }, {
-      "name": "private"
-    }, {
-      "name": "invokeClassFunctionWithArguments"
-    }, {
-      "name": "invokeClassReturnFunctionWithArguments"
-    }, {
-      "name": "arrayClassVariable"
-    }, {
-      "name": "setClassArrayVariable"
     }]
   }, {
     "title": "Maths",
@@ -252,78 +404,6 @@
       "name": "equalityOperations"
     }, {
       "name": "logicOperations"
-    }]
-  }, {
-    "title": "communications",
-    "titleId": "communications",
-    "items": [{
-      "name": "serialReceive"
-    }, {
-      "name": "serialSend-v1"
-    }]
-  }, {
-    "title": "zowi",
-    "titleId": "zowi",
-    "items": [{
-      "name": "zowiHome"
-    }, {
-      "name": "zowiMovementsSimple"
-    }, {
-      "name": "zowiGestures"
-    }, {
-      "name": "zowiMouth"
-    }, {
-      "name": "zowiSounds"
-    }, {
-      "name": "zowiIfButtons"
-    }, {
-      "name": "zowiIfSound"
-    }, {
-      "name": "zowiIfDistance"
-    }],
-    "advancedItems": [{
-      "name": "zowiMovementsFront"
-    }, {
-      "name": "zowiMovementsSides"
-    }, {
-      "name": "zowiMovementsHeightFront"
-    }, {
-      "name": "zowiMovementsHeightSides"
-    }, {
-      "name": "zowiMovementsNoDir-v1"
-    }, {
-      "name": "zowiButtons"
-    }, {
-      "name": "zowiSound"
-    }, {
-      "name": "zowiDistance"
-    }]
-  }, {
-    "title": "evolution",
-    "titleId": "evolution",
-    "items": [{
-      "name": "evolutionHome"
-    }, {
-      "name": "evolutionMovementsSimple"
-    }, {
-      "name": "evolutionHead"
-    }, {
-      "name": "evolutionBuzzer"
-    }, {
-      "name": "evolutionIfLine"
-    }, {
-      "name": "evolutionIfLight"
-    }, {
-      "name": "evolutionIfDistance"
-    }],
-    "advancedItems": [{
-      "name": "evolutionHeadAdvance"
-    }, {
-      "name": "evolutionLine"
-    }, {
-      "name": "evolutionLight"
-    }, {
-      "name": "evolutionDistance"
     }]
   }]
 }
