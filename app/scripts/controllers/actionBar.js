@@ -8,7 +8,7 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-    .controller('ActionBarCtrl', function($scope, $route, web2board, clipboard, bloqsUtils, utils, projectApi, nodeDialog, nodeFs, nodeUtils) {
+    .controller('ActionBarCtrl', function($scope, $route, web2board, clipboard, bloqsUtils, utils, projectApi, nodeDialog, nodeFs, nodeUtils, commonModals) {
         console.log('ActionBarCtrl', $scope.$parent.$id);
 
         $scope.actions = {
@@ -66,6 +66,7 @@ angular.module('bitbloqOffline')
 
         function changeLanguage() {
             console.log(this.name);
+            commonModals.launchChangeLanguageModal();
         }
 
         function undo() {

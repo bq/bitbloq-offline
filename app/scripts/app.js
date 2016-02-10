@@ -13,7 +13,8 @@ angular
         'ngRoute',
         'ngWebSocket',
         'pascalprecht.translate',
-        'angular-clipboard'
+        'angular-clipboard',
+        'ngDialog'
     ]).config(['$routeProvider', '$translateProvider',
         function($routeProvider, $translateProvider) {
             $routeProvider

@@ -944,3 +944,208 @@ dropdown .menu .menu__dropdown {
   .toolbox__list__item__button svg {
     margin-left: 10px;
     fill: #b9bdc8; }
+
+.modal--container {
+  text-align: center;
+  white-space: nowrap; }
+  .modal--container:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em; }
+  .modal--container .ngdialog-overlay {
+    z-index: -1; }
+  .modal--container .ngdialog-content {
+    border-radius: 5px;
+    white-space: normal;
+    display: inline-block;
+    vertical-align: middle; }
+  .modal--container.modal--input .ngdialog-content {
+    width: 500px; }
+  .modal--container.modal--input .form--input {
+    margin-top: 10px;
+    margin-bottom: 20px; }
+  .modal--container.modal--input .modal_languages .dropdown__menu {
+    border-radius: .3em;
+    border: 1px solid #cfcfcf;
+    min-height: 34px;
+    max-height: 34px;
+    color: #8c919b;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
+  .modal--container.modal--input .modal_languages .menu__heading {
+    margin-left: 1em;
+    margin-top: 1em; }
+  .modal--container.modal--input .modal_languages .menu__dropdown {
+    background-color: #fff;
+    border: 1px solid #ebebeb;
+    position: absolute;
+    white-space: nowrap;
+    margin-top: 11px;
+    overflow-y: scroll;
+    max-height: 275px;
+    border-bottom-right-radius: .3em;
+    border-bottom-left-radius: .3em;
+    border-right: 1px solid #cfcfcf;
+    border-left: 1px solid #cfcfcf;
+    border-bottom: 1px solid #cfcfcf;
+    overflow-x: hidden; }
+    .modal--container.modal--input .modal_languages .menu__dropdown .menu__dropdown__item__button {
+      min-height: 34px;
+      min-width: 420px;
+      width: 100%;
+      text-align: left;
+      flex: 1 100%;
+      padding-left: 1em;
+      border-bottom: 1px solid #e4e4e4; }
+      .modal--container.modal--input .modal_languages .menu__dropdown .menu__dropdown__item__button:hover {
+        background-color: #ebebeb;
+        cursor: pointer; }
+
+.modal {
+  height: 100%;
+  text-align: left; }
+  .modal .modal__dialog {
+    height: 100%; }
+    .modal .modal__dialog .modal__dialog__content {
+      height: 100%; }
+      .modal .modal__dialog .modal__dialog__content .modal__header {
+        width: 100%;
+        height: 60px;
+        border-bottom: 1px solid #e2e2e2;
+        line-height: 60px;
+        color: #373b44;
+        font-size: 16px;
+        font-weight: 700;
+        font-family: "Roboto", sans-serif;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px; }
+        .modal .modal__dialog .modal__dialog__content .modal__header h1,
+        .modal .modal__dialog .modal__dialog__content .modal__header .modal--close {
+          display: inline-block;
+          border-top-right-radius: 5px; }
+        .modal .modal__dialog .modal__dialog__content .modal__header h1 {
+          padding-left: 30px;
+          width: calc(100% - 65px);
+          cursor: default; }
+        .modal .modal__dialog .modal__dialog__content .modal__header .modal--close {
+          width: 60px;
+          border: 1px solid #e2e2e2;
+          border-bottom: 0;
+          float: right; }
+          .modal .modal__dialog .modal__dialog__content .modal__header .modal--close .btn__modal--close {
+            width: 100%;
+            height: 60px; }
+          .modal .modal__dialog .modal__dialog__content .modal__header .modal--close .svg-icon__modal--close {
+            fill: #c0c3c9;
+            width: 13px;
+            height: 13px;
+            transition: 120ms; }
+          .modal .modal__dialog .modal__dialog__content .modal__header .modal--close:hover .svg-icon__modal--close {
+            transition: 120ms;
+            fill: #939499; }
+      .modal .modal__dialog .modal__dialog__content .modal__body {
+        padding: 30px; }
+      .modal .modal__dialog .modal__dialog__content .modal--buttons {
+        padding: 0 30px 30px; }
+        .modal .modal__dialog .modal__dialog__content .modal--buttons button {
+          margin-right: 10px; }
+
+.btn--primary {
+  color: white;
+  font-weight: bold;
+  background-color: #373b44;
+  padding: .8em 1em;
+  border-radius: .3em;
+  min-width: 145px;
+  min-height: 50px;
+  line-height: 27px;
+  transition: background-color 250ms;
+  text-decoration: none; }
+  .btn--primary:hover {
+    transition: background-color 250ms;
+    text-decoration: none; }
+  .btn--primary:active {
+    text-decoration: none; }
+  .btn--primary:hover {
+    background-color: #26292f; }
+  .btn--primary:active {
+    background-color: #000; }
+
+.btn--secondary {
+  color: black;
+  background-color: #ebebeb;
+  padding: .8em 1em;
+  border-radius: .3em;
+  min-width: 145px;
+  min-height: 50px;
+  line-height: 27px;
+  transition: background-color 250ms;
+  text-decoration: none; }
+  .btn--secondary:hover {
+    transition: background-color 250ms;
+    text-decoration: none; }
+  .btn--secondary:active {
+    text-decoration: none; }
+  .btn--secondary:hover {
+    background-color: #dddddd; }
+  .btn--secondary:active {
+    background-color: #d1d1d1; }
+
+.btn--disabled {
+  color: #c0c3c9;
+  background-color: #dbdee3;
+  padding: .8em 1em;
+  border-radius: .3em;
+  min-width: 145px;
+  min-height: 50px;
+  line-height: 27px;
+  transition: background-color 250ms;
+  text-decoration: none; }
+  .btn--disabled:hover {
+    transition: background-color 250ms;
+    text-decoration: none; }
+  .btn--disabled:active {
+    text-decoration: none; }
+
+.btn--small {
+  max-height: 35px;
+  min-height: 35px;
+  line-height: 15px; }
+
+.btn--dropdown {
+  color: #8c919b;
+  flex: 1;
+  text-align: left;
+  height: 34px;
+  font-style: italic;
+  min-width: 70px;
+  padding-right: .2em;
+  padding-left: .5em;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  position: relative; }
+  .btn--dropdown .dropdown__heading {
+    font-style: normal;
+    display: inline-block;
+    vertical-align: middle;
+    color: #5d6069;
+    cursor: pointer;
+    margin-left: .2em;
+    font-weight: 400;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-right: 10px; }
+  .btn--dropdown :first-child {
+    margin-left: 11px;
+    font-style: normal; }
+
+.btn--dropdown--active {
+  color: #5d6069; }

@@ -1,9 +1,10 @@
 angular.module('bitbloqOffline')
-  .directive('dropdown', function($parse, $timeout) {
+  .directive('dropdown', function($parse, $timeout, $filter, $translate) {
     return {
       restrict: 'E',
       templateUrl: 'file://' + __dirname + '/views/components/dropdown.html',
       scope: {
+        optionsClick: '=',
         tree: '='
       },
       controllerAs: 'dropdown',
@@ -20,12 +21,19 @@ angular.module('bitbloqOffline')
           }
         };
 
+        self.changeTitle = function(item) {
+          if ($scope.tree.languages) {
+            translate = $filter('translate');
+            $scope.tree.languages.name = translate(item.name);
+            $translate.use(item.name);
+          }
+        };
+
         self.closeDropdown = function() {
           $timeout(function() {
             self.activeMenu = null;
           }, 0);
         };
-
 
         $(document).on('click', function() {
           if ($(event.target).closest('dropdown').length > 0) {

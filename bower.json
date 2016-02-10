@@ -11,6 +11,7 @@
     "jsplumb": "2.0.5",
     "angular-translate": "~2.9.0",
     "angular-translate-loader-static-files": "~2.9.0",
-    "bloqs": "dev"
+    "bloqs": "dev",
+    "ng-dialog": "~0.5.6"
   }
 }

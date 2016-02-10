@@ -1,0 +1,23 @@
+<section class="modal">
+    <div class="modal__dialog">
+        <div class="modal__dialog__content {{customClass}}">
+            <div ng-if="title" class="modal__header">
+                <h1 class="modal--title" data-element="modal-title">{{title | translate}}</h1>
+                <div class="modal--close">
+                    <button ng-click="closeThisDialog(); rejectAction()" class="btn btn__modal--close" data-element="modal-blade-close">
+                        <svg class="svg-icon svg-icon__modal--close">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cierre"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div ng-if="contentTemplate" ng-include="contentTemplate" class="modal__body"></div>
+            <div ng-if="modalButtons" class="modal__footer">
+                <div class="modal--buttons">
+                    <button ng-if="confirmButton" form="inputForm" type="submit" ng-click="confirmAction(input.value) && closeThisDialog()" ng-disabled="condition && !condition()" ng-class="{'btn--disabled':condition && !condition()}" class="btn btn--primary btn__modal--footer btn--confirm">{{confirmButton | translate}}</button>
+                    <button ng-if="rejectButton" type="button" ng-click="rejectAction(); closeThisDialog()" class="btn btn--secondary btn__modal--footer btn--reject">{{rejectButton | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
