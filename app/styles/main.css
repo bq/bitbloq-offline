@@ -364,6 +364,9 @@ From top to bottom: Dialogs 9 , Toasts 8, Dropdowns 7...
   height: calc(100vh - 41px);
   overflow: auto; }
 
+.bloq--group .field--header {
+  overflow: hidden; }
+
 .protocanvas {
   width: calc(100% - 285px);
   height: calc(100vh - 140px);
