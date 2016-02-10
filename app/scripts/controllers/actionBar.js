@@ -8,7 +8,7 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-    .controller('ActionBarCtrl', function($scope, $route, web2board, clipboard, bloqsUtils, utils, projectApi, nodeDialog, nodeFs) {
+    .controller('ActionBarCtrl', function($scope, $route, web2board, clipboard, bloqsUtils, utils, projectApi, nodeDialog, nodeFs, nodeUtils) {
         console.log('ActionBarCtrl', $scope.$parent.$id);
 
         $scope.actions = {
@@ -59,8 +59,9 @@ angular.module('bitbloqOffline')
 
 
         function exportArduinoCode() {
-
-            console.log(this.name);
+            var code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs),
+                filename = utils.removeDiacritics($scope.project.name).substring(0, 30) + '.ino';
+            nodeUtils.downloadFile(filename, code);
         }
 
         function changeLanguage() {
