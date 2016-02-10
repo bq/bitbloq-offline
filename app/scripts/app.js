@@ -43,7 +43,7 @@ angular
             fieldOffsetLeft: 48,
             fieldOffsetTopForced: 41
         });
-        window.$ = window.JQuery = require('jquery');
+
         console.log('Start Bitbloq Offline');
         // console.log(process);
 
