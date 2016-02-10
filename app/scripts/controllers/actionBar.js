@@ -8,7 +8,7 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-    .controller('ActionBarCtrl', function($scope, $route, web2board, clipboard, bloqsUtils, utils, projectApi) {
+    .controller('ActionBarCtrl', function($scope, $route, web2board, clipboard, bloqsUtils, utils, projectApi, nodeDialog, nodeFs) {
         console.log('ActionBarCtrl', $scope.$parent.$id);
 
         $scope.actions = {
@@ -30,7 +30,7 @@ angular.module('bitbloqOffline')
 
         function openProject() {
             console.log(this.name);
-            var filePath = dialog.showOpenDialog({
+            var filePath = nodeDialog.showOpenDialog({
                 properties: ['openFile', 'openDirectory', 'createDirectory'],
                 filters: [{
                     name: 'Bitbloq',
@@ -42,7 +42,7 @@ angular.module('bitbloqOffline')
             });
 
             if (filePath) {
-                fs.readFile(filePath[0], function(err, data) {
+                nodeFs.readFile(filePath[0], function(err, data) {
                     if (err) {
                         throw err;
                     } else {
@@ -54,8 +54,7 @@ angular.module('bitbloqOffline')
         }
 
         function saveProject() {
-            console.log($scope.project);
-            projectApi.download($scope.project);
+            projectApi.download($scope.getCurrentProject());
         }
 
 
@@ -92,9 +91,6 @@ angular.module('bitbloqOffline')
             web2board.verify(code);
         }
 
-        var remote = require('remote'),
-            dialog = remote.require('dialog'),
-            fs = require('fs');
 
         $scope.menuTree = {
             fileMenuItems: {

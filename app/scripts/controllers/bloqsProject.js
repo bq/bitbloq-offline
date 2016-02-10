@@ -16,7 +16,7 @@ angular.module('bitbloqOffline')
         }
         $scope.updateBloqs = function() {
 
-            // if ($scope.bloqs.varsBloq) {
+            // if ($scope.arduinoMainBloqs.varsBloq) {
             //
             //   var allBloqs = bloqs.bloqs;
             //   var allComponents = [];
@@ -104,6 +104,8 @@ angular.module('bitbloqOffline')
                 }
             });
 
+
+
             $scope.project.hardwareTags = _.uniq(newHardwareTags); //Regenerate hw tags
 
             if ($scope.project.hardware.robot) {
@@ -147,6 +149,22 @@ angular.module('bitbloqOffline')
             }
 
         };
+
+        $scope.getCurrentProject = function() {
+            $scope.project.code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
+            var project = _.cloneDeep($scope.project);
+            if ($scope.arduinoMainBloqs.varsBloq) {
+                project.software = {
+                    vars: $scope.arduinoMainBloqs.varsBloq.getBloqsStructure(),
+                    setup: $scope.arduinoMainBloqs.setupBloq.getBloqsStructure(),
+                    loop: $scope.arduinoMainBloqs.loopBloq.getBloqsStructure()
+                };
+            }
+            //project.hardware = $scope.getHardwareSchema();
+            return project;
+        };
+
+
         $scope.componentsArray = bloqsUtils.getEmptyComponentsArray();
         $scope.arduinoMainBloqs = {
             varsBloq: null,
