@@ -9,6 +9,7 @@
     "angular-clipboard": "~1.2.0",
     "lodash": "~3.10.1",
     "jsplumb": "2.0.5",
+    "angular-sanitize": "~1.3.x",
     "angular-translate": "~2.9.0",
     "angular-translate-loader-static-files": "~2.9.0",
     "bloqs": "dev",

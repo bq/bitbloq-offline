@@ -8,7 +8,7 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-  .controller('hardwareTabCtrl', function($scope, $q, $timeout, $log, $window, $rootScope, $translate, $document, utils, common, hw2Bloqs, _) {
+  .controller('hardwareTabCtrl', function($scope, $q, $timeout, $log, $window, $rootScope, $translate, $document, utils, common, hw2Bloqs, _, alertsService) {
     var container = utils.getDOMElement('.protocanvas');
     var $componentContextMenu = $('#component-context-menu');
     var $boardContextMenu = $('#board-context-menu');
@@ -432,10 +432,10 @@ angular.module('bitbloqOffline')
         _addBoard(board);
       } else if (data.type === 'components') {
         if (!$scope.project.hardware.board) {
-          // alertsService.add('bloqs-project_alert_no-board', 'error_noboard', 'error');
+          alertsService.add('bloqs-project_alert_no-board', 'error_noboard', 'error');
           return false;
         } else if ($scope.project.hardware.robot) {
-          // alertsService.add('Actualmente no puedes añadir componentes a un robot', 'error_noboard', 'error');
+          alertsService.add('Actualmente no puedes añadir componentes a un robot', 'error_noboard', 'error');
           return false;
         }
         _addComponent(data);

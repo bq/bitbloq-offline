@@ -1149,3 +1149,106 @@ dropdown .menu .menu__dropdown {
 
 .btn--dropdown--active {
   color: #5d6069; }
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
+
+@keyframes bounceInDown {
+  from,
+  60%,
+  75%,
+  90%,
+  100% {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -3000px, 0); }
+  60% {
+    opacity: 1;
+    transform: translate3d(0, 10px, 0); }
+  75% {
+    transform: translate3d(0, -10px, 0); }
+  90% {
+    transform: translate3d(0, 5px, 0); }
+  100% {
+    transform: none; } }
+
+.bounceInDown {
+  animation-name: bounceInDown; }
+
+@keyframes removealert {
+  0% { }
+  100% {
+    opacity: 0; } }
+
+.alerts--container {
+  position: absolute;
+  margin: 0 auto;
+  width: 600px;
+  left: 0;
+  top: 10em;
+  right: 0;
+  z-index: 999; }
+
+.alert {
+  padding: .5em 1em;
+  border-radius: .2em;
+  width: 600px;
+  font-size: .9em;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: all 200ms;
+  background-color: #373b44;
+  margin: .5em 0;
+  animation-name: bounceInDown;
+  animation-duration: 1s;
+  color: white;
+  min-height: 40px;
+  position: fixed; }
+  .alert.alert--removed {
+    animation-name: removealert;
+    animation-duration: 200ms; }
+  .alert span {
+    width: 90%;
+    margin-right: .5em;
+    display: inline-block;
+    padding-left: 10px; }
+    .alert span button {
+      color: white;
+      margin-left: .5em;
+      text-decoration: underline; }
+  .alert .icon--preicon {
+    float: right;
+    width: 13px;
+    height: 13px; }
+    .alert .icon--preicon.ok {
+      fill: #62d017; }
+    .alert .icon--preicon.info {
+      fill: #62d017; }
+    .alert .icon--preicon.loading {
+      fill: white;
+      animation-name: spin;
+      animation-duration: 1000ms;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear; }
+    .alert .icon--preicon.warning {
+      fill: #f23333; }
+    .alert .icon--preicon.error {
+      fill: #f23333; }
+  .alert .alert--close {
+    display: inline-block;
+    float: right;
+    width: 10%; }
+    .alert .alert--close .svg-icon {
+      width: 12px;
+      height: 12px;
+      float: right;
+      fill: #dadada; }
+    .alert .alert--close:hover .svg-icon {
+      fill: #dadada;
+      cursor: pointer; }

@@ -1,0 +1,17 @@
+<div ng-repeat="alert in alerts track by alert.uid" class="alert text--strong" ng-class="alert.domClass" data-id="{{alert.id}}" ng-style="{'margin-top': 50*$index+'px','z-index':alert.index}">
+    <svg class="svg-icon icon--preicon {{alert.type}}">
+        <use data-element="alert-svg-icon" xlink:href="{{generateSvgUrl(alert.type)}}" data-type="{{alert.type}}"/>
+    </svg>
+    <span data-element="alert-text-toast">
+        {{alert.text | translate:alert }}
+        <button class="text--strong" ng-if="alert.linkText" data-element="alert-undo-button" ng-click="alert.linkAction(alert.linkParams)">{{alert.linkText | translate:alert }}</button>
+    </span>
+    <svg class="svg-icon icon--postIcon" ng-if="alert.postIcon">
+        <use ng-attr-xlink:href="{{'#'+alert.postIcon}}"></use>
+    </svg>
+    <div data-element="alert-close-toast" ng-if="alert.type!=='loading'" class="alert--close" ng-click="alert.close(alert.uid, $event); alert.closeFunction(closeParams)">
+        <svg class="svg-icon">
+            <use xlink:href="#icon-close"></use>
+        </svg>
+    </div>
+</div>
