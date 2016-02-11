@@ -206,7 +206,6 @@ angular.module('bitbloqOffline')
     };
 
     function _addComponent(data) {
-      console.log('DATA', data)
       var component = _.find($scope.hardware.componentList[data.category], function(component) {
         return component.id === data.id;
       });

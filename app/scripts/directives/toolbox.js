@@ -5,7 +5,10 @@ angular.module('bitbloqOffline')
       templateUrl: 'file://' + __dirname + '/views/components/toolbox.html',
       scope: {
         tree: '=',
-        type: '@'
+        type: '@',
+        showComponents: '=',
+        componentsArray: '=',
+        showCommunications: '='
       },
       controllerAs: 'toolbox',
       controller: function($scope, $element, $attrs) {

@@ -42,8 +42,8 @@
     <!-- COMPONENT BLOQS-->
     <div class="toolbox__content__item" ng-repeat="itemContainer in tree.components track by $index" ng-show="toolbox.activeMenu === 'components'">
       <h3>{{itemContainer.title}}</h3>
-      <ul ng-if="thereAreComponents" class="content__list">
-        <li class="content__list__item" ng-repeat="item in itemContainer.items track by $index" bitbloq-bloq-creator bloq-schema="item.name"></li>
+      <ul class="content__list">
+        <li id="{{'bloq' + component.name}}" class="content__list__item" ng-repeat="component in itemContainer.items track by $index" bitbloq-bloq-creator bloq-schema="component.name" components-array="componentsArray" ng-show="showComponents(component.name)"></li>
       </ul>
     </div>
     <!-- CODE BLOQS -->
@@ -56,15 +56,15 @@
     <!-- COMMUNICATION BLOQS-->
     <div class="toolbox__content__item" ng-repeat="itemContainer in tree.communications track by $index" ng-show="toolbox.activeMenu === 'communications'">
       <h3>{{itemContainer.title}}</h3>
-      <ul class="content__list" ng-if="thereAreSerialPorts">
-        <li class="content__list__item" ng-repeat="item in itemContainer.items track by $index" bitbloq-bloq-creator bloq-schema="item.name"> </li>
+      <ul class="content__list">
+        <li class="content__list__item" ng-repeat="communication in itemContainer.items track by $index" ng-show="showCommunications(communication)" bitbloq-bloq-creator bloq-schema="communication.name" components-array="componentsArray"> </li>
       </ul>
     </div>
     <!-- CLASSES BLOQS -->
     <div class="toolbox__content__item" ng-repeat="itemContainer in tree.classes track by $index" ng-show="toolbox.activeMenu === 'classes'">
       <h3>{{itemContainer.title}}</h3>
-      <ul class="content__list" ng-if="thereAreClasses">
-        <li class="content__list__item" ng-repeat="item in itemContainer.items track by $index" bitbloq-bloq-creator bloq-schema="item.name"> </li>
+      <ul class="content__list">
+        <li class="content__list__item" ng-repeat="item in itemContainer.items track by $index" bitbloq-bloq-creator bloq-schema="item.name" components-array="componentsArray"> </li>
       </ul>
     </div>
   </div>
