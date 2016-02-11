@@ -1,0 +1,15 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\web2board]
+@="URL:Bitbloq Protocol"
+"URL Protocol"=""
+
+
+[HKEY_CLASSES_ROOT\web2board\shell]
+@="open"
+
+[HKEY_CLASSES_ROOT\web2board\shell\open]
+
+
+[HKEY_CLASSES_ROOT\web2board\shell\open\command]
+@="C:\\Program Files\\Web2board\\web2boardLink.exe"

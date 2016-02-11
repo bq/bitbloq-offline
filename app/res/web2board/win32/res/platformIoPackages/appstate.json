@@ -1,0 +1,1 @@
+{"installed_platforms": ["atmelavr"], "installed_packages": {"toolchain-atmelavr": {"version": 3, "time": 1455032371}, "tool-avrdude": {"version": 2, "time": 1455032388}, "framework-arduinoavr": {"version": 26, "time": 1455032400}}}

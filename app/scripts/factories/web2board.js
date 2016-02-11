@@ -35,6 +35,17 @@ angular.module('bitbloqOffline')
 
         ws = new HubsAPI('ws:\\' + web2board.config.wsHost + ':' + web2board.config.wsPort + "/Bitbloq", 45);
 
+        function getWeb2boardCommand(){
+            var platformOs = process.platform;
+            if(platformOs === 'win32'){
+                return common.appPath + "/app/res/web2board/win32/web2board.exe";
+            }
+            if(platformOs === 'darwin'){
+                return common.appPath + "/app/res/web2board/darwin/web2board";
+            }
+            return common.appPath + "/app/res/web2board/linux/web2board";
+        }
+
         //function isWeb2boardUpToDate(version) {
         //    return true;
         //    //return parseInt(version.replace(/\./g, ''), 10) >= parseInt(common.properties.web2boardVersion.replace(/\./g, ''), 10);
@@ -61,8 +72,8 @@ angular.module('bitbloqOffline')
 
         function startWeb2board() {
             console.log('starting Web2board...');
-            var spawn = require('child_process').spawn;
-            var web2boardProcess = spawn(common.appPath + "/app/res/web2board/web2board.exe");
+            var spawn = require('child_process').spawn,
+                web2boardProcess = spawn(getWeb2boardCommand());
             web2boardProcess.on("close", function(code){
                 console.log("Web2board closed with code: " + code);
             });

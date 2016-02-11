@@ -1,0 +1,5 @@
+{
+     "version": "0.0.1",
+     "file2DownloadUrl": "file2DownloadUrl",
+     "librariesNames": ["library1", "library2"]
+}

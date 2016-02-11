@@ -1,0 +1,33 @@
+.TH "<avr/cpufunc.h>: Special AVR CPU functions" 3 "7 Oct 2014" "Version 1.8.0svn" "avr-libc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+<avr/cpufunc.h>: Special AVR CPU functions \- 
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fB_NOP\fP()"
+.br
+.ti -1c
+.RI "#define \fB_MemoryBarrier\fP()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+.PP
+.nf
+ #include <avr/cpufunc.h> 
+.fi
+.PP
+.PP
+This header file contains macros that access special functions of the AVR CPU which do not fit into any of the other header files. 
+.SH "Define Documentation"
+.PP 
+.SS "#define _MemoryBarrier()"Implement a read/write \fImemory barrier\fP. A memory barrier instructs the compiler to not cache any memory data in registers beyond the barrier. This can sometimes be more effective than blocking certain optimizations by declaring some object with a \fCvolatile\fP qualifier.
+.PP
+See \fBProblems with reordering code\fP for things to be taken into account with respect to compiler optimizations. 
+.SS "#define _NOP()"Execute a \fIno operation\fP (NOP) CPU instruction. This should not be used to implement delays, better use the functions from <\fButil/delay_basic.h\fP> or <\fButil/delay.h\fP> for this. For debugging purposes, a NOP can be useful to have an instruction that is guaranteed to be not optimized away by the compiler, so it can always become a breakpoint in the debugger. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for avr-libc from the source code.

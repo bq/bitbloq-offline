@@ -1,0 +1,3 @@
+########################### PLEASE READ BEFORE INSTALLING ############################
+################# Open a terminal (Ctrl+Alt+t) and execute the following command: #################
+sudo dpkg -i web2board.deb
