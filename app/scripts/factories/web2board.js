@@ -8,7 +8,7 @@
  * Service in the bitbloqOffline.
  */
 angular.module('bitbloqOffline')
-    .factory('web2board', function ($rootScope, $log, $q, _, $timeout) {
+    .factory('web2board', function ($rootScope, $log, $q, _, $timeout, common) {
 
         /** Variables */
         var web2board = this,
@@ -62,7 +62,7 @@ angular.module('bitbloqOffline')
         function startWeb2board() {
             console.log('starting Web2board...');
             var spawn = require('child_process').spawn;
-            var web2boardProcess = spawn("C:/Users/jorgarira/SoftwareProjects/web2board/installers/win32Offline/web2board.exe");
+            var web2boardProcess = spawn(common.appPath + "/app/res/web2board/web2board.exe");
             web2boardProcess.on("close", function(code){
                 console.log("Web2board closed with code: " + code);
             });
