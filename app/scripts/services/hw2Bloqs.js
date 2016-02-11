@@ -116,11 +116,6 @@
         exports.repaint();
       }, false);
 
-      // window.removeEventListener('focus');
-      window.addEventListener('focus', function() {
-        exports.repaint();
-      }, false);
-
       document.addEventListener('mouseup', function() {
         if (componentDragging) {
           //Transforms absolute coordinates to relative coordinates

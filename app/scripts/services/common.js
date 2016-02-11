@@ -8,7 +8,7 @@
  * Service in the bitbloqOffline.
  */
 angular.module('bitbloqOffline')
-  .service('common', function($http, $filter, $rootScope) {
+  .service('common', function($http, $filter, $rootScope, $translate) {
 
     var exports = {};
 
@@ -21,7 +21,11 @@ angular.module('bitbloqOffline')
     exports.hardware = JSON.parse(fs.readFileSync(exports.appPath + '/app/res/hw.json', 'utf8'));
     console.log(exports.bloqsSchemas);
     exports.translate = $filter('translate');
+    exports.translateTo = function(lang) {
+      console.log('Translating to:', lang)
 
+      $translate.use(lang);
+    };
     return exports;
 
   });

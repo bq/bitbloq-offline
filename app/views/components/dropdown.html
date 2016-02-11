@@ -1,7 +1,7 @@
 <ul class="dropdown__menu">
   <li role="menu" class="menu" ng-repeat="menu in tree">
     <button class="menu__heading" ng-mousedown="dropdown.select(menu.name)" ng-class="{'disabled': menu.disabled, 'active':dropdown.activeMenu === menu.name}">
-      <h3>{{menu.name}}</h3>
+      <h3>{{menu.name | translate}}</h3>
     </button>
     <ul role="group" class="menu__dropdown layer-7" ng-show="dropdown.activeMenu === menu.name">
       <li class="menu__dropdown__item" ng-repeat="item in menu.items">

@@ -8,7 +8,7 @@ angular.module('bitbloqOffline')
         tree: '='
       },
       controllerAs: 'dropdown',
-      controller: function($scope, $element, $attrs) {
+      controller: function($scope, $element, $attrs, common) {
         var self = this;
         var mainContent;
         self.activeMenu = null;
@@ -25,7 +25,7 @@ angular.module('bitbloqOffline')
           if ($scope.tree.languages) {
             translate = $filter('translate');
             $scope.tree.languages.name = translate(item.name);
-            $translate.use(item.name);
+            common.translateTo(item.name);
           }
         };
 
