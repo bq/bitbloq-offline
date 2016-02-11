@@ -1,0 +1,12 @@
+#bloqs--field {
+    background-color: #EBEBEB;
+    width: 100%;
+    height: calc(100vh - 41px);
+    overflow: auto;
+}
+
+.bloq--group {
+    .field--header {
+        overflow: hidden;
+    }
+}

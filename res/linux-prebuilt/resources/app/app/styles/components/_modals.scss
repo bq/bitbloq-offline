@@ -1,0 +1,160 @@
+.modal--container {
+    text-align : center;
+    white-space: nowrap;
+
+    &:before {
+        content       : '';
+        display       : inline-block;
+        height        : 100%;
+        vertical-align: middle;
+        margin-right  : -0.25em;
+    }
+
+    .ngdialog-overlay {
+        z-index: -1;
+    }
+
+    .ngdialog-content {
+        border-radius : 5px;
+        white-space   : normal;
+        display       : inline-block;
+        vertical-align: middle;
+    }
+
+    &.modal--input{
+        .ngdialog-content {
+            width: 500px;
+        }
+    }
+
+    &.modal--input {
+        .form--input {
+            margin-top   : 10px;
+            margin-bottom: 20px;
+        }
+
+        .modal_languages{
+          .dropdown__menu{
+            border-radius: .3em;
+            border: 1px solid #cfcfcf;
+            min-height: 34px;
+            max-height: 34px;
+            color: #8c919b;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+          }
+
+          .menu__heading {
+            margin-left: 1em;
+            margin-top: 1em;
+          }
+
+          .menu__dropdown {
+            background-color: #fff;
+            border: 1px solid #ebebeb;
+            position: absolute;
+            white-space: nowrap;
+            margin-top: 11px;
+            overflow-y: scroll;
+            max-height: 275px;
+            border-bottom-right-radius: .3em;
+            border-bottom-left-radius: .3em;
+            border-right: 1px solid #cfcfcf;
+            border-left: 1px solid #cfcfcf;
+            border-bottom: 1px solid #cfcfcf;
+            overflow-x: hidden;
+
+            .menu__dropdown__item__button {
+              min-height: 34px;
+              min-width: 420px;
+              width: 100%;
+              text-align: left;
+              flex: 1 100%;
+              padding-left: 1em;
+              border-bottom: 1px solid #e4e4e4;
+
+              &:hover {
+                background-color: #ebebeb;
+                cursor: pointer;
+              }
+            }
+          }
+        }
+    }
+}
+
+.modal {
+    height    : 100%;
+    text-align: left;
+
+    .modal__dialog {
+        height: 100%;
+
+        .modal__dialog__content {
+            height: 100%;
+
+            .modal__header {
+                width                  : 100%;
+                height                 : 60px;
+                border-bottom          : 1px solid #e2e2e2;
+                line-height            : 60px;
+                color                  : #373b44;
+                font-size              : 16px;
+                font-weight            : 700;
+                font-family            : $font-family-base;
+                border-top-right-radius: 5px;
+                border-top-left-radius : 5px;
+
+                h1,
+                .modal--close {
+                    display                : inline-block;
+                    border-top-right-radius: 5px;
+                }
+
+                h1 {
+                    padding-left: 30px;
+                    width       : calc(100% - 65px);
+                    cursor      : default;
+                }
+
+                .modal--close {
+                    width        : 60px;
+                    border       : 1px solid #e2e2e2;
+                    border-bottom: 0;
+                    float        : right;
+
+                    .btn__modal--close {
+                        width : 100%;
+                        height: 60px;
+                    }
+
+                    .svg-icon__modal--close {
+                        fill      : $font-color-disabled;
+                        width     : 13px;
+                        height    : 13px;
+                        transition: $transition-duration;
+                    }
+
+                    &:hover {
+                        .svg-icon__modal--close {
+                            transition: $transition-duration;
+                            fill      : #939499;
+                        }
+                    }
+                }
+            }
+
+            .modal__body {
+                padding: 30px;
+            }
+
+            .modal--buttons {
+                button {
+                    margin-right: 10px;
+                }
+                padding: 0 30px 30px;
+            }
+        }
+    }
+}

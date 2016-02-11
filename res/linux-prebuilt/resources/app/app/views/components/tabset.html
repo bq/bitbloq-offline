@@ -1,0 +1,13 @@
+<div class="tabpanel" role="tabpanel">
+  <ul class="tablist" role="tablist">
+    <li role="presentation" class="tablist__item" ng-repeat="tab in tabset.tabs" ng-class="{'active': tab.active, 'disabled': tab.disabled}">
+      <button role="tab" class="tablist__item__button" ng-click="tabset.select(tab)">
+        <span ng-if="tab.heading">{{tab.heading}}</span>
+        <svg ng-if="tab.icon" class="icon--{{tab.iconSize}}">
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{{tab.icon}}"></use>
+        </svg>
+      </button>
+    </li>
+  </ul>
+  <ng-transclude class="tabcontent"></ng-transclude>
+</div>

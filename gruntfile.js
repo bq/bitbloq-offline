@@ -6,8 +6,10 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         clean: {
-            dist: ['dist'],
-            electron: ['dist/Electron.app/Contents/Resources/app/']
+            windows:  ['dist/windows32/resources/app/', 'dist/windows64/resources/app/'],
+            linux:    ['dist/linux/resources/app/'],
+            mac:      ['dist/mac/Electron.app/Contents/Resources/app/'],
+            prebuilt: ['dist/windows32/', 'dist/windows64/', 'dist/linux/']
         },
         wiredep: {
             task: {
@@ -50,20 +52,10 @@ module.exports = function(grunt) {
             windows: {
                 files: [{
                     expand: true,
-                    cwd: 'res/win32-prebuilt',
-                    src: ['**'],
-                    dest: 'dist/windows32/'
-                }, {
-                    expand: true,
                     cwd: '',
                     src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json'],
                     dest: 'dist/windows32/resources/app/'
-                }, {
-                    expand: true,
-                    cwd: 'res/win64-prebuilt',
-                    src: ['**'],
-                    dest: 'dist/windows64/'
-                }, {
+                },{
                     expand: true,
                     cwd: '',
                     src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json'],
@@ -73,11 +65,6 @@ module.exports = function(grunt) {
             linux: {
                 files: [{
                     expand: true,
-                    cwd: 'node_modules/electron-prebuilt/dist/',
-                    src: ['**'],
-                    dest: 'dist/linux/'
-                }, {
-                    expand: true,
                     cwd: '',
                     src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json'],
                     dest: 'dist/linux/resources/app/'
@@ -86,14 +73,27 @@ module.exports = function(grunt) {
             mac: {
                 files: [{
                     expand: true,
-                    cwd: 'res/mac-prebuilt',
-                    src: ['**'],
-                    dest: 'dist/mac/'
-                }, {
-                    expand: true,
                     cwd: '',
                     src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json'],
                     dest: 'dist/mac/Electron.app/Contents/Resources/app/'
+                }]
+            },
+            prebuilt: {
+                files: [{
+                    expand: true,
+                    cwd: 'res/windows64-prebuilt',
+                    src: ['**'],
+                    dest: 'dist/windows64/'
+                }, {
+                  expand: true,
+                  cwd: 'res/windows32-prebuilt',
+                  src: ['**'],
+                  dest: 'dist/windows32/'
+                }, {
+                  expand: true,
+                  cwd: 'res/linux-prebuilt',
+                  src: ['**'],
+                  dest: 'dist/linux/'
                 }]
             }
         },
@@ -101,7 +101,7 @@ module.exports = function(grunt) {
             options: {
                 mode: '755'
             },
-            target1: {
+            linux: {
                 src: ['dist/linux/electron']
             }
         },
@@ -135,15 +135,17 @@ module.exports = function(grunt) {
     // Default task(s).
     grunt.registerTask('dist', function() {
         grunt.task.run([
-            'clean:dist',
-            'clean:electron',
-            'wiredep',
             'sass',
             'svgstore',
+            'clean:prebuilt',
+            'copy:prebuilt',
+            'clean:linux',
             'copy:linux',
+            'chmod:linux',
+            'clean:windows',
             'copy:windows',
-            'copy:mac',
-            'chmod'
+            'clean:mac',
+            'copy:mac'
         ]);
     });
 

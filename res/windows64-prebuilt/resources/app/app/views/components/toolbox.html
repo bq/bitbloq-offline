@@ -1,0 +1,127 @@
+<div ng-if="type === 'software'" class="toolbox" ng-class="{'toolbox__level--1':toolbox.activeMenu !== null}">
+  <ul class="toolbox__list">
+    <li class="toolbox__list__item" ng-repeat="robot in tree.robots track by $index" ng-if="selectedRobot === robot.titleId">
+      <button class="toolbox__list__item__button" ng-click="toolbox.select('robots')" ng-class="{'active':toolbox.activeMenu === robot.titleId}">
+        <span class="toolbox__title--color {{robot.titleId}}"></span>
+        <span class="toolbox__title">{{robot.title}}</span>
+      </button>
+    </li>
+    <li class="toolbox__list__item" ng-repeat="component in tree.components track by $index">
+      <button class="toolbox__list__item__button" ng-click="toolbox.select('components')" ng-class="{'active':toolbox.activeMenu === component.titleId}">
+        <span class="toolbox__title--color {{component.titleId}}"></span>
+        <span class="toolbox__title">{{component.title}}</span>
+      </button>
+    </li>
+    <li class="toolbox__list__item" ng-repeat="item in tree.toolboxTitles track by $index">
+      <button class="toolbox__list__item__button" ng-click="toolbox.select(item.contentId)" ng-class="{'active':toolbox.activeMenu === item.contentId}">
+        <span class="toolbox__title--color {{item.contentId}}"></span>
+        <span class="toolbox__title">{{item.title}}</span>
+      </button>
+    </li>
+    <li class="toolbox__list__item" ng-repeat="item in tree.communications track by $index">
+      <button class="toolbox__list__item__button" ng-click="toolbox.select('communications')" ng-class="{'active':toolbox.activeMenu === item.contentId}">
+        <span class="toolbox__title--color {{item.titleId}}"></span>
+        <span class="toolbox__title">{{item.title}}</span>
+      </button>
+    </li>
+    <li class="toolbox__list__item" ng-repeat="item in tree.classes track by $index">
+      <button class="toolbox__list__item__button" ng-click="toolbox.select('classes')" ng-class="{'active':toolbox.activeMenu === item.contentId}">
+        <span class="toolbox__title--color {{item.titleId}}"></span>
+        <span class="toolbox__title">{{item.title}}</span>
+      </button>
+    </li>
+  </ul>
+  <div class="toolbox__content" ng-class="{'active': toolbox.activeMenu !== null}">
+    <!-- ROBOTS -->
+    <div class="toolbox__content__item" ng-repeat="itemContainer in tree.robots track by $index" ng-show="toolbox.activeMenu === 'robots'">
+      <h3>{{itemContainer.title}}</h3>
+      <ul class="content__list">
+        <li class="content__list__item" ng-repeat="item in itemContainer.items track by $index" bitbloq-bloq-creator bloq-schema="item.name"></li>
+      </ul>
+    </div>
+    <!-- COMPONENT BLOQS-->
+    <div class="toolbox__content__item" ng-repeat="itemContainer in tree.components track by $index" ng-show="toolbox.activeMenu === 'components'">
+      <h3>{{itemContainer.title}}</h3>
+      <ul class="content__list">
+        <li id="{{'bloq' + component.name}}" class="content__list__item" ng-repeat="component in itemContainer.items track by $index" bitbloq-bloq-creator bloq-schema="component.name" components-array="componentsArray" ng-show="showComponents(component.name)"></li>
+      </ul>
+    </div>
+    <!-- CODE BLOQS -->
+    <div class="toolbox__content__item" ng-repeat="itemContainer in tree.toolboxContents track by $index" ng-show="itemContainer.titleId === toolbox.activeMenu">
+      <h3>{{itemContainer.title}}</h3>
+      <ul class="content__list">
+        <li class="content__list__item" ng-repeat="item in itemContainer.items track by $index" bitbloq-bloq-creator bloq-schema="item.name"></li>
+      </ul>
+    </div>
+    <!-- COMMUNICATION BLOQS-->
+    <div class="toolbox__content__item" ng-repeat="itemContainer in tree.communications track by $index" ng-show="toolbox.activeMenu === 'communications'">
+      <h3>{{itemContainer.title}}</h3>
+      <ul class="content__list">
+        <li class="content__list__item" ng-repeat="communication in itemContainer.items track by $index" ng-show="showCommunications(communication)" bitbloq-bloq-creator bloq-schema="communication.name" components-array="componentsArray"> </li>
+      </ul>
+    </div>
+    <!-- CLASSES BLOQS -->
+    <div class="toolbox__content__item" ng-repeat="itemContainer in tree.classes track by $index" ng-show="toolbox.activeMenu === 'classes'">
+      <h3>{{itemContainer.title}}</h3>
+      <ul class="content__list">
+        <li class="content__list__item" ng-repeat="item in itemContainer.items track by $index" bitbloq-bloq-creator bloq-schema="item.name" components-array="componentsArray"> </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div ng-if="type === 'hardware'" class="toolbox toolbow-hw" ng-class="{'toolbox__level--1':toolbox.activeMenu !== null}">
+  <ul class="toolbox__list">
+    <li class="toolbox__list__item">
+      <button class="toolbox__list__item__button" ng-click="toolbox.select('boards')" ng-class="{'active':toolbox.activeMenu === 'boards'}">
+        <svg class="icon--large icon--text">
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#placas"></use>
+        </svg>
+        <span>Placas</span>
+      </button>
+    </li>
+    <li class="toolbox__list__item">
+      <button class="toolbox__list__item__button" ng-click="toolbox.select('components')" ng-class="{'active':toolbox.activeMenu === 'components'}">
+        <svg class="icon--large icon--text">
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#componentes"></use>
+        </svg>
+        <span>Componentes</span>
+      </button>
+    </li>
+    <li class="toolbox__list__item">
+      <button class="toolbox__list__item__button" ng-click="toolbox.select('robots')" ng-class="{'active':toolbox.activeMenu === 'robots'}">
+        <svg class="icon--large icon--text">
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#robots"></use>
+        </svg>
+        <span>Robots</span>
+      </button>
+    </li>
+  </ul>
+  <div class="toolbox__content" ng-class="{'active': toolbox.activeMenu !== null}">
+    <div class="toolbox__content__item boards" ng-show="toolbox.activeMenu === 'boards'">
+      <ul class="content__list">
+        <li class="content__list__item" ng-repeat="board in tree.boards track by board.id">
+          <div class="board-name name title"><span>{{board.name}}</span></div>
+          <img class="board-image" draggable dragid="{{board.id}}" dragtype="boards" ng-src="images/boards/{{board.id}}.png">
+        </li>
+      </ul>
+    </div>
+    <div class="toolbox__content__item components" ng-show="toolbox.activeMenu === 'components'">
+      <ul class="content__list">
+        <li class="content__list__item" ng-repeat="component in tree.componentSorteded track by $index">
+          <div class="board-name name title"><span>{{component.id}}</span></div>
+          <img class="component-image" dragcategory="{{component.category}}" draggable dragid="{{component.id}}" dragtype="components" ng-src="images/components/{{component.id}}.png" ng-style="{width:component.width + 'px'}">
+        </li>
+      </ul>
+    </div>
+    <div class="toolbox__content__item robots" ng-show="toolbox.activeMenu === 'robots'">
+      <ul class="content__list">
+        <li class="content__list__item" ng-repeat="robot in tree.robots track by $index">
+          <div class="board-name   name title"><span>{{robot.name}}</span></div>
+          <img class="robot-image" draggable dragid="{{robot.id}}" dragtype="robots" ng-src="images/robots/{{robot.id}}.svg" ng-style="{width:robot.width + 'px'}">
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

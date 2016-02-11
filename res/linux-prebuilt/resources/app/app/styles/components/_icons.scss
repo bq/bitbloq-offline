@@ -1,0 +1,35 @@
+$icon-size-vsmall: 13px;
+$icon-size-small: 18px;
+$icon-size-medium: 24px;
+$icon-size-large: 27px;
+$icon-size-vlarge: 50px;
+
+.icon--vsmall {
+  height: $icon-size-vsmall;
+  width: $icon-size-vsmall;
+}
+
+.icon--small {
+  height: $icon-size-small;
+  width: $icon-size-small;
+}
+
+.icon--medium {
+  height: $icon-size-medium;
+  width: $icon-size-medium;
+}
+
+.icon--large {
+  height: $icon-size-large;
+  width: $icon-size-large;
+}
+
+.icon--vlarge {
+  height: $icon-size-vlarge;
+  width: $icon-size-vlarge;
+}
+
+.icon--text {
+  display: inline-block;
+  vertical-align: middle;
+}
