@@ -31,7 +31,7 @@ angular.module('bitbloqOffline')
     function openProject() {
       console.log(this.name);
       var filePath = nodeDialog.showOpenDialog({
-        properties: ['openFile', 'openDirectory', 'createDirectory'],
+        properties: ['openFile', 'createDirectory'],
         filters: [{
           name: 'Bitbloq',
           extensions: ['json']
