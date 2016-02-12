@@ -8,7 +8,7 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-    .controller('SoftwareTabCtrl', function($scope, common, bloqs) {
+    .controller('SoftwareTabCtrl', function($scope, common, bloqs, $translate, $rootScope) {
         console.log('SoftwareTabCtrl', $scope.$parent.$id);
 
         $scope.init = function() {
@@ -36,6 +36,10 @@ angular.module('bitbloqOffline')
             $scope.arduinoMainBloqs.loopBloq.doConnectable();
 
             bloqs.updateDropdowns();
+            bloqs.translateBloqs($translate.use());
+            $rootScope.$on('$translateChangeStart', function(evt, key) {
+                   bloqs.translateBloqs(key.language);
+               });
         };
 
         var fs = require('fs'),
