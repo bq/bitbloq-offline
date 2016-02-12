@@ -2,65 +2,71 @@
 <html data-ng-app="bitbloqOffline">
 
 <head>
-  <title>Bitbloq Offline</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <!-- bower:css -->
-  <link rel="stylesheet" href="../bower_components/bloqs/dist/bloqs.css" />
-  <link rel="stylesheet" href="../bower_components/ng-dialog/css/ngDialog.css" />
-  <link rel="stylesheet" href="../bower_components/ng-dialog/css/ngDialog-theme-default.css" />
-  <!-- endbower -->
-  <link rel="stylesheet" href="styles/main.css" />
+    <title>Bitbloq Offline</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/bloqs/dist/bloqs.css" />
+    <link rel="stylesheet" href="../bower_components/prism/themes/prism.css" />
+    <link rel="stylesheet" href="../bower_components/ng-dialog/css/ngDialog.css" />
+    <link rel="stylesheet" href="../bower_components/ng-dialog/css/ngDialog-theme-default.css" />
+    <!-- endbower -->
+    <link rel="stylesheet" href="../bower_components/prism/plugins/line-numbers/prism-line-numbers.css" />
+    <link rel="stylesheet" href="styles/main.css" />
 </head>
 
 <body>
-
-  <div ng-include="'images/sprite.svg'" ng-hide="true"></div>
-  <div data-ng-include="'views/components/alerts.html'" ng-controller="AlertsCtrl" class="alerts--container"></div>
-  <div data-ng-view=""></div>
-  <!-- bower:js -->
-  <script>
+    <div ng-include="'images/sprite.svg'" ng-hide="true"></div>
+    <div data-ng-include="'views/components/alerts.html'" ng-controller="AlertsCtrl" class="alerts--container"></div>
+    <div data-ng-view=""></div>
+    <script>
     window.$ = window.JQuery = window.jQuery = require('jquery');
-  </script>
-  <script src="../bower_components/angular/angular.js"></script>
-  <script src="../bower_components/angular-route/angular-route.min.js"></script>
-  <script src="../bower_components/angular-websocket/angular-websocket.min.js"></script>
-  <script src="../bower_components/angular-clipboard/angular-clipboard.js"></script>
-  <script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-  <script src="../bower_components/lodash/lodash.js"></script>
-  <script src="../bower_components/jsplumb/dist/js/jsPlumb-2.0.5.js"></script>
-  <script src="../bower_components/angular-translate/angular-translate.js"></script>
-  <script src="../bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
-  <script src="../bower_components/jquery-auto-grow-input/jquery.auto-grow-input.min.js"></script>
-  <script src="../bower_components/autogrow/autogrow.js"></script>
-  <script src="../bower_components/bloqs/dist/bloqs.min.js"></script>
-  <script src="../bower_components/ng-dialog/js/ngDialog.js"></script>
-  <!-- endbower -->
-  <script src="scripts/app.js"></script>
-  <script src="scripts/WSHubsApi.js"></script>
-  <script src="scripts/factories/bloqs.factory.js"></script>
-  <script src="scripts/factories/node.factory.js"></script>
-  <script src="scripts/factories/web2board.js"></script>
-  <script src="scripts/services/lodash.factory.js"></script>
-  <script src="scripts/services/common.js"></script>
-  <script src="scripts/services/commonModals.js"></script>
-  <script src="scripts/services/alerts.js"></script>
-  <script src="scripts/services/hw2Bloqs.js"></script>
-  <script src="scripts/services/utils.js"></script>
-  <script src="scripts/services/nodeUtils.js"></script>
-  <script src="scripts/services/projectApi.js"></script>
-  <script src="scripts/directives/tab.js"></script>
-  <script src="scripts/directives/tabset.js"></script>
-  <script src="scripts/directives/dropdown.js"></script>
-  <script src="scripts/directives/toolbox.js"></script>
-  <script src="scripts/directives/bitbloqBloqCreator.js"></script>
-  <script src="scripts/directives/drag&drop.js"></script>
-  <script src="scripts/controllers/bloqsProject.js"></script>
-  <script src="scripts/controllers/actionBar.js"></script>
-  <script src="scripts/controllers/softwareTab.js"></script>
-  <script src="scripts/controllers/toolboxHW.js"></script>
-  <script src="scripts/controllers/toolboxSW.js"></script>
-  <script src="scripts/controllers/hardwareTab.js"></script>
-  <script src="scripts/controllers/alerts.js"></script>
+    </script>
+    <!-- bower:js -->
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-route/angular-route.js"></script>
+    <script src="../bower_components/angular-websocket/angular-websocket.min.js"></script>
+    <script src="../bower_components/angular-clipboard/angular-clipboard.js"></script>
+    <script src="../bower_components/lodash/lodash.js"></script>
+    <script src="../bower_components/jsplumb/dist/js/jsPlumb-2.0.5.js"></script>
+    <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="../bower_components/angular-translate/angular-translate.js"></script>
+    <script src="../bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <script src="../bower_components/jquery-auto-grow-input/jquery.auto-grow-input.min.js"></script>
+    <script src="../bower_components/autogrow/autogrow.js"></script>
+    <script src="../bower_components/bloqs/dist/bloqs.min.js"></script>
+    <script src="../bower_components/js-beautify/js/lib/beautify.js"></script>
+    <script src="../bower_components/js-beautify/js/lib/beautify-css.js"></script>
+    <script src="../bower_components/js-beautify/js/lib/beautify-html.js"></script>
+    <script src="../bower_components/prism/prism.js"></script>
+    <script src="../bower_components/ng-dialog/js/ngDialog.js"></script>
+    <!-- endbower -->
+    <script src="../bower_components/prism/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/WSHubsApi.js"></script>
+    <script src="scripts/factories/bloqs.factory.js"></script>
+    <script src="scripts/factories/node.factory.js"></script>
+    <script src="scripts/factories/web2board.js"></script>
+    <script src="scripts/services/lodash.factory.js"></script>
+    <script src="scripts/services/common.js"></script>
+    <script src="scripts/services/commonModals.js"></script>
+    <script src="scripts/services/hw2Bloqs.js"></script>
+    <script src="scripts/services/utils.js"></script>
+    <script src="scripts/services/nodeUtils.js"></script>
+    <script src="scripts/services/projectApi.js"></script>
+    <script src="scripts/services/alerts.js"></script>
+    <script src="scripts/directives/tab.js"></script>
+    <script src="scripts/directives/tabset.js"></script>
+    <script src="scripts/directives/dropdown.js"></script>
+    <script src="scripts/directives/toolbox.js"></script>
+    <script src="scripts/directives/bitbloqBloqCreator.js"></script>
+    <script src="scripts/directives/drag&drop.js"></script>
+    <script src="scripts/controllers/bloqsProject.js"></script>
+    <script src="scripts/controllers/actionBar.js"></script>
+    <script src="scripts/controllers/softwareTab.js"></script>
+    <script src="scripts/controllers/toolboxHW.js"></script>
+    <script src="scripts/controllers/toolboxSW.js"></script>
+    <script src="scripts/controllers/hardwareTab.js"></script>
+    <script src="scripts/controllers/alerts.js"></script>
 </body>
 
 </html>
