@@ -97,14 +97,6 @@ module.exports = function(grunt) {
                 }]
             }
         },
-        chmod: {
-            options: {
-                mode: '755'
-            },
-            linux: {
-                src: ['dist/linux/electron']
-            }
-        },
         exec: {
             electron: 'electron .',
             stop_electron: 'killall electron || killall Electron || true'
@@ -121,6 +113,14 @@ module.exports = function(grunt) {
                     atBegin: true,
                     interrupt: true
                 }
+            }
+        },
+        shell: {
+            options: {
+                stderr: false
+            },
+            target: {
+                command: 'chmod -R 755 dist/'
             }
         }
     });
@@ -141,11 +141,11 @@ module.exports = function(grunt) {
             'copy:prebuilt',
             'clean:linux',
             'copy:linux',
-            'chmod:linux',
             'clean:windows',
             'copy:windows',
             'clean:mac',
-            'copy:mac'
+            'copy:mac',
+            'shell'
         ]);
     });
 
