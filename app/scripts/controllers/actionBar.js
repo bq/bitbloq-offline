@@ -8,7 +8,7 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-  .controller('ActionBarCtrl', function($scope, $route, web2board, clipboard, bloqsUtils, utils, projectApi, nodeDialog, nodeFs, nodeUtils, commonModals, alertsService) {
+  .controller('ActionBarCtrl', function($scope, $route, web2board, _, clipboard, bloqsUtils, utils, projectApi, nodeDialog, nodeFs, nodeUtils, commonModals, alertsService) {
     console.log('ActionBarCtrl', $scope.$parent.$id);
 
     $scope.actions = {
@@ -23,6 +23,8 @@ angular.module('bitbloqOffline')
       loadToBoard: loadToBoard
     };
 
+
+    $scope.isInProcess = web2board.isInProcess;
 
     function newProject() {
       $route.reload();
@@ -86,14 +88,24 @@ angular.module('bitbloqOffline')
     }
 
     function loadToBoard() {
-      console.log(this);
+      var code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
+      var boardReference = _.find($scope.hardware.boardList, function(b) {
+          return b.name === $scope.project.hardware.board;
+      });
+      web2board.upload(boardReference, code);
     }
 
-    function verifyCode(code) {
-      code = code || '';
+    function verifyCode() {
+      var code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
       web2board.verify(code);
     }
 
+    function startSM() {
+      var boardReference = _.find($scope.hardware.boardList, function(b) {
+          return b.name === $scope.project.hardware.board;
+      });
+      web2board.serialMonitor(boardReference);
+    }
 
     $scope.menuTree = {
       fileMenuItems: {
@@ -141,6 +153,15 @@ angular.module('bitbloqOffline')
           name: 'makeActions_copyCode',
           icon: '#copiarTexto',
           action: copyCodeToClipboard,
+          disabled: false
+        }]
+      },
+      viewMenuItems: {
+        name: 'see',
+        items: [{
+          name: 'show-console',
+          icon: '#Ver_verSerialMonitor',
+          action: startSM,
           disabled: false
         }]
       }

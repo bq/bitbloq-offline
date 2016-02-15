@@ -1,0 +1,4 @@
+**/.pioenvs/
+**/src/main.cpp
+**/info.log
+**/config.json

@@ -5,7 +5,7 @@
   <div class="actionbar__menu__right">
     <ul class="actionbar__software__actions">
       <li class="actionbar__software__actions__item">
-        <button class="actionbar__software__actions__item__button" ng-click="actions.verifyCode()">
+        <button class="actionbar__software__actions__item__button"  data-ng-disabled="isInProcess()" data-ng-class="{'btn--make--disabled':isInProcess()}" ng-click="actions.verifyCode()">
           <svg class="icon--medium icon--text">
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#verificar"></use>
           </svg>
