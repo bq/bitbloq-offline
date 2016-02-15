@@ -1,0 +1,6605 @@
+[{
+    "type": "output",
+    "name": "arrayClassVariable",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-array-class-variable",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-array-class-variable-variable"
+        }, {
+            "id": "VAR",
+            "alias": "dynamicDropdown",
+            "options": "softwareVars"
+        }, {
+            "alias": "text",
+            "value": "["
+        }, {
+            "id": "POSITION",
+            "alias": "numberInput",
+            "value": 0
+        }, {
+            "alias": "text",
+            "value": "]"
+        }, {
+            "alias": "text",
+            "value": "bloq-invoke-class-function-class"
+        }, {
+            "id": "CLASS",
+            "alias": "dynamicDropdown",
+            "options": "objects"
+        }]
+    ],
+    "code": "{CLASS}.{VAR}[{POSITION}]",
+    "returnType": {
+        "type": "fromDynamicDropdown",
+        "idDropdown": "VAR",
+        "pointer": "true",
+        "options": "softwareVars"
+    }
+}, {
+    "type": "statement-input",
+    "name": "classChildren",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-class-children",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-class"
+        }, {
+            "id": "NAME",
+            "alias": "varInput",
+            "placeholder": "bloq-class-default"
+        }, {
+            "alias": "text",
+            "value": "bloq-class-inheritance-type"
+        }, {
+            "id": "TYPE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-class-inheritance-public",
+                "value": "public"
+            }, {
+                "label": "bloq-class-inheritance-protected",
+                "value": "protected"
+            }, {
+                "label": "bloq-class-inheritance-private",
+                "value": "private"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-class-from"
+        }, {
+            "id": "PARENT",
+            "alias": "dynamicDropdown",
+            "options": "classes"
+        }]
+    ],
+    "createDynamicContent": "classes",
+    "code": "class {NAME} : public {PARENT}{{STATEMENTS}};",
+    "hCode": "class {NAME}: public {PARENT}{{STATEMENTS}};",
+    "cppCode": "",
+    "returnType": {
+        "type": "simple",
+        "value": "class"
+    }
+}, {
+    "type": "statement-input",
+    "name": "constructorClassArguments",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "ebd787f9-00db-4ae3-8deb-3aeacca084d5"
+    }],
+    "bloqClass": "bloq-constructor-arguments",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-constructor-arguments"
+        }, {
+            "bloqInputId": "ARGS",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "ebd787f9-00db-4ae3-8deb-3aeacca084d5"
+        }]
+    ],
+    "code": "{CLASS-OUTSIDE} ({ARGS}){{STATEMENTS}};",
+    "hCode": "{CLASS-OUTSIDE} ({ARGS});",
+    "cppCode": "{CLASS-OUTSIDE} :: {CLASS-OUTSIDE} ({ARGS}){{STATEMENTS}};"
+}, {
+    "type": "statement",
+    "name": "invokeArgumentsClass",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "1f1ea7c5-e6f9-4584-9526-4a4a7a352a6d"
+    }],
+    "bloqClass": "bloq-invoke-arguments-class",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-invoke-arguments-class"
+        }, {
+            "id": "CLASS",
+            "alias": "dynamicDropdown",
+            "options": "classes"
+        }, {
+            "alias": "text",
+            "value": "bloq-invoke-arguments-class-name"
+        }, {
+            "id": "NAME",
+            "alias": "varInput",
+            "value": ""
+        }, {
+            "alias": "text",
+            "value": "bloq-invoke-arguments-args"
+        }, {
+            "bloqInputId": "ARGS",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "1f1ea7c5-e6f9-4584-9526-4a4a7a352a6d"
+        }]
+    ],
+    "createDynamicContent": "objects",
+    "code": "{CLASS} {NAME}({ARGS});",
+    "returnType": {
+        "type": "simple",
+        "value": "var"
+    }
+}, {
+    "type": "statement",
+    "name": "invokeClassFunctionWithArguments",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "7faa4be0-7748-4290-8239-d7ce3baa3454"
+    }],
+    "bloqClass": "bloq-invoke-class-function-args",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-invoke-class-function-exec"
+        }, {
+            "id": "FUNCTION",
+            "alias": "dynamicDropdown",
+            "options": "voidFunctions"
+        }, {
+            "alias": "text",
+            "value": "bloq-invoke-class-function-class"
+        }, {
+            "id": "CLASS",
+            "alias": "dynamicDropdown",
+            "options": "objects"
+        }, {
+            "alias": "text",
+            "value": "bloq-invoke-class-function-args"
+        }, {
+            "bloqInputId": "ARGS",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "7faa4be0-7748-4290-8239-d7ce3baa3454"
+        }]
+    ],
+    "code": "{CLASS}.{FUNCTION}({ARGS});",
+    "dynamicDropdown": {
+        "idDropdown": "FUNCTION",
+        "options": "voidFunctions"
+    }
+}, {
+    "type": "output",
+    "name": "invokeClassReturnFunctionWithArguments",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "39dd627f-4fa0-4e0b-9a0a-0ed8b6e9c128"
+    }],
+    "bloqClass": "bloq-invoke-class-return-function",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-invoke-class-return-function-args-exec"
+        }, {
+            "id": "FUNCTION",
+            "alias": "dynamicDropdown",
+            "options": "returnFunctions"
+        }, {
+            "alias": "text",
+            "value": "bloq-invoke-class-return-function-args-class"
+        }, {
+            "id": "CLASS",
+            "alias": "dynamicDropdown",
+            "options": "objects"
+        }, {
+            "alias": "text",
+            "value": "bloq-invoke-class-return-function-args-args"
+        }, {
+            "bloqInputId": "ARGS",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "39dd627f-4fa0-4e0b-9a0a-0ed8b6e9c128"
+        }]
+    ],
+    "code": "{CLASS}.{FUNCTION}({ARGS});",
+    "returnType": {
+        "type": "fromDynamicDropdown",
+        "idDropdown": "FUNCTION",
+        "options": "returnFunctions"
+    }
+}, {
+    "type": "statement-input",
+    "name": "private",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-private",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-private"
+        }]
+    ],
+    "code": "private : {STATEMENTS}",
+    "hCode": "private : {STATEMENTS}",
+    "cppCode": ""
+}, {
+    "type": "statement-input",
+    "name": "protected",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-protected",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-protected"
+        }]
+    ],
+    "code": "protected : {STATEMENTS}",
+    "hCode": "protected : {STATEMENTS}",
+    "cppCode": ""
+}, {
+    "type": "statement-input",
+    "name": "public",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-public",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-public"
+        }]
+    ],
+    "code": "public : {STATEMENTS}",
+    "hCode": "public : {STATEMENTS}",
+    "cppCode": ""
+}, {
+    "type": "statement",
+    "name": "setClassArrayVariable",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": {
+            "type": "fromDynamicDropdown",
+            "idDropdown": "NAME",
+            "pointer": "true",
+            "options": "softwareVars"
+        },
+        "name": "c9e7554e-c725-4183-8446-950faf006a5d"
+    }],
+    "bloqClass": "bloq-set-class-variableArray",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-set-class-variableArray-variable"
+        }, {
+            "id": "NAME",
+            "alias": "dynamicDropdown",
+            "options": "softwareVars"
+        }, {
+            "alias": "text",
+            "value": "["
+        }, {
+            "id": "ITERATOR",
+            "alias": "numberInput",
+            "value": 0
+        }, {
+            "alias": "text",
+            "value": "]"
+        }, {
+            "alias": "text",
+            "value": "bloq-invoke-class-function-class"
+        }, {
+            "id": "CLASS",
+            "alias": "dynamicDropdown",
+            "options": "objects"
+        }, {
+            "alias": "text",
+            "value": "="
+        }, {
+            "bloqInputId": "VALUE",
+            "alias": "bloqInput",
+            "acceptType": {
+                "type": "fromDynamicDropdown",
+                "idDropdown": "NAME",
+                "pointer": "true",
+                "options": "softwareVars"
+            },
+            "name": "c9e7554e-c725-4183-8446-950faf006a5d"
+        }]
+    ],
+    "code": "{CLASS}.{NAME}[{ITERATOR}] = {VALUE};"
+}, {
+    "type": "statement-input",
+    "name": "class",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-class",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-class"
+        }, {
+            "id": "NAME",
+            "alias": "varInput",
+            "placeholder": "bloq-class-default"
+        }]
+    ],
+    "createDynamicContent": "classes",
+    "code": "class {NAME}{{STATEMENTS}};",
+    "hCode": "class {NAME}{{STATEMENTS}};",
+    "cppCode": "",
+    "returnType": {
+        "type": "simple",
+        "value": "class"
+    }
+}, {
+    "type": "statement-input",
+    "name": "constructorClass",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-constructor",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-constructor"
+        }]
+    ],
+    "code": "{CLASS-OUTSIDE}(){{STATEMENTS}};",
+    "hCode": "{CLASS-OUTSIDE} ();",
+    "cppCode": "{CLASS-OUTSIDE} :: {CLASS-OUTSIDE} (){{STATEMENTS}};"
+}, {
+    "type": "statement",
+    "name": "includeLib",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-include-lib",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-include-lib-exec"
+        }, {
+            "id": "LIB",
+            "alias": "dynamicDropdown",
+            "options": "libraries"
+        }]
+    ],
+    "code": "#include \"{LIB}\";"
+}, {
+    "type": "statement",
+    "name": "invokeClass",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-invoke-class",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-invoke-class"
+        }, {
+            "id": "CLASS",
+            "alias": "dynamicDropdown",
+            "options": "classes"
+        }, {
+            "alias": "text",
+            "value": "bloq-invoke-class-name"
+        }, {
+            "id": "NAME",
+            "alias": "varInput",
+            "value": ""
+        }, {
+            "alias": "text",
+            "value": "bloq-invoke-class-function-class"
+        }, {
+            "id": "CLASS",
+            "alias": "dynamicDropdown",
+            "options": "classes"
+        }]
+    ],
+    "createDynamicContent": "objects",
+    "code": "{CLASS} {NAME};",
+    "returnType": {
+        "type": "simple",
+        "value": "var"
+    }
+}, {
+    "type": "statement",
+    "name": "invokeClassFunction",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-invoke-class-function",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-invoke-class-function-exec"
+        }, {
+            "id": "FUNCTION",
+            "alias": "dynamicDropdown",
+            "options": "voidFunctions"
+        }, {
+            "alias": "text",
+            "value": "bloq-invoke-class-function-class"
+        }, {
+            "id": "CLASS",
+            "alias": "dynamicDropdown",
+            "options": "objects"
+        }]
+    ],
+    "code": "{CLASS}.{FUNCTION}();",
+    "dynamicDropdown": {
+        "idDropdown": "FUNCTION",
+        "options": "voidFunctions"
+    }
+}, {
+    "type": "output",
+    "name": "invokeClassReturnFunction",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-invoke-class-return-function",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-invoke-class-return-function-exec"
+        }, {
+            "id": "FUNCTION",
+            "alias": "dynamicDropdown",
+            "options": "returnFunctions"
+        }, {
+            "alias": "text",
+            "value": "bloq-invoke-class-function-class"
+        }, {
+            "id": "CLASS",
+            "alias": "dynamicDropdown",
+            "options": "objects"
+        }]
+    ],
+    "code": "{CLASS}.{FUNCTION}()",
+    "returnType": {
+        "type": "fromDynamicDropdown",
+        "idDropdown": "FUNCTION",
+        "options": "returnFunctions"
+    }
+}, {
+    "type": "output",
+    "name": "selectClassVariable",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-select-class-variable",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-select-class-variable-variable"
+        }, {
+            "id": "VAR",
+            "alias": "dynamicDropdown",
+            "options": "softwareVars"
+        }, {
+            "alias": "text",
+            "value": "bloq-invoke-class-function-class"
+        }, {
+            "id": "CLASS",
+            "alias": "dynamicDropdown",
+            "options": "objects"
+        }]
+    ],
+    "code": "{CLASS}.{VAR}",
+    "returnType": {
+        "type": "fromDynamicDropdown",
+        "idDropdown": "VAR",
+        "options": "softwareVars"
+    }
+}, {
+    "type": "statement",
+    "name": "setClassVariable",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": {
+            "type": "fromDynamicDropdown",
+            "idDropdown": "NAME",
+            "options": "softwareVars"
+        },
+        "name": "e18c252d-084b-40f2-8651-38ee0a24ecd5"
+    }],
+    "bloqClass": "bloq-set-class-variable",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-set-class-variable-variable"
+        }, {
+            "id": "NAME",
+            "alias": "dynamicDropdown",
+            "options": "softwareVars"
+        }, {
+            "alias": "text",
+            "value": "bloq-invoke-class-function-class"
+        }, {
+            "id": "CLASS",
+            "alias": "dynamicDropdown",
+            "options": "objects"
+        }, {
+            "alias": "text",
+            "value": "="
+        }, {
+            "bloqInputId": "VALUE",
+            "alias": "bloqInput",
+            "acceptType": {
+                "type": "fromDynamicDropdown",
+                "idDropdown": "NAME",
+                "options": "softwareVars"
+            },
+            "name": "e18c252d-084b-40f2-8651-38ee0a24ecd5"
+        }]
+    ],
+    "code": "{CLASS}.{NAME} = {VALUE};"
+}, {
+    "type": "statement",
+    "name": "code",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-code",
+    "content": [
+        [{
+            "id": "CODE",
+            "alias": "multilineCodeInput",
+            "value": "",
+            "placeholder": "bloq-code-writeYourCode"
+        }]
+    ],
+    "code": "{CODE}\n"
+}, {
+    "type": "statement",
+    "name": "comment",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-comment",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-comment-comment"
+        }, {
+            "id": "COMMENT",
+            "alias": "multilineCommentInput",
+            "placeholder": "bloq-comment-default"
+        }]
+    ],
+    "code": "/*\n{COMMENT}\n*/"
+}, {
+    "type": "statement",
+    "name": "enableInterrupt",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-enable-interrupt",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-enable-interrupt"
+        }, {
+            "id": "FUNC",
+            "alias": "dynamicDropdown",
+            "options": "voidFunctions"
+        }, {
+            "alias": "text",
+            "value": "bloq-enable-interrupt-pin"
+        }, {
+            "id": "PIN",
+            "alias": "dynamicDropdown",
+            "options": "varComponents"
+        }, {
+            "id": "STATE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-enable-interrupt-rising",
+                "value": "RISING"
+            }, {
+                "label": "bloq-enable-interrupt-falling",
+                "value": "FALLING"
+            }, {
+                "label": "bloq-enable-interrupt-change",
+                "value": "CHANGE"
+            }]
+        }]
+    ],
+    "code": "enableInterrupt({PIN}, {FUNC}, {STATE});"
+}, {
+    "type": "output",
+    "name": "convert",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "number",
+        "name": "3c5713c8-ebc9-4256-aed6-720691776c03"
+    }],
+    "bloqClass": "bloq-convert",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-convert-convert"
+        }, {
+            "bloqInputId": "NUMBER",
+            "alias": "bloqInput",
+            "acceptType": "number",
+            "name": "3c5713c8-ebc9-4256-aed6-720691776c03"
+        }, {
+            "alias": "text",
+            "value": "bloq-convert-to"
+        }, {
+            "id": "TYPE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-convert-dec",
+                "value": "DEC"
+            }, {
+                "label": "bloq-convert-hex",
+                "value": "HEX"
+            }, {
+                "label": "bloq-convert-oct",
+                "value": "OCT"
+            }, {
+                "label": "bloq-convert-bin",
+                "value": "BIN"
+            }]
+        }]
+    ],
+    "code": "({NUMBER},{TYPE});",
+    "returnType": {
+        "type": "simple",
+        "value": "float"
+    }
+}, {
+    "type": "statement",
+    "name": "serialSend",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "b3d03b2e-d7ad-48c0-a5ad-b058e53de522"
+    }],
+    "bloqClass": "bloq-serial-send",
+    "content": [
+        [{
+            "id": "SERIAL",
+            "alias": "dynamicDropdown",
+            "options": "serialElements"
+        }, {
+            "alias": "text",
+            "value": "bloq-serial-send-send"
+        }, {
+            "bloqInputId": "DATA",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "b3d03b2e-d7ad-48c0-a5ad-b058e53de522"
+        }, {
+            "id": "FUNCTION",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-serial-send-println",
+                "value": "println"
+            }, {
+                "label": "bloq-serial-send-print",
+                "value": "print"
+            }]
+        }]
+    ],
+    "code": "{SERIAL}.{FUNCTION}({DATA});"
+}, {
+    "type": "output",
+    "name": "serialReceive",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-serial-receiver",
+    "content": [
+        [{
+            "id": "SERIAL",
+            "alias": "dynamicDropdown",
+            "options": "serialElements"
+        }, {
+            "alias": "text",
+            "value": "bloq-serial-receiver-receive"
+        }]
+    ],
+    "code": "{SERIAL}.readString()",
+    "returnType": {
+        "type": "simple",
+        "value": "String"
+    }
+}, {
+    "type": "statement",
+    "name": "serialSend-v1",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "6f39432e-540f-46c1-a166-a1960f5bf239"
+    }],
+    "bloqClass": "bloq-serial-send",
+    "content": [
+        [{
+            "id": "SERIAL",
+            "alias": "dynamicDropdown",
+            "options": "serialElements"
+        }, {
+            "alias": "text",
+            "value": "bloq-serial-send-send"
+        }, {
+            "bloqInputId": "DATA",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "6f39432e-540f-46c1-a166-a1960f5bf239"
+        }, {
+            "id": "LN",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-serial-send-println",
+                "value": "println"
+            }, {
+                "label": "bloq-serial-send-print",
+                "value": "print"
+            }]
+        }]
+    ],
+    "code": "{SERIAL}.{LN}({DATA});"
+}, {
+    "type": "statement",
+    "name": "rgbLed",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-rgbLed",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-rgbLed"
+        }, {
+            "id": "LED",
+            "alias": "dynamicDropdown",
+            "options": "rgbs"
+        }, {
+            "alias": "text",
+            "value": "bloq-rgbLed-red"
+        }, {
+            "id": "RED",
+            "alias": "numberInput",
+            "value": 0
+        }, {
+            "alias": "text",
+            "value": "bloq-rgbLed-green"
+        }, {
+            "id": "GREEN",
+            "alias": "numberInput",
+            "value": 0
+        }, {
+            "alias": "text",
+            "value": "bloq-rgbLed-blue"
+        }, {
+            "id": "BLUE",
+            "alias": "numberInput",
+            "value": 0
+        }]
+    ],
+    "code": "{LED}.setRGBcolor({RED},{GREEN},{BLUE});"
+}, {
+    "type": "statement",
+    "name": "rgbLedFade",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-rgbLed-fade",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-rgbLed-fade"
+        }, {
+            "id": "LED",
+            "alias": "dynamicDropdown",
+            "options": "rgbs"
+        }, {
+            "alias": "text",
+            "value": "bloq-rgbLed-fade-red"
+        }, {
+            "id": "RED",
+            "alias": "numberInput",
+            "value": 0
+        }, {
+            "alias": "text",
+            "value": "bloq-rgbLed-fade-green"
+        }, {
+            "id": "GREEN",
+            "alias": "numberInput",
+            "value": 0
+        }, {
+            "alias": "text",
+            "value": "bloq-rgbLed-fade-blue"
+        }, {
+            "id": "BLUE",
+            "alias": "numberInput",
+            "value": 0
+        }]
+    ],
+    "code": "{LED}.crossFade({RED},{GREEN},{BLUE});"
+}, {
+    "type": "statement",
+    "name": "rgbLedSimple",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-rgbLed-simple",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-rgbLed-simple"
+        }, {
+            "id": "LED",
+            "alias": "dynamicDropdown",
+            "options": "rgbs"
+        }, {
+            "alias": "text",
+            "value": "bloq-rgbLed-simple-color"
+        }, {
+            "id": "COLOR",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-rgbLed-simple-white",
+                "value": "255,255,255"
+            }, {
+                "label": "bloq-rgbLed-simple-yellow",
+                "value": "255,255,0"
+            }, {
+                "label": "bloq-rgbLed-simple-orange",
+                "value": "200,50,0"
+            }, {
+                "label": "bloq-rgbLed-simple-red",
+                "value": "255,0,0"
+            }, {
+                "label": "bloq-rgbLed-simple-green",
+                "value": "0,255,0"
+            }, {
+                "label": "bloq-rgbLed-simple-dark-green",
+                "value": "0,60,102"
+            }, {
+                "label": "bloq-rgbLed-simple-blue",
+                "value": "40,40,255"
+            }, {
+                "label": "bloq-rgbLed-simple-dark-blue",
+                "value": "0,0,255"
+            }, {
+                "label": "bloq-rgbLed-simple-pink",
+                "value": "255,0,255"
+            }]
+        }]
+    ],
+    "code": "{LED}.setRGBcolor({COLOR});"
+}, {
+    "type": "statement",
+    "name": "rgbLedAdvanced",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "c2ad561c-c85c-4d91-afc2-898ecd1c76fe"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "b060e2ff-ec41-464e-a116-7e8de821c5f6"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "83c6a168-eb3b-4d5d-860b-c324c21fe589"
+    }],
+    "bloqClass": "bloq-rgbLed-advanced",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-rgbLed"
+        }, {
+            "id": "LED",
+            "alias": "dynamicDropdown",
+            "options": "rgbs"
+        }, {
+            "alias": "text",
+            "value": "bloq-rgbLed-red"
+        }, {
+            "bloqInputId": "RED",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "c2ad561c-c85c-4d91-afc2-898ecd1c76fe"
+        }, {
+            "alias": "text",
+            "value": "bloq-rgbLed-green"
+        }, {
+            "bloqInputId": "GREEN",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "b060e2ff-ec41-464e-a116-7e8de821c5f6"
+        }, {
+            "alias": "text",
+            "value": "bloq-rgbLed-blue"
+        }, {
+            "bloqInputId": "BLUE",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "83c6a168-eb3b-4d5d-860b-c324c21fe589"
+        }]
+    ],
+    "code": "{LED}.setRGBcolor({RED},{GREEN},{BLUE});"
+}, {
+    "type": "output",
+    "name": "analogReadAdvanced",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "34d49f03-1dae-4c1c-b9bc-b13d9a949b90"
+    }],
+    "bloqClass": "bloq-analog-read-advanced",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-analog-read-advanced-readpin"
+        }, {
+            "bloqInputId": "PIN",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "34d49f03-1dae-4c1c-b9bc-b13d9a949b90"
+        }]
+    ],
+    "code": "'{PIN}'.indexOf('A') !== -1 ? 'analogRead({PIN})'.replace(/\"/g, '') : 'analogRead({PIN})'",
+    "returnType": {
+        "type": "simple",
+        "value": "float"
+    }
+}, {
+    "type": "statement",
+    "name": "analogWrite",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "8b90519c-bf1b-4a1c-a031-7b295ea41dde"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "f1b3be59-926d-4577-8f52-1ebbfe614437"
+    }],
+    "bloqClass": "bloq-pin-writte-advanced",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-pin-analog-write"
+        }, {
+            "bloqInputId": "PIN",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "8b90519c-bf1b-4a1c-a031-7b295ea41dde"
+        }, {
+            "alias": "text",
+            "value": "bloq-pin-analog-write-data"
+        }, {
+            "bloqInputId": "DATA",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "f1b3be59-926d-4577-8f52-1ebbfe614437"
+        }]
+    ],
+    "code": "'{PIN}'.indexOf('A') !== -1 ? 'analogWrite({PIN},{DATA});'.replace(/\"/g, '') : 'analogWrite({PIN},{DATA});'"
+}, {
+    "type": "statement",
+    "name": "buzzerAdvanced",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "2c3e1fa0-7082-43be-ae45-d2eff0669154"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "030edb14-2291-476d-8e5d-f09db98a6d3e"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "125353f6-af02-4121-a877-c01227a1d1ca"
+    }],
+    "bloqClass": "bloq-buzzer-advance",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-buzzer-advance-sound"
+        }, {
+            "bloqInputId": "BUZZER",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "2c3e1fa0-7082-43be-ae45-d2eff0669154"
+        }, {
+            "alias": "text",
+            "value": "bloq-buzzer-advance-note"
+        }, {
+            "bloqInputId": "NOTE",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "030edb14-2291-476d-8e5d-f09db98a6d3e"
+        }, {
+            "alias": "text",
+            "value": "bloq-buzzer-advance-for"
+        }, {
+            "bloqInputId": "SECONDS",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "125353f6-af02-4121-a877-c01227a1d1ca"
+        }, {
+            "alias": "text",
+            "value": "bloq-buzzer-advance-ms"
+        }]
+    ],
+    "code": "tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});"
+}, {
+    "type": "statement",
+    "name": "continuousServoStartAdvanced-v1",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "5bed7696-d133-4382-a0ef-cb530ee53cdd"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "ef1aaadd-79ff-49ec-8ae0-3adc656fd10e"
+    }],
+    "bloqClass": "bloq-continuous-servo-start-advanced",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-continuous-servo-start-advanced-turn"
+        }, {
+            "bloqInputId": "SERVO",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "5bed7696-d133-4382-a0ef-cb530ee53cdd"
+        }, {
+            "alias": "text",
+            "value": "bloq-continuous-servo-start-advanced-direction"
+        }, {
+            "bloqInputId": "DIRECTION",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "ef1aaadd-79ff-49ec-8ae0-3adc656fd10e"
+        }]
+    ],
+    "code": "{SERVO}.write({DIRECTION});"
+}, {
+    "type": "statement",
+    "name": "continuousServoStopAdvanced",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "799f6091-0b93-43ac-ac6f-06a0fbd7396b"
+    }],
+    "bloqClass": "bloq-continuous-servo-stop-advanced",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-continuous-servo-stop-advanced-stop"
+        }, {
+            "bloqInputId": "SERVO",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "799f6091-0b93-43ac-ac6f-06a0fbd7396b"
+        }]
+    ],
+    "code": "{SERVO}.write(90);"
+}, {
+    "type": "output",
+    "name": "digitalReadAdvanced",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "920a1b38-e536-4757-a67f-c4c2b0c07be3"
+    }],
+    "bloqClass": "bloq-digital-read-advanced",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-digital-read-advanced-readpin"
+        }, {
+            "bloqInputId": "PIN",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "920a1b38-e536-4757-a67f-c4c2b0c07be3"
+        }]
+    ],
+    "code": "digitalRead({PIN})",
+    "returnType": {
+        "type": "simple",
+        "value": "float"
+    }
+}, {
+    "type": "statement",
+    "name": "digitalWrite",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "b45568fe-7f42-4f5c-9473-8d72f9ee89ce"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "2cdd6b05-8ba3-4cd4-9e44-645a411e4a5f"
+    }],
+    "bloqClass": "bloq-pin-writte-advanced",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-pin-digital-write"
+        }, {
+            "bloqInputId": "PIN",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "b45568fe-7f42-4f5c-9473-8d72f9ee89ce"
+        }, {
+            "alias": "text",
+            "value": "bloq-pin-digital-write-data"
+        }, {
+            "bloqInputId": "DATA",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "2cdd6b05-8ba3-4cd4-9e44-645a411e4a5f"
+        }]
+    ],
+    "code": "digitalWrite({PIN},{DATA});"
+}, {
+    "type": "statement",
+    "name": "lcdTurnOnOffAdvanced",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "04127aa2-a8c0-47b2-8e8a-be5ae14c6c3c"
+    }],
+    "bloqClass": "bloq-lcd-turn-on-off-advanced",
+    "content": [
+        [{
+            "id": "STATE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-lcd-turn-on-off-advanced-turnon",
+                "value": "HIGH"
+            }, {
+                "label": "bloq-lcd-turn-on-off-advanced-turnoff",
+                "value": "LOW"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-lcd-turn-on-off-advanced-lcdLigth"
+        }, {
+            "bloqInputId": "LCD",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "04127aa2-a8c0-47b2-8e8a-be5ae14c6c3c"
+        }]
+    ],
+    "code": "{LCD}.setBacklight({STATE});"
+}, {
+    "type": "statement",
+    "name": "lcdWriteAdvanced",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "4b31c24e-925b-461c-8c18-1161baf77e1c"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "c9b4250c-f087-47b4-aa42-94b9065de383"
+    }],
+    "bloqClass": "bloq-lcd-writte-advanced",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-lcd-writte-advanced-write"
+        }, {
+            "bloqInputId": "TEXT",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "4b31c24e-925b-461c-8c18-1161baf77e1c"
+        }, {
+            "alias": "text",
+            "value": "bloq-lcd-writte-advanced-inLCD"
+        }, {
+            "bloqInputId": "LCD",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "c9b4250c-f087-47b4-aa42-94b9065de383"
+        }]
+    ],
+    "code": "{LCD}.print({TEXT});"
+}, {
+    "type": "statement",
+    "name": "lcdWritePositionAdvanced-v1",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "96e066b3-9975-4dd9-9437-6a4431480f88"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "684649bf-f333-43db-b9a1-f402495b3b44"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "acb6b505-508c-44ac-8b44-ed7de8c65d4b"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "12b1bdde-21eb-482e-a1dc-7f252cc32c80"
+    }],
+    "bloqClass": "bloq-lcd-writte",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-lcd-writte-write"
+        }, {
+            "bloqInputId": "TEXT",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "96e066b3-9975-4dd9-9437-6a4431480f88"
+        }, {
+            "alias": "text",
+            "value": "bloq-lcd-writte-inLCD"
+        }, {
+            "bloqInputId": "LCD",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "684649bf-f333-43db-b9a1-f402495b3b44"
+        }, {
+            "alias": "text",
+            "value": "bloq-lcd-writte-advanced-inPosition"
+        }, {
+            "bloqInputId": "COLUMN",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "acb6b505-508c-44ac-8b44-ed7de8c65d4b"
+        }, {
+            "bloqInputId": "ROW",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "12b1bdde-21eb-482e-a1dc-7f252cc32c80"
+        }]
+    ],
+    "code": "{LCD}.setCursor({COLUMN},{ROW});{LCD}.print({TEXT});"
+}, {
+    "type": "statement",
+    "name": "ledAdvanced",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "532e460c-8952-4ae6-a0b5-34d0acca067d"
+    }],
+    "bloqClass": "bloq-led-advanced",
+    "content": [
+        [{
+            "id": "STATE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-led-advanced-turnon",
+                "value": "HIGH"
+            }, {
+                "label": "bloq-led-advanced-turnoff",
+                "value": "LOW"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-led-advanced-theLED"
+        }, {
+            "bloqInputId": "LED",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "532e460c-8952-4ae6-a0b5-34d0acca067d"
+        }]
+    ],
+    "code": "digitalWrite({LED},{STATE});"
+}, {
+    "type": "statement",
+    "name": "oscillatorAdvanced",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "6249da75-1c5d-47d4-85a8-23a7affc0d2f"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "07d8b688-3360-4c1a-9b15-7456f963a75c"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "d77a9960-b619-44c4-97d9-0871b216ab6a"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "0ca33a4f-4c7d-498c-b13e-998def2703ea"
+    }],
+    "bloqClass": "bloq-oscillator-advanced",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-oscillator-advanced-oscillate"
+        }, {
+            "bloqInputId": "OSCILLATOR",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "6249da75-1c5d-47d4-85a8-23a7affc0d2f"
+        }, {
+            "alias": "text",
+            "value": "bloq-oscillator-advanced-around"
+        }, {
+            "bloqInputId": "PHASE",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "07d8b688-3360-4c1a-9b15-7456f963a75c"
+        }, {
+            "alias": "text",
+            "value": "bloq-oscillator-advanced-amplitude"
+        }, {
+            "bloqInputId": "AMPLITUDE",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "d77a9960-b619-44c4-97d9-0871b216ab6a"
+        }, {
+            "alias": "text",
+            "value": "bloq-oscillator-advanced-speed"
+        }, {
+            "bloqInputId": "SPEED",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "0ca33a4f-4c7d-498c-b13e-998def2703ea"
+        }]
+    ],
+    "code": "{OSCILLATOR}.SetO({PHASE});\n{OSCILLATOR}.SetA({AMPLITUDE});\n{OSCILLATOR}.SetT({SPEED});\n{OSCILLATOR}.refresh();"
+}, {
+    "type": "statement",
+    "name": "oscillatorStartAdvanced",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "5b434654-1ffb-40da-a151-54c686540210"
+    }],
+    "bloqClass": "bloq-oscillator-start-advanced",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-oscillator-start-advanced-oscillator"
+        }, {
+            "bloqInputId": "OSCILLATOR",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "5b434654-1ffb-40da-a151-54c686540210"
+        }]
+    ],
+    "code": "{OSCILLATOR}.start()"
+}, {
+    "type": "statement",
+    "name": "oscillatorStopAdvanced",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "cc83fdfd-136e-4305-9780-334ffeb179b8"
+    }],
+    "bloqClass": "bloq-oscillator-stop-advanced",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-oscillator-stop-advanced-stop"
+        }, {
+            "bloqInputId": "OSCILLATOR",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "cc83fdfd-136e-4305-9780-334ffeb179b8"
+        }]
+    ],
+    "code": "{OSCILLATOR}.stop()"
+}, {
+    "type": "statement",
+    "name": "servoNormalAdvanced",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "66f6bf3a-3fce-48cb-9a8e-1623c550e578"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "a1af8a94-6da4-4294-bf0c-6381437524f7"
+    }],
+    "bloqClass": "bloq-servo-advanced",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-servo-advanced-move"
+        }, {
+            "bloqInputId": "SERVO",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "66f6bf3a-3fce-48cb-9a8e-1623c550e578"
+        }, {
+            "alias": "text",
+            "value": "bloq-servo-advanced-to"
+        }, {
+            "bloqInputId": "POSITION",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "a1af8a94-6da4-4294-bf0c-6381437524f7"
+        }, {
+            "alias": "text",
+            "value": "bloq-servo-advanced-degrees"
+        }]
+    ],
+    "code": "{SERVO}.write({POSITION});"
+}, {
+    "type": "statement",
+    "name": "buzzer",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-buzzer",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-buzzer-sound"
+        }, {
+            "id": "BUZZER",
+            "alias": "dynamicDropdown",
+            "options": "buzzers"
+        }, {
+            "alias": "text",
+            "value": "bloq-buzzer-note"
+        }, {
+            "id": "NOTE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-buzzer-do",
+                "value": "261"
+            }, {
+                "label": "bloq-buzzer-re",
+                "value": "293"
+            }, {
+                "label": "bloq-buzzer-mi",
+                "value": "329"
+            }, {
+                "label": "bloq-buzzer-fa",
+                "value": "349"
+            }, {
+                "label": "bloq-buzzer-sol",
+                "value": "392"
+            }, {
+                "label": "bloq-buzzer-la",
+                "value": "440"
+            }, {
+                "label": "bloq-buzzer-si",
+                "value": "494"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-buzzer-for"
+        }, {
+            "id": "SECONDS",
+            "alias": "numberInput",
+            "value": 2000
+        }, {
+            "alias": "text",
+            "value": "bloq-buzzer-ms"
+        }]
+    ],
+    "code": "tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});"
+}, {
+    "type": "statement",
+    "name": "continuousServoStart",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-continuous-servo-start",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-continuous-servo-start-turn"
+        }, {
+            "id": "SERVO",
+            "alias": "dynamicDropdown",
+            "options": "continuousServos"
+        }, {
+            "alias": "text",
+            "value": "bloq-continuous-servo-start-direction"
+        }, {
+            "id": "DIRECTION",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-continuous-servo-start-clockwise",
+                "value": "180"
+            }, {
+                "label": "bloq-continuous-servo-start-counterclockwise",
+                "value": "0"
+            }]
+        }]
+    ],
+    "code": "{SERVO}.write({DIRECTION});"
+}, {
+    "type": "statement",
+    "name": "continuousServoStop",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-continuous-servo-stop",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-continuous-servo-stop-stop"
+        }, {
+            "id": "SERVO",
+            "alias": "dynamicDropdown",
+            "options": "continuousServos"
+        }]
+    ],
+    "code": "{SERVO}.write(90);"
+}, {
+    "type": "statement",
+    "name": "continuousServoStartAdvanced",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-continuous-servo-start-advanced",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-continuous-servo-start-advanced-turn"
+        }, {
+            "continuousServoStartAdvancedInputId": "SERVO",
+            "alias": "continuousServoStartAdvancedInput",
+            "acceptType": "all"
+        }, {
+            "alias": "text",
+            "value": "bloq-continuous-servo-start-advanced-direction"
+        }, {
+            "id": "DIRECTION",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-continuous-servo-start-advanced-clockwise",
+                "value": "0"
+            }, {
+                "label": "bloq-continuous-servo-start-advanced-counterclockwise",
+                "value": "180"
+            }]
+        }]
+    ],
+    "code": "{SERVO}.write({DIRECTION});"
+}, {
+    "type": "statement",
+    "name": "lcdWritePositionAdvanced",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "9af5b5f3-65ea-4d72-bae4-da25d0bd0d2f"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "d034dcff-2f64-4f3c-9f79-f98c9906ee8e"
+    }],
+    "bloqClass": "bloq-lcd-writte deprecated",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-lcd-writte-write"
+        }, {
+            "bloqInputId": "TEXT",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "9af5b5f3-65ea-4d72-bae4-da25d0bd0d2f"
+        }, {
+            "alias": "text",
+            "value": "bloq-lcd-writte-inLCD"
+        }, {
+            "bloqInputId": "LCD",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "d034dcff-2f64-4f3c-9f79-f98c9906ee8e"
+        }, {
+            "alias": "text",
+            "value": "bloq-lcd-writte-advanced-inPosition"
+        }, {
+            "id": "COLUMN",
+            "alias": "numberInput",
+            "value": 0
+        }, {
+            "id": "ROW",
+            "alias": "numberInput",
+            "value": 0
+        }]
+    ],
+    "code": "{LCD}.setCursor({COLUMN},{ROW});{LCD}.print({TEXT});"
+}, {
+    "type": "output",
+    "name": "pinReadAdvanced",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "bec62882-b5c3-4a96-afdf-29c6035f41b1"
+    }],
+    "bloqClass": "bloq-pin-read-advanced",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-pin-read-advanced-readpin"
+        }, {
+            "bloqInputId": "PIN",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "bec62882-b5c3-4a96-afdf-29c6035f41b1"
+        }]
+    ],
+    "code": "'{PIN}'.indexOf('A') !== -1 ? 'analogRead({PIN})' : 'digitalRead({PIN})'",
+    "returnType": {
+        "type": "simple",
+        "value": "bool"
+    }
+}, {
+    "type": "statement",
+    "name": "pinWriteAdvanced",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "7c49ef44-5fc1-4094-a008-60b1d578b26f"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "b54be702-54ec-4d8c-a2f6-30c530ad6610"
+    }],
+    "bloqClass": "bloq-pin-writte-advanced",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-pin-writte-advanced-writepin"
+        }, {
+            "bloqInputId": "PIN",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "7c49ef44-5fc1-4094-a008-60b1d578b26f"
+        }, {
+            "alias": "text",
+            "value": "bloq-pin-writte-advanced-data"
+        }, {
+            "bloqInputId": "DATA",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "b54be702-54ec-4d8c-a2f6-30c530ad6610"
+        }]
+    ],
+    "code": "'{PIN}'.indexOf('A') === 0 ? 'analogWrite({PIN},{DATA});' : 'digitalWrite({PIN},{DATA});'"
+}, {
+    "type": "output",
+    "name": "readSensorAdvanced",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "09095ed7-c116-4d82-b277-a7dcb6bf7ec5"
+    }],
+    "bloqClass": "bloq-read-advanced",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-read-advanced-read"
+        }, {
+            "bloqInputId": "PIN",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "09095ed7-c116-4d82-b277-a7dcb6bf7ec5"
+        }]
+    ],
+    "code": "{SENSOR.type}",
+    "returnType": {
+        "type": "fromDynamicDropdown",
+        "idDropdown": "SENSOR",
+        "options": "sensors"
+    }
+}, {
+    "type": "output",
+    "name": "hts221Humidity",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-hts221-humidity",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-hts221-humidity"
+        }, {
+            "id": "SENSOR",
+            "alias": "dynamicDropdown",
+            "options": "hts221"
+        }]
+    ],
+    "code": "{SENSOR}.getHumidity()",
+    "returnType": {
+        "type": "simple",
+        "value": "float"
+    }
+}, {
+    "type": "output",
+    "name": "hts221Temperature",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-hts221-temperature",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-hts221-temperature"
+        }, {
+            "id": "SENSOR",
+            "alias": "dynamicDropdown",
+            "options": "hts221"
+        }]
+    ],
+    "code": "{SENSOR}.getTemperature()",
+    "returnType": {
+        "type": "simple",
+        "value": "float"
+    }
+}, {
+    "type": "statement",
+    "name": "lcdClear",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-lcd-clear",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-lcd-clear"
+        }, {
+            "id": "LCD",
+            "alias": "dynamicDropdown",
+            "options": "lcds"
+        }]
+    ],
+    "code": "{LCD}.clear();"
+}, {
+    "type": "statement",
+    "name": "lcdTurnOnOff",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-lcd-turn-on-off",
+    "content": [
+        [{
+            "id": "STATE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-lcd-turn-on-off-turnon",
+                "value": "HIGH"
+            }, {
+                "label": "bloq-lcd-turn-on-off-turnoff",
+                "value": "LOW"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-lcd-turn-on-off-lcdLigth"
+        }, {
+            "id": "LCD",
+            "alias": "dynamicDropdown",
+            "options": "lcds"
+        }]
+    ],
+    "code": "{LCD}.setBacklight({STATE});"
+}, {
+    "type": "statement",
+    "name": "lcdWrite",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-lcd-writte",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-lcd-writte-write"
+        }, {
+            "id": "TEXT",
+            "alias": "stringInput",
+            "placeholder": "bloq-lcd-default"
+        }, {
+            "alias": "text",
+            "value": "bloq-lcd-writte-inLCD"
+        }, {
+            "id": "LCD",
+            "alias": "dynamicDropdown",
+            "options": "lcds"
+        }]
+    ],
+    "code": "{LCD}.print(\"{TEXT}\");"
+}, {
+    "type": "statement",
+    "name": "lcdWritePosition",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-lcd-writte",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-lcd-writte-write"
+        }, {
+            "id": "TEXT",
+            "alias": "stringInput",
+            "placeholder": "bloq-lcd-default"
+        }, {
+            "alias": "text",
+            "value": "bloq-lcd-writte-inLCD"
+        }, {
+            "id": "LCD",
+            "alias": "dynamicDropdown",
+            "options": "lcds"
+        }, {
+            "alias": "text",
+            "value": "bloq-lcd-writte-advanced-inPosition"
+        }, {
+            "id": "COLUMN",
+            "alias": "numberInput",
+            "value": 0
+        }, {
+            "id": "ROW",
+            "alias": "numberInput",
+            "value": 0
+        }]
+    ],
+    "code": "{LCD}.setCursor({COLUMN},{ROW});{LCD}.print(\"{TEXT}\");"
+}, {
+    "type": "statement",
+    "name": "led",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-led",
+    "content": [
+        [{
+            "id": "STATE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-led-turnon",
+                "value": "HIGH"
+            }, {
+                "label": "bloq-led-turnoff",
+                "value": "LOW"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-led-theLED"
+        }, {
+            "id": "LED",
+            "alias": "dynamicDropdown",
+            "options": "leds"
+        }]
+    ],
+    "code": "digitalWrite({LED},{STATE});"
+}, {
+    "type": "statement",
+    "name": "oscillator",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-oscillator",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-oscillator-oscillate"
+        }, {
+            "id": "OSCILLATOR",
+            "alias": "dynamicDropdown",
+            "options": "oscillators"
+        }, {
+            "alias": "text",
+            "value": "bloq-oscillator-around"
+        }, {
+            "id": "PHASE",
+            "alias": "numberInput",
+            "value": 90
+        }, {
+            "alias": "text",
+            "value": "bloq-oscillator-amplitude"
+        }, {
+            "id": "AMPLITUDE",
+            "alias": "numberInput",
+            "value": 90
+        }, {
+            "alias": "text",
+            "value": "bloq-oscillator-speed"
+        }, {
+            "id": "SPEED",
+            "alias": "numberInput",
+            "value": 2000
+        }]
+    ],
+    "code": "{OSCILLATOR}.SetO({PHASE});{OSCILLATOR}.SetA({AMPLITUDE});{OSCILLATOR}.SetT({SPEED});{OSCILLATOR}.refresh();"
+}, {
+    "type": "statement",
+    "name": "oscillatorStart",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-oscillator-start",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-oscillator-start-oscillator"
+        }, {
+            "id": "OSCILLATOR",
+            "alias": "dynamicDropdown",
+            "options": "oscillators"
+        }]
+    ],
+    "code": "{OSCILLATOR}.Play();"
+}, {
+    "type": "statement",
+    "name": "oscillatorStop",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-oscillator-stop",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-oscillator-stop-stop"
+        }, {
+            "id": "OSCILLATOR",
+            "alias": "dynamicDropdown",
+            "options": "oscillators"
+        }]
+    ],
+    "code": "{OSCILLATOR}.Stop();"
+}, {
+    "type": "statement",
+    "name": "oscillatorTimes",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-oscillator",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-oscillator-oscillate"
+        }, {
+            "id": "OSCILLATOR",
+            "alias": "dynamicDropdown",
+            "options": "oscillators"
+        }, {
+            "alias": "text",
+            "value": "bloq-oscillator-around"
+        }, {
+            "id": "PHASE",
+            "alias": "numberInput",
+            "value": 90
+        }, {
+            "alias": "text",
+            "value": "bloq-oscillator-amplitude"
+        }, {
+            "id": "AMPLITUDE",
+            "alias": "numberInput",
+            "value": 90
+        }, {
+            "alias": "text",
+            "value": "bloq-oscillator-speed"
+        }, {
+            "id": "SPEED",
+            "alias": "numberInput",
+            "value": 2000
+        }, {
+            "id": "TIMES",
+            "alias": "numberInput",
+            "value": 2
+        }, {
+            "alias": "text",
+            "value": "bloq-oscillator-times"
+        }]
+    ],
+    "code": "oscillate({OSCILLATOR}, {AMPLITUDE}, {PHASE}, {SPEED}, {TIMES});"
+}, {
+    "type": "output",
+    "name": "readSensor",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-read-sensor",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-read-read"
+        }, {
+            "id": "SENSOR",
+            "alias": "dynamicDropdown",
+            "options": "sensors"
+        }]
+    ],
+    "code": "{SENSOR.type}",
+    "returnType": {
+        "type": "fromDynamicDropdown",
+        "idDropdown": "SENSOR",
+        "options": "sensors"
+    }
+}, {
+    "type": "output",
+    "name": "clockRTC",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-rtc",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-rtc"
+        }, {
+            "id": "RTC_FUNC",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-rtc-date",
+                "value": "getDate"
+            }, {
+                "label": "bloq-rtc-time",
+                "value": "getTime"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-rtc-using"
+        }, {
+            "id": "RTC",
+            "alias": "dynamicDropdown",
+            "options": "clocks"
+        }]
+    ],
+    "code": "{RTC}.{RTC_FUNC}()",
+    "returnType": {
+        "type": "simple",
+        "value": "String"
+    }
+}, {
+    "type": "output",
+    "name": "clockRTCAdvanced",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-rtc-advanced",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-rtc-advanced"
+        }, {
+            "id": "FUNCTION",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-rtc-hour",
+                "value": "getHour"
+            }, {
+                "label": "bloq-rtc-minute",
+                "value": "getMinute"
+            }, {
+                "label": "bloq-rtc-second",
+                "value": "getSecond"
+            }, {
+                "label": "bloq-rtc-day",
+                "value": "getDay"
+            }, {
+                "label": "bloq-rtc-month",
+                "value": "getMonth"
+            }, {
+                "label": "bloq-rtc-year",
+                "value": "getYear"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-rtc-using-advanced"
+        }, {
+            "id": "RTC",
+            "alias": "dynamicDropdown",
+            "options": "clocks"
+        }]
+    ],
+    "code": "{RTC}.{FUNCTION}()",
+    "returnType": {
+        "type": "simple",
+        "value": "int"
+    }
+}, {
+    "type": "statement",
+    "name": "clockRTCInit",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-rtc-init",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-rtc-init"
+        }, {
+            "id": "RTC",
+            "alias": "dynamicDropdown",
+            "options": "clocks"
+        }]
+    ],
+    "code": "{RTC}.adjust(DateTime(__DATE__, __TIME__));"
+}, {
+    "type": "statement",
+    "name": "servoNormal",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-servo",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-servo-move"
+        }, {
+            "id": "SERVO",
+            "alias": "dynamicDropdown",
+            "options": "servos"
+        }, {
+            "alias": "text",
+            "value": "bloq-servo-to"
+        }, {
+            "id": "POSITION",
+            "alias": "numberInput",
+            "value": 90
+        }, {
+            "alias": "text",
+            "value": "bloq-servo-degrees"
+        }]
+    ],
+    "code": "{SERVO}.write({POSITION});"
+}, {
+    "type": "statement-input",
+    "name": "elseifAdvanced",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "53b78c89-bd6c-41ec-a5ce-59f10ab46201"
+    }],
+    "bloqClass": "bloq-else-if",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-else-if-if"
+        }, {
+            "bloqInputId": "VAR",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "53b78c89-bd6c-41ec-a5ce-59f10ab46201"
+        }, {
+            "alias": "text",
+            "value": "bloq-else-if-else"
+        }]
+    ],
+    "code": "else if ({VAR}){{STATEMENTS}}"
+}, {
+    "type": "statement-input",
+    "name": "forAdvanced-v1",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "a48252f8-19da-4d3b-ab3a-04c71e4fd565"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "c1a4a9b7-0006-49c8-9928-2c179902ba44"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "16a68507-9c9b-4ae0-a352-e3561ef9434e"
+    }],
+    "bloqClass": "bloq-for",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-for-count"
+        }, {
+            "bloqInputId": "VAR",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "a48252f8-19da-4d3b-ab3a-04c71e4fd565"
+        }, {
+            "alias": "text",
+            "value": "bloq-for-from"
+        }, {
+            "bloqInputId": "INIT",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "c1a4a9b7-0006-49c8-9928-2c179902ba44"
+        }, {
+            "alias": "text",
+            "value": "bloq-for-to"
+        }, {
+            "bloqInputId": "FINAL",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "16a68507-9c9b-4ae0-a352-e3561ef9434e"
+        }, {
+            "id": "MODE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-for-add",
+                "value": "+"
+            }, {
+                "label": "bloq-for-subtract",
+                "value": "-"
+            }]
+        }, {
+            "id": "ADD",
+            "alias": "numberInput",
+            "value": 1
+        }, {
+            "alias": "text",
+            "value": "bloq-for-exec"
+        }]
+    ],
+    "code": "'for({VAR}={INIT};{VAR}' + ('{MODE}' === '+'?'<=':'>=' ) + '{FINAL};{VAR}{MODE}={ADD}){{STATEMENTS}}'"
+}, {
+    "type": "statement-input",
+    "name": "ifAdvanced",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "93175702-6e4c-4bc2-b3f3-91aa77cc1abe"
+    }],
+    "bloqClass": "bloq-if",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-if-if"
+        }, {
+            "bloqInputId": "CONDITION",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "93175702-6e4c-4bc2-b3f3-91aa77cc1abe"
+        }, {
+            "alias": "text",
+            "value": "bloq-if-exec"
+        }]
+    ],
+    "code": "if({CONDITION}){{STATEMENTS}}"
+}, {
+    "type": "statement-input",
+    "name": "switchAdvanced",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "1828ac96-b18d-40a0-8a5a-14ce093b8c9d"
+    }],
+    "bloqClass": "bloq-switch",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-switch-check"
+        }, {
+            "bloqInputId": "VAR",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "1828ac96-b18d-40a0-8a5a-14ce093b8c9d"
+        }]
+    ],
+    "code": "switch (int({VAR})) {{STATEMENTS}}"
+}, {
+    "type": "statement",
+    "name": "waitAdvanced",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "422d6280-2210-4a8c-baa4-813939a7cc33"
+    }],
+    "bloqClass": "bloq-wait",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-wait-wait"
+        }, {
+            "bloqInputId": "TIME",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "422d6280-2210-4a8c-baa4-813939a7cc33"
+        }]
+    ],
+    "code": "delay({TIME});"
+}, {
+    "type": "statement-input",
+    "name": "whileAdvanced",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "29403899-e0a1-476c-b370-76e18f1c4516"
+    }],
+    "bloqClass": "bloq-while",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-while-while"
+        }, {
+            "bloqInputId": "CONDITION",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "29403899-e0a1-476c-b370-76e18f1c4516"
+        }, {
+            "alias": "text",
+            "value": "bloq-while-exec"
+        }]
+    ],
+    "code": "while ({CONDITION}){{STATEMENTS}}"
+}, {
+    "type": "statement",
+    "name": "break",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-break",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-break-stopLoop"
+        }]
+    ],
+    "code": "break;"
+}, {
+    "type": "statement-input",
+    "name": "case",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-case",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-case-ifSameTo"
+        }, {
+            "id": "VAR",
+            "alias": "numberInput",
+            "value": 0
+        }, {
+            "alias": "text",
+            "value": "bloq-case-exec"
+        }]
+    ],
+    "code": "case {VAR}:{{STATEMENTS}break;}"
+}, {
+    "type": "statement-input",
+    "name": "caseDefault",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-case-default",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-case-default-inOtherCase"
+        }]
+    ],
+    "code": "default:{{STATEMENTS}break;}"
+}, {
+    "type": "statement",
+    "name": "continue",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-continue",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-continue-continue"
+        }]
+    ],
+    "code": "continue;"
+}, {
+    "type": "statement-input",
+    "name": "for",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-for deprecated",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-for-count"
+        }, {
+            "id": "VAR",
+            "alias": "dynamicDropdown",
+            "options": "softwareVars"
+        }, {
+            "alias": "text",
+            "value": "bloq-for-from"
+        }, {
+            "id": "INIT",
+            "alias": "numberInput",
+            "value": 0
+        }, {
+            "alias": "text",
+            "value": "bloq-for-to"
+        }, {
+            "id": "FINAL",
+            "alias": "numberInput",
+            "value": 10
+        }, {
+            "id": "MODE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-for-add",
+                "value": "++"
+            }, {
+                "label": "bloq-for-subtract",
+                "value": "--"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-for-exec"
+        }]
+    ],
+    "code": "for({VAR}={INIT};{VAR}<{FINAL};{VAR}{MODE}){{STATEMENTS}}"
+}, {
+    "type": "statement-input",
+    "name": "forAdvanced",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "557bb4cc-5d06-4669-aa7c-11e07ac5d595"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "e9d1c3ee-340f-4014-9090-e3700156a396"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "93e3feb0-ea01-40b4-8290-22a103cbe2b1"
+    }],
+    "bloqClass": "bloq-for deprecated",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-for-count"
+        }, {
+            "bloqInputId": "VAR",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "557bb4cc-5d06-4669-aa7c-11e07ac5d595"
+        }, {
+            "alias": "text",
+            "value": "bloq-for-from"
+        }, {
+            "bloqInputId": "INIT",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "e9d1c3ee-340f-4014-9090-e3700156a396"
+        }, {
+            "alias": "text",
+            "value": "bloq-for-to"
+        }, {
+            "bloqInputId": "FINAL",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "93e3feb0-ea01-40b4-8290-22a103cbe2b1"
+        }, {
+            "id": "MODE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-for-add",
+                "value": "++"
+            }, {
+                "label": "bloq-for-subtract",
+                "value": "--"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-for-exec"
+        }]
+    ],
+    "code": "for({VAR}={INIT};{VAR}<{FINAL};{VAR}{MODE}){{STATEMENTS}}"
+}, {
+    "type": "statement-input",
+    "name": "else",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-else",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-else-else"
+        }]
+    ],
+    "code": "else {{STATEMENTS}}"
+}, {
+    "type": "statement-input",
+    "name": "elseif",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "9904f503-0388-448d-971f-b9a3072f12e7"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "b063ab83-6fdc-4cfd-9ead-450e82740d9b"
+    }],
+    "bloqClass": "bloq-else-if",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-else-if-if"
+        }, {
+            "bloqInputId": "ARG1",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "9904f503-0388-448d-971f-b9a3072f12e7"
+        }, {
+            "id": "OPERATOR",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "=",
+                "value": "=="
+            }, {
+                "label": "!=",
+                "value": "!="
+            }, {
+                "label": ">",
+                "value": ">"
+            }, {
+                "label": ">=",
+                "value": ">="
+            }, {
+                "label": "<",
+                "value": "<"
+            }, {
+                "label": "<=",
+                "value": "<="
+            }]
+        }, {
+            "bloqInputId": "ARG2",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "b063ab83-6fdc-4cfd-9ead-450e82740d9b"
+        }, {
+            "alias": "text",
+            "value": "bloq-else-if-else"
+        }]
+    ],
+    "code": "else if ({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}"
+}, {
+    "type": "statement-input",
+    "name": "for-v1",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-for",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-for-count"
+        }, {
+            "id": "VAR",
+            "alias": "dynamicDropdown",
+            "options": "softwareVars"
+        }, {
+            "alias": "text",
+            "value": "bloq-for-from"
+        }, {
+            "id": "INIT",
+            "alias": "numberInput",
+            "value": 0
+        }, {
+            "alias": "text",
+            "value": "bloq-for-to"
+        }, {
+            "id": "FINAL",
+            "alias": "numberInput",
+            "value": 10
+        }, {
+            "id": "MODE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-for-add",
+                "value": "+"
+            }, {
+                "label": "bloq-for-subtract",
+                "value": "-"
+            }]
+        }, {
+            "id": "ADD",
+            "alias": "numberInput",
+            "value": 1
+        }, {
+            "alias": "text",
+            "value": "bloq-for-exec"
+        }]
+    ],
+    "code": "'for({VAR}={INIT};{VAR}' + ('{MODE}' === '+'?'<=':'>=' ) + '{FINAL};{VAR}{MODE}={ADD}){{STATEMENTS}}'"
+}, {
+    "type": "statement-input",
+    "name": "if",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "69514eb0-3ea6-41f6-a7c4-7e682f6332a7"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "6a7ffab6-2667-437a-8cb5-994857aa96c3"
+    }],
+    "bloqClass": "bloq-if",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-if-if"
+        }, {
+            "bloqInputId": "ARG1",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "69514eb0-3ea6-41f6-a7c4-7e682f6332a7"
+        }, {
+            "id": "OPERATOR",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "=",
+                "value": "=="
+            }, {
+                "label": "!=",
+                "value": "!="
+            }, {
+                "label": ">",
+                "value": ">"
+            }, {
+                "label": ">=",
+                "value": ">="
+            }, {
+                "label": "<",
+                "value": "<"
+            }, {
+                "label": "<=",
+                "value": "<="
+            }]
+        }, {
+            "bloqInputId": "ARG2",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "6a7ffab6-2667-437a-8cb5-994857aa96c3"
+        }, {
+            "alias": "text",
+            "value": "bloq-if-exec"
+        }]
+    ],
+    "code": "if({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}"
+}, {
+    "type": "output",
+    "name": "millis",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-millis",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-millis"
+        }]
+    ],
+    "code": "millis()",
+    "returnType": {
+        "type": "simple",
+        "value": "float"
+    }
+}, {
+    "type": "statement-input",
+    "name": "switch",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-switch",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-switch-check"
+        }, {
+            "id": "VAR",
+            "alias": "dynamicDropdown",
+            "options": "softwareVars"
+        }]
+    ],
+    "code": "switch (int({VAR})) {{STATEMENTS}}"
+}, {
+    "type": "statement",
+    "name": "wait",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-wait",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-wait-wait"
+        }, {
+            "id": "TIME",
+            "alias": "numberInput",
+            "value": 2000
+        }, {
+            "alias": "text",
+            "value": "bloq-wait-ms"
+        }]
+    ],
+    "code": "delay({TIME});"
+}, {
+    "type": "statement-input",
+    "name": "while",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "72d4bc78-a51d-48c0-afa1-42acdcbf316e"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "becd955a-dd98-466e-b164-48a06f272fc9"
+    }],
+    "bloqClass": "bloq-while",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-while-while"
+        }, {
+            "bloqInputId": "ARG1",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "72d4bc78-a51d-48c0-afa1-42acdcbf316e"
+        }, {
+            "id": "OPERATOR",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "=",
+                "value": "=="
+            }, {
+                "label": "!=",
+                "value": "!="
+            }, {
+                "label": ">",
+                "value": ">"
+            }, {
+                "label": ">=",
+                "value": ">="
+            }, {
+                "label": "<",
+                "value": "<"
+            }, {
+                "label": "<=",
+                "value": "<="
+            }]
+        }, {
+            "bloqInputId": "ARG2",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "becd955a-dd98-466e-b164-48a06f272fc9"
+        }, {
+            "alias": "text",
+            "value": "bloq-while-exec"
+        }]
+    ],
+    "code": "while ({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}"
+}, {
+    "type": "output",
+    "name": "numConversion",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "b4272527-f0ce-45e6-a378-672845d5c065"
+    }],
+    "bloqClass": "bloq-num-conversion",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-num-conversion"
+        }, {
+            "bloqInputId": "NUMBER",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "b4272527-f0ce-45e6-a378-672845d5c065"
+        }, {
+            "alias": "text",
+            "value": "bloq-num-conversion-to"
+        }, {
+            "id": "TYPE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-num-conversion-int",
+                "value": "int"
+            }, {
+                "label": "bloq-num-conversion-float",
+                "value": "float"
+            }]
+        }]
+    ],
+    "code": "({TYPE}) {NUMBER}",
+    "returnType": {
+        "type": "fromDropdown",
+        "idDropdown": "TYPE"
+    }
+}, {
+    "type": "output",
+    "name": "stringToInt",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "String",
+        "name": "9c160d82-747b-42dd-b7e0-18a11b715c9c"
+    }],
+    "bloqClass": "bloq-string-to-int",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-string-to-int"
+        }, {
+            "bloqInputId": "VAR",
+            "alias": "bloqInput",
+            "acceptType": "String",
+            "name": "9c160d82-747b-42dd-b7e0-18a11b715c9c"
+        }]
+    ],
+    "code": "{VAR}.toInt()",
+    "returnType": {
+        "type": "simple",
+        "value": "int"
+    }
+}, {
+    "type": "output",
+    "name": "evolutionDistance",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-evolution-distance",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-evolution-distance"
+        }]
+    ],
+    "code": "evolution.getDistance()",
+    "returnType": {
+        "type": "simple",
+        "value": "float"
+    }
+}, {
+    "type": "statement",
+    "name": "evolutionHeadAdvance",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "float",
+        "name": "324c78a2-7db8-4187-9890-f1dc9819a5e5"
+    }],
+    "bloqClass": "bloq-evolution-head",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-evolution-head-advance"
+        }, {
+            "bloqInputId": "DEGREES",
+            "alias": "bloqInput",
+            "acceptType": "float",
+            "name": "324c78a2-7db8-4187-9890-f1dc9819a5e5"
+        }, {
+            "alias": "text",
+            "value": "bloq-evolution-head-advance-deg"
+        }, {
+            "id": "SIDE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-evolution-head-advance-left",
+                "value": "HEAD_LEFT"
+            }, {
+                "label": "bloq-evolution-head-advance-right",
+                "value": "HEAD_RIGHT"
+            }]
+        }]
+    ],
+    "code": "'{SIDE}' === 'HEAD_LEFT'? 'evolution.turnHead({DEGREES});' : 'evolution.turnHead(-{DEGREES});'"
+}, {
+    "type": "statement-input",
+    "name": "evolutionIfLightAdvanced",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "number",
+        "name": "33d3a23e-d504-4f80-82bc-740173060b9c"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "number",
+        "name": "ea3a0e93-ce13-4d96-847e-8e2e162bdc19"
+    }],
+    "bloqClass": "bloq-evolution-if-light-advanced",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-evolution-if-light-advanced"
+        }, {
+            "id": "OPERATORLEFT",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "=",
+                "value": "=="
+            }, {
+                "label": "!=",
+                "value": "!="
+            }, {
+                "label": ">",
+                "value": ">"
+            }, {
+                "label": ">=",
+                "value": ">="
+            }, {
+                "label": "<",
+                "value": "<"
+            }, {
+                "label": "<=",
+                "value": "<="
+            }]
+        }, {
+            "id": "LIGHTLEFT",
+            "alias": "bloqInput",
+            "acceptType": "number",
+            "name": "33d3a23e-d504-4f80-82bc-740173060b9c"
+        }, {
+            "alias": "text",
+            "value": "bloq-evolution-if-light-advanced-and"
+        }, {
+            "id": "OPERATORRIGHT",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "=",
+                "value": "=="
+            }, {
+                "label": "!=",
+                "value": "!="
+            }, {
+                "label": ">",
+                "value": ">"
+            }, {
+                "label": ">=",
+                "value": ">="
+            }, {
+                "label": "<",
+                "value": "<"
+            }, {
+                "label": "<=",
+                "value": "<="
+            }]
+        }, {
+            "id": "LIGHTRIGHT",
+            "alias": "bloqInput",
+            "acceptType": "number",
+            "name": "ea3a0e93-ce13-4d96-847e-8e2e162bdc19"
+        }, {
+            "alias": "text",
+            "value": "bloq-evolution-if-light-advanced-then"
+        }]
+    ],
+    "code": "if(evolution.getLight(LEFT) {OPERATORLEFT} {LIGHTLEFT} && evolution.getLight(RIGHT) {OPERATORRIGHT} {LIGHTRIGHT}){{STATEMENTS}}"
+}, {
+    "type": "output",
+    "name": "evolutionLight",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-evolution-light",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-evolution-light"
+        }, {
+            "id": "SIDE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-evolution-light-left",
+                "value": "LEFT"
+            }, {
+                "label": "bloq-evolution-light-right",
+                "value": "RIGHT"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-evolution-light-evolution"
+        }]
+    ],
+    "code": "evolution.getLight({SIDE})",
+    "returnType": {
+        "type": "simple",
+        "value": "int"
+    }
+}, {
+    "type": "output",
+    "name": "evolutionLight",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-evolution-light",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-evolution-light"
+        }, {
+            "id": "SIDE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-evolution-light-left",
+                "value": "LEFT"
+            }, {
+                "label": "bloq-evolution-light-right",
+                "value": "RIGHT"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-evolution-light-evolution"
+        }]
+    ],
+    "code": "evolution.getLight({SIDE})",
+    "returnType": {
+        "type": "simple",
+        "value": "int"
+    }
+}, {
+    "type": "output",
+    "name": "evolutionLine",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-evolution-line",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-evolution-line"
+        }, {
+            "id": "SIDE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-evolution-line-left",
+                "value": "LEFT"
+            }, {
+                "label": "bloq-evolution-line-right",
+                "value": "RIGHT"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-evolution-line-evolution"
+        }]
+    ],
+    "code": "evolution.getLine({SIDE})",
+    "returnType": {
+        "type": "simple",
+        "value": "int"
+    }
+}, {
+    "type": "statement",
+    "name": "evolutionBuzzer",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-evolution-buzzer",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-evolution-buzzer"
+        }, {
+            "id": "NOTE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-evolution-buzzer-do",
+                "value": "note_C4"
+            }, {
+                "label": "bloq-evolution-buzzer-re",
+                "value": "note_D4"
+            }, {
+                "label": "bloq-evolution-buzzer-mi",
+                "value": "note_E4"
+            }, {
+                "label": "bloq-evolution-buzzer-fa",
+                "value": "note_F4"
+            }, {
+                "label": "bloq-evolution-buzzer-sol",
+                "value": "note_G4"
+            }, {
+                "label": "bloq-evolution-buzzer-la",
+                "value": "note_A4"
+            }, {
+                "label": "bloq-evolution-buzzer-si",
+                "value": "note_B4"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-evolution-buzzer-for"
+        }, {
+            "id": "SECONDS",
+            "alias": "numberInput",
+            "value": 1000
+        }, {
+            "alias": "text",
+            "value": "bloq-evolution-buzzer-ms"
+        }]
+    ],
+    "code": "evolution._tone({NOTE},{SECONDS});"
+}, {
+    "type": "statement",
+    "name": "evolutionHead",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-evolution-head",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-evolution-head"
+        }, {
+            "id": "SIDE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-evolution-head-center",
+                "value": "HEAD_CENTER"
+            }, {
+                "label": "bloq-evolution-head-left",
+                "value": "HEAD_LEFT"
+            }, {
+                "label": "bloq-evolution-head-right",
+                "value": "HEAD_RIGHT"
+            }]
+        }]
+    ],
+    "code": "evolution.turnHead({SIDE});"
+}, {
+    "type": "statement",
+    "name": "evolutionHome",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-evolution-rest",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-evolution-rest"
+        }]
+    ],
+    "code": "evolution.home();"
+}, {
+    "type": "statement-input",
+    "name": "evolutionIfDistance",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-evolution-if-distance",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-evolution-if-distance"
+        }, {
+            "id": "OPERATOR",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-evolution-if-distance-less",
+                "value": "<"
+            }, {
+                "label": "bloq-evolution-if-distance-more",
+                "value": ">"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-evolution-if-distance-than"
+        }, {
+            "id": "DISTANCE",
+            "alias": "numberInput",
+            "value": 15
+        }, {
+            "alias": "text",
+            "value": "bloq-evolution-if-distance-then"
+        }]
+    ],
+    "code": "if(evolution.getDistance() {OPERATOR} {DISTANCE}){{STATEMENTS}}"
+}, {
+    "type": "statement-input",
+    "name": "evolutionIfLight",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-evolution-if-light",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-evolution-if-light"
+        }, {
+            "id": "RANGELEFT",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-evolution-if-light-high",
+                "value": "HIGH_LIGHT"
+            }, {
+                "label": "bloq-evolution-if-light-medium",
+                "value": "MEDIUM_LIGHT"
+            }, {
+                "label": "bloq-evolution-if-light-low",
+                "value": "LOW_LIGHT"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-evolution-if-light-and"
+        }, {
+            "id": "RANGERIGHT",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-evolution-if-light-high",
+                "value": "HIGH_LIGHT"
+            }, {
+                "label": "bloq-evolution-if-light-medium",
+                "value": "MEDIUM_LIGHT"
+            }, {
+                "label": "bloq-evolution-if-light-low",
+                "value": "LOW_LIGHT"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-evolution-if-light-then"
+        }]
+    ],
+    "code": "if(evolution.getLightRange(LEFT,RANGELEFT) && evolution.getLightRange(RIGHT,RANGERIGHT)){{STATEMENTS}}"
+}, {
+    "type": "statement-input",
+    "name": "evolutionIfLine",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-evolution-if-line",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-evolution-if-line"
+        }, {
+            "id": "LINELEFT",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-evolution-if-line-white",
+                "value": "0"
+            }, {
+                "label": "bloq-evolution-if-line-black",
+                "value": "1"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-evolution-if-line-and"
+        }, {
+            "id": "LINERIGHT",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-evolution-if-line-white",
+                "value": "0"
+            }, {
+                "label": "bloq-evolution-if-line-black",
+                "value": "1"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-evolution-if-line-then"
+        }]
+    ],
+    "code": "if(evolution.getLine(LEFT) == {LINELEFT} && evolution.getLine(RIGHT) == {LINERIGHT}){{STATEMENTS}}"
+}, {
+    "type": "statement",
+    "name": "evolutionMovementsSimple",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-evolution-movements-simple",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-evolution-movements-simple"
+        }, {
+            "id": "MOVEMENT",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-evolution-movements-simple-fordward",
+                "value": "fordward"
+            }, {
+                "label": "bloq-evolution-movements-simple-backward",
+                "value": "backward"
+            }, {
+                "label": "bloq-evolution-movements-simple-right",
+                "value": "right"
+            }, {
+                "label": "bloq-evolution-movements-simple-left",
+                "value": "left"
+            }]
+        }]
+    ],
+    "code": "evolution.{MOVEMENT}();"
+}, {
+    "type": "output",
+    "name": "argument",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-argument",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-argument-var"
+        }, {
+            "id": "TYPE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-argument-int",
+                "value": "int"
+            }, {
+                "label": "bloq-argument-float",
+                "value": "float"
+            }, {
+                "label": "bloq-argument-string",
+                "value": "String"
+            }, {
+                "label": "bloq-argument-char",
+                "value": "char"
+            }, {
+                "label": "bloq-argument-bool",
+                "value": "bool"
+            }]
+        }, {
+            "id": "VARNAME",
+            "alias": "varInput",
+            "value": ""
+        }]
+    ],
+    "createDynamicContent": "softwareVars",
+    "code": "{TYPE} {VARNAME}",
+    "returnType": {
+        "type": "fromDropdown",
+        "idDropdown": "TYPE",
+        "options": "softwareVars"
+    }
+}, {
+    "type": "output",
+    "name": "arguments",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "06880ce4-fabc-46bd-88c6-ebb8fa2e8857"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "f1a99d44-11e2-43b3-9c93-90874030f171"
+    }],
+    "bloqClass": "bloq-arguments",
+    "content": [
+        [{
+            "bloqInputId": "ARG1",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "06880ce4-fabc-46bd-88c6-ebb8fa2e8857"
+        }, {
+            "alias": "text",
+            "value": ","
+        }, {
+            "bloqInputId": "ARG2",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "f1a99d44-11e2-43b3-9c93-90874030f171"
+        }]
+    ],
+    "createDynamicContent": "softwareVars",
+    "code": "{ARG1},{ARG2}",
+    "returnType": {
+        "type": "simple",
+        "value": "var"
+    }
+}, {
+    "type": "statement",
+    "name": "invokeFunctionWithArguments",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "127935d2-f8fa-44a8-b65a-641ad8c1df8d"
+    }],
+    "bloqClass": "bloq-invoke-function-with-arguments",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-invoke-function-exec"
+        }, {
+            "id": "FUNCTION",
+            "alias": "dynamicDropdown",
+            "options": "voidFunctions"
+        }, {
+            "alias": "text",
+            "value": "bloq-invoke-function-args"
+        }, {
+            "bloqInputId": "ARGS",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "127935d2-f8fa-44a8-b65a-641ad8c1df8d"
+        }]
+    ],
+    "code": "{FUNCTION}({ARGS});",
+    "dynamicDropdown": {
+        "idDropdown": "FUNCTION",
+        "options": "voidFunctions"
+    }
+}, {
+    "type": "output",
+    "name": "invokeReturnFunctionWithArguments",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "878a7758-fda4-4ca5-a79a-cf183f50ef5f"
+    }],
+    "bloqClass": "bloq-invoke-return-function-with-arguments",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-invoke-return-function-exec"
+        }, {
+            "id": "FUNCTION",
+            "alias": "dynamicDropdown",
+            "options": "returnFunctions"
+        }, {
+            "alias": "text",
+            "value": "bloq-invoke-function-args"
+        }, {
+            "bloqInputId": "ARGS",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "878a7758-fda4-4ca5-a79a-cf183f50ef5f"
+        }]
+    ],
+    "code": "{FUNCTION}({ARGS})",
+    "returnType": {
+        "type": "fromDynamicDropdown",
+        "idDropdown": "FUNCTION",
+        "options": "returnFunctions"
+    }
+}, {
+    "type": "statement",
+    "name": "return",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "3b6a5a79-fd75-48de-aef5-36bcab40df1a"
+    }],
+    "bloqClass": "bloq-return",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-return-return"
+        }, {
+            "bloqInputId": "RETURN",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "3b6a5a79-fd75-48de-aef5-36bcab40df1a"
+        }]
+    ],
+    "code": "return {RETURN};"
+}, {
+    "type": "statement-input",
+    "name": "returnFunctionWithArguments",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "355b996f-3d69-4a5b-866a-028beab829d0"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "a30ce324-ae55-4187-9fcb-026fa358a913"
+    }],
+    "bloqClass": "bloq-return-function-with-arguments",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-return-function-with-arguments-declare"
+        }, {
+            "id": "FUNCNAME",
+            "alias": "varInput",
+            "placeholder": "bloq-functions-default"
+        }, {
+            "alias": "text",
+            "value": "bloq-return-function-with-arguments-count"
+        }, {
+            "bloqInputId": "ARGS",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "355b996f-3d69-4a5b-866a-028beab829d0"
+        }, {
+            "position": "DOWN",
+            "alias": "text",
+            "value": "bloq-return-function-with-arguments-return"
+        }, {
+            "position": "DOWN",
+            "bloqInputId": "RETURN",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "a30ce324-ae55-4187-9fcb-026fa358a913"
+        }]
+    ],
+    "createDynamicContent": "returnFunctions",
+    "returnType": {
+        "type": "fromInput",
+        "bloqInputId": "RETURN"
+    },
+    "arguments": {
+        "type": "fromInput",
+        "bloqInputId": "ARGS"
+    },
+    "code": "{RETURN.connectionType} {FUNCNAME} ({ARGS}) {{STATEMENTS}return {RETURN};}"
+}, {
+    "type": "statement-input",
+    "name": "voidFunctionWithArguments",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "0f204bef-3bdf-419b-9fd4-6f1ac7424fba"
+    }],
+    "bloqClass": "bloq-void-function-with-arguments",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-void-function-with-arguments-declare"
+        }, {
+            "id": "FUNCNAME",
+            "alias": "varInput",
+            "placeholder": "bloq-functions-default"
+        }, {
+            "alias": "text",
+            "value": "bloq-void-function-with-arguments-count"
+        }, {
+            "bloqInputId": "ARGS",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "0f204bef-3bdf-419b-9fd4-6f1ac7424fba"
+        }]
+    ],
+    "createDynamicContent": "voidFunctions",
+    "returnType": {
+        "type": "simple",
+        "value": "void"
+    },
+    "arguments": {
+        "type": "fromInput",
+        "bloqInputId": "ARGS"
+    },
+    "code": "void {FUNCNAME} ({ARGS}){{STATEMENTS}}"
+}, {
+    "type": "statement",
+    "name": "invokeFunction",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-invoke-function",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-invoke-function-exec"
+        }, {
+            "id": "FUNCTION",
+            "alias": "dynamicDropdown",
+            "options": "voidFunctions"
+        }]
+    ],
+    "code": "{FUNCTION}();",
+    "dynamicDropdown": {
+        "idDropdown": "FUNCTION",
+        "options": "voidFunctions"
+    }
+}, {
+    "type": "output",
+    "name": "invokeReturnFunction",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-invoke-return-function",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-invoke-return-function-exec"
+        }, {
+            "id": "FUNCTION",
+            "alias": "dynamicDropdown",
+            "options": "returnFunctions"
+        }]
+    ],
+    "code": "{FUNCTION}()",
+    "returnType": {
+        "type": "fromDynamicDropdown",
+        "idDropdown": "FUNCTION",
+        "options": "returnFunctions"
+    }
+}, {
+    "type": "statement-input",
+    "name": "returnFunction",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "48e45e30-c2aa-4217-92d4-e620170a3885"
+    }],
+    "bloqClass": "bloq-return-function",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-return-function-declare"
+        }, {
+            "id": "FUNCNAME",
+            "alias": "varInput",
+            "placeholder": "bloq-functions-default"
+        }, {
+            "position": "DOWN",
+            "alias": "text",
+            "value": "bloq-return-function-return"
+        }, {
+            "position": "DOWN",
+            "bloqInputId": "RETURN",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "48e45e30-c2aa-4217-92d4-e620170a3885"
+        }]
+    ],
+    "createDynamicContent": "returnFunctions",
+    "returnType": {
+        "type": "fromInput",
+        "bloqInputId": "RETURN"
+    },
+    "code": "{RETURN.connectionType} {FUNCNAME} () {{STATEMENTS}return {RETURN};}"
+}, {
+    "type": "statement-input",
+    "name": "voidFunction",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-void-function",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-void-function-declare"
+        }, {
+            "id": "FUNCNAME",
+            "alias": "varInput",
+            "placeholder": "bloq-functions-default"
+        }]
+    ],
+    "createDynamicContent": "voidFunctions",
+    "returnType": {
+        "type": "simple",
+        "value": "void"
+    },
+    "code": "void {FUNCNAME} (){{STATEMENTS}}"
+}, {
+    "name": "group",
+    "type": "group",
+    "connectors": [{
+        "type": "connector--empty"
+    }, {
+        "type": "connector--empty"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }]
+}, {
+    "type": "output",
+    "name": "boolArrayAdvanced",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "18302c16-8933-4ae9-a0bb-c9df15225dab"
+    }],
+    "bloqClass": "bloq-boolArray-advanced",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-boolArray-advanced-arraySize"
+        }, {
+            "bloqInputId": "VALUE",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "18302c16-8933-4ae9-a0bb-c9df15225dab"
+        }, {
+            "alias": "text",
+            "value": "bloq-boolArray-advanced-boolType"
+        }]
+    ],
+    "code": "(bool *)malloc({VALUE}*sizeof(bool))",
+    "returnType": {
+        "type": "simple",
+        "value": "bool *"
+    }
+}, {
+    "type": "output",
+    "name": "boolArray",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-boolArray",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-boolArray-arraySize"
+        }, {
+            "id": "VALUE",
+            "alias": "numberInput",
+            "value": 0
+        }, {
+            "alias": "text",
+            "value": "bloq-boolArray-boolType"
+        }]
+    ],
+    "code": "(bool *)malloc({VALUE}*sizeof(bool))",
+    "returnType": {
+        "type": "simple",
+        "value": "bool *"
+    }
+}, {
+    "type": "output",
+    "name": "boolean",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-boolean",
+    "content": [
+        [{
+            "id": "STATE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-boolean-true",
+                "value": "true"
+            }, {
+                "label": "bloq-boolean-false",
+                "value": "false"
+            }]
+        }]
+    ],
+    "code": "{STATE}",
+    "returnType": {
+        "type": "simple",
+        "value": "bool"
+    }
+}, {
+    "type": "output",
+    "name": "equalityOperations",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "2a6d20df-6831-4492-8705-db13895adb65"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "ca74621f-74aa-4a27-ba06-2f79193d2928"
+    }],
+    "bloqClass": "bloq-equality-operations",
+    "content": [
+        [{
+            "bloqInputId": "ARG1",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "2a6d20df-6831-4492-8705-db13895adb65"
+        }, {
+            "id": "OPERATOR",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "=",
+                "value": "=="
+            }, {
+                "label": "!=",
+                "value": "!="
+            }, {
+                "label": ">",
+                "value": ">"
+            }, {
+                "label": ">=",
+                "value": ">="
+            }, {
+                "label": "<",
+                "value": "<"
+            }, {
+                "label": "<=",
+                "value": "<="
+            }]
+        }, {
+            "bloqInputId": "ARG2",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "ca74621f-74aa-4a27-ba06-2f79193d2928"
+        }]
+    ],
+    "code": "{ARG1} {OPERATOR} {ARG2}",
+    "returnType": {
+        "type": "simple",
+        "value": "bool"
+    }
+}, {
+    "type": "output",
+    "name": "logicOperations",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "3b45caa2-555a-478c-af13-e12c469d7147"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "e263bf3f-9777-4f61-9dee-a5300080e98e"
+    }],
+    "bloqClass": "bloq-logic-operations",
+    "content": [
+        [{
+            "bloqInputId": "ARG1",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "3b45caa2-555a-478c-af13-e12c469d7147"
+        }, {
+            "id": "OPERATOR",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-logic-operations-and",
+                "value": "&&"
+            }, {
+                "label": "bloq-logic-operations-or",
+                "value": "||"
+            }]
+        }, {
+            "bloqInputId": "ARG2",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "e263bf3f-9777-4f61-9dee-a5300080e98e"
+        }]
+    ],
+    "code": "{ARG1} {OPERATOR} {ARG2}",
+    "returnType": {
+        "type": "simple",
+        "value": "bool"
+    }
+}, {
+    "type": "output",
+    "name": "not",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "c9d09850-b8ac-4bc6-8ff0-a4338bf7f9a8"
+    }],
+    "bloqClass": "bloq-not",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-not-not"
+        }, {
+            "bloqInputId": "CONDITION",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "c9d09850-b8ac-4bc6-8ff0-a4338bf7f9a8"
+        }]
+    ],
+    "code": "!{CONDITION}",
+    "returnType": {
+        "type": "simple",
+        "value": "bool"
+    }
+}, {
+    "name": "loopBloq",
+    "type": "group",
+    "connectors": [{
+        "type": "connector--empty"
+    }, {
+        "type": "connector--empty"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-loop",
+    "headerText": "bloq-loop-header",
+    "descriptionText": "bloq-loop-description",
+    "content": [],
+    "code": "void loop(){{STATEMENTS}}"
+}, {
+    "name": "setupBloq",
+    "type": "group",
+    "connectors": [{
+        "type": "connector--empty"
+    }, {
+        "type": "connector--empty"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-setup",
+    "headerText": "bloq-setup-header",
+    "descriptionText": "bloq-setup-description",
+    "content": [],
+    "code": "void setup(){{STATEMENTS}}"
+}, {
+    "name": "varsBloq",
+    "type": "group",
+    "connectors": [{
+        "type": "connector--empty"
+    }, {
+        "type": "connector--empty"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-vars",
+    "headerText": "bloq-var-header",
+    "descriptionText": "bloq-var-description",
+    "content": [],
+    "code": "{STATEMENTS}"
+}, {
+    "type": "output",
+    "name": "mapAdvanced",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "float",
+        "name": "2655ae6d-6e0f-4630-8225-cecfe3c08ffc"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "float",
+        "name": "cbe523f2-0a51-4d2f-962b-cbfbfafaa332"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "float",
+        "name": "3bea60e7-b1f9-4602-aa80-cb59b14a99cd"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "float",
+        "name": "fbf14fd0-d6e4-4fb0-9fd8-012a984b1a92"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "float",
+        "name": "82e2e694-61ac-4431-a864-d46fcf3d642d"
+    }],
+    "bloqClass": "bloq-map-advanced",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-map-advanced-map"
+        }, {
+            "bloqInputId": "VAR",
+            "alias": "bloqInput",
+            "acceptType": "float",
+            "name": "2655ae6d-6e0f-4630-8225-cecfe3c08ffc"
+        }, {
+            "alias": "text",
+            "value": "bloq-map-advanced-value"
+        }, {
+            "bloqInputId": "INITMIN",
+            "alias": "bloqInput",
+            "acceptType": "float",
+            "name": "cbe523f2-0a51-4d2f-962b-cbfbfafaa332"
+        }, {
+            "alias": "text",
+            "value": "-"
+        }, {
+            "bloqInputId": "INITMAX",
+            "alias": "bloqInput",
+            "acceptType": "float",
+            "name": "3bea60e7-b1f9-4602-aa80-cb59b14a99cd"
+        }, {
+            "alias": "text",
+            "value": "bloq-map-advanced-and"
+        }, {
+            "bloqInputId": "FINMIN",
+            "alias": "bloqInput",
+            "acceptType": "float",
+            "name": "fbf14fd0-d6e4-4fb0-9fd8-012a984b1a92"
+        }, {
+            "alias": "text",
+            "value": "-"
+        }, {
+            "bloqInputId": "FINMAX",
+            "alias": "bloqInput",
+            "acceptType": "float",
+            "name": "82e2e694-61ac-4431-a864-d46fcf3d642d"
+        }, {
+            "alias": "text",
+            "value": "]"
+        }]
+    ],
+    "code": "map({VAR},{INITMIN},{INITMAX},{FINMIN},{FINMAX})",
+    "returnType": {
+        "type": "simple",
+        "value": "float"
+    }
+}, {
+    "type": "output",
+    "name": "mathOperations",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "395fb003-d977-4262-a917-51e7d9d11ae0"
+    }],
+    "bloqClass": "bloq-math-operations",
+    "content": [
+        [{
+            "id": "OPERATOR",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-math-operations-sqrt",
+                "value": "sqrt"
+            }, {
+                "label": "bloq-math-operations-abs",
+                "value": "abs"
+            }, {
+                "label": "ln",
+                "value": "log"
+            }, {
+                "label": "log10",
+                "value": "log10"
+            }, {
+                "label": "e^",
+                "value": "exp"
+            }]
+        }, {
+            "bloqInputId": "ARG",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "395fb003-d977-4262-a917-51e7d9d11ae0"
+        }]
+    ],
+    "code": "{OPERATOR}({ARG})",
+    "returnType": {
+        "type": "simple",
+        "value": "float"
+    }
+}, {
+    "type": "output",
+    "name": "numberArrayAdvanced",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "0ff27f28-1d03-4ee4-ace8-f57b74e114e0"
+    }],
+    "bloqClass": "bloq-numberArray-advanced",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-numberArray-advanced-arraySize"
+        }, {
+            "bloqInputId": "VALUE",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "0ff27f28-1d03-4ee4-ace8-f57b74e114e0"
+        }, {
+            "alias": "text",
+            "value": "bloq-numberArray-advanced-type"
+        }, {
+            "id": "TYPE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-numberArray-advanced-float",
+                "value": "float *"
+            }, {
+                "label": "bloq-numberArray-advanced-int",
+                "value": "int *"
+            }]
+        }]
+    ],
+    "code": "({TYPE})malloc({VALUE}*sizeof({TYPE.withoutAsterisk}))",
+    "returnType": {
+        "type": "fromDropdown",
+        "idDropdown": "TYPE",
+        "options": "softwareVars"
+    }
+}, {
+    "type": "output",
+    "name": "basicOperations",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "b56689e1-8e75-4737-9e1e-88d5c65dd1fc"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "6221a0c9-8e2d-4402-9829-19387e78da31"
+    }],
+    "bloqClass": "bloq-basic-operations",
+    "content": [
+        [{
+            "bloqInputId": "ARG1",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "b56689e1-8e75-4737-9e1e-88d5c65dd1fc"
+        }, {
+            "id": "OPERATOR",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "+",
+                "value": "+"
+            }, {
+                "label": "-",
+                "value": "-"
+            }, {
+                "label": "x",
+                "value": "*"
+            }, {
+                "label": "/",
+                "value": "/"
+            }, {
+                "label": "^",
+                "value": "^"
+            }, {
+                "label": "%",
+                "value": "%"
+            }]
+        }, {
+            "bloqInputId": "ARG2",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "6221a0c9-8e2d-4402-9829-19387e78da31"
+        }]
+    ],
+    "code": "'{OPERATOR}' === '^'? 'pow({ARG1},{ARG2})' : '({ARG1} {OPERATOR} {ARG2})'",
+    "returnType": {
+        "type": "simple",
+        "value": "float"
+    }
+}, {
+    "type": "output",
+    "name": "map",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "float",
+        "name": "eeb275d7-3965-4c22-855b-96d67fb739bc"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "float",
+        "name": "3d741db6-f08e-4b46-81d3-cdc1a897e225"
+    }],
+    "bloqClass": "bloq-map",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-map-map"
+        }, {
+            "bloqInputId": "VAR",
+            "alias": "bloqInput",
+            "acceptType": "float",
+            "name": "eeb275d7-3965-4c22-855b-96d67fb739bc"
+        }, {
+            "alias": "text",
+            "value": "bloq-map-value"
+        }, {
+            "bloqInputId": "MAXVAL",
+            "alias": "bloqInput",
+            "acceptType": "float",
+            "name": "3d741db6-f08e-4b46-81d3-cdc1a897e225"
+        }, {
+            "alias": "text",
+            "value": "]"
+        }]
+    ],
+    "code": "map({VAR},0,1023,0,{MAXVAL})",
+    "returnType": {
+        "type": "simple",
+        "value": "float"
+    }
+}, {
+    "type": "output",
+    "name": "number",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-number",
+    "content": [
+        [{
+            "id": "VALUE",
+            "alias": "numberInput",
+            "value": 0
+        }]
+    ],
+    "code": "{VALUE}",
+    "returnType": {
+        "type": "simple",
+        "value": "float"
+    }
+}, {
+    "type": "output",
+    "name": "numberArray",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-numberArray",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-numberArray-arraySize"
+        }, {
+            "id": "VALUE",
+            "alias": "numberInput",
+            "value": 3
+        }, {
+            "alias": "text",
+            "value": "bloq-numberArray-floatType"
+        }]
+    ],
+    "code": "(float*)malloc({VALUE}*sizeof(float))",
+    "returnType": {
+        "type": "simple",
+        "value": "float *"
+    }
+}, {
+    "type": "output",
+    "name": "random",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "float",
+        "name": "91cc3cfb-ba1c-475b-b4ba-71c2749026f5"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "float",
+        "name": "be8a62b0-8cfd-4dde-a394-345f46f5af48"
+    }],
+    "bloqClass": "bloq-random",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-random-random"
+        }, {
+            "bloqInputId": "ARG1",
+            "alias": "bloqInput",
+            "acceptType": "float",
+            "name": "91cc3cfb-ba1c-475b-b4ba-71c2749026f5"
+        }, {
+            "alias": "text",
+            "value": "bloq-random-and"
+        }, {
+            "bloqInputId": "ARG2",
+            "alias": "bloqInput",
+            "acceptType": "float",
+            "name": "be8a62b0-8cfd-4dde-a394-345f46f5af48"
+        }]
+    ],
+    "code": "random({ARG1},{ARG2}+1)",
+    "returnType": {
+        "type": "simple",
+        "value": "float"
+    }
+}, {
+    "type": "statement",
+    "name": "randomSeed",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-random-seed",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-random-seed"
+        }]
+    ],
+    "code": "randomSeed(micros());",
+    "returnType": {
+        "type": "simple",
+        "value": "float"
+    }
+}, {
+    "type": "output",
+    "name": "output",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }]
+}, {
+    "type": "statement",
+    "name": "statement",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }]
+}, {
+    "type": "statement-input",
+    "name": "statement-input",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }]
+}, {
+    "type": "output",
+    "name": "char",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-string",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "'"
+        }, {
+            "id": "TEXT",
+            "alias": "charInput",
+            "placeholder": "bloq-char"
+        }, {
+            "alias": "text",
+            "value": "'"
+        }]
+    ],
+    "code": "'{TEXT}'",
+    "returnType": {
+        "type": "simple",
+        "value": "char"
+    }
+}, {
+    "type": "output",
+    "name": "stringArrayAdvanced",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "fbca6328-eb34-4e1d-9995-f850b4877c07"
+    }],
+    "bloqClass": "bloq-stringArray-advanced",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-stringArray-advanced-arraySize"
+        }, {
+            "bloqInputId": "VALUE",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "fbca6328-eb34-4e1d-9995-f850b4877c07"
+        }, {
+            "alias": "text",
+            "value": "bloq-stringArray-advanced-type"
+        }, {
+            "id": "TYPE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-stringArray-advanced-string",
+                "value": "String *"
+            }, {
+                "label": "bloq-stringArray-advanced-char",
+                "value": "char *"
+            }]
+        }]
+    ],
+    "code": "({TYPE})malloc({VALUE}*sizeof({TYPE.withoutAsterisk}))",
+    "returnType": {
+        "type": "fromDropdown",
+        "idDropdown": "TYPE",
+        "options": "softwareVars"
+    }
+}, {
+    "type": "output",
+    "name": "length",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "String",
+        "name": "076af70f-25ad-4d8c-91d8-d320e6165a4c"
+    }],
+    "bloqClass": "bloq-length",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-length-length"
+        }, {
+            "bloqInputId": "TEXT",
+            "alias": "bloqInput",
+            "acceptType": "String",
+            "name": "076af70f-25ad-4d8c-91d8-d320e6165a4c"
+        }]
+    ],
+    "code": "{TEXT}.length()",
+    "returnType": {
+        "type": "simple",
+        "value": "float"
+    }
+}, {
+    "type": "output",
+    "name": "string",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-string",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "\""
+        }, {
+            "id": "TEXT",
+            "alias": "stringInput",
+            "placeholder": "bloq-string-string"
+        }, {
+            "alias": "text",
+            "value": "\""
+        }]
+    ],
+    "code": "\"{TEXT}\"",
+    "returnType": {
+        "type": "simple",
+        "value": "String"
+    }
+}, {
+    "type": "output",
+    "name": "stringArray",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-stringArray",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-stringArray-arraySize"
+        }, {
+            "id": "VALUE",
+            "alias": "numberInput",
+            "value": 3
+        }, {
+            "alias": "text",
+            "value": "bloq-stringArray-stringType"
+        }]
+    ],
+    "code": "(String *)malloc({VALUE}*sizeof(String))",
+    "returnType": {
+        "type": "simple",
+        "value": "String *"
+    }
+}, {
+    "type": "output",
+    "name": "stringCreate",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "bdb34c7b-7576-499f-b676-652e7648a773"
+    }],
+    "bloqClass": "bloq-string-create",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-string-create-create"
+        }, {
+            "bloqInputId": "TEXT",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "bdb34c7b-7576-499f-b676-652e7648a773"
+        }]
+    ],
+    "code": "String({TEXT})",
+    "returnType": {
+        "type": "simple",
+        "value": "String"
+    }
+}, {
+    "type": "output",
+    "name": "stringSum",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "String",
+        "name": "2d50507d-e3ab-460b-806b-bcb24ef2f711"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "String",
+        "name": "fbfa72f8-ed09-4f23-9495-75c3bc24801f"
+    }],
+    "bloqClass": "bloq-string-sum",
+    "content": [
+        [{
+            "bloqInputId": "ARG1",
+            "alias": "bloqInput",
+            "acceptType": "String",
+            "name": "2d50507d-e3ab-460b-806b-bcb24ef2f711"
+        }, {
+            "alias": "text",
+            "value": "+"
+        }, {
+            "bloqInputId": "ARG2",
+            "alias": "bloqInput",
+            "acceptType": "String",
+            "name": "fbfa72f8-ed09-4f23-9495-75c3bc24801f"
+        }]
+    ],
+    "code": "String({ARG1})+String({ARG2})",
+    "returnType": {
+        "type": "simple",
+        "value": "String"
+    }
+}, {
+    "type": "output",
+    "name": "arrayVariableAdvanced",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "f57a8c78-54b0-4424-ae71-6a39461771f3"
+    }],
+    "bloqClass": "bloq-array-variable",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-array-variable-variable"
+        }, {
+            "id": "VAR",
+            "alias": "dynamicDropdown",
+            "options": "softwareVars"
+        }, {
+            "alias": "text",
+            "value": "["
+        }, {
+            "bloqInputId": "POSITION",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "f57a8c78-54b0-4424-ae71-6a39461771f3"
+        }, {
+            "alias": "text",
+            "value": "]"
+        }]
+    ],
+    "code": "{VAR}[{POSITION}]",
+    "returnType": {
+        "type": "fromDynamicDropdown",
+        "idDropdown": "VAR",
+        "pointer": "true",
+        "options": "softwareVars"
+    }
+}, {
+    "type": "statement",
+    "name": "declareVariableAdvanced",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "6be0e26f-7a48-4b26-be7c-4f28532ac7ba"
+    }],
+    "bloqClass": "bloq-declare-variable",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-declare-variable-declare"
+        }, {
+            "id": "NAME",
+            "alias": "varInput",
+            "value": ""
+        }, {
+            "alias": "text",
+            "value": "bloq-declare-variable-declare-type"
+        }, {
+            "id": "TYPE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-declare-variable-declare-type-int",
+                "value": "int"
+            }, {
+                "label": "bloq-declare-variable-declare-type-float",
+                "value": "float"
+            }, {
+                "label": "bloq-declare-variable-declare-type-text",
+                "value": "String"
+            }, {
+                "label": "bloq-declare-variable-declare-type-char",
+                "value": "char"
+            }, {
+                "label": "bloq-declare-variable-declare-type-bool",
+                "value": "bool"
+            }]
+        }, {
+            "alias": "text",
+            "value": "="
+        }, {
+            "bloqInputId": "VALUE",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "6be0e26f-7a48-4b26-be7c-4f28532ac7ba"
+        }]
+    ],
+    "returnType": {
+        "type": "fromDropdown",
+        "idDropdown": "TYPE"
+    },
+    "createDynamicContent": "softwareVars",
+    "code": "{TYPE} {NAME} = {VALUE};"
+}, {
+    "type": "output",
+    "name": "hwVariable",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-hw-variable-advanced",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-hw-variable-advanced-variable"
+        }, {
+            "id": "COMPONENT",
+            "alias": "dynamicDropdown",
+            "options": "varComponents"
+        }]
+    ],
+    "code": "{COMPONENT}",
+    "returnType": {
+        "type": "fromDynamicDropdown",
+        "idDropdown": "COMPONENT",
+        "options": "varComponents"
+    }
+}, {
+    "type": "statement",
+    "name": "setArrayVariableAdvanced",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "6a2482b3-1d38-4af3-aebd-57f426be42d2"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "c17e49f4-8b2e-4190-aa17-2cae0b018996"
+    }],
+    "bloqClass": "bloq-set-variableArray",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-set-variableArray-variable"
+        }, {
+            "id": "NAME",
+            "alias": "dynamicDropdown",
+            "options": "softwareVars"
+        }, {
+            "alias": "text",
+            "value": "["
+        }, {
+            "bloqInputId": "ITERATOR",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "6a2482b3-1d38-4af3-aebd-57f426be42d2"
+        }, {
+            "alias": "text",
+            "value": "]"
+        }, {
+            "alias": "text",
+            "value": "="
+        }, {
+            "bloqInputId": "VALUE",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "c17e49f4-8b2e-4190-aa17-2cae0b018996"
+        }]
+    ],
+    "code": "{NAME}[{ITERATOR}] = {VALUE};"
+}, {
+    "type": "output",
+    "name": "arrayVariable",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-array-variable",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-array-variable-variable"
+        }, {
+            "id": "VAR",
+            "alias": "dynamicDropdown",
+            "options": "softwareVars"
+        }, {
+            "alias": "text",
+            "value": "["
+        }, {
+            "id": "POSITION",
+            "alias": "numberInput",
+            "value": 0
+        }, {
+            "alias": "text",
+            "value": "]"
+        }]
+    ],
+    "code": "{VAR}[{POSITION}]",
+    "returnType": {
+        "type": "fromDynamicDropdown",
+        "idDropdown": "VAR",
+        "pointer": "true",
+        "options": "softwareVars"
+    }
+}, {
+    "type": "statement",
+    "name": "declareVariable",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": "all",
+        "name": "bca16911-0f53-493a-aec3-a509e24a55ba"
+    }],
+    "bloqClass": "bloq-declare-variable",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-declare-variable-declare"
+        }, {
+            "id": "NAME",
+            "alias": "varInput",
+            "value": ""
+        }, {
+            "alias": "text",
+            "value": "="
+        }, {
+            "bloqInputId": "VALUE",
+            "alias": "bloqInput",
+            "acceptType": "all",
+            "name": "bca16911-0f53-493a-aec3-a509e24a55ba"
+        }]
+    ],
+    "returnType": {
+        "type": "fromInput",
+        "bloqInputId": "VALUE"
+    },
+    "createDynamicContent": "softwareVars",
+    "code": "{VALUE.connectionType} {NAME} = {VALUE};"
+}, {
+    "type": "output",
+    "name": "swVariable",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-sw-variable-advanced",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-sw-variable-advanced-variable"
+        }, {
+            "id": "VALUE",
+            "alias": "dynamicDropdown",
+            "options": "softwareVars"
+        }]
+    ],
+    "code": "{VALUE}",
+    "returnType": {
+        "type": "fromDynamicDropdown",
+        "idDropdown": "VAR",
+        "options": "softwareVars"
+    }
+}, {
+    "type": "output",
+    "name": "selectVariable",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-select-variable",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-select-variable-variable"
+        }, {
+            "id": "VAR",
+            "alias": "dynamicDropdown",
+            "options": "softwareVars"
+        }]
+    ],
+    "code": "{VAR}",
+    "returnType": {
+        "type": "fromDynamicDropdown",
+        "idDropdown": "VAR",
+        "options": "softwareVars"
+    }
+}, {
+    "type": "statement",
+    "name": "setArrayVariable",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": {
+            "type": "fromDynamicDropdown",
+            "idDropdown": "NAME",
+            "pointer": "true",
+            "options": "softwareVars"
+        },
+        "name": "4eaba8f0-3537-42e2-a8b6-d3860ca4089d"
+    }],
+    "bloqClass": "bloq-set-variableArray",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-set-variableArray-variable"
+        }, {
+            "id": "NAME",
+            "alias": "dynamicDropdown",
+            "options": "softwareVars"
+        }, {
+            "alias": "text",
+            "value": "["
+        }, {
+            "id": "ITERATOR",
+            "alias": "numberInput",
+            "value": 0
+        }, {
+            "alias": "text",
+            "value": "]"
+        }, {
+            "alias": "text",
+            "value": "="
+        }, {
+            "bloqInputId": "VALUE",
+            "alias": "bloqInput",
+            "acceptType": {
+                "type": "fromDynamicDropdown",
+                "idDropdown": "NAME",
+                "pointer": "true",
+                "options": "softwareVars"
+            },
+            "name": "4eaba8f0-3537-42e2-a8b6-d3860ca4089d"
+        }]
+    ],
+    "code": "{NAME}[{ITERATOR}] = {VALUE};"
+}, {
+    "type": "statement",
+    "name": "setVariable",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--input",
+        "accept": "connector--output",
+        "acceptType": {
+            "type": "fromDynamicDropdown",
+            "idDropdown": "NAME",
+            "options": "softwareVars"
+        },
+        "name": "4b3d9575-1ed6-4354-8e4e-f883b1f3c243"
+    }],
+    "bloqClass": "bloq-set-variable",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-set-variable-variable"
+        }, {
+            "id": "NAME",
+            "alias": "dynamicDropdown",
+            "options": "softwareVars"
+        }, {
+            "alias": "text",
+            "value": "="
+        }, {
+            "bloqInputId": "VALUE",
+            "alias": "bloqInput",
+            "acceptType": {
+                "type": "fromDynamicDropdown",
+                "idDropdown": "NAME",
+                "options": "softwareVars"
+            },
+            "name": "4b3d9575-1ed6-4354-8e4e-f883b1f3c243"
+        }]
+    ],
+    "code": "{NAME} = {VALUE};"
+}, {
+    "type": "output",
+    "name": "zowiButtons",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-zowi-buttons",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-zowi-buttons"
+        }, {
+            "id": "BUTTON",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-buttons-A",
+                "value": "PIN_AButton"
+            }, {
+                "label": "bloq-zowi-buttons-B",
+                "value": "PIN_BButton"
+            }]
+        }]
+    ],
+    "code": "digitalRead({BUTTON})",
+    "returnType": {
+        "type": "simple",
+        "value": "float"
+    }
+}, {
+    "type": "output",
+    "name": "zowiDistance",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-zowi-distance",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-zowi-distance"
+        }]
+    ],
+    "code": "zowi.getDistance()",
+    "returnType": {
+        "type": "simple",
+        "value": "float"
+    }
+}, {
+    "type": "statement",
+    "name": "zowiMovementsFront",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-zowi-movements-front",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-zowi-movements"
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-movements-walk"
+        }, {
+            "id": "DIR",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-forward",
+                "value": "FORWARD"
+            }, {
+                "label": "bloq-zowi-movements-backward",
+                "value": "BACKWARD"
+            }]
+        }, {
+            "id": "STEPS",
+            "alias": "numberInput",
+            "value": 4
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-movements-speed"
+        }, {
+            "id": "SPEED",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-speed-small",
+                "value": "LOW_SPEED"
+            }, {
+                "label": "bloq-zowi-movements-speed-medium",
+                "value": "MEDIUM_SPEED"
+            }, {
+                "label": "bloq-zowi-movements-speed-high",
+                "value": "HIGH_SPEED"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-movements-endtext"
+        }]
+    ],
+    "code": "zowi.walk({STEPS},{SPEED},{DIR});"
+}, {
+    "type": "statement",
+    "name": "zowiMovementsHeightFront",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-zowi-movements-height-front",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-zowi-movements-height"
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-movements-height-flapping"
+        }, {
+            "id": "DIR",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-height-forward",
+                "value": "FORWARD"
+            }, {
+                "label": "bloq-zowi-movements-height-backward",
+                "value": "BACKWARD"
+            }]
+        }, {
+            "id": "STEPS",
+            "alias": "numberInput",
+            "value": 1
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-movements-height-speed"
+        }, {
+            "id": "SPEED",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-speed-small",
+                "value": "LOW_SPEED"
+            }, {
+                "label": "bloq-zowi-movements-speed-medium",
+                "value": "MEDIUM_SPEED"
+            }, {
+                "label": "bloq-zowi-movements-speed-high",
+                "value": "HIGH_SPEED"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-movements-height-height"
+        }, {
+            "id": "HEIGHT",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-height-small",
+                "value": "SMALL_HEIGHT"
+            }, {
+                "label": "bloq-zowi-movements-height-medium",
+                "value": "MEDIUM_HEIGHT"
+            }, {
+                "label": "bloq-zowi-movements-height-big",
+                "value": "BIG_HEIGHT"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-movements-height-endtext"
+        }]
+    ],
+    "code": "zowi.flapping({STEPS},{SPEED},{HEIGHT},{DIR});"
+}, {
+    "type": "statement",
+    "name": "zowiMovementsHeightSides",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-zowi-movements-height-sides",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-zowi-movements-height"
+        }, {
+            "id": "MOVEMENT",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-height-moonwalker",
+                "value": "moonwalker"
+            }, {
+                "label": "bloq-zowi-movements-height-crusaito",
+                "value": "crusaito"
+            }]
+        }, {
+            "id": "DIR",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-height-left",
+                "value": "LEFT"
+            }, {
+                "label": "bloq-zowi-movements-height-right",
+                "value": "RIGHT"
+            }]
+        }, {
+            "id": "STEPS",
+            "alias": "numberInput",
+            "value": 1
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-movements-height-speed"
+        }, {
+            "id": "SPEED",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-speed-small",
+                "value": "LOW_SPEED"
+            }, {
+                "label": "bloq-zowi-movements-speed-medium",
+                "value": "MEDIUM_SPEED"
+            }, {
+                "label": "bloq-zowi-movements-speed-high",
+                "value": "HIGH_SPEED"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-movements-height-height"
+        }, {
+            "id": "HEIGHT",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-height-small",
+                "value": "SMALL_HEIGHT"
+            }, {
+                "label": "bloq-zowi-movements-height-medium",
+                "value": "MEDIUM_HEIGHT"
+            }, {
+                "label": "bloq-zowi-movements-height-big",
+                "value": "BIG_HEIGHT"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-movements-height-endtext"
+        }]
+    ],
+    "code": "zowi.{MOVEMENT}({STEPS},{SPEED},{HEIGHT},{DIR});"
+}, {
+    "type": "statement",
+    "name": "zowiMovementsNoDir-v1",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-zowi-movements-no-dir-v1",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-zowi-movements-no-dir"
+        }, {
+            "id": "MOVEMENT",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-no-dir-updown",
+                "value": "updown"
+            }, {
+                "label": "bloq-zowi-movements-no-dir-swing",
+                "value": "swing"
+            }, {
+                "label": "bloq-zowi-movements-no-dir-tiptoeSwing",
+                "value": "tiptoeSwing"
+            }, {
+                "label": "bloq-zowi-movements-no-dir-jitter",
+                "value": "jitter"
+            }, {
+                "label": "bloq-zowi-movements-no-dir-ascendingTurn",
+                "value": "ascendingTurn"
+            }]
+        }, {
+            "id": "STEPS",
+            "alias": "numberInput",
+            "value": 4
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-movements-no-dir-speed"
+        }, {
+            "id": "SPEED",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-speed-small",
+                "value": "LOW_SPEED"
+            }, {
+                "label": "bloq-zowi-movements-speed-medium",
+                "value": "MEDIUM_SPEED"
+            }, {
+                "label": "bloq-zowi-movements-speed-high",
+                "value": "HIGH_SPEED"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-movements-no-dir-height"
+        }, {
+            "id": "HEIGHT",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-height-small",
+                "value": "SMALL_HEIGHT"
+            }, {
+                "label": "bloq-zowi-movements-height-medium",
+                "value": "MEDIUM_HEIGHT"
+            }, {
+                "label": "bloq-zowi-movements-height-big",
+                "value": "BIG_HEIGHT"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-movements-no-dir-endtext"
+        }]
+    ],
+    "code": "zowi.{MOVEMENT}({STEPS},{SPEED},{HEIGHT});"
+}, {
+    "type": "statement",
+    "name": "zowiMovementsSides",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-zowi-movements-sides",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-zowi-movements"
+        }, {
+            "id": "MOVEMENT",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-turn",
+                "value": "turn"
+            }, {
+                "label": "bloq-zowi-movements-shakeLeg",
+                "value": "shakeLeg"
+            }, {
+                "label": "bloq-zowi-movements-bend",
+                "value": "bend"
+            }]
+        }, {
+            "id": "DIR",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-left",
+                "value": "LEFT"
+            }, {
+                "label": "bloq-zowi-movements-right",
+                "value": "RIGHT"
+            }]
+        }, {
+            "id": "STEPS",
+            "alias": "numberInput",
+            "value": 4
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-movements-speed"
+        }, {
+            "id": "SPEED",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-speed-small",
+                "value": "LOW_SPEED"
+            }, {
+                "label": "bloq-zowi-movements-speed-medium",
+                "value": "MEDIUM_SPEED"
+            }, {
+                "label": "bloq-zowi-movements-speed-high",
+                "value": "HIGH_SPEED"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-movements-endtext"
+        }]
+    ],
+    "code": "zowi.{MOVEMENT}({STEPS},{SPEED},{DIR});"
+}, {
+    "type": "output",
+    "name": "zowiSound",
+    "connectors": [{
+        "type": "connector--output",
+        "accept": "connector--input"
+    }],
+    "bloqClass": "bloq-zowi-sound",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-zowi-sound"
+        }]
+    ],
+    "code": "zowi.getNoise()",
+    "returnType": {
+        "type": "simple",
+        "value": "float"
+    }
+}, {
+    "type": "statement",
+    "name": "zowiMovements",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-zowi-movements",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-zowi-movements"
+        }, {
+            "id": "MOVEMENT",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-walk",
+                "value": "walk"
+            }, {
+                "label": "bloq-zowi-movements-turn",
+                "value": "turn"
+            }, {
+                "label": "bloq-zowi-movements-shakeLeg",
+                "value": "shakeLeg"
+            }, {
+                "label": "bloq-zowi-movements-bend",
+                "value": "bend"
+            }]
+        }, {
+            "id": "DIR",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-forward",
+                "value": "FORWARD"
+            }, {
+                "label": "bloq-zowi-movements-backward",
+                "value": "BACKWARD"
+            }, {
+                "label": "bloq-zowi-movements-left",
+                "value": "LEFT"
+            }, {
+                "label": "bloq-zowi-movements-right",
+                "value": "RIGHT"
+            }]
+        }, {
+            "id": "STEPS",
+            "alias": "numberInput",
+            "value": 4
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-movements-speed"
+        }, {
+            "id": "SPEED",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-speed-small",
+                "value": "LOW_SPEED"
+            }, {
+                "label": "bloq-zowi-movements-speed-medium",
+                "value": "MEDIUM_SPEED"
+            }, {
+                "label": "bloq-zowi-movements-speed-high",
+                "value": "HIGH_SPEED"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-movements-endtext"
+        }]
+    ],
+    "code": "zowi.{MOVEMENT}({STEPS},{SPEED},{DIR});"
+}, {
+    "type": "statement",
+    "name": "zowiMovementsHeight",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-zowi-movements-height",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-zowi-movements-height"
+        }, {
+            "id": "MOVEMENT",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-height-moonwalker",
+                "value": "moonwalker"
+            }, {
+                "label": "bloq-zowi-movements-height-crusaito",
+                "value": "crusaito"
+            }, {
+                "label": "bloq-zowi-movements-height-flapping",
+                "value": "flapping"
+            }]
+        }, {
+            "id": "DIR",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-height-forward",
+                "value": "FORWARD"
+            }, {
+                "label": "bloq-zowi-movements-height-backward",
+                "value": "BACKWARD"
+            }, {
+                "label": "bloq-zowi-movements-height-left",
+                "value": "LEFT"
+            }, {
+                "label": "bloq-zowi-movements-height-right",
+                "value": "RIGHT"
+            }]
+        }, {
+            "id": "STEPS",
+            "alias": "numberInput",
+            "value": 1
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-movements-height-speed"
+        }, {
+            "id": "SPEED",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-speed-small",
+                "value": "LOW_SPEED"
+            }, {
+                "label": "bloq-zowi-movements-speed-medium",
+                "value": "MEDIUM_SPEED"
+            }, {
+                "label": "bloq-zowi-movements-speed-high",
+                "value": "HIGH_SPEED"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-movements-height-height"
+        }, {
+            "id": "HEIGHT",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-height-small",
+                "value": "SMALL_HEIGHT"
+            }, {
+                "label": "bloq-zowi-movements-height-medium",
+                "value": "MEDIUM_HEIGHT"
+            }, {
+                "label": "bloq-zowi-movements-height-big",
+                "value": "BIG_HEIGHT"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-movements-height-endtext"
+        }]
+    ],
+    "code": "zowi.{MOVEMENT}({STEPS},{SPEED},{HEIGHT},{DIR});"
+}, {
+    "type": "statement",
+    "name": "zowiMovementsNoDir",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-zowi-movements-no-dir",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-zowi-movements-no-dir"
+        }, {
+            "id": "MOVEMENT",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-no-dir-updown",
+                "value": "updown"
+            }, {
+                "label": "bloq-zowi-movements-no-dir-swing",
+                "value": "swing"
+            }, {
+                "label": "bloq-zowi-movements-no-dir-tiptoeSwing",
+                "value": "tiptoeSwing"
+            }, {
+                "label": "bloq-zowi-movements-no-dir-jitter",
+                "value": "jitter"
+            }, {
+                "label": "bloq-zowi-movements-no-dir-ascendingTurn",
+                "value": "ascendingTurn"
+            }, {
+                "label": "bloq-zowi-movements-no-dir-jump",
+                "value": "jump"
+            }]
+        }, {
+            "id": "STEPS",
+            "alias": "numberInput",
+            "value": 4
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-movements-no-dir-speed"
+        }, {
+            "id": "SPEED",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-speed-small",
+                "value": "LOW_SPEED"
+            }, {
+                "label": "bloq-zowi-movements-speed-medium",
+                "value": "MEDIUM_SPEED"
+            }, {
+                "label": "bloq-zowi-movements-speed-high",
+                "value": "HIGH_SPEED"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-movements-no-dir-height"
+        }, {
+            "id": "HEIGHT",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-height-small",
+                "value": "SMALL_HEIGHT"
+            }, {
+                "label": "bloq-zowi-movements-height-medium",
+                "value": "MEDIUM_HEIGHT"
+            }, {
+                "label": "bloq-zowi-movements-height-big",
+                "value": "BIG_HEIGHT"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-movements-no-dir-endtext"
+        }]
+    ],
+    "code": "zowi.{MOVEMENT}({STEPS},{SPEED},{HEIGHT});"
+}, {
+    "type": "statement",
+    "name": "zowiGestures",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-zowi-gestures",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-zowi-gestures"
+        }, {
+            "id": "GESTURE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-gestures-ZowiHappy",
+                "value": "ZowiHappy"
+            }, {
+                "label": "bloq-zowi-gestures-ZowiSuperHappy",
+                "value": "ZowiSuperHappy"
+            }, {
+                "label": "bloq-zowi-gestures-ZowiSad",
+                "value": "ZowiSad"
+            }, {
+                "label": "bloq-zowi-gestures-ZowiSleeping",
+                "value": "ZowiSleeping"
+            }, {
+                "label": "bloq-zowi-gestures-ZowiFart",
+                "value": "ZowiFart"
+            }, {
+                "label": "bloq-zowi-gestures-ZowiConfused",
+                "value": "ZowiConfused"
+            }, {
+                "label": "bloq-zowi-gestures-ZowiLove",
+                "value": "ZowiLove"
+            }, {
+                "label": "bloq-zowi-gestures-ZowiAngry",
+                "value": "ZowiAngry"
+            }, {
+                "label": "bloq-zowi-gestures-ZowiFretful",
+                "value": "ZowiFretful"
+            }, {
+                "label": "bloq-zowi-gestures-ZowiVictory",
+                "value": "ZowiVictory"
+            }, {
+                "label": "bloq-zowi-gestures-ZowiFail",
+                "value": "ZowiFail"
+            }]
+        }]
+    ],
+    "code": "zowi.playGesture({GESTURE});"
+}, {
+    "type": "statement",
+    "name": "zowiHome",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-zowi-rest",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-zowi-rest"
+        }]
+    ],
+    "code": "zowi.home();"
+}, {
+    "type": "statement-input",
+    "name": "zowiIfButtons",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-zowi-if-buttons",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-zowi-if-buttons"
+        }, {
+            "id": "BUTTON",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-if-buttons-A",
+                "value": "PIN_AButton"
+            }, {
+                "label": "bloq-zowi-if-buttons-B",
+                "value": "PIN_BButton"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-if-buttons-then"
+        }]
+    ],
+    "code": "if(digitalRead({BUTTON}) == 1){{STATEMENTS}}"
+}, {
+    "type": "statement-input",
+    "name": "zowiIfDistance",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-zowi-if-distance",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-zowi-if-distance"
+        }, {
+            "id": "OPERATOR",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-if-distance-less",
+                "value": "<"
+            }, {
+                "label": "bloq-zowi-if-distance-more",
+                "value": ">"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-if-distance-than"
+        }, {
+            "id": "DISTANCE",
+            "alias": "numberInput",
+            "value": 15
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-if-distance-then"
+        }]
+    ],
+    "code": "if(zowi.getDistance() {OPERATOR} {DISTANCE}){{STATEMENTS}}"
+}, {
+    "type": "statement-input",
+    "name": "zowiIfSound",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }, {
+        "type": "connector--root",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-zowi-if-sound",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-zowi-if-sound"
+        }]
+    ],
+    "code": " if(zowi.getNoise() >= 650){{STATEMENTS}}"
+}, {
+    "type": "statement",
+    "name": "zowiMouth",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-zowi-mouth",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-zowi-mouth"
+        }, {
+            "id": "GESTURE",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-mouth-smile",
+                "value": "smile_code"
+            }, {
+                "label": "bloq-zowi-mouth-sad",
+                "value": "sad_code"
+            }, {
+                "label": "bloq-zowi-mouth-happy",
+                "value": "happyOpen_code"
+            }, {
+                "label": "bloq-zowi-mouth-confused",
+                "value": "confused_code"
+            }, {
+                "label": "bloq-zowi-mouth-bigSurprise",
+                "value": "bigSurprise_code"
+            }, {
+                "label": "bloq-zowi-mouth-tongueOut",
+                "value": "tongueOut_code"
+            }]
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-mouth-mouth"
+        }]
+    ],
+    "code": "zowi.putMouth({GESTURE}, false);"
+}, {
+    "type": "statement",
+    "name": "zowiMovementsSimple",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-zowi-movements-simple",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-zowi-movements-simple"
+        }, {
+            "id": "MOVEMENT",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-movements-simple-walk",
+                "value": "walk"
+            }, {
+                "label": "bloq-zowi-movements-simple-turn",
+                "value": "turn"
+            }, {
+                "label": "bloq-zowi-movements-simple-shakeLeg",
+                "value": "shakeLeg"
+            }, {
+                "label": "bloq-zowi-movements-simple-bend",
+                "value": "bend"
+            }, {
+                "label": "bloq-zowi-movements-simple-moonwalker",
+                "value": "moonwalker"
+            }, {
+                "label": "bloq-zowi-movements-simple-crusaito",
+                "value": "crusaito"
+            }, {
+                "label": "bloq-zowi-movements-simple-flapping",
+                "value": "flapping"
+            }, {
+                "label": "bloq-zowi-movements-simple-updown",
+                "value": "updown"
+            }, {
+                "label": "bloq-zowi-movements-simple-swing",
+                "value": "swing"
+            }, {
+                "label": "bloq-zowi-movements-simple-tiptoeSwing",
+                "value": "tiptoeSwing"
+            }, {
+                "label": "bloq-zowi-movements-simple-jitter",
+                "value": "jitter"
+            }, {
+                "label": "bloq-zowi-movements-simple-ascendingTurn",
+                "value": "ascendingTurn"
+            }, {
+                "label": "bloq-zowi-movements-simple-jump",
+                "value": "jump"
+            }]
+        }, {
+            "id": "STEPS",
+            "alias": "numberInput",
+            "value": 4
+        }, {
+            "alias": "text",
+            "value": "bloq-zowi-movements-simple-steps"
+        }]
+    ],
+    "code": "zowi.{MOVEMENT}({STEPS});"
+}, {
+    "type": "statement",
+    "name": "zowiSounds",
+    "connectors": [{
+        "type": "connector--top",
+        "accept": "connector--bottom"
+    }, {
+        "type": "connector--bottom",
+        "accept": "connector--top"
+    }],
+    "bloqClass": "bloq-zowi-sounds",
+    "content": [
+        [{
+            "alias": "text",
+            "value": "bloq-zowi-sounds"
+        }, {
+            "id": "SOUND",
+            "alias": "staticDropdown",
+            "options": [{
+                "label": "bloq-zowi-sounds-surprise",
+                "value": "S_surprise"
+            }, {
+                "label": "bloq-zowi-sounds-OhOoh",
+                "value": "S_OhOoh"
+            }, {
+                "label": "bloq-zowi-sounds-cuddly",
+                "value": "S_cuddly"
+            }, {
+                "label": "bloq-zowi-sounds-sleeping",
+                "value": "S_sleeping"
+            }, {
+                "label": "bloq-zowi-sounds-happy",
+                "value": "S_happy"
+            }, {
+                "label": "bloq-zowi-sounds-sad",
+                "value": "S_sad"
+            }, {
+                "label": "bloq-zowi-sounds-confused",
+                "value": "S_confused"
+            }, {
+                "label": "bloq-zowi-sounds-fart1-v1",
+                "value": "S_fart1"
+            }]
+        }]
+    ],
+    "code": "zowi.sing({SOUND});"
+}]

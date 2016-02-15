@@ -66,11 +66,12 @@
 }
 
 .software--scroll {
-  position: absolute;
+  position: fixed;
   bottom  : 0;
   height  : 20px;
-  width   : calc(100% - 275px);
+  width: calc(100% - 320px);
   overflow: auto;
+  z-index: 2;
 }
 
 .software--vscroll {

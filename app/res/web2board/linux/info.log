@@ -1,0 +1,159 @@
+2016/02/15 16:52:30 - Reading config file
+2016/02/15 16:52:30 - [BitbloqLibsUpdater] Checking version 0.1.0 - 0.1.0
+2016/02/15 16:52:30 - [BitbloqLibsUpdater] Checking library names
+2016/02/15 16:52:30 - BitbloqLibs is up to date
+2016/02/15 16:52:30 - init web2board with options: {'logLevel': 20, 'testing': 'none', 'update2version': None, 'host': u'127.0.0.1', 'board': 'uno', 'port': 9876}, and args: []
+2016/02/15 16:52:30 - Working directory: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
+2016/02/15 16:52:30 - CONFIG_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/config.json
+2016/02/15 16:52:30 - COPY_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/web2board_copy
+2016/02/15 16:52:30 - EXECUTABLE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
+2016/02/15 16:52:30 - MAIN_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
+2016/02/15 16:52:30 - ORIGINAL_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/web2board
+2016/02/15 16:52:30 - PLATFORMIO_PACKAGES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformIoPackages
+2016/02/15 16:52:30 - PLATFORMIO_WORKSPACE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformioWorkSpace
+2016/02/15 16:52:30 - PROGRAM_PATH: /home/dieguin/.web2board
+2016/02/15 16:52:30 - RES_BOARDS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/boards.txt
+2016/02/15 16:52:30 - RES_ICONS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/icons
+2016/02/15 16:52:30 - RES_ICO_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/Web2board.ico
+2016/02/15 16:52:30 - RES_LOGGING_CONFIG_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/logging.json
+2016/02/15 16:52:30 - RES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res
+2016/02/15 16:52:30 - RES_PLATFORMIO_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformio
+2016/02/15 16:52:30 - RES_SCONS_ZIP_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/sconsRes.zip
+2016/02/15 16:52:30 - SCONS_EXECUTABLE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/Scons/sconsScript.py
+2016/02/15 16:52:30 - TEST_RES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/Test/resources
+2016/02/15 16:52:30 - TEST_SETTINGS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/TestSettings/resources
+2016/02/15 16:52:30 - listening...
+2016/02/15 16:52:30 - open new connection with ID: UNPROVIDED__0 
+2016/02/15 16:52:30 - Message received from ID: UNPROVIDED__0
+{"hub":"CodeHub","function":"compile","args":["\n/***   Included libraries  ***/\n\n\n/***   Global variables and function definition  ***/\n\n\n/***   Setup  ***/\nvoid setup(){}\n\n/***   Loop  ***/\nvoid loop(){}"],"ID":0} 
+2016/02/15 16:52:30 - message to UNPROVIDED__0:
+{"function": "isCompiling", "args": [], "hub": "CodeHub"}
+2016/02/15 16:52:30 - [lun 15 feb 2016 16:52:30 ] Processing [36m[1muno[0m (platform: atmelavr, board: uno, framework: arduino)
+2016/02/15 16:52:30 - -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2016/02/15 16:52:30 - Starting new HTTPS connection (1): ssl.google-analytics.com
+2016/02/15 16:52:30 - Executing: ../../web2board
+-Q
+-j 4
+--warn=no-no-parallel-support
+-f
+/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/platformio/builder/main.py
+PIOENV=uno
+PLATFORM=atmelavr
+BOARD=uno
+FRAMEWORK=arduino
+BUILD_SCRIPT=/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/platformio/builder/scripts/atmelavr.py
+PIOPACKAGE_TOOLCHAIN=toolchain-atmelavr
+PIOPACKAGE_UPLOADER=tool-avrdude
+PIOPACKAGE_FRAMEWORK=framework-arduinoavr
+/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformioWorkSpace
+2016/02/15 16:52:30 - Setting read timeout to 2
+2016/02/15 16:52:30 - "POST /collect HTTP/1.1" 200 35
+2016/02/15 16:52:31 - ['/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux']
+2016/02/15 16:52:31 - 
+2016/02/15 16:52:31 - avr-g++ -o .pioenvs/uno/src/main.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -DPLATFORMIO=020603 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant src/main.cpp
+2016/02/15 16:52:31 - avr-g++ -o .pioenvs/uno/firmware.elf -Os -mmcu=atmega328p -Wl,--gc-sections,--relax .pioenvs/uno/src/main.o -L/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformIoPackages/packages/ldscripts -L.pioenvs/uno -Wl,--start-group -lm .pioenvs/uno/libFrameworkArduinoVariant.a .pioenvs/uno/libFrameworkArduino.a -Wl,--end-group
+2016/02/15 16:52:31 - avr-objcopy -O ihex -R .eeprom .pioenvs/uno/firmware.elf .pioenvs/uno/firmware.hex
+2016/02/15 16:52:31 - "avr-size" --mcu=atmega328p -C -d .pioenvs/uno/firmware.elf
+2016/02/15 16:52:31 - AVR Memory Usage
+2016/02/15 16:52:31 - ----------------
+2016/02/15 16:52:31 - Device: atmega328p
+2016/02/15 16:52:31 - 
+2016/02/15 16:52:31 - Program:     436 bytes (1.3% Full)
+2016/02/15 16:52:31 - (.text + .data + .bootloader)
+2016/02/15 16:52:31 - 
+2016/02/15 16:52:31 - Data:          9 bytes (0.4% Full)
+2016/02/15 16:52:31 - (.data + .bss + .noinit)
+2016/02/15 16:52:31 - 
+2016/02/15 16:52:31 - 
+2016/02/15 16:52:31 - ====================================================================== [[32m[1mSUCCESS[0m] Took 0.88 seconds ======================================================================
+2016/02/15 16:52:31 - message to UNPROVIDED__0:
+{"function": "compile", "success": true, "replay": true, "ID": 0, "hub": "CodeHub"}
+2016/02/15 16:52:36 - Message received from ID: UNPROVIDED__0
+{"hub":"CodeHub","function":"compile","args":["\n/***   Included libraries  ***/\n\n\n/***   Global variables and function definition  ***/\n\n\n/***   Setup  ***/\nvoid setup(){}\n\n/***   Loop  ***/\nvoid loop(){}"],"ID":1} 
+2016/02/15 16:52:36 - message to UNPROVIDED__0:
+{"function": "isCompiling", "args": [], "hub": "CodeHub"}
+2016/02/15 16:52:36 - [lun 15 feb 2016 16:52:36 ] Processing [36m[1muno[0m (platform: atmelavr, board: uno, framework: arduino)
+2016/02/15 16:52:36 - -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2016/02/15 16:52:36 - Setting read timeout to 2
+2016/02/15 16:52:36 - Executing: ../../web2board
+-Q
+-j 4
+--warn=no-no-parallel-support
+-f
+/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/platformio/builder/main.py
+PIOENV=uno
+PLATFORM=atmelavr
+BOARD=uno
+FRAMEWORK=arduino
+BUILD_SCRIPT=/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/platformio/builder/scripts/atmelavr.py
+PIOPACKAGE_TOOLCHAIN=toolchain-atmelavr
+PIOPACKAGE_UPLOADER=tool-avrdude
+PIOPACKAGE_FRAMEWORK=framework-arduinoavr
+/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformioWorkSpace
+2016/02/15 16:52:36 - "POST /collect HTTP/1.1" 200 35
+2016/02/15 16:52:37 - ['/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux']
+2016/02/15 16:52:37 - 
+2016/02/15 16:52:37 - scons: `.pioenvs/uno/firmware.hex' is up to date.
+2016/02/15 16:52:37 - "avr-size" --mcu=atmega328p -C -d .pioenvs/uno/firmware.elf
+2016/02/15 16:52:37 - AVR Memory Usage
+2016/02/15 16:52:37 - ----------------
+2016/02/15 16:52:37 - Device: atmega328p
+2016/02/15 16:52:37 - 
+2016/02/15 16:52:37 - Program:     436 bytes (1.3% Full)
+2016/02/15 16:52:37 - (.text + .data + .bootloader)
+2016/02/15 16:52:37 - 
+2016/02/15 16:52:37 - Data:          9 bytes (0.4% Full)
+2016/02/15 16:52:37 - (.data + .bss + .noinit)
+2016/02/15 16:52:37 - 
+2016/02/15 16:52:37 - 
+2016/02/15 16:52:37 - ====================================================================== [[32m[1mSUCCESS[0m] Took 0.79 seconds ======================================================================
+2016/02/15 16:52:37 - message to UNPROVIDED__0:
+{"function": "compile", "success": true, "replay": true, "ID": 1, "hub": "CodeHub"}
+2016/02/15 16:53:05 - Message received from ID: UNPROVIDED__0
+{"hub":"CodeHub","function":"compile","args":["\n/***   Included libraries  ***/\n\n\n/***   Global variables and function definition  ***/\nint boton_0 = 11;\n\n/***   Setup  ***/\nvoid setup(){pinMode(boton_0, INPUT);}\n\n/***   Loop  ***/\nvoid loop(){float boton = digitalRead(11);}"],"ID":2} 
+2016/02/15 16:53:05 - message to UNPROVIDED__0:
+{"function": "isCompiling", "args": [], "hub": "CodeHub"}
+2016/02/15 16:53:05 - [lun 15 feb 2016 16:53:05 ] Processing [36m[1muno[0m (platform: atmelavr, board: uno, framework: arduino)
+2016/02/15 16:53:05 - -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2016/02/15 16:53:06 - Setting read timeout to 2
+2016/02/15 16:53:06 - Executing: ../../web2board
+-Q
+-j 4
+--warn=no-no-parallel-support
+-f
+/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/platformio/builder/main.py
+PIOENV=uno
+PLATFORM=atmelavr
+BOARD=uno
+FRAMEWORK=arduino
+BUILD_SCRIPT=/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/platformio/builder/scripts/atmelavr.py
+PIOPACKAGE_TOOLCHAIN=toolchain-atmelavr
+PIOPACKAGE_UPLOADER=tool-avrdude
+PIOPACKAGE_FRAMEWORK=framework-arduinoavr
+/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformioWorkSpace
+2016/02/15 16:53:06 - "POST /collect HTTP/1.1" 200 35
+2016/02/15 16:53:06 - ['/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux']
+2016/02/15 16:53:06 - 
+2016/02/15 16:53:06 - avr-g++ -o .pioenvs/uno/src/main.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -DPLATFORMIO=020603 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant src/main.cpp
+2016/02/15 16:53:06 - src/main.cpp: In function 'void loop()':
+2016/02/15 16:53:06 - src/main.cpp:13:19: warning: unused variable 'boton' [-Wunused-variable]
+2016/02/15 16:53:06 - void loop(){float boton = digitalRead(11);}
+2016/02/15 16:53:06 - ^
+2016/02/15 16:53:06 - avr-g++ -o .pioenvs/uno/firmware.elf -Os -mmcu=atmega328p -Wl,--gc-sections,--relax .pioenvs/uno/src/main.o -L/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformIoPackages/packages/ldscripts -L.pioenvs/uno -Wl,--start-group -lm .pioenvs/uno/libFrameworkArduinoVariant.a .pioenvs/uno/libFrameworkArduino.a -Wl,--end-group
+2016/02/15 16:53:06 - avr-objcopy -O ihex -R .eeprom .pioenvs/uno/firmware.elf .pioenvs/uno/firmware.hex
+2016/02/15 16:53:06 - "avr-size" --mcu=atmega328p -C -d .pioenvs/uno/firmware.elf
+2016/02/15 16:53:06 - AVR Memory Usage
+2016/02/15 16:53:06 - ----------------
+2016/02/15 16:53:06 - Device: atmega328p
+2016/02/15 16:53:06 - 
+2016/02/15 16:53:06 - Program:     834 bytes (2.5% Full)
+2016/02/15 16:53:06 - (.text + .data + .bootloader)
+2016/02/15 16:53:06 - 
+2016/02/15 16:53:06 - Data:         11 bytes (0.5% Full)
+2016/02/15 16:53:06 - (.data + .bss + .noinit)
+2016/02/15 16:53:06 - 
+2016/02/15 16:53:06 - 
+2016/02/15 16:53:06 - ====================================================================== [[32m[1mSUCCESS[0m] Took 0.85 seconds ======================================================================
+2016/02/15 16:53:06 - message to UNPROVIDED__0:
+{"function": "compile", "success": true, "replay": true, "ID": 2, "hub": "CodeHub"}
+2016/02/15 17:17:10 - client closed UNPROVIDED__0

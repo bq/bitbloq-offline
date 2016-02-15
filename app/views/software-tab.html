@@ -1,5 +1,23 @@
-<div data-ng-controller="SoftwareTabCtrl" ng-cloak>
+<div data-ng-controller="SoftwareTabCtrl" data-ng-keyup="onFieldKeyUp($event)" ng-cloak>
   <scrollbar class="software--scroll" type="'horizontal'" target=".field--content > .bloq--extension__content" container=".field--content"></scrollbar>
   <scrollbar class="software--vscroll" type="'vertical'" bind-only="true" target="#bloqs--field" container=".software"></scrollbar>
+  <div id="empty"></div>
+  <div id="bloqs-context-menu">
+    <ul>
+      <li>
+        <button data-ng-click="duplicateBloqFromContextMenu(contextMenuBloq)">{{ 'bloqstab-duplicate-bloq' | translate }}</button>
+      </li>
+      <li>
+        <button data-ng-show="!contextMenuBloq.itsEnabled() && !contextMenuBloq.itsFree()" data-ng-click="enableBloqFromContextMenu(contextMenuBloq)">{{ 'bloqstab-enable-bloq' | translate }}</button>
+      </li>
+      <li>
+        <button data-ng-show="contextMenuBloq.itsEnabled()" data-ng-click="disableBloqFromContextMenu(contextMenuBloq)">{{ 'bloqstab-disable-bloq' | translate }}</button>
+      </li>
+      <li class="dropdown__item--separator"></li>
+      <li>
+        <button data-ng-click="removeBloqFromContextMenu(contextMenuBloq)">{{ 'bloqstab-remove-bloq' | translate }}</button>
+      </li>
+    </ul>
+  </div>
   <div id="bloqs--field" class="theme-colors"></div>
 </div>

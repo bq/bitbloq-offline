@@ -15,6 +15,7 @@
     "bloqs": "dev",
     "js-beautify": "~1.6.2",
     "prism": "~1.4.1",
-    "ng-dialog": "~0.5.6"
+    "ng-dialog": "~0.5.6",
+    "jquery-auto-grow-input": "*"
   }
 }

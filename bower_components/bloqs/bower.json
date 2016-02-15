@@ -1,0 +1,39 @@
+{
+    "name": "bloqs",
+    "description": "Library to create bloqs in bitbloq",
+    "version": "0.1.3",
+    "main": [
+        "dist/bloqs.min.js",
+        "dist/bloqs.css"
+    ],
+    "homepage": "https://github.com/bq/bloqs",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/bq/bloqs.git"
+    },
+    "keywords": [
+        "bq",
+        "bitbloq",
+        "robotics",
+        "arduino",
+        "electronics"
+    ],
+    "license": "MIT",
+    "authors": [
+        "Irene Sanz <irene.sanz@bq.com>",
+        "Laura del Río <laura.delrio@bq.com>",
+        "Diego Segura <diego.segura@bq.com>",
+        "Tom Calvo <tomas.calvo@bq.com>",
+        "Sergio Morcuende <sergio.morcuende@bq.com>",
+        "Jesús Flores <jesus.flores@bq.com>",
+        "Sergio Mate <sergio.mate@bq.com>"
+    ],
+    "dependencies": {
+        "jquery": ">= 2.1.0",
+        "lodash": "~3.7.0",
+        "q": "v1.0.1"
+    },
+    "moduleType": [
+        "amd"
+    ]
+}

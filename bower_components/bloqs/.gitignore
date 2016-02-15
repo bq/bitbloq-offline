@@ -1,0 +1,17 @@
+bower_components/
+node_modules/
+.tmp/
+target/
+.sass-cache/
+*~
+nbproject
+target/
+# Editor File Ignore
+*.sublime-project
+*.sublime-workspace
+.idea/
+dist/json
+dist/styles
+dist/ng-bloqs*
+dist/resume.json
+i18n
