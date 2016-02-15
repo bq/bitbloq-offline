@@ -1,12 +1,83 @@
 #bloqs--field {
-    background-color: #EBEBEB;
-    width: 100%;
-    height: calc(100vh - 41px);
-    overflow: auto;
+  background-color: #EBEBEB;
+  width           : 100%;
+  height          : calc(100vh - 41px);
+  overflow        : auto;
 }
 
 .bloq--group {
-    .field--header {
-        overflow: hidden;
-    }
+  position     : relative;
+  width        : calc(100% - 280px);
+  margin       : 15px;
+  border-radius: 4px;
+
+  h3 {
+    cursor   : pointer;
+    cursor   : hand;
+    padding  : .7em .7em .5em;
+    color    : #373b44;
+    position : relative;
+    float    : left;
+    font-size: 16px;
+  }
+
+  .btn--collapsefield {
+    top: 17px;
+  }
+
+  .field--header {
+    overflow     : hidden;
+    border-bottom: 1px solid #ebebeb;
+    min-height   : 40px;
+  }
+
+  .bloq--extension--info {
+    height : auto;
+    padding: 10px;
+  }
+}
+
+.make--scrollbar {
+  width     : 17px;
+  display   : block;
+  position  : absolute;
+  left      : calc(100% - 230px);
+  z-index   : 1;
+  overflow  : hidden;
+  overflow-y: auto;
+  max-height: 100%;
+  top       : 0;
+}
+
+#make--horizontal-scrollbar {
+  height    : 17px;
+  display   : block;
+  position  : absolute;
+  left      : 70px;
+  z-index   : 3;
+  overflow  : hidden;
+  overflow-x: auto;
+  max-width : calc(100% - 300px);
+  bottom    : 0;
+
+  & > div {
+    height: 17px;
+  }
+}
+
+.software--scroll {
+  position: absolute;
+  bottom  : 0;
+  height  : 20px;
+  width   : calc(100% - 275px);
+  overflow: auto;
+}
+
+.software--vscroll {
+  position: absolute;
+  bottom  : 0;
+  right   : 257px;
+  height  : 100%;
+  width   : 20px;
+  overflow: auto;
 }

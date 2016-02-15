@@ -3,8 +3,6 @@
 @import '_variables';
 @import '_global';
 @import '_layout';
-@import 'views/_bloqsTab';
-@import 'views/_hardware-tab';
 @import 'components/_text';
 @import 'components/_icons';
 @import 'components/_actionBar';
@@ -14,4 +12,7 @@
 @import 'components/_modals';
 @import 'components/_buttons';
 @import 'components/_alerts';
+@import 'components/_scrollbar';
 @import 'vendor/_prism';
+@import 'views/_bloqsTab';
+@import 'views/_hardware-tab';

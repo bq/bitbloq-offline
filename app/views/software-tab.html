@@ -1,3 +1,5 @@
 <div data-ng-controller="SoftwareTabCtrl" ng-cloak>
-    <div id="bloqs--field" class="theme-colors"></div>
+  <scrollbar class="software--scroll" type="'horizontal'" target=".field--content > .bloq--extension__content" container=".field--content"></scrollbar>
+  <scrollbar class="software--vscroll" type="'vertical'" bind-only="true" target="#bloqs--field" container=".software"></scrollbar>
+  <div id="bloqs--field" class="theme-colors"></div>
 </div>

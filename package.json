@@ -2,6 +2,7 @@
   "name": "bitbloq-offline",
   "version": "0.0.1",
   "main": "main.js",
+  "license" : "GPL-3.0",
   "dependencies": {
     "grunt": "^0.4.5",
     "grunt-sass": "^1.1.0",
@@ -17,6 +18,10 @@
     "grunt-exec": "^0.4.6",
     "grunt-wiredep": "^2.0.0",
     "load-grunt-tasks": "^3.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bq/bitbloq-offline.git"
   },
   "contributors": [
     "Diego Segura <diego.segura@bq.com>",

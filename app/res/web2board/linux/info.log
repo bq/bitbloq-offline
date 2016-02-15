@@ -174,3 +174,5 @@ avrdude64 done.  Thank you.
 
 2016/02/11 18:11:05 - Found board port: /dev/ttyACM0
 2016/02/11 18:13:01 - client closed UNPROVIDED__0
+2016/02/13 00:43:09 - closing server
+2016/02/13 00:43:09 - server closed
