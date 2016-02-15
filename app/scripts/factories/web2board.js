@@ -8,7 +8,7 @@
  * Service in the bitbloqOffline.
  */
 angular.module('bitbloqOffline')
-    .factory('web2board', function ($rootScope, $log, $q, _, $timeout, common) {
+    .factory('web2board', function ($rootScope, $log, $q, _, $timeout, common, alertsService) {
 
         /** Variables */
         var web2board = this,
@@ -20,17 +20,6 @@ angular.module('bitbloqOffline')
             wsHost: 'localhost',
             wsPort: 9876,
             serialPort: ''
-        };
-        var alertsService = {
-            add: function (){
-                alert(arguments[1])
-            },
-            isVisible: function () {
-                return false;
-            },
-            close: function () {
-                return false;
-            }
         };
 
         ws = new HubsAPI('ws:\\' + web2board.config.wsHost + ':' + web2board.config.wsPort + "/Bitbloq", 45);
@@ -193,7 +182,7 @@ angular.module('bitbloqOffline')
                 inProgress = true;
                 openCommunication(function () {
                     alertsService.add('alert-web2board-settingBoard', 'upload', 'loading');
-                    ws.CodeHub.server.upload(code, board).done(function () {
+                    ws.CodeHub.server.upload(code, board.mcu).done(function () {
                         inProgress = false;
                         alertsService.add('alert-web2board-code-uploaded', 'upload', 'ok', 5000);
                     }, handleUploadError);
@@ -230,7 +219,7 @@ angular.module('bitbloqOffline')
         web2board.uploadHex = function (board, hexText) {
             openCommunication(function () {
                 alertsService.add('alert-web2board-settingBoard', 'upload', 'loading');
-                ws.CodeHub.server.uploadHex(hexText, board).done(function () {
+                ws.CodeHub.server.uploadHex(hexText, board.mcu).done(function () {
                     alertsService.add('alert-web2board-boardReady', 'upload', 'ok', 5000, board.name);
                 }, handleUploadError);
             });
