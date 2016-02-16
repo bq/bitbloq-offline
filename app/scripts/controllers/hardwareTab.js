@@ -17,7 +17,6 @@ angular.module('bitbloqOffline')
     var hwJSON = common.hardware;
 
     function _initialize() {
-      console.log('HWJSN', hwJSON);
       $scope.hardware.componentList = hwJSON.components;
       $scope.hardware.boardList = hwJSON.boards;
       $scope.hardware.robotList = hwJSON.robots;
@@ -154,8 +153,6 @@ angular.module('bitbloqOffline')
     };
 
     var _addBoard = function(board) {
-      console.log('board', board)
-
       if ($scope.project.hardware.board === board.name && !$scope.project.hardware.robot) {
         return false;
       }
@@ -424,7 +421,6 @@ angular.module('bitbloqOffline')
 
 
     $scope.drop = function(data) {
-      console.log('DATA', data)
       if (data.type === 'boards') {
         var board = _.find($scope.hardware.boardList, function(board) {
           return board.id === data.id;
@@ -673,5 +669,5 @@ angular.module('bitbloqOffline')
       $document.off('contextmenu', _contextMenuDocumentHandler);
       $document.off('click', _clickDocumentHandler);
     });
-    console.log('hardwareTabCtrl controller', $scope.$parent.$id);
+    $log.debug('hardwareTabCtrl controller', $scope.$parent.$id);
   });

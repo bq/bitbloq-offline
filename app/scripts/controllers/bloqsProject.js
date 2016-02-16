@@ -9,7 +9,7 @@
  */
 angular.module('bitbloqOffline')
   .controller('BloqsProjectCtrl', function($scope, $rootScope, bloqsUtils, common, _, $log, bloqs) {
-    console.log('bloqsproject ctrl', $scope.$parent.$id);
+    $log.debug('bloqsproject ctrl', $scope.$parent.$id);
 
     $scope.setProject = function(project) {
       $scope.project = project;
@@ -21,14 +21,14 @@ angular.module('bitbloqOffline')
 
     $scope.refreshCode = function() {
       $scope.updateBloqs();
-      $scope.project.code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
-      var codeContainer = $('code');
-      codeContainer.text(js_beautify($scope.project.code || ''));
-      Prism.highlightElement(codeContainer[0]);
+      $scope.project.code = $scope.code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
+
+      // var codeContainer = $('code');
+      // codeContainer.text(js_beautify($scope.project.code || ''));
+      // Prism.highlightElement(codeContainer[0]);
     };
 
     $scope.updateBloqs = function() {
-      console.log('updating bloqs');
       if ($scope.arduinoMainBloqs.varsBloq) {
 
         var allBloqs = bloqs.bloqs;
@@ -125,8 +125,6 @@ angular.module('bitbloqOffline')
     };
 
     $scope.refreshComponentsArray = function() {
-      console.log('refreshComponentsArray');
-
       var newComponentsArray = bloqsUtils.getEmptyComponentsArray();
       var newHardwareTags = [];
       var readyToSave = false;

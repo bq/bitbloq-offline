@@ -959,24 +959,11 @@ dropdown .menu .menu__dropdown {
   width: 100%;
   height: 100%; }
 
-/**
- * Bitbloq Arduino Theme
- */
-code[class*="language-"],
-pre[class*="language-"] {
-  line-height: 1.3;
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text; }
-  code[class*="language-"]::-moz-selection,
-  pre[class*="language-"]::-moz-selection {
-    color: #000;
-    background-color: #fefefe; }
-  code[class*="language-"]::selection,
-  pre[class*="language-"]::selection {
-    color: #000;
-    background-color: #fefefe; }
+pre {
+  height: calc(100vh - 83px); }
+
+code {
+  left: 40px; }
 
 .token.comment,
 .token.block-comment,
@@ -1034,7 +1021,6 @@ pre[class*="language-"] {
 .token.lf:before {
   color: #e0d7d1; }
 
-/* Plugin styles: Line Highlight */
 #bloqs--field {
   background-color: #EBEBEB;
   width: 100%;

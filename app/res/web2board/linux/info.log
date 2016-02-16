@@ -157,3 +157,131 @@ PIOPACKAGE_FRAMEWORK=framework-arduinoavr
 2016/02/15 16:53:06 - message to UNPROVIDED__0:
 {"function": "compile", "success": true, "replay": true, "ID": 2, "hub": "CodeHub"}
 2016/02/15 17:17:10 - client closed UNPROVIDED__0
+2016/02/15 18:03:47 - Reading config file
+2016/02/15 18:03:47 - init web2board with options: {'logLevel': 20, 'testing': 'none', 'update2version': None, 'host': u'127.0.0.1', 'board': 'uno', 'port': 9876}, and args: []
+2016/02/15 18:03:47 - [BitbloqLibsUpdater] Checking version 0.1.0 - 0.1.0
+2016/02/15 18:03:47 - [BitbloqLibsUpdater] Checking library names
+2016/02/15 18:03:47 - BitbloqLibs is up to date
+2016/02/15 18:03:47 - Working directory: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
+2016/02/15 18:03:47 - CONFIG_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/config.json
+2016/02/15 18:03:47 - COPY_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/web2board_copy
+2016/02/15 18:03:47 - EXECUTABLE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
+2016/02/15 18:03:47 - MAIN_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
+2016/02/15 18:03:47 - ORIGINAL_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/web2board
+2016/02/15 18:03:47 - PLATFORMIO_PACKAGES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformIoPackages
+2016/02/15 18:03:47 - PLATFORMIO_WORKSPACE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformioWorkSpace
+2016/02/15 18:03:47 - PROGRAM_PATH: /home/dieguin/.web2board
+2016/02/15 18:03:47 - RES_BOARDS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/boards.txt
+2016/02/15 18:03:47 - RES_ICONS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/icons
+2016/02/15 18:03:47 - RES_ICO_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/Web2board.ico
+2016/02/15 18:03:47 - RES_LOGGING_CONFIG_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/logging.json
+2016/02/15 18:03:47 - RES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res
+2016/02/15 18:03:47 - RES_PLATFORMIO_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformio
+2016/02/15 18:03:47 - RES_SCONS_ZIP_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/sconsRes.zip
+2016/02/15 18:03:47 - SCONS_EXECUTABLE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/Scons/sconsScript.py
+2016/02/15 18:03:47 - TEST_RES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/Test/resources
+2016/02/15 18:03:47 - TEST_SETTINGS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/TestSettings/resources
+2016/02/15 18:03:48 - listening...
+2016/02/15 18:03:48 - open new connection with ID: UNPROVIDED__0 
+2016/02/15 18:03:48 - Reading config file
+2016/02/15 18:03:48 - [BitbloqLibsUpdater] Checking version 0.1.0 - 0.1.0
+2016/02/15 18:03:48 - [BitbloqLibsUpdater] Checking library names
+2016/02/15 18:03:48 - BitbloqLibs is up to date
+2016/02/15 18:03:48 - init web2board with options: {'logLevel': 20, 'testing': 'none', 'update2version': None, 'host': u'127.0.0.1', 'board': 'uno', 'port': 9876}, and args: []
+2016/02/15 18:03:48 - Working directory: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
+2016/02/15 18:03:48 - CONFIG_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/config.json
+2016/02/15 18:03:48 - COPY_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/web2board_copy
+2016/02/15 18:03:48 - EXECUTABLE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
+2016/02/15 18:03:48 - MAIN_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
+2016/02/15 18:03:48 - ORIGINAL_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/web2board
+2016/02/15 18:03:48 - PLATFORMIO_PACKAGES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformIoPackages
+2016/02/15 18:03:48 - PLATFORMIO_WORKSPACE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformioWorkSpace
+2016/02/15 18:03:48 - PROGRAM_PATH: /home/dieguin/.web2board
+2016/02/15 18:03:48 - RES_BOARDS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/boards.txt
+2016/02/15 18:03:48 - RES_ICONS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/icons
+2016/02/15 18:03:48 - RES_ICO_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/Web2board.ico
+2016/02/15 18:03:48 - RES_LOGGING_CONFIG_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/logging.json
+2016/02/15 18:03:48 - RES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res
+2016/02/15 18:03:48 - RES_PLATFORMIO_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformio
+2016/02/15 18:03:48 - RES_SCONS_ZIP_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/sconsRes.zip
+2016/02/15 18:03:48 - SCONS_EXECUTABLE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/Scons/sconsScript.py
+2016/02/15 18:03:48 - TEST_RES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/Test/resources
+2016/02/15 18:03:48 - TEST_SETTINGS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/TestSettings/resources
+2016/02/15 18:03:48 - listening...
+2016/02/15 18:03:49 - open new connection with ID: UNPROVIDED__0 
+2016/02/15 18:03:49 - Reading config file
+2016/02/15 18:03:49 - init web2board with options: {'logLevel': 20, 'testing': 'none', 'update2version': None, 'host': u'127.0.0.1', 'board': 'uno', 'port': 9876}, and args: []
+2016/02/15 18:03:49 - [BitbloqLibsUpdater] Checking version 0.1.0 - 0.1.0
+2016/02/15 18:03:49 - [BitbloqLibsUpdater] Checking library names
+2016/02/15 18:03:49 - BitbloqLibs is up to date
+2016/02/15 18:03:49 - Working directory: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
+2016/02/15 18:03:49 - CONFIG_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/config.json
+2016/02/15 18:03:49 - COPY_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/web2board_copy
+2016/02/15 18:03:49 - EXECUTABLE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
+2016/02/15 18:03:49 - MAIN_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
+2016/02/15 18:03:49 - ORIGINAL_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/web2board
+2016/02/15 18:03:49 - PLATFORMIO_PACKAGES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformIoPackages
+2016/02/15 18:03:49 - PLATFORMIO_WORKSPACE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformioWorkSpace
+2016/02/15 18:03:49 - PROGRAM_PATH: /home/dieguin/.web2board
+2016/02/15 18:03:49 - RES_BOARDS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/boards.txt
+2016/02/15 18:03:49 - RES_ICONS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/icons
+2016/02/15 18:03:49 - RES_ICO_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/Web2board.ico
+2016/02/15 18:03:49 - RES_LOGGING_CONFIG_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/logging.json
+2016/02/15 18:03:49 - RES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res
+2016/02/15 18:03:49 - RES_PLATFORMIO_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformio
+2016/02/15 18:03:49 - RES_SCONS_ZIP_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/sconsRes.zip
+2016/02/15 18:03:49 - SCONS_EXECUTABLE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/Scons/sconsScript.py
+2016/02/15 18:03:49 - TEST_RES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/Test/resources
+2016/02/15 18:03:49 - TEST_SETTINGS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/TestSettings/resources
+2016/02/15 18:03:49 - listening...
+2016/02/15 18:03:50 - open new connection with ID: UNPROVIDED__0 
+2016/02/15 18:03:50 - Reading config file
+2016/02/15 18:03:50 - init web2board with options: {'logLevel': 20, 'testing': 'none', 'update2version': None, 'host': u'127.0.0.1', 'board': 'uno', 'port': 9876}, and args: []
+2016/02/15 18:03:50 - [BitbloqLibsUpdater] Checking version 0.1.0 - 0.1.0
+2016/02/15 18:03:50 - [BitbloqLibsUpdater] Checking library names
+2016/02/15 18:03:50 - BitbloqLibs is up to date
+2016/02/15 18:03:50 - Working directory: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
+2016/02/15 18:03:50 - CONFIG_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/config.json
+2016/02/15 18:03:50 - COPY_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/web2board_copy
+2016/02/15 18:03:50 - EXECUTABLE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
+2016/02/15 18:03:50 - MAIN_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
+2016/02/15 18:03:50 - ORIGINAL_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/web2board
+2016/02/15 18:03:50 - PLATFORMIO_PACKAGES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformIoPackages
+2016/02/15 18:03:50 - PLATFORMIO_WORKSPACE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformioWorkSpace
+2016/02/15 18:03:50 - PROGRAM_PATH: /home/dieguin/.web2board
+2016/02/15 18:03:50 - RES_BOARDS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/boards.txt
+2016/02/15 18:03:50 - RES_ICONS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/icons
+2016/02/15 18:03:50 - RES_ICO_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/Web2board.ico
+2016/02/15 18:03:50 - RES_LOGGING_CONFIG_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/logging.json
+2016/02/15 18:03:50 - RES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res
+2016/02/15 18:03:50 - RES_PLATFORMIO_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformio
+2016/02/15 18:03:50 - RES_SCONS_ZIP_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/sconsRes.zip
+2016/02/15 18:03:50 - SCONS_EXECUTABLE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/Scons/sconsScript.py
+2016/02/15 18:03:50 - TEST_RES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/Test/resources
+2016/02/15 18:03:50 - TEST_SETTINGS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/TestSettings/resources
+2016/02/15 18:03:50 - listening...
+2016/02/15 18:03:51 - Reading config file
+2016/02/15 18:03:51 - init web2board with options: {'logLevel': 20, 'testing': 'none', 'update2version': None, 'host': u'127.0.0.1', 'board': 'uno', 'port': 9876}, and args: []
+2016/02/15 18:03:51 - [BitbloqLibsUpdater] Checking version 0.1.0 - 0.1.0
+2016/02/15 18:03:51 - [BitbloqLibsUpdater] Checking library names
+2016/02/15 18:03:51 - BitbloqLibs is up to date
+2016/02/15 18:03:51 - Working directory: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
+2016/02/15 18:03:51 - CONFIG_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/config.json
+2016/02/15 18:03:51 - COPY_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/web2board_copy
+2016/02/15 18:03:51 - EXECUTABLE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
+2016/02/15 18:03:51 - MAIN_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
+2016/02/15 18:03:51 - ORIGINAL_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/web2board
+2016/02/15 18:03:51 - PLATFORMIO_PACKAGES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformIoPackages
+2016/02/15 18:03:51 - PLATFORMIO_WORKSPACE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformioWorkSpace
+2016/02/15 18:03:51 - PROGRAM_PATH: /home/dieguin/.web2board
+2016/02/15 18:03:51 - RES_BOARDS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/boards.txt
+2016/02/15 18:03:51 - RES_ICONS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/icons
+2016/02/15 18:03:51 - RES_ICO_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/Web2board.ico
+2016/02/15 18:03:51 - RES_LOGGING_CONFIG_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/logging.json
+2016/02/15 18:03:51 - RES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res
+2016/02/15 18:03:51 - RES_PLATFORMIO_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformio
+2016/02/15 18:03:51 - RES_SCONS_ZIP_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/sconsRes.zip
+2016/02/15 18:03:51 - SCONS_EXECUTABLE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/Scons/sconsScript.py
+2016/02/15 18:03:51 - TEST_RES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/Test/resources
+2016/02/15 18:03:51 - TEST_SETTINGS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/TestSettings/resources
+2016/02/15 18:03:51 - listening...

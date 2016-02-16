@@ -78,9 +78,11 @@ angular.module('bitbloqOffline')
           break;
         case 86:
           //$log.debug('ctrl + v');
-          var bloq = clipboard.readText('bloq');
-          copyBloq(JSON.parse(bloq));
-          $scope.$field.focus();
+          bloq = clipboard.readText('bloq');
+          if (bloq.indexOf('{') > -1) {
+            copyBloq(JSON.parse(bloq));
+            $scope.$field.focus();
+          }
           break;
         case 89:
           $log.debug('ctrl + y');
@@ -123,7 +125,6 @@ angular.module('bitbloqOffline')
     };
 
     function contextMenuDocumentHandler(event) {
-      console.log('alskdjakljdsalkjdasdlkj')
       var bloq = $(event.target).closest('.bloq');
       var bloqUuid = bloq.attr('data-bloq-id');
 
@@ -196,7 +197,6 @@ angular.module('bitbloqOffline')
             bloqsSchemas = JSON.parse(data.toString());
             $scope.$watch('project.software', function(newValue) {
               if (newValue) {
-                console.log('refersh project software');
                 $scope.init();
               }
             });
@@ -212,7 +212,6 @@ angular.module('bitbloqOffline')
         //     $scope.init();
         //   }
         // });
-
         $scope.init();
       }
     });

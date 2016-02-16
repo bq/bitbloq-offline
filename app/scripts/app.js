@@ -18,6 +18,7 @@ angular
     'ngDialog'
   ]).config(['$routeProvider', '$translateProvider',
     function($routeProvider, $translateProvider) {
+
       $routeProvider
         .when('/', {
           templateUrl: 'views/bloqs-project.html'
