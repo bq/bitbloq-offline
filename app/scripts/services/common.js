@@ -15,10 +15,13 @@ angular.module('bitbloqOffline')
     var fs = require('fs');
     exports.webPath = process.mainModule.filename.substring(0, process.mainModule.filename.lastIndexOf('/'));
 
-    exports.appPath = exports.webPath.substring(0, exports.webPath.lastIndexOf('/'));
-    exports.resourcesPath = process.resourcesPath;
+    var app = exports.webPath.substring(0, exports.webPath.lastIndexOf('/'));
+    var resources = process.resourcesPath + '/app/';
+    exports.appPath = app || resources;
+
     exports.bloqsSchemas = JSON.parse(fs.readFileSync(exports.appPath + '/bower_components/bloqs/dist/bloqsmap.json', 'utf8'));
     exports.hardware = JSON.parse(fs.readFileSync(exports.appPath + '/app/res/hw.json', 'utf8'));
+    exports.version = JSON.parse(fs.readFileSync('bower.json', 'utf8')).version;
     console.log(exports.bloqsSchemas);
     exports.translate = $filter('translate');
     exports.translateTo = function(lang) {
