@@ -53,12 +53,12 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: '',
-                    src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json'],
+                    src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json', '!app/res/web2board/linux/**'],
                     dest: 'dist/windows32/resources/app/'
                 },{
                     expand: true,
                     cwd: '',
-                    src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json'],
+                    src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json', '!app/res/web2board/linux/**'],
                     dest: 'dist/windows64/resources/app/'
                 }]
             },
@@ -66,7 +66,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: '',
-                    src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json'],
+                    src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json', '!app/res/web2board/win32/**'],
                     dest: 'dist/linux/resources/app/'
                 }]
             },
@@ -137,8 +137,8 @@ module.exports = function(grunt) {
         grunt.task.run([
             'sass',
             'svgstore',
-            'clean:prebuilt',
-            'copy:prebuilt',
+            //'clean:prebuilt',
+            //'copy:prebuilt',
             'clean:linux',
             'copy:linux',
             'clean:windows',
