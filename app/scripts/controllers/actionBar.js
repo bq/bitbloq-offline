@@ -95,15 +95,17 @@ angular.module('bitbloqOffline')
 
     function loadToBoard() {
       var code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
+      var pretty = utils.prettyCode(code);
       var boardReference = _.find($scope.hardware.boardList, function(b) {
           return b.name === $scope.project.hardware.board;
       });
-      web2board.upload(boardReference, code);
+      web2board.upload(boardReference, pretty);
     }
 
     function verifyCode() {
       var code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
-      web2board.verify(code);
+      var pretty = utils.prettyCode(code);
+      web2board.verify(pretty);
     }
 
     function startSM() {

@@ -95,7 +95,6 @@ angular.module('bitbloqOffline')
                 };
             if (!ws.wsClient || (ws.wsClient.readyState !== WebSocket.CONNECTING && ws.wsClient.readyState !== WebSocket.OPEN)) {
                 ws.connect().done(function () {
-                    debugger;
                         ws.UtilsAPIHub.server.setId("Bitbloq").done(callback);
                     },
                     function () { //on error

@@ -8,7 +8,7 @@
  * Service in the bitbloqApp.
  */
 angular.module('bitbloqOffline')
-  .service('utils', function(_, $q) {
+  .service('utils', function(_, $q, $timeout) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     var exports = {};
     var defaultDiacriticsRemovalap = [{
@@ -437,6 +437,20 @@ angular.module('bitbloqOffline')
       angular.element('.main-image--input').val(null);
 
       return defered.promise;
+    };
+
+    exports.prettyCode = function(code) {
+        var pretty = '';
+
+        //Prepare string to js_beautify
+        function insertBeautyIgnores(match) {
+            return '/* beautify ignore:start */' + match + '/* beautify ignore:end */';
+        }
+
+        //Remove beautify ignore & preserve sections
+        pretty = js_beautify(code.replace(/(#include *.*)/gm, insertBeautyIgnores).replace(/(#define *.*)/gm, insertBeautyIgnores)).replace(/(\/\* (beautify)+ .*? \*\/)/gm, ''); // jshint ignore:line
+
+        return pretty;
     };
 
     return exports;
