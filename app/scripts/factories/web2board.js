@@ -33,28 +33,8 @@ angular.module('bitbloqOffline')
             return common.appPath + "/app/res/web2board/linux/web2board";
         }
 
-        //function isWeb2boardUpToDate(version) {
-        //    return true;
-        //    //return parseInt(version.replace(/\./g, ''), 10) >= parseInt(common.properties.web2boardVersion.replace(/\./g, ''), 10);
-        //}
-
         function showUpdateModal() {
             alert("W2b not detected");
-            //var parent = $rootScope,
-            //    modalOptions = parent.$new();
-            //_.extend(modalOptions, {
-            //    contentTemplate: '/views/modals/download-web2board.html',
-            //    modalTitle: 'modal-update-web2board-title',
-            //    modalText: 'modal-download-web2board-text'
-            //});
-            //modalOptions.envData = envData;
-            //ngDialog.closeAll();
-            //ngDialog.open({
-            //    template: '/views/modals/modal.html',
-            //    className: 'modal--container modal--download-web2board',
-            //    scope: modalOptions,
-            //    showClose: false
-            //});
         }
 
         function startWeb2board() {
@@ -68,24 +48,6 @@ angular.module('bitbloqOffline')
                 console.error(data);
             });
         }
-
-        //function onOpenConnectionTrigger(callback) {
-        //    ws.BoardConfigHub.server.getVersion().done(function (version) {
-        //        if (!isWeb2boardUpToDate(version)) {
-        //            inProgress = false;
-        //            showUpdateModal();
-        //        } else {
-        //            var libVersion = common.properties.bitbloqLibsVersion || '0.0.1';
-        //            ws.BoardConfigHub.server.setLibVersion(libVersion).done(function () {
-        //                callback();
-        //            }, function (error) {
-        //                $log.error('Unable to update libraries due to: ' + error);
-        //            });
-        //        }
-        //    }, function (error) {
-        //        $log.error('unable to get version due to : ' + error);
-        //    });
-        //}
 
         function openCommunication(callback, showUpdateModalFlag, tryCount) {
             tryCount = tryCount || 0;
@@ -135,7 +97,7 @@ angular.module('bitbloqOffline')
 
         ws = new HubsAPI('ws:\\' + web2board.config.wsHost + ':' + web2board.config.wsPort, 45);
 
-        ws.defaultErrorHandler = function (error){
+        ws.defaultErrorHandler = function (error) {
             $log.error('Error receiving message: ' + error);
         };
 
@@ -197,17 +159,15 @@ angular.module('bitbloqOffline')
 
         web2board.serialMonitor = function (board) {
             if (!inProgress) {
+                if (!board) {
+                    alertsService.add('alert-web2board-boardNotReady', 'upload', 'warning');
+                    return;
+                }
                 inProgress = true;
                 openCommunication(function () {
                     var serialMonitorAlert = alertsService.add('alert-web2board-openSerialMonitor', 'serialmonitor', 'loading');
-                    ws.BoardConfigHub.server.setBoard(board.mcu).done(function () {
-                        inProgress = false;
-                        if (!alertsService.isVisible('uid', serialMonitorAlert)) {
-                            alertsService.add('alert-web2board-boardReady', 'upload', 'ok', 5000, board.name);
-                        }
-                        ws.SerialMonitorHub.server.startApp(web2board.serialPort).done(function () {
-                            alertsService.close(serialMonitorAlert);
-                        });
+                    ws.SerialMonitorHub.server.startApp(web2board.serialPort, board.mcu).done(function () {
+                        alertsService.close(serialMonitorAlert);
                     }, function () {
                         inProgress = false;
                         alertsService.close(serialMonitorAlert);
