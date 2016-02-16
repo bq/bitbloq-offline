@@ -8,7 +8,7 @@
  * Service in the bitbloqOffline.
  */
 angular.module('bitbloqOffline')
-    .service('projectApi', function(utils, nodeUtils) {
+    .service('projectApi', function(utils, nodeUtils, common) {
         var exports = {};
 
         exports.getCleanProject = function(projectRef) {
@@ -29,6 +29,7 @@ angular.module('bitbloqOffline')
                 filename = utils.removeDiacritics(projectRef.name);
 
             project.exportedFromBitbloqOffline = true;
+            project.bitbloqOfflineVersion = common.version;
             nodeUtils.downloadFile(filename.substring(0, 30) + '.json', JSON.stringify(project));
         };
         return exports;

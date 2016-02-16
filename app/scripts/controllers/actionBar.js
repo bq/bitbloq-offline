@@ -8,7 +8,7 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-  .controller('ActionBarCtrl', function($scope, $route, web2board, _, clipboard, bloqsUtils, utils, projectApi, nodeDialog, nodeFs, nodeUtils, commonModals, alertsService) {
+  .controller('ActionBarCtrl', function($scope, $route, web2board, _, clipboard, bloqsUtils, utils, projectApi, nodeDialog, nodeFs, nodeUtils, common, commonModals, alertsService) {
     console.log('ActionBarCtrl', $scope.$parent.$id);
 
     $scope.actions = {
@@ -48,7 +48,13 @@ angular.module('bitbloqOffline')
           if (err) {
             throw err;
           } else {
-            $scope.setProject(JSON.parse(data));
+            var project = JSON.parse(data);
+
+            if (project.bitbloqOfflineVersion < common.version) {
+              alertsService.add('Hay una nueva version. Actualiza', 'info', 'info', 3000);
+            }
+
+            $scope.setProject(project);
             $scope.$apply();
           }
         });
