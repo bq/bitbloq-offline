@@ -16,8 +16,6 @@ angular.module('bitbloqOffline')
       openProject: openProject,
       exportArduinoCode: exportArduinoCode,
       changeLanguage: changeLanguage,
-      undo: undo,
-      redo: redo,
       copyCodeToClipboard: copyCodeToClipboard,
       verifyCode: verifyCode,
       loadToBoard: loadToBoard
@@ -77,14 +75,6 @@ angular.module('bitbloqOffline')
       commonModals.launchChangeLanguageModal();
     }
 
-    function undo() {
-      console.log(this.name);
-    }
-
-    function redo() {
-      console.log(this.name);
-    }
-
     function copyCodeToClipboard() {
       console.log(this.name);
       var code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
@@ -97,7 +87,7 @@ angular.module('bitbloqOffline')
       var code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
       var pretty = utils.prettyCode(code);
       var boardReference = _.find($scope.hardware.boardList, function(b) {
-          return b.name === $scope.project.hardware.board;
+        return b.name === $scope.project.hardware.board;
       });
       web2board.upload(boardReference, pretty);
     }
@@ -110,7 +100,7 @@ angular.module('bitbloqOffline')
 
     function startSM() {
       var boardReference = _.find($scope.hardware.boardList, function(b) {
-          return b.name === $scope.project.hardware.board;
+        return b.name === $scope.project.hardware.board;
       });
       web2board.serialMonitor(boardReference);
     }
@@ -148,16 +138,6 @@ angular.module('bitbloqOffline')
       editMenuItems: {
         name: 'edit',
         items: [{
-          name: 'undo',
-          icon: '#deshacer',
-          action: undo,
-          disabled: false
-        }, {
-          name: 'redo',
-          icon: '#rehacer',
-          action: redo,
-          disabled: false
-        }, {
           name: 'makeActions_copyCode',
           icon: '#copiarTexto',
           action: copyCodeToClipboard,

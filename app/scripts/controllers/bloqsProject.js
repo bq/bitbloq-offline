@@ -90,6 +90,12 @@ angular.module('bitbloqOffline')
 
       }
     };
+    $scope.showRobots = function(robot) {
+      if ($scope.project.hardware.robot === robot) {
+        return true;
+      }
+      return false;
+    };
 
     $scope.showComponents = function(item) {
       var stopWord = ['analogWrite', 'digitalWrite', 'hwVariable', 'pinReadAdvanced', 'pinWriteAdvanced', 'turnOnOffAdvanced', 'digitalReadAdvanced', 'analogReadAdvanced'];

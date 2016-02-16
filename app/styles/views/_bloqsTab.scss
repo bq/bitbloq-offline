@@ -6,10 +6,15 @@
 }
 
 .bloq--group {
-  position     : relative;
-  width        : calc(100% - 280px);
-  margin       : 15px;
+  position: relative;
+  width: calc(100vw - 345px);
+  margin: 15px;
   border-radius: 4px;
+  display: table;
+  table-layout: fixed;
+  p {
+    white-space: normal;
+  }
 
   h3 {
     cursor   : pointer;

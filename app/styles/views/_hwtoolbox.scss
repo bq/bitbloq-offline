@@ -1,0 +1,46 @@
+.toolbox-hw {
+  .toolbox {
+    width: $toolbox-hw-width;
+  }
+  .toolbox__list {
+    &:after {
+      width: $toolbox-hw-width-level-1;
+    }
+  }
+
+  svg {
+    margin-right: 10px;
+  }
+
+  .content__list__item {
+    margin-bottom: 10px;
+    text-align: left;
+    padding   : 20px;
+  }
+
+  .toolbox__content {
+    width: $toolbox-hw-width;
+  }
+
+  .toolbox__item__image {
+    max-width: 150px;
+  }
+
+  .toolbox__level--1 {
+    width: $toolbox-hw-width-level-1;
+  }
+
+  .toolbox__content {
+    &.active {
+      width: $toolbox-hw-width;
+    }
+  }
+
+  .board-image {
+    width: 175px;
+  }
+
+  .component-image {
+    max-width: 60%;
+  }
+}

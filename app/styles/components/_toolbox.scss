@@ -3,146 +3,30 @@ $toobox-item-border-color: #edf1f2;
 $toolbox-content-item-height: calc(100vh - 40px);
 $toolbox-hw-width: 200px;
 $toolbox-hw-width-level-1: 250px;
-$toolbox-sw-width: 250px;
+$toolbox-width: 250px;
+$toolbox-sw-width-inactive-1: 450px;
+$toolbox-sw-width-inactive-2: 500px;
 $toolbox-sw-width-level-1: 450px;
+$toolbox-content-active: 400px;
+$toolbox-content-inactive: 450px;
 
-.toolbox-hw {
-  .toolbox {
-    width: $toolbox-hw-width;
+.toolbox-shadow {
+  position: absolute;
+  top     : 0;
+  left    : 0;
+  right   : 0;
+  bottom  : 0;
+  width   : 100%;
+  height  : 100%;
+  z-index : 2;
+
+  &.level--1 {
+    background-color: rgba(55,59,68,.6);
+    pointer-events  : none;
   }
 
-  .toolbox__list {
-    &:after {
-      width: $toolbox-hw-width-level-1;
-    }
-  }
-
-  svg {
-    margin-right: 10px;
-  }
-
-  .content__list__item {
-    text-align: left;
-    padding   : 20px;
-  }
-
-  .toolbox__content {
-    width: $toolbox-hw-width;
-  }
-
-  .toolbox__item__image {
-    max-width: 150px;
-  }
-
-  .toolbox__level--1 {
-    width: $toolbox-hw-width-level-1;
-  }
-
-  .toolbox__content {
-    &.active {
-      width: $toolbox-hw-width;
-    }
-  }
-
-  .board-image {
-    width: 175px;
-  }
-
-  .component-image {
-    max-width: 60%;
-  }
-}
-
-.toolbox-sw {
-  .toolbox {
-    width: $toolbox-sw-width;
-  }
-
-  .toolbox__list {
-    &:after {
-      width: $toolbox-sw-width-level-1;
-    }
-  }
-
-  .toolbox__content {
-    width: $toolbox-sw-width;
-  }
-
-  .toolbox__item__image {
-    max-width: 150px;
-  }
-
-  .toolbox__level--1 {
-    width: $toolbox-sw-width-level-1;
-  }
-
-  .toolbox__content {
-    &.active {
-      width: 400px;
-    }
-  }
-
-  .content__list {
-    padding-top: 10px;
-  }
-
-  .content__list__item {
-    text-align: left;
-    padding   : 5px 15px;
-  }
-
-  .toolbox__title {
-    display: block;
-    width  : calc(100% - 20px);
-    float  : left;
-  }
-
-  .toolbox__title--color {
-    height      : 100%;
-    display     : block;
-    width       : 10px;
-    float       : left;
-    margin-right: 10px;
-
-    &.components {
-      background-color: #cf1c22;
-    }
-
-    &.functions {
-      background-color: #dd5a0a;
-    }
-
-    &.variables {
-      background-color: #d9b032;
-    }
-
-    &.codes {
-      background-color: #58b42d;
-    }
-
-    &.maths {
-      background-color: #01c0c8;
-    }
-
-    &.texts {
-      background-color: #0294cf;
-    }
-
-    &.controls {
-      background-color: #11489a;
-    }
-
-    &.logics {
-      background-color: #7c0dd6;
-    }
-
-    &.communications {
-      background-color: #e30b9a;
-    }
-
-    &.classes {
-      background-color: #9b0769;
-    }
+  &.level--2 {
+    background-color: rgba(255,255,255,.1);
   }
 }
 
@@ -154,20 +38,18 @@ $toolbox-sw-width-level-1: 450px;
   right           : 0;
   top             : 0;
   z-index         : 7;
-}
+  transition      : width 250ms;
 
-.toolbox__level--1 {
-  .toolbox__list {
-    &:after {
-      background-color: $color-black;
-      content         : '';
-      height          : 100%;
-      opacity         : .5;
-      pointer-events  : none;
-      position        : absolute;
-      right           : 0;
-      top             : 0;
-    }
+  &.active {
+    width: $toolbox-width;
+  }
+
+  &.inactive--1 {
+    width: $toolbox-sw-width-inactive-1;
+  }
+
+  &.inactive--2 {
+    width: $toolbox-sw-width-inactive-2;
   }
 }
 
@@ -178,22 +60,35 @@ $toolbox-sw-width-level-1: 450px;
   top             : 0;
 
   &.active {
-    height    : 100%;
-    overflow-y: auto;
+    z-index: 3;
+    width  : $toolbox-content-active;
   }
-}
 
-.content__list__item {
-  margin-bottom: 10px;
+  &.inactive {
+    width: $toolbox-content-inactive;
 
-  .bloq {
-    position: relative;
+    &:after {}
+  }
+
+  &.level--2 {
+    width  : $toolbox-content-active;
+    z-index: 3;
+  }
+
+  .content__list {
+    height  : calc(100vh - 85px);
+    overflow: auto;
+
+    &.has-advanced {
+      height: calc(100vh - 147px);
+    }
   }
 }
 
 .toolbox__content__item {
   border-left: 1px solid $toobox-item-border-color;
   text-align : center;
+  height     : calc(100vh - 42px);
 
   h3,
   .title {
@@ -220,5 +115,11 @@ $toolbox-sw-width-level-1: 450px;
   svg {
     margin-left: 10px;
     fill       : $toobox-icons-color;
+  }
+
+  &.last {
+    position: absolute;
+    bottom  : 0;
+    right   : 0;
   }
 }

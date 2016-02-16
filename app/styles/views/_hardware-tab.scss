@@ -1,4 +1,3 @@
-
 .protocanvas {
   width   : calc(100% - 285px);
   height  : calc(100vh - 140px);
@@ -65,7 +64,6 @@
   }
 }
 
-
 .component__container--visible {
   opacity: .4;
   border : 4px dashed #c0c3c9;
@@ -82,361 +80,362 @@
 }
 
 .hw-context-menu {
-    display         : none;
-    background-color: transparent;
-    position        : fixed;
-    top             : 0;
-    left            : 0;
-    z-index         : 999;
+  display         : none;
+  background-color: transparent;
+  position        : fixed;
+  top             : 0;
+  left            : 0;
+  z-index         : 999;
 
-    &.open {
-        display: block;
+  &.open {
+    display: block;
+  }
+
+  .menu {
+    box-shadow      : 0 0 12px 1px rgba(0, 0, 0, 0.2);
+    background-color: white;
+
+    hr {
+      border: 1px solid #ddd;
     }
 
-    .menu {
-        box-shadow      : 0 0 12px 1px rgba(0, 0, 0, 0.2);
-        background-color: white;
+    .menu__item {
+      &:hover {
+        background-color: #ebebeb;
+      }
 
-        hr {
-            border: 1px solid #ddd;
-        }
-
-        .menu__item {
-            &:hover {
-                background-color: #ebebeb;
-            }
-
-            button {
-                padding: 15px;
-            }
-        }
+      button {
+        padding: 15px;
+      }
     }
+  }
 }
-
-
 $color: #f1c933;
 $color_hover: #f19833;
 
-
 .protocanvas {
-    float          : left;
-    height         : 100%;
-    // width          : calc(100% - #{$leftBarWidth + $hw_toolbox});
+  float          : left;
+  height         : 100%;
+  // width          : calc(100% - #{$leftBarWidth + $hw_toolbox});
+  position       : absolute;
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  flex-direction : column;
+  z-index        : 1;
+
+  &.dragging-over {
+    &.dragging-component {
+      .name--container {
+        opacity: 0;
+      }
+
+      .component__container {
+        border: 5px solid $color;
+
+        &.component__container--pseudovisible {
+          border : 4px dashed $color;
+          opacity: .5;
+
+          .component__message {
+            opacity: 0;
+          }
+        }
+
+        &.component__container--visible {
+          border: 4px dashed $color;
+
+          .component__message {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    &.dragging-board {
+      .board {
+        outline: 4px dashed $color !important;
+      }
+    }
+  }
+
+  .name--container {
     position       : absolute;
+    top            : 0;
+    left           : 0;
+    right          : 0;
+    margin         : auto;
+    width          : 40%;
     display        : flex;
     align-items    : center;
     justify-content: center;
-    flex-direction : column;
-    z-index        : 1;
+    z-index        : 11;
 
-    &.dragging-over {
-        &.dragging-component {
-            .name--container {
-                opacity: 0;
-            }
+    .component-name__container {
+      opacity         : 0;
+      border-left     : 2px solid $color;
+      border-right    : 2px solid white;
+      border-radius   : 4px;
+      box-shadow      : 0 0 0 2px $color;
+      background-color: white;
+      margin-top      : 3%;
+      height          : 38px;
 
-            .component__container {
-                border: 5px solid $color;
+      .form--input--reset {
+        border    : none;
+        outline   : none;
+        min-height: inherit;
+        max-height: inherit;
+        height    : inherit;
+        width     : inherit;
+      }
 
-                &.component__container--pseudovisible {
-                    border : 4px dashed $color;
-                    opacity: 0.5;
+      .component-name__label {
+        color           : #000;
+        font-weight     : 900;
+        padding         : 8px 10px;
+        background-color: $color;
+        display         : inline-block;
+        white-space     : nowrap;
+      }
 
-                    .component__message {
-                        opacity: 0;
-                    }
-                }
+      .component-name__input {
+        padding  : 8px 10px;
+        min-width: 70px;
+      }
 
-                &.component__container--visible {
-                    border: 4px dashed $color;
+      .input--checkbox__oscillator {
+        display    : flex;
+        align-items: center;
+        margin     : 0;
 
-                    .component__message {
-                        opacity: 1;
-                    }
-                }
-            }
+        .oscillator--checkbox {
+          vertical-align: inherit;
+          margin        : 0 8px;
         }
+      }
 
-        &.dragging-board {
-            .board {
-                outline: 4px dashed $color !important;
-            }
+      .baudrate__container {
+        display    : flex;
+        align-items: center;
+
+        .baudrate__dropdown {
+          width         : 115px;
+          display       : inline-block;
+          vertical-align: middle;
+
+          .form--select {
+            border: none;
+          }
         }
+      }
+    }
+  }
+
+  .component__container {
+    position: absolute;
+    top     : 0;
+    left    : 0;
+    right   : 0;
+    bottom  : 0;
+    margin  : auto;
+    width   : 85%;
+    height  : 90%;
+    opacity : 0;
+    z-index : -1;
+
+    &.component__container--visible {
+      opacity: .4;
+      border : 4px dashed #c0c3c9;
     }
 
-    .name--container {
-        position       : absolute;
-        top            : 0;
-        left           : 0;
-        right          : 0;
-        margin         : auto;
-        width          : 40%;
-        display        : flex;
-        align-items    : center;
-        justify-content: center;
-        z-index        : 11;
+    .component__message {
+      margin-top: 5%;
+      font-size : 1.5em;
+      text-align: center;
+      color     : black;
+      align-self: baseline;
+    }
+  }
 
-        .component-name__container {
-            opacity         : 0;
-            border-left     : 2px solid $color;
-            border-right    : 2px solid white;
-            border-radius   : 4px;
-            box-shadow      : 0 0 0 2px $color;
-            background-color: white;
-            margin-top      : 3%;
-            height          : 38px;
+  .component__container,
+  .board,
+  .robot {
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    background-color: white;
+  }
 
-            .form--input--reset {
-                border    : none;
-                outline   : none;
-                min-height: inherit;
-                max-height: inherit;
-                height    : inherit;
-                width     : inherit;
-            }
+  .board,
+  .robot {
+    display: none;
 
-            .component-name__label {
-                color           : #000;
-                font-weight     : 900;
-                padding         : 8px 10px;
-                background-color: $color;
-                display         : inline-block;
-                white-space     : nowrap;
-            }
+    &.opaque {
+      display: flex;
+    }
+  }
 
-            .component-name__input {
-                padding  : 8px 10px;
-                min-width: 70px;
-            }
+  .robot {
+    background-size    : contain;
+    background-repeat  : no-repeat;
+    background-position: center;
+    background-color   : #f3f3f3;
+    height             : 265px;
+    width              : 355px;
+    outline            : 4px dashed #c0c3c9;
 
-            .input--checkbox__oscillator {
-                display    : flex;
-                align-items: center;
-                margin     : 0;
-
-                .oscillator--checkbox {
-                    vertical-align: inherit;
-                    margin        : 0 8px;
-                }
-            }
-
-            .baudrate__container {
-                display    : flex;
-                align-items: center;
-
-                .baudrate__dropdown {
-                    width         : 115px;
-                    display       : inline-block;
-                    vertical-align: middle;
-
-                    .form--select {
-                        border: none;
-                    }
-                }
-            }
-        }
+    &.zowi {
+      background-image: url('../images/robots/zowi.svg');
+      background-color: transparent;
     }
 
-    .component__container {
-        position: absolute;
-        top     : 0;
-        left    : 0;
-        right   : 0;
-        bottom  : 0;
-        margin  : auto;
-        width   : 85%;
-        height  : 90%;
-        opacity : 0;
-        z-index : -1;
-
-        &.component__container--visible {
-            opacity: 0.4;
-            border : 4px dashed #c0c3c9;
-        }
-
-        .component__message {
-            margin-top: 5%;
-            font-size : 1.5em;
-            text-align: center;
-            color     : black;
-            align-self: baseline;
-        }
+    &.evolution {
+      background-image: url('../images/robots/evolution.svg');
+      background-color: transparent;
     }
 
-    .component__container,
-    .board,
-    .robot {
-        display         : flex;
-        justify-content : center;
-        align-items     : center;
-        background-color: white;
+    &.robot--selected {
+      outline         : 4px solid $color !important;
+      background-color: transparent;
     }
 
-    .board,
-    .robot {
-        display: none;
+    &.robot--present {
+      outline: none;
 
-        &.opaque {
-            display: flex;
-        }
+      .board__message {
+        opacity: 0;
+      }
     }
 
-    .robot {
-        background-size    : contain;
-        background-repeat  : no-repeat;
-        background-position: center;
-        background-color   : #f3f3f3;
-        height             : 265px;
-        width              : 355px;
-        outline            : 4px dashed #c0c3c9;
+    .board__message {
+      color     : #000;
+      font-size : 1.5em;
+      display   : flex;
+      align-self: center;
+      opacity   : .4;
+    }
+  }
 
-        &.zowi {
-            background-color: transparent;
-            height          : 50%;
-        }
+  .board {
+    background-size    : contain;
+    background-repeat  : no-repeat;
+    background-position: center;
+    background-color   : #f3f3f3;
+    height             : 265px;
+    width              : 355px;
+    outline            : 4px dashed #c0c3c9;
 
-        &.robot--selected {
-            outline         : 4px solid $color !important;
-            background-color: transparent;
-        }
-
-        &.robot--present {
-            outline: none;
-
-            .board__message {
-                opacity: 0;
-            }
-        }
-
-        .board__message {
-            color     : #000;
-            font-size : 1.5em;
-            display   : flex;
-            align-self: center;
-            opacity   : 0.4;
-        }
+    &.board--selected {
+      outline         : 4px solid $color !important;
+      background-color: transparent;
     }
 
-    .board {
-        background-size    : contain;
-        background-repeat  : no-repeat;
-        background-position: center;
-        background-color   : #f3f3f3;
-        height             : 265px;
-        width              : 355px;
-        outline            : 4px dashed #c0c3c9;
+    &.board--present {
+      outline: none;
 
-        &.board--selected {
-            outline         : 4px solid $color !important;
-            background-color: transparent;
-        }
-
-        &.board--present {
-            outline: none;
-
-            .board__message {
-                opacity: 0;
-            }
-        }
-
-        .board__message {
-            color     : #000;
-            font-size : 1.5em;
-            display   : flex;
-            align-self: center;
-            opacity   : 0.4;
-        }
-
+      .board__message {
+        opacity: 0;
+      }
     }
 
-    .component {
-        position     : absolute;
-        border-radius: 5px;
-        cursor       : pointer;
-        box-shadow   : rgb(170, 170, 170) 0 0 5px 1px;
-        z-index      : 10;
-
-        &.component-selected,
-        &.jsplumb-dragged {
-            box-shadow: 0 0 0 2px $color;
-            z-index   : 998;
-            cursor : grabbing;
-            /* fallback if grab cursor is unsupported */
-            cursor : -moz-grabbing;
-            cursor : -webkit-grabbing;
-        }
-
+    .board__message {
+      color     : #000;
+      font-size : 1.5em;
+      display   : flex;
+      align-self: center;
+      opacity   : .4;
     }
-/* ** styles for jsplumb ** */
-    /* jsPlumb connector styles */
-    .jsplumb-connector {
-        cursor: pointer;
-        &.jsplumb-hover,
-        &.selected {
-            z-index: 998;
-        }
+  }
+
+  .component {
+    position     : absolute;
+    border-radius: 5px;
+    cursor       : pointer;
+    box-shadow   : rgb(170, 170, 170) 0 0 5px 1px;
+    z-index      : 10;
+
+    &.component-selected,
+    &.jsplumb-dragged {
+      box-shadow: 0 0 0 2px $color;
+      z-index   : 998;
+      cursor    : grabbing;
+      /* fallback if grab cursor is unsupported */
+      cursor    : -moz-grabbing;
+      cursor    : -webkit-grabbing;
     }
-/* jsPlumb endpoint styles */
-    .jsplumb-endpoint {
-        z-index      : 10;
-        cursor       : pointer;
-        border-radius: 10px;
+  }
+  /* ** styles for jsplumb ** */
+  /* jsPlumb connector styles */
+  .jsplumb-connector {
+    cursor: pointer;
 
-        &.board_ep {
-            opacity: 0;
-        }
-
-        &.jsplumb-hover,
-        &.selected {
-            z-index: 999;
-            opacity: 1;
-        }
-
-        &.dragActive {
-            opacity         : 0.6;
-            background-color: $color_hover !important;
-        }
-
-        &.dragHover {
-            opacity         : 0.6;
-            background-color: $color_hover !important;
-        }
-
-        &.dropHover {
-            opacity: 1;
-        }
-
-        &.jsplumb-drag {
-            opacity         : 1 !important;
-            background-color: $color_hover !important;
-        }
-
-        &.jsplumb-endpoint-connected {
-            background-color: $color;
-            outline         : none;
-            opacity         : 1;
-
-            + .jsplumb-overlay {
-                background-color: $color_hover !important;
-            }
-        }
-
-        &.component_endpoint {
-            outline: none !important;
-        }
+    &.jsplumb-hover,
+    &.selected {
+      z-index: 998;
     }
-/* jsPlumb overlay styles */
-    .jsplumb-overlay {
-        z-index   : 53;
-        transition: opacity 80ms ease-in;
-        opacity   : 0;
+  }
+  /* jsPlumb endpoint styles */
+  .jsplumb-endpoint {
+    z-index      : 10;
+    cursor       : pointer;
+    border-radius: 10px;
 
-        &.jsplumb-hover {
-            transition      : opacity 80ms ease-in;
-            opacity         : 1;
-            font-size       : 1em;
-            padding         : 2px 4px;
-            background-color: $color;
-        }
+    &.board_ep {
+      opacity: 0;
     }
+
+    &.jsplumb-hover,
+    &.selected {
+      z-index: 999;
+      opacity: 1;
+    }
+
+    &.dragActive {
+      opacity         : .6;
+      background-color: $color_hover !important;
+    }
+
+    &.dragHover {
+      opacity         : .6;
+      background-color: $color_hover !important;
+    }
+
+    &.dropHover {
+      opacity: 1;
+    }
+
+    &.jsplumb-drag {
+      opacity         : 1 !important;
+      background-color: $color_hover !important;
+    }
+
+    &.jsplumb-endpoint-connected {
+      background-color: $color;
+      outline         : none;
+      opacity         : 1;
+
+      + .jsplumb-overlay {
+        background-color: $color_hover !important;
+      }
+    }
+
+    &.component_endpoint {
+      outline: none !important;
+    }
+  }
+  /* jsPlumb overlay styles */
+  .jsplumb-overlay {
+    z-index   : 53;
+    transition: opacity 80ms ease-in;
+    opacity   : 0;
+
+    &.jsplumb-hover {
+      transition      : opacity 80ms ease-in;
+      opacity         : 1;
+      font-size       : 1em;
+      padding         : 2px 4px;
+      background-color: $color;
+    }
+  }
 }
