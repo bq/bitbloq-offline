@@ -69,7 +69,7 @@ function HubsAPI(url, serverTimeout) {
         this.wsClient.onmessage = function (ev) {
             try {
                 var f,
-                msgObj = JSON.parse(ev.data);
+                    msgObj = JSON.parse(ev.data);
                 if (msgObj.hasOwnProperty('replay')) {
                     f = returnFunctions[msgObj.ID];
                     if (msgObj.success && f !== undefined && f.onSuccess !== undefined) {
@@ -98,9 +98,9 @@ function HubsAPI(url, serverTimeout) {
         };
 
         return { done: function (onSuccess, onError) {
-                openPromise.onSuccess = onSuccess;
-                openPromise.onError = onError;
-            }
+            openPromise.onSuccess = onSuccess;
+            openPromise.onError = onError;
+        }
         };
     };
 
@@ -170,43 +170,43 @@ function HubsAPI(url, serverTimeout) {
         };
     };
 
-    
+
     this.UtilsAPIHub = {};
     this.UtilsAPIHub.server = {
         __HUB_NAME : 'UtilsAPIHub',
-        
-        unsubscribeToHub : function (){
-            
-            return constructMessage('UtilsAPIHub', 'unsubscribeToHub', arguments);
-        },
 
         getSubscribedClientsToHub : function (){
-            
+
             return constructMessage('UtilsAPIHub', 'getSubscribedClientsToHub', arguments);
         },
 
         getId : function (){
-            
+
             return constructMessage('UtilsAPIHub', 'getId', arguments);
         },
 
         isClientConnected : function (clientId){
-            
+
             return constructMessage('UtilsAPIHub', 'isClientConnected', arguments);
         },
 
+        unsubscribeFromHub : function (){
+
+            return constructMessage('UtilsAPIHub', 'unsubscribeFromHub', arguments);
+        },
+
         subscribeToHub : function (){
-            
+
             return constructMessage('UtilsAPIHub', 'subscribeToHub', arguments);
         },
 
         setId : function (clientId){
-            
+
             return constructMessage('UtilsAPIHub', 'setId', arguments);
         },
 
         getHubsStructure : function (){
-            
+
             return constructMessage('UtilsAPIHub', 'getHubsStructure', arguments);
         }
     };
@@ -214,134 +214,129 @@ function HubsAPI(url, serverTimeout) {
     this.CodeHub = {};
     this.CodeHub.server = {
         __HUB_NAME : 'CodeHub',
-        
-        unsubscribeToHub : function (){
-            
-            return constructMessage('CodeHub', 'unsubscribeToHub', arguments);
-        },
 
         uploadHex : function (hexText, board){
-            
+
             return constructMessage('CodeHub', 'uploadHex', arguments);
         },
 
         getSubscribedClientsToHub : function (){
-            
+
             return constructMessage('CodeHub', 'getSubscribedClientsToHub', arguments);
         },
 
+        unsubscribeFromHub : function (){
+
+            return constructMessage('CodeHub', 'unsubscribeFromHub', arguments);
+        },
+
         upload : function (code, board){
-            
+
             return constructMessage('CodeHub', 'upload', arguments);
         },
 
         compile : function (code){
-            
+
             return constructMessage('CodeHub', 'compile', arguments);
         },
 
         subscribeToHub : function (){
-            
+
             return constructMessage('CodeHub', 'subscribeToHub', arguments);
         },
 
         uploadHexFile : function (hexFilePath, board){
-            
+
             return constructMessage('CodeHub', 'uploadHexFile', arguments);
         },
 
         tryToTerminateSerialCommProcess : function (){
-            
+
             return constructMessage('CodeHub', 'tryToTerminateSerialCommProcess', arguments);
         }
     };
     this.CodeHub.client = {};
-    this.BoardConfigHub = {};
-    this.BoardConfigHub.server = {
-        __HUB_NAME : 'BoardConfigHub',
-        
-        setLibVersion : function (version){
-            
-            return constructMessage('BoardConfigHub', 'setLibVersion', arguments);
-        },
+    this.VersionsHandlerHub = {};
+    this.VersionsHandlerHub.server = {
+        __HUB_NAME : 'VersionsHandlerHub',
 
-        unsubscribeToHub : function (){
-            
-            return constructMessage('BoardConfigHub', 'unsubscribeToHub', arguments);
+        setLibVersion : function (version){
+
+            return constructMessage('VersionsHandlerHub', 'setLibVersion', arguments);
         },
 
         getSubscribedClientsToHub : function (){
-            
-            return constructMessage('BoardConfigHub', 'getSubscribedClientsToHub', arguments);
+
+            return constructMessage('VersionsHandlerHub', 'getSubscribedClientsToHub', arguments);
+        },
+
+        unsubscribeFromHub : function (){
+
+            return constructMessage('VersionsHandlerHub', 'unsubscribeFromHub', arguments);
         },
 
         subscribeToHub : function (){
-            
-            return constructMessage('BoardConfigHub', 'subscribeToHub', arguments);
-        },
 
-        setBoard : function (board){
-            
-            return constructMessage('BoardConfigHub', 'setBoard', arguments);
+            return constructMessage('VersionsHandlerHub', 'subscribeToHub', arguments);
         },
 
         getVersion : function (){
-            
-            return constructMessage('BoardConfigHub', 'getVersion', arguments);
+
+            return constructMessage('VersionsHandlerHub', 'getVersion', arguments);
         },
 
         setWeb2boardVersion : function (version){
-            
-            return constructMessage('BoardConfigHub', 'setWeb2boardVersion', arguments);
+
+            return constructMessage('VersionsHandlerHub', 'setWeb2boardVersion', arguments);
         }
     };
-    this.BoardConfigHub.client = {};
+    this.VersionsHandlerHub.client = {};
     this.SerialMonitorHub = {};
     this.SerialMonitorHub.server = {
         __HUB_NAME : 'SerialMonitorHub',
-        
-        unsubscribeToHub : function (){
-            
-            return constructMessage('SerialMonitorHub', 'unsubscribeToHub', arguments);
-        },
 
         findBoardPort : function (){
-            
+
             return constructMessage('SerialMonitorHub', 'findBoardPort', arguments);
         },
 
         changeBaudrate : function (port, baudrate){
-            
+
             return constructMessage('SerialMonitorHub', 'changeBaudrate', arguments);
         },
 
         getSubscribedClientsToHub : function (){
-            
+
             return constructMessage('SerialMonitorHub', 'getSubscribedClientsToHub', arguments);
         },
 
-        startApp : function (port){
-            arguments[0] = port === undefined ? null : port;
+        unsubscribeFromHub : function (){
+
+            return constructMessage('SerialMonitorHub', 'unsubscribeFromHub', arguments);
+        },
+
+        startApp : function (port, board){
+
             return constructMessage('SerialMonitorHub', 'startApp', arguments);
         },
 
         write : function (port, data){
-            
+
             return constructMessage('SerialMonitorHub', 'write', arguments);
         },
 
         closeConnection : function (port){
-            
+
             return constructMessage('SerialMonitorHub', 'closeConnection', arguments);
         },
 
         subscribeToHub : function (){
-            
+
             return constructMessage('SerialMonitorHub', 'subscribeToHub', arguments);
         },
 
         getAvailablePorts : function (){
-            
+
             return constructMessage('SerialMonitorHub', 'getAvailablePorts', arguments);
         },
 
@@ -351,7 +346,7 @@ function HubsAPI(url, serverTimeout) {
         },
 
         isPortConnected : function (port){
-            
+
             return constructMessage('SerialMonitorHub', 'isPortConnected', arguments);
         }
     };

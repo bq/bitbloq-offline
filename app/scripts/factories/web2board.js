@@ -22,14 +22,12 @@ angular.module('bitbloqOffline')
             serialPort: ''
         };
 
-        ws = new HubsAPI('ws:\\' + web2board.config.wsHost + ':' + web2board.config.wsPort + "/Bitbloq", 45);
-
-        function getWeb2boardCommand(){
+        function getWeb2boardCommand() {
             var platformOs = process.platform;
-            if(platformOs === 'win32'){
+            if (platformOs === 'win32') {
                 return common.appPath + "/app/res/web2board/win32/web2board.exe";
             }
-            if(platformOs === 'darwin'){
+            if (platformOs === 'darwin') {
                 return common.appPath + "/app/res/web2board/darwin/web2board";
             }
             return common.appPath + "/app/res/web2board/linux/web2board";
@@ -63,10 +61,10 @@ angular.module('bitbloqOffline')
             console.log('starting Web2board...');
             var spawn = require('child_process').spawn,
                 web2boardProcess = spawn(getWeb2boardCommand());
-            web2boardProcess.on("close", function(code){
+            web2boardProcess.on("close", function (code) {
                 console.log("Web2board closed with code: " + code);
             });
-            web2boardProcess.stderr.on("data", function(data){
+            web2boardProcess.stderr.on("data", function (data) {
                 console.error(data);
             });
         }
@@ -96,12 +94,18 @@ angular.module('bitbloqOffline')
             callback = callback || function () {
                 };
             if (!ws.wsClient || (ws.wsClient.readyState !== WebSocket.CONNECTING && ws.wsClient.readyState !== WebSocket.OPEN)) {
-                ws.connect().done(callback,
+                ws.connect().done(function () {
+                    debugger;
+                        ws.UtilsAPIHub.server.setId("Bitbloq").done(callback);
+                    },
                     function () { //on error
                         if (showUpdateModalFlag) {
                             showUpdateModal();
                         } else {
-                            startWeb2board();
+                            if (tryCount === 1) {
+                                // we only need to start web2board once
+                                startWeb2board();
+                            }
                             $timeout(function () {
                                 openCommunication(callback, true, tryCount);
                             }, TIME_FOR_WEB2BOARD_TO_START);
@@ -130,6 +134,12 @@ angular.module('bitbloqOffline')
             }
         }
 
+        ws = new HubsAPI('ws:\\' + web2board.config.wsHost + ':' + web2board.config.wsPort, 45);
+
+        ws.defaultErrorHandler = function (error){
+            $log.error('Error receiving message: ' + error);
+        };
+
         ws.callbacks.onClose = function (error) {
             $log.error('web2board disconnected with error: ' + error.reason);
             ws.clearTriggers();
@@ -148,11 +158,7 @@ angular.module('bitbloqOffline')
             alertsService.add('alert-web2board-uploading', 'upload', 'loading', undefined, port);
         };
 
-        ws.BoardConfigHub.client.isSettingBoard = function () {
-            $log.debug('is setting board...');
-        };
-
-        ws.BoardConfigHub.client.isSettingPort = function (port) {
+        ws.CodeHub.client.isSettingPort = function (port) {
             $log.debug('is setting port in: ' + port);
             web2board.serialPort = port;
         };
