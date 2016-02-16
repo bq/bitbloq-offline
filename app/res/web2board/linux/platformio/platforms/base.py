@@ -443,7 +443,7 @@ class BasePlatform(object):
                 args = ["python"] + args
             # test that SCons is installed correctly
             # assert util.test_scons()
-            log.info("Executing: {}".format("\n".join(args)))
+            log.debug("Executing: {}".format("\n".join(args)))
             result = util.exec_command(args,
                                        stdout=util.AsyncPipe(self.on_run_out),
                                        stderr=util.AsyncPipe(self.on_run_err))

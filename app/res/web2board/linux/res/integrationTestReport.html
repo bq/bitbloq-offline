@@ -189,9 +189,9 @@ function showOutput(id, name) {
 
 <div class='heading'>
 <h1> Web2Board integrationTestReport</h1>
-<p class='attribute'><strong>Start Time:</strong> 2016-02-11 13:01:22</p>
-<p class='attribute'><strong>Duration:</strong> 0:00:19.120765</p>
-<p class='attribute'><strong>Status:</strong> Pass 17</p>
+<p class='attribute'><strong>Start Time:</strong> 2016-02-16 14:04:51</p>
+<p class='attribute'><strong>Duration:</strong> 0:00:14.716063</p>
+<p class='attribute'><strong>Status:</strong> Pass 18</p>
 
 <p class='description'></p>
 </div>
@@ -223,11 +223,11 @@ function showOutput(id, name) {
 
 <tr class='passClass'>
     <td>Test.integration.testCompilerUploader.TestCompilerUploader</td>
-    <td>13</td>
-    <td>13</td>
+    <td>14</td>
+    <td>14</td>
     <td>0</td>
     <td>0</td>
-    <td><a href="javascript:showClassDetail('c1',13)">Detail</a></td>
+    <td><a href="javascript:showClassDetail('c1',14)">Detail</a></td>
 </tr>
 
 <tr id='pt1.1' class='hiddenRow'>
@@ -297,52 +297,57 @@ pt1.4: (False,
 </tr>
 
 <tr id='pt1.5' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_getPort_raiseExceptionIfNotReturningPort</div></td>
+    <td class='none'><div class='testcase'>test_getPort_raiseExceptionIfNotAvailablePort</div></td>
     <td colspan='5' align='center'>pass</td>
 </tr>
 
 <tr id='pt1.6' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_getPort_raisesExceptionIfBoardNotSet</div></td>
+    <td class='none'><div class='testcase'>test_getPort_raiseExceptionIfNotReturningPort</div></td>
     <td colspan='5' align='center'>pass</td>
 </tr>
 
 <tr id='pt1.7' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_getPort_returnPortIfSearchPortsReturnsOnePort</div></td>
+    <td class='none'><div class='testcase'>test_getPort_raisesExceptionIfBoardNotSet</div></td>
     <td colspan='5' align='center'>pass</td>
 </tr>
 
 <tr id='pt1.8' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_getPort_returnsBoardConnectedBoard</div></td>
+    <td class='none'><div class='testcase'>test_getPort_returnPortIfSearchPortsReturnsOnePort</div></td>
     <td colspan='5' align='center'>pass</td>
 </tr>
 
 <tr id='pt1.9' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_uploadAvrHex_returnsBadResultWithNonExistingFile</div></td>
+    <td class='none'><div class='testcase'>test_getPort_returnsBoardConnectedBoard</div></td>
     <td colspan='5' align='center'>pass</td>
 </tr>
 
 <tr id='pt1.10' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_uploadAvrHex_returnsOkResultWithWorkingHexFile</div></td>
+    <td class='none'><div class='testcase'>test_uploadAvrHex_returnsBadResultWithNonExistingFile</div></td>
     <td colspan='5' align='center'>pass</td>
 </tr>
 
 <tr id='pt1.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_uploadAvrHex_returnsOkResultWithWorkingHexFile</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.12' class='hiddenRow'>
     <td class='none'><div class='testcase'>test_upload_compilesSuccessfullyWithWorkingCpp</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
-    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.11')" >
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.12')" >
         pass</a>
 
-    <div id='div_pt1.11' class="popup_window">
+    <div id='div_pt1.12' class="popup_window">
         <div style='text-align: right; color:red;cursor:pointer'>
-        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.11').style.display = 'none' " >
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.12').style.display = 'none' " >
            [x]</a>
         </div>
         <pre>
         
-pt1.11: (True,
- {'err': '\navrdude: Version 6.0.1, compiled on Apr  3 2014 at 21:52:43\nCopyright (c) 2000-2005 Brian Dean, http://www.bdmicro.com/\nCopyright (c) 2007-2009 Joerg Wunsch\n\nSystem wide configuration file is "/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/platformIoPackages/packages/tool-avrdude/avrdude.conf"\nUser configuration file is "/home/jorgeportatil/.avrduderc"\nUser configuration file does not exist or is not a regular file, skipping\n\nUsing Port                    : /dev/ttyACM0\nUsing Programmer              : arduino\nOverriding Baud Rate          : 115200\nAVR Part                      : ATmega328P\nChip Erase delay              : 9000 us\nPAGEL                         : PD7\nBS2                           : PC2\nRESET disposition             : dedicated\nRETRY pulse                   : SCK\nserial program mode           : yes\nparallel program mode         : yes\nTimeout                       : 200\nStabDelay                     : 100\nCmdexeDelay                   : 25\nSyncLoops                     : 32\nByteDelay                     : 0\nPollIndex                     : 3\nPollValue                     : 0x53\nMemory Detail                 :\n\nBlock Poll               Page                       Polled\nMemory Type Mode Delay Size  Indx Paged  Size   Size #Pages MinW  MaxW   ReadBack\n----------- ---- ----- ----- ---- ------ ------ ---- ------ ----- ----- ---------\neeprom        65    20     4    0 no       1024    4      0  3600  3600 0xff 0xff\nflash         65     6   128    0 yes     32768  128    256  4500  4500 0xff 0xff\nlfuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00\nhfuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00\nefuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00\nlock           0     0     0    0 no          1    0      0  4500  4500 0x00 0x00\ncalibration    0     0     0    0 no          1    0      0     0     0 0x00 0x00\nsignature      0     0     0    0 no          3    0      0     0     0 0x00 0x00\n\nProgrammer Type : Arduino\nDescription     : Arduino\nHardware Version: 3\nFirmware Version: 4.4\nVtarget         : 0.3 V\nVaref           : 0.3 V\nOscillator      : 28.800 kHz\nSCK period      : 3.3 us\n\navrdude: AVR device initialized and ready to accept instructions\n\nReading | ################################################## | 100% 0.00s\n\navrdude: Device signature = 0x1e950f\navrdude: reading input file ".pioenvs/uno/firmware.hex"\navrdude: writing flash (998 bytes):\n\nWriting | ################################################## | 100% 0.18s\n\navrdude: 998 bytes of flash written\navrdude: verifying flash memory against .pioenvs/uno/firmware.hex:\navrdude: load data flash data from input file .pioenvs/uno/firmware.hex:\navrdude: input file .pioenvs/uno/firmware.hex contains 998 bytes\navrdude: reading on-chip flash data:\n\nReading | ################################################## | 100% 0.15s\n\navrdude: verifying ...\navrdude: 998 bytes of flash verified\n\navrdude done.  Thank you.\n',
+pt1.12: (True,
+ {'err': '\navrdude: Version 6.0.1, compiled on Apr  3 2014 at 21:52:43\nCopyright (c) 2000-2005 Brian Dean, http://www.bdmicro.com/\nCopyright (c) 2007-2009 Joerg Wunsch\n\nSystem wide configuration file is "/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/platformIoPackages/packages/tool-avrdude/avrdude.conf"\nUser configuration file is "/home/jorgeportatil/.avrduderc"\nUser configuration file does not exist or is not a regular file, skipping\n\nUsing Port                    : /dev/ttyACM0\nUsing Programmer              : arduino\nOverriding Baud Rate          : 115200\nAVR Part                      : ATmega328P\nChip Erase delay              : 9000 us\nPAGEL                         : PD7\nBS2                           : PC2\nRESET disposition             : dedicated\nRETRY pulse                   : SCK\nserial program mode           : yes\nparallel program mode         : yes\nTimeout                       : 200\nStabDelay                     : 100\nCmdexeDelay                   : 25\nSyncLoops                     : 32\nByteDelay                     : 0\nPollIndex                     : 3\nPollValue                     : 0x53\nMemory Detail                 :\n\nBlock Poll               Page                       Polled\nMemory Type Mode Delay Size  Indx Paged  Size   Size #Pages MinW  MaxW   ReadBack\n----------- ---- ----- ----- ---- ------ ------ ---- ------ ----- ----- ---------\neeprom        65    20     4    0 no       1024    4      0  3600  3600 0xff 0xff\nflash         65     6   128    0 yes     32768  128    256  4500  4500 0xff 0xff\nlfuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00\nhfuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00\nefuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00\nlock           0     0     0    0 no          1    0      0  4500  4500 0x00 0x00\ncalibration    0     0     0    0 no          1    0      0     0     0 0x00 0x00\nsignature      0     0     0    0 no          3    0      0     0     0 0x00 0x00\n\nProgrammer Type : Arduino\nDescription     : Arduino\nHardware Version: 3\nFirmware Version: 4.4\nVtarget         : 0.3 V\nVaref           : 0.3 V\nOscillator      : 28.800 kHz\nSCK period      : 3.3 us\n\navrdude: AVR device initialized and ready to accept instructions\n\nReading | ################################################## | 100% 0.00s\n\navrdude: Device signature = 0x1e950f\navrdude: reading input file ".pioenvs/uno/firmware.hex"\navrdude: writing flash (998 bytes):\n\nWriting | ################################################## | 100% 0.19s\n\navrdude: 998 bytes of flash written\navrdude: verifying flash memory against .pioenvs/uno/firmware.hex:\navrdude: load data flash data from input file .pioenvs/uno/firmware.hex:\navrdude: input file .pioenvs/uno/firmware.hex contains 998 bytes\navrdude: reading on-chip flash data:\n\nReading | ################################################## | 100% 0.14s\n\navrdude: verifying ...\navrdude: 998 bytes of flash verified\n\navrdude done.  Thank you.\n',
   'out': '[\'/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline\']\n\navr-g++ -o .pioenvs/uno/src/main.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -DPLATFORMIO=020603 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant src/main.cpp\nBeforeUpload(["upload"], [".pioenvs/uno/firmware.hex"])\n"/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/platformIoPackages/packages/tool-avrdude/avrdude" -v -p atmega328p -C "/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/platformIoPackages/packages/tool-avrdude/avrdude.conf" -c arduino -b 115200 -P /dev/ttyACM0 -D -U flash:w:.pioenvs/uno/firmware.hex:i',
   'returncode': 0})
 
@@ -354,27 +359,27 @@ pt1.11: (True,
     </td>
 </tr>
 
-<tr id='pt1.12' class='hiddenRow'>
+<tr id='pt1.13' class='hiddenRow'>
     <td class='none'><div class='testcase'>test_upload_raisesExceptionIfBoardIsNotSet</div></td>
     <td colspan='5' align='center'>pass</td>
 </tr>
 
-<tr id='pt1.13' class='hiddenRow'>
+<tr id='pt1.14' class='hiddenRow'>
     <td class='none'><div class='testcase'>test_upload_resultErrorIsFalseUsingNotWorkingCpp</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
-    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.13')" >
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.14')" >
         pass</a>
 
-    <div id='div_pt1.13' class="popup_window">
+    <div id='div_pt1.14' class="popup_window">
         <div style='text-align: right; color:red;cursor:pointer'>
-        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.13').style.display = 'none' " >
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.14').style.display = 'none' " >
            [x]</a>
         </div>
         <pre>
         
-pt1.13: (False,
+pt1.14: (False,
  {'err': "src/main.cpp:11:1: error: expected ',' or ';' before 'void'\nvoid setup()\n^\nscons: *** [.pioenvs/uno/src/main.o] Error 1",
   'out': "['/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline']\n\navr-g++ -o .pioenvs/uno/src/main.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -DPLATFORMIO=020603 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant src/main.cpp",
   'returncode': 2})
@@ -427,8 +432,8 @@ pt1.13: (False,
 
 <tr id='total_row'>
     <td>Total</td>
-    <td>17</td>
-    <td>17</td>
+    <td>18</td>
+    <td>18</td>
     <td>0</td>
     <td>0</td>
     <td>&nbsp;</td>

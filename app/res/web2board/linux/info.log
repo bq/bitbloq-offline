@@ -1,287 +1,636 @@
-2016/02/15 16:52:30 - Reading config file
-2016/02/15 16:52:30 - [BitbloqLibsUpdater] Checking version 0.1.0 - 0.1.0
-2016/02/15 16:52:30 - [BitbloqLibsUpdater] Checking library names
-2016/02/15 16:52:30 - BitbloqLibs is up to date
-2016/02/15 16:52:30 - init web2board with options: {'logLevel': 20, 'testing': 'none', 'update2version': None, 'host': u'127.0.0.1', 'board': 'uno', 'port': 9876}, and args: []
-2016/02/15 16:52:30 - Working directory: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
-2016/02/15 16:52:30 - CONFIG_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/config.json
-2016/02/15 16:52:30 - COPY_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/web2board_copy
-2016/02/15 16:52:30 - EXECUTABLE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
-2016/02/15 16:52:30 - MAIN_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
-2016/02/15 16:52:30 - ORIGINAL_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/web2board
-2016/02/15 16:52:30 - PLATFORMIO_PACKAGES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformIoPackages
-2016/02/15 16:52:30 - PLATFORMIO_WORKSPACE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformioWorkSpace
-2016/02/15 16:52:30 - PROGRAM_PATH: /home/dieguin/.web2board
-2016/02/15 16:52:30 - RES_BOARDS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/boards.txt
-2016/02/15 16:52:30 - RES_ICONS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/icons
-2016/02/15 16:52:30 - RES_ICO_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/Web2board.ico
-2016/02/15 16:52:30 - RES_LOGGING_CONFIG_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/logging.json
-2016/02/15 16:52:30 - RES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res
-2016/02/15 16:52:30 - RES_PLATFORMIO_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformio
-2016/02/15 16:52:30 - RES_SCONS_ZIP_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/sconsRes.zip
-2016/02/15 16:52:30 - SCONS_EXECUTABLE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/Scons/sconsScript.py
-2016/02/15 16:52:30 - TEST_RES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/Test/resources
-2016/02/15 16:52:30 - TEST_SETTINGS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/TestSettings/resources
-2016/02/15 16:52:30 - listening...
-2016/02/15 16:52:30 - open new connection with ID: UNPROVIDED__0 
-2016/02/15 16:52:30 - Message received from ID: UNPROVIDED__0
-{"hub":"CodeHub","function":"compile","args":["\n/***   Included libraries  ***/\n\n\n/***   Global variables and function definition  ***/\n\n\n/***   Setup  ***/\nvoid setup(){}\n\n/***   Loop  ***/\nvoid loop(){}"],"ID":0} 
-2016/02/15 16:52:30 - message to UNPROVIDED__0:
-{"function": "isCompiling", "args": [], "hub": "CodeHub"}
-2016/02/15 16:52:30 - [lun 15 feb 2016 16:52:30 ] Processing [36m[1muno[0m (platform: atmelavr, board: uno, framework: arduino)
-2016/02/15 16:52:30 - -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-2016/02/15 16:52:30 - Starting new HTTPS connection (1): ssl.google-analytics.com
-2016/02/15 16:52:30 - Executing: ../../web2board
+2016/02/16 14:04:51 - [BitbloqLibsUpdater] Checking version 0.1.0 - 0.1.0
+2016/02/16 14:04:51 - [BitbloqLibsUpdater] Checking library names
+2016/02/16 14:04:51 - BitbloqLibs is up to date
+2016/02/16 14:04:51 - init web2board with options: {'logLevel': 20, 'testing': 'integration', 'update2version': None, 'host': '127.0.0.1', 'board': 'uno', 'port': 9876, 'proxy': None}, and args: []
+2016/02/16 14:04:51 - Found available ports: ['/dev/ttyACM0']
+2016/02/16 14:04:51 - Checking port: /dev/ttyACM0
+2016/02/16 14:04:51 - Command executed: ['res/avrdude64', '-C', 'res/avrdude.conf', u'-P', u'/dev/ttyACM0', u'-p', u'atmega328p', u'-b', u'115200', u'-c', u'arduino']
+2016/02/16 14:04:52 - 
+2016/02/16 14:04:52 - 
+avrdude64: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude64: Device signature = 0x1e950f
+
+avrdude64 done.  Thank you.
+
+
+2016/02/16 14:04:52 - /dev/ttyACM0: , 
+avrdude64: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude64: Device signature = 0x1e950f
+
+avrdude64 done.  Thank you.
+
+
+2016/02/16 14:04:52 - Found board port: /dev/ttyACM0
+2016/02/16 14:04:52 - 
+
+
+        #######################################
+        Remember to connect a uno board
+        #######################################
+
+2016/02/16 14:04:52 - [mar 16 feb 2016 14:04:52 ] Processing [36m[1muno[0m (platform: atmelavr, board: uno, framework: arduino)
+2016/02/16 14:04:52 - --------------------------------------------------------------------------------
+2016/02/16 14:04:52 - Executing: ../../web2board
 -Q
--j 4
+-j 2
 --warn=no-no-parallel-support
 -f
-/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/platformio/builder/main.py
+/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/platformio/builder/main.py
 PIOENV=uno
 PLATFORM=atmelavr
 BOARD=uno
 FRAMEWORK=arduino
-BUILD_SCRIPT=/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/platformio/builder/scripts/atmelavr.py
+BUILD_SCRIPT=/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/platformio/builder/scripts/atmelavr.py
 PIOPACKAGE_TOOLCHAIN=toolchain-atmelavr
 PIOPACKAGE_UPLOADER=tool-avrdude
 PIOPACKAGE_FRAMEWORK=framework-arduinoavr
-/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformioWorkSpace
-2016/02/15 16:52:30 - Setting read timeout to 2
-2016/02/15 16:52:30 - "POST /collect HTTP/1.1" 200 35
-2016/02/15 16:52:31 - ['/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux']
-2016/02/15 16:52:31 - 
-2016/02/15 16:52:31 - avr-g++ -o .pioenvs/uno/src/main.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -DPLATFORMIO=020603 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant src/main.cpp
-2016/02/15 16:52:31 - avr-g++ -o .pioenvs/uno/firmware.elf -Os -mmcu=atmega328p -Wl,--gc-sections,--relax .pioenvs/uno/src/main.o -L/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformIoPackages/packages/ldscripts -L.pioenvs/uno -Wl,--start-group -lm .pioenvs/uno/libFrameworkArduinoVariant.a .pioenvs/uno/libFrameworkArduino.a -Wl,--end-group
-2016/02/15 16:52:31 - avr-objcopy -O ihex -R .eeprom .pioenvs/uno/firmware.elf .pioenvs/uno/firmware.hex
-2016/02/15 16:52:31 - "avr-size" --mcu=atmega328p -C -d .pioenvs/uno/firmware.elf
-2016/02/15 16:52:31 - AVR Memory Usage
-2016/02/15 16:52:31 - ----------------
-2016/02/15 16:52:31 - Device: atmega328p
-2016/02/15 16:52:31 - 
-2016/02/15 16:52:31 - Program:     436 bytes (1.3% Full)
-2016/02/15 16:52:31 - (.text + .data + .bootloader)
-2016/02/15 16:52:31 - 
-2016/02/15 16:52:31 - Data:          9 bytes (0.4% Full)
-2016/02/15 16:52:31 - (.data + .bss + .noinit)
-2016/02/15 16:52:31 - 
-2016/02/15 16:52:31 - 
-2016/02/15 16:52:31 - ====================================================================== [[32m[1mSUCCESS[0m] Took 0.88 seconds ======================================================================
-2016/02/15 16:52:31 - message to UNPROVIDED__0:
-{"function": "compile", "success": true, "replay": true, "ID": 0, "hub": "CodeHub"}
-2016/02/15 16:52:36 - Message received from ID: UNPROVIDED__0
-{"hub":"CodeHub","function":"compile","args":["\n/***   Included libraries  ***/\n\n\n/***   Global variables and function definition  ***/\n\n\n/***   Setup  ***/\nvoid setup(){}\n\n/***   Loop  ***/\nvoid loop(){}"],"ID":1} 
-2016/02/15 16:52:36 - message to UNPROVIDED__0:
-{"function": "isCompiling", "args": [], "hub": "CodeHub"}
-2016/02/15 16:52:36 - [lun 15 feb 2016 16:52:36 ] Processing [36m[1muno[0m (platform: atmelavr, board: uno, framework: arduino)
-2016/02/15 16:52:36 - -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-2016/02/15 16:52:36 - Setting read timeout to 2
-2016/02/15 16:52:36 - Executing: ../../web2board
+/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/platformioWorkSpace
+2016/02/16 14:04:52 - Starting new HTTPS connection (1): ssl.google-analytics.com
+2016/02/16 14:04:53 - ['/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline']
+2016/02/16 14:04:53 - 
+2016/02/16 14:04:53 - avr-g++ -o .pioenvs/uno/src/main.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -DPLATFORMIO=020603 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant -I.pioenvs/uno/BitbloqUS -I.pioenvs/uno/Servo src/main.cpp
+2016/02/16 14:04:53 - avr-ar rcs .pioenvs/uno/libFrameworkArduinoVariant.a
+2016/02/16 14:04:53 - avr-ranlib .pioenvs/uno/libFrameworkArduinoVariant.a
+2016/02/16 14:04:53 - avr-g++ -o .pioenvs/uno/FrameworkArduino/CDC.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant .pioenvs/uno/FrameworkArduino/CDC.cpp
+2016/02/16 14:04:53 - avr-g++ -o .pioenvs/uno/FrameworkArduino/HardwareSerial.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant .pioenvs/uno/FrameworkArduino/HardwareSerial.cpp
+2016/02/16 14:04:53 - avr-g++ -o .pioenvs/uno/FrameworkArduino/HardwareSerial0.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant .pioenvs/uno/FrameworkArduino/HardwareSerial0.cpp
+2016/02/16 14:04:53 - Setting read timeout to 2
+2016/02/16 14:04:53 - "POST /collect HTTP/1.1" 200 35
+2016/02/16 14:04:53 - avr-g++ -o .pioenvs/uno/FrameworkArduino/HardwareSerial1.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant .pioenvs/uno/FrameworkArduino/HardwareSerial1.cpp
+2016/02/16 14:04:53 - avr-g++ -o .pioenvs/uno/FrameworkArduino/HardwareSerial2.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant .pioenvs/uno/FrameworkArduino/HardwareSerial2.cpp
+2016/02/16 14:04:53 - avr-g++ -o .pioenvs/uno/FrameworkArduino/HardwareSerial3.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant .pioenvs/uno/FrameworkArduino/HardwareSerial3.cpp
+2016/02/16 14:04:53 - avr-g++ -o .pioenvs/uno/FrameworkArduino/IPAddress.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant .pioenvs/uno/FrameworkArduino/IPAddress.cpp
+2016/02/16 14:04:53 - avr-g++ -o .pioenvs/uno/FrameworkArduino/PluggableUSB.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant .pioenvs/uno/FrameworkArduino/PluggableUSB.cpp
+2016/02/16 14:04:53 - avr-g++ -o .pioenvs/uno/FrameworkArduino/Print.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant .pioenvs/uno/FrameworkArduino/Print.cpp
+2016/02/16 14:04:53 - avr-g++ -o .pioenvs/uno/FrameworkArduino/Stream.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant .pioenvs/uno/FrameworkArduino/Stream.cpp
+2016/02/16 14:04:54 - avr-g++ -o .pioenvs/uno/FrameworkArduino/Tone.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant .pioenvs/uno/FrameworkArduino/Tone.cpp
+2016/02/16 14:04:54 - avr-g++ -o .pioenvs/uno/FrameworkArduino/USBCore.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant .pioenvs/uno/FrameworkArduino/USBCore.cpp
+2016/02/16 14:04:54 - avr-gcc -o .pioenvs/uno/FrameworkArduino/WInterrupts.o -c -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant .pioenvs/uno/FrameworkArduino/WInterrupts.c
+2016/02/16 14:04:54 - avr-g++ -o .pioenvs/uno/FrameworkArduino/WMath.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant .pioenvs/uno/FrameworkArduino/WMath.cpp
+2016/02/16 14:04:54 - avr-g++ -o .pioenvs/uno/FrameworkArduino/WString.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant .pioenvs/uno/FrameworkArduino/WString.cpp
+2016/02/16 14:04:54 - avr-gcc -x assembler-with-cpp -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant -c -o .pioenvs/uno/FrameworkArduino/_wiring_pulse.o .pioenvs/uno/FrameworkArduino/_wiring_pulse.S
+2016/02/16 14:04:54 - avr-g++ -o .pioenvs/uno/FrameworkArduino/abi.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant .pioenvs/uno/FrameworkArduino/abi.cpp
+2016/02/16 14:04:54 - avr-gcc -o .pioenvs/uno/FrameworkArduino/hooks.o -c -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant .pioenvs/uno/FrameworkArduino/hooks.c
+2016/02/16 14:04:54 - avr-g++ -o .pioenvs/uno/FrameworkArduino/main.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant .pioenvs/uno/FrameworkArduino/main.cpp
+2016/02/16 14:04:54 - avr-g++ -o .pioenvs/uno/FrameworkArduino/new.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant .pioenvs/uno/FrameworkArduino/new.cpp
+2016/02/16 14:04:54 - avr-gcc -o .pioenvs/uno/FrameworkArduino/wiring.o -c -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant .pioenvs/uno/FrameworkArduino/wiring.c
+2016/02/16 14:04:55 - avr-gcc -o .pioenvs/uno/FrameworkArduino/wiring_analog.o -c -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant .pioenvs/uno/FrameworkArduino/wiring_analog.c
+2016/02/16 14:04:55 - avr-gcc -o .pioenvs/uno/FrameworkArduino/wiring_digital.o -c -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant .pioenvs/uno/FrameworkArduino/wiring_digital.c
+2016/02/16 14:04:55 - avr-gcc -o .pioenvs/uno/FrameworkArduino/wiring_pulse.o -c -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant .pioenvs/uno/FrameworkArduino/wiring_pulse.c
+2016/02/16 14:04:55 - avr-gcc -o .pioenvs/uno/FrameworkArduino/wiring_shift.o -c -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant .pioenvs/uno/FrameworkArduino/wiring_shift.c
+2016/02/16 14:04:55 - avr-ar rcs .pioenvs/uno/libFrameworkArduino.a .pioenvs/uno/FrameworkArduino/CDC.o .pioenvs/uno/FrameworkArduino/HardwareSerial.o .pioenvs/uno/FrameworkArduino/HardwareSerial0.o .pioenvs/uno/FrameworkArduino/HardwareSerial1.o .pioenvs/uno/FrameworkArduino/HardwareSerial2.o .pioenvs/uno/FrameworkArduino/HardwareSerial3.o .pioenvs/uno/FrameworkArduino/IPAddress.o .pioenvs/uno/FrameworkArduino/PluggableUSB.o .pioenvs/uno/FrameworkArduino/Print.o .pioenvs/uno/FrameworkArduino/Stream.o .pioenvs/uno/FrameworkArduino/Tone.o .pioenvs/uno/FrameworkArduino/USBCore.o .pioenvs/uno/FrameworkArduino/WInterrupts.o .pioenvs/uno/FrameworkArduino/WMath.o .pioenvs/uno/FrameworkArduino/WString.o .pioenvs/uno/FrameworkArduino/_wiring_pulse.o .pioenvs/uno/FrameworkArduino/abi.o .pioenvs/uno/FrameworkArduino/hooks.o .pioenvs/uno/FrameworkArduino/main.o .pioenvs/uno/FrameworkArduino/new.o .pioenvs/uno/FrameworkArduino/wiring.o .pioenvs/uno/FrameworkArduino/wiring_analog.o .pioenvs/uno/FrameworkArduino/wiring_digital.o .pioenvs/uno/FrameworkArduino/wiring_pulse.o .pioenvs/uno/FrameworkArduino/wiring_shift.o
+2016/02/16 14:04:55 - avr-ranlib .pioenvs/uno/libFrameworkArduino.a
+2016/02/16 14:04:55 - avr-g++ -o .pioenvs/uno/BitbloqUS/BitbloqUS.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant -I.pioenvs/uno/BitbloqUS -I.pioenvs/uno/Servo .pioenvs/uno/BitbloqUS/BitbloqUS.cpp
+2016/02/16 14:04:55 - avr-ar rcs .pioenvs/uno/libBitbloqUS.a .pioenvs/uno/BitbloqUS/BitbloqUS.o
+2016/02/16 14:04:55 - avr-ranlib .pioenvs/uno/libBitbloqUS.a
+2016/02/16 14:04:55 - avr-g++ -o .pioenvs/uno/Servo/avr/Servo.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant -I.pioenvs/uno/BitbloqUS -I.pioenvs/uno/Servo .pioenvs/uno/Servo/avr/Servo.cpp
+2016/02/16 14:04:55 - avr-g++ -o .pioenvs/uno/Servo/sam/Servo.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant -I.pioenvs/uno/BitbloqUS -I.pioenvs/uno/Servo .pioenvs/uno/Servo/sam/Servo.cpp
+2016/02/16 14:04:55 - avr-g++ -o .pioenvs/uno/Servo/samd/Servo.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant -I.pioenvs/uno/BitbloqUS -I.pioenvs/uno/Servo .pioenvs/uno/Servo/samd/Servo.cpp
+2016/02/16 14:04:55 - avr-ar rcs .pioenvs/uno/libServo.a .pioenvs/uno/Servo/avr/Servo.o .pioenvs/uno/Servo/sam/Servo.o .pioenvs/uno/Servo/samd/Servo.o
+2016/02/16 14:04:55 - avr-ranlib .pioenvs/uno/libServo.a
+2016/02/16 14:04:55 - avr-g++ -o .pioenvs/uno/firmware.elf -Os -mmcu=atmega328p -Wl,--gc-sections,--relax .pioenvs/uno/src/main.o -L/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/platformIoPackages/packages/ldscripts -L.pioenvs/uno -Wl,--start-group -lm .pioenvs/uno/libFrameworkArduinoVariant.a .pioenvs/uno/libFrameworkArduino.a .pioenvs/uno/libBitbloqUS.a .pioenvs/uno/libServo.a -Wl,--end-group
+2016/02/16 14:04:55 - avr-objcopy -O ihex -R .eeprom .pioenvs/uno/firmware.elf .pioenvs/uno/firmware.hex
+2016/02/16 14:04:55 - "avr-size" --mcu=atmega328p -C -d .pioenvs/uno/firmware.elf
+2016/02/16 14:04:55 - AVR Memory Usage
+2016/02/16 14:04:55 - ----------------
+2016/02/16 14:04:55 - Device: atmega328p
+2016/02/16 14:04:55 - 
+2016/02/16 14:04:55 - Program:    1148 bytes (3.5% Full)
+2016/02/16 14:04:55 - (.text + .data + .bootloader)
+2016/02/16 14:04:55 - 
+2016/02/16 14:04:55 - Data:         19 bytes (0.9% Full)
+2016/02/16 14:04:55 - (.data + .bss + .noinit)
+2016/02/16 14:04:55 - 
+2016/02/16 14:04:55 - 
+2016/02/16 14:04:55 - ========================= [[32m[1mSUCCESS[0m] Took 3.25 seconds =========================
+2016/02/16 14:04:55 - .
+2016/02/16 14:04:55 - [mar 16 feb 2016 14:04:55 ] Processing [36m[1muno[0m (platform: atmelavr, board: uno, framework: arduino)
+2016/02/16 14:04:55 - --------------------------------------------------------------------------------
+2016/02/16 14:04:55 - Setting read timeout to 2
+2016/02/16 14:04:55 - Executing: ../../web2board
 -Q
--j 4
+-j 2
 --warn=no-no-parallel-support
 -f
-/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/platformio/builder/main.py
+/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/platformio/builder/main.py
 PIOENV=uno
 PLATFORM=atmelavr
 BOARD=uno
 FRAMEWORK=arduino
-BUILD_SCRIPT=/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/platformio/builder/scripts/atmelavr.py
+BUILD_SCRIPT=/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/platformio/builder/scripts/atmelavr.py
 PIOPACKAGE_TOOLCHAIN=toolchain-atmelavr
 PIOPACKAGE_UPLOADER=tool-avrdude
 PIOPACKAGE_FRAMEWORK=framework-arduinoavr
-/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformioWorkSpace
-2016/02/15 16:52:36 - "POST /collect HTTP/1.1" 200 35
-2016/02/15 16:52:37 - ['/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux']
-2016/02/15 16:52:37 - 
-2016/02/15 16:52:37 - scons: `.pioenvs/uno/firmware.hex' is up to date.
-2016/02/15 16:52:37 - "avr-size" --mcu=atmega328p -C -d .pioenvs/uno/firmware.elf
-2016/02/15 16:52:37 - AVR Memory Usage
-2016/02/15 16:52:37 - ----------------
-2016/02/15 16:52:37 - Device: atmega328p
-2016/02/15 16:52:37 - 
-2016/02/15 16:52:37 - Program:     436 bytes (1.3% Full)
-2016/02/15 16:52:37 - (.text + .data + .bootloader)
-2016/02/15 16:52:37 - 
-2016/02/15 16:52:37 - Data:          9 bytes (0.4% Full)
-2016/02/15 16:52:37 - (.data + .bss + .noinit)
-2016/02/15 16:52:37 - 
-2016/02/15 16:52:37 - 
-2016/02/15 16:52:37 - ====================================================================== [[32m[1mSUCCESS[0m] Took 0.79 seconds ======================================================================
-2016/02/15 16:52:37 - message to UNPROVIDED__0:
-{"function": "compile", "success": true, "replay": true, "ID": 1, "hub": "CodeHub"}
-2016/02/15 16:53:05 - Message received from ID: UNPROVIDED__0
-{"hub":"CodeHub","function":"compile","args":["\n/***   Included libraries  ***/\n\n\n/***   Global variables and function definition  ***/\nint boton_0 = 11;\n\n/***   Setup  ***/\nvoid setup(){pinMode(boton_0, INPUT);}\n\n/***   Loop  ***/\nvoid loop(){float boton = digitalRead(11);}"],"ID":2} 
-2016/02/15 16:53:05 - message to UNPROVIDED__0:
-{"function": "isCompiling", "args": [], "hub": "CodeHub"}
-2016/02/15 16:53:05 - [lun 15 feb 2016 16:53:05 ] Processing [36m[1muno[0m (platform: atmelavr, board: uno, framework: arduino)
-2016/02/15 16:53:05 - -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-2016/02/15 16:53:06 - Setting read timeout to 2
-2016/02/15 16:53:06 - Executing: ../../web2board
+/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/platformioWorkSpace
+2016/02/16 14:04:55 - "POST /collect HTTP/1.1" 200 35
+2016/02/16 14:04:56 - ['/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline']
+2016/02/16 14:04:56 - 
+2016/02/16 14:04:56 - avr-g++ -o .pioenvs/uno/src/main.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -DPLATFORMIO=020603 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant src/main.cpp
+2016/02/16 14:04:56 - avr-g++ -o .pioenvs/uno/firmware.elf -Os -mmcu=atmega328p -Wl,--gc-sections,--relax .pioenvs/uno/src/main.o -L/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/platformIoPackages/packages/ldscripts -L.pioenvs/uno -Wl,--start-group -lm .pioenvs/uno/libFrameworkArduinoVariant.a .pioenvs/uno/libFrameworkArduino.a -Wl,--end-group
+2016/02/16 14:04:56 - avr-objcopy -O ihex -R .eeprom .pioenvs/uno/firmware.elf .pioenvs/uno/firmware.hex
+2016/02/16 14:04:56 - "avr-size" --mcu=atmega328p -C -d .pioenvs/uno/firmware.elf
+2016/02/16 14:04:56 - AVR Memory Usage
+2016/02/16 14:04:56 - ----------------
+2016/02/16 14:04:56 - Device: atmega328p
+2016/02/16 14:04:56 - 
+2016/02/16 14:04:56 - Program:     998 bytes (3.0% Full)
+2016/02/16 14:04:56 - (.text + .data + .bootloader)
+2016/02/16 14:04:56 - 
+2016/02/16 14:04:56 - Data:          9 bytes (0.4% Full)
+2016/02/16 14:04:56 - (.data + .bss + .noinit)
+2016/02/16 14:04:56 - 
+2016/02/16 14:04:56 - 
+2016/02/16 14:04:56 - ========================= [[32m[1mSUCCESS[0m] Took 1.18 seconds =========================
+2016/02/16 14:04:56 - .
+2016/02/16 14:04:56 - .
+2016/02/16 14:04:57 - [mar 16 feb 2016 14:04:57 ] Processing [36m[1muno[0m (platform: atmelavr, board: uno, framework: arduino)
+2016/02/16 14:04:57 - --------------------------------------------------------------------------------
+2016/02/16 14:04:57 - Setting read timeout to 2
+2016/02/16 14:04:57 - Executing: ../../web2board
 -Q
--j 4
+-j 2
 --warn=no-no-parallel-support
 -f
-/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/platformio/builder/main.py
+/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/platformio/builder/main.py
 PIOENV=uno
 PLATFORM=atmelavr
 BOARD=uno
 FRAMEWORK=arduino
-BUILD_SCRIPT=/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/platformio/builder/scripts/atmelavr.py
+BUILD_SCRIPT=/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/platformio/builder/scripts/atmelavr.py
 PIOPACKAGE_TOOLCHAIN=toolchain-atmelavr
 PIOPACKAGE_UPLOADER=tool-avrdude
 PIOPACKAGE_FRAMEWORK=framework-arduinoavr
-/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformioWorkSpace
-2016/02/15 16:53:06 - "POST /collect HTTP/1.1" 200 35
-2016/02/15 16:53:06 - ['/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux']
-2016/02/15 16:53:06 - 
-2016/02/15 16:53:06 - avr-g++ -o .pioenvs/uno/src/main.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -DPLATFORMIO=020603 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant src/main.cpp
-2016/02/15 16:53:06 - src/main.cpp: In function 'void loop()':
-2016/02/15 16:53:06 - src/main.cpp:13:19: warning: unused variable 'boton' [-Wunused-variable]
-2016/02/15 16:53:06 - void loop(){float boton = digitalRead(11);}
-2016/02/15 16:53:06 - ^
-2016/02/15 16:53:06 - avr-g++ -o .pioenvs/uno/firmware.elf -Os -mmcu=atmega328p -Wl,--gc-sections,--relax .pioenvs/uno/src/main.o -L/home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformIoPackages/packages/ldscripts -L.pioenvs/uno -Wl,--start-group -lm .pioenvs/uno/libFrameworkArduinoVariant.a .pioenvs/uno/libFrameworkArduino.a -Wl,--end-group
-2016/02/15 16:53:06 - avr-objcopy -O ihex -R .eeprom .pioenvs/uno/firmware.elf .pioenvs/uno/firmware.hex
-2016/02/15 16:53:06 - "avr-size" --mcu=atmega328p -C -d .pioenvs/uno/firmware.elf
-2016/02/15 16:53:06 - AVR Memory Usage
-2016/02/15 16:53:06 - ----------------
-2016/02/15 16:53:06 - Device: atmega328p
-2016/02/15 16:53:06 - 
-2016/02/15 16:53:06 - Program:     834 bytes (2.5% Full)
-2016/02/15 16:53:06 - (.text + .data + .bootloader)
-2016/02/15 16:53:06 - 
-2016/02/15 16:53:06 - Data:         11 bytes (0.5% Full)
-2016/02/15 16:53:06 - (.data + .bss + .noinit)
-2016/02/15 16:53:06 - 
-2016/02/15 16:53:06 - 
-2016/02/15 16:53:06 - ====================================================================== [[32m[1mSUCCESS[0m] Took 0.85 seconds ======================================================================
-2016/02/15 16:53:06 - message to UNPROVIDED__0:
-{"function": "compile", "success": true, "replay": true, "ID": 2, "hub": "CodeHub"}
-2016/02/15 17:17:10 - client closed UNPROVIDED__0
-2016/02/15 18:03:47 - Reading config file
-2016/02/15 18:03:47 - init web2board with options: {'logLevel': 20, 'testing': 'none', 'update2version': None, 'host': u'127.0.0.1', 'board': 'uno', 'port': 9876}, and args: []
-2016/02/15 18:03:47 - [BitbloqLibsUpdater] Checking version 0.1.0 - 0.1.0
-2016/02/15 18:03:47 - [BitbloqLibsUpdater] Checking library names
-2016/02/15 18:03:47 - BitbloqLibs is up to date
-2016/02/15 18:03:47 - Working directory: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
-2016/02/15 18:03:47 - CONFIG_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/config.json
-2016/02/15 18:03:47 - COPY_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/web2board_copy
-2016/02/15 18:03:47 - EXECUTABLE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
-2016/02/15 18:03:47 - MAIN_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
-2016/02/15 18:03:47 - ORIGINAL_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/web2board
-2016/02/15 18:03:47 - PLATFORMIO_PACKAGES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformIoPackages
-2016/02/15 18:03:47 - PLATFORMIO_WORKSPACE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformioWorkSpace
-2016/02/15 18:03:47 - PROGRAM_PATH: /home/dieguin/.web2board
-2016/02/15 18:03:47 - RES_BOARDS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/boards.txt
-2016/02/15 18:03:47 - RES_ICONS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/icons
-2016/02/15 18:03:47 - RES_ICO_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/Web2board.ico
-2016/02/15 18:03:47 - RES_LOGGING_CONFIG_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/logging.json
-2016/02/15 18:03:47 - RES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res
-2016/02/15 18:03:47 - RES_PLATFORMIO_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformio
-2016/02/15 18:03:47 - RES_SCONS_ZIP_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/sconsRes.zip
-2016/02/15 18:03:47 - SCONS_EXECUTABLE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/Scons/sconsScript.py
-2016/02/15 18:03:47 - TEST_RES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/Test/resources
-2016/02/15 18:03:47 - TEST_SETTINGS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/TestSettings/resources
-2016/02/15 18:03:48 - listening...
-2016/02/15 18:03:48 - open new connection with ID: UNPROVIDED__0 
-2016/02/15 18:03:48 - Reading config file
-2016/02/15 18:03:48 - [BitbloqLibsUpdater] Checking version 0.1.0 - 0.1.0
-2016/02/15 18:03:48 - [BitbloqLibsUpdater] Checking library names
-2016/02/15 18:03:48 - BitbloqLibs is up to date
-2016/02/15 18:03:48 - init web2board with options: {'logLevel': 20, 'testing': 'none', 'update2version': None, 'host': u'127.0.0.1', 'board': 'uno', 'port': 9876}, and args: []
-2016/02/15 18:03:48 - Working directory: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
-2016/02/15 18:03:48 - CONFIG_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/config.json
-2016/02/15 18:03:48 - COPY_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/web2board_copy
-2016/02/15 18:03:48 - EXECUTABLE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
-2016/02/15 18:03:48 - MAIN_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
-2016/02/15 18:03:48 - ORIGINAL_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/web2board
-2016/02/15 18:03:48 - PLATFORMIO_PACKAGES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformIoPackages
-2016/02/15 18:03:48 - PLATFORMIO_WORKSPACE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformioWorkSpace
-2016/02/15 18:03:48 - PROGRAM_PATH: /home/dieguin/.web2board
-2016/02/15 18:03:48 - RES_BOARDS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/boards.txt
-2016/02/15 18:03:48 - RES_ICONS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/icons
-2016/02/15 18:03:48 - RES_ICO_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/Web2board.ico
-2016/02/15 18:03:48 - RES_LOGGING_CONFIG_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/logging.json
-2016/02/15 18:03:48 - RES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res
-2016/02/15 18:03:48 - RES_PLATFORMIO_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformio
-2016/02/15 18:03:48 - RES_SCONS_ZIP_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/sconsRes.zip
-2016/02/15 18:03:48 - SCONS_EXECUTABLE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/Scons/sconsScript.py
-2016/02/15 18:03:48 - TEST_RES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/Test/resources
-2016/02/15 18:03:48 - TEST_SETTINGS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/TestSettings/resources
-2016/02/15 18:03:48 - listening...
-2016/02/15 18:03:49 - open new connection with ID: UNPROVIDED__0 
-2016/02/15 18:03:49 - Reading config file
-2016/02/15 18:03:49 - init web2board with options: {'logLevel': 20, 'testing': 'none', 'update2version': None, 'host': u'127.0.0.1', 'board': 'uno', 'port': 9876}, and args: []
-2016/02/15 18:03:49 - [BitbloqLibsUpdater] Checking version 0.1.0 - 0.1.0
-2016/02/15 18:03:49 - [BitbloqLibsUpdater] Checking library names
-2016/02/15 18:03:49 - BitbloqLibs is up to date
-2016/02/15 18:03:49 - Working directory: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
-2016/02/15 18:03:49 - CONFIG_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/config.json
-2016/02/15 18:03:49 - COPY_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/web2board_copy
-2016/02/15 18:03:49 - EXECUTABLE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
-2016/02/15 18:03:49 - MAIN_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
-2016/02/15 18:03:49 - ORIGINAL_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/web2board
-2016/02/15 18:03:49 - PLATFORMIO_PACKAGES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformIoPackages
-2016/02/15 18:03:49 - PLATFORMIO_WORKSPACE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformioWorkSpace
-2016/02/15 18:03:49 - PROGRAM_PATH: /home/dieguin/.web2board
-2016/02/15 18:03:49 - RES_BOARDS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/boards.txt
-2016/02/15 18:03:49 - RES_ICONS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/icons
-2016/02/15 18:03:49 - RES_ICO_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/Web2board.ico
-2016/02/15 18:03:49 - RES_LOGGING_CONFIG_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/logging.json
-2016/02/15 18:03:49 - RES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res
-2016/02/15 18:03:49 - RES_PLATFORMIO_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformio
-2016/02/15 18:03:49 - RES_SCONS_ZIP_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/sconsRes.zip
-2016/02/15 18:03:49 - SCONS_EXECUTABLE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/Scons/sconsScript.py
-2016/02/15 18:03:49 - TEST_RES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/Test/resources
-2016/02/15 18:03:49 - TEST_SETTINGS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/TestSettings/resources
-2016/02/15 18:03:49 - listening...
-2016/02/15 18:03:50 - open new connection with ID: UNPROVIDED__0 
-2016/02/15 18:03:50 - Reading config file
-2016/02/15 18:03:50 - init web2board with options: {'logLevel': 20, 'testing': 'none', 'update2version': None, 'host': u'127.0.0.1', 'board': 'uno', 'port': 9876}, and args: []
-2016/02/15 18:03:50 - [BitbloqLibsUpdater] Checking version 0.1.0 - 0.1.0
-2016/02/15 18:03:50 - [BitbloqLibsUpdater] Checking library names
-2016/02/15 18:03:50 - BitbloqLibs is up to date
-2016/02/15 18:03:50 - Working directory: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
-2016/02/15 18:03:50 - CONFIG_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/config.json
-2016/02/15 18:03:50 - COPY_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/web2board_copy
-2016/02/15 18:03:50 - EXECUTABLE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
-2016/02/15 18:03:50 - MAIN_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
-2016/02/15 18:03:50 - ORIGINAL_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/web2board
-2016/02/15 18:03:50 - PLATFORMIO_PACKAGES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformIoPackages
-2016/02/15 18:03:50 - PLATFORMIO_WORKSPACE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformioWorkSpace
-2016/02/15 18:03:50 - PROGRAM_PATH: /home/dieguin/.web2board
-2016/02/15 18:03:50 - RES_BOARDS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/boards.txt
-2016/02/15 18:03:50 - RES_ICONS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/icons
-2016/02/15 18:03:50 - RES_ICO_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/Web2board.ico
-2016/02/15 18:03:50 - RES_LOGGING_CONFIG_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/logging.json
-2016/02/15 18:03:50 - RES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res
-2016/02/15 18:03:50 - RES_PLATFORMIO_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformio
-2016/02/15 18:03:50 - RES_SCONS_ZIP_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/sconsRes.zip
-2016/02/15 18:03:50 - SCONS_EXECUTABLE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/Scons/sconsScript.py
-2016/02/15 18:03:50 - TEST_RES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/Test/resources
-2016/02/15 18:03:50 - TEST_SETTINGS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/TestSettings/resources
-2016/02/15 18:03:50 - listening...
-2016/02/15 18:03:51 - Reading config file
-2016/02/15 18:03:51 - init web2board with options: {'logLevel': 20, 'testing': 'none', 'update2version': None, 'host': u'127.0.0.1', 'board': 'uno', 'port': 9876}, and args: []
-2016/02/15 18:03:51 - [BitbloqLibsUpdater] Checking version 0.1.0 - 0.1.0
-2016/02/15 18:03:51 - [BitbloqLibsUpdater] Checking library names
-2016/02/15 18:03:51 - BitbloqLibs is up to date
-2016/02/15 18:03:51 - Working directory: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
-2016/02/15 18:03:51 - CONFIG_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/config.json
-2016/02/15 18:03:51 - COPY_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/web2board_copy
-2016/02/15 18:03:51 - EXECUTABLE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
-2016/02/15 18:03:51 - MAIN_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux
-2016/02/15 18:03:51 - ORIGINAL_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/web2board
-2016/02/15 18:03:51 - PLATFORMIO_PACKAGES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformIoPackages
-2016/02/15 18:03:51 - PLATFORMIO_WORKSPACE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformioWorkSpace
-2016/02/15 18:03:51 - PROGRAM_PATH: /home/dieguin/.web2board
-2016/02/15 18:03:51 - RES_BOARDS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/boards.txt
-2016/02/15 18:03:51 - RES_ICONS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/icons
-2016/02/15 18:03:51 - RES_ICO_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/Web2board.ico
-2016/02/15 18:03:51 - RES_LOGGING_CONFIG_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/logging.json
-2016/02/15 18:03:51 - RES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res
-2016/02/15 18:03:51 - RES_PLATFORMIO_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/platformio
-2016/02/15 18:03:51 - RES_SCONS_ZIP_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/sconsRes.zip
-2016/02/15 18:03:51 - SCONS_EXECUTABLE_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/Scons/sconsScript.py
-2016/02/15 18:03:51 - TEST_RES_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/Test/resources
-2016/02/15 18:03:51 - TEST_SETTINGS_PATH: /home/dieguin/Documentos/repos/bitbloq-offline/app/res/web2board/linux/res/TestSettings/resources
-2016/02/15 18:03:51 - listening...
+/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/platformioWorkSpace
+2016/02/16 14:04:57 - "POST /collect HTTP/1.1" 200 35
+2016/02/16 14:04:57 - ['/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline']
+2016/02/16 14:04:57 - 
+2016/02/16 14:04:57 - avr-g++ -o .pioenvs/uno/src/main.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -DPLATFORMIO=020603 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant src/main.cpp
+2016/02/16 14:04:57 - src/main.cpp:11:1: error: expected ',' or ';' before 'void'
+2016/02/16 14:04:57 - void setup()
+2016/02/16 14:04:57 - ^
+2016/02/16 14:04:57 - scons: *** [.pioenvs/uno/src/main.o] Error 1
+2016/02/16 14:04:57 - ========================= [[31m[1m ERROR [0m] Took 0.65 seconds =========================
+2016/02/16 14:04:57 - .
+2016/02/16 14:04:57 - .
+2016/02/16 14:04:57 - .
+2016/02/16 14:04:57 - .
+2016/02/16 14:04:57 - .
+2016/02/16 14:04:57 - Found available ports: ['/dev/ttyACM0']
+2016/02/16 14:04:57 - Checking port: /dev/ttyACM0
+2016/02/16 14:04:57 - Command executed: ['res/avrdude64', '-C', 'res/avrdude.conf', u'-P', u'/dev/ttyACM0', u'-p', u'atmega328p', u'-b', u'115200', u'-c', u'arduino']
+2016/02/16 14:04:58 - 
+2016/02/16 14:04:58 - 
+avrdude64: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude64: Device signature = 0x1e950f
+
+avrdude64 done.  Thank you.
+
+
+2016/02/16 14:04:58 - /dev/ttyACM0: , 
+avrdude64: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude64: Device signature = 0x1e950f
+
+avrdude64 done.  Thank you.
+
+
+2016/02/16 14:04:58 - Found board port: /dev/ttyACM0
+2016/02/16 14:04:58 - .
+2016/02/16 14:04:58 - Command executed: ['res/avrdude64', '-C', 'res/avrdude.conf', u'-V', u'', u'-P', u'/dev/ttyACM0', u'-p', u'atmega328p', u'-b', u'115200', u'-c', u'arduino', u'-D', u'-U', u'flash:w:notExistingFile:i']
+2016/02/16 14:04:59 - 
+2016/02/16 14:04:59 - 
+avrdude64: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude64: Device signature = 0x1e950f
+avrdude64: reading input file "notExistingFile"
+avrdude64: can't open input file notExistingFile: No such file or directory
+avrdude64: read from file 'notExistingFile' failed
+
+avrdude64 done.  Thank you.
+
+
+2016/02/16 14:04:59 - .
+2016/02/16 14:04:59 - Command executed: ['res/avrdude64', '-C', 'res/avrdude.conf', u'-V', u'', u'-P', u'/dev/ttyACM0', u'-p', u'atmega328p', u'-b', u'115200', u'-c', u'arduino', u'-D', u'-U', u'flash:w:/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/TestSettings/resources/CompilerUploader/hex.hex:i']
+2016/02/16 14:05:01 - 
+2016/02/16 14:05:01 - 
+avrdude64: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude64: Device signature = 0x1e950f
+avrdude64: reading input file "/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/TestSettings/resources/CompilerUploader/hex.hex"
+avrdude64: writing flash (7186 bytes):
+
+Writing | ################################################## | 100% 1.33s
+
+avrdude64: 7186 bytes of flash written
+
+avrdude64 done.  Thank you.
+
+
+2016/02/16 14:05:01 - .
+2016/02/16 14:05:01 - [mar 16 feb 2016 14:05:01 ] Processing [36m[1muno[0m (platform: atmelavr, board: uno, framework: arduino)
+2016/02/16 14:05:01 - --------------------------------------------------------------------------------
+2016/02/16 14:05:01 - Setting read timeout to 2
+2016/02/16 14:05:01 - Executing: ../../web2board
+-Q
+-j 2
+--warn=no-no-parallel-support
+-f
+/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/platformio/builder/main.py
+PIOENV=uno
+UPLOAD_PORT=/dev/ttyACM0
+PLATFORM=atmelavr
+BOARD=uno
+FRAMEWORK=arduino
+BUILD_SCRIPT=/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/platformio/builder/scripts/atmelavr.py
+PIOPACKAGE_TOOLCHAIN=toolchain-atmelavr
+PIOPACKAGE_UPLOADER=tool-avrdude
+PIOPACKAGE_FRAMEWORK=framework-arduinoavr
+upload
+/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/platformioWorkSpace
+2016/02/16 14:05:01 - "POST /collect HTTP/1.1" 200 35
+2016/02/16 14:05:02 - ['/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline']
+2016/02/16 14:05:02 - 
+2016/02/16 14:05:02 - avr-g++ -o .pioenvs/uno/src/main.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -DPLATFORMIO=020603 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant src/main.cpp
+2016/02/16 14:05:02 - BeforeUpload(["upload"], [".pioenvs/uno/firmware.hex"])
+2016/02/16 14:05:02 - "/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/platformIoPackages/packages/tool-avrdude/avrdude" -v -p atmega328p -C "/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/platformIoPackages/packages/tool-avrdude/avrdude.conf" -c arduino -b 115200 -P /dev/ttyACM0 -D -U flash:w:.pioenvs/uno/firmware.hex:i
+2016/02/16 14:05:02 - 
+2016/02/16 14:05:02 - avrdude: Version 6.0.1, compiled on Apr  3 2014 at 21:52:43
+2016/02/16 14:05:02 - Copyright (c) 2000-2005 Brian Dean, http://www.bdmicro.com/
+2016/02/16 14:05:02 - Copyright (c) 2007-2009 Joerg Wunsch
+2016/02/16 14:05:02 - 
+2016/02/16 14:05:02 - System wide configuration file is "/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/platformIoPackages/packages/tool-avrdude/avrdude.conf"
+2016/02/16 14:05:02 - User configuration file is "/home/jorgeportatil/.avrduderc"
+2016/02/16 14:05:02 - User configuration file does not exist or is not a regular file, skipping
+2016/02/16 14:05:02 - 
+2016/02/16 14:05:02 - Using Port                    : /dev/ttyACM0
+2016/02/16 14:05:02 - Using Programmer              : arduino
+2016/02/16 14:05:02 - Overriding Baud Rate          : 115200
+2016/02/16 14:05:03 - AVR Part                      : ATmega328P
+2016/02/16 14:05:03 - Chip Erase delay              : 9000 us
+2016/02/16 14:05:03 - PAGEL                         : PD7
+2016/02/16 14:05:03 - BS2                           : PC2
+2016/02/16 14:05:03 - RESET disposition             : dedicated
+2016/02/16 14:05:03 - RETRY pulse                   : SCK
+2016/02/16 14:05:03 - serial program mode           : yes
+2016/02/16 14:05:03 - parallel program mode         : yes
+2016/02/16 14:05:03 - Timeout                       : 200
+2016/02/16 14:05:03 - StabDelay                     : 100
+2016/02/16 14:05:03 - CmdexeDelay                   : 25
+2016/02/16 14:05:03 - SyncLoops                     : 32
+2016/02/16 14:05:03 - ByteDelay                     : 0
+2016/02/16 14:05:03 - PollIndex                     : 3
+2016/02/16 14:05:03 - PollValue                     : 0x53
+2016/02/16 14:05:03 - Memory Detail                 :
+2016/02/16 14:05:03 - 
+2016/02/16 14:05:03 - Block Poll               Page                       Polled
+2016/02/16 14:05:03 - Memory Type Mode Delay Size  Indx Paged  Size   Size #Pages MinW  MaxW   ReadBack
+2016/02/16 14:05:03 - ----------- ---- ----- ----- ---- ------ ------ ---- ------ ----- ----- ---------
+2016/02/16 14:05:03 - eeprom        65    20     4    0 no       1024    4      0  3600  3600 0xff 0xff
+2016/02/16 14:05:03 - flash         65     6   128    0 yes     32768  128    256  4500  4500 0xff 0xff
+2016/02/16 14:05:03 - lfuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+2016/02/16 14:05:03 - hfuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+2016/02/16 14:05:03 - efuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+2016/02/16 14:05:03 - lock           0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+2016/02/16 14:05:03 - calibration    0     0     0    0 no          1    0      0     0     0 0x00 0x00
+2016/02/16 14:05:03 - signature      0     0     0    0 no          3    0      0     0     0 0x00 0x00
+2016/02/16 14:05:03 - 
+2016/02/16 14:05:03 - Programmer Type : Arduino
+2016/02/16 14:05:03 - Description     : Arduino
+2016/02/16 14:05:03 - Hardware Version: 3
+2016/02/16 14:05:03 - Firmware Version: 4.4
+2016/02/16 14:05:03 - Vtarget         : 0.3 V
+2016/02/16 14:05:03 - Varef           : 0.3 V
+2016/02/16 14:05:03 - Oscillator      : 28.800 kHz
+2016/02/16 14:05:03 - SCK period      : 3.3 us
+2016/02/16 14:05:03 - 
+2016/02/16 14:05:03 - avrdude: AVR device initialized and ready to accept instructions
+2016/02/16 14:05:03 - 
+2016/02/16 14:05:03 - Reading | ################################################## | 100% 0.00s
+2016/02/16 14:05:03 - 
+2016/02/16 14:05:03 - avrdude: Device signature = 0x1e950f
+2016/02/16 14:05:03 - avrdude: reading input file ".pioenvs/uno/firmware.hex"
+2016/02/16 14:05:03 - avrdude: writing flash (998 bytes):
+2016/02/16 14:05:03 - 
+2016/02/16 14:05:04 - Writing | ################################################## | 100% 0.19s
+2016/02/16 14:05:04 - 
+2016/02/16 14:05:04 - avrdude: 998 bytes of flash written
+2016/02/16 14:05:04 - avrdude: verifying flash memory against .pioenvs/uno/firmware.hex:
+2016/02/16 14:05:04 - avrdude: load data flash data from input file .pioenvs/uno/firmware.hex:
+2016/02/16 14:05:04 - avrdude: input file .pioenvs/uno/firmware.hex contains 998 bytes
+2016/02/16 14:05:04 - avrdude: reading on-chip flash data:
+2016/02/16 14:05:04 - 
+2016/02/16 14:05:04 - Reading | ################################################## | 100% 0.14s
+2016/02/16 14:05:04 - 
+2016/02/16 14:05:04 - avrdude: verifying ...
+2016/02/16 14:05:04 - avrdude: 998 bytes of flash verified
+2016/02/16 14:05:04 - 
+2016/02/16 14:05:04 - avrdude done.  Thank you.
+2016/02/16 14:05:04 - 
+2016/02/16 14:05:04 - ========================= [[32m[1mSUCCESS[0m] Took 2.49 seconds =========================
+2016/02/16 14:05:04 - .
+2016/02/16 14:05:04 - .
+2016/02/16 14:05:04 - [mar 16 feb 2016 14:05:04 ] Processing [36m[1muno[0m (platform: atmelavr, board: uno, framework: arduino)
+2016/02/16 14:05:04 - --------------------------------------------------------------------------------
+2016/02/16 14:05:04 - Setting read timeout to 2
+2016/02/16 14:05:04 - Executing: ../../web2board
+-Q
+-j 2
+--warn=no-no-parallel-support
+-f
+/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/platformio/builder/main.py
+PIOENV=uno
+UPLOAD_PORT=/dev/ttyACM0
+PLATFORM=atmelavr
+BOARD=uno
+FRAMEWORK=arduino
+BUILD_SCRIPT=/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/platformio/builder/scripts/atmelavr.py
+PIOPACKAGE_TOOLCHAIN=toolchain-atmelavr
+PIOPACKAGE_UPLOADER=tool-avrdude
+PIOPACKAGE_FRAMEWORK=framework-arduinoavr
+upload
+/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/platformioWorkSpace
+2016/02/16 14:05:04 - "POST /collect HTTP/1.1" 200 35
+2016/02/16 14:05:04 - ['/home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline']
+2016/02/16 14:05:04 - 
+2016/02/16 14:05:04 - avr-g++ -o .pioenvs/uno/src/main.o -c -fno-exceptions -fno-threadsafe-statics -g -Os -Wall -ffunction-sections -fdata-sections -MMD -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO -DARDUINO=10607 -DPLATFORMIO=020603 -I.pioenvs/uno/FrameworkArduino -I.pioenvs/uno/FrameworkArduinoVariant src/main.cpp
+2016/02/16 14:05:05 - src/main.cpp:11:1: error: expected ',' or ';' before 'void'
+2016/02/16 14:05:05 - void setup()
+2016/02/16 14:05:05 - ^
+2016/02/16 14:05:05 - scons: *** [.pioenvs/uno/src/main.o] Error 1
+2016/02/16 14:05:05 - ========================= [[31m[1m ERROR [0m] Took 0.67 seconds =========================
+2016/02/16 14:05:05 - .
+2016/02/16 14:05:05 - downloading https://raw.githubusercontent.com/bq/web2board/master/README.md
+2016/02/16 14:05:05 - .
+2016/02/16 14:05:05 - .
+2016/02/16 14:05:05 - [BitbloqLibsUpdater] Downloaded online version: 0.0.5
+2016/02/16 14:05:05 - .
+2016/02/16 14:05:05 - [BitbloqLibsUpdater] Downloaded online version: 0.0.5
+2016/02/16 14:05:05 - [BitbloqLibsUpdater] Downloading version 0.0.5, from https://raw.githubusercontent.com/bq/web2board/devel/src/Test/resources/Updater/bitbloqLibsV5.zip
+2016/02/16 14:05:05 - downloading https://raw.githubusercontent.com/bq/web2board/devel/src/Test/resources/Updater/bitbloqLibsV5.zip
+2016/02/16 14:05:06 - [BitbloqLibsUpdater] extracting zipfile: /tmp/tmpLfETnE.zip
+2016/02/16 14:05:06 - [BitbloqLibsUpdater] Updating version to: 0.0.5
+2016/02/16 14:05:06 - Current version updated
+2016/02/16 14:05:06 - [BitbloqLibsUpdater] Checking library names
+2016/02/16 14:05:06 - [BitbloqLibsUpdater] Checking version 0.0.5 - 0.0.5
+2016/02/16 14:05:06 - [BitbloqLibsUpdater] Checking version 0.0.5 - 0.0.5
+2016/02/16 14:05:06 - [BitbloqLibsUpdater] Checking library names
+2016/02/16 14:05:06 - .
+2016/02/16 14:05:06 - 
+
+Test passed successfully: 18
+2016/02/16 14:05:06 - Test failed: 0
+2016/02/16 14:05:06 - Test with errors: 0
+2016/02/16 14:05:06 - 
+for more detailed info, check report in: /home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/integrationTestReport.html
+
+2016/02/16 14:05:06 - 
+exiting program in 10s
+2016/02/16 14:05:37 - Reading config file
+2016/02/16 14:05:38 - [BitbloqLibsUpdater] Checking version 0.1.0 - 0.1.0
+2016/02/16 14:05:38 - [BitbloqLibsUpdater] Checking library names
+2016/02/16 14:05:38 - BitbloqLibs is up to date
+2016/02/16 14:05:38 - init web2board with options: {'logLevel': 20, 'testing': 'unit', 'update2version': None, 'host': u'127.0.0.1', 'board': 'uno', 'port': 9876, 'proxy': None}, and args: []
+2016/02/16 14:05:38 - [Updater] Downloaded online version: 9.9.9
+2016/02/16 14:05:38 - .
+2016/02/16 14:05:38 - .
+2016/02/16 14:05:38 - [Updater] Checking version 9.9.9 - 9.9.9
+2016/02/16 14:05:38 - [Updater] Checking library names
+2016/02/16 14:05:38 - .
+2016/02/16 14:05:38 - [Updater] Checking version 0.1.1 - 0.1.1
+2016/02/16 14:05:38 - [Updater] Checking library names
+2016/02/16 14:05:38 - .
+2016/02/16 14:05:38 - [Updater] Checking version 9.9.9 - 9.9.9
+2016/02/16 14:05:38 - [Updater] Checking library names
+2016/02/16 14:05:38 - .
+2016/02/16 14:05:38 - [Updater] Checking version 9.9.9 - 9.9.9
+2016/02/16 14:05:38 - [Updater] Checking library names
+2016/02/16 14:05:38 - .
+2016/02/16 14:05:38 - [Updater] Downloading version 9.9.9, from file2DownloadUrl
+2016/02/16 14:05:38 - .
+2016/02/16 14:05:38 - [Updater] Downloading version 90.90.90, from file2DownloadUrl
+2016/02/16 14:05:38 - [Updater] extracting zipfile: /home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/TestSettings/resources/Updater/copy_000.zip
+2016/02/16 14:05:38 - [Updater] Updating version to: 90.90.90
+2016/02/16 14:05:38 - Current version updated
+2016/02/16 14:05:38 - [Updater] Checking library names
+2016/02/16 14:05:38 - [Updater] Checking version 90.90.90 - 90.90.90
+2016/02/16 14:05:38 - [Updater] Checking version 90.90.90 - 90.90.90
+2016/02/16 14:05:38 - [Updater] Checking library names
+2016/02/16 14:05:38 - .
+2016/02/16 14:05:38 - Creating an auxiliary copy of the program in /home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/TestSettings/resources/Updater/Web2boardUpdater/copy
+2016/02/16 14:05:38 - .
+2016/02/16 14:05:38 - Creating an auxiliary copy of the program in /home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/TestSettings/resources/Updater/Web2boardUpdater/copy
+2016/02/16 14:05:38 - .
+2016/02/16 14:05:38 - Creating an auxiliary copy of the program in /home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/TestSettings/resources/Updater/Web2boardUpdater/copy
+2016/02/16 14:05:38 - .
+2016/02/16 14:05:38 - updating in process
+2016/02/16 14:05:38 - killing original web2board
+2016/02/16 14:05:38 - removing original files
+2016/02/16 14:05:38 - .
+2016/02/16 14:05:38 - .
+2016/02/16 14:05:38 - updating in process
+2016/02/16 14:05:38 - killing original web2board
+2016/02/16 14:05:38 - removing original files
+2016/02/16 14:05:38 - .
+2016/02/16 14:05:38 - updating in process
+2016/02/16 14:05:38 - killing original web2board
+2016/02/16 14:05:38 - removing original files
+2016/02/16 14:05:38 - .
+2016/02/16 14:05:38 - .
+2016/02/16 14:05:38 - [BitbloqLibsUpdater] Checking version 0.1.0 - 1.1.1
+2016/02/16 14:05:38 - .
+2016/02/16 14:05:38 - .
+2016/02/16 14:05:38 - [BitbloqLibsUpdater] Checking version 1.1.1 - 1.1.1
+2016/02/16 14:05:38 - [BitbloqLibsUpdater] Checking library names
+2016/02/16 14:05:38 - [BitbloqLibsUpdater] Checking version 1.1.1 - 1.1.1
+2016/02/16 14:05:38 - [BitbloqLibsUpdater] Checking library names
+2016/02/16 14:05:38 - .
+2016/02/16 14:05:38 - .
+2016/02/16 14:05:38 - Compiling from testID
+2016/02/16 14:05:38 - Compiling code: myCode
+2016/02/16 14:05:38 - .
+2016/02/16 14:05:38 - Compiling from testID
+2016/02/16 14:05:38 - Compiling code: myCode
+2016/02/16 14:05:38 - .
+2016/02/16 14:05:38 - .
+2016/02/16 14:05:38 - .
+2016/02/16 14:05:39 - .
+2016/02/16 14:05:39 - upload Hex text for board uno from testID
+2016/02/16 14:05:39 - .
+2016/02/16 14:05:39 - Uploading for board uno from testID
+2016/02/16 14:05:39 - Uploading code: myCode
+2016/02/16 14:05:39 - .
+2016/02/16 14:05:39 - Uploading for board uno from testID
+2016/02/16 14:05:39 - Uploading code: myCode
+2016/02/16 14:05:39 - .
+2016/02/16 14:05:39 - upload Hex text for board uno from testID
+2016/02/16 14:05:39 - .
+2016/02/16 14:05:39 - Uploading for board uno from testID
+2016/02/16 14:05:39 - Uploading code: myCode
+2016/02/16 14:05:39 - .
+2016/02/16 14:05:39 - .
+2016/02/16 14:05:39 - .
+2016/02/16 14:05:39 - .
+2016/02/16 14:05:39 - .
+2016/02/16 14:05:39 - .
+2016/02/16 14:05:39 - .
+2016/02/16 14:05:39 - .
+2016/02/16 14:05:39 - .
+2016/02/16 14:05:39 - .
+2016/02/16 14:05:39 - .
+2016/02/16 14:05:39 - Error in asynchronous task
+Traceback (most recent call last):
+  File "libs/Decorators/Asynchronous.py", line 40, in overFunction
+  File "libs/Downloader.py", line 17, in __realDownload
+  File "flexmock.py", line 955, in mock_method
+  File "flexmock.py", line 934, in pass_thru
+  File "flexmock.py", line 932, in pass_thru
+  File "urllib.py", line 94, in urlretrieve
+  File "urllib.py", line 240, in retrieve
+  File "urllib.py", line 208, in open
+  File "urllib.py", line 463, in open_file
+  File "urllib.py", line 477, in open_local_file
+IOError: [Errno 2] No existe el archivo o el directorio: 'url'
+2016/02/16 14:05:39 - .
+2016/02/16 14:05:39 - .
+2016/02/16 14:05:39 - 
+
+Test passed successfully: 42
+2016/02/16 14:05:39 - Test failed: 0
+2016/02/16 14:05:39 - Test with errors: 0
+2016/02/16 14:05:39 - 
+for more detailed info, check report in: /home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/unitTestReport.html
+
+2016/02/16 14:05:39 - 
+exiting program in 10s
+2016/02/16 14:07:59 - Reading config file
+2016/02/16 14:07:59 - [BitbloqLibsUpdater] Checking version 0.1.0 - 0.1.0
+2016/02/16 14:07:59 - [BitbloqLibsUpdater] Checking library names
+2016/02/16 14:07:59 - BitbloqLibs is up to date
+2016/02/16 14:07:59 - init web2board with options: {'logLevel': 20, 'testing': 'unit', 'update2version': None, 'host': u'127.0.0.1', 'board': 'uno', 'port': 9876, 'proxy': None}, and args: []
+2016/02/16 14:07:59 - [Updater] Downloaded online version: 9.9.9
+2016/02/16 14:07:59 - .
+2016/02/16 14:07:59 - .
+2016/02/16 14:07:59 - [Updater] Checking version 9.9.9 - 9.9.9
+2016/02/16 14:07:59 - [Updater] Checking library names
+2016/02/16 14:07:59 - .
+2016/02/16 14:07:59 - [Updater] Checking version 0.1.1 - 0.1.1
+2016/02/16 14:07:59 - [Updater] Checking library names
+2016/02/16 14:07:59 - .
+2016/02/16 14:07:59 - [Updater] Checking version 9.9.9 - 9.9.9
+2016/02/16 14:07:59 - [Updater] Checking library names
+2016/02/16 14:07:59 - .
+2016/02/16 14:07:59 - [Updater] Checking version 9.9.9 - 9.9.9
+2016/02/16 14:07:59 - [Updater] Checking library names
+2016/02/16 14:07:59 - .
+2016/02/16 14:07:59 - [Updater] Downloading version 9.9.9, from file2DownloadUrl
+2016/02/16 14:07:59 - .
+2016/02/16 14:07:59 - [Updater] Downloading version 90.90.90, from file2DownloadUrl
+2016/02/16 14:07:59 - [Updater] extracting zipfile: /home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/TestSettings/resources/Updater/copy_000.zip
+2016/02/16 14:07:59 - [Updater] Updating version to: 90.90.90
+2016/02/16 14:07:59 - Current version updated
+2016/02/16 14:07:59 - [Updater] Checking library names
+2016/02/16 14:07:59 - [Updater] Checking version 90.90.90 - 90.90.90
+2016/02/16 14:07:59 - [Updater] Checking version 90.90.90 - 90.90.90
+2016/02/16 14:07:59 - [Updater] Checking library names
+2016/02/16 14:07:59 - .
+2016/02/16 14:07:59 - Creating an auxiliary copy of the program in /home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/TestSettings/resources/Updater/Web2boardUpdater/copy
+2016/02/16 14:07:59 - .
+2016/02/16 14:07:59 - Creating an auxiliary copy of the program in /home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/TestSettings/resources/Updater/Web2boardUpdater/copy
+2016/02/16 14:07:59 - .
+2016/02/16 14:07:59 - Creating an auxiliary copy of the program in /home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/TestSettings/resources/Updater/Web2boardUpdater/copy
+2016/02/16 14:07:59 - .
+2016/02/16 14:07:59 - updating in process
+2016/02/16 14:07:59 - killing original web2board
+2016/02/16 14:07:59 - removing original files
+2016/02/16 14:07:59 - .
+2016/02/16 14:07:59 - .
+2016/02/16 14:07:59 - updating in process
+2016/02/16 14:07:59 - killing original web2board
+2016/02/16 14:07:59 - removing original files
+2016/02/16 14:07:59 - .
+2016/02/16 14:07:59 - updating in process
+2016/02/16 14:07:59 - killing original web2board
+2016/02/16 14:07:59 - removing original files
+2016/02/16 14:07:59 - .
+2016/02/16 14:07:59 - .
+2016/02/16 14:07:59 - [BitbloqLibsUpdater] Checking version 0.1.0 - 1.1.1
+2016/02/16 14:07:59 - .
+2016/02/16 14:07:59 - .
+2016/02/16 14:07:59 - [BitbloqLibsUpdater] Checking version 1.1.1 - 1.1.1
+2016/02/16 14:07:59 - [BitbloqLibsUpdater] Checking library names
+2016/02/16 14:07:59 - [BitbloqLibsUpdater] Checking version 1.1.1 - 1.1.1
+2016/02/16 14:07:59 - [BitbloqLibsUpdater] Checking library names
+2016/02/16 14:07:59 - .
+2016/02/16 14:07:59 - .
+2016/02/16 14:07:59 - Compiling from testID
+2016/02/16 14:07:59 - Compiling code: myCode
+2016/02/16 14:08:00 - .
+2016/02/16 14:08:00 - Compiling from testID
+2016/02/16 14:08:00 - Compiling code: myCode
+2016/02/16 14:08:00 - .
+2016/02/16 14:08:00 - .
+2016/02/16 14:08:00 - .
+2016/02/16 14:08:00 - .
+2016/02/16 14:08:00 - upload Hex text for board uno from testID
+2016/02/16 14:08:00 - .
+2016/02/16 14:08:00 - Uploading for board uno from testID
+2016/02/16 14:08:00 - Uploading code: myCode
+2016/02/16 14:08:00 - .
+2016/02/16 14:08:00 - Uploading for board uno from testID
+2016/02/16 14:08:00 - Uploading code: myCode
+2016/02/16 14:08:00 - .
+2016/02/16 14:08:00 - upload Hex text for board uno from testID
+2016/02/16 14:08:00 - .
+2016/02/16 14:08:00 - Uploading for board uno from testID
+2016/02/16 14:08:00 - Uploading code: myCode
+2016/02/16 14:08:00 - .
+2016/02/16 14:08:00 - .
+2016/02/16 14:08:00 - .
+2016/02/16 14:08:00 - .
+2016/02/16 14:08:00 - .
+2016/02/16 14:08:00 - .
+2016/02/16 14:08:00 - .
+2016/02/16 14:08:00 - .
+2016/02/16 14:08:00 - .
+2016/02/16 14:08:00 - .
+2016/02/16 14:08:00 - .
+2016/02/16 14:08:00 - Error in asynchronous task
+Traceback (most recent call last):
+  File "libs/Decorators/Asynchronous.py", line 40, in overFunction
+  File "libs/Downloader.py", line 17, in __realDownload
+  File "flexmock.py", line 955, in mock_method
+  File "flexmock.py", line 934, in pass_thru
+  File "flexmock.py", line 932, in pass_thru
+  File "urllib.py", line 94, in urlretrieve
+  File "urllib.py", line 240, in retrieve
+  File "urllib.py", line 208, in open
+  File "urllib.py", line 463, in open_file
+  File "urllib.py", line 477, in open_local_file
+IOError: [Errno 2] No existe el archivo o el directorio: 'url'
+2016/02/16 14:08:00 - .
+2016/02/16 14:08:00 - .
+2016/02/16 14:08:00 - 
+
+Test passed successfully: 42
+2016/02/16 14:08:00 - Test failed: 0
+2016/02/16 14:08:00 - Test with errors: 0
+2016/02/16 14:08:00 - 
+for more detailed info, check report in: /home/jorgeportatil/SoftwareProjects/web2board/installers/debian_amd64Offline/res/unitTestReport.html
+
+2016/02/16 14:08:00 - 
+exiting program in 10s
