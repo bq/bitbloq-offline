@@ -19,7 +19,7 @@
       </li>
     </ul>
   </div>
-  <button class="btn--reset--zowi" ng-click="resetZowi()">
+  <button ng-if="project.hardware.robot === 'zowi'" class="btn--reset--zowi" ng-click="resetZowi()">
     <svg class="icon--vsmall icon--text">
       <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#versionAnterior"></use>
     </svg>

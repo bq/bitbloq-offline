@@ -146,9 +146,9 @@ angular.module('bitbloqOffline')
                 inProgress = true;
                 openCommunication(function () {
                     alertsService.add('alert-web2board-settingBoard', 'upload', 'loading');
-                    ws.CodeHub.server.upload(code, board.mcu).done(function (port) {
+                    ws.CodeHub.server.upload(code, board.mcu).done(function () {
                         inProgress = false;
-                        alertsService.add('alert-web2board-code-uploaded', 'upload', 'ok', 5000, port);
+                        alertsService.add('alert-web2board-code-uploaded', 'upload', 'ok', 5000);
                     }, handleUploadError);
                 });
             }
@@ -178,11 +178,11 @@ angular.module('bitbloqOffline')
             openCommunication();
         };
 
-        web2board.uploadHex = function (boardMcu, hexText) {
+        web2board.uploadHex = function (board, hexText) {
             openCommunication(function () {
                 alertsService.add('alert-web2board-settingBoard', 'upload', 'loading');
-                ws.CodeHub.server.uploadHex(hexText, boardMcu).done(function (port) {
-                    alertsService.add('alert-web2board-boardReady', 'upload', 'ok', 5000, port);
+                ws.CodeHub.server.uploadHex(hexText, board.mcu).done(function () {
+                    alertsService.add('alert-web2board-boardReady', 'upload', 'ok', 5000, board.name);
                 }, handleUploadError);
             });
         };

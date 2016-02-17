@@ -441,50 +441,55 @@ angular.module('bitbloqOffline')
       }
     };
 
-    $scope.$watch('project.hardware', function(newVal, oldVal) {
+    function loadHardwareProject(hardwareProject) {
 
-      if (newVal && (newVal !== oldVal || newVal.anonymousTransient)) {
-
-        if (newVal.anonymousTransient) {
-          delete newVal.anonymousTransient;
-        }
-
-        var hwSchema = {};
-        hwSchema.components = _.cloneDeep($scope.project.hardware.components);
-        hwSchema.connections = _.cloneDeep($scope.project.hardware.connections);
-
-        hwBasicsLoaded.promise.then(function() {
-
-          if ($scope.project.hardware.robot) {
-            var robotReference = _.find($scope.hardware.robotList, function(robot) {
-              return robot.id === $scope.project.hardware.robot;
-            });
-            hwSchema.robot = robotReference; //The whole board object is passed
-          } else if ($scope.project.hardware.board) {
-            var boardReference = _.find($scope.hardware.boardList, function(board) {
-              return board.name === $scope.project.hardware.board;
-            });
-            hwSchema.board = boardReference; //The whole board object is passed
-          }
-
-          if (hwSchema.robot || hwSchema.board) {
-            hw2Bloqs.loadSchema(hwSchema);
-            hw2Bloqs.repaint();
-            $scope.refreshComponentsArray();
-            $scope.hardware.firstLoad = false;
-            //Fix components dimensions
-            _.forEach($scope.project.hardware.components, function(item) {
-              _fixComponentsDimension(item);
-            });
-          } else {
-            $log.debug('robot is undefined');
-          }
-
-        });
-
+      if (hardwareProject.anonymousTransient) {
+        delete hardwareProject.anonymousTransient;
       }
 
+      var hwSchema = {};
+      hwSchema.components = _.cloneDeep($scope.project.hardware.components);
+      hwSchema.connections = _.cloneDeep($scope.project.hardware.connections);
+
+      // hwBasicsLoaded.promise.then(function() {
+      if ($scope.project.hardware.robot) {
+        var robotReference = _.find($scope.hardware.robotList, function(robot) {
+          return robot.id === $scope.project.hardware.robot;
+        });
+        hwSchema.robot = robotReference; //The whole board object is passed
+      } else if ($scope.project.hardware.board) {
+        var boardReference = _.find($scope.hardware.boardList, function(board) {
+          return board.name === $scope.project.hardware.board;
+        });
+        hwSchema.board = boardReference; //The whole board object is passed
+      }
+
+      if (hwSchema.robot || hwSchema.board) {
+        hw2Bloqs.removeAllComponents();
+        hw2Bloqs.loadSchema(hwSchema);
+        hw2Bloqs.repaint();
+        $scope.refreshComponentsArray();
+        $scope.hardware.firstLoad = false;
+        //Fix components dimensions
+        _.forEach($scope.project.hardware.components, function(item) {
+          _fixComponentsDimension(item);
+        });
+      } else {
+        $log.debug('robot is undefined');
+      }
+      // });
+    }
+
+
+
+
+    $scope.$watch('project.hardware', function(newVal, oldVal) {
+      if (newVal && (newVal !== oldVal || newVal.anonymousTransient)) {
+        loadHardwareProject(newVal);
+      }
     });
+
+
 
     $scope.checkName = function() {
       var isNameDuplicated = _.filter($scope.project.hardware.components, {

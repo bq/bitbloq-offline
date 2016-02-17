@@ -8,3 +8,17 @@ body {
   -webkit-user-select: none;
   user-select        : none;
 }
+
+.bloq--extension--end {
+  .connector--bottom {
+    z-index: 1!important;
+  }
+}
+
+.bloq--statement-input {
+  .bloq--statement-input__header {
+    span {
+      z-index: 1!important;
+    }
+  }
+}

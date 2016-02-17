@@ -8,8 +8,8 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-  .controller('ActionBarCtrl', function($scope, $route, web2board, _, clipboard, bloqsUtils, utils, projectApi, nodeDialog, nodeFs, nodeUtils, common, commonModals, alertsService) {
-    console.log('ActionBarCtrl', $scope.$parent.$id);
+  .controller('ActionBarCtrl', function($scope, $route, $log, web2board, _, clipboard, bloqsUtils, utils, hw2Bloqs, projectApi, nodeDialog, nodeFs, nodeUtils, common, commonModals, alertsService) {
+    $log.debug('ActionBarCtrl', $scope.$parent.$id);
 
     $scope.actions = {
       newProject: newProject,
@@ -29,7 +29,6 @@ angular.module('bitbloqOffline')
     }
 
     function openProject() {
-      console.log(this.name);
       var filePath = nodeDialog.showOpenDialog({
         properties: ['openFile', 'createDirectory'],
         filters: [{
@@ -53,6 +52,7 @@ angular.module('bitbloqOffline')
             }
 
             $scope.setProject(project);
+            hw2Bloqs.repaint();
             $scope.$apply();
           }
         });
@@ -71,14 +71,12 @@ angular.module('bitbloqOffline')
     }
 
     function changeLanguage() {
-      console.log(this.name);
       commonModals.launchChangeLanguageModal();
     }
 
     function copyCodeToClipboard() {
-      console.log(this.name);
       var code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
-      console.log(code);
+      $log.debug(code);
       alertsService.add('make-code-clipboard', 'code-clipboard', 'info', 3000);
       clipboard.copyText(code);
     }
@@ -103,6 +101,10 @@ angular.module('bitbloqOffline')
         return b.name === $scope.project.hardware.board;
       });
       web2board.serialMonitor(boardReference);
+    }
+
+    function showWeb2board() {
+      web2board.showWeb2board();
     }
 
     $scope.menuTree = {
@@ -150,6 +152,11 @@ angular.module('bitbloqOffline')
           name: 'show-console',
           icon: '#Ver_verSerialMonitor',
           action: startSM,
+          disabled: false
+        }, {
+          name: 'show-web2board',
+          icon: '#web2board',
+          action: showWeb2board,
           disabled: false
         }]
       }
