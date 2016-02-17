@@ -9,16 +9,25 @@ body {
   user-select        : none;
 }
 
+.absolute-center {
+  position: absolute;
+  top     : 0;
+  left    : 0;
+  right   : 0;
+  bottom  : 0;
+  margin  : auto;
+}
+
 .bloq--extension--end {
   .connector--bottom {
-    z-index: 1!important;
+    z-index: 1 !important;
   }
 }
 
 .bloq--statement-input {
   .bloq--statement-input__header {
     span {
-      z-index: 1!important;
+      z-index: 1 !important;
     }
   }
 }

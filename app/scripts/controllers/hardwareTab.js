@@ -13,7 +13,6 @@ angular.module('bitbloqOffline')
     var $componentContextMenu = $('#component-context-menu');
     var $boardContextMenu = $('#board-context-menu');
     var $robotContextMenu = $('#robot-context-menu');
-    var hwBasicsLoaded = $q.defer();
     var hwJSON = common.hardware;
 
     function _initialize() {
@@ -596,7 +595,6 @@ angular.module('bitbloqOffline')
      Shortcuts
      *************************************************/
     $scope.onHwKeyPress = function($event) {
-      console.log('heyp')
       switch ($event.keyCode) {
 
         case 67:
