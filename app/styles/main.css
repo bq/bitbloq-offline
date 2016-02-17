@@ -438,6 +438,10 @@ body {
         padding: 10px;
         text-align: left;
         width: 100%; }
+        .actionbar .menu .menu__dropdown .menu__dropdown__item__button.disabled {
+          background-color: #cfcfcf !important;
+          pointer-events: none;
+          color: #666; }
         .actionbar .menu .menu__dropdown .menu__dropdown__item__button span {
           font-size: 14px;
           margin-left: 5px; }
@@ -457,7 +461,13 @@ body {
 
 .btn--make--disabled {
   background-color: #cfcfcf !important;
-  pointer-events: none; }
+  pointer-events: none;
+  color: #666; }
+
+dropdown .menu .menu__heading.disabled {
+  background-color: #cfcfcf !important;
+  pointer-events: none;
+  color: #666; }
 
 dropdown .menu .menu__dropdown {
   list-style: none; }

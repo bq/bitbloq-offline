@@ -105,6 +105,13 @@ angular.module('bitbloqOffline')
       web2board.serialMonitor(boardReference);
     }
 
+    function showWeb2board() {
+      console.log(web2board.isInProcess())
+      if (web2board.isInProcess()) {
+        web2board.showWeb2board();
+      }
+    }
+
     $scope.menuTree = {
       fileMenuItems: {
         name: 'file',
@@ -150,6 +157,11 @@ angular.module('bitbloqOffline')
           name: 'show-console',
           icon: '#Ver_verSerialMonitor',
           action: startSM,
+          disabled: false
+        }, {
+          name: 'show-web2board',
+          icon: '#web2board',
+          action: showWeb2board,
           disabled: false
         }]
       }
