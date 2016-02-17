@@ -8,7 +8,7 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-  .controller('ActionBarCtrl', function($scope, $route, web2board, _, clipboard, bloqsUtils, utils, projectApi, nodeDialog, nodeFs, nodeUtils, common, commonModals, alertsService) {
+  .controller('ActionBarCtrl', function($scope, $route, web2board, _, clipboard, bloqsUtils, utils, hw2Bloqs, projectApi, nodeDialog, nodeFs, nodeUtils, common, commonModals, alertsService) {
     console.log('ActionBarCtrl', $scope.$parent.$id);
 
     $scope.actions = {
@@ -53,6 +53,7 @@ angular.module('bitbloqOffline')
             }
 
             $scope.setProject(project);
+            hw2Bloqs.repaint();
             $scope.$apply();
           }
         });
