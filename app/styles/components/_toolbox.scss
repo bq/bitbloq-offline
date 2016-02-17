@@ -10,7 +10,7 @@ $toolbox-sw-width-level-1: 450px;
 $toolbox-content-active: 400px;
 $toolbox-content-inactive: 450px;
 $toolbox-shadow-dark: rgba(55, 59, 68, .6);
-$toolbox-shadow-light: rgba(255, 255, 255, .1);
+$toolbox-shadow-light: rgba(177, 177, 177, 0.44);
 $toolbox-transition-duration: 250ms;
 $toolbox-content-list-height: calc(100vh - 85px);
 $toolbox-content-list-height-with-advanced: calc(100vh - 147px);
@@ -40,6 +40,7 @@ $toolbox-advanced-button-hover-color: #fbfbfb;
   right           : 0;
   top             : 0;
   transition      : width $toolbox-transition-duration;
+  will-change: transform;
 
   &.active {
     width: $toolbox-width;
@@ -59,6 +60,8 @@ $toolbox-advanced-button-hover-color: #fbfbfb;
   position        : absolute;
   right           : 0;
   top             : 0;
+  will-change: transform;
+  transition      : width $toolbox-transition-duration;
 
   &.active {
     z-index: 3;
