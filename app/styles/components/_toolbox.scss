@@ -123,3 +123,14 @@ $toolbox-content-inactive: 450px;
     right   : 0;
   }
 }
+
+.toolbox__advanced__button {
+  padding-left: 10px;
+  border-top  : 1px solid #edf1f2;
+  width       : 100%;
+  transition  : background-color 120ms;
+
+  &:hover {
+    background-color: #fbfbfb;
+  }
+}

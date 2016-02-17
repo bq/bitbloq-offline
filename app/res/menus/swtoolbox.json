@@ -20,10 +20,11 @@
   }, {
     "title": "make-swtoolbox-logic",
     "contentId": "logics"
+  }, {
+    "title": "make-swtoolbox-classes",
+    "contentId": "classes"
   }],
   "components": [{
-    "title": "components",
-    "titleId": "components",
     "items": [{
       "name": "hts221Temperature"
     }, {
@@ -98,11 +99,7 @@
     }, {
       "name": "digitalWrite"
     }, {
-      "name": "readAdvanced"
-    }, {
       "name": "servoNormalAdvanced"
-    }, {
-      "name": "turnOnOffAdvanced"
     }, {
       "name": "lcdWritePositionAdvanced-v1"
     }],
@@ -114,47 +111,6 @@
       "name": "returnFunction"
     }, {
       "name": "invokeReturnFunction"
-    }]
-  }],
-  "classes": [{
-    "title": "make-swtoolbox-classes",
-    "titleId": "classes",
-
-    "items": [{
-      "name": "class"
-    }, {
-      "name": "invokeClass"
-    }, {
-      "name": "constructorClass"
-    }, {
-      "name": "invokeClassFunction"
-    }, {
-      "name": "invokeClassReturnFunction"
-    }, {
-      "name": "setClassVariable"
-    }, {
-      "name": "selectClassVariable"
-    }],
-    "advancedItems": [{
-      "name": "classChildren"
-    }, {
-      "name": "constructorClassArguments"
-    }, {
-      "name": "invokeArgumentsClass"
-    }, {
-      "name": "public"
-    }, {
-      "name": "protected"
-    }, {
-      "name": "private"
-    }, {
-      "name": "invokeClassFunctionWithArguments"
-    }, {
-      "name": "invokeClassReturnFunctionWithArguments"
-    }, {
-      "name": "arrayClassVariable"
-    }, {
-      "name": "setClassArrayVariable"
     }]
   }],
   "communications": [{
@@ -232,6 +188,45 @@
     }]
   }],
   "toolboxContents": [{
+    "title": "make-swtoolbox-classes",
+    "titleId": "classes",
+    "items": [{
+      "name": "class"
+    }, {
+      "name": "invokeClass"
+    }, {
+      "name": "constructorClass"
+    }, {
+      "name": "invokeClassFunction"
+    }, {
+      "name": "invokeClassReturnFunction"
+    }, {
+      "name": "setClassVariable"
+    }, {
+      "name": "selectClassVariable"
+    }],
+    "advancedItems": [{
+      "name": "classChildren"
+    }, {
+      "name": "constructorClassArguments"
+    }, {
+      "name": "invokeArgumentsClass"
+    }, {
+      "name": "public"
+    }, {
+      "name": "protected"
+    }, {
+      "name": "private"
+    }, {
+      "name": "invokeClassFunctionWithArguments"
+    }, {
+      "name": "invokeClassReturnFunctionWithArguments"
+    }, {
+      "name": "arrayClassVariable"
+    }, {
+      "name": "setClassArrayVariable"
+    }]
+  }, {
     "title": "make-swtoolbox-functions",
     "titleId": "functions",
     "items": [{
