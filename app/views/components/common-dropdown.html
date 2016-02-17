@@ -1,0 +1,15 @@
+<span class="form--select dropdown--bottom" data-ng-class="{'dropdown--disabled':disabled}">
+    <button data-element="{{elementData}}" ng-if="!behavior" ng-click="triggerSelect()" class="btn btn--dropdown" data-ng-class="{'btn--dropdown--active':selected}">
+        <span data-element="{{elementData + '-preheading'}}" ng-if="preHeading" class="{{ preHeadingClass }}">{{ preHeading | translate }}</span>
+        <span data-element="{{elementData + '-heading'}}" class="dropdown__heading">{{ selected || headingOption }}</span>
+        <span data-element="{{elementData + '-preheading'}}" ng-if="preHeading" class="{{ postHeadingClass }}">{{ postHeading | translate }}</span>
+        <svg class="dropdown__icon">
+            <use xlink:href="#dropdown"></use>
+        </svg>
+    </button>
+    <ul class="dropwdown__menu" data-ng-show="collapsed === false">
+        <li data-ng-repeat="item in options" class="dropdown__menu__item">
+            <button data-ng-click="selectOption($index)" data-element="{{item}}">{{ item | translate}}</button>
+        </li>
+    </ul>
+</span>

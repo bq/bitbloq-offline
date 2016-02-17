@@ -188,12 +188,13 @@ $color_hover: #f19833;
         max-height: inherit;
         height    : inherit;
         width     : inherit;
+        display   : flex;
       }
 
       .component-name__label {
         color           : #000;
         font-weight     : 900;
-        padding         : 8px 10px;
+        padding         : 12px 10px;
         background-color: $color;
         display         : inline-block;
         white-space     : nowrap;
@@ -223,6 +224,9 @@ $color_hover: #f19833;
           width         : 115px;
           display       : inline-block;
           vertical-align: middle;
+          align-self    : baseline;
+          padding-top   : 19px;
+          padding-left  : 10px;
 
           .form--select {
             border: none;
@@ -438,4 +442,8 @@ $color_hover: #f19833;
       background-color: $color;
     }
   }
+}
+
+.opaque {
+  opacity: 1!important;
 }
