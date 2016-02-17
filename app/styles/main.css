@@ -455,6 +455,10 @@ body {
         .actionbar .actionbar__menu__right .actionbar__software__actions__item .actionbar__software__actions__item__button svg {
           fill: #3b3e45; }
 
+.btn--make--disabled {
+  background-color: #cfcfcf !important;
+  pointer-events: none; }
+
 dropdown .menu .menu__dropdown {
   list-style: none; }
 
@@ -787,6 +791,17 @@ dropdown .btn--dropdown {
 
 dropdown .btn--dropdown--active {
   color: #5d6069; }
+
+.btn--reset--zowi {
+  background-color: white;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 16px;
+  margin-bottom: 0;
+  transition: background-color 120ms;
+  border: 1px solid #cfcfcf; }
+  .btn--reset--zowi:hover {
+    background-color: #f3f3f3; }
 
 @keyframes spin {
   from {

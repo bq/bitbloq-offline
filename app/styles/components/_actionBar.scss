@@ -83,3 +83,8 @@ $menu-item-hover-background: #ebebeb;
     }
   }
 }
+
+.btn--make--disabled {
+  background-color: #cfcfcf!important;
+  pointer-events  : none;
+}

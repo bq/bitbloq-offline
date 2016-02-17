@@ -590,8 +590,8 @@ angular.module('bitbloqOffline')
     /*************************************************
      Shortcuts
      *************************************************/
-    $scope.onKeyPress = function($event) {
-
+    $scope.onHwKeyPress = function($event) {
+      console.log('heyp')
       switch ($event.keyCode) {
 
         case 67:

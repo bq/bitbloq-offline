@@ -8,7 +8,7 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-  .controller('SoftwareTabCtrl', function($scope, common, bloqs, $translate, $rootScope, $document, $log, $window) {
+  .controller('SoftwareTabCtrl', function($scope, common, bloqs, $translate, $rootScope, $document, $log, $window, web2board) {
     console.log('SoftwareTabCtrl', $scope.$parent.$id);
 
     $scope.init = function() {
@@ -84,20 +84,20 @@ angular.module('bitbloqOffline')
             $scope.$field.focus();
           }
           break;
-        case 89:
-          $log.debug('ctrl + y');
-          if (event.ctrlKey) {
-            $scope.redo();
-            $window.document.getElementById('bloqs--field').focus();
-          }
-          break;
-        case 90:
-          $log.debug('ctrl + z');
-          if (event.ctrlKey) {
-            $scope.undo();
-            $window.document.getElementById('bloqs--field').focus();
-          }
-          break;
+          // case 89:
+          // $log.debug('ctrl + y');
+          // if (event.ctrlKey) {
+          //   $scope.redo();
+          //   $window.document.getElementById('bloqs--field').focus();
+          // }
+          // break;
+          // case 90:
+          // $log.debug('ctrl + z');
+          // if (event.ctrlKey) {
+          // $scope.undo();
+          // $window.document.getElementById('bloqs--field').focus();
+          // }
+          // break;
       }
     };
 
@@ -187,6 +187,18 @@ angular.module('bitbloqOffline')
     // console.log(common.appPath);
     // console.log(common.webPath);
     // console.log(common.resourcesPath);
+
+    $scope.resetZowi = function() {
+      var hex = fs.readFile(common.appPath + '/app/res/zowi.hex', function(err, data) {
+        if (err) {
+          throw err;
+        } else {
+          web2board.showWeb2board().done(function() {
+            web2board.uploadHex('uno', hex);
+          });
+        }
+      });
+    };
 
     fs.readFile(common.resourcesPath + '/app/bower_components/bloqs/dist/bloqsmap.json', function(err, data) {
       if (err) {
