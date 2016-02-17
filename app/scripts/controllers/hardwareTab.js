@@ -431,7 +431,7 @@ angular.module('bitbloqOffline')
           alertsService.add('bloqs-project_alert_no-board', 'error_noboard', 'error');
           return false;
         } else if ($scope.project.hardware.robot) {
-          alertsService.add('Actualmente no puedes añadir componentes a un robot', 'error_noboard', 'error');
+          alertsService.add('bloqs-project_alert_component_on_robot', 'error_noboard', 'error');
           return false;
         }
         _addComponent(data);
