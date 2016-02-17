@@ -326,6 +326,12 @@ body {
   -webkit-user-select: none;
   user-select: none; }
 
+.bloq--extension--end .connector--bottom {
+  z-index: 1 !important; }
+
+.bloq--statement-input .bloq--statement-input__header span {
+  z-index: 1 !important; }
+
 .main__content {
   position: relative; }
 
@@ -806,8 +812,7 @@ dropdown .btn--dropdown--active {
   background-color: white;
   border-radius: 4px;
   padding: 10px;
-  margin: 16px;
-  margin-bottom: 0;
+  margin: 16px 16px 0;
   transition: background-color 120ms;
   border: 1px solid #cfcfcf; }
   .btn--reset--zowi:hover {

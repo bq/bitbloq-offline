@@ -107,9 +107,7 @@ angular.module('bitbloqOffline')
 
     function showWeb2board() {
       console.log(web2board.isInProcess())
-      if (web2board.isInProcess()) {
-        web2board.showWeb2board();
-      }
+      web2board.showWeb2board();
     }
 
     $scope.menuTree = {

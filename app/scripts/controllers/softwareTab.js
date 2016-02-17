@@ -189,13 +189,12 @@ angular.module('bitbloqOffline')
     // console.log(common.resourcesPath);
 
     $scope.resetZowi = function() {
-      var hex = fs.readFile(common.appPath + '/app/res/zowi.hex', function(err, data) {
+      var hex = fs.readFile(common.appPath + '/app/res/zowi.hex', 'utf8', function(err, data) {
         if (err) {
           throw err;
         } else {
-          web2board.showWeb2board().done(function() {
-            web2board.uploadHex('uno', hex);
-          });
+          console.log(data)
+          web2board.uploadHex('uno', data);
         }
       });
     };
