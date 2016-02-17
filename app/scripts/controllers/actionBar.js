@@ -65,7 +65,7 @@ angular.module('bitbloqOffline')
 
 
     function exportArduinoCode() {
-      var code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs),
+      var code = utils.prettyCode(bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs)),
         filename = utils.removeDiacritics($scope.project.name).substring(0, 30) + '.ino';
       nodeUtils.downloadFile(filename, code);
     }

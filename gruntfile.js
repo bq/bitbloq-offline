@@ -170,7 +170,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('buildMac', function() {
         grunt.task.run([
-            'clean:mac',
+            //'clean:mac',
             'copy:mac'
         ]);
     });
