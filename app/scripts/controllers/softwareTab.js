@@ -9,7 +9,7 @@
  */
 angular.module('bitbloqOffline')
   .controller('SoftwareTabCtrl', function($scope, common, bloqs, $translate, $rootScope, $document, $log, $window, web2board) {
-    console.log('SoftwareTabCtrl', $scope.$parent.$id);
+    $log.debug('SoftwareTabCtrl', $scope.$parent.$id);
 
     $scope.init = function() {
       if ($scope.arduinoMainBloqs.varsBloq) {
@@ -193,7 +193,7 @@ angular.module('bitbloqOffline')
         if (err) {
           throw err;
         } else {
-          console.log(data)
+          $log.debug(data)
           web2board.uploadHex('uno', data);
         }
       });
