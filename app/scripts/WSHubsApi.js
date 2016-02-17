@@ -171,6 +171,46 @@ function HubsAPI(url, serverTimeout) {
     };
 
 
+    this.WindowHub = {};
+    this.WindowHub.server = {
+        __HUB_NAME : 'WindowHub',
+
+        cleanConsole : function (){
+
+            return constructMessage('WindowHub', 'cleanConsole', arguments);
+        },
+
+        getSubscribedClientsToHub : function (){
+
+            return constructMessage('WindowHub', 'getSubscribedClientsToHub', arguments);
+        },
+
+        unsubscribeFromHub : function (){
+
+            return constructMessage('WindowHub', 'unsubscribeFromHub', arguments);
+        },
+
+        showApp : function (){
+
+            return constructMessage('WindowHub', 'showApp', arguments);
+        },
+
+        closeApp : function (){
+
+            return constructMessage('WindowHub', 'closeApp', arguments);
+        },
+
+        subscribeToHub : function (){
+
+            return constructMessage('WindowHub', 'subscribeToHub', arguments);
+        },
+
+        forceClose : function (){
+
+            return constructMessage('WindowHub', 'forceClose', arguments);
+        }
+    };
+    this.WindowHub.client = {};
     this.UtilsAPIHub = {};
     this.UtilsAPIHub.server = {
         __HUB_NAME : 'UtilsAPIHub',

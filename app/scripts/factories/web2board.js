@@ -190,12 +190,22 @@ angular.module('bitbloqOffline')
             });
         };
 
+        web2board.showApp = function () {
+            openCommunication(function () {
+                alertsService.add('alert-web2board-settingBoard', 'upload', 'loading'); // todo: change message
+                ws.WindowHub.server.showApp().done(function () {
+                    alertsService.add('alert-web2board-boardReady', 'upload', 'ok', 5000, board.name); //todo: change message
+                });
+            });
+        };
+
         return {
             verify: web2board.verify,
             upload: web2board.upload,
             serialMonitor: web2board.serialMonitor,
             version: web2board.version,
             uploadHex: web2board.uploadHex,
+            showWeb2board: web2board.showApp,
             isInProcess: function () {
                 return inProgress;
             }
