@@ -53,12 +53,12 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: '',
-                    src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json', '!app/res/web2board/linux/**'],
+                    src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json', '!app/res/web2board/linux/**', '!app/res/web2board/darwin/**'],
                     dest: 'dist/windows32/resources/app/'
                 },{
                     expand: true,
                     cwd: '',
-                    src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json', '!app/res/web2board/linux/**'],
+                    src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json', '!app/res/web2board/linux/**', '!app/res/web2board/darwin/**'],
                     dest: 'dist/windows64/resources/app/'
                 }]
             },
@@ -66,7 +66,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: '',
-                    src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json', '!app/res/web2board/win32/**'],
+                    src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json', '!app/res/web2board/win32/**', '!app/res/web2board/darwin/**'],
                     dest: 'dist/linux/resources/app/'
                 }]
             },
@@ -74,7 +74,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: '',
-                    src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json'],
+                    src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json', '!app/res/web2board/win32/**', '!app/res/web2board/linux/**'],
                     dest: 'dist/mac/Electron.app/Contents/Resources/app/'
                 }]
             },
@@ -119,8 +119,14 @@ module.exports = function(grunt) {
             options: {
                 stderr: false
             },
-            target: {
-                command: 'chmod -R 755 dist/'
+            linux: {
+                command: 'chmod -R 755 dist/linux'
+            },
+            windows32: {
+                command: 'chmod -R 755 dist/windows32'
+            },
+            windows64: {
+                command: 'chmod -R 755 dist/windows64'
             }
         }
     });
@@ -135,17 +141,37 @@ module.exports = function(grunt) {
     // Default task(s).
     grunt.registerTask('dist', function() {
         grunt.task.run([
-            'sass',
-            'svgstore',
-            //'clean:prebuilt',
-            //'copy:prebuilt',
-            'clean:linux',
-            'copy:linux',
+          'sass',
+          'svgstore',
+          'clean:prebuilt',
+          'copy:prebuilt',
+          'buildLinux',
+          'buildWindows',
+          'buildMac'
+        ]);
+    });
+
+    grunt.registerTask('buildLinux', function() {
+        grunt.task.run([
+          'clean:linux',
+          'copy:linux',
+          'shell:linux'
+        ]);
+    });
+
+    grunt.registerTask('buildWindows', function() {
+        grunt.task.run([
             'clean:windows',
             'copy:windows',
+            'shell:windows32',
+            'shell:windows64'
+        ]);
+    });
+
+    grunt.registerTask('buildMac', function() {
+        grunt.task.run([
             'clean:mac',
-            'copy:mac',
-            'shell'
+            'copy:mac'
         ]);
     });
 
