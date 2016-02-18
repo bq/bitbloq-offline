@@ -869,7 +869,7 @@ dropdown .btn--dropdown--active {
 .alert {
   padding: .5em 1em;
   border-radius: .2em;
-  width: 670px;
+  width: 600px;
   font-size: .9em;
   display: flex;
   align-content: center;
