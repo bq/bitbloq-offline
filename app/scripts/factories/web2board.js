@@ -163,7 +163,7 @@ angular.module('bitbloqOffline')
                 inProgress = true;
                 openCommunication(function () {
                     var serialMonitorAlert = alertsService.add('alert-web2board-openSerialMonitor', 'serialmonitor', 'loading');
-                    ws.SerialMonitorHub.server.startApp(web2board.serialPort, board.mcu).done(function () {
+                    ws.SerialMonitorHub.server.startApp(web2board.serialPort, board).done(function () {
                         alertsService.close(serialMonitorAlert);
                     }, function () {
                         inProgress = false;
@@ -178,11 +178,11 @@ angular.module('bitbloqOffline')
             openCommunication();
         };
 
-        web2board.uploadHex = function (board, hexText) {
+        web2board.uploadHex = function (boardMcu, hexText) {
             openCommunication(function () {
                 alertsService.add('alert-web2board-settingBoard', 'upload', 'loading');
-                ws.CodeHub.server.uploadHex(hexText, board.mcu).done(function () {
-                    alertsService.add('alert-web2board-boardReady', 'upload', 'ok', 5000, board.name);
+                ws.CodeHub.server.uploadHex(hexText, boardMcu).done(function (port) {
+                    alertsService.add('alert-web2board-code-uploaded', 'upload', 'ok', 5000, port);
                 }, handleUploadError);
             });
         };
