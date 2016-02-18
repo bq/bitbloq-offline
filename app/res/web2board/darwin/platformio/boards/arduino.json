@@ -1,0 +1,712 @@
+{
+    "LilyPadUSB": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_LILYPAD_USB",
+            "f_cpu": "8000000L",
+            "mcu": "atmega32u4",
+            "pid": "0x9208",
+            "usb_product": "LilyPad USB",
+            "variant": "leonardo",
+            "vid": "0x1B4F"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino LilyPad USB",
+        "platform": "atmelavr",
+        "upload": {
+            "disable_flushing": true,
+            "maximum_ram_size": 2560,
+            "maximum_size": 28672,
+            "protocol": "avr109",
+            "require_upload_port" : true,
+            "speed": 57600,
+            "use_1200bps_touch": true,
+            "wait_for_upload_port": true
+        },
+        "url": "http://arduino.cc/en/Main/ArduinoBoardLilyPadUSB",
+        "vendor": "Arduino"
+    },
+    "atmegangatmega168": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_NG",
+            "f_cpu": "16000000L",
+            "mcu": "atmega168",
+            "variant": "standard"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino NG or older ATmega168",
+        "platform": "atmelavr",
+        "upload": {
+            "maximum_ram_size": 1024,
+            "maximum_size": 14336,
+            "protocol": "arduino",
+            "require_upload_port" : true,
+            "speed": 19200
+        },
+        "url": "http://arduino.cc/en/main/boards",
+        "vendor": "Arduino"
+    },
+    "atmegangatmega8": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_NG",
+            "f_cpu": "16000000L",
+            "mcu": "atmega8",
+            "variant": "standard"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino NG or older ATmega8",
+        "platform": "atmelavr",
+        "upload": {
+            "maximum_ram_size": 1024,
+            "maximum_size": 7168,
+            "protocol": "arduino",
+            "require_upload_port" : true,
+            "speed": 19200
+        },
+        "url": "http://arduino.cc/en/main/boards",
+        "vendor": "Arduino"
+    },
+    "btatmega168": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_BT",
+            "f_cpu": "16000000L",
+            "mcu": "atmega168",
+            "variant": "eightanaloginputs"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino BT ATmega168",
+        "platform": "atmelavr",
+        "upload": {
+            "disable_flushing": true,
+            "maximum_ram_size": 1024,
+            "maximum_size": 14336,
+            "protocol": "arduino",
+            "require_upload_port" : true,
+            "speed": 19200
+        },
+        "url": "http://arduino.cc/en/main/boards",
+        "vendor": "Arduino"
+    },
+    "btatmega328": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_BT",
+            "f_cpu": "16000000L",
+            "mcu": "atmega328p",
+            "variant": "eightanaloginputs"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino BT ATmega328",
+        "platform": "atmelavr",
+        "upload": {
+            "disable_flushing": true,
+            "maximum_ram_size": 2048,
+            "maximum_size": 28672,
+            "protocol": "arduino",
+            "require_upload_port" : true,
+            "speed": 19200
+        },
+        "url": "http://arduino.cc/en/main/boards",
+        "vendor": "Arduino"
+    },
+    "diecimilaatmega168": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_DUEMILANOVE",
+            "f_cpu": "16000000L",
+            "mcu": "atmega168",
+            "variant": "standard"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino Duemilanove or Diecimila ATmega168",
+        "platform": "atmelavr",
+        "upload": {
+            "maximum_ram_size": 1024,
+            "maximum_size": 14336,
+            "protocol": "arduino",
+            "require_upload_port" : true,
+            "speed": 19200
+        },
+        "url": "http://arduino.cc/en/Main/ArduinoBoardDiecimila",
+        "vendor": "Arduino"
+    },
+    "diecimilaatmega328": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_DUEMILANOVE",
+            "f_cpu": "16000000L",
+            "mcu": "atmega328p",
+            "variant": "standard"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino Duemilanove or Diecimila ATmega328",
+        "platform": "atmelavr",
+        "upload": {
+            "maximum_ram_size": 2048,
+            "maximum_size": 30720,
+            "protocol": "arduino",
+            "require_upload_port" : true,
+            "speed": 57600
+        },
+        "url": "http://arduino.cc/en/Main/ArduinoBoardDiecimila",
+        "vendor": "Arduino"
+    },
+    "esplora": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ESPLORA",
+            "f_cpu": "16000000L",
+            "mcu": "atmega32u4",
+            "pid": "0x803c",
+            "usb_product": "Arduino Esplora",
+            "variant": "leonardo",
+            "vid": "0x2341"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino Esplora",
+        "platform": "atmelavr",
+        "upload": {
+            "disable_flushing": true,
+            "maximum_ram_size": 2560,
+            "maximum_size": 28672,
+            "protocol": "avr109",
+            "require_upload_port" : true,
+            "speed": 57600,
+            "use_1200bps_touch": true,
+            "wait_for_upload_port": true
+        },
+        "url": "http://arduino.cc/en/Main/ArduinoBoardEsplora",
+        "vendor": "Arduino"
+    },
+    "ethernet": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ETHERNET",
+            "f_cpu": "16000000L",
+            "mcu": "atmega328p",
+            "variant": "ethernet"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino Ethernet",
+        "platform": "atmelavr",
+        "upload": {
+            "maximum_ram_size": 2048,
+            "maximum_size": 32256,
+            "protocol": "arduino",
+            "require_upload_port" : true,
+            "speed": 115200
+        },
+        "url": "http://arduino.cc/en/Main/ArduinoBoardEthernet",
+        "vendor": "Arduino"
+    },
+    "fio": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_FIO",
+            "f_cpu": "8000000L",
+            "mcu": "atmega328p",
+            "variant": "eightanaloginputs"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino Fio",
+        "platform": "atmelavr",
+        "upload": {
+            "maximum_ram_size": 2048,
+            "maximum_size": 30720,
+            "protocol": "arduino",
+            "require_upload_port" : true,
+            "speed": 57600
+        },
+        "url": "http://arduino.cc/en/Main/ArduinoBoardFio",
+        "vendor": "Arduino"
+    },
+    "leonardo": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_LEONARDO",
+            "f_cpu": "16000000L",
+            "mcu": "atmega32u4",
+            "pid": "0x8036",
+            "usb_product": "Arduino Leonardo",
+            "variant": "leonardo",
+            "vid": "0x2341"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino Leonardo",
+        "platform": "atmelavr",
+        "upload": {
+            "disable_flushing": true,
+            "maximum_ram_size": 2560,
+            "maximum_size": 28672,
+            "protocol": "avr109",
+            "require_upload_port" : true,
+            "speed": 57600,
+            "use_1200bps_touch": true,
+            "wait_for_upload_port": true
+        },
+        "url": "http://arduino.cc/en/Main/arduinoBoardLeonardo",
+        "vendor": "Arduino"
+    },
+    "lilypadatmega168": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_LILYPAD",
+            "f_cpu": "8000000L",
+            "mcu": "atmega168",
+            "variant": "standard"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino LilyPad ATmega168",
+        "platform": "atmelavr",
+        "upload": {
+            "maximum_ram_size": 1024,
+            "maximum_size": 14336,
+            "protocol": "arduino",
+            "require_upload_port" : true,
+            "speed": 19200
+        },
+        "url": "http://arduino.cc/en/Main/ArduinoBoardLilyPad",
+        "vendor": "Arduino"
+    },
+    "lilypadatmega328": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_LILYPAD",
+            "f_cpu": "8000000L",
+            "mcu": "atmega328p",
+            "variant": "standard"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino LilyPad ATmega328",
+        "platform": "atmelavr",
+        "upload": {
+            "maximum_ram_size": 2048,
+            "maximum_size": 30720,
+            "protocol": "arduino",
+            "require_upload_port" : true,
+            "speed": 57600
+        },
+        "url": "http://arduino.cc/en/Main/ArduinoBoardLilyPad",
+        "vendor": "Arduino"
+    },
+    "megaADK": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ADK",
+            "f_cpu": "16000000L",
+            "mcu": "atmega2560",
+            "variant": "mega"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino Mega ADK",
+        "platform": "atmelavr",
+        "upload": {
+            "maximum_ram_size": 8192,
+            "maximum_size": 253952,
+            "protocol": "wiring",
+            "require_upload_port" : true,
+            "speed": 115200
+        },
+        "url": "http://arduino.cc/en/Main/ArduinoBoardMegaADK",
+        "vendor": "Arduino"
+    },
+    "megaatmega1280": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_MEGA",
+            "f_cpu": "16000000L",
+            "mcu": "atmega1280",
+            "variant": "mega"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino Mega or Mega 2560 ATmega1280",
+        "platform": "atmelavr",
+        "upload": {
+            "maximum_ram_size": 8192,
+            "maximum_size": 126976,
+            "protocol": "arduino",
+            "require_upload_port" : true,
+            "speed": 57600
+        },
+        "url": "http://arduino.cc/en/Main/arduinoBoardMega",
+        "vendor": "Arduino"
+    },
+    "megaatmega2560": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_MEGA2560",
+            "f_cpu": "16000000L",
+            "mcu": "atmega2560",
+            "variant": "mega"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino Mega or Mega 2560 ATmega2560 (Mega 2560)",
+        "platform": "atmelavr",
+        "upload": {
+            "maximum_ram_size": 8192,
+            "maximum_size": 253952,
+            "protocol": "wiring",
+            "require_upload_port" : true,
+            "speed": 115200
+        },
+        "url": "http://arduino.cc/en/Main/arduinoBoardMega2560",
+        "vendor": "Arduino"
+    },
+    "micro": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_MICRO",
+            "f_cpu": "16000000L",
+            "mcu": "atmega32u4",
+            "pid": "0x8037",
+            "usb_product": "Arduino Micro",
+            "variant": "micro",
+            "vid": "0x2341"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino Micro",
+        "platform": "atmelavr",
+        "upload": {
+            "disable_flushing": true,
+            "maximum_ram_size": 2560,
+            "maximum_size": 28672,
+            "protocol": "avr109",
+            "require_upload_port" : true,
+            "speed": 57600,
+            "use_1200bps_touch": true,
+            "wait_for_upload_port": true
+        },
+        "url": "http://arduino.cc/en/Main/ArduinoBoardMicro",
+        "vendor": "Arduino"
+    },
+    "miniatmega168": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_MINI",
+            "f_cpu": "16000000L",
+            "mcu": "atmega168",
+            "variant": "eightanaloginputs"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino Mini ATmega168",
+        "platform": "atmelavr",
+        "upload": {
+            "maximum_ram_size": 1024,
+            "maximum_size": 14336,
+            "protocol": "arduino",
+            "require_upload_port" : true,
+            "speed": 19200
+        },
+        "url": "http://arduino.cc/en/Main/ArduinoBoardMini",
+        "vendor": "Arduino"
+    },
+    "miniatmega328": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_MINI",
+            "f_cpu": "16000000L",
+            "mcu": "atmega328p",
+            "variant": "eightanaloginputs"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino Mini ATmega328",
+        "platform": "atmelavr",
+        "upload": {
+            "maximum_ram_size": 2048,
+            "maximum_size": 28672,
+            "protocol": "arduino",
+            "require_upload_port" : true,
+            "speed": 115200
+        },
+        "url": "http://arduino.cc/en/Main/ArduinoBoardMini",
+        "vendor": "Arduino"
+    },
+    "nanoatmega168": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_NANO",
+            "f_cpu": "16000000L",
+            "mcu": "atmega168",
+            "variant": "eightanaloginputs"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino Nano ATmega168",
+        "platform": "atmelavr",
+        "upload": {
+            "maximum_ram_size": 1024,
+            "maximum_size": 14336,
+            "protocol": "arduino",
+            "require_upload_port" : true,
+            "speed": 19200
+        },
+        "url": "http://arduino.cc/en/Main/ArduinoBoardNano",
+        "vendor": "Arduino"
+    },
+    "nanoatmega328": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_NANO",
+            "f_cpu": "16000000L",
+            "mcu": "atmega328p",
+            "variant": "eightanaloginputs"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino Nano ATmega328",
+        "platform": "atmelavr",
+        "upload": {
+            "maximum_ram_size": 2048,
+            "maximum_size": 30720,
+            "protocol": "arduino",
+            "require_upload_port" : true,
+            "speed": 57600
+        },
+        "url": "http://arduino.cc/en/Main/ArduinoBoardNano",
+        "vendor": "Arduino"
+    },
+    "pro16MHzatmega168": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_PRO",
+            "f_cpu": "16000000L",
+            "mcu": "atmega168",
+            "variant": "eightanaloginputs"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino Pro or Pro Mini ATmega168 (5V, 16 MHz)",
+        "platform": "atmelavr",
+        "upload": {
+            "maximum_ram_size": 1024,
+            "maximum_size": 14336,
+            "protocol": "arduino",
+            "require_upload_port" : true,
+            "speed": 19200
+        },
+        "url": "http://arduino.cc/en/Main/ArduinoBoardProMini",
+        "vendor": "Arduino"
+    },
+    "pro16MHzatmega328": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_PRO",
+            "f_cpu": "16000000L",
+            "mcu": "atmega328p",
+            "variant": "eightanaloginputs"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino Pro or Pro Mini ATmega328 (5V, 16 MHz)",
+        "platform": "atmelavr",
+        "upload": {
+            "maximum_ram_size": 2048,
+            "maximum_size": 30720,
+            "protocol": "arduino",
+            "require_upload_port" : true,
+            "speed": 57600
+        },
+        "url": "http://arduino.cc/en/Main/ArduinoBoardProMini",
+        "vendor": "Arduino"
+    },
+    "pro8MHzatmega168": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_PRO",
+            "f_cpu": "8000000L",
+            "mcu": "atmega168",
+            "variant": "eightanaloginputs"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino Pro or Pro Mini ATmega168 (3.3V, 8 MHz)",
+        "platform": "atmelavr",
+        "upload": {
+            "maximum_ram_size": 1024,
+            "maximum_size": 14336,
+            "protocol": "arduino",
+            "require_upload_port" : true,
+            "speed": 19200
+        },
+        "url": "http://arduino.cc/en/Main/ArduinoBoardProMini",
+        "vendor": "Arduino"
+    },
+    "pro8MHzatmega328": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_PRO",
+            "f_cpu": "8000000L",
+            "mcu": "atmega328p",
+            "variant": "eightanaloginputs"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino Pro or Pro Mini ATmega328 (3.3V, 8 MHz)",
+        "platform": "atmelavr",
+        "upload": {
+            "maximum_ram_size": 2048,
+            "maximum_size": 30720,
+            "protocol": "arduino",
+            "require_upload_port" : true,
+            "speed": 57600
+        },
+        "url": "http://arduino.cc/en/Main/ArduinoBoardProMini",
+        "vendor": "Arduino"
+    },
+    "robotControl": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ROBOT_CONTROL",
+            "f_cpu": "16000000L",
+            "mcu": "atmega32u4",
+            "pid": "0x8038",
+            "usb_product": "Robot Control",
+            "variant": "robot_control",
+            "vid": "0x2341"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino Robot Control",
+        "platform": "atmelavr",
+        "upload": {
+            "disable_flushing": true,
+            "maximum_ram_size": 2560,
+            "maximum_size": 28672,
+            "protocol": "avr109",
+            "require_upload_port" : true,
+            "speed": 57600,
+            "use_1200bps_touch": true,
+            "wait_for_upload_port": true
+        },
+        "url": "http://arduino.cc/en/Main/Robot",
+        "vendor": "Arduino"
+    },
+    "robotMotor": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_ROBOT_MOTOR",
+            "f_cpu": "16000000L",
+            "mcu": "atmega32u4",
+            "pid": "0x8039",
+            "usb_product": "Robot Motor",
+            "variant": "robot_motor",
+            "vid": "0x2341"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino Robot Motor",
+        "platform": "atmelavr",
+        "upload": {
+            "disable_flushing": true,
+            "maximum_ram_size": 2560,
+            "maximum_size": 28672,
+            "protocol": "avr109",
+            "require_upload_port" : true,
+            "speed": 57600,
+            "use_1200bps_touch": true,
+            "wait_for_upload_port": true
+        },
+        "url": "http://arduino.cc/en/Main/Robot",
+        "vendor": "Arduino"
+    },
+    "uno": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_UNO",
+            "f_cpu": "16000000L",
+            "mcu": "atmega328p",
+            "variant": "standard"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino Uno",
+        "platform": "atmelavr",
+        "upload": {
+            "maximum_ram_size": 2048,
+            "maximum_size": 32256,
+            "protocol": "arduino",
+            "require_upload_port" : true,
+            "speed": 115200
+        },
+        "url": "http://arduino.cc/en/Main/ArduinoBoardUno",
+        "vendor": "Arduino"
+    },
+    "yun": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-DARDUINO_ARCH_AVR -DARDUINO_AVR_YUN",
+            "f_cpu": "16000000L",
+            "mcu": "atmega32u4",
+            "pid": "0x8041",
+            "usb_product": "Arduino Yun",
+            "variant": "yun",
+            "vid": "0x2341"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino Yun",
+        "platform": "atmelavr",
+        "upload": {
+            "disable_flushing": true,
+            "maximum_ram_size": 2560,
+            "maximum_size": 28672,
+            "protocol": "avr109",
+            "require_upload_port" : true,
+            "speed": 57600,
+            "use_1200bps_touch": true,
+            "via_ssh": true,
+            "wait_for_upload_port": true
+        },
+        "url": "http://arduino.cc/en/Main/ArduinoBoardYun",
+        "vendor": "Arduino"
+    },
+    "due": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-D__SAM3X8E__ -DARDUINO_SAM_DUE -DARDUINO_ARCH_SAM",
+            "f_cpu": "84000000L",
+            "mcu": "at91sam3x8e",
+            "cpu": "cortex-m3",
+            "pid": "0x003e",
+            "usb_product": "Arduino Due",
+            "variant": "arduino_due_x",
+            "vid": "0x2341",
+            "ldscript": "sam3x8e.ld"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino Due (Programming Port)",
+        "platform": "atmelsam",
+        "upload": {
+            "disable_flushing": true,
+            "maximum_ram_size": 32768,
+            "maximum_size": 524288,
+            "protocol": "sam-ba",
+            "require_upload_port" : true,
+            "use_1200bps_touch": true,
+            "wait_for_upload_port": false
+        },
+        "url": "http://arduino.cc/en/Main/arduinoBoardDue",
+        "vendor": "Arduino"
+    },
+    "dueUSB": {
+        "build": {
+            "core": "arduino",
+            "extra_flags": "-D__SAM3X8E__ -DARDUINO_SAM_DUE -DARDUINO_ARCH_SAM",
+            "f_cpu": "84000000L",
+            "mcu": "at91sam3x8e",
+            "cpu": "cortex-m3",
+            "pid": "0x003e",
+            "usb_product": "Arduino Due",
+            "variant": "arduino_due_x",
+            "vid": "0x2341",
+            "ldscript": "sam3x8e.ld"
+        },
+        "frameworks": ["arduino"],
+        "name": "Arduino Due (USB Native Port)",
+        "platform": "atmelsam",
+        "upload": {
+            "disable_flushing": true,
+            "maximum_ram_size": 32768,
+            "maximum_size": 524288,
+            "protocol": "sam-ba",
+            "require_upload_port" : true,
+            "use_1200bps_touch": true,
+            "wait_for_upload_port": true
+        },
+        "url": "http://arduino.cc/en/Main/arduinoBoardDue",
+        "vendor": "Arduino"
+    }
+}

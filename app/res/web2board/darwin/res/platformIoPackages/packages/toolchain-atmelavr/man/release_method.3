@@ -1,0 +1,117 @@
+.TH "release_method" 3 "Thu Dec 29 2011" "Version 1.8.0" "avr-libc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+release_method \- Release Numbering and Methodology 
+.SH "Release Version Numbering Scheme"
+.PP
+Release numbers consist of three parts, a major number, a minor number, and a revision number, each separated by a dot\&.
+.PP
+The major number is currently 1 (and has always been)\&. It will only be bumped in case a new version offers a major change in the API that is not backwards compatible\&.
+.PP
+In the past (up to 1\&.6\&.x), even minor numbers have been used to indicate 'stable' releases, and odd minor numbers have been reserved for development branches/versions\&. As the latter has never really been used, and maintaining a stable branch that eventually became effectively the same as the development version has proven to be just a cumbersome and tedious job, this scheme has given up in early 2010, so starting with 1\&.7\&.0, every minor number will be used\&. Minor numbers will be bumped upon judgement of the development team, whenever it seems appropriate, but at least in cases where some API was changed\&.
+.PP
+Starting with version 1\&.4\&.0, a file <\fBavr/version\&.h\fP> indicates the library version of an installed library tree\&.
+.SH "Releasing AVR Libc"
+.PP
+The information in this section is only relevant to AVR Libc developers and can be ignored by end users\&.
+.PP
+\fBNote:\fP
+.RS 4
+In what follows, I assume you know how to use SVN and how to checkout multiple source trees in a single directory without having them clobber each other\&. If you don't know how to do this, you probably shouldn't be making releases or cutting branches\&.
+.RE
+.PP
+.SS "Creating an SVN branch"
+The following steps should be taken to cut a branch in SVN (assuming $username is set to your savannah username):
+.PP
+.IP "1." 4
+Check out a fresh source tree from SVN trunk\&.
+.IP "2." 4
+Update the NEWS file with pending release number and commit to SVN trunk:
+.br
+ Change \fIChanges since avr-libc-<last_release>:\fP to \fIChanges in avr-libc-<this_relelase>\fP\&.
+.IP "3." 4
+Set the branch-point tag (setting <major> and <minor> accordingly):
+.br
+ \fCsvn copy svn+ssh://$username@svn\&.savannah\&.nongnu\&.org/avr-libc/trunk svn+ssh://$username@svn\&.savannah\&.nongnu\&.org/avr-libc/tags/avr-libc-<\fP\fImajor\fP\fC>_<\fP\fIminor\fP\fC>-branchpoint\fP
+.IP "4." 4
+Create the branch:
+.br
+ \fCsvn copy svn+ssh://$username@svn\&.savannah\&.nongnu\&.org/avr-libc/trunk svn+ssh://$username@svn\&.savannah\&.nongnu\&.org/avr-libc/branches/avr-libc-<\fP\fImajor\fP\fC>_<\fP\fIminor\fP\fC>-branch\fP
+.IP "5." 4
+Update the package version in configure\&.ac and commit configure\&.ac to SVN trunk:
+.br
+ Change minor number to next odd value\&.
+.IP "6." 4
+Update the NEWS file and commit to SVN trunk:
+.br
+ Add \fIChanges since avr-libc-<this_release>:\fP
+.IP "7." 4
+Check out a new tree for the branch:
+.br
+ \fCsvn co svn+ssh://$username@svn\&.savannah\&.nongnu\&.org/avr-libc/branches/avr-libc-<\fP\fImajor\fP\fC>_<\fP\fIminor\fP\fC>-branch\fP
+.IP "8." 4
+Update the package version in configure\&.ac and commit configure\&.ac to SVN branch:
+.br
+ Change the patch number to 90 to denote that this now a branch leading up to a release\&. Be sure to leave the <date> part of the version\&.
+.IP "9." 4
+Bring the build system up to date by running bootstrap and configure\&.
+.IP "10." 4
+Perform a 'make distcheck' and make sure it succeeds\&. This will create the snapshot source tarball\&. This should be considered the first release candidate\&.
+.IP "11." 4
+Upload the snapshot tarball to savannah\&.
+.IP "12." 4
+Update the bug tracker interface on Savannah: Bugs ---> Edit field values ---> Release / Fixed Release
+.IP "13." 4
+Announce the branch and the branch tag to the avr-libc-dev list so other developers can checkout the branch\&.
+.PP
+.SS "Making a release"
+A stable release will only be done on a branch, not from the SVN trunk\&.
+.PP
+The following steps should be taken when making a release:
+.PP
+.IP "1." 4
+Make sure the source tree you are working from is on the correct branch:
+.br
+ \fCsvn switch svn+ssh://$username@svn\&.savannah\&.nongnu\&.org/avr-libc/branches/avr-libc-<\fP\fImajor\fP\fC>_<\fP\fIminor\fP\fC>-branch\fP
+.IP "2." 4
+Update the package version in configure\&.ac and commit it to SVN\&.
+.IP "3." 4
+Update the gnu tool chain version requirements in the README and commit to SVN\&.
+.IP "4." 4
+Update the ChangeLog file to note the release and commit to SVN on the branch:
+.br
+ Add \fIReleased avr-libc-<this_release>\&.\fP
+.IP "5." 4
+Update the NEWS file with pending release number and commit to SVN:
+.br
+ Change \fIChanges since avr-libc-<last_release>:\fP to \fIChanges in avr-libc-<this_relelase>:\fP\&.
+.IP "6." 4
+Bring the build system up to date by running bootstrap and configure\&.
+.IP "7." 4
+Perform a 'make distcheck' and make sure it succeeds\&. This will create the source tarball\&.
+.IP "8." 4
+Tag the release:
+.br
+ \fCsvn copy \&. svn+ssh://$username@svn\&.savannah\&.nongnu\&.org/avr-libc/tags/avr-libc-<\fP\fImajor\fP\fC>_<\fP\fIminor\fP\fC>_<\fP\fIpatch\fP\fC>-release\fP
+.br
+ or
+.br
+ \fCsvn copy svn+ssh://$username@svn\&.savannah\&.nongnu\&.org/avr-libc/branches/avr-libc-<\fP\fImajor\fP\fC>_<\fP\fIminor\fP\fC>-branch svn+ssh://$username@svn\&.savannah\&.nongnu\&.org/avr-libc/tags/avr-libc-<\fP\fImajor\fP\fC>_<\fP\fIminor\fP\fC>_<\fP\fIpatch\fP\fC>-release\fP
+.IP "9." 4
+Upload the tarball to savannah\&.
+.IP "10." 4
+Update the NEWS file, and commit to SVN:
+.br
+ Add \fIChanges since avr-libc-<major>_<minor>_<patch>:\fP
+.IP "11." 4
+Update the bug tracker interface on Savannah: Bugs ---> Edit field values ---> Release / Fixed Release
+.IP "12." 4
+Generate the latest documentation and upload to savannah\&.
+.IP "13." 4
+Announce the release\&.
+.PP
+.PP
+The following hypothetical diagram should help clarify version and branch relationships\&.
+.PP
+Release treeRelease tree 

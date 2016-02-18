@@ -1,0 +1,81 @@
+.TH "interrupt.h" 3 "Thu Dec 29 2011" "Version 1.8.0" "avr-libc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+interrupt.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Defines"
+
+.PP
+.RI "\fBGlobal manipulation of the interrupt flag\fP"
+.br
+The global interrupt flag is maintained in the I bit of the status register (SREG)\&.
+.PP
+Handling interrupts frequently requires attention regarding atomic access to objects that could be altered by code running within an interrupt context, see <\fButil/atomic\&.h\fP>\&.
+.PP
+Frequently, interrupts are being disabled for periods of time in order to perform certain operations without being disturbed; see \fBProblems with reordering code\fP for things to be taken into account with respect to compiler optimizations\&. 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "#define \fBsei\fP()"
+.br
+.ti -1c
+.RI "#define \fBcli\fP()"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fBMacros for writing interrupt handler functions\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "#define \fBISR\fP(vector, attributes)"
+.br
+.ti -1c
+.RI "#define \fBSIGNAL\fP(vector)"
+.br
+.ti -1c
+.RI "#define \fBEMPTY_INTERRUPT\fP(vector)"
+.br
+.ti -1c
+.RI "#define \fBISR_ALIAS\fP(vector, target_vector)"
+.br
+.ti -1c
+.RI "#define \fBreti\fP()"
+.br
+.ti -1c
+.RI "#define \fBBADISR_vect\fP"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fBISR attributes\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "#define \fBISR_BLOCK\fP"
+.br
+.ti -1c
+.RI "#define \fBISR_NOBLOCK\fP"
+.br
+.ti -1c
+.RI "#define \fBISR_NAKED\fP"
+.br
+.ti -1c
+.RI "#define \fBISR_ALIASOF\fP(target_vector)"
+.br
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+@{ 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for avr-libc from the source code\&.

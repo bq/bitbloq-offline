@@ -1,0 +1,84 @@
+.TH "optimization" 3 "Thu Dec 29 2011" "Version 1.8.0" "avr-libc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+optimization \- Compiler optimization 
+.SH "Problems with reordering code"
+.PP
+\fBAuthor:\fP
+.RS 4
+Jan Waclawek
+.RE
+.PP
+Programs contain sequences of statements, and a naive compiler would execute them exactly in the order as they are written\&. But an optimizing compiler is free to \fIreorder\fP the statements - or even parts of them - if the resulting 'net effect' is the same\&. The 'measure' of the 'net effect' is what the standard calls 'side
+effects', and is accomplished exclusively through accesses (reads and writes) to variables qualified as \fCvolatile\fP\&. So, as long as all volatile reads and writes are to the same addresses and in the same order (and writes write the same values), the program is correct, regardless of other operations in it\&. (One important point to note here is, that time duration between consecutive volatile accesses is not considered at all\&.)
+.PP
+Unfortunately, there are also operations which are not covered by volatile accesses\&. An example of this in avr-gcc/avr-libc are the \fBcli()\fP and \fBsei()\fP macros defined in <\fBavr/interrupt\&.h\fP>, which convert directly to the respective assembler mnemonics through the __asm__() statement\&. These don't constitute a variable access at all, not even volatile, so the compiler is free to move them around\&. Although there is a 'volatile' qualifier which can be attached to the __asm__() statement, its effect on (re)ordering is not clear from the documentation (and is more likely only to prevent complete removal by the optimiser), as it (among other) states:
+.PP
+\fINote that even a volatile asm instruction can be moved relative to other code, including across jump instructions\&. [\&.\&.\&.] Similarly, you can't expect a sequence of volatile asm instructions to remain perfectly consecutive\&.\fP
+.PP
+\fBSee also:\fP
+.RS 4
+http://gcc.gnu.org/onlinedocs/gcc-4.3.4/gcc/Extended-Asm.html
+.RE
+.PP
+There is another mechanism which can be used to achieve something similar: \fImemory barriers\fP\&. This is accomplished through adding a special 'memory' clobber to the inline \fCasm\fP statement, and ensures that all variables are flushed from registers to memory before the statement, and then re-read after the statement\&. The purpose of memory barriers is slightly different than to enforce code ordering: it is supposed to ensure that there are no variables 'cached' in registers, so that it is safe to change the content of registers e\&.g\&. when switching context in a multitasking OS (on 'big' processors with out-of-order execution they also imply usage of special instructions which force the processor into 'in-order' state (this is not the case of AVRs))\&.
+.PP
+However, memory barrier works well in ensuring that all volatile accesses before and after the barrier occur in the given order with respect to the barrier\&. However, it does not ensure the compiler moving non-volatile-related statements across the barrier\&. Peter Dannegger provided a nice example of this effect:
+.PP
+.PP
+.nf
+#define cli() __asm volatile( 'cli' ::: 'memory' )
+#define sei() __asm volatile( 'sei' ::: 'memory' )
+
+unsigned int ivar;
+
+void test2( unsigned int val )
+{
+  val = 65535U / val;
+
+  cli();
+
+  ivar = val;
+
+  sei();
+}
+.fi
+.PP
+.PP
+compiles with optimisations switched on (-Os) to
+.PP
+.PP
+.nf
+
+00000112 <test2>:
+ 112:	bc 01       	movw	r22, r24
+ 114:	f8 94       	cli
+ 116:	8f ef       	ldi	r24, 0xFF	; 255
+ 118:	9f ef       	ldi	r25, 0xFF	; 255
+ 11a:	0e 94 96 00 	call	0x12c	; 0x12c <__udivmodhi4>
+ 11e:	70 93 01 02 	sts	0x0201, r23
+ 122:	60 93 00 02 	sts	0x0200, r22
+ 126:	78 94       	sei
+ 128:	08 95       	ret
+.fi
+.PP
+.PP
+where the potentially slow division is moved across \fBcli()\fP, resulting in interrupts to be disabled longer than intended\&. Note, that the volatile access occurs in order with respect to \fBcli()\fP or \fBsei()\fP; so the 'net effect' required by the standard is achieved as intended, it is 'only' the timing which is off\&. However, for most of embedded applications, timing is an important, sometimes critical factor\&.
+.PP
+\fBSee also:\fP
+.RS 4
+https://www.mikrocontroller.net/topic/65923
+.RE
+.PP
+Unfortunately, at the moment, in avr-gcc (nor in the C standard), there is no mechanism to enforce complete match of written and executed code ordering - except maybe of switching the optimization completely off (-O0), or writing all the critical code in assembly\&.
+.PP
+To sum it up:
+.PP
+.PD 0
+.IP "\(bu" 2
+memory barriers ensure proper ordering of volatile accesses 
+.IP "\(bu" 2
+memory barriers don't ensure statements with no volatile accesses to be reordered across the barrier 
+.PP
+

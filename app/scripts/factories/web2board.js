@@ -191,7 +191,7 @@ angular.module('bitbloqOffline')
             openCommunication(function () {
                 alertsService.add('alert-web2board-settingBoard', 'upload', 'loading'); // todo: change message
                 ws.WindowHub.server.showApp().done(function () {
-                    alertsService.add('alert-web2board-boardReady', 'upload', 'ok', 5000, board.name); //todo: change message
+                    alertsService.add('alert-web2board-boardReady', 'upload', 'ok', 5000); //todo: change message
                 });
             });
         };
