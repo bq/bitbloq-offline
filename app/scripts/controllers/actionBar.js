@@ -28,6 +28,19 @@ angular.module('bitbloqOffline')
       $route.reload();
     }
 
+    function redirect(url) {
+      console.log(url);
+      var BrowserWindow = require('electron').remote.BrowserWindow;
+
+      var win = new BrowserWindow({ width: 800, height: 600, show: false });
+      win.on('closed', function() {
+        win = null;
+      });
+
+      win.loadURL(url);
+      win.show();
+    }
+
     function openProject() {
       var filePath = nodeDialog.showOpenDialog({
         properties: ['openFile', 'createDirectory'],
@@ -47,13 +60,14 @@ angular.module('bitbloqOffline')
           } else {
             var project = JSON.parse(data);
 
-            if (project.bitbloqOfflineVersion < common.version) {
-              alertsService.add('Hay una nueva version. Actualiza', 'info', 'info', 3000);
+            if (project.bitbloqOfflineVersion > common.version) {
+              alertsService.add('offline-load-project-error', 'error', 'error', 5000, null, false, false, 'offline-update',redirect, 'http://bitbloq.bq.com/#/');
+            } else if (project.bitbloqOfflineVersion < common.version) {
+              alertsService.add('offline-new-version-available', 'info', 'info', 5000, null, false, false, 'offline-update',redirect, 'http://bitbloq.bq.com/#/');
+              $scope.setProject(project);
+              hw2Bloqs.repaint();
+              $scope.$apply();
             }
-
-            $scope.setProject(project);
-            hw2Bloqs.repaint();
-            $scope.$apply();
           }
         });
       }

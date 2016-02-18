@@ -1,0 +1,57 @@
+.input--checkbox {
+    vertical-align: text-top;
+    position      : relative;
+    width         : 1.3em;
+    height        : 1.3em;
+    margin-right  : .5em;
+
+    input {
+        background        : none;
+        border            : none;
+        width             : 1.2em !important;
+        height            : 1.2em !important;
+        -webkit-appearance: none;
+        background-color  : white;
+        border-radius     : .3em;
+        border            : 2px solid $font-color-disabled;
+
+        &:hover {
+            transition: background-color 250ms;
+            border    : 2px solid $font-color-base;
+        }
+
+        &:checked {
+            border             : 1px solid $font-color-base;
+            border             : none;
+            background-color   : $font-color-base;
+            background-image   : url('../images/icons/verificarmini.svg');
+            background-size    : 70%;
+            background-repeat  : no-repeat;
+            background-position: center center;
+        }
+
+        &:disabled {
+            background-color: $font-color-disabled;
+        }
+
+        &:focus {
+          transition: background-color 250ms;
+          border    : 2px solid $font-color-base;
+        }
+    }
+
+    .fa {
+        position: absolute;
+        top     : .1em;
+        left    : .1em;
+
+        &:before {
+            content  : '\f00c';
+            color    : white;
+            top      : -3px;
+            position : relative;
+            font-size: .85em;
+            left     : 1px;
+        }
+    }
+}
