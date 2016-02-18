@@ -869,7 +869,7 @@ dropdown .btn--dropdown--active {
 .alert {
   padding: .5em 1em;
   border-radius: .2em;
-  width: 600px;
+  width: 670px;
   font-size: .9em;
   display: flex;
   align-content: center;
@@ -997,6 +997,49 @@ common-dropdown {
 .dropdown--disabled {
   background-color: #ebebeb;
   pointer-events: none; }
+
+.input--checkbox {
+  vertical-align: text-top;
+  position: relative;
+  width: 1.3em;
+  height: 1.3em;
+  margin-right: .5em; }
+  .input--checkbox input {
+    background: none;
+    border: none;
+    width: 1.2em !important;
+    height: 1.2em !important;
+    -webkit-appearance: none;
+    background-color: white;
+    border-radius: .3em;
+    border: 2px solid #c0c3c9; }
+    .input--checkbox input:hover {
+      transition: background-color 250ms;
+      border: 2px solid #5d6069; }
+    .input--checkbox input:checked {
+      border: 1px solid #5d6069;
+      border: none;
+      background-color: #5d6069;
+      background-image: url("../images/icons/verificarmini.svg");
+      background-size: 70%;
+      background-repeat: no-repeat;
+      background-position: center center; }
+    .input--checkbox input:disabled {
+      background-color: #c0c3c9; }
+    .input--checkbox input:focus {
+      transition: background-color 250ms;
+      border: 2px solid #5d6069; }
+  .input--checkbox .fa {
+    position: absolute;
+    top: .1em;
+    left: .1em; }
+    .input--checkbox .fa:before {
+      content: '\f00c';
+      color: white;
+      top: -3px;
+      position: relative;
+      font-size: .85em;
+      left: 1px; }
 
 pre {
   height: calc(100vh - 83px); }
