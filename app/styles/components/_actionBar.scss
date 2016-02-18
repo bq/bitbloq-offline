@@ -54,6 +54,12 @@ $menu-item-hover-background: #ebebeb;
         text-align: left;
         width     : 100%;
 
+        &.disabled {
+          background-color: #cfcfcf!important;
+          pointer-events  : none;
+          color           : #666;
+        }
+
         span {
           font-size  : $font-size-base;
           margin-left: 5px;
@@ -82,4 +88,10 @@ $menu-item-hover-background: #ebebeb;
       }
     }
   }
+}
+
+.btn--make--disabled {
+  background-color: #cfcfcf!important;
+  pointer-events  : none;
+  color           : #666;
 }

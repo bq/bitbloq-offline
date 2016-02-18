@@ -1,0 +1,9 @@
+avarice: 2.13
+avr-binutils: 2.23.2
+avr-gcc: 4.8.1
+avr-libc: 1.8.0
+avrdude: 6.0.1
+gdb: 7.6.1
+libusb: 0.1.12
+make: 4.0
+simulavr: 0.1.2.7

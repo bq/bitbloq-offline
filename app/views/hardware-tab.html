@@ -1,6 +1,6 @@
-<div class="hardware-tab tab--make" data-ng-controller="hardwareTabCtrl" ng-cloak>
+<div class="hardware-tab tab--make" data-ng-controller="hardwareTabCtrl" ng-keypress="onHwKeyPress($event)" ng-cloak>
 
-      <div class="protocanvas" droppable drop="drop" drop-offset-left="70" drop-offset-top="offsetTop" ng-click="detectElement($event)" data-ng-keydown="onKeyPress($event)">
+      <div class="protocanvas" droppable drop="drop" drop-offset-left="70" drop-offset-top="offsetTop" ng-click="detectElement($event)" >
 
           <div class="name--container">
               <div class="component-name__container" ng-class="{opaque:componentSelected}">

@@ -1,0 +1,22 @@
+{
+    "version": "0.0.5", 
+    "librariesNames": [
+        "BitbloqBatteryReader", 
+        "BitbloqButtonPad", 
+        "BitbloqEnableInterrupt", 
+        "BitbloqEncoder", 
+        "BitbloqHTS221", 
+        "BitbloqJoystick", 
+        "BitbloqLedMatrix", 
+        "BitbloqLineFollower", 
+        "BitbloqLiquidCrystal", 
+        "BitbloqOscillator", 
+        "BitbloqRGB", 
+        "BitbloqRTC", 
+        "BitbloqSoftwareSerial", 
+        "BitbloqUS", 
+        "BitbloqZowi", 
+        "BitbloqZowiSerialCommand"
+    ], 
+    "file2DownloadUrl": "https://github.com/bq/bitbloqLibs/archive/v0.0.5.zip"
+}

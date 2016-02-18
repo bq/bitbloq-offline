@@ -8,8 +8,8 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-  .controller('ActionBarCtrl', function($scope, $route, web2board, _, clipboard, bloqsUtils, utils, projectApi, nodeDialog, nodeFs, nodeUtils, common, commonModals, alertsService) {
-    console.log('ActionBarCtrl', $scope.$parent.$id);
+  .controller('ActionBarCtrl', function($scope, $route, $log, web2board, _, clipboard, bloqsUtils, utils, hw2Bloqs, projectApi, nodeDialog, nodeFs, nodeUtils, common, commonModals, alertsService) {
+    $log.debug('ActionBarCtrl', $scope.$parent.$id);
 
     $scope.actions = {
       newProject: newProject,
@@ -28,8 +28,20 @@ angular.module('bitbloqOffline')
       $route.reload();
     }
 
+    function redirect(url) {
+      console.log(url);
+      var BrowserWindow = require('electron').remote.BrowserWindow;
+
+      var win = new BrowserWindow({ width: 800, height: 600, show: false });
+      win.on('closed', function() {
+        win = null;
+      });
+
+      win.loadURL(url);
+      win.show();
+    }
+
     function openProject() {
-      console.log(this.name);
       var filePath = nodeDialog.showOpenDialog({
         properties: ['openFile', 'createDirectory'],
         filters: [{
@@ -48,12 +60,14 @@ angular.module('bitbloqOffline')
           } else {
             var project = JSON.parse(data);
 
-            if (project.bitbloqOfflineVersion < common.version) {
-              alertsService.add('Hay una nueva version. Actualiza', 'info', 'info', 3000);
+            if (project.bitbloqOfflineVersion > common.version) {
+              alertsService.add('offline-load-project-error', 'error', 'error', 5000, null, false, false, 'offline-update',redirect, 'http://bitbloq.bq.com/#/');
+            } else if (project.bitbloqOfflineVersion < common.version) {
+              alertsService.add('offline-new-version-available', 'info', 'info', 5000, null, false, false, 'offline-update',redirect, 'http://bitbloq.bq.com/#/');
+              $scope.setProject(project);
+              hw2Bloqs.repaint();
+              $scope.$apply();
             }
-
-            $scope.setProject(project);
-            $scope.$apply();
           }
         });
       }
@@ -65,20 +79,18 @@ angular.module('bitbloqOffline')
 
 
     function exportArduinoCode() {
-      var code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs),
+      var code = utils.prettyCode(bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs)),
         filename = utils.removeDiacritics($scope.project.name).substring(0, 30) + '.ino';
       nodeUtils.downloadFile(filename, code);
     }
 
     function changeLanguage() {
-      console.log(this.name);
       commonModals.launchChangeLanguageModal();
     }
 
     function copyCodeToClipboard() {
-      console.log(this.name);
-      var code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
-      console.log(code);
+      var code = utils.prettyCode(bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs));
+      $log.debug(code);
       alertsService.add('make-code-clipboard', 'code-clipboard', 'info', 3000);
       clipboard.copyText(code);
     }
@@ -103,6 +115,10 @@ angular.module('bitbloqOffline')
         return b.name === $scope.project.hardware.board;
       });
       web2board.serialMonitor(boardReference);
+    }
+
+    function showWeb2board() {
+      web2board.showWeb2board();
     }
 
     $scope.menuTree = {
@@ -150,6 +166,11 @@ angular.module('bitbloqOffline')
           name: 'show-console',
           icon: '#Ver_verSerialMonitor',
           action: startSM,
+          disabled: false
+        }, {
+          name: 'show-web2board',
+          icon: '#web2board',
+          action: showWeb2board,
           disabled: false
         }]
       }

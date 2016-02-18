@@ -1,5 +1,5 @@
-<div ng-if="type === 'software'" class="toolbox" ng-class="{'active':toolbox.menuLevel === 0, 'inactive--1':toolbox.menuLevel === 1, 'inactive--2': toolbox.menuLevel === 2}">
-  <div class="toolbox-shadow level--1" ng-show="toolbox.menuLevel !== 0"></div>
+<div ng-if="type === 'software'" class="toolbox layer-7" ng-class="{'active':toolbox.menuLevel === 0, 'inactive--1':toolbox.menuLevel === 1, 'inactive--2': toolbox.menuLevel === 2}">
+  <div class="toolbox-shadow absolute-center level--1" ng-show="toolbox.menuLevel !== 0"></div>
   <ul class="toolbox__list">
     <!-- ZOWI TITLE -->
     <li class="toolbox__list__item" ng-show="showRobots('zowi')">
@@ -38,7 +38,7 @@
     </li>
   </ul>
   <div class="toolbox__content" ng-class="{'active':toolbox.menuLevel === 1, 'inactive':toolbox.menuLevel === 2}">
-    <div class="toolbox-shadow level--2" ng-click="toolbox.menuLevel = 1" ng-show="toolbox.menuLevel !== 1"></div>
+    <div class="toolbox-shadow layer-2 absolute-center level--2" ng-click="toolbox.menuLevel = 1" ng-show="toolbox.menuLevel !== 1"></div>
     <!-- ROBOTS -->
     <div class="toolbox__content__item" ng-show="toolbox.activeMenu === 'zowi'">
       <h3>{{'make-swtoolbox-zowi' | translate}}</h3>
@@ -114,7 +114,7 @@
     </div>
     <!-- ADVANCED CODE BLOQS -->
     <div class="toolbox__content__item" ng-repeat="itemContainer in tree.toolboxContents" ng-show="toolbox.activeMenu === itemContainer.titleId">
-      <h3>{{itemContainer.titleId | translate}} > {{'make-swtoolbox-advanced' | translate}}</h3>
+      <h3>{{itemContainer.title | translate}} > {{'make-swtoolbox-advanced' | translate}}</h3>
       <ul class="content__list">
         <li class="content__list__item" ng-repeat="bloq in itemContainer.advancedItems track by $index" bitbloq-bloq-creator bloq-schema="bloq.name" components-array="componentsArray"></li>
       </ul>
@@ -124,7 +124,7 @@
 </div>
 
 
-<div ng-if="type === 'hardware'" class="toolbox toolbow-hw" ng-class="{'toolbox__level--1':toolbox.activeMenu !== null}">
+<div ng-if="type === 'hardware'" class="toolbox layer-7 toolbow-hw" ng-class="{'toolbox__level--1':toolbox.activeMenu !== null}">
   <ul class="toolbox__list">
     <li class="toolbox__list__item">
       <button class="toolbox__list__item__button" ng-click="toolbox.select('boards')" ng-class="{'active':toolbox.activeMenu === 'boards'}">

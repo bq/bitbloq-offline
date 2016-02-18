@@ -1,0 +1,173 @@
+.TH "<avr/eeprom.h>: EEPROM handling" 3 "Thu Dec 29 2011" "Version 1.8.0" "avr-libc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+<avr/eeprom.h>: EEPROM handling \- 
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBEEMEM\fP   __attribute__((section('\&.eeprom')))"
+.br
+.ti -1c
+.RI "#define \fBeeprom_is_ready\fP()"
+.br
+.ti -1c
+.RI "#define \fBeeprom_busy_wait\fP()   do {} while (!\fBeeprom_is_ready\fP())"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBuint8_t\fP \fBeeprom_read_byte\fP (const \fBuint8_t\fP *__p) __ATTR_PURE__"
+.br
+.ti -1c
+.RI "\fBuint16_t\fP \fBeeprom_read_word\fP (const \fBuint16_t\fP *__p) __ATTR_PURE__"
+.br
+.ti -1c
+.RI "\fBuint32_t\fP \fBeeprom_read_dword\fP (const \fBuint32_t\fP *__p) __ATTR_PURE__"
+.br
+.ti -1c
+.RI "float \fBeeprom_read_float\fP (const float *__p) __ATTR_PURE__"
+.br
+.ti -1c
+.RI "void \fBeeprom_read_block\fP (void *__dst, const void *__src, size_t __n)"
+.br
+.ti -1c
+.RI "void \fBeeprom_write_byte\fP (\fBuint8_t\fP *__p, \fBuint8_t\fP __value)"
+.br
+.ti -1c
+.RI "void \fBeeprom_write_word\fP (\fBuint16_t\fP *__p, \fBuint16_t\fP __value)"
+.br
+.ti -1c
+.RI "void \fBeeprom_write_dword\fP (\fBuint32_t\fP *__p, \fBuint32_t\fP __value)"
+.br
+.ti -1c
+.RI "void \fBeeprom_write_float\fP (float *__p, float __value)"
+.br
+.ti -1c
+.RI "void \fBeeprom_write_block\fP (const void *__src, void *__dst, size_t __n)"
+.br
+.ti -1c
+.RI "void \fBeeprom_update_byte\fP (\fBuint8_t\fP *__p, \fBuint8_t\fP __value)"
+.br
+.ti -1c
+.RI "void \fBeeprom_update_word\fP (\fBuint16_t\fP *__p, \fBuint16_t\fP __value)"
+.br
+.ti -1c
+.RI "void \fBeeprom_update_dword\fP (\fBuint32_t\fP *__p, \fBuint32_t\fP __value)"
+.br
+.ti -1c
+.RI "void \fBeeprom_update_float\fP (float *__p, float __value)"
+.br
+.ti -1c
+.RI "void \fBeeprom_update_block\fP (const void *__src, void *__dst, size_t __n)"
+.br
+.in -1c
+.SS "IAR C compatibility defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fB_EEPUT\fP(addr, val)   \fBeeprom_write_byte\fP ((\fBuint8_t\fP *)(addr), (\fBuint8_t\fP)(val))"
+.br
+.ti -1c
+.RI "#define \fB__EEPUT\fP(addr, val)   \fBeeprom_write_byte\fP ((\fBuint8_t\fP *)(addr), (\fBuint8_t\fP)(val))"
+.br
+.ti -1c
+.RI "#define \fB_EEGET\fP(var, addr)   (var) = \fBeeprom_read_byte\fP ((const \fBuint8_t\fP *)(addr))"
+.br
+.ti -1c
+.RI "#define \fB__EEGET\fP(var, addr)   (var) = \fBeeprom_read_byte\fP ((const \fBuint8_t\fP *)(addr))"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+.PP
+.nf
+ #include <avr/eeprom\&.h> 
+.fi
+.PP
+.PP
+This header file declares the interface to some simple library routines suitable for handling the data EEPROM contained in the AVR microcontrollers\&. The implementation uses a simple polled mode interface\&. Applications that require interrupt-controlled EEPROM access to ensure that no time will be wasted in spinloops will have to deploy their own implementation\&.
+.PP
+\fBNotes:\fP
+.RS 4
+
+.RE
+.PP
+.IP "\(bu" 2
+In addition to the write functions there is a set of update ones\&. This functions read each byte first and skip the burning if the old value is the same with new\&. The scaning direction is from high address to low, to obtain quick return in common cases\&.
+.PP
+.PP
+.IP "\(bu" 2
+All of the read/write functions first make sure the EEPROM is ready to be accessed\&. Since this may cause long delays if a write operation is still pending, time-critical applications should first poll the EEPROM e\&. g\&. using \fBeeprom_is_ready()\fP before attempting any actual I/O\&. But this functions are not wait until SELFPRGEN in SPMCSR becomes zero\&. Do this manually, if your softwate contains the Flash burning\&.
+.PP
+.PP
+.IP "\(bu" 2
+As these functions modify IO registers, they are known to be non-reentrant\&. If any of these functions are used from both, standard and interrupt context, the applications must ensure proper protection (e\&.g\&. by disabling interrupts before accessing them)\&.
+.PP
+.PP
+.IP "\(bu" 2
+All write functions force erase_and_write programming mode\&.
+.PP
+.PP
+.IP "\(bu" 2
+For Xmega the EEPROM start address is 0, like other architectures\&. The reading functions add the 0x2000 value to use EEPROM mapping into data space\&. 
+.PP
+
+.SH "Define Documentation"
+.PP 
+.SS "#define \fB__EEGET\fP(var, addr)   (var) = \fBeeprom_read_byte\fP ((const \fBuint8_t\fP *)(addr))"Read a byte from EEPROM\&. Compatibility define for IAR C\&. 
+.SS "#define \fB__EEPUT\fP(addr, val)   \fBeeprom_write_byte\fP ((\fBuint8_t\fP *)(addr), (\fBuint8_t\fP)(val))"Write a byte to EEPROM\&. Compatibility define for IAR C\&. 
+.SS "#define \fB_EEGET\fP(var, addr)   (var) = \fBeeprom_read_byte\fP ((const \fBuint8_t\fP *)(addr))"Read a byte from EEPROM\&. Compatibility define for IAR C\&. 
+.SS "#define \fB_EEPUT\fP(addr, val)   \fBeeprom_write_byte\fP ((\fBuint8_t\fP *)(addr), (\fBuint8_t\fP)(val))"Write a byte to EEPROM\&. Compatibility define for IAR C\&. 
+.SS "#define \fBEEMEM\fP   __attribute__((section('\&.eeprom')))"Attribute expression causing a variable to be allocated within the \&.eeprom section\&. 
+.SS "#define \fBeeprom_busy_wait\fP()   do {} while (!\fBeeprom_is_ready\fP())"Loops until the eeprom is no longer busy\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Nothing\&. 
+.RE
+.PP
+
+.SS "#define \fBeeprom_is_ready\fP()"\fBReturns:\fP
+.RS 4
+1 if EEPROM is ready for a new read/write operation, 0 if not\&. 
+.RE
+.PP
+
+.SH "Function Documentation"
+.PP 
+.SS "void \fBeeprom_read_block\fP (void *__dst, const void *__src, size_t__n)"Read a block of \fI__n\fP bytes from EEPROM address \fI__src\fP to SRAM \fI__dst\fP\&. 
+.SS "\fBuint8_t\fP \fBeeprom_read_byte\fP (const \fBuint8_t\fP *__p)"Read one byte from EEPROM address \fI__p\fP\&. 
+.SS "\fBuint32_t\fP \fBeeprom_read_dword\fP (const \fBuint32_t\fP *__p)"Read one 32-bit double word (little endian) from EEPROM address \fI__p\fP\&. 
+.SS "float \fBeeprom_read_float\fP (const float *__p)"Read one float value (little endian) from EEPROM address \fI__p\fP\&. 
+.SS "\fBuint16_t\fP \fBeeprom_read_word\fP (const \fBuint16_t\fP *__p)"Read one 16-bit word (little endian) from EEPROM address \fI__p\fP\&. 
+.SS "void \fBeeprom_update_block\fP (const void *__src, void *__dst, size_t__n)"Update a block of \fI__n\fP bytes to EEPROM address \fI__dst\fP from \fI__src\fP\&. 
+.PP
+\fBNote:\fP
+.RS 4
+The argument order is mismatch with common functions like \fBstrcpy()\fP\&. 
+.RE
+.PP
+
+.SS "void \fBeeprom_update_byte\fP (\fBuint8_t\fP *__p, \fBuint8_t\fP__value)"Update a byte \fI__value\fP to EEPROM address \fI__p\fP\&. 
+.SS "void \fBeeprom_update_dword\fP (\fBuint32_t\fP *__p, \fBuint32_t\fP__value)"Update a 32-bit double word \fI__value\fP to EEPROM address \fI__p\fP\&. 
+.SS "void \fBeeprom_update_float\fP (float *__p, float__value)"Update a float \fI__value\fP to EEPROM address \fI__p\fP\&. 
+.SS "void \fBeeprom_update_word\fP (\fBuint16_t\fP *__p, \fBuint16_t\fP__value)"Update a word \fI__value\fP to EEPROM address \fI__p\fP\&. 
+.SS "void \fBeeprom_write_block\fP (const void *__src, void *__dst, size_t__n)"Write a block of \fI__n\fP bytes to EEPROM address \fI__dst\fP from \fI__src\fP\&. 
+.PP
+\fBNote:\fP
+.RS 4
+The argument order is mismatch with common functions like \fBstrcpy()\fP\&. 
+.RE
+.PP
+
+.SS "void \fBeeprom_write_byte\fP (\fBuint8_t\fP *__p, \fBuint8_t\fP__value)"Write a byte \fI__value\fP to EEPROM address \fI__p\fP\&. 
+.SS "void \fBeeprom_write_dword\fP (\fBuint32_t\fP *__p, \fBuint32_t\fP__value)"Write a 32-bit double word \fI__value\fP to EEPROM address \fI__p\fP\&. 
+.SS "void \fBeeprom_write_float\fP (float *__p, float__value)"Write a float \fI__value\fP to EEPROM address \fI__p\fP\&. 
+.SS "void \fBeeprom_write_word\fP (\fBuint16_t\fP *__p, \fBuint16_t\fP__value)"Write a word \fI__value\fP to EEPROM address \fI__p\fP\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for avr-libc from the source code\&.

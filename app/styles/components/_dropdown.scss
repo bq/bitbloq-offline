@@ -1,8 +1,13 @@
 dropdown {
   .menu {
     .menu__heading {
-
+      &.disabled {
+        background-color: #cfcfcf!important;
+        pointer-events  : none;
+        color           : #666;
+      }
     }
+
     .menu__dropdown {
       list-style: none;
     }

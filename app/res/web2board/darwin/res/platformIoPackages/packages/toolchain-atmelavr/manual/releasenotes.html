@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CrossPack for AVR Development - A Development Environment for AVR Microcontrollers</title>
+<link rel="stylesheet" href="resources/style.css" type="text/css">
+</head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0><tr>
+<td valign=top align=left><div class="index">
+<img src='resources/logo150.jpg' width="150" height="131" border=0 alt="Logo" align=center><h3>CrossPack for AVR Development 20131216</h3>
+<p>
+<a href="index.html">Overview</a><p>
+<a href="installation.html">Installation and Removal</a><p>
+<a href="gettingstarted.html">Getting Started</a><p>
+<a href="documentation.html">Documentation</a><p>
+<a href="links.html">Links</a><p>
+<a href="releasenotes.html">Release Notes</a><p>
+<a href="licenses.html">Software Licenses</a>
+</p>
+</div></td>
+<td bgcolor="#bbb" width=1></td><td width=20>&nbsp;</td>
+<td valign=top align=left>
+<h1>Release Notes</h1>
+The following list is in reverse historic order, new releases are inserted at the top:
+
+<h2>CrossPack-AVR 20131216</h2>
+<ul>
+	<li>AVR-Libc headers for some new devices were missing. Fixed.</li>
+	<li>Avr-gcc in version 4.8.1.</li>
+	<li>Binutils in version 2.23.2.</li>
+</ul>
+
+<h2>CrossPack-AVR 20131205</h2>
+<ul>
+	<li>Build all tools for minimum deployment target 10.6. Previous version required OS X 10.8 or 10.9.</li>
+</ul>
+
+<h2>CrossPack-AVR 20131128</h2>
+<ul>
+	<li>Header with I/O definitions for ATTiny2313 was inconsistent with data sheet. Fixed.</li>
+	<li>Avr-gcc in version 4.7.2 (generates slightly less efficient code than 4.6.2 from previous release).</li>
+	<li>AVRDUDE in version 6.0.1.</li>
+	<li>Binutils in version 2.23.1.</li>
+	<li>GNU Make in version 4.0.</li>
+	<li>Gdb in version 7.6.1.</li>
+	<li>Libusb in version 1.0.9.</li>
+</ul>
+
+<h2>CrossPack-AVR 20130212</h2>
+<ul>
+	<li>Header with I/O definitions for ATTiny4313 was inconsistent with data sheet. Fixed.</li>
+</ul>
+
+<h2>CrossPack-AVR 20121207</h2>
+<ul>
+	<li>Fixed bug in previous release where avrdude binary did not have executable bit set.</li>
+</ul>
+
+<h2>CrossPack-AVR 20121205</h2>
+<ul>
+	<li>Avrdude is now compatible with OS X 10.6. The previous version linked against a library not available on 10.6.</li>
+	<li>Make is now compatible with OS X 10.6. The previous version used a libc function not available on 10.6.</li>
+</ul>
+
+<h2>CrossPack-AVR 20121203</h2>
+<ul>
+	<li>Include C++ compiler. The previous version came without C++.</li>
+</ul>
+
+<h2>CrossPack-AVR 20121128</h2>
+<ul>
+	<li>Based on gcc version 4.6.2 with patches obtained from <a href="http://distribute.atmel.no/tools/opensource/">Atmel</a>.</li>
+    <li>Fixed dependency of avarice on /usr/local/lib/libintl.dylib.</li>
+    <li>Fixed dependency of avr-gdb on Python.</li>
+    <li>New build script is now available on <a target="_blank" href="https://github.com/obdev/CrossPack-AVR">github.com</a></li>
+</ul>
+
+<h2>CrossPack-AVR 20120217</h2>
+<ul>
+	<li>Based on gcc version 4.5.1 and patches obtained from FreeBSD's ports section.</li>
+	<li>New versions of all packages.</li>
+	<li>Dropped support for Mac OS X 10.5 and older.</li>
+	<li>Dropped support for avr-gcc version 3.</li>
+</ul>
+
+<h2>CrossPack-AVR 20100115</h2>
+<ul>
+	<li>Based on WinAVR 20100110.</li>
+	<li>Added binutils bfd library for AVR to distribution.</li>
+	<li>New versions: avr-gcc 4.3.3, avr-libc 1.6.7, avrdude 5.8, simulavr 0.9</li>
+</ul>
+
+<h2>CrossPack-AVR 20090415</h2>
+<ul>
+	<li>Renamed project to CrossPack due to trademark issues.</li>
+</ul>
+
+<h2>AVR MacPack 20090319</h2>
+<ul>
+	<li>Based on WinAVR 20090313.</li>
+	<li>New patches from WinAVR fix linker bug which affected 8k devices in avr25 class such as ATTiny85.</li>
+	<li>Support for new devices: AT90PWM81, AT90SCR100, ATA6289, ATmega16M1, ATmega16U4, ATmega64C1, ATmega64M1, ATmega128RFA1, ATtiny87, ATxmega32A4, ATxmega32D4, ATxmega16A4, ATxmega16D4.</li>
+	<li>New versions: avr-libc 1.6.6, avrdude 5.6, avarice 2.9, simulavr 0.1.2.6.</li>
+</ul>
+
+<h2>AVR MacPack 20081213</h2>
+<ul>
+	<li>Removed all "<tt>.svn</tt>" directories from release.</li>
+	<li>New versions and patches from WinAVR 20081205: binutils 2.19, gcc 4.3.2, avr-libc 1.6.4, gdb 6.8, avarice 2.8.</li>
+	<li>These versions and patches bring support for new devices: ATxmega64A3, ATxmega128A3, ATxmega256A3, ATxmega256A3B and ATmega32U6.
+</li>
+</ul>
+
+<h2>AVR MacPack 20080721</h2>
+<ul>
+	<li>Avrdude linked libusb from /usr/local/lib instead of /usr/local/AVRMacPack/lib in version 20080716. This problem was caused by a changed precedence of library paths in Mac OS X 10.5. Only 20080716 is affected since this was the first release built on 10.5.</li>
+</ul>
+
+<h2>AVR MacPack 20080716</h2>
+<ul>
+	<li>Based on patches from WinAVR 20080610.</li>
+	<li>Added "binary constants" patch for gcc 3.</li>
+</ul>
+
+<h2>AVR MacPack 20080514</h2>
+<ul>
+	<li>New versions: gcc 4.3, avr-libc 1.6.2, simulavr 1.2.5.</li>
+	<li>Based on patches from WinAVR 20080512.</li>
+</ul>
+
+<h2>AVR MacPack 20080318</h2>
+<ul>
+	<li>Upgraded to avr-libc 1.6.1 patch level 20080228. Gcc 4.2.2 requires this version for some of the newer devices.</li>
+	<li>Added links to fuse calculators and other related information in manual.</li>
+	<li>Fixed a problem with changes in /etc/csh.login which caused an error message for users with tcsh as login shell.</li>
+</ul>
+
+
+<h2>AVR MacPack 20080121</h2>
+<ul>
+	<li>Fixed a problem in the template project where Xcode could not find avr-gcc and related tools (problem with PATH environment variable).</li>
+	<li>Fixed listing of supported devices in manual.</li>
+	<li>Allow user specific template projects in ~/.AVRMacPack/templates/TemplateProject.</li>
+</ul>
+
+
+<h2>AVR MacPack 20071201</h2>
+Cleaner separation into avr-gcc version 3 and 4. We now switch not only gcc, but also avr-libc so that it has been compiled with the same version of gcc.
+
+
+<h2>AVR MacPack 20071126</h2>
+This is the initial release.
+
+</td></table>
+</body></html>

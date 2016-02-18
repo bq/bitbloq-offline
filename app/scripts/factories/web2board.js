@@ -8,7 +8,7 @@
  * Service in the bitbloqOffline.
  */
 angular.module('bitbloqOffline')
-    .factory('web2board', function ($rootScope, $log, $q, _, $timeout, common, alertsService) {
+    .factory('web2board', function ($rootScope, $log, $q, _, $timeout, common, alertsService, WSHubsAPI) {
 
         /** Variables */
         var web2board = this,
@@ -43,9 +43,6 @@ angular.module('bitbloqOffline')
                 web2boardProcess = spawn(getWeb2boardCommand());
             web2boardProcess.on("close", function (code) {
                 console.log("Web2board closed with code: " + code);
-            });
-            web2boardProcess.stderr.on("data", function (data) {
-                console.error(data);
             });
         }
 
@@ -95,7 +92,7 @@ angular.module('bitbloqOffline')
             }
         }
 
-        ws = new HubsAPI('ws:\\' + web2board.config.wsHost + ':' + web2board.config.wsPort, 45);
+        ws = WSHubsAPI.construct('ws:\\' + web2board.config.wsHost + ':' + web2board.config.wsPort, 45);
 
         ws.defaultErrorHandler = function (error) {
             $log.error('Error receiving message: ' + error);
@@ -190,12 +187,22 @@ angular.module('bitbloqOffline')
             });
         };
 
+        web2board.showApp = function () {
+            openCommunication(function () {
+                alertsService.add('alert-web2board-settingBoard', 'upload', 'loading'); // todo: change message
+                ws.WindowHub.server.showApp().done(function () {
+                    alertsService.add('alert-web2board-boardReady', 'upload', 'ok', 5000); //todo: change message
+                });
+            });
+        };
+
         return {
             verify: web2board.verify,
             upload: web2board.upload,
             serialMonitor: web2board.serialMonitor,
             version: web2board.version,
             uploadHex: web2board.uploadHex,
+            showWeb2board: web2board.showApp,
             isInProcess: function () {
                 return inProgress;
             }

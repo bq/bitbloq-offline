@@ -1,0 +1,4 @@
+#!/bin/sh
+echo "avr-gcc-select is not supported any more."
+echo "This version of CrossPack for AVR Development comes with gcc 4 only."
+exit 0

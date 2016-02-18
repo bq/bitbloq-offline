@@ -1,26 +1,22 @@
 .main__content {
-    position: relative;
+  position: relative;
 }
 
 .main__content--with-header {
-    display: block;
-    height: $main-content-with-header-height;
-    overflow-y: auto;
+  display   : block;
+  height    : $main-content-with-header-height;
+  overflow-y: auto;
 }
-
 // Z-INDEX!!
-
 /*
 From top to bottom: Dialogs 9 , Toasts 8, Dropdowns 7...
 */
-
 @mixin generate-zindex($class-slug) {
-    @for $i from 1 to 10 {
-        .#{$class-slug}-#{$i} {
-            z-index: $i;
-        }
-        ;
-    }
+  @for $i from 1 to 10 {
+    .#{$class-slug}-#{$i} {
+      z-index: $i;
+    };
+  }
 }
 
 @include generate-zindex('layer');

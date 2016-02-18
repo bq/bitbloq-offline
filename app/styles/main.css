@@ -326,6 +326,20 @@ body {
   -webkit-user-select: none;
   user-select: none; }
 
+.absolute-center {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto; }
+
+.bloq--extension--end .connector--bottom {
+  z-index: 1 !important; }
+
+.bloq--statement-input .bloq--statement-input__header span {
+  z-index: 1 !important; }
+
 .main__content {
   position: relative; }
 
@@ -438,6 +452,10 @@ body {
         padding: 10px;
         text-align: left;
         width: 100%; }
+        .actionbar .menu .menu__dropdown .menu__dropdown__item__button.disabled {
+          background-color: #cfcfcf !important;
+          pointer-events: none;
+          color: #666; }
         .actionbar .menu .menu__dropdown .menu__dropdown__item__button span {
           font-size: 14px;
           margin-left: 5px; }
@@ -454,6 +472,16 @@ body {
         padding: 7px 15px; }
         .actionbar .actionbar__menu__right .actionbar__software__actions__item .actionbar__software__actions__item__button svg {
           fill: #3b3e45; }
+
+.btn--make--disabled {
+  background-color: #cfcfcf !important;
+  pointer-events: none;
+  color: #666; }
+
+dropdown .menu .menu__heading.disabled {
+  background-color: #cfcfcf !important;
+  pointer-events: none;
+  color: #666; }
 
 dropdown .menu .menu__dropdown {
   list-style: none; }
@@ -499,29 +527,23 @@ dropdown .menu .menu__dropdown {
     fill: #fff; }
 
 .toolbox-shadow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   width: 100%;
-  height: 100%;
-  z-index: 2; }
+  height: 100%; }
   .toolbox-shadow.level--1 {
     background-color: rgba(55, 59, 68, 0.6);
     pointer-events: none; }
   .toolbox-shadow.level--2 {
-    background-color: rgba(255, 255, 255, 0.1); }
+    background-color: rgba(177, 177, 177, 0.44); }
 
 .toolbox {
+  position: absolute;
   background-color: #fff;
   border-left: 1px solid #edf1f2;
   height: 100%;
-  position: absolute;
   right: 0;
   top: 0;
-  z-index: 7;
-  transition: width 250ms; }
+  transition: width 250ms;
+  will-change: transform; }
   .toolbox.active {
     width: 250px; }
   .toolbox.inactive--1 {
@@ -533,7 +555,9 @@ dropdown .menu .menu__dropdown {
   background-color: #fff;
   position: absolute;
   right: 0;
-  top: 0; }
+  top: 0;
+  will-change: transform;
+  transition: width 250ms; }
   .toolbox__content.active {
     z-index: 3;
     width: 400px; }
@@ -544,7 +568,8 @@ dropdown .menu .menu__dropdown {
     z-index: 3; }
   .toolbox__content .content__list {
     height: calc(100vh - 85px);
-    overflow: auto; }
+    overflow: auto;
+    overflow-x: hidden; }
     .toolbox__content .content__list.has-advanced {
       height: calc(100vh - 147px); }
 
@@ -692,8 +717,6 @@ dropdown .menu .menu__dropdown {
           margin-right: 10px; }
 
 .btn--primary {
-  color: white;
-  font-weight: bold;
   background-color: #373b44;
   padding: .8em 1em;
   border-radius: .3em;
@@ -701,7 +724,9 @@ dropdown .menu .menu__dropdown {
   min-height: 50px;
   line-height: 27px;
   transition: background-color 250ms;
-  text-decoration: none; }
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold; }
   .btn--primary:hover {
     transition: background-color 250ms;
     text-decoration: none; }
@@ -713,7 +738,6 @@ dropdown .menu .menu__dropdown {
     background-color: #000; }
 
 .btn--secondary {
-  color: black;
   background-color: #ebebeb;
   padding: .8em 1em;
   border-radius: .3em;
@@ -721,19 +745,19 @@ dropdown .menu .menu__dropdown {
   min-height: 50px;
   line-height: 27px;
   transition: background-color 250ms;
-  text-decoration: none; }
+  text-decoration: none;
+  color: #000; }
   .btn--secondary:hover {
     transition: background-color 250ms;
     text-decoration: none; }
   .btn--secondary:active {
     text-decoration: none; }
   .btn--secondary:hover {
-    background-color: #dddddd; }
+    background-color: #ddd; }
   .btn--secondary:active {
     background-color: #d1d1d1; }
 
 .btn--disabled {
-  color: #c0c3c9;
   background-color: #dbdee3;
   padding: .8em 1em;
   border-radius: .3em;
@@ -741,7 +765,8 @@ dropdown .menu .menu__dropdown {
   min-height: 50px;
   line-height: 27px;
   transition: background-color 250ms;
-  text-decoration: none; }
+  text-decoration: none;
+  color: #c0c3c9; }
   .btn--disabled:hover {
     transition: background-color 250ms;
     text-decoration: none; }
@@ -787,6 +812,16 @@ dropdown .btn--dropdown {
 
 dropdown .btn--dropdown--active {
   color: #5d6069; }
+
+.btn--reset--zowi {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 16px 16px 0;
+  transition: background-color 120ms;
+  border: 1px solid #cfcfcf; }
+  .btn--reset--zowi:hover {
+    background-color: #f3f3f3; }
 
 @keyframes spin {
   from {
@@ -962,6 +997,49 @@ common-dropdown {
 .dropdown--disabled {
   background-color: #ebebeb;
   pointer-events: none; }
+
+.input--checkbox {
+  vertical-align: text-top;
+  position: relative;
+  width: 1.3em;
+  height: 1.3em;
+  margin-right: .5em; }
+  .input--checkbox input {
+    background: none;
+    border: none;
+    width: 1.2em !important;
+    height: 1.2em !important;
+    -webkit-appearance: none;
+    background-color: white;
+    border-radius: .3em;
+    border: 2px solid #c0c3c9; }
+    .input--checkbox input:hover {
+      transition: background-color 250ms;
+      border: 2px solid #5d6069; }
+    .input--checkbox input:checked {
+      border: 1px solid #5d6069;
+      border: none;
+      background-color: #5d6069;
+      background-image: url("../images/icons/verificarmini.svg");
+      background-size: 70%;
+      background-repeat: no-repeat;
+      background-position: center center; }
+    .input--checkbox input:disabled {
+      background-color: #c0c3c9; }
+    .input--checkbox input:focus {
+      transition: background-color 250ms;
+      border: 2px solid #5d6069; }
+  .input--checkbox .fa {
+    position: absolute;
+    top: .1em;
+    left: .1em; }
+    .input--checkbox .fa:before {
+      content: '\f00c';
+      color: white;
+      top: -3px;
+      position: relative;
+      font-size: .85em;
+      left: 1px; }
 
 pre {
   height: calc(100vh - 83px); }
