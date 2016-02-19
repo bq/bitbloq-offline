@@ -103,16 +103,16 @@ angular.module('bitbloqOffline')
 
     $scope.enableBloqFromContextMenu = function(bloq) {
       bloq.enable();
-      $scope.saveBloqStep();
+      // $scope.saveBloqStep();
     };
     $scope.disableBloqFromContextMenu = function(bloq) {
       bloq.disable();
-      $scope.saveBloqStep();
+      // $scope.saveBloqStep();
     };
     $scope.removeBloqFromContextMenu = function(bloq) {
       bloqs.removeBloq(bloq.uuid, true);
       //saveBloqStep from here to not listen remove event from children and store one step for children
-      $scope.saveBloqStep();
+      // $scope.saveBloqStep();
     };
 
     $scope.duplicateBloqFromContextMenu = function(bloq) {
@@ -130,9 +130,9 @@ angular.module('bitbloqOffline')
 
       if (bloqUuid && !bloq.hasClass('bloq--group') && bloqs.bloqs[bloqUuid].isConnectable()) {
         event.preventDefault();
-        // $scope.$apply(function() {
-        $scope.contextMenuBloq = bloqs.bloqs[bloqUuid];
-        // });
+        $scope.$apply(function() {
+          $scope.contextMenuBloq = bloqs.bloqs[bloqUuid];
+        });
         if ((angular.element($window).height() - event.pageY) > $contextMenu.height()) {
           $contextMenu.css({
             display: 'block',
@@ -193,7 +193,7 @@ angular.module('bitbloqOffline')
         if (err) {
           throw err;
         } else {
-            web2board.uploadHex('uno', data);
+          web2board.uploadHex('uno', data);
         }
       });
     };
