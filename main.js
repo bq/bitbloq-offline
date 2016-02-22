@@ -40,9 +40,8 @@ app.on('ready', function() {
     closable: true,
     fullscreen: false,
     fullscreenable: true,
-    title: 'Bitbloq Offline'
-
-
+    title: 'Bitbloq Offline',
+    icon: __dirname + '/app/images/bitbloq_ico.png'
   });
   // and load the index.html of the app.
   mainWindow.loadURL('file://' + __dirname + '/app/index.html');
@@ -50,7 +49,7 @@ app.on('ready', function() {
   mainWindow.show();
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {
