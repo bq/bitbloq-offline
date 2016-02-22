@@ -67,6 +67,10 @@
       "name": "readSensor"
     }, {
       "name": "servoNormal"
+    }, {
+      "name": "serialReceive"
+    }, {
+      "name": "serialSend-v1"
     }],
     "advancedItems": [{
       "name": "hwVariable"
@@ -113,15 +117,6 @@
       "name": "invokeReturnFunction"
     }]
   }],
-  "communications": [{
-    "title": "make-swtoolbox-communication",
-    "titleId": "communications",
-    "items": [{
-      "name": "serialReceive"
-    }, {
-      "name": "serialSend-v1"
-    }]
-  }],
   "robots": [{
     "title": "zowi",
     "titleId": "zowi",
@@ -158,33 +153,6 @@
       "name": "zowiSound"
     }, {
       "name": "zowiDistance"
-    }]
-  }, {
-    "title": "evolution",
-    "titleId": "evolution",
-    "items": [{
-      "name": "evolutionHome"
-    }, {
-      "name": "evolutionMovementsSimple"
-    }, {
-      "name": "evolutionHead"
-    }, {
-      "name": "evolutionBuzzer"
-    }, {
-      "name": "evolutionIfLine"
-    }, {
-      "name": "evolutionIfLight"
-    }, {
-      "name": "evolutionIfDistance"
-    }],
-    "advancedItems": [{
-      "name": "evolutionHeadAdvance"
-    }, {
-      "name": "evolutionLine"
-    }, {
-      "name": "evolutionLight"
-    }, {
-      "name": "evolutionDistance"
     }]
   }],
   "toolboxContents": [{

@@ -65,6 +65,12 @@
         }, {
             "name": "servoNormal",
             "addClass": "submenu__item submenu__item--component"
+        }, {
+            "name": "serialReceive",
+            "addClass": "submenu__item submenu__item--component"
+        }, {
+            "name": "serialSend-v1",
+            "addClass": "submenu__item submenu__item--component"
         }],
         "advancedComponents": [{
             "name": "hwVariable",
@@ -394,13 +400,6 @@
             "name": "logicOperations",
             "addClass": "submenu__item submenu__item--component"
         }],
-        "communications": [{
-            "name": "serialReceive",
-            "addClass": "submenu__item submenu__item--component"
-        }, {
-            "name": "serialSend-v1",
-            "addClass": "submenu__item submenu__item--component"
-        }],
         "zowi": [{
             "name": "zowiHome",
             "addClass": "submenu__item submenu__item--component"
@@ -449,41 +448,6 @@
             "addClass": "submenu__item submenu__item--component"
         }, {
             "name": "zowiDistance",
-            "addClass": "submenu__item submenu__item--component"
-        }],
-        "evolution": [{
-            "name": "evolutionHome",
-            "addClass": "submenu__item submenu__item--component"
-        }, {
-            "name": "evolutionMovementsSimple",
-            "addClass": "submenu__item submenu__item--component"
-        }, {
-            "name": "evolutionHead",
-            "addClass": "submenu__item submenu__item--component"
-        }, {
-            "name": "evolutionBuzzer",
-            "addClass": "submenu__item submenu__item--component"
-        }, {
-            "name": "evolutionIfLine",
-            "addClass": "submenu__item submenu__item--component"
-        }, {
-            "name": "evolutionIfLight",
-            "addClass": "submenu__item submenu__item--component"
-        }, {
-            "name": "evolutionIfDistance",
-            "addClass": "submenu__item submenu__item--component"
-        }],
-        "advancedEvolution": [{
-            "name": "evolutionHeadAdvance",
-            "addClass": "submenu__item submenu__item--component"
-        }, {
-            "name": "evolutionLine",
-            "addClass": "submenu__item submenu__item--component"
-        }, {
-            "name": "evolutionLight",
-            "addClass": "submenu__item submenu__item--component"
-        }, {
-            "name": "evolutionDistance",
             "addClass": "submenu__item submenu__item--component"
         }]
     }

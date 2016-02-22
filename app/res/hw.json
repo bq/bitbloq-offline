@@ -586,10 +586,5 @@
         "name": "Zowi",
         "width": 75,
         "height": 86
-    }, {
-      "id": "evolution",
-      "name": "Evolution",
-      "width": 75,
-      "height": 86
-      }]
+    }]
 }
