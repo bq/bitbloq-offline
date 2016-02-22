@@ -24,6 +24,7 @@
 
   .toolbox__item__image {
     max-width: 150px;
+    cursor: -webkit-grab;
   }
 
   .toolbox__level--1 {
@@ -38,9 +39,16 @@
 
   .board-image {
     width: 175px;
+    cursor: -webkit-grab;
   }
 
   .component-image {
     max-width: 60%;
+    cursor: -webkit-grab;
+  }
+
+  .robot-image {
+    width: 75px;
+    cursor: -webkit-grab;
   }
 }

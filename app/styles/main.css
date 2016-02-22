@@ -1560,7 +1560,8 @@ code {
   width: 200px; }
 
 .toolbox-hw .toolbox__item__image {
-  max-width: 150px; }
+  max-width: 150px;
+  cursor: -webkit-grab; }
 
 .toolbox-hw .toolbox__level--1 {
   width: 250px; }
@@ -1569,7 +1570,13 @@ code {
   width: 200px; }
 
 .toolbox-hw .board-image {
-  width: 175px; }
+  width: 175px;
+  cursor: -webkit-grab; }
 
 .toolbox-hw .component-image {
-  max-width: 60%; }
+  max-width: 60%;
+  cursor: -webkit-grab; }
+
+.toolbox-hw .robot-image {
+  width: 75px;
+  cursor: -webkit-grab; }

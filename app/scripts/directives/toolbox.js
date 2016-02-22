@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('bitbloqOffline')
   .directive('toolbox', function($parse, $timeout) {
     return {
@@ -12,15 +14,14 @@ angular.module('bitbloqOffline')
         showRobots: '='
       },
       controllerAs: 'toolbox',
-      controller: function($scope, $element, $attrs) {
+      controller: function($rootScope) {
         var self = this;
-        var mainContent;
         self.activeMenu = null;
         self.menuLevel = 0;
 
         self.select = function(menuId, advanced) {
           if (advanced) {
-            return self.menuLevel = 2;
+            return (self.menuLevel = 2);
           } else {
             self.menuLevel = 1;
           }
@@ -38,6 +39,11 @@ angular.module('bitbloqOffline')
             self.menuLevel = 0;
           }, 0);
         };
+
+        $rootScope.$on('toolboxSelect', function(event, args) {
+          self.select(args);
+        });
+
         $(document).on('click', function() {
           if ($(event.target).closest('toolbox').length > 0) {
             return false;
