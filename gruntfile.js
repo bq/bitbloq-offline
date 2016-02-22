@@ -5,12 +5,7 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        clean: {
-            windows:  ['dist/windows32/resources/app/', 'dist/windows64/resources/app/'],
-            linux:    ['dist/linux/resources/app/'],
-            mac:      ['dist/mac/Electron.app/Contents/Resources/app/'],
-            prebuilt: ['dist/windows32/', 'dist/windows64/', 'dist/linux/']
-        },
+
         wiredep: {
             task: {
                 // Point to the files that should be updated when
@@ -97,6 +92,12 @@ module.exports = function(grunt) {
                 }]
             }
         },
+        clean: {
+            windows:  ['dist/windows32/resources/app/', 'dist/windows64/resources/app/'],
+            linux:    ['dist/linux/resources/app/'],
+            mac:      ['dist/mac/Electron.app/Contents/Resources/app/'],
+            prebuilt: ['dist/windows32/', 'dist/windows64/', 'dist/linux/']
+        },
         exec: {
             electron: 'electron .',
             stop_electron: 'killall electron || killall Electron || true'
@@ -119,14 +120,8 @@ module.exports = function(grunt) {
             options: {
                 stderr: false
             },
-            linux: {
-                command: 'chmod -R 755 dist/linux'
-            },
-            windows32: {
-                command: 'chmod -R 755 dist/windows32'
-            },
-            windows64: {
-                command: 'chmod -R 755 dist/windows64'
+            target: {
+                command: 'chmod -R 755 dist/'
             }
         }
     });
@@ -143,36 +138,12 @@ module.exports = function(grunt) {
         grunt.task.run([
           'sass',
           'svgstore',
-          'clean:prebuilt',
+          'clean',
           'copy:prebuilt',
-          'buildLinux',
-          'buildWindows',
-          'buildMac'
-        ]);
-    });
-
-    grunt.registerTask('buildLinux', function() {
-        grunt.task.run([
-          'clean:linux',
           'copy:linux',
-          'shell:linux'
+          'copy:windows',
+          'copy:mac',
+          'shell'
         ]);
     });
-
-    grunt.registerTask('buildWindows', function() {
-        grunt.task.run([
-            'clean:windows',
-            'copy:windows',
-            'shell:windows32',
-            'shell:windows64'
-        ]);
-    });
-
-    grunt.registerTask('buildMac', function() {
-        grunt.task.run([
-            //'clean:mac',
-            'copy:mac'
-        ]);
-    });
-
 };
