@@ -67,6 +67,11 @@ angular.module('bitbloqOffline')
               $scope.setProject(project);
               hw2Bloqs.repaint();
               $scope.$apply();
+            } else if (!project.bitbloqOfflineVersion) {
+              console.log('proyecto de Bitbloq Online');
+              $scope.setProject(project);
+              hw2Bloqs.repaint();
+              $scope.$apply();
             }
           }
         });
