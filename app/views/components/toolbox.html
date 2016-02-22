@@ -113,7 +113,7 @@
       </ul>
     </div>
     <!-- ADVANCED CODE BLOQS -->
-    <div class="toolbox__content__item" ng-repeat="itemContainer in tree.toolboxContents" ng-show="toolbox.activeMenu === itemContainer.titleId">
+    <div class="toolbox__content__item advanced__bloqs" ng-repeat="itemContainer in tree.toolboxContents" ng-show="toolbox.activeMenu === itemContainer.titleId">
       <h3>{{itemContainer.title | translate}} > {{'make-swtoolbox-advanced' | translate}}</h3>
       <ul class="content__list">
         <li class="content__list__item" ng-repeat="bloq in itemContainer.advancedItems track by $index" bitbloq-bloq-creator bloq-schema="bloq.name" components-array="componentsArray"></li>

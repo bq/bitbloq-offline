@@ -585,6 +585,10 @@ dropdown .menu .menu__dropdown {
     padding: 16px 10px; }
   .toolbox__content__item .title {
     padding: 10px; }
+  .toolbox__content__item.components > .content__list {
+    height: 100%; }
+  .toolbox__content__item.advanced__bloqs > .content__list {
+    height: calc(100vh - 100px); }
 
 .toolbox__list__item__button {
   border-bottom: 1px solid #edf1f2;
@@ -1554,7 +1558,7 @@ code {
 .toolbox-hw .content__list__item {
   margin-bottom: 10px;
   text-align: left;
-  padding: 20px; }
+  padding: 10px; }
 
 .toolbox-hw .toolbox__content {
   width: 200px; }

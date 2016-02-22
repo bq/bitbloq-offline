@@ -106,6 +106,14 @@ $toolbox-advanced-button-hover-color: #fbfbfb;
   .title {
     padding: 10px;
   }
+
+  &.components > .content__list{
+    height: 100%;
+  }
+
+  &.advanced__bloqs > .content__list {
+    height: calc(100vh - 100px);
+  }
 }
 
 .toolbox__list__item__button {
