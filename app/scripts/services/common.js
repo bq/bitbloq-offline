@@ -22,6 +22,7 @@ angular.module('bitbloqOffline')
     exports.bloqsSchemas = JSON.parse(fs.readFileSync(exports.appPath + '/bower_components/bloqs/dist/bloqsmap.json', 'utf8'));
     exports.hardware = JSON.parse(fs.readFileSync(exports.appPath + '/app/res/hw.json', 'utf8'));
     exports.version = JSON.parse(fs.readFileSync(exports.appPath + '/package.json', 'utf8')).version;
+    exports.bloqsVersion = JSON.parse(fs.readFileSync(exports.appPath + '/bower.json', 'utf8')).dependencies.bloqs;
     exports.translate = $filter('translate');
     exports.translateTo = function(lang) {
       $translate.use(lang);

@@ -53,12 +53,12 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: '',
-                    src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json', '!app/res/web2board/linux/**', '!app/res/web2board/darwin/**'],
+                    src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json', 'bower.json', '!app/res/web2board/linux/**', '!app/res/web2board/darwin/**'],
                     dest: 'dist/windows32/resources/app/'
                 },{
                     expand: true,
                     cwd: '',
-                    src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json', '!app/res/web2board/linux/**', '!app/res/web2board/darwin/**'],
+                    src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json', 'bower.json', '!app/res/web2board/linux/**', '!app/res/web2board/darwin/**'],
                     dest: 'dist/windows64/resources/app/'
                 }]
             },
@@ -66,7 +66,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: '',
-                    src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json', '!app/res/web2board/win32/**', '!app/res/web2board/darwin/**'],
+                    src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json', 'bower.json', '!app/res/web2board/win32/**', '!app/res/web2board/darwin/**'],
                     dest: 'dist/linux/resources/app/'
                 }]
             },
@@ -74,7 +74,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: '',
-                    src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json', '!app/res/web2board/win32/**', '!app/res/web2board/linux/**'],
+                    src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json', 'bower.json', '!app/res/web2board/win32/**', '!app/res/web2board/linux/**'],
                     dest: 'dist/mac/Electron.app/Contents/Resources/app/'
                 }]
             },

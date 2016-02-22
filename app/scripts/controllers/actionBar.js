@@ -60,19 +60,16 @@ angular.module('bitbloqOffline')
           } else {
             var project = JSON.parse(data);
 
-            if (project.bitbloqOfflineVersion > common.version) {
+            if (project.bloqsVersion > common.bloqsVersion) {
               alertsService.add('offline-load-project-error', 'error', 'error', 5000, null, false, false, 'offline-update',redirect, 'http://bitbloq.bq.com/#/');
-            } else if (project.bitbloqOfflineVersion < common.version) {
-              alertsService.add('offline-new-version-available', 'info', 'info', 5000, null, false, false, 'offline-update',redirect, 'http://bitbloq.bq.com/#/');
+            } else {
+              if (project.bloqsVersion < common.bloqsVersion) {
+                alertsService.add('offline-new-version-available', 'info', 'info', 5000, null, false, false, 'offline-update',redirect, 'http://bitbloq.bq.com/#/');
+              }
               $scope.setProject(project);
               hw2Bloqs.repaint();
               $scope.$apply();
-            } else if (!project.bitbloqOfflineVersion) {
-              console.log('proyecto de Bitbloq Online');
-              $scope.setProject(project);
-              hw2Bloqs.repaint();
-              $scope.$apply();
-            }
+            } 
           }
         });
       }
