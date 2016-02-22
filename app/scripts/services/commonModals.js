@@ -30,7 +30,7 @@ angular.module('bitbloqOffline')
 
       var languagesOb = {
         languages: {
-          name: 'Idiomas',
+          name: oldLanguage,
           items: [{
             name: 'es-ES'
           }, {
