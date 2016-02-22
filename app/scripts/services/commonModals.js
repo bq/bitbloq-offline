@@ -12,6 +12,35 @@ angular.module('bitbloqOffline')
 
     var exports = {};
 
+    exports.launchNotSavedModal = function(callback) {
+      var confirmAction = function() {
+          notSavedModal.close();
+          callback(true);
+        },
+        rejectAction = function() {
+          notSavedModal.close();
+          callback(false);
+        };
+
+
+      var modalOptions = $rootScope.$new();
+      _.extend(modalOptions, {
+        title: 'modal-exit-title',
+        confirmButton: 'modal-exit-save',
+        rejectButton: 'modal-exit-exit',
+        confirmAction: confirmAction,
+        rejectAction: rejectAction,
+        modalButtons: true
+      });
+
+      var notSavedModal = ngDialog.open({
+        template: 'file://' + __dirname + '/views/modals/modal.html',
+        className: 'modal--container modal--input',
+        scope: modalOptions,
+        showClose: false
+      });
+    };
+
     exports.launchChangeLanguageModal = function() {
       var oldLanguage = $translate.use();
 

@@ -14,7 +14,7 @@ angular.module('bitbloqOffline')
         showRobots: '='
       },
       controllerAs: 'toolbox',
-      controller: function($rootScope) {
+      controller: function($rootScope, $scope) {
         var self = this;
         self.activeMenu = null;
         self.menuLevel = 0;
@@ -41,7 +41,9 @@ angular.module('bitbloqOffline')
         };
 
         $rootScope.$on('toolboxSelect', function(event, args) {
-          self.select(args);
+          if ($scope.type === 'hardware') {
+            self.select(args);
+          }
         });
 
         $(document).on('click', function() {

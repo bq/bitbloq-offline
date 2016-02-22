@@ -8,11 +8,12 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-  .controller('BloqsProjectCtrl', function($scope, $rootScope, bloqsUtils, common, _, $log, bloqs) {
+  .controller('BloqsProjectCtrl', function($scope, $rootScope, alertsService, commonModals, $window, $document, bloqsUtils, projectApi, nodeFs, common, _, $log, bloqs) {
     $log.debug('bloqsproject ctrl', $scope.$parent.$id);
 
     $scope.setProject = function(project) {
       $scope.project = project;
+
     };
 
     $scope.tabsClick = function() {
@@ -62,7 +63,6 @@ angular.module('bitbloqOffline')
             }
 
           } else {
-            $log.debug('dropdown not selected');
             element.selectedIndex = 0;
           }
 
@@ -97,43 +97,45 @@ angular.module('bitbloqOffline')
       return false;
     };
     $scope.showComponents = function(item) {
-         var stopWord = ['analogWrite', 'digitalWrite', 'hwVariable', 'pinReadAdvanced', 'pinWriteAdvanced', 'turnOnOffAdvanced', 'digitalReadAdvanced', 'analogReadAdvanced'];
+      var stopWord = ['analogWrite', 'digitalWrite', 'hwVariable', 'pinReadAdvanced', 'pinWriteAdvanced', 'turnOnOffAdvanced', 'digitalReadAdvanced', 'analogReadAdvanced'];
 
-         if (stopWord.indexOf(item) === -1) {
-             var userComponents = _.keys(_.pick($scope.componentsArray, function(value) {
-                 return value.length > 0;
-             }));
-             var result = false;
-             userComponents.forEach(function(value) {
-                 if (item.indexOf('serial') > -1) {
-                     result = $scope.showCommunications(item);
-                 } else {
-                     if (value[value.length - 1] === 's') {
-                         value = value.substring(0, value.length - 1);
-                     }
-                     if (value === 'servo') {
-                         value = 'servoNormal';
-                     }
-                     item = item.toUpperCase();
-                     value = value.toUpperCase();
-                     if (item.includes('RGBLED')) {
-                         if (value.includes('RGB')) {
-                             result = true;
-                         }
-                     } else {
-                         if (item.includes(value) || value.includes(item)) {
-                             result = true;
-                         }
-                     }
-                 }
-             });
-             return result;
-         } else {
-             return true;
-         }
-     };
+      if (stopWord.indexOf(item) === -1) {
+        var userComponents = _.keys(_.pick($scope.componentsArray, function(value) {
+          return value.length > 0;
+        }));
+        var result = false;
+        userComponents.forEach(function(value) {
+          if (item.indexOf('serial') > -1) {
+            result = $scope.showCommunications(item);
+          } else {
+            if (value[value.length - 1] === 's') {
+              value = value.substring(0, value.length - 1);
+            }
+            if (value === 'servo') {
+              value = 'servoNormal';
+            }
+            item = item.toUpperCase();
+            value = value.toUpperCase();
+            if (item.includes('RGBLED')) {
+              if (value.includes('RGB')) {
+                result = true;
+              }
+            } else {
+              if (item.includes(value) || value.includes(item)) {
+                result = true;
+              }
+            }
+          }
+        });
+        return result;
+      } else {
+        return true;
+      }
+    };
 
     $scope.refreshComponentsArray = function() {
+      projectApi.projectChanged = true;
+      projectApi.oldProject = $scope.project;
       var newComponentsArray = bloqsUtils.getEmptyComponentsArray();
       var newHardwareTags = [];
       var readyToSave = false;
@@ -197,7 +199,7 @@ angular.module('bitbloqOffline')
       $scope.updateBloqs();
 
       if (!$scope.hardware.firstLoad && readyToSave) {
-        $scope.startAutosave();
+        // $scope.startAutosave();
       }
 
     };
@@ -209,6 +211,7 @@ angular.module('bitbloqOffline')
         return false;
       }
     };
+
     $scope.getCurrentProject = function() {
       $scope.project.code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
       var project = _.cloneDeep($scope.project);
@@ -222,6 +225,43 @@ angular.module('bitbloqOffline')
       //project.hardware = $scope.getHardwareSchema();
       return project;
     };
+
+    $scope.saveProject = function(project, callback) {
+      project = project || $scope.getCurrentProject();
+      if (projectApi.hasChanged(project)) {
+        return projectApi.save(project, function() {
+          alertsService.add('make-saved-project', 'project-saved', 'info', 3000);
+          if (callback) {
+            return callback();
+          }
+        });
+      }
+    };
+    $window.onbeforeunload = function(e) {
+      var remote = require('electron').remote;
+      var currentWindow = remote.getCurrentWindow();
+      if (projectApi.hasChanged($scope.getCurrentProject())) {
+        e.returnValue = false;
+        commonModals.launchNotSavedModal(function(confirmed) {
+          if (confirmed) {
+            projectApi.save($scope.getCurrentProject(), function() {
+              currentWindow.destroy();
+            });
+          } else {
+            currentWindow.destroy();
+          }
+        });
+      } else {
+        currentWindow.destroy();
+      }
+    };
+
+    $document.on('keyup', function() {
+      console.log(event);
+      if (event.ctrlKey && event.which === 83) {
+        $scope.saveProject();
+      }
+    });
 
 
     $scope.componentsArray = bloqsUtils.getEmptyComponentsArray();
@@ -274,8 +314,7 @@ angular.module('bitbloqOffline')
           content: [
             []
           ]
-        },
-        freeBloqs: []
+        }
       },
 
       hardware: {
@@ -285,4 +324,5 @@ angular.module('bitbloqOffline')
         connections: []
       }
     };
+    projectApi.oldProject = projectApi.getCleanProject($scope.getCurrentProject());
   });

@@ -25,14 +25,32 @@ angular.module('bitbloqOffline')
     $scope.isInProcess = web2board.isInProcess;
 
     function newProject() {
-      $route.reload();
+      if (projectApi.hasChanged($scope.getCurrentProject())) {
+        commonModals.launchNotSavedModal(function(confirmed) {
+          if (confirmed) {
+            $scope.saveProject($scope.getCurrentProject());
+          } else {
+            projectApi.savedProjectPath = false;
+            $route.reload();
+          }
+        });
+
+        // WARN THE USER.
+        // If continues, newProject(), else, cancel
+      } else {
+        projectApi.savedProjectPath = false;
+        $route.reload();
+      }
     }
 
     function redirect(url) {
-      console.log(url);
       var BrowserWindow = require('electron').remote.BrowserWindow;
 
-      var win = new BrowserWindow({ width: 800, height: 600, show: false });
+      var win = new BrowserWindow({
+        width: 800,
+        height: 600,
+        show: false
+      });
       win.on('closed', function() {
         win = null;
       });
@@ -41,44 +59,55 @@ angular.module('bitbloqOffline')
       win.show();
     }
 
-    function openProject() {
-      var filePath = nodeDialog.showOpenDialog({
-        properties: ['openFile', 'createDirectory'],
-        filters: [{
-          name: 'Bitbloq',
-          extensions: ['json']
-        }, {
-          name: 'All Files',
-          extensions: ['*']
-        }]
-      });
-
-      if (filePath) {
-        nodeFs.readFile(filePath[0], function(err, data) {
-          if (err) {
-            throw err;
+    function openProject(force) {
+      if (projectApi.hasChanged($scope.getCurrentProject()) && !force) {
+        commonModals.launchNotSavedModal(function(confirmed) {
+          if (confirmed) {
+            projectApi.save($scope.getCurrentProject(), function(data) {
+              console.log('save', data)
+            });
           } else {
-            var project = JSON.parse(data);
-
-            if (project.bloqsVersion > common.bloqsVersion) {
-              alertsService.add('offline-load-project-error', 'error', 'error', 5000, null, false, false, 'offline-update',redirect, 'http://bitbloq.bq.com/#/');
-            } else {
-              if (project.bloqsVersion < common.bloqsVersion) {
-                alertsService.add('offline-new-version-available', 'info', 'info', 5000, null, false, false, 'offline-update',redirect, 'http://bitbloq.bq.com/#/');
-              }
-              $scope.setProject(project);
-              hw2Bloqs.repaint();
-              $scope.$apply();
-            } 
+            openProject(true);
           }
         });
+      } else {
+        var filePath = nodeDialog.showOpenDialog({
+          properties: ['openFile', 'createDirectory'],
+          filters: [{
+            name: 'Bitbloq',
+            extensions: ['json']
+          }, {
+            name: 'All Files',
+            extensions: ['*']
+          }]
+        });
+
+        if (filePath) {
+          nodeFs.readFile(filePath[0], function(err, data) {
+            if (err) {
+              throw err;
+            } else {
+              var project = JSON.parse(data);
+
+              if (project.bloqsVersion > common.bloqsVersion) {
+                alertsService.add('offline-load-project-error', 'error', 'error', 5000, null, false, false, 'offline-update', redirect, 'http://bitbloq.bq.com/#/');
+              } else {
+                if (project.bloqsVersion < common.bloqsVersion) {
+                  alertsService.add('offline-new-version-available', 'info', 'info', 5000, null, false, false, 'offline-update', redirect, 'http://bitbloq.bq.com/#/');
+                }
+                $scope.setProject(project);
+                projectApi.savedProjectPath = filePath[0];
+                projectApi.projectChanged = false;
+                hw2Bloqs.repaint();
+                $scope.$apply();
+                projectApi.save(project);
+                projectApi.oldProject = projectApi.getCleanProject($scope.getCurrentProject());
+              }
+            }
+          });
+        }
       }
     }
-
-    function saveProject() {
-      projectApi.download($scope.getCurrentProject());
-    }
-
 
     function exportArduinoCode() {
       var code = utils.prettyCode(bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs)),
@@ -139,7 +168,12 @@ angular.module('bitbloqOffline')
         }, {
           name: 'save',
           icon: '#guardar',
-          action: saveProject,
+          action: $scope.saveProject,
+          disabled: false
+        }, {
+          name: 'save-as',
+          icon: '#guardar',
+          action: $scope.saveProject,
           disabled: false
         }, {
           name: 'export-arduino-code',

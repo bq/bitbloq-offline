@@ -1,3 +1,4 @@
+'use strict';
 const electron = require('electron');
 const app = electron.app; // Module to control application life.
 const BrowserWindow = electron.BrowserWindow; // Module to create native browser window.
@@ -18,7 +19,7 @@ var mainWindow = null;
 app.on('window-all-closed', function() {
   // On OS X it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform != 'darwin') {
+  if (process.platform !== 'darwin') {
     app.quit();
   }
 });
@@ -31,8 +32,8 @@ app.on('ready', function() {
     show: false,
     minWidth: 800,
     minHeight: 600,
-    width: 1024,
-    height: 768,
+    width: 1440,
+    height: 800,
     center: true,
     minimizable: true,
     maximizable: true,
@@ -49,11 +50,11 @@ app.on('ready', function() {
   mainWindow.show();
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {
     mainWindow = null;
   });
-  mainWindow.setMenu(null);
+  // mainWindow.setMenu(null);
 });
