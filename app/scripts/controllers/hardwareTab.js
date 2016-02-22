@@ -162,6 +162,9 @@ angular.module('bitbloqOffline')
       $scope.project.hardware.board = board.name;
 
       $scope.refreshComponentsArray();
+
+      $rootScope.$broadcast('toolboxSelect', 'components');
+
     };
 
     var _addRobot = function(robot) {
@@ -672,5 +675,7 @@ angular.module('bitbloqOffline')
       $document.off('contextmenu', _contextMenuDocumentHandler);
       $document.off('click', _clickDocumentHandler);
     });
+
+
     $log.debug('hardwareTabCtrl controller', $scope.$parent.$id);
   });
