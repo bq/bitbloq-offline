@@ -237,6 +237,12 @@ angular.module('bitbloqOffline')
         });
       }
     };
+
+    $scope.saveIno = function() {
+      projectApi.exportArduinoCode($scope.componentsArray, $scope.arduinoMainBloqs);
+      alertsService.add('make-saved-project', 'project-saved', 'info', 3000);
+    };
+
     $window.onbeforeunload = function(e) {
       var remote = require('electron').remote;
       var currentWindow = remote.getCurrentWindow();
@@ -282,7 +288,6 @@ angular.module('bitbloqOffline')
 
     $scope.project = {
       creatorId: '',
-      name: common.translate('new-project'),
       description: '',
       userTags: [],
       hardwareTags: [],

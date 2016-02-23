@@ -14,7 +14,6 @@ angular.module('bitbloqOffline')
     $scope.actions = {
       newProject: newProject,
       openProject: openProject,
-      exportArduinoCode: exportArduinoCode,
       changeLanguage: changeLanguage,
       copyCodeToClipboard: copyCodeToClipboard,
       verifyCode: verifyCode,
@@ -109,12 +108,6 @@ angular.module('bitbloqOffline')
       }
     }
 
-    function exportArduinoCode() {
-      var code = utils.prettyCode(bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs)),
-        filename = utils.removeDiacritics($scope.project.name).substring(0, 30) + '.ino';
-      nodeUtils.downloadFile(filename, code);
-    }
-
     function changeLanguage() {
       commonModals.launchChangeLanguageModal();
     }
@@ -178,7 +171,7 @@ angular.module('bitbloqOffline')
         }, {
           name: 'export-arduino-code',
           icon: '#exportcode',
-          action: exportArduinoCode,
+          action: $scope.saveIno,
           disabled: false
         }, {
           name: 'change-language',
