@@ -365,11 +365,11 @@ angular.module('bitbloqOffline')
       }
     };
 
-    $scope.duplicateComponent = function() {
+    $scope.duplicateComponent = function(component) {
       if (!$scope.componentSelected) {
         throw Error('componentSelected undefined');
       }
-      var newComponent = _.cloneDeep($scope.componentSelected);
+      var newComponent = _.cloneDeep(component);
       delete newComponent.endpoints;
       delete newComponent.pin;
       delete newComponent.uid;
@@ -377,8 +377,8 @@ angular.module('bitbloqOffline')
       $scope.project.hardware.components.push(newComponent);
 
       var coordinates = {
-        x: newComponent.coordinates.x > 85 ? 85 + 3 : newComponent.coordinates.x + 3,
-        y: newComponent.coordinates.y > 85 ? 85 + 3 : newComponent.coordinates.y + 3,
+        x: $scope.componentSelected.coordinates.x > 85 ? 85 + 3 : $scope.componentSelected.coordinates.x + 3,
+        y: $scope.componentSelected.coordinates.y > 85 ? 85 + 3 : $scope.componentSelected.coordinates.y + 3,
       };
       newComponent.coordinates = coordinates;
       newComponent.name = _createUniqueVarName(newComponent); //Generate unique name
@@ -589,7 +589,7 @@ angular.module('bitbloqOffline')
 
     var _setClonComponent = function() {
       if ($scope.hardware.clonComponent) {
-        $scope.duplicateComponent();
+        $scope.duplicateComponent($scope.hardware.clonComponent);
         $scope.hardware.clonComponent = $scope.componentSelected;
       }
     };
@@ -598,7 +598,7 @@ angular.module('bitbloqOffline')
      Shortcuts
      *************************************************/
     $scope.onHwKeyPress = function($event) {
-      switch ($event.keyCode) {
+      switch ($event.which) {
 
         case 67:
           //ctrl+c
