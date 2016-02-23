@@ -192,6 +192,86 @@
         };
 
 
+        this.CodeHub = {};
+        this.CodeHub.server = {
+            __HUB_NAME : 'CodeHub',
+
+            uploadHex : function (hexText, board, port){
+                arguments[0] = hexText === undefined ? null : hexText;
+                return constructMessage('CodeHub', 'uploadHex', arguments);
+            },
+
+            getSubscribedClientsToHub : function (){
+
+                return constructMessage('CodeHub', 'getSubscribedClientsToHub', arguments);
+            },
+
+            unsubscribeFromHub : function (){
+
+                return constructMessage('CodeHub', 'unsubscribeFromHub', arguments);
+            },
+
+            upload : function (code, board, port){
+                arguments[0] = code === undefined ? null : code;
+                return constructMessage('CodeHub', 'upload', arguments);
+            },
+
+            compile : function (code){
+
+                return constructMessage('CodeHub', 'compile', arguments);
+            },
+
+            subscribeToHub : function (){
+
+                return constructMessage('CodeHub', 'subscribeToHub', arguments);
+            },
+
+            uploadHexFile : function (hexFilePath, board, port){
+                arguments[0] = hexFilePath === undefined ? null : hexFilePath;
+                return constructMessage('CodeHub', 'uploadHexFile', arguments);
+            },
+
+            tryToTerminateSerialCommProcess : function (){
+
+                return constructMessage('CodeHub', 'tryToTerminateSerialCommProcess', arguments);
+            }
+        };
+        this.CodeHub.client = {};
+        this.VersionsHandlerHub = {};
+        this.VersionsHandlerHub.server = {
+            __HUB_NAME : 'VersionsHandlerHub',
+
+            setLibVersion : function (version){
+
+                return constructMessage('VersionsHandlerHub', 'setLibVersion', arguments);
+            },
+
+            getSubscribedClientsToHub : function (){
+
+                return constructMessage('VersionsHandlerHub', 'getSubscribedClientsToHub', arguments);
+            },
+
+            unsubscribeFromHub : function (){
+
+                return constructMessage('VersionsHandlerHub', 'unsubscribeFromHub', arguments);
+            },
+
+            subscribeToHub : function (){
+
+                return constructMessage('VersionsHandlerHub', 'subscribeToHub', arguments);
+            },
+
+            getVersion : function (){
+
+                return constructMessage('VersionsHandlerHub', 'getVersion', arguments);
+            },
+
+            setWeb2boardVersion : function (version){
+
+                return constructMessage('VersionsHandlerHub', 'setWeb2boardVersion', arguments);
+            }
+        };
+        this.VersionsHandlerHub.client = {};
         this.WindowHub = {};
         this.WindowHub.server = {
             __HUB_NAME : 'WindowHub',
@@ -272,91 +352,11 @@
             }
         };
         this.UtilsAPIHub.client = {};
-        this.CodeHub = {};
-        this.CodeHub.server = {
-            __HUB_NAME : 'CodeHub',
-
-            uploadHex : function (hexText, board){
-
-                return constructMessage('CodeHub', 'uploadHex', arguments);
-            },
-
-            getSubscribedClientsToHub : function (){
-
-                return constructMessage('CodeHub', 'getSubscribedClientsToHub', arguments);
-            },
-
-            unsubscribeFromHub : function (){
-
-                return constructMessage('CodeHub', 'unsubscribeFromHub', arguments);
-            },
-
-            upload : function (code, board){
-
-                return constructMessage('CodeHub', 'upload', arguments);
-            },
-
-            compile : function (code){
-
-                return constructMessage('CodeHub', 'compile', arguments);
-            },
-
-            subscribeToHub : function (){
-
-                return constructMessage('CodeHub', 'subscribeToHub', arguments);
-            },
-
-            uploadHexFile : function (hexFilePath, board){
-
-                return constructMessage('CodeHub', 'uploadHexFile', arguments);
-            },
-
-            tryToTerminateSerialCommProcess : function (){
-
-                return constructMessage('CodeHub', 'tryToTerminateSerialCommProcess', arguments);
-            }
-        };
-        this.CodeHub.client = {};
-        this.VersionsHandlerHub = {};
-        this.VersionsHandlerHub.server = {
-            __HUB_NAME : 'VersionsHandlerHub',
-
-            setLibVersion : function (version){
-
-                return constructMessage('VersionsHandlerHub', 'setLibVersion', arguments);
-            },
-
-            getSubscribedClientsToHub : function (){
-
-                return constructMessage('VersionsHandlerHub', 'getSubscribedClientsToHub', arguments);
-            },
-
-            unsubscribeFromHub : function (){
-
-                return constructMessage('VersionsHandlerHub', 'unsubscribeFromHub', arguments);
-            },
-
-            subscribeToHub : function (){
-
-                return constructMessage('VersionsHandlerHub', 'subscribeToHub', arguments);
-            },
-
-            getVersion : function (){
-
-                return constructMessage('VersionsHandlerHub', 'getVersion', arguments);
-            },
-
-            setWeb2boardVersion : function (version){
-
-                return constructMessage('VersionsHandlerHub', 'setWeb2boardVersion', arguments);
-            }
-        };
-        this.VersionsHandlerHub.client = {};
         this.SerialMonitorHub = {};
         this.SerialMonitorHub.server = {
             __HUB_NAME : 'SerialMonitorHub',
 
-            findBoardPort : function (){
+            findBoardPort : function (board){
 
                 return constructMessage('SerialMonitorHub', 'findBoardPort', arguments);
             },
@@ -412,9 +412,70 @@
             }
         };
         this.SerialMonitorHub.client = {};
+        this.ConfigHub = {};
+        this.ConfigHub.server = {
+            __HUB_NAME : 'ConfigHub',
+
+            restorePlatformioIniFile : function (){
+
+                return constructMessage('ConfigHub', 'restorePlatformioIniFile', arguments);
+            },
+
+            setWebSocketInfo : function (IP, port){
+
+                return constructMessage('ConfigHub', 'setWebSocketInfo', arguments);
+            },
+
+            getLibrariesPath : function (){
+
+                return constructMessage('ConfigHub', 'getLibrariesPath', arguments);
+            },
+
+            setLogLevel : function (logLevel){
+
+                return constructMessage('ConfigHub', 'setLogLevel', arguments);
+            },
+
+            getSubscribedClientsToHub : function (){
+
+                return constructMessage('ConfigHub', 'getSubscribedClientsToHub', arguments);
+            },
+
+            unsubscribeFromHub : function (){
+
+                return constructMessage('ConfigHub', 'unsubscribeFromHub', arguments);
+            },
+
+            changePlatformioIniFile : function (content){
+
+                return constructMessage('ConfigHub', 'changePlatformioIniFile', arguments);
+            },
+
+            setLibrariesPath : function (libDir){
+
+                return constructMessage('ConfigHub', 'setLibrariesPath', arguments);
+            },
+
+            subscribeToHub : function (){
+
+                return constructMessage('ConfigHub', 'subscribeToHub', arguments);
+            },
+
+            getConfig : function (){
+
+                return constructMessage('ConfigHub', 'getConfig', arguments);
+            },
+
+            setValues : function (configDic){
+
+                return constructMessage('ConfigHub', 'setValues', arguments);
+            }
+        };
+        this.ConfigHub.client = {};
     }
     /* jshint ignore:end */
     /* ignore jslint end */
+
 
 
     WSHubsAPI.construct = function (url, serverTimeout){

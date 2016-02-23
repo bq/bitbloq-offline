@@ -43,7 +43,7 @@ String::String(const __FlashStringHelper *pstr)
 	*this = pstr;
 }
 
-#if __cplusplus >= 201103L || defined(__GXX_EXPERIMENTAL_CXX0X__)
+#ifdef __GXX_EXPERIMENTAL_CXX0X__
 String::String(String &&rval)
 {
 	init();
@@ -189,7 +189,7 @@ String & String::copy(const __FlashStringHelper *pstr, unsigned int length)
 	return *this;
 }
 
-#if __cplusplus >= 201103L || defined(__GXX_EXPERIMENTAL_CXX0X__)
+#ifdef __GXX_EXPERIMENTAL_CXX0X__
 void String::move(String &rhs)
 {
 	if (buffer) {
@@ -221,7 +221,7 @@ String & String::operator = (const String &rhs)
 	return *this;
 }
 
-#if __cplusplus >= 201103L || defined(__GXX_EXPERIMENTAL_CXX0X__)
+#ifdef __GXX_EXPERIMENTAL_CXX0X__
 String & String::operator = (String &&rval)
 {
 	if (this != &rval) move(rval);
@@ -619,7 +619,7 @@ String String::substring(unsigned int left, unsigned int right) const
 		left = temp;
 	}
 	String out;
-	if (left >= len) return out;
+	if (left > len) return out;
 	if (right > len) right = len;
 	char temp = buffer[right];  // save the replaced character
 	buffer[right] = '\0';	
@@ -684,16 +684,15 @@ void String::replace(const String& find, const String& replace)
 }
 
 void String::remove(unsigned int index){
-	// Pass the biggest integer as the count. The remove method
-	// below will take care of truncating it at the end of the
-	// string.
-	remove(index, (unsigned int)-1);
+	if (index >= len) { return; }
+	int count = len - index;
+	remove(index, count);
 }
 
 void String::remove(unsigned int index, unsigned int count){
 	if (index >= len) { return; }
 	if (count <= 0) { return; }
-	if (count > len - index) { count = len - index; }
+	if (index + count > len) { count = len - index; }
 	char *writeTo = buffer + index;
 	len = len - count;
 	strncpy(writeTo, buffer + index + count,len - index);
