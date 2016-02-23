@@ -29,7 +29,6 @@ angular.module('bitbloqOffline')
               tab.active = false;
             }
           });
-
           selectedTab.active = true;
         };
 

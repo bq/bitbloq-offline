@@ -1,9 +1,9 @@
 <tabset>
-    <tab icon="'#hardware'" icon-size="'small'">
+    <tab icon="'#hardware'" icon-size="'small'" callback="hw2Bloqs.repaint()">
         <div ng-include="'views/hardware-tab.html'"></div>
         <div ng-include="'views/toolbox-hw.html'"></div>
     </tab>
-    <tab icon="'#software'" class="bloqs-tab" icon-size="'small'">        
+    <tab icon="'#software'" class="bloqs-tab" icon-size="'small'">
         <div class="container software" data-ng-include="'views/software-tab.html'"></div>
     </tab>
     <tab icon="'#codigo'" icon-size="'small'">

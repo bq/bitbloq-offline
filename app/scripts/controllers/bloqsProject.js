@@ -8,9 +8,9 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-  .controller('BloqsProjectCtrl', function($scope, $rootScope, alertsService, commonModals, $window, $document, bloqsUtils, projectApi, nodeFs, common, _, $log, bloqs) {
+  .controller('BloqsProjectCtrl', function($scope, $rootScope, hw2Bloqs, alertsService, commonModals, $window, $document, bloqsUtils, projectApi, nodeFs, common, _, $log, bloqs) {
     $log.debug('bloqsproject ctrl', $scope.$parent.$id);
-
+    $scope.hw2Bloqs = hw2Bloqs;
     $scope.setProject = function(project) {
       $scope.project = project;
 

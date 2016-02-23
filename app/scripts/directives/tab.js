@@ -8,7 +8,8 @@ angular.module('bitbloqOffline')
       scope: {
         heading: '=',
         icon: '=',
-        iconSize: '='
+        iconSize: '=',
+        callback: '='
       },
       link: function(scope, elem, attr, tabsetCtrl) {
         scope.active = false;
