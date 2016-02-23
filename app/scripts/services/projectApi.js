@@ -28,7 +28,7 @@ angular.module('bitbloqOffline')
 
     function download(projectRef, callback) {
       var project = exports.getCleanProject(projectRef),
-        filename = utils.removeDiacritics(projectRef.name);
+        filename = utils.removeDiacritics(common.translate('new-project'));
 
       project.exportedFromBitbloqOffline = true;
       project.bitbloqOfflineVersion = common.version;
@@ -40,6 +40,15 @@ angular.module('bitbloqOffline')
         callback(true);
       });
     }
+
+    exports.exportArduinoCode = function(componentsArray, arduinoMainBloqs) {
+      var code = utils.prettyCode(bloqsUtils.getCode(componentsArray, arduinoMainBloqs)),
+        filename = utils.removeDiacritics(common.translate('new-project'));
+
+      nodeUtils.downloadFile(filename.substring(0, 30) + '.ino', code, function(path) {
+        exports.savedInoPath = path;
+      });
+    };
 
     exports.save = function(projectRef, callback) {
       if (exports.savedProjectPath) {
