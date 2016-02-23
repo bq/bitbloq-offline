@@ -11,8 +11,6 @@ angular.module('bitbloqOffline')
       },
       controller: function($scope, $element, $attrs, $window, _) {
 
-        const TOOLBOXWIDTHPLUSMARGIN = 280;
-
         function initialize() {
           $target = angular.element($scope.target);
           $container = angular.element($scope.container);
@@ -31,7 +29,7 @@ angular.module('bitbloqOffline')
             default:
               throw 'Not an orientation';
           }
-          if (targetSize > containerSize - TOOLBOXWIDTHPLUSMARGIN) {
+          if (targetSize > containerSize) {
             $scope.showScroll = true;
             setScrollsDimension($scope.type);
           } else {
