@@ -9,45 +9,46 @@
  * Main module of the application.
  */
 angular
-  .module('bitbloqOffline', [
-    'ngRoute',
-    'ngSanitize',
-    'ngWebSocket',
-    'pascalprecht.translate',
-    'angular-clipboard',
-    'ngDialog'
-  ]).config(['$routeProvider', '$translateProvider',
-    function($routeProvider, $translateProvider) {
+    .module('bitbloqOffline', [
+        'ngRoute',
+        'ngSanitize',
+        'ngWebSocket',
+        'pascalprecht.translate',
+        'angular-clipboard',
+        'ngDialog'
+    ]).config(['$routeProvider', '$translateProvider',
+        function($routeProvider, $translateProvider) {
 
-      $routeProvider
-        .when('/', {
-          templateUrl: 'views/bloqs-project.html'
-        })
-        .otherwise({
-          redirectTo: '/'
+            $routeProvider
+                .when('/', {
+                    templateUrl: 'views/bloqs-project.html'
+                })
+                .otherwise({
+                    redirectTo: '/'
+                });
+            $translateProvider.useStaticFilesLoader({
+                prefix: 'res/locales/',
+                suffix: '.json'
+            });
+
+            //indicamos el idioma inicial
+            $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
+            $translateProvider.preferredLanguage('es-ES');
+            $translateProvider.fallbackLanguage('es-ES');
+        }
+
+    ])
+    .run(function(_, bloqs, bloqsUtils, bloqsLanguages, nodeRemote, nodeDialog, nodeFs) {
+        // Make sure _ is invoked at runtime. This does nothing but force the "_" to
+        // be loaded after bootstrap. This is done so the "_" factory has a chance to
+        // "erase" the global reference to the lodash library.
+        bloqs.setOptions({
+            fieldOffsetLeft: 48,
+            fieldOffsetTopForced: 41,
+            forcedScrollTop: 0
         });
-      $translateProvider.useStaticFilesLoader({
-        prefix: 'res/locales/',
-        suffix: '.json'
-      });
 
-      //indicamos el idioma inicial
-      $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
-      $translateProvider.preferredLanguage('es-ES');
-      $translateProvider.fallbackLanguage('es-ES');
-    }
+        console.log('Start Bitbloq Offline');
+        // console.log(process);
 
-  ])
-  .run(function(_, bloqs, bloqsUtils, bloqsLanguages, nodeRemote, nodeDialog, nodeFs) {
-    // Make sure _ is invoked at runtime. This does nothing but force the "_" to
-    // be loaded after bootstrap. This is done so the "_" factory has a chance to
-    // "erase" the global reference to the lodash library.
-    bloqs.setOptions({
-      fieldOffsetLeft: 48,
-      fieldOffsetTopForced: 41
     });
-
-    console.log('Start Bitbloq Offline');
-    // console.log(process);
-
-  });
