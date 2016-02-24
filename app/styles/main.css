@@ -1122,6 +1122,11 @@ code {
     margin-top: 7px;
     line-height: 22px; }
 
+.bloq--statement-input .bloq--statement-input__header span {
+  z-index: 2;
+  margin-right: 1em;
+  margin-left: 0.5em; }
+
 #bloqs--field {
   background-color: #EBEBEB;
   width: 100%;
