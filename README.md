@@ -1,7 +1,6 @@
 
 # Bitbloq Offline 
 
-----------
 ## Introduction ##
 This is the offline version of the Bitbloq project, a [visual programming tool](https://en.wikipedia.org/wiki/Visual_programming_language) for [Arduino](https://www.arduino.cc/). 
 
@@ -16,7 +15,6 @@ And the following robots:
  - ZOWI
 
 
-----------
 
 
 ## Getting Started ##
@@ -37,7 +35,6 @@ Launch the app:
 
     electron .
 
-----------
 
 ## Packaging ##
 Just build for all Operating systems:
@@ -89,7 +86,6 @@ app
 ```
 
 
-----------
 
 ## Developing ##
 
