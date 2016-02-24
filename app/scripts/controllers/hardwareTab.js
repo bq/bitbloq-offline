@@ -421,7 +421,27 @@ angular.module('bitbloqOffline')
       $scope.refreshComponentsArray();
     };
 
+    $scope.anyComponent = function(forceCheck) {
+        if ($scope.currentTab === 0 && !forceCheck) { //software Toolbox not visible
+            return false;
+        }
+        if (_.isEqual($scope.componentsArray, _emptyComponentsArray())) {
+            return false;
+        }
+        var compCategories = _.pick($scope.componentsArray, function(item) {
+            return item.length > 0;
+        });
+        var tmpCompCategories = _.cloneDeep(compCategories);
+        if (tmpCompCategories.serialElements) {
+            delete tmpCompCategories.serialElements;
+        }
+        if (tmpCompCategories.robot) {
+            delete tmpCompCategories.robot;
+        }
 
+        return (Object.keys(tmpCompCategories).length > 0);
+    };
+    
     $scope.drop = function(data) {
       if (data.type === 'boards') {
         var board = _.find($scope.hardware.boardList, function(board) {
