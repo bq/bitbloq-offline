@@ -1107,6 +1107,21 @@ code {
 .token.lf:before {
   color: #e0d7d1; }
 
+.bloq-comment > .bloq--fixed,
+.bloq-code > .bloq--fixed {
+  padding: 0em;
+  display: list-item;
+  list-style: none; }
+  .bloq-comment > .bloq--fixed span,
+  .bloq-code > .bloq--fixed span {
+    vertical-align: top;
+    display: inline-block;
+    padding-top: 12px; }
+  .bloq-comment > .bloq--fixed textarea,
+  .bloq-code > .bloq--fixed textarea {
+    margin-top: 7px;
+    line-height: 22px; }
+
 #bloqs--field {
   background-color: #EBEBEB;
   width: 100%;
