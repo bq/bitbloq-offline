@@ -421,10 +421,7 @@ angular.module('bitbloqOffline')
       $scope.refreshComponentsArray();
     };
 
-    $scope.anyComponent = function(forceCheck) {
-        if ($scope.currentTab === 0 && !forceCheck) { //software Toolbox not visible
-            return false;
-        }
+    $scope.anyComponent = function() {
         if (_.isEqual($scope.componentsArray, _emptyComponentsArray())) {
             return false;
         }
@@ -439,8 +436,29 @@ angular.module('bitbloqOffline')
             delete tmpCompCategories.robot;
         }
 
+        if (tmpCompCategories.board) {
+            delete tmpCompCategories.board;
+        }
+
         return (Object.keys(tmpCompCategories).length > 0);
     };
+
+    function _emptyComponentsArray() {
+        return {
+            leds: [],
+            rgbs: [],
+            sensors: [],
+            buzzers: [],
+            servos: [],
+            continuousServos: [],
+            oscillators: [],
+            lcds: [],
+            serialElements: [],
+            clocks: [],
+            hts221: [],
+            robot: []
+        };
+    }
     
     $scope.drop = function(data) {
       if (data.type === 'boards') {
