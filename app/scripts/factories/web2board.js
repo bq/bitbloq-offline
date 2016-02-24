@@ -14,7 +14,8 @@ angular.module('bitbloqOffline')
         var web2board = this,
             ws,
             inProgress = false,
-            TIME_FOR_WEB2BOARD_TO_START = 500; //ms
+            TIME_FOR_WEB2BOARD_TO_START = 500,
+            w2bToast = null; //ms
 
         web2board.config = {
             wsHost: 'localhost',
@@ -40,7 +41,7 @@ angular.module('bitbloqOffline')
         function startWeb2board() {
             console.log('starting Web2board...');
             var spawn = require('child_process').spawn,
-                web2boardProcess = spawn(getWeb2boardCommand());
+                web2boardProcess = spawn(getWeb2boardCommand(), ["--port", web2board.config.wsPort]);
             web2boardProcess.on("close", function (code) {
                 console.log("Web2board closed with code: " + code);
             });
@@ -53,15 +54,19 @@ angular.module('bitbloqOffline')
             callback = callback || function () {
                 };
             if (!ws.wsClient || (ws.wsClient.readyState !== WebSocket.CONNECTING && ws.wsClient.readyState !== WebSocket.OPEN)) {
+
                 ws.connect().done(function () {
+                        alertsService.close(w2bToast);
                         ws.UtilsAPIHub.server.setId("Bitbloq").done(callback);
                     },
                     function () { //on error
                         if (showUpdateModalFlag) {
+                            alertsService.close(w2bToast);
                             showUpdateModal();
                         } else {
                             if (tryCount === 1) {
                                 // we only need to start web2board once
+                                w2bToast = alertsService.add('web2board_toast_startApp', 'web2board', 'loading');
                                 startWeb2board();
                             }
                             $timeout(function () {
@@ -77,17 +82,12 @@ angular.module('bitbloqOffline')
 
         function handleUploadError(error) {
             if (error.title === 'COMPILE_ERROR') {
-                alertsService.add('alert-web2board-compile-error', 'compile', 'warning', undefined, error.stdErr);
+                alertsService.add('alert-web2board-compile-error', 'upload', 'warning', undefined, error.stdErr);
             } else if (error.title === 'BOARD_NOT_READY') {
-                alertsService.add('alert-web2board-boardNotReady', 'upload', 'warning', undefined);
+                alertsService.add('alert-web2board-boardNotReady', 'upload', 'warning');
             } else {
                 var errorTag = 'alert-web2board-upload-error';
-                inProgress = false;
-                if (error) {
-                    alertsService.add(errorTag, 'upload', 'warning', undefined, error);
-                } else {
-                    alertsService.add(errorTag, 'upload', 'warning', undefined);
-                }
+                alertsService.add(errorTag, 'upload', 'warning', undefined, error);
             }
         }
 
