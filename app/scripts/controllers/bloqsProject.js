@@ -230,7 +230,7 @@ angular.module('bitbloqOffline')
       project = project || $scope.getCurrentProject();
       if (projectApi.hasChanged(project)) {
         return projectApi.save(project, function() {
-          alertsService.add('make-saved-project', 'project-saved', 'info', 3000);
+          alertsService.add('make-saved-project', 'project-saved', 'ok', 3000);
           if (callback) {
             return callback();
           }
@@ -240,7 +240,6 @@ angular.module('bitbloqOffline')
 
     $scope.saveIno = function() {
       projectApi.exportArduinoCode($scope.componentsArray, $scope.arduinoMainBloqs);
-      alertsService.add('make-saved-project', 'project-saved', 'info', 3000);
     };
 
     $window.onbeforeunload = function(e) {

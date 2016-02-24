@@ -8,7 +8,7 @@
  * Service in the bitbloqOffline.
  */
 angular.module('bitbloqOffline')
-  .service('projectApi', function(utils, nodeUtils, common, _, nodeFs) {
+  .service('projectApi', function(utils, nodeUtils, common, _, nodeFs, alertsService) {
     var exports = {};
     exports.savedProjectPath = null;
     exports.oldProject = null;
@@ -46,6 +46,7 @@ angular.module('bitbloqOffline')
         filename = utils.removeDiacritics(common.translate('new-project'));
 
       nodeUtils.downloadFile(filename.substring(0, 30) + '.ino', code, function(path) {
+        alertsService.add('make-saved-project', 'project-saved', 'ok', 3000);
         exports.savedInoPath = path;
       });
     };

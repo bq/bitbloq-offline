@@ -115,7 +115,7 @@ angular.module('bitbloqOffline')
     function copyCodeToClipboard() {
       var code = utils.prettyCode(bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs));
       $log.debug(code);
-      alertsService.add('make-code-clipboard', 'code-clipboard', 'info', 3000);
+      alertsService.add('make-code-clipboard', 'code-clipboard', 'ok', 3000);
       clipboard.copyText(code);
     }
 

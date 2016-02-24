@@ -33,17 +33,17 @@ $bloqs-container-width: calc(100% - #{$bloqs-tabs-width});
 
 .tablist__item.active {
   .tablist__item__button {
-    background-color: #ebebeb;
+    background-color: #1e1f21;
 
     &:hover {
       svg {
-        fill: $color-black;
+        fill: $color-white;
       }
     }
   }
 
   svg {
-    fill: $color-black;
+    fill: $color-white;
   }
 }
 
