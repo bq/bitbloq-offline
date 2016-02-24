@@ -1,0 +1,17 @@
+$whiteDownArrow:'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #FFFFFF;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>';
+
+.bloq-comment > .bloq--fixed,
+.bloq-code > .bloq--fixed {
+    padding   : 0em;
+    display   : list-item;
+    list-style: none;
+    span {
+        vertical-align: top;
+        display       : inline-block;
+        padding-top   : 12px;
+    }
+    textarea {
+        margin-top : 7px;
+        line-height: 22px;
+    }
+}

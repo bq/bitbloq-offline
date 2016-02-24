@@ -164,7 +164,7 @@ angular.module('bitbloqOffline')
           action: $scope.saveProject,
           disabled: false
         }, {
-          name: 'save-as',
+          name: 'offline-save-as',
           icon: '#guardar',
           action: $scope.saveProject,
           disabled: false

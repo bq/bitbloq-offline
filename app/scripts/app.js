@@ -34,7 +34,7 @@ angular
       //indicamos el idioma inicial
       $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
       $translateProvider.preferredLanguage('es-ES');
-      // $translateProvider.fallbackLanguage('en-GB');
+      $translateProvider.fallbackLanguage('es-ES');
     }
 
   ])
