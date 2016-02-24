@@ -1,6 +1,11 @@
+.code-tab {
+    -webkit-user-select: initial;
+    user-select: initial;
+}
+
 .line-numbers {
-  padding-left: 1em!important;
-  code {
-    position: static;
-  }
+    padding-left: 1em!important;
+    code {
+        position: static;
+    }
 }

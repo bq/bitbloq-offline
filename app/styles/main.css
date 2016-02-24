@@ -1503,6 +1503,10 @@ code {
 .opaque {
   opacity: 1 !important; }
 
+.code-tab {
+  -webkit-user-select: initial;
+  user-select: initial; }
+
 .line-numbers {
   padding-left: 1em !important; }
   .line-numbers code {
