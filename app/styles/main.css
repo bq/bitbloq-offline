@@ -509,12 +509,12 @@ dropdown .menu .menu__dropdown {
   overflow: hidden; }
 
 .tablist__item.active .tablist__item__button {
-  background-color: #ebebeb; }
+  background-color: #1e1f21; }
   .tablist__item.active .tablist__item__button:hover svg {
-    fill: #000; }
+    fill: #fff; }
 
 .tablist__item.active svg {
-  fill: #000; }
+  fill: #fff; }
 
 .tablist__item__button {
   border-bottom: 1px solid #797c81;
