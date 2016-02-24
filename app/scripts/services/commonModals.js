@@ -25,12 +25,14 @@ angular.module('bitbloqOffline')
 
       var modalOptions = $rootScope.$new();
       _.extend(modalOptions, {
-        title: 'modal-exit-title',
+        title: 'save',
         confirmButton: 'modal-exit-save',
         rejectButton: 'modal-exit-exit',
         confirmAction: confirmAction,
         rejectAction: rejectAction,
-        modalButtons: true
+        contentTemplate: 'file://' + __dirname + '/views/modals/text.html',
+        modalButtons: true,
+        save: true
       });
 
       var notSavedModal = ngDialog.open({
