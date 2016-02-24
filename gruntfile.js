@@ -68,23 +68,21 @@ module.exports = function(grunt) {
           dest: 'dist/mac/Electron.app/Contents/Resources/app/'
         }]
       },
-      prebuilt: {
-        windows: {
-          files: [{
-            expand: true,
-            cwd: 'res/windows32-prebuilt',
-            src: ['**'],
-            dest: 'dist/windows32/'
-          }]
-        },
-        linux: {
-          files: [{
-            expand: true,
-            cwd: 'res/windows32-prebuilt',
-            src: ['**'],
-            dest: 'dist/windows32/'
-          }]
-        }
+      prebuiltWindows: {
+        files: [{
+          expand: true,
+          cwd: 'res/windows32-prebuilt',
+          src: ['**'],
+          dest: 'dist/windows32/'
+        }]
+      },
+      prebuiltLinux: {
+        files: [{
+          expand: true,
+          cwd: 'res/linux-prebuilt',
+          src: ['**'],
+          dest: 'dist/linux/'
+        }]
       }
     },
     clean: {
@@ -135,7 +133,7 @@ module.exports = function(grunt) {
           'sass',
           'svgstore',
           'clean',
-          'copy:prebuilt:windows',
+          'copy:prebuiltWindows',
           'copy:windows',
           'shell'
         ]);
@@ -154,7 +152,7 @@ module.exports = function(grunt) {
           'sass',
           'svgstore',
           'clean',
-          'copy:prebuilt:linux',
+          'copy:prebuiltLinux',
           'copy:linux',
           'shell'
         ]);
@@ -164,8 +162,8 @@ module.exports = function(grunt) {
           'sass',
           'svgstore',
           'clean',
-          'copy:prebuilt:linux',
-          'copy:prebuilt:windows',
+          'copy:prebuiltLinux',
+          'copy:prebuiltWindows',
           'copy:linux',
           'shell'
         ]);
