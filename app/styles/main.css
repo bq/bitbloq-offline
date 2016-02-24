@@ -1127,6 +1127,45 @@ code {
   margin-right: 1em;
   margin-left: 0.5em; }
 
+#bloqs--field.theme-colors .bloq.bloq-class:not(.disabled) > .bloq--statement-input__header {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-class:not(.disabled) > .bloq--extension > .bloq--extension--end {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-class:not(.disabled):before {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-invoke-class:not(.disabled).bloq--statement {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-constructor:not(.disabled) > .bloq--statement-input__header {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-constructor:not(.disabled) > .bloq--extension > .bloq--extension--end {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-constructor:not(.disabled):before {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-invoke-class-function:not(.disabled).bloq--statement {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-invoke-class-return-function:not(.disabled).bloq--output {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-invoke-class-return-function:not(.disabled).bloq--output:before {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-set-class-variable:not(.disabled).bloq--statement {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-select-class-variable:not(.disabled).bloq--output {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-select-class-variable:not(.disabled).bloq--output:before {
+  background-color: #e30b9a; }
+
 #bloqs--field {
   background-color: #EBEBEB;
   width: 100%;
@@ -1553,10 +1592,8 @@ code {
     background-color: #11489a; }
   .toolbox-sw .toolbox__title--color.logics {
     background-color: #7c0dd6; }
-  .toolbox-sw .toolbox__title--color.communications {
-    background-color: #e30b9a; }
   .toolbox-sw .toolbox__title--color.classes {
-    background-color: #9b0769; }
+    background-color: #e30b9a; }
   .toolbox-sw .toolbox__title--color.zowi {
     background-color: #4e929b; }
   .toolbox-sw .toolbox__title--color.evolution {
