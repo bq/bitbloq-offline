@@ -1561,7 +1561,8 @@ code {
       outline: 4px solid #f1c933 !important;
       background-color: transparent; }
     .protocanvas .board.board--present {
-      outline: none; }
+      outline: none;
+      background-color: transparent; }
       .protocanvas .board.board--present .board__message {
         opacity: 0; }
     .protocanvas .board .board__message {

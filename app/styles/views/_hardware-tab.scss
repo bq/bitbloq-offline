@@ -337,7 +337,8 @@ $color_hover: #f19833;
 
     &.board--present {
       outline: none;
-
+      background-color: transparent;
+      
       .board__message {
         opacity: 0;
       }
