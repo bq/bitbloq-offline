@@ -97,40 +97,41 @@ angular.module('bitbloqOffline')
       return false;
     };
     $scope.showComponents = function(item) {
-      var stopWord = ['analogWrite', 'digitalWrite', 'hwVariable', 'pinReadAdvanced', 'pinWriteAdvanced', 'turnOnOffAdvanced', 'digitalReadAdvanced', 'analogReadAdvanced'];
-
-      if (stopWord.indexOf(item) === -1) {
-        var userComponents = _.keys(_.pick($scope.componentsArray, function(value) {
-          return value.length > 0;
-        }));
-        var result = false;
-        userComponents.forEach(function(value) {
-          if (item.indexOf('serial') > -1) {
-            result = $scope.showCommunications(item);
-          } else {
-            if (value[value.length - 1] === 's') {
-              value = value.substring(0, value.length - 1);
-            }
-            if (value === 'servo') {
-              value = 'servoNormal';
-            }
-            item = item.toUpperCase();
-            value = value.toUpperCase();
-            if (item.includes('RGBLED')) {
-              if (value.includes('RGB')) {
+        var stopWord = ['analogWrite', 'digitalWrite', 'pinReadAdvanced', 'pinWriteAdvanced', 'turnOnOffAdvanced', 'digitalReadAdvanced', 'analogReadAdvanced'];
+        if (stopWord.indexOf(item) === -1) {
+            var userComponents = _.keys(_.pick($scope.componentsArray, function(value) {
+                return value.length > 0;
+            }));
+            var result = false;
+            if (item === 'hwVariable' && userComponents.length !== 0) {
                 result = true;
-              }
             } else {
-              if (item.includes(value) || value.includes(item)) {
-                result = true;
-              }
+                userComponents.forEach(function(value) {
+                    if (item.indexOf('serial') > -1) {
+                        result = $scope.showCommunications(item);
+                    } else {
+                        if (value[value.length - 1] === 's') {
+                            value = value.substring(0, value.length - 1);
+                        }
+                        if (value === 'servo') {
+                            value = 'servoNormal';
+                        }
+                        item = item.toUpperCase();
+                        value = value.toUpperCase();
+                        if (item.includes('RGBLED') && value.includes('RGB')) {
+                            result = true;
+                        } else if ((value.includes('SERVO') || value === 'OSCILLATOR') && (item === 'SERVOATTACH' || item === 'SERVODETACH')) {
+                            result = true;
+                        } else if (item.includes(value) || value.includes(item)) {
+                            result = true;
+                        }
+                    }
+                });
             }
-          }
-        });
-        return result;
-      } else {
-        return true;
-      }
+            return result;
+        } else {
+            return true;
+        }
     };
 
     $scope.refreshComponentsArray = function() {
