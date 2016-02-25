@@ -31,3 +31,9 @@ body {
     }
   }
 }
+
+// Remove Mac glow
+:focus {
+  outline-color: transparent;
+  outline-style: none;
+}

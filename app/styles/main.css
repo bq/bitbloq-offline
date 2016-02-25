@@ -340,6 +340,10 @@ body {
 .bloq--statement-input .bloq--statement-input__header span {
   z-index: 1 !important; }
 
+:focus {
+  outline-color: transparent;
+  outline-style: none; }
+
 .main__content {
   position: relative; }
 
@@ -1157,6 +1161,75 @@ code {
 #bloqs--field.theme-colors .bloq.bloq-invoke-class-return-function:not(.disabled).bloq--output:before {
   background-color: #e30b9a; }
 
+#bloqs--field.theme-colors .bloq.bloq-class-children:not(.disabled) > .bloq--statement-input__header {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-class-children:not(.disabled):before {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-class-children:not(.disabled) > .bloq--extension > .bloq--extension--end {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-constructor-arguments:not(.disabled) > .bloq--statement-input__header {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-constructor-arguments:not(.disabled):before {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-constructor-arguments:not(.disabled) > .bloq--extension > .bloq--extension--end {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-invoke-arguments-class:not(.disabled).bloq--statement {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-public:not(.disabled) > .bloq--statement-input__header {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-public:not(.disabled):before {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-protected:not(.disabled) > .bloq--extension > .bloq--extension--end {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-public:not(.disabled) > .bloq--extension > .bloq--extension--end {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-protected:not(.disabled) > .bloq--statement-input__header {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-protected:not(.disabled):before {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-invoke-class-function-args:not(.disabled).bloq--statement {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-array-class-variable:not(.disabled).bloq--output {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-array-class-variable:not(.disabled).bloq--output:before {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-set-class-variableArray:not(.disabled).bloq--statement {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-private:not(.disabled) > .bloq--statement-input__header {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-private:not(.disabled):before {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-private:not(.disabled) > .bloq--extension > .bloq--extension--end {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-invoke-class-return-function:not(.disabled).bloq--output:focus:not(.disabled):after {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-select-class-variable:not(.disabled).bloq--output:focus:not(.disabled):after {
+  background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-array-class-variable:not(.disabled).bloq--output:focus:not(.disabled):after {
+  background-color: #e30b9a; }
+
 #bloqs--field.theme-colors .bloq.bloq-set-class-variable:not(.disabled).bloq--statement {
   background-color: #e30b9a; }
 
@@ -1165,6 +1238,15 @@ code {
 
 #bloqs--field.theme-colors .bloq.bloq-select-class-variable:not(.disabled).bloq--output:before {
   background-color: #e30b9a; }
+
+#bloqs--field.theme-colors .bloq.bloq-serial-receiver:not(.disabled).bloq--output {
+  background-color: #ce1c23; }
+
+#bloqs--field.theme-colors .bloq.bloq-serial-send:not(.disabled).bloq--statement {
+  background-color: #ce1c23; }
+
+#bloqs--field.theme-colors .bloq.bloq-serial-receiver:not(.disabled).bloq--output:before {
+  background-color: #ce1c23; }
 
 #bloqs--field {
   background-color: #EBEBEB;
