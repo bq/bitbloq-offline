@@ -1276,10 +1276,15 @@ code {
   .bloq--group .field--header {
     overflow: hidden;
     border-bottom: 1px solid #ebebeb;
-    min-height: 40px; }
+    min-height: 40px;
+    cursor: default; }
+  .bloq--group .field--content {
+    cursor: default; }
   .bloq--group .bloq--extension--info {
     height: auto;
     padding: 10px; }
+  .bloq--group .connector--root--group {
+    cursor: default; }
 
 .make--scrollbar {
   width: 17px;

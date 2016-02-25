@@ -34,11 +34,20 @@
     overflow     : hidden;
     border-bottom: 1px solid #ebebeb;
     min-height   : 40px;
+    cursor       : default;
+  }
+
+  .field--content {
+    cursor       : default;
   }
 
   .bloq--extension--info {
     height : auto;
     padding: 10px;
+  }
+
+  .connector--root--group {
+    cursor: default;
   }
 }
 
