@@ -34,7 +34,7 @@
       <div id="component-context-menu" class="hw-context-menu">
           <ul class="menu">
               <li class="menu__item">
-                  <button data-ng-click="duplicateComponent()" tabindex="0" data-element="hw-contextmenu-component-duplicate">{{'make-hardware-component-duplicate' | translate}}</button>
+                  <button data-ng-click="duplicateComponent(componentSelected)" tabindex="0" data-element="hw-contextmenu-component-duplicate">{{'make-hardware-component-duplicate' | translate}}</button>
               </li>
               <li class="menu__item">
                   <button data-ng-show="componentSelected.connected" data-ng-click="disconnectComponent()" data-element="hw-contextmenu-component-disconnect">{{'make-hardware-component-disconnect' | translate}}</button>
