@@ -29,7 +29,7 @@ angular.module('bitbloqOffline')
                 return common.appPath + "/app/res/web2board/win32/web2board.exe";
             }
             if (platformOs === 'darwin') {
-                return common.appPath + "/app/res/web2board/darwin/web2board";
+                return common.appPath + "/app/res/web2board/darwin/Web2Board.app/Contents/MacOS/Web2Board";
             }
             return common.appPath + "/app/res/web2board/linux/web2board";
         }

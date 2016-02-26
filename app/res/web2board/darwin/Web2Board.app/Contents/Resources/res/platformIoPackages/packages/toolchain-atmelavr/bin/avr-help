@@ -1,0 +1,2 @@
+#!/bin/sh
+exec open "/usr/local/CrossPack-AVR-20131216/manual/index.html"

@@ -1,0 +1,43 @@
+{
+    "version": 1,
+    "disable_existing_loggers": false,
+    "formatters": {
+        "simple": {
+            "format": "%(asctime)s - %(message)s",
+            "datefmt": "%Y/%m/%d %H:%M:%S"
+        }
+    },
+    "handlers": {
+        "console": {
+            "class": "libs.LoggingUtils.ColoredConsoleHandler",
+            "level": "INFO",
+            "formatter": "simple",
+            "stream": "ext://sys.stdout"
+        },
+        "file_handler": {
+            "class": "libs.LoggingUtils.RotatingHandler",
+            "level": "DEBUG",
+            "formatter": "simple",
+            "filename": "info.log",
+            "maxBytes": 5485760,
+            "backupCount": 2,
+            "encoding": "utf8"
+        }
+    },
+    "loggers": {
+        "my_module": {
+            "level": "ERROR",
+            "handlers": [
+                "console"
+            ],
+            "propagate": "no"
+        }
+    },
+    "root": {
+        "level": "DEBUG",
+        "handlers": [
+            "console",
+            "file_handler"
+        ]
+    }
+}

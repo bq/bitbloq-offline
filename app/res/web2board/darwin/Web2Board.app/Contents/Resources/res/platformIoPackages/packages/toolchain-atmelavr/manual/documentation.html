@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CrossPack for AVR Development - A Development Environment for AVR Microcontrollers</title>
+<link rel="stylesheet" href="resources/style.css" type="text/css">
+</head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0><tr>
+<td valign=top align=left><div class="index">
+<img src='resources/logo150.jpg' width="150" height="131" border=0 alt="Logo" align=center><h3>CrossPack for AVR Development 20131216</h3>
+<p>
+<a href="index.html">Overview</a><p>
+<a href="installation.html">Installation and Removal</a><p>
+<a href="gettingstarted.html">Getting Started</a><p>
+<a href="documentation.html">Documentation</a><p>
+<a href="links.html">Links</a><p>
+<a href="releasenotes.html">Release Notes</a><p>
+<a href="licenses.html">Software Licenses</a>
+</p>
+</div></td>
+<td bgcolor="#bbb" width=1></td><td width=20>&nbsp;</td>
+<td valign=top align=left>
+<h1>Documentation</h1>
+The various packages contained in CrossPack for AVR Development come with different forms of documentation. Some have HTML documentation, some have Unix man pages and some have GNU Info files.
+<p>
+This section is a starting point for all documentation resources. Unfortunately, we can't link Unix man pages and GNU Info files into this HTML page. You must type the appropriate commands yourself.
+
+<h2>Documentation Available in HTML Format</h2>
+<a href="file:///usr/local/CrossPack-AVR-20131216/doc/avr-libc/index.html">AVR Libc - a C library for GCC on AVR microcontrollers</a><br>
+<a href="file:///usr/local/CrossPack-AVR-20131216/doc/avrdude/index.html">AVRDUDE - AVR Downloader/Uploader</a><br>
+
+<h2>Documentation Available as Unix Man Pages</h2>
+CrossPack for AVR Development includes the command <tt>avr-man</tt> to ensure that AVR specific manual pages are printed. Example:
+<div class="shell box header">Shell Session:</div><div class="shell box">bash$ avr-man strcpy
+&lt;string.h&gt;: Strings(3)             avr-libc             &lt;string.h&gt;: Strings(3)
+
+NAME
+       &lt;string.h&gt;: Strings -
+
+Detailed Description
+        #include &lt;string.h&gt;
+
+       The string functions perform string operations on NULL terminated
+       strings.
+       ...
+</div>
+
+<h2>Documentation Available as GNU Info Pages</h2>
+CrossPack for AVR Development includes the command <tt>avr-info</tt> to ensure that AVR specific info pages are printed. Example:
+<div class="shell box header">Shell Session:</div><div class="shell box">bash$ avr-info binutils
+File: binutils.info,  Node: Top,  Next: ar,  Up: (dir)
+
+Introduction
+************
+
+This brief manual contains documentation for the GNU binary utilities
+(GNU Binutils) version 2.17.90:
+...
+</div>
+<h3>List of Info Documents</h3>
+annotate<br>
+as<br>
+bfd<br>
+binutils<br>
+configure<br>
+cpp<br>
+cppinternals<br>
+gcc<br>
+gccinstall<br>
+gccint<br>
+gdb<br>
+gdbint<br>
+gprof<br>
+ld<br>
+make<br>
+stabs<br>
+standards<br>
+
+<h2>AVR Libc Examples</h2>
+AVR Libc comes with a set of example projects. These can be viewed <a href="file:///usr/local/CrossPack-AVR-20131216/share/doc/avr-libc-1.8.0svn/examples/">here</a>.
+
+</td></table>
+</body></html>

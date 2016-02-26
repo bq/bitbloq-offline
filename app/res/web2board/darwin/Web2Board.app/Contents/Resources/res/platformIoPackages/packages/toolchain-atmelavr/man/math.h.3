@@ -1,0 +1,295 @@
+.TH "math.h" 3 "Thu Dec 29 2011" "Version 1.8.0" "avr-libc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+math.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBM_E\fP   2\&.7182818284590452354"
+.br
+.ti -1c
+.RI "#define \fBM_LOG2E\fP   1\&.4426950408889634074	/* log_2 e */"
+.br
+.ti -1c
+.RI "#define \fBM_LOG10E\fP   0\&.43429448190325182765	/* log_10 e */"
+.br
+.ti -1c
+.RI "#define \fBM_LN2\fP   0\&.69314718055994530942	/* log_e 2 */"
+.br
+.ti -1c
+.RI "#define \fBM_LN10\fP   2\&.30258509299404568402	/* log_e 10 */"
+.br
+.ti -1c
+.RI "#define \fBM_PI\fP   3\&.14159265358979323846	/* pi */"
+.br
+.ti -1c
+.RI "#define \fBM_PI_2\fP   1\&.57079632679489661923	/* pi/2 */"
+.br
+.ti -1c
+.RI "#define \fBM_PI_4\fP   0\&.78539816339744830962	/* pi/4 */"
+.br
+.ti -1c
+.RI "#define \fBM_1_PI\fP   0\&.31830988618379067154	/* 1/pi */"
+.br
+.ti -1c
+.RI "#define \fBM_2_PI\fP   0\&.63661977236758134308	/* 2/pi */"
+.br
+.ti -1c
+.RI "#define \fBM_2_SQRTPI\fP   1\&.12837916709551257390	/* 2/\fBsqrt\fP(pi) */"
+.br
+.ti -1c
+.RI "#define \fBM_SQRT2\fP   1\&.41421356237309504880	/* \fBsqrt\fP(2) */"
+.br
+.ti -1c
+.RI "#define \fBM_SQRT1_2\fP   0\&.70710678118654752440	/* 1/\fBsqrt\fP(2) */"
+.br
+.ti -1c
+.RI "#define \fBNAN\fP   __builtin_nan('')"
+.br
+.ti -1c
+.RI "#define \fBINFINITY\fP   __builtin_inf()"
+.br
+.ti -1c
+.RI "#define \fBcosf\fP   \fBcos\fP"
+.br
+.ti -1c
+.RI "#define \fBsinf\fP   \fBsin\fP"
+.br
+.ti -1c
+.RI "#define \fBtanf\fP   \fBtan\fP"
+.br
+.ti -1c
+.RI "#define \fBfabsf\fP   \fBfabs\fP"
+.br
+.ti -1c
+.RI "#define \fBfmodf\fP   \fBfmod\fP"
+.br
+.ti -1c
+.RI "#define \fBsqrtf\fP   \fBsqrt\fP"
+.br
+.ti -1c
+.RI "#define \fBcbrtf\fP   \fBcbrt\fP"
+.br
+.ti -1c
+.RI "#define \fBhypotf\fP   \fBhypot\fP"
+.br
+.ti -1c
+.RI "#define \fBsquaref\fP   \fBsquare\fP"
+.br
+.ti -1c
+.RI "#define \fBfloorf\fP   \fBfloor\fP"
+.br
+.ti -1c
+.RI "#define \fBceilf\fP   \fBceil\fP"
+.br
+.ti -1c
+.RI "#define \fBfrexpf\fP   \fBfrexp\fP"
+.br
+.ti -1c
+.RI "#define \fBldexpf\fP   \fBldexp\fP"
+.br
+.ti -1c
+.RI "#define \fBexpf\fP   \fBexp\fP"
+.br
+.ti -1c
+.RI "#define \fBcoshf\fP   \fBcosh\fP"
+.br
+.ti -1c
+.RI "#define \fBsinhf\fP   \fBsinh\fP"
+.br
+.ti -1c
+.RI "#define \fBtanhf\fP   \fBtanh\fP"
+.br
+.ti -1c
+.RI "#define \fBacosf\fP   \fBacos\fP"
+.br
+.ti -1c
+.RI "#define \fBasinf\fP   \fBasin\fP"
+.br
+.ti -1c
+.RI "#define \fBatanf\fP   \fBatan\fP"
+.br
+.ti -1c
+.RI "#define \fBatan2f\fP   \fBatan2\fP"
+.br
+.ti -1c
+.RI "#define \fBlogf\fP   \fBlog\fP"
+.br
+.ti -1c
+.RI "#define \fBlog10f\fP   \fBlog10\fP"
+.br
+.ti -1c
+.RI "#define \fBpowf\fP   \fBpow\fP"
+.br
+.ti -1c
+.RI "#define \fBisnanf\fP   \fBisnan\fP"
+.br
+.ti -1c
+.RI "#define \fBisinff\fP   \fBisinf\fP"
+.br
+.ti -1c
+.RI "#define \fBisfinitef\fP   \fBisfinite\fP"
+.br
+.ti -1c
+.RI "#define \fBcopysignf\fP   \fBcopysign\fP"
+.br
+.ti -1c
+.RI "#define \fBsignbitf\fP   \fBsignbit\fP"
+.br
+.ti -1c
+.RI "#define \fBfdimf\fP   \fBfdim\fP"
+.br
+.ti -1c
+.RI "#define \fBfmaf\fP   \fBfma\fP"
+.br
+.ti -1c
+.RI "#define \fBfmaxf\fP   \fBfmax\fP"
+.br
+.ti -1c
+.RI "#define \fBfminf\fP   \fBfmin\fP"
+.br
+.ti -1c
+.RI "#define \fBtruncf\fP   \fBtrunc\fP"
+.br
+.ti -1c
+.RI "#define \fBroundf\fP   \fBround\fP"
+.br
+.ti -1c
+.RI "#define \fBlroundf\fP   \fBlround\fP"
+.br
+.ti -1c
+.RI "#define \fBlrintf\fP   \fBlrint\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "double \fBcos\fP (double __x)"
+.br
+.ti -1c
+.RI "double \fBsin\fP (double __x)"
+.br
+.ti -1c
+.RI "double \fBtan\fP (double __x)"
+.br
+.ti -1c
+.RI "double \fBfabs\fP (double __x)"
+.br
+.ti -1c
+.RI "double \fBfmod\fP (double __x, double __y)"
+.br
+.ti -1c
+.RI "double \fBmodf\fP (double __x, double *__iptr)"
+.br
+.ti -1c
+.RI "float \fBmodff\fP (float __x, float *__iptr)"
+.br
+.ti -1c
+.RI "double \fBsqrt\fP (double __x)"
+.br
+.ti -1c
+.RI "double \fBcbrt\fP (double __x)"
+.br
+.ti -1c
+.RI "double \fBhypot\fP (double __x, double __y)"
+.br
+.ti -1c
+.RI "double \fBsquare\fP (double __x)"
+.br
+.ti -1c
+.RI "double \fBfloor\fP (double __x)"
+.br
+.ti -1c
+.RI "double \fBceil\fP (double __x)"
+.br
+.ti -1c
+.RI "double \fBfrexp\fP (double __x, int *__pexp)"
+.br
+.ti -1c
+.RI "double \fBldexp\fP (double __x, int __exp)"
+.br
+.ti -1c
+.RI "double \fBexp\fP (double __x)"
+.br
+.ti -1c
+.RI "double \fBcosh\fP (double __x)"
+.br
+.ti -1c
+.RI "double \fBsinh\fP (double __x)"
+.br
+.ti -1c
+.RI "double \fBtanh\fP (double __x)"
+.br
+.ti -1c
+.RI "double \fBacos\fP (double __x)"
+.br
+.ti -1c
+.RI "double \fBasin\fP (double __x)"
+.br
+.ti -1c
+.RI "double \fBatan\fP (double __x)"
+.br
+.ti -1c
+.RI "double \fBatan2\fP (double __y, double __x)"
+.br
+.ti -1c
+.RI "double \fBlog\fP (double __x)"
+.br
+.ti -1c
+.RI "double \fBlog10\fP (double __x)"
+.br
+.ti -1c
+.RI "double \fBpow\fP (double __x, double __y)"
+.br
+.ti -1c
+.RI "int \fBisnan\fP (double __x)"
+.br
+.ti -1c
+.RI "int \fBisinf\fP (double __x)"
+.br
+.ti -1c
+.RI "static int \fBisfinite\fP (double __x)"
+.br
+.ti -1c
+.RI "static double \fBcopysign\fP (double __x, double __y)"
+.br
+.ti -1c
+.RI "int \fBsignbit\fP (double __x)"
+.br
+.ti -1c
+.RI "double \fBfdim\fP (double __x, double __y)"
+.br
+.ti -1c
+.RI "double \fBfma\fP (double __x, double __y, double __z)"
+.br
+.ti -1c
+.RI "double \fBfmax\fP (double __x, double __y)"
+.br
+.ti -1c
+.RI "double \fBfmin\fP (double __x, double __y)"
+.br
+.ti -1c
+.RI "double \fBtrunc\fP (double __x)"
+.br
+.ti -1c
+.RI "double \fBround\fP (double __x)"
+.br
+.ti -1c
+.RI "long \fBlround\fP (double __x)"
+.br
+.ti -1c
+.RI "long \fBlrint\fP (double __x)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for avr-libc from the source code\&.

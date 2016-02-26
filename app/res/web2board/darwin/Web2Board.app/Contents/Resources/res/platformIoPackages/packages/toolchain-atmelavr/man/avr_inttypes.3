@@ -1,0 +1,435 @@
+.TH "<inttypes.h>: Integer Type conversions" 3 "Thu Dec 29 2011" "Version 1.8.0" "avr-libc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+<inttypes.h>: Integer Type conversions \- 
+.SS "Far pointers for memory access >64K"
+
+.in +1c
+.ti -1c
+.RI "typedef \fBint32_t\fP \fBint_farptr_t\fP"
+.br
+.ti -1c
+.RI "typedef \fBuint32_t\fP \fBuint_farptr_t\fP"
+.br
+.in -1c
+.SS "macros for printf and scanf format specifiers"
+ For C++, these are only included if __STDC_LIMIT_MACROS is defined before including <\fBinttypes\&.h\fP>\&. 
+.in +1c
+.ti -1c
+.RI "#define \fBPRId8\fP   'd'"
+.br
+.ti -1c
+.RI "#define \fBPRIdLEAST8\fP   'd'"
+.br
+.ti -1c
+.RI "#define \fBPRIdFAST8\fP   'd'"
+.br
+.ti -1c
+.RI "#define \fBPRIi8\fP   'i'"
+.br
+.ti -1c
+.RI "#define \fBPRIiLEAST8\fP   'i'"
+.br
+.ti -1c
+.RI "#define \fBPRIiFAST8\fP   'i'"
+.br
+.ti -1c
+.RI "#define \fBPRId16\fP   'd'"
+.br
+.ti -1c
+.RI "#define \fBPRIdLEAST16\fP   'd'"
+.br
+.ti -1c
+.RI "#define \fBPRIdFAST16\fP   'd'"
+.br
+.ti -1c
+.RI "#define \fBPRIi16\fP   'i'"
+.br
+.ti -1c
+.RI "#define \fBPRIiLEAST16\fP   'i'"
+.br
+.ti -1c
+.RI "#define \fBPRIiFAST16\fP   'i'"
+.br
+.ti -1c
+.RI "#define \fBPRId32\fP   'ld'"
+.br
+.ti -1c
+.RI "#define \fBPRIdLEAST32\fP   'ld'"
+.br
+.ti -1c
+.RI "#define \fBPRIdFAST32\fP   'ld'"
+.br
+.ti -1c
+.RI "#define \fBPRIi32\fP   'li'"
+.br
+.ti -1c
+.RI "#define \fBPRIiLEAST32\fP   'li'"
+.br
+.ti -1c
+.RI "#define \fBPRIiFAST32\fP   'li'"
+.br
+.ti -1c
+.RI "#define \fBPRIdPTR\fP   \fBPRId16\fP"
+.br
+.ti -1c
+.RI "#define \fBPRIiPTR\fP   \fBPRIi16\fP"
+.br
+.ti -1c
+.RI "#define \fBPRIo8\fP   'o'"
+.br
+.ti -1c
+.RI "#define \fBPRIoLEAST8\fP   'o'"
+.br
+.ti -1c
+.RI "#define \fBPRIoFAST8\fP   'o'"
+.br
+.ti -1c
+.RI "#define \fBPRIu8\fP   'u'"
+.br
+.ti -1c
+.RI "#define \fBPRIuLEAST8\fP   'u'"
+.br
+.ti -1c
+.RI "#define \fBPRIuFAST8\fP   'u'"
+.br
+.ti -1c
+.RI "#define \fBPRIx8\fP   'x'"
+.br
+.ti -1c
+.RI "#define \fBPRIxLEAST8\fP   'x'"
+.br
+.ti -1c
+.RI "#define \fBPRIxFAST8\fP   'x'"
+.br
+.ti -1c
+.RI "#define \fBPRIX8\fP   'X'"
+.br
+.ti -1c
+.RI "#define \fBPRIXLEAST8\fP   'X'"
+.br
+.ti -1c
+.RI "#define \fBPRIXFAST8\fP   'X'"
+.br
+.ti -1c
+.RI "#define \fBPRIo16\fP   'o'"
+.br
+.ti -1c
+.RI "#define \fBPRIoLEAST16\fP   'o'"
+.br
+.ti -1c
+.RI "#define \fBPRIoFAST16\fP   'o'"
+.br
+.ti -1c
+.RI "#define \fBPRIu16\fP   'u'"
+.br
+.ti -1c
+.RI "#define \fBPRIuLEAST16\fP   'u'"
+.br
+.ti -1c
+.RI "#define \fBPRIuFAST16\fP   'u'"
+.br
+.ti -1c
+.RI "#define \fBPRIx16\fP   'x'"
+.br
+.ti -1c
+.RI "#define \fBPRIxLEAST16\fP   'x'"
+.br
+.ti -1c
+.RI "#define \fBPRIxFAST16\fP   'x'"
+.br
+.ti -1c
+.RI "#define \fBPRIX16\fP   'X'"
+.br
+.ti -1c
+.RI "#define \fBPRIXLEAST16\fP   'X'"
+.br
+.ti -1c
+.RI "#define \fBPRIXFAST16\fP   'X'"
+.br
+.ti -1c
+.RI "#define \fBPRIo32\fP   'lo'"
+.br
+.ti -1c
+.RI "#define \fBPRIoLEAST32\fP   'lo'"
+.br
+.ti -1c
+.RI "#define \fBPRIoFAST32\fP   'lo'"
+.br
+.ti -1c
+.RI "#define \fBPRIu32\fP   'lu'"
+.br
+.ti -1c
+.RI "#define \fBPRIuLEAST32\fP   'lu'"
+.br
+.ti -1c
+.RI "#define \fBPRIuFAST32\fP   'lu'"
+.br
+.ti -1c
+.RI "#define \fBPRIx32\fP   'lx'"
+.br
+.ti -1c
+.RI "#define \fBPRIxLEAST32\fP   'lx'"
+.br
+.ti -1c
+.RI "#define \fBPRIxFAST32\fP   'lx'"
+.br
+.ti -1c
+.RI "#define \fBPRIX32\fP   'lX'"
+.br
+.ti -1c
+.RI "#define \fBPRIXLEAST32\fP   'lX'"
+.br
+.ti -1c
+.RI "#define \fBPRIXFAST32\fP   'lX'"
+.br
+.ti -1c
+.RI "#define \fBPRIoPTR\fP   \fBPRIo16\fP"
+.br
+.ti -1c
+.RI "#define \fBPRIuPTR\fP   \fBPRIu16\fP"
+.br
+.ti -1c
+.RI "#define \fBPRIxPTR\fP   \fBPRIx16\fP"
+.br
+.ti -1c
+.RI "#define \fBPRIXPTR\fP   \fBPRIX16\fP"
+.br
+.ti -1c
+.RI "#define \fBSCNd16\fP   'd'"
+.br
+.ti -1c
+.RI "#define \fBSCNdLEAST16\fP   'd'"
+.br
+.ti -1c
+.RI "#define \fBSCNdFAST16\fP   'd'"
+.br
+.ti -1c
+.RI "#define \fBSCNi16\fP   'i'"
+.br
+.ti -1c
+.RI "#define \fBSCNiLEAST16\fP   'i'"
+.br
+.ti -1c
+.RI "#define \fBSCNiFAST16\fP   'i'"
+.br
+.ti -1c
+.RI "#define \fBSCNd32\fP   'ld'"
+.br
+.ti -1c
+.RI "#define \fBSCNdLEAST32\fP   'ld'"
+.br
+.ti -1c
+.RI "#define \fBSCNdFAST32\fP   'ld'"
+.br
+.ti -1c
+.RI "#define \fBSCNi32\fP   'li'"
+.br
+.ti -1c
+.RI "#define \fBSCNiLEAST32\fP   'li'"
+.br
+.ti -1c
+.RI "#define \fBSCNiFAST32\fP   'li'"
+.br
+.ti -1c
+.RI "#define \fBSCNdPTR\fP   \fBSCNd16\fP"
+.br
+.ti -1c
+.RI "#define \fBSCNiPTR\fP   \fBSCNi16\fP"
+.br
+.ti -1c
+.RI "#define \fBSCNo16\fP   'o'"
+.br
+.ti -1c
+.RI "#define \fBSCNoLEAST16\fP   'o'"
+.br
+.ti -1c
+.RI "#define \fBSCNoFAST16\fP   'o'"
+.br
+.ti -1c
+.RI "#define \fBSCNu16\fP   'u'"
+.br
+.ti -1c
+.RI "#define \fBSCNuLEAST16\fP   'u'"
+.br
+.ti -1c
+.RI "#define \fBSCNuFAST16\fP   'u'"
+.br
+.ti -1c
+.RI "#define \fBSCNx16\fP   'x'"
+.br
+.ti -1c
+.RI "#define \fBSCNxLEAST16\fP   'x'"
+.br
+.ti -1c
+.RI "#define \fBSCNxFAST16\fP   'x'"
+.br
+.ti -1c
+.RI "#define \fBSCNo32\fP   'lo'"
+.br
+.ti -1c
+.RI "#define \fBSCNoLEAST32\fP   'lo'"
+.br
+.ti -1c
+.RI "#define \fBSCNoFAST32\fP   'lo'"
+.br
+.ti -1c
+.RI "#define \fBSCNu32\fP   'lu'"
+.br
+.ti -1c
+.RI "#define \fBSCNuLEAST32\fP   'lu'"
+.br
+.ti -1c
+.RI "#define \fBSCNuFAST32\fP   'lu'"
+.br
+.ti -1c
+.RI "#define \fBSCNx32\fP   'lx'"
+.br
+.ti -1c
+.RI "#define \fBSCNxLEAST32\fP   'lx'"
+.br
+.ti -1c
+.RI "#define \fBSCNxFAST32\fP   'lx'"
+.br
+.ti -1c
+.RI "#define \fBSCNoPTR\fP   \fBSCNo16\fP"
+.br
+.ti -1c
+.RI "#define \fBSCNuPTR\fP   \fBSCNu16\fP"
+.br
+.ti -1c
+.RI "#define \fBSCNxPTR\fP   \fBSCNx16\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+.PP
+.nf
+ #include <inttypes\&.h> 
+.fi
+.PP
+.PP
+This header file includes the exact-width integer definitions from \fC<\fBstdint\&.h\fP>\fP, and extends them with additional facilities provided by the implementation\&.
+.PP
+Currently, the extensions include two additional integer types that could hold a 'far' pointer (i\&.e\&. a code pointer that can address more than 64 KB), as well as standard names for all printf and scanf formatting options that are supported by the \fB<stdio\&.h>: Standard IO facilities\fP\&. As the library does not support the full range of conversion specifiers from ISO 9899:1999, only those conversions that are actually implemented will be listed here\&.
+.PP
+The idea behind these conversion macros is that, for each of the types defined by <\fBstdint\&.h\fP>, a macro will be supplied that portably allows formatting an object of that type in \fBprintf()\fP or \fBscanf()\fP operations\&. Example:
+.PP
+.PP
+.nf
+    #include <inttypes\&.h>
+
+    uint8_t smallval;
+    int32_t longval;
+    \&.\&.\&.
+    printf('The hexadecimal value of smallval is %' PRIx8
+           ', the decimal value of longval is %' PRId32 '\&.\n',
+           smallval, longval);
+.fi
+.PP
+ 
+.SH "Define Documentation"
+.PP 
+.SS "#define \fBPRId16\fP   'd'"decimal printf format for int16_t 
+.SS "#define \fBPRId32\fP   'ld'"decimal printf format for int32_t 
+.SS "#define \fBPRId8\fP   'd'"decimal printf format for int8_t 
+.SS "#define \fBPRIdFAST16\fP   'd'"decimal printf format for int_fast16_t 
+.SS "#define \fBPRIdFAST32\fP   'ld'"decimal printf format for int_fast32_t 
+.SS "#define \fBPRIdFAST8\fP   'd'"decimal printf format for int_fast8_t 
+.SS "#define \fBPRIdLEAST16\fP   'd'"decimal printf format for int_least16_t 
+.SS "#define \fBPRIdLEAST32\fP   'ld'"decimal printf format for int_least32_t 
+.SS "#define \fBPRIdLEAST8\fP   'd'"decimal printf format for int_least8_t 
+.SS "#define \fBPRIdPTR\fP   \fBPRId16\fP"decimal printf format for intptr_t 
+.SS "#define \fBPRIi16\fP   'i'"integer printf format for int16_t 
+.SS "#define \fBPRIi32\fP   'li'"integer printf format for int32_t 
+.SS "#define \fBPRIi8\fP   'i'"integer printf format for int8_t 
+.SS "#define \fBPRIiFAST16\fP   'i'"integer printf format for int_fast16_t 
+.SS "#define \fBPRIiFAST32\fP   'li'"integer printf format for int_fast32_t 
+.SS "#define \fBPRIiFAST8\fP   'i'"integer printf format for int_fast8_t 
+.SS "#define \fBPRIiLEAST16\fP   'i'"integer printf format for int_least16_t 
+.SS "#define \fBPRIiLEAST32\fP   'li'"integer printf format for int_least32_t 
+.SS "#define \fBPRIiLEAST8\fP   'i'"integer printf format for int_least8_t 
+.SS "#define \fBPRIiPTR\fP   \fBPRIi16\fP"integer printf format for intptr_t 
+.SS "#define \fBPRIo16\fP   'o'"octal printf format for uint16_t 
+.SS "#define \fBPRIo32\fP   'lo'"octal printf format for uint32_t 
+.SS "#define \fBPRIo8\fP   'o'"octal printf format for uint8_t 
+.SS "#define \fBPRIoFAST16\fP   'o'"octal printf format for uint_fast16_t 
+.SS "#define \fBPRIoFAST32\fP   'lo'"octal printf format for uint_fast32_t 
+.SS "#define \fBPRIoFAST8\fP   'o'"octal printf format for uint_fast8_t 
+.SS "#define \fBPRIoLEAST16\fP   'o'"octal printf format for uint_least16_t 
+.SS "#define \fBPRIoLEAST32\fP   'lo'"octal printf format for uint_least32_t 
+.SS "#define \fBPRIoLEAST8\fP   'o'"octal printf format for uint_least8_t 
+.SS "#define \fBPRIoPTR\fP   \fBPRIo16\fP"octal printf format for uintptr_t 
+.SS "#define \fBPRIu16\fP   'u'"decimal printf format for uint16_t 
+.SS "#define \fBPRIu32\fP   'lu'"decimal printf format for uint32_t 
+.SS "#define \fBPRIu8\fP   'u'"decimal printf format for uint8_t 
+.SS "#define \fBPRIuFAST16\fP   'u'"decimal printf format for uint_fast16_t 
+.SS "#define \fBPRIuFAST32\fP   'lu'"decimal printf format for uint_fast32_t 
+.SS "#define \fBPRIuFAST8\fP   'u'"decimal printf format for uint_fast8_t 
+.SS "#define \fBPRIuLEAST16\fP   'u'"decimal printf format for uint_least16_t 
+.SS "#define \fBPRIuLEAST32\fP   'lu'"decimal printf format for uint_least32_t 
+.SS "#define \fBPRIuLEAST8\fP   'u'"decimal printf format for uint_least8_t 
+.SS "#define \fBPRIuPTR\fP   \fBPRIu16\fP"decimal printf format for uintptr_t 
+.SS "#define \fBPRIx16\fP   'x'"hexadecimal printf format for uint16_t 
+.SS "#define \fBPRIX16\fP   'X'"uppercase hexadecimal printf format for uint16_t 
+.SS "#define \fBPRIx32\fP   'lx'"hexadecimal printf format for uint32_t 
+.SS "#define \fBPRIX32\fP   'lX'"uppercase hexadecimal printf format for uint32_t 
+.SS "#define \fBPRIx8\fP   'x'"hexadecimal printf format for uint8_t 
+.SS "#define \fBPRIX8\fP   'X'"uppercase hexadecimal printf format for uint8_t 
+.SS "#define \fBPRIxFAST16\fP   'x'"hexadecimal printf format for uint_fast16_t 
+.SS "#define \fBPRIXFAST16\fP   'X'"uppercase hexadecimal printf format for uint_fast16_t 
+.SS "#define \fBPRIxFAST32\fP   'lx'"hexadecimal printf format for uint_fast32_t 
+.SS "#define \fBPRIXFAST32\fP   'lX'"uppercase hexadecimal printf format for uint_fast32_t 
+.SS "#define \fBPRIxFAST8\fP   'x'"hexadecimal printf format for uint_fast8_t 
+.SS "#define \fBPRIXFAST8\fP   'X'"uppercase hexadecimal printf format for uint_fast8_t 
+.SS "#define \fBPRIxLEAST16\fP   'x'"hexadecimal printf format for uint_least16_t 
+.SS "#define \fBPRIXLEAST16\fP   'X'"uppercase hexadecimal printf format for uint_least16_t 
+.SS "#define \fBPRIxLEAST32\fP   'lx'"hexadecimal printf format for uint_least32_t 
+.SS "#define \fBPRIXLEAST32\fP   'lX'"uppercase hexadecimal printf format for uint_least32_t 
+.SS "#define \fBPRIxLEAST8\fP   'x'"hexadecimal printf format for uint_least8_t 
+.SS "#define \fBPRIXLEAST8\fP   'X'"uppercase hexadecimal printf format for uint_least8_t 
+.SS "#define \fBPRIxPTR\fP   \fBPRIx16\fP"hexadecimal printf format for uintptr_t 
+.SS "#define \fBPRIXPTR\fP   \fBPRIX16\fP"uppercase hexadecimal printf format for uintptr_t 
+.SS "#define \fBSCNd16\fP   'd'"decimal scanf format for int16_t 
+.SS "#define \fBSCNd32\fP   'ld'"decimal scanf format for int32_t 
+.SS "#define \fBSCNdFAST16\fP   'd'"decimal scanf format for int_fast16_t 
+.SS "#define \fBSCNdFAST32\fP   'ld'"decimal scanf format for int_fast32_t 
+.SS "#define \fBSCNdLEAST16\fP   'd'"decimal scanf format for int_least16_t 
+.SS "#define \fBSCNdLEAST32\fP   'ld'"decimal scanf format for int_least32_t 
+.SS "#define \fBSCNdPTR\fP   \fBSCNd16\fP"decimal scanf format for intptr_t 
+.SS "#define \fBSCNi16\fP   'i'"generic-integer scanf format for int16_t 
+.SS "#define \fBSCNi32\fP   'li'"generic-integer scanf format for int32_t 
+.SS "#define \fBSCNiFAST16\fP   'i'"generic-integer scanf format for int_fast16_t 
+.SS "#define \fBSCNiFAST32\fP   'li'"generic-integer scanf format for int_fast32_t 
+.SS "#define \fBSCNiLEAST16\fP   'i'"generic-integer scanf format for int_least16_t 
+.SS "#define \fBSCNiLEAST32\fP   'li'"generic-integer scanf format for int_least32_t 
+.SS "#define \fBSCNiPTR\fP   \fBSCNi16\fP"generic-integer scanf format for intptr_t 
+.SS "#define \fBSCNo16\fP   'o'"octal scanf format for uint16_t 
+.SS "#define \fBSCNo32\fP   'lo'"octal scanf format for uint32_t 
+.SS "#define \fBSCNoFAST16\fP   'o'"octal scanf format for uint_fast16_t 
+.SS "#define \fBSCNoFAST32\fP   'lo'"octal scanf format for uint_fast32_t 
+.SS "#define \fBSCNoLEAST16\fP   'o'"octal scanf format for uint_least16_t 
+.SS "#define \fBSCNoLEAST32\fP   'lo'"octal scanf format for uint_least32_t 
+.SS "#define \fBSCNoPTR\fP   \fBSCNo16\fP"octal scanf format for uintptr_t 
+.SS "#define \fBSCNu16\fP   'u'"decimal scanf format for uint16_t 
+.SS "#define \fBSCNu32\fP   'lu'"decimal scanf format for uint32_t 
+.SS "#define \fBSCNuFAST16\fP   'u'"decimal scanf format for uint_fast16_t 
+.SS "#define \fBSCNuFAST32\fP   'lu'"decimal scanf format for uint_fast32_t 
+.SS "#define \fBSCNuLEAST16\fP   'u'"decimal scanf format for uint_least16_t 
+.SS "#define \fBSCNuLEAST32\fP   'lu'"decimal scanf format for uint_least32_t 
+.SS "#define \fBSCNuPTR\fP   \fBSCNu16\fP"decimal scanf format for uintptr_t 
+.SS "#define \fBSCNx16\fP   'x'"hexadecimal scanf format for uint16_t 
+.SS "#define \fBSCNx32\fP   'lx'"hexadecimal scanf format for uint32_t 
+.SS "#define \fBSCNxFAST16\fP   'x'"hexadecimal scanf format for uint_fast16_t 
+.SS "#define \fBSCNxFAST32\fP   'lx'"hexadecimal scanf format for uint_fast32_t 
+.SS "#define \fBSCNxLEAST16\fP   'x'"hexadecimal scanf format for uint_least16_t 
+.SS "#define \fBSCNxLEAST32\fP   'lx'"hexadecimal scanf format for uint_least32_t 
+.SS "#define \fBSCNxPTR\fP   \fBSCNx16\fP"hexadecimal scanf format for uintptr_t 
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef \fBint32_t\fP \fBint_farptr_t\fP"signed integer type that can hold a pointer > 64 KB 
+.SS "typedef \fBuint32_t\fP \fBuint_farptr_t\fP"unsigned integer type that can hold a pointer > 64 KB 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for avr-libc from the source code\&.

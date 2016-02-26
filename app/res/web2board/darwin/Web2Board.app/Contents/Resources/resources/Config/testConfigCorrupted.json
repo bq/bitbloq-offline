@@ -1,0 +1,17 @@
+{
+    "pluginsPath": "C:\\Users\\jorgarira\\SoftwareProjects\\web2board\\src\\plugins",
+    "logLevel": 10,
+    "downloadUrlTemplate": "https://github.com/bq/web2board/archive/devel.zip",
+    "checkOnlineUpdates": false,
+    "webSocketIP": "127.0.0.1",
+    "version": "2.0.0",
+    "proxy": "",
+    "bitbloqLibsDownloadUrlTemplate": "https://github.com/bq/bitbloqLibs/archive/v{version}.zip",
+    "webSocketPort": 9876,
+    "bitbloqLibsLibraries": [
+        "BitbloqBatteryReader",
+        "BitbloqButtonPad",
+        "BitbloqEnableInterrupt",
+        "BitbloqEncoder",
+        "BitbloqEvolution",
+        "BitbloqHTS221",

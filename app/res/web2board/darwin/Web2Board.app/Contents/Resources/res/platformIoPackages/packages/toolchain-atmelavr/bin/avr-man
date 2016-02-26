@@ -1,0 +1,2 @@
+#!/bin/sh
+exec man -M "/usr/local/CrossPack-AVR-20131216/man:/usr/local/CrossPack-AVR-20131216/share/man" "$@"
