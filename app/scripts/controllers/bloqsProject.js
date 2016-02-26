@@ -96,7 +96,7 @@ angular.module('bitbloqOffline')
       }
       return false;
     };
-    
+
     $scope.showComponents = function(item) {
         var stopWord = ['analogWrite', 'digitalWrite', 'pinReadAdvanced', 'pinWriteAdvanced', 'turnOnOffAdvanced', 'digitalReadAdvanced', 'analogReadAdvanced'];
         if (stopWord.indexOf(item) === -1) {
@@ -120,8 +120,10 @@ angular.module('bitbloqOffline')
                             }
                             item = item.toUpperCase();
                             value = value.toUpperCase();
-                            if (item.includes('RGBLED') && value.includes('RGB')) {
-                                result = true;
+                            if (item.includes('RGBLED')) {
+                              if (value.includes('RGB')) {
+                                  result = true;
+                              }
                             } else if ((value.includes('SERVO') || value === 'OSCILLATOR') && (item === 'SERVOATTACH' || item === 'SERVODETACH')) {
                                 result = true;
                             } else if (item.includes(value) || value.includes(item)) {
