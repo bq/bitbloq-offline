@@ -67,25 +67,25 @@ angular.module('bitbloqOffline')
           }, {
             name: 'en-GB'
           }, {
+            name: 'nl-NL'
+          }, {
+            name: 'ru-RU'
+          }, {
             name: 'it-IT'
           }, {
             name: 'eu-ES'
           }, {
             name: 'ca-ES'
           }, {
-            name: 'de-DE'
-          }, {
-            name: 'gl'
-          }, {
-            name: 'ru-RU'
-          }, {
             name: 'fr-FR'
           }, {
-            name: 'zh-CN'
+            name: 'de-DE'
           }, {
             name: 'pt-PT'
           }, {
-            name: 'fr-FR'
+            name: 'gl'
+          }, {
+            name: 'zh-CN'
           }]
         }
       };
