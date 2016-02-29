@@ -4,3 +4,4 @@ app/images/sprite.svg
 .idea/
 bower_components/
 app/res/config.json
+i18n/

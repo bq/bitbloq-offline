@@ -2,6 +2,8 @@ module.exports = function(grunt) {
   //load grunt tasks
   require('load-grunt-tasks')(grunt);
 
+  grunt.loadTasks('tasks');
+
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -89,7 +91,8 @@ module.exports = function(grunt) {
       windows: ['dist/windows32/resources/app/', 'dist/windows64/resources/app/'],
       linux: ['dist/linux/resources/app/'],
       mac: ['dist/mac/Electron.app/Contents/Resources/app/'],
-      prebuilt: ['dist/windows32/', 'dist/windows64/', 'dist/linux/']
+      prebuilt: ['dist/windows32/', 'dist/windows64/', 'dist/linux/'],
+      i18n: 'i18n/*'
     },
     exec: {
       electron: 'electron .',
@@ -125,6 +128,15 @@ module.exports = function(grunt) {
       'dist'
     ]);
   });
+
+  grunt.registerTask('i18n', 'get all file of i18n', function() {
+      grunt.task.run([
+          'clean:i18n',
+          'getpoeditorfiles:38967',
+          'poeditor2bitbloq'
+      ]);
+  });
+
   // Default task(s).
   grunt.registerTask('dist', function(os) {
     switch (os) {
