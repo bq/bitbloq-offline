@@ -64,6 +64,7 @@ public:
     int getYear();
     int getMonth();
     int getDay();
+    int getDayOfWeek();
     int getHour();
     int getMinute();
     int getSecond();

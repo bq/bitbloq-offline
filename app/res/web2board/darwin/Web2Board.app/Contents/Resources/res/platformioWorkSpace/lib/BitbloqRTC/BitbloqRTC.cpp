@@ -328,6 +328,11 @@ int RTC_DS1307::getMonth(){
 int RTC_DS1307::getDay(){
   return RTC_DS1307::now().day();
 }
+
+int RTC_DS1307::getDayOfWeek(){
+  return RTC_DS1307::now().dayOfWeek();
+}
+
 int RTC_DS1307::getHour(){
   return RTC_DS1307::now().hour();
 }

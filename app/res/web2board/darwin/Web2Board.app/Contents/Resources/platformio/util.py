@@ -26,7 +26,6 @@ from os.path import (abspath, basename, dirname, expanduser, isdir, isfile,
 from platform import system, uname
 from threading import Thread
 
-from libs import utils
 from libs.PathsManager import PathsManager
 from platformio import __apiurl__, __version__, exception
 
@@ -181,7 +180,7 @@ def get_lib_dir():
 
 
 def get_source_dir():
-    return dirname(realpath(__file__))
+    return PathsManager.RES_PLATFORMIO_PATH
 
 
 def get_project_dir():
@@ -391,23 +390,17 @@ def scons_in_pip():
 
 @memoized
 def _lookup_boards():
-    from libs.PathsManager import PathsManager
-    import logging
-    l = logging.getLogger("platformio")
     boards = {}
     bdirs = [join(get_source_dir(), "boards")]
     if isdir(join(get_home_dir(), "boards")):
         bdirs.append(join(get_home_dir(), "boards"))
-    bdirs.append(PathsManager.RES_PLATFORMIO_PATH + os.sep + "boards")
-    l.info("paths for boards: {}".format(bdirs))
+
     for bdir in bdirs:
-        if os.path.isdir(bdir):
-            for json_file in sorted(os.listdir(bdir)):
-                if not json_file.endswith(".json"):
-                    continue
-                with open(join(bdir, json_file)) as f:
-                    boards.update(json.load(f))
-    l.info("boards detected: {}".format(boards))
+        for json_file in sorted(os.listdir(bdir)):
+            if not json_file.endswith(".json"):
+                continue
+            with open(join(bdir, json_file)) as f:
+                boards.update(json.load(f))
     return boards
 
 

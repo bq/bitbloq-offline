@@ -4,7 +4,6 @@
 #include <Servo.h>
 #include <BitbloqOscillator.h>
 #include <BitbloqUS.h>
-#include <BitbloqLineFollower.h>
 
 #include <Evolution_sounds.h>
 
@@ -90,7 +89,6 @@ class Evolution
     Servo wheel[2];
     Oscillator head;
     US us;
-    //LineFollower _linefollower(2, 3);
 
     int wheel_pins[2];
     int head_pin;

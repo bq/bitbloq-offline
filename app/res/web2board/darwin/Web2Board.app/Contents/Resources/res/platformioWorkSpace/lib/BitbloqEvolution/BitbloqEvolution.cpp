@@ -212,10 +212,8 @@ int Evolution::getLight(int side){
 int Evolution::getLine(int side){
 
   if (side > 0){
-    //return _linefollower.readLeftSensor();
     return digitalRead(PIN_LFL);
   }
-  //return _line_follower.readRightSensor();
   return digitalRead(PIN_LFR);
 }
 
