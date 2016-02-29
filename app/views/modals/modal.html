@@ -4,7 +4,7 @@
             <div ng-if="title" class="modal__header">
                 <h1 class="modal--title" data-element="modal-title">{{title | translate}}</h1>
                 <div class="modal--close">
-                    <button ng-click="closeThisDialog(); rejectAction()" class="btn btn__modal--close" data-element="modal-blade-close">
+                    <button ng-click="closeThisDialog(); closeAction()" class="btn btn__modal--close" data-element="modal-blade-close">
                         <svg class="svg-icon svg-icon__modal--close">
                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cierre"></use>
                         </svg>
