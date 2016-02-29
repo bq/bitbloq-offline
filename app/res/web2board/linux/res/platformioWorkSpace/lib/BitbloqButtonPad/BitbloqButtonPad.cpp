@@ -5,11 +5,11 @@ ButtonPad::ButtonPad(int pin){
   _pin = pin;
   _num_keys = 5;
   _adc_key_val = (int*)malloc(_num_keys*sizeof(int));
-  _adc_key_val[0] = 20;
-  _adc_key_val[1] = 50;
-  _adc_key_val[2] = 100;
-  _adc_key_val[3] = 200;
-  _adc_key_val[4] = 600;
+  _adc_key_val[0] = 21;
+  _adc_key_val[1] = 66;
+  _adc_key_val[2] = 106;
+  _adc_key_val[3] = 335;
+  _adc_key_val[4] = 791;
   _key=-1;
   _oldkey=-1;
   _keys = (char*)malloc(5*sizeof(char));
