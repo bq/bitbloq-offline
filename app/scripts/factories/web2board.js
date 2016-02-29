@@ -88,7 +88,7 @@ angular.module('bitbloqOffline')
             if (error.title === 'COMPILE_ERROR') {
                 alertsService.add('alert-web2board-compile-error', 'web2board', 'warning', undefined, error.stdErr);
             } else if (error.title === 'BOARD_NOT_READY') {
-                alertsService.add('alert-web2board-boardNotReady', 'web2board', 'warning');
+                alertsService.add('alert-web2board-no-port-found', 'web2board', 'warning');
             } else {
                 var errorTag = 'alert-web2board-upload-error';
                 alertsService.add(errorTag, 'web2board', 'warning', undefined, error);
