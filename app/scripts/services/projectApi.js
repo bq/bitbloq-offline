@@ -76,6 +76,14 @@ angular.module('bitbloqOffline')
       }
     };
 
+    exports.saveAs = function(projectRef, callback) {
+      download(projectRef, function() {
+        if (callback) {
+          callback(true);
+        }
+      });
+    };
+
     exports.hasChanged = function(project) {
       if (exports.oldProject && _.isEqual(project.hardware, exports.oldProject.hardware) && _.isEqual(project.software, exports.oldProject.software) && !exports.projectChanged) {
         return false;

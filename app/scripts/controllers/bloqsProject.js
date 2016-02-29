@@ -244,6 +244,16 @@ angular.module('bitbloqOffline')
       }
     };
 
+    $scope.saveProjectAs = function(project, callback) {
+      project = project || $scope.getCurrentProject();
+      return projectApi.saveAs(project, function() {
+        alertsService.add('make-saved-project', 'project-saved', 'ok', 3000);
+        if (callback) {
+          return callback();
+        }
+      });
+    };
+
     $scope.saveIno = function() {
       projectApi.exportArduinoCode($scope.componentsArray, $scope.arduinoMainBloqs);
     };

@@ -166,7 +166,7 @@ angular.module('bitbloqOffline')
         }, {
           name: 'offline-save-as',
           icon: '#guardar',
-          action: $scope.saveProject,
+          action: $scope.saveProjectAs,
           disabled: false
         }, {
           name: 'export-arduino-code',
