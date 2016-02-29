@@ -264,11 +264,11 @@ angular.module('bitbloqOffline')
       if (projectApi.hasChanged($scope.getCurrentProject())) {
         e.returnValue = false;
         commonModals.launchNotSavedModal(function(confirmed) {
-          if (confirmed) {
+          if (confirmed === 0) {
             projectApi.save($scope.getCurrentProject(), function() {
               currentWindow.destroy();
             });
-          } else {
+          } else if (confirmed === -1) {
             currentWindow.destroy();
           }
         });

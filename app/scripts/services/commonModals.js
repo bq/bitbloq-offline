@@ -15,13 +15,16 @@ angular.module('bitbloqOffline')
     exports.launchNotSavedModal = function(callback) {
       var confirmAction = function() {
           notSavedModal.close();
-          callback(true);
+          callback(0);
         },
         rejectAction = function() {
           notSavedModal.close();
-          callback(false);
+          callback(-1);
+        },
+        closeAction = function(){
+          notSavedModal.close();
+          callback(1);
         };
-
 
       var modalOptions = $rootScope.$new();
       _.extend(modalOptions, {
@@ -30,6 +33,7 @@ angular.module('bitbloqOffline')
         rejectButton: 'modal-exit-exit',
         confirmAction: confirmAction,
         rejectAction: rejectAction,
+        closeAction: closeAction,
         contentTemplate: 'file://' + __dirname + '/views/modals/text.html',
         modalButtons: true,
         save: true
@@ -54,6 +58,9 @@ angular.module('bitbloqOffline')
           $translate.use(language);
         },
         rejectAction = function() {
+          $translate.use(oldLanguage);
+        },
+        closeAction = function(){
           $translate.use(oldLanguage);
         },
         languageModal,
@@ -95,6 +102,7 @@ angular.module('bitbloqOffline')
         rejectButton: 'modal-button-cancel',
         confirmAction: confirmAction,
         rejectAction: rejectAction,
+        closeAction: closeAction,
         contentTemplate: 'file://' + __dirname + '/views/modals/input.html',
         modalButtons: true,
         modalDropdown: true,
