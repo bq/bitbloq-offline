@@ -1,5 +1,6 @@
 **/.pioenvs/
 **/src/main.cpp
+**/src/main.ino
 **/info.log
 **/config.json
 **/res/integrationTestReport.html
