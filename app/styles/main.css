@@ -1089,7 +1089,7 @@ code {
 .token.url,
 .token.variable {
   color: #a67f59;
-  background: rgba(255, 255, 255, 0.5); }
+  background: none; }
 
 .token.atrule,
 .token.attr-value,
