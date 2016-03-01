@@ -6,6 +6,8 @@
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
 	<string>Web2Board</string>
+	<key>LSUIElement</key>
+	<true/>
 	<key>CFBundleExecutable</key>
 	<string>Web2Board</string>
 	<key>CFBundleIconFile</key>
