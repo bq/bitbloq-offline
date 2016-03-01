@@ -4,21 +4,21 @@
   "main": "main.js",
   "license": "GPL-3.0",
   "dependencies": {
-    "async": "^1.5.2",
-    "grunt": "^0.4.5",
-    "grunt-sass": "^1.1.0",
-    "grunt-svgstore": "^0.5.0",
-    "jquery": "^2.2.0"
+    "async": "1.5.2",
+    "grunt": "0.4.5",
+    "grunt-sass": "1.1.0",
+    "grunt-svgstore": "0.5.0",
+    "jquery": "2.2.0"
   },
   "devDependencies": {
-    "electron-prebuilt": "^0.36.3",
-    "grunt-contrib-clean": "^0.7.0",
-    "grunt-contrib-copy": "^0.8.2",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-exec": "^0.4.6",
-    "grunt-shell": "^1.1.2",
-    "grunt-wiredep": "^2.0.0",
-    "load-grunt-tasks": "^3.4.0"
+    "electron-prebuilt": "0.36.7",
+    "grunt-contrib-clean": "0.7.0",
+    "grunt-contrib-copy": "0.8.2",
+    "grunt-contrib-watch": "0.6.1",
+    "grunt-exec": "0.4.6",
+    "grunt-shell": "1.1.2",
+    "grunt-wiredep": "2.0.0",
+    "load-grunt-tasks": "3.4.0"
   },
   "repository": {
     "type": "git",
