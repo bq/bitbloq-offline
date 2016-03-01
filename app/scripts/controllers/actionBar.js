@@ -26,9 +26,9 @@ angular.module('bitbloqOffline')
     function newProject() {
       if (projectApi.hasChanged($scope.getCurrentProject())) {
         commonModals.launchNotSavedModal(function(confirmed) {
-          if (confirmed) {
+          if (confirmed === 0) {
             $scope.saveProject($scope.getCurrentProject());
-          } else {
+          } else if (confirmed === -1) {
             projectApi.savedProjectPath = false;
             $route.reload();
           }
@@ -61,11 +61,11 @@ angular.module('bitbloqOffline')
     function openProject(force) {
       if (projectApi.hasChanged($scope.getCurrentProject()) && !force) {
         commonModals.launchNotSavedModal(function(confirmed) {
-          if (confirmed) {
-            projectApi.save($scope.getCurrentProject(), function(data) {
-              console.log('save', data)
+          if (confirmed === 0) {
+            projectApi.save($scope.getCurrentProject(), function() {
+              console.log('save', data);
             });
-          } else {
+          } else if (confirmed === -1) {
             openProject(true);
           }
         });
