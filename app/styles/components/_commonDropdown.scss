@@ -74,3 +74,9 @@ common-dropdown {
   background-color: #ebebeb;
   pointer-events  : none;
 }
+
+.dropdown__item--separator {
+    border-bottom: 1px solid #dadada;
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
