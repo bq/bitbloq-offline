@@ -51,7 +51,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: '',
           src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json', 'bower.json', '!app/res/web2board/linux/**', '!app/res/web2board/darwin/**'],
-          dest: 'dist/windows32/resources/app/'
+          dest: 'dist/windows/resources/app/'
         }]
       },
       linux: {
@@ -67,7 +67,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: '',
           src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json', 'bower.json', '!app/res/web2board/win32/**', '!app/res/web2board/linux/**'],
-          dest: 'dist/mac/Electron.app/Contents/Resources/app/'
+          dest: 'dist/mac/Bitbloq Offline.app/Contents/Resources/app/'
         }]
       },
       prebuiltWindows: {
@@ -75,7 +75,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'res/windows32-prebuilt',
           src: ['**'],
-          dest: 'dist/windows32/'
+          dest: 'dist/windows/'
         }]
       },
       prebuiltLinux: {
@@ -85,13 +85,21 @@ module.exports = function(grunt) {
           src: ['**'],
           dest: 'dist/linux/'
         }]
+      },
+      prebuiltMac: {
+        files: [{
+          expand: true,
+          cwd: 'res/mac-prebuilt',
+          src: ['**'],
+          dest: 'dist/mac/'
+        }]
       }
     },
     clean: {
-      windows: ['dist/windows32/resources/app/', 'dist/windows64/resources/app/'],
+      windows: ['dist/windows/resources/app/'],
       linux: ['dist/linux/resources/app/'],
-      mac: ['dist/mac/Electron.app/Contents/Resources/app/'],
-      prebuilt: ['dist/windows32/', 'dist/windows64/', 'dist/linux/'],
+      mac: ['dist/mac/Bitbloq Offline.app/Contents/Resources/app/'],
+      prebuilt: ['dist/windows/', 'dist/linux/'],
       i18n: 'i18n/*'
     },
     exec: {
@@ -154,6 +162,7 @@ module.exports = function(grunt) {
           'sass',
           'svgstore',
           'clean',
+          'copy:prebuiltMac',
           'copy:mac',
           'shell'
         ]);
