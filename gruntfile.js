@@ -146,8 +146,7 @@ module.exports = function(grunt) {
           'svgstore',
           'clean',
           'copy:prebuiltWindows',
-          'copy:windows',
-          'shell'
+          'copy:windows'
         ]);
         break;
       case 'mac':

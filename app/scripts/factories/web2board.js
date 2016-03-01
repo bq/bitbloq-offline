@@ -176,7 +176,7 @@ angular.module('bitbloqOffline')
                         alertsService.close(serialMonitorAlert);
                     }, function () {
                         alertsService.close(serialMonitorAlert);
-                        alertsService.add('alert-web2board-boardNotReady', 'web2board', 'warning');
+                        alertsService.add('alert-web2board-no-port-found', 'web2board', 'warning');
                     }).finally(removeInProgressFlag);
                 });
             }
