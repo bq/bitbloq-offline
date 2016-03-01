@@ -197,9 +197,9 @@ angular.module('bitbloqOffline')
 
         web2board.showApp = function () {
             openCommunication(function () {
-                alertsService.add('alert-web2board-settingBoard', 'web2board', 'loading');
+                alertsService.add('web2board_toast_showingApp', 'web2board', 'loading');
                 ws.WindowHub.server.showApp().done(function () {
-                    alertsService.add('alert-web2board-boardReady', 'web2board', 'ok', 5000); //todo: change message
+                    alertsService.add('web2board_toast_successfullyOpened', 'web2board', 'ok', 3000);
                 });
             });
         };
