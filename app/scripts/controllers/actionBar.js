@@ -63,7 +63,8 @@ angular.module('bitbloqOffline')
         commonModals.launchNotSavedModal(function(confirmed) {
           if (confirmed === 0) {
             projectApi.save($scope.getCurrentProject(), function() {
-              console.log('save', data);
+              console.log('saved');
+              openProject(true);
             });
           } else if (confirmed === -1) {
             openProject(true);
