@@ -11,9 +11,20 @@ angular.module('bitbloqOffline')
   .controller('BloqsProjectCtrl', function($scope, $rootScope, hw2Bloqs, alertsService, commonModals, $window, $document, bloqsUtils, projectApi, nodeFs, common, _, $log, bloqs) {
     $log.debug('bloqsproject ctrl', $scope.$parent.$id);
     $scope.hw2Bloqs = hw2Bloqs;
-    $scope.setProject = function(project) {
-      $scope.project = project;
 
+    $scope.setProject = function(project) {
+      hw2Bloqs.removeAllComponents();
+      $scope.deleteBoard();
+      $scope.refreshComponentsArray();
+      $scope.project = project;
+      $scope.refreshComponentsArray();
+    };
+
+    $scope.deleteBoard = function() {
+        hw2Bloqs.removeBoard();
+        $scope.boardSelected = false;
+        $scope.project.hardware.board = null;
+        $scope.refreshComponentsArray();
     };
 
     $scope.tabsClick = function() {
