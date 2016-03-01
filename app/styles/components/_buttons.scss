@@ -111,3 +111,23 @@ dropdown {
     background-color: $button-zowi-hover;
   }
 }
+
+.btn--dropdown {
+  color: #8c919b;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: left;
+  height: 34px;
+  font-style: italic;
+  min-width: 70px;
+  padding-right: .2em;
+  padding-left: .5em;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+}

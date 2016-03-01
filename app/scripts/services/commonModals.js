@@ -48,80 +48,52 @@ angular.module('bitbloqOffline')
     };
 
     exports.launchChangeLanguageModal = function() {
-      var oldLanguage = $translate.use();
+        var oldLanguage = $translate.use();
 
-      var confirmAction = function() {
-          languageModal.close();
-          $translate.use(modalOptions.lang);
-        },
-        translateLanguage = function(language) {
-          $translate.use(language);
-        },
-        rejectAction = function() {
-          $translate.use(oldLanguage);
-        },
-        closeAction = function(){
-          $translate.use(oldLanguage);
-        },
-        languageModal,
-        modalOptions = $rootScope.$new();
+        var confirmAction = function() {
+                languageModal.close();
 
-      var languagesOb = {
-        languages: {
-          name: oldLanguage,
-          items: [{
-            name: 'es-ES'
-          }, {
-            name: 'en-GB'
-          }, {
-            name: 'nl-NL'
-          }, {
-            name: 'ru-RU'
-          }, {
-            name: 'it-IT'
-          }, {
-            name: 'eu-ES'
-          }, {
-            name: 'ca-ES'
-          }, {
-            name: 'fr-FR'
-          }, {
-            name: 'de-DE'
-          }, {
-            name: 'pt-PT'
-          }, {
-            name: 'gl'
-          }, {
-            name: 'zh-CN'
-          }]
-        }
-      };
-      _.extend(modalOptions, {
-        title: 'header-change-language',
-        confirmButton: 'change-language',
-        rejectButton: 'modal-button-cancel',
-        confirmAction: confirmAction,
-        rejectAction: rejectAction,
-        closeAction: closeAction,
-        contentTemplate: 'file://' + __dirname + '/views/modals/input.html',
-        modalButtons: true,
-        modalDropdown: true,
-        languages: languagesOb,
-        optionsClick: translateLanguage,
-        dropdown: {
-          options: 'languages',
-        },
-        translate: function(language) {
-          modalOptions.lang = language;
-        },
-      });
+                $translate.use(modalOptions.lang);
+            },
+            translateLanguage = function(language) {
+                $translate.use(language);
+            },
+            rejectAction = function() {
+                $translate.use(oldLanguage);
+            },
+            languageModal,
+            modalOptions = $rootScope.$new();
 
-      languageModal = ngDialog.open({
-        template: 'file://' + __dirname + '/views/modals/modal.html',
-        className: 'modal--container modal--input',
-        scope: modalOptions,
-        showClose: false
-      });
+        _.extend(modalOptions, {
+            title: 'header-change-language',
+            confirmButton: 'change-language',
+            rejectButton: 'modal-button-cancel',
+            confirmAction: confirmAction,
+            rejectAction: rejectAction,
+            contentTemplate: 'file://' + __dirname + '/views/modals/input.html',
+            modalButtons: true,
+            modalCommonDropdown: true,
+            headingOptions: $translate.use(),
+            modaloptions: ['es-ES','en-GB','nl-NL','ru-RU','it-IT','eu-ES','ca-ES','fr-FR','de-DE','pt-PT','gl','zh-CN'],
+            optionsClick: translateLanguage,
+            dropdown: {
+                options: 'languages',
+                dataElement: 'languages-dropdown-button'
+            },
+            translate: function(language) {
+                modalOptions.lang = language;
+            },
+            condition: function() {
+                return true;
+            }
+        });
+
+        languageModal = ngDialog.open({
+            template: 'file://' + __dirname + '/views/modals/modal.html',
+            className: 'modal--container modal--input',
+            scope: modalOptions,
+            showClose: false
+        });
     };
 
     return exports;

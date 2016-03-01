@@ -831,6 +831,25 @@ dropdown .btn--dropdown--active {
   .btn--reset--zowi:hover {
     background-color: #f3f3f3; }
 
+.btn--dropdown {
+  color: #8c919b;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: left;
+  height: 34px;
+  font-style: italic;
+  min-width: 70px;
+  padding-right: .2em;
+  padding-left: .5em;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative; }
+
 @keyframes spin {
   from {
     transform: rotate(0deg); }
@@ -965,8 +984,12 @@ common-dropdown {
 
 .dropwdown__menu {
   z-index: 9;
+  -webkit-flex: 1 100%;
+  -ms-flex: 1 100%;
   flex: 1 100%;
   display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
   flex-flow: row wrap;
   border-right: 1px solid #cfcfcf;
   border-left: 1px solid #cfcfcf;
@@ -977,12 +1000,10 @@ common-dropdown {
   -moz-border-radius-bottomleft: .3em;
   border-bottom-right-radius: .3em;
   border-bottom-left-radius: .3em;
-  background-color: white;
+  background-color: #fff;
   max-height: 275px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  margin-top: 19px;
-  margin-left: -16px; }
+  overflow-y: scroll;
+  overflow-x: hidden; }
 
 .dropdown__menu__item {
   flex: 1 100%;
@@ -1010,6 +1031,14 @@ common-dropdown {
   border-bottom: 1px solid #dadada;
   margin-top: .5em;
   margin-bottom: .5em; }
+
+.form--select {
+  border-radius: .3em;
+  border: 1px solid #cfcfcf;
+  min-height: 34px;
+  max-height: 34px;
+  color: #8c919b;
+  display: flex; }
 
 .input--checkbox {
   vertical-align: text-top;

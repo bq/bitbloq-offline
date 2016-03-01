@@ -22,8 +22,12 @@ common-dropdown {
 
 .dropwdown__menu {
   z-index                           : 9;
+  -webkit-flex                      : 1 100%;
+  -ms-flex                          : 1 100%;
   flex                              : 1 100%;
   display                           : flex;
+  -webkit-flex-flow                 : row wrap;
+  -ms-flex-flow                     : row wrap;
   flex-flow                         : row wrap;
   border-right                      : 1px solid #cfcfcf;
   border-left                       : 1px solid #cfcfcf;
@@ -34,12 +38,10 @@ common-dropdown {
   -moz-border-radius-bottomleft     : .3em;
   border-bottom-right-radius        : .3em;
   border-bottom-left-radius         : .3em;
-  background-color                  : white;
+  background-color                  : #fff;
   max-height                        : 275px;
-  overflow-y                        : auto;
+  overflow-y                        : scroll;
   overflow-x                        : hidden;
-  margin-top                        : 19px;
-  margin-left                       : -16px;
 }
 
 .dropdown__menu__item {
@@ -79,4 +81,13 @@ common-dropdown {
     border-bottom: 1px solid #dadada;
     margin-top: .5em;
     margin-bottom: .5em;
+}
+
+.form--select {
+    border-radius: .3em;
+    border       : 1px solid #cfcfcf;
+    min-height   : 34px;
+    max-height   : 34px;
+    color        : $font-color-secondary;
+    display      : flex;
 }
