@@ -5,9 +5,7 @@
  */
 #include "Arduino.h"
 
-#ifndef LED_BUILTIN
-int LED_BUILTIN = 13;
-#endif
+int a = 1
 
 void setup()
 {
