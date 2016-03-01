@@ -177,3 +177,9 @@ $whiteDownArrow:'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"
 #bloqs--field.theme-colors .bloq.bloq-serial-receiver:not(.disabled).bloq--output:before {
   background-color: #ce1c23;
 }
+
+#bloqs--field.theme-colors {
+  select{
+    background-image: url($whiteDownArrow) !important;
+  }
+}
