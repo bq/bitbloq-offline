@@ -3,4 +3,14 @@ node_js:
   - 4.2
 before_install:
   - npm install -g grunt-cli
+# blacklist
+branches:
+  except:
+    - master
+
+# whitelist
+branches:
+  only:
+    - develop
+
 sudo: false
