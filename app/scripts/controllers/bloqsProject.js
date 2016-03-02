@@ -376,5 +376,5 @@ angular.module('bitbloqOffline')
         connections: []
       }
     };
-    //projectApi.oldProject = projectApi.getCleanProject($scope.getCurrentProject());
+    projectApi.oldProject = projectApi.getCleanProject($scope.project);
   });
