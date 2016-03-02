@@ -1527,8 +1527,7 @@ code {
           display: inline-block;
           vertical-align: middle;
           align-self: baseline;
-          padding-top: 19px;
-          padding-left: 10px; }
+          padding-top: 2px; }
           .protocanvas .name--container .component-name__container .baudrate__container .baudrate__dropdown .form--select {
             border: none; }
   .protocanvas .component__container {

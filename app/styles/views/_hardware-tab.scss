@@ -225,8 +225,7 @@ $color_hover: #f19833;
           display       : inline-block;
           vertical-align: middle;
           align-self    : baseline;
-          padding-top   : 19px;
-          padding-left  : 10px;
+          padding-top   : 2px;
 
           .form--select {
             border: none;
@@ -338,7 +337,7 @@ $color_hover: #f19833;
     &.board--present {
       outline: none;
       background-color: transparent;
-      
+
       .board__message {
         opacity: 0;
       }
