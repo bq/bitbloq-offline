@@ -8,7 +8,7 @@
  * Service in the bitbloqOffline.
  */
 angular.module('bitbloqOffline')
-  .service('commonModals', function($rootScope, $translate, _, ngDialog) {
+  .service('commonModals', function($rootScope, $translate, _, ngDialog, common) {
 
     var exports = {};
 
@@ -52,14 +52,15 @@ angular.module('bitbloqOffline')
 
         var confirmAction = function() {
                 languageModal.close();
-
                 $translate.use(modalOptions.lang);
             },
             translateLanguage = function(language) {
                 $translate.use(language);
+                common.translateTo(language);
             },
             rejectAction = function() {
                 $translate.use(oldLanguage);
+                common.translateTo(oldLanguage);
             },
             languageModal,
             modalOptions = $rootScope.$new();
