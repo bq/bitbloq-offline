@@ -32,6 +32,9 @@ angular.module('bitbloqOffline')
           if (targetSize > containerSize) {
             $scope.showScroll = true;
             setScrollsDimension($scope.type);
+            if (!$scope.$$phase) {
+                $scope.$apply();
+            }
           } else {
             $scope.showScroll = false;
           }
