@@ -9,7 +9,7 @@ angular.module('bitbloqOffline')
         target: '@',
         container: '@'
       },
-      controller: function($scope, $element, $attrs, $window, _) {
+      controller: function($rootScope, $scope, $element, $attrs, $window, _) {
 
         function initialize() {
           $target = angular.element($scope.target);
@@ -88,15 +88,16 @@ angular.module('bitbloqOffline')
 
         if ($scope.type === 'horizontal') {
 
-          $container.on('scroll', _.throttle(scrollFieldH, 250));
-          $element.on('scroll', _.throttle(scrollContainerH, 250));
+          $container.on('scroll', _.throttle(scrollFieldH, 50));
+          $element.on('scroll', _.throttle(scrollContainerH, 50));
         } else {
-          $target.on('scroll', _.throttle(scrollFieldV, 250));
-          $scroll.on('scroll', _.throttle(scrollContainerV, 250));
+          $target.on('scroll', _.throttle(scrollFieldV, 50));
+          $scroll.on('scroll', _.throttle(scrollContainerV, 50));
         }
 
         $window.addEventListener('bloqs:bloqremoved', _.throttle(initialize, 250));
         $window.addEventListener('bloqs:dragend', _.throttle(initialize, 250));
+        $rootScope.$on('refreshScroll', initialize);
       }
     };
   });

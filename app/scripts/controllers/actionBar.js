@@ -104,6 +104,7 @@ angular.module('bitbloqOffline')
                 $scope.$apply();
                 projectApi.save(project);
                 projectApi.oldProject = projectApi.getCleanProject($scope.getCurrentProject());
+                $rootScope.$emit('refreshScroll');
               }
             }
           });
