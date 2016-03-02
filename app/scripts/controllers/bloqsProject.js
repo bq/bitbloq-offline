@@ -229,8 +229,25 @@ angular.module('bitbloqOffline')
       }
     };
 
+    $scope.getHardwareSchema = function() {
+        var schema = hw2Bloqs.saveSchema();
+        if (schema) { //If project is loaded on protocanvas
+            schema.components = schema.components.map(function(elem) {
+                var newElem = _.find($scope.project.hardware.components, {
+                    uid: elem.uid
+                });
+                newElem.connected = elem.connected;
+                return newElem;
+            });
+            schema.board = $scope.project.hardware.board;
+            schema.robot = $scope.project.hardware.robot;
+            return schema;
+        } else { //If project is not loading yet on protocanvas
+            return _.cloneDeep($scope.project.hardware);
+        }
+    };
+
     $scope.getCurrentProject = function() {
-      $scope.project.code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
       var project = _.cloneDeep($scope.project);
       if ($scope.arduinoMainBloqs.varsBloq) {
         project.software = {
@@ -239,12 +256,16 @@ angular.module('bitbloqOffline')
           loop: $scope.arduinoMainBloqs.loopBloq.getBloqsStructure()
         };
       }
-      //project.hardware = $scope.getHardwareSchema();
+      project.hardware = $scope.getHardwareSchema();
+      $scope.project.code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
+      project.code = $scope.project.code;
+
       return project;
     };
 
     $scope.saveProject = function(project, callback) {
       project = project || $scope.getCurrentProject();
+
       if (projectApi.hasChanged(project)) {
         return projectApi.save(project, function() {
           alertsService.add('make-saved-project', 'project-saved', 'ok', 3000);
@@ -355,5 +376,5 @@ angular.module('bitbloqOffline')
         connections: []
       }
     };
-    projectApi.oldProject = projectApi.getCleanProject($scope.getCurrentProject());
+    //projectApi.oldProject = projectApi.getCleanProject($scope.getCurrentProject());
   });
