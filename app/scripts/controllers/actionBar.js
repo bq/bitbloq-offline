@@ -30,6 +30,7 @@ angular.module('bitbloqOffline')
             $scope.saveProject($scope.getCurrentProject());
             $route.reload();
           } else if (confirmed === -1) {
+            projectApi.projectChanged = false;
             projectApi.savedProjectPath = false;
             $route.reload();
           }
