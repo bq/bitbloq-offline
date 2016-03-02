@@ -1,7 +1,9 @@
 
 # Bitbloq Offline
 
-[![Build Status](https://api.travis-ci.org/Luisangonzalez/bitbloq-offline.svg?branch=develop)]
+[![Build Status](https://travis-ci.org/Luisangonzalez/bitbloq-offline.svg?branch=develop)](https://travis-ci.org/Luisangonzalez/bitbloq-offline)
+
+https://travis-ci.org/Luisangonzalez/bitbloq-offline
 
 ## Introduction ##
 This is the offline version of the Bitbloq project, a [visual programming tool](https://en.wikipedia.org/wiki/Visual_programming_language) for [Arduino](https://www.arduino.cc/).
