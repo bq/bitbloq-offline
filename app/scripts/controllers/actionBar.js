@@ -28,6 +28,7 @@ angular.module('bitbloqOffline')
         commonModals.launchNotSavedModal(function(confirmed) {
           if (confirmed === 0) {
             $scope.saveProject($scope.getCurrentProject());
+            $route.reload();
           } else if (confirmed === -1) {
             projectApi.savedProjectPath = false;
             $route.reload();
