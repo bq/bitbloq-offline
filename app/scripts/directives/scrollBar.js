@@ -9,7 +9,7 @@ angular.module('bitbloqOffline')
         target: '@',
         container: '@'
       },
-      controller: function($rootScope, $scope, $element, $attrs, $window, _) {
+      controller: function($rootScope, $scope, $element, $attrs, $window, _, $timeout) {
 
         function initialize() {
           $target = angular.element($scope.target);
@@ -97,6 +97,7 @@ angular.module('bitbloqOffline')
 
         $window.addEventListener('bloqs:bloqremoved', _.throttle(initialize, 250));
         $window.addEventListener('bloqs:dragend', _.throttle(initialize, 250));
+        $rootScope.$on('bloqs:updated', _.throttle(initialize, 50));
         $rootScope.$on('refreshScroll', initialize);
       }
     };

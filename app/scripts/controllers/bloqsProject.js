@@ -8,7 +8,7 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-  .controller('BloqsProjectCtrl', function($scope, $rootScope, hw2Bloqs, alertsService, commonModals, $window, $document, bloqsUtils, projectApi, nodeFs, common, _, $log, bloqs) {
+  .controller('BloqsProjectCtrl', function($scope, $rootScope, $timeout, hw2Bloqs, alertsService, commonModals, $window, $document, bloqsUtils, projectApi, nodeFs, common, _, $log, bloqs) {
     $log.debug('bloqsproject ctrl', $scope.$parent.$id);
     $scope.hw2Bloqs = hw2Bloqs;
 
@@ -29,7 +29,10 @@ angular.module('bitbloqOffline')
 
     $scope.tabsClick = function() {
       $scope.refreshCode();
-    };
+      $timeout(function() {
+          $rootScope.$emit('bloqs:updated');
+        }, 10);
+      };
 
     $scope.refreshCode = function() {
       $scope.updateBloqs();
@@ -98,7 +101,7 @@ angular.module('bitbloqOffline')
             updateBloq(toolboxNodeList[j], allComponents, true);
           }
         }
-
+        console.log('sad');
       }
     };
     $scope.showRobots = function(robot) {
