@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - 4.2
+before_install:
+  - npm install -g grunt-cli
+  - npm install -g bower
+# blacklist
+branches:
+  except:
+    - master
+
+# whitelist
+branches:
+  only:
+    - develop
+
+sudo: false

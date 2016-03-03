@@ -1,13 +1,17 @@
 
-# Bitbloq Offline 
+# Bitbloq Offline
+
+[![Build Status](https://travis-ci.org/Luisangonzalez/bitbloq-offline.svg?branch=develop)](https://travis-ci.org/Luisangonzalez/bitbloq-offline)
+
+https://travis-ci.org/Luisangonzalez/bitbloq-offline
 
 ## Introduction ##
-This is the offline version of the Bitbloq project, a [visual programming tool](https://en.wikipedia.org/wiki/Visual_programming_language) for [Arduino](https://www.arduino.cc/). 
+This is the offline version of the Bitbloq project, a [visual programming tool](https://en.wikipedia.org/wiki/Visual_programming_language) for [Arduino](https://www.arduino.cc/).
 
-The current version supports the following boards: 
+The current version supports the following boards:
 
- - Arduino UNO 
- - Freaduino UNO 
+ - Arduino UNO
+ - Freaduino UNO
  - BQ ZUM
 
 And the following robots:
@@ -43,14 +47,14 @@ Just build for all Operating systems:
 
 Or depending on the operating system:
 
- 
-- Windows: 
+
+- Windows:
 
         grunt dist:windows
-- Linux: 
+- Linux:
 
         grunt dist:linux
-- Mac: 
+- Mac:
 
         grunt dist:mac
 
@@ -96,4 +100,3 @@ Grunt tasks
     grunt svgstore // Generates an svg sprite from icons folder.
     grunt sass // Compiles scss files to a single main.css file.
     grunt watch // Watches yout changes and reloads the app.
-

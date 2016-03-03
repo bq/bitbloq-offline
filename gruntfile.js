@@ -7,7 +7,18 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-
+    jshint: {
+        options: {
+            jshintrc: '.jshintrc',
+            reporter: require('jshint-stylish')
+        },
+        all: {
+            src: [
+                'Gruntfile.js',
+                'app/**/*.js'
+            ]
+        }
+    },
     wiredep: {
       task: {
         // Point to the files that should be updated when
@@ -133,6 +144,7 @@ module.exports = function(grunt) {
   // Default task(s).
   grunt.registerTask('default', function() {
     grunt.task.run([
+      'jshint:all',
       'dist'
     ]);
   });
