@@ -101,7 +101,6 @@ angular.module('bitbloqOffline')
             updateBloq(toolboxNodeList[j], allComponents, true);
           }
         }
-        console.log('sad');
       }
     };
     $scope.showRobots = function(robot) {

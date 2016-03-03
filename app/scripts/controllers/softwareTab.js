@@ -167,7 +167,7 @@ angular.module('bitbloqOffline')
       newBloq.doConnectable();
       newBloq.disable();
 
-      newBloq.$bloq[0].style.transform = 'translate(' + (bloq.left - 50 + $scope.$field.scrollLeft()) + 'px,' + (bloq.top - 100 + $scope.$field.scrollTop()) + 'px)';
+      newBloq.$bloq[0].style.transform = 'translate(' + (bloq.left - 50 ) + 'px,' + (bloq.top - 100 ) + 'px)';
       $scope.$field.append(newBloq.$bloq);
       var i = 0;
       if (newBloq.varInputs) {
