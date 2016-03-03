@@ -28,18 +28,12 @@ angular.module('bitbloqOffline')
                 commonModals.launchNotSavedModal(function(confirmed) {
                     if (confirmed === 0) {
                         $scope.saveProject($scope.getCurrentProject());
+                        resetVars();
                         $route.reload();
                     } else if (confirmed === -1) {
                         projectApi.projectChanged = false;
                         projectApi.savedProjectPath = false;
-                        if ($scope.arduinoMainBloqs.varsBloq) {
-                            bloqs.removeBloq($scope.arduinoMainBloqs.varsBloq.uuid, true);
-                            $scope.arduinoMainBloqs.varsBloq = null;
-                            bloqs.removeBloq($scope.arduinoMainBloqs.setupBloq.uuid, true);
-                            $scope.arduinoMainBloqs.setupBloq = null;
-                            bloqs.removeBloq($scope.arduinoMainBloqs.loopBloq.uuid, true);
-                            $scope.arduinoMainBloqs.loopBloq = null;
-                        }
+                        resetVars();
                         $route.reload();
                     }
                 });
@@ -48,8 +42,20 @@ angular.module('bitbloqOffline')
                 // If continues, newProject(), else, cancel
             } else {
                 projectApi.savedProjectPath = false;
+                resetVars();
                 $route.reload();
             }
+        }
+
+        function resetVars() {
+          if ($scope.arduinoMainBloqs.varsBloq) {
+              bloqs.removeBloq($scope.arduinoMainBloqs.varsBloq.uuid, true);
+              $scope.arduinoMainBloqs.varsBloq = null;
+              bloqs.removeBloq($scope.arduinoMainBloqs.setupBloq.uuid, true);
+              $scope.arduinoMainBloqs.setupBloq = null;
+              bloqs.removeBloq($scope.arduinoMainBloqs.loopBloq.uuid, true);
+              $scope.arduinoMainBloqs.loopBloq = null;
+          }
         }
 
         function redirect(url) {
