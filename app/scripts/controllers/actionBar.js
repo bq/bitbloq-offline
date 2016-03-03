@@ -32,13 +32,13 @@ angular.module('bitbloqOffline')
                     } else if (confirmed === -1) {
                         projectApi.projectChanged = false;
                         projectApi.savedProjectPath = false;
-                        if ($scope.bloqs.varsBloq) {
-                            bloqs.removeBloq($scope.bloqs.varsBloq.uuid, true);
-                            $scope.bloqs.varsBloq = null;
-                            bloqs.removeBloq($scope.bloqs.setupBloq.uuid, true);
-                            $scope.bloqs.setupBloq = null;
-                            bloqs.removeBloq($scope.bloqs.loopBloq.uuid, true);
-                            $scope.bloqs.loopBloq = null;
+                        if ($scope.arduinoMainBloqs.varsBloq) {
+                            bloqs.removeBloq($scope.arduinoMainBloqs.varsBloq.uuid, true);
+                            $scope.arduinoMainBloqs.varsBloq = null;
+                            bloqs.removeBloq($scope.arduinoMainBloqs.setupBloq.uuid, true);
+                            $scope.arduinoMainBloqs.setupBloq = null;
+                            bloqs.removeBloq($scope.arduinoMainBloqs.loopBloq.uuid, true);
+                            $scope.arduinoMainBloqs.loopBloq = null;
                         }
                         $route.reload();
                     }
