@@ -4,6 +4,20 @@ module.exports = function(grunt) {
 
   grunt.loadTasks('tasks');
 
+  function getCopySrc(os){
+      var array = ['app/**', 'bower_components/**', 'node_modules/jquery/**',
+        'LICENSE', 'main.js', 'package.json', 'bower.json',
+        '!app/res/web2board/{osValue}/**/info.log',
+        '!app/res/web2board/{osValue}/**/info.log.*',
+        '!app/res/web2board/{osValue}/**/config.json'
+        ];
+      array = array.map(function (src){
+        return src.replace("{osValue}", os);
+      });
+
+     return array;
+  }
+
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -61,7 +75,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: '',
-          src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json', 'bower.json', '!app/res/web2board/linux/**', '!app/res/web2board/darwin/**'],
+          src: getCopySrc("win32").concat(['!app/res/web2board/linux/**', '!app/res/web2board/darwin/**']),
           dest: 'dist/windows/resources/app/'
         }]
       },
@@ -69,7 +83,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: '',
-          src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json', 'bower.json', '!app/res/web2board/win32/**', '!app/res/web2board/darwin/**'],
+          src: getCopySrc("linux").concat(['!app/res/web2board/win32/**', '!app/res/web2board/darwin/**']),
           dest: 'dist/linux/resources/app/'
         }]
       },
@@ -77,7 +91,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: '',
-          src: ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'LICENSE', 'main.js', 'package.json', 'bower.json', '!app/res/web2board/win32/**', '!app/res/web2board/linux/**'],
+          src: getCopySrc("darwin").concat(['!app/res/web2board/linux/**', '!app/res/web2board/win32/**']),
           dest: 'dist/mac/Bitbloq Offline.app/Contents/Resources/app/'
         }]
       },
