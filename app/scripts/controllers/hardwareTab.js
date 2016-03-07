@@ -459,7 +459,7 @@ angular.module('bitbloqOffline')
             robot: []
         };
     }
-    
+
     $scope.drop = function(data) {
       if (data.type === 'boards') {
         var board = _.find($scope.hardware.boardList, function(board) {
@@ -617,6 +617,13 @@ angular.module('bitbloqOffline')
       }
     });
 
+    $scope.$watch('componentSelected.baudRate', function(newVal, oldVal) {
+      if (newVal !== oldVal) {
+        $scope.refreshComponentsArray();
+        $scope.refreshCode();
+      }
+    });
+    
     $rootScope.$on('$translateChangeEnd', function() {
       $scope.hardware.sortToolbox();
     });
