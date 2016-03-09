@@ -27,8 +27,8 @@
     "url": "https://github.com/bq/bitbloq-offline.git"
   },
   "scripts": {
-      "postinstall": "bower install",
-       "test":  "node $(which grunt) jshint"
+    "postinstall": "bower install",
+    "test": "node $(which grunt) jshint"
   },
   "contributors": [
     "Diego Segura <diego.segura@bq.com>",

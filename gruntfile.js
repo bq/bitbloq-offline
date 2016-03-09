@@ -172,6 +172,7 @@ module.exports = function(grunt) {
             'poeditor2bitbloq'
         ]);
     });
+
     grunt.registerTask('dist', function() {
         grunt.task.run([
             'build:windows',
@@ -201,8 +202,6 @@ module.exports = function(grunt) {
                     'exec:mac_python_symbolic_link',
                     'shell'
                 ]);
-                //remove /Users/tom/bitbloq-offline/dist/mac/Bitbloq Offline.app/Contents/Resources/app/app/res/web2board/darwin/Web2Board.app/Contents/MacOS/python
-                //create link to /usr/bin/python
                 break;
             case 'linux':
                 grunt.task.run([

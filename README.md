@@ -1,12 +1,10 @@
 
 # Bitbloq Offline
 
-[![Build Status](https://travis-ci.org/Luisangonzalez/bitbloq-offline.svg?branch=develop)](https://travis-ci.org/Luisangonzalez/bitbloq-offline)
-
-https://travis-ci.org/Luisangonzalez/bitbloq-offline
-
 ## Introduction ##
 This is the offline version of the Bitbloq project, a [visual programming tool](https://en.wikipedia.org/wiki/Visual_programming_language) for [Arduino](https://www.arduino.cc/).
+
+You can visit the online version [here](http://bitbloq.bq.com)
 
 The current version supports the following boards:
 
@@ -50,13 +48,13 @@ Or depending on the operating system:
 
 - Windows:
 
-        grunt dist:windows
+        grunt build:windows
 - Linux:
 
-        grunt dist:linux
+        grunt build:linux
 - Mac:
 
-        grunt dist:mac
+        grunt build:mac
 
 This will generate a `/dist/{os}` folder with the app ready to be launched.
 
