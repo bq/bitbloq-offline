@@ -15,8 +15,17 @@ And the following robots:
 
  - ZOWI
 
+In this platforms:
 
+    Linux (Ubuntu 12.04 and later, Fedora 21, Debian 8)
+    Mac OS X 10.9 or greater
+    Windows 7 and later, both 32 and 64 (ARM version os Windows is not suported for now).
 
+You can find binaries here:
+
+ - [Linux](https://github.com/bq/bitbloq-offline/releases/download/v1.0.0/linux.zip)
+ - [Mac](https://github.com/bq/bitbloq-offline/releases/download/v1.0.0/mac.zip)
+ - [Windows](https://github.com/bq/bitbloq-offline/releases/download/v1.0.0/windows.zip)
 
 ## Getting Started ##
 
