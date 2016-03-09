@@ -1,7 +1,6 @@
 
 # Bitbloq Offline
 
-## Introduction ##
 This is the offline version of the Bitbloq project, a [visual programming tool](https://en.wikipedia.org/wiki/Visual_programming_language) for [Arduino](https://www.arduino.cc/).
 
 You can visit the online version [here](http://bitbloq.bq.com)
