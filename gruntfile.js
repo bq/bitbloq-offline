@@ -129,7 +129,8 @@ module.exports = function(grunt) {
     },
     exec: {
       electron: 'electron .',
-      stop_electron: 'killall electron || killall Electron || true'
+      stop_electron: 'killall electron || killall Electron || true',
+      mac_copy_python: 'cp -rp app/res/web2board/darwin/Web2Board.app/Contents/MacOS/python \'dist/mac/Bitbloq Offline.app/Contents/Resources/app/app/res/web2board/darwin/Web2Board.app/Contents/MacOS/python\''
     },
     watch: {
       sass: {
@@ -190,6 +191,7 @@ module.exports = function(grunt) {
           'clean',
           'copy:prebuiltMac',
           'copy:mac',
+          'exec:mac_copy_python',
           'shell'
         ]);
         break;
