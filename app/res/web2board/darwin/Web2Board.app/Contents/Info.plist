@@ -24,17 +24,6 @@
 	<string>2.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLName</key>
-			<string>bitbloq.bq.com</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>web2board</string>
-			</array>
-		</dict>
-	</array>
 	<key>CFBundleVersion</key>
 	<string>2.0.0</string>
 	<key>LSHasLocalizedDisplayName</key>
