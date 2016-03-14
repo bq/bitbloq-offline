@@ -2,6 +2,7 @@
 **/src/main.cpp
 **/src/main.ino
 **/info.log
+**/web2boardLaunger.log
 **/config.json
 **/res/integrationTestReport.html
 **/res/unitTestReport.html
