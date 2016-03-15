@@ -19,6 +19,8 @@
         };
 
         this.connect = function (reconnectTimeout) {
+            var WebSocket = require('ws');
+
             reconnectTimeout = reconnectTimeout || -1;
             var openPromise = {
                 onSuccess : function() {},
@@ -32,12 +34,17 @@
                     }, reconnectTimeout * 1000);
                 }
             }
-
             try {
                 this.wsClient = new WebSocket(url);
-            } catch (error) {
-                reconnect(error);
-                return;
+            } catch (exception) {
+                console.error(exception);
+                window.setTimeout(function () {
+                    openPromise.onError(exception)
+                }, 10);
+                return { done: function (onSuccess, onError) {
+                    openPromise.onSuccess = onSuccess;
+                    openPromise.onError = onError;
+                }}
             }
 
             this.wsClient.onopen = function () {
@@ -96,8 +103,17 @@
             };
 
             this.wsClient.onMessageError = function (error) {
+                openPromise.onError(error.message);
                 thisApi.callbacks.onMessageError(error);
             };
+
+            //this.wsClient.on('open', this.wsClient.onopen);
+            //
+            //this.wsClient.on('close', this.wsClient.onclose);
+            //
+            //this.wsClient.on('message', this.wsClient.onmessage);
+
+            this.wsClient.on('error', this.wsClient.onMessageError);
 
             return { done: function (onSuccess, onError) {
                 openPromise.onSuccess = onSuccess;

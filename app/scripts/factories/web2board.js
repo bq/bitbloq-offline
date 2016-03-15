@@ -101,7 +101,7 @@ angular.module('bitbloqOffline')
             });
         }
 
-        ws = WSHubsAPI.construct('ws:\\' + web2board.config.wsHost + ':' + web2board.config.wsPort, 45);
+        ws = WSHubsAPI.construct('ws://' + web2board.config.wsHost + ':' + web2board.config.wsPort, 45);
 
         ws.defaultErrorHandler = function (error) {
             $log.error('Error receiving message: ' + error);
