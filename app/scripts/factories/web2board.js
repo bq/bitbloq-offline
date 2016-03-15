@@ -25,13 +25,17 @@ angular.module('bitbloqOffline')
 
         function getWeb2boardCommand() {
             var platformOs = process.platform;
+            debugger;
             if (platformOs === 'win32') {
                 return common.appPath + "/app/res/web2board/win32/web2boardLauncher.exe";
             }
             if (platformOs === 'darwin') {
                 return common.appPath + "/app/res/web2board/darwin/Web2Board.app/Contents/MacOS/web2boardLauncher";
             }
-            return common.appPath + "/app/res/web2board/linux/web2boardLauncher";
+            if (proces.arch === "x64"){
+                return common.appPath + "/app/res/web2board/linux/web2boardLauncher";
+            }
+            return common.appPath + "/app/res/web2board/linux32/web2boardLauncher";
         }
 
         function showUpdateModal() {
