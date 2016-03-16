@@ -6,8 +6,6 @@
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
 	<string>Web2Board</string>
-	<key>LSUIElement</key>
-	<true/>
 	<key>CFBundleExecutable</key>
 	<string>Web2Board</string>
 	<key>CFBundleIconFile</key>
@@ -28,6 +26,8 @@
 	<string>2.0.0</string>
 	<key>LSHasLocalizedDisplayName</key>
 	<false/>
+	<key>LSUIElement</key>
+	<true/>
 	<key>NSAppleScriptEnabled</key>
 	<false/>
 	<key>NSHumanReadableCopyright</key>
