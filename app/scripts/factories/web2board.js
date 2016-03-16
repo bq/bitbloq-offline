@@ -14,7 +14,7 @@ angular.module('bitbloqOffline')
         var web2board = this,
             ws,
             inProgress = false,
-            TIME_FOR_WEB2BOARD_TO_START = 500,
+            TIME_FOR_WEB2BOARD_TO_START = 700,
             w2bToast = null; //ms
 
         web2board.config = {
@@ -57,7 +57,7 @@ angular.module('bitbloqOffline')
                 w2bToast = alertsService.add('web2board_toast_startApp', 'web2board', 'loading');
             }
 
-            showUpdateModalFlag = showUpdateModalFlag === true && tryCount >= 12;
+            showUpdateModalFlag = showUpdateModalFlag === true && tryCount >= 20;
             callback = callback || function () {
                 };
             if (!ws.wsClient || (ws.wsClient.readyState !== WebSocket.CONNECTING && ws.wsClient.readyState !== WebSocket.OPEN)) {

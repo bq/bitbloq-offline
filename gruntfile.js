@@ -5,11 +5,12 @@ module.exports = function(grunt) {
     grunt.loadTasks('tasks');
 
     function getCopySrc(os) {
-        var array = ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'node_modules/ws/**',
+        var array = ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'node_modules/ws/**', 'node_modules/ultron/**', 'node_modules/options/**',
             'LICENSE', 'main.js', 'package.json', 'bower.json',
             '!app/res/web2board/{osValue}/**/info.log',
             '!app/res/web2board/{osValue}/**/info.log.*',
-            '!app/res/web2board/{osValue}/**/config.json'
+            '!app/res/web2board/{osValue}/**/config.json',
+            '!app/res/web2board/{osValue}/**/web2boardLauncher.log'
         ];
         array = array.map(function(src) {
             return src.replace("{osValue}", os);
