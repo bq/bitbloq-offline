@@ -1,0 +1,9 @@
+{
+    "version": "2.0.1",
+    "file2DownloadUrl": {
+        "linux32": "https://raw.githubusercontent.com/bq/web2board/devel/res/common/config.json",
+        "linux64": "https://raw.githubusercontent.com/bq/web2board/devel/res/common/config.json",
+        "mac": "https://raw.githubusercontent.com/bq/web2board/devel/res/common/config.json",
+        "windows": "https://raw.githubusercontent.com/bq/web2board/devel/res/common/config.json"
+    }
+}

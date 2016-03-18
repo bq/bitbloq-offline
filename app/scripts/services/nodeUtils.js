@@ -8,18 +8,21 @@
  * Service in the bitbloqApp.
  */
 angular.module('bitbloqOffline')
-  .service('nodeUtils', function(nodeDialog, nodeFs) {
-    var exports = {};
+    .service('nodeUtils', function(nodeDialog, nodeFs) {
+        var exports = {};
 
-    exports.downloadFile = function(fileName, data, cb) {
-      var filePath = nodeDialog.showSaveDialog({
-        defaultPath: fileName
-      });
-      if (filePath) {
-        nodeFs.writeFileSync(filePath, data);
-        cb(filePath);
-      }
-    };
+        exports.downloadFile = function(fileName, data, defaultExtension, callback) {
+            var filePath = nodeDialog.showSaveDialog({
+                defaultPath: fileName
+            });
+            if (filePath) {
+                if (defaultExtension && filePath.indexOf('.') === -1) {
+                    filePath += defaultExtension;
+                }
+                nodeFs.writeFileSync(filePath, data);
+                callback(filePath);
+            }
+        };
 
-    return exports;
-  });
+        return exports;
+    });

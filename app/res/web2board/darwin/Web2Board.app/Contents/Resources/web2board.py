@@ -59,7 +59,6 @@ if __name__ == "__main__":
         importlib.import_module("libs.WSCommunication.Hubs")
         HubsInspector.inspectImplementedHubs()
         from libs.MainApp import getMainApp
-        utils.killProcess("web2board")
         app = getMainApp()
 
         def closeSigHandler(signal, frame):

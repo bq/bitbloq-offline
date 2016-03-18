@@ -1,0 +1,84 @@
+###########################################################
+###
+### Please, if you are unable to execute this file double clicking on it, open a terminal on this directory and execute this file using this command:
+###./INSTALL
+###
+###########################################################
+
+
+
+
+
+#!/bin/bash
+gnome-terminal -x sh -c '
+################# DEPENDENCIES #################
+sudo apt-get install gcc-avr binutils-avr gdb-avr avr-libc avrdude
+
+################# REGISTER #################
+u=$(who am i | awk "{print $1}")
+sudo adduser $u dialout
+
+#Create route if it does not exist previously 
+mkdir -p ~/.local/share/applications/
+
+sudo rm ~/.local/share/applications/web2board-handler.desktop
+echo "[Desktop Entry]
+Version=1.0.0
+Type=Application
+Exec= xterm -iconic -e web2board
+Icon=vncviewer
+StartupNotify=true
+Terminal=false
+Categories=Utility;X-XFCE;X-Xfce-Toplevel;
+MimeType=x-scheme-handler/vnc
+Name=web2board Launcher
+Comment=Launch web2board
+Name[en_US]=web2board-handler" > ~/.local/share/applications/web2board-handler.desktop
+echo "
+
+[Default Applications]
+#custom handler for bitbloqs web2board:
+x-scheme-handler/web2board=web2board-handler.desktop
+" >> ~/.local/share/applications/mimeapps.list
+
+################# DPKG WEB2BOARD.DEB #################
+cd .res
+ls
+sudo dpkg -i web2board_1.0.0_amd64.deb
+
+################# LIBRARIES #################
+
+#OLDER VERSIONS  --> if home/sketchbook exists, we copy the libraries so they can be used in the old sketchbook directory
+if [ -d "$HOME/sketchbook" ]; then
+	#Create route if it does not exist previously
+	mkdir -p $HOME/sketchbook/libraries/
+
+	#Remove previous bitbloqLibs library if it exists:
+	rm -rf $HOME/sketchbook/libraries/bitbloqLibs
+
+	cd $HOME/sketchbook/libraries/
+	sudo apt-get install wget
+
+	#Download the new version:
+	wget https://github.com/bq/bitbloqLibs/archive/v0.0.1.zip
+	unzip master.zip -d .
+	rm -rf master.zip*
+	mv bitbloqLibs-master bitbloqLibs
+fi
+
+#NEWER VERSIONS
+#Create route if it does not exist previously
+mkdir -p $HOME/Arduino/libraries/
+
+#Remove previous bitbloqLibs library if it exists:
+rm -rf $HOME/Arduino/libraries/bitbloqLibs
+
+cd $HOME/Arduino/libraries/
+sudo apt-get install wget
+
+#Download the new version:
+wget https://github.com/bq/bitbloqLibs/archive/v0.0.1.zip
+unzip master.zip -d .
+rm -rf master.zip*
+mv bitbloqLibs-master bitbloqLibs
+'

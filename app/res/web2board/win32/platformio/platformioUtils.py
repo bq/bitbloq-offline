@@ -18,6 +18,7 @@ import click.globals
 from platformio import exception, util
 from platformio.commands.run import EnvironmentProcessor, _clean_pioenvs_dir
 
+
 def run(ctx=None, environment=(), target=(), upload_port=None,  # pylint: disable=R0913,R0914
         project_dir=os.getcwd(), verbose=3, disable_auto_clean=False):
     with util.cd(project_dir):

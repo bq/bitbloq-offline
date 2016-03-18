@@ -5,11 +5,12 @@ module.exports = function(grunt) {
     grunt.loadTasks('tasks');
 
     function getCopySrc(os) {
-        var array = ['app/**', 'bower_components/**', 'node_modules/jquery/**',
+        var array = ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'node_modules/ws/**', 'node_modules/ultron/**', 'node_modules/options/**',
             'LICENSE', 'main.js', 'package.json', 'bower.json',
             '!app/res/web2board/{osValue}/**/info.log',
             '!app/res/web2board/{osValue}/**/info.log.*',
-            '!app/res/web2board/{osValue}/**/config.json'
+            '!app/res/web2board/{osValue}/**/config.json',
+            '!app/res/web2board/{osValue}/**/web2boardLauncher.log'
         ];
         array = array.map(function(src) {
             return src.replace("{osValue}", os);
@@ -75,24 +76,32 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: '',
-                    src: getCopySrc("win32").concat(['!app/res/web2board/linux/**', '!app/res/web2board/darwin/**']),
-                    dest: 'dist/windows/resources/app/'
+                    src: getCopySrc("win32").concat(['!app/res/web2board/linux/**', '!app/res/web2board/darwin/**', '!app/res/web2board/linux32/**']),
+                    dest: 'dist/windows/data/resources/app/'
                 }]
             },
             linux: {
                 files: [{
                     expand: true,
                     cwd: '',
-                    src: getCopySrc("linux").concat(['!app/res/web2board/win32/**', '!app/res/web2board/darwin/**']),
+                    src: getCopySrc("linux").concat(['!app/res/web2board/win32/**', '!app/res/web2board/darwin/**', '!app/res/web2board/linux32/**']),
                     dest: 'dist/linux/resources/app/'
+                }]
+            },
+            linux32: {
+                files: [{
+                    expand: true,
+                    cwd: '',
+                    src: getCopySrc("linux32").concat(['!app/res/web2board/win32/**', '!app/res/web2board/darwin/**', '!app/res/web2board/linux/**']),
+                    dest: 'dist/linux32/resources/app/'
                 }]
             },
             mac: {
                 files: [{
                     expand: true,
                     cwd: '',
-                    src: getCopySrc("darwin").concat(['!app/res/web2board/linux/**', '!app/res/web2board/win32/**']),
-                    dest: 'dist/mac/Bitbloq Offline.app/Contents/Resources/app/'
+                    src: getCopySrc("darwin").concat(['!app/res/web2board/linux/**', '!app/res/web2board/win32/**', '!app/res/web2board/linux32/**']),
+                    dest: 'dist/mac/Bitbloq.app/Contents/Resources/app/'
                 }]
             },
             prebuiltWindows: {
@@ -111,6 +120,14 @@ module.exports = function(grunt) {
                     dest: 'dist/linux/'
                 }]
             },
+            prebuiltLinux32: {
+                files: [{
+                    expand: true,
+                    cwd: 'res/linux32-prebuilt',
+                    src: ['**'],
+                    dest: 'dist/linux32/'
+                }]
+            },
             prebuiltMac: {
                 files: [{
                     expand: true,
@@ -121,17 +138,17 @@ module.exports = function(grunt) {
             }
         },
         clean: {
-            windows: ['dist/windows/resources/app/'],
-            linux: ['dist/linux/resources/app/'],
-            mac: ['dist/mac/Bitbloq Offline.app/Contents/Resources/app/'],
-            prebuilt: ['dist/windows/', 'dist/linux/'],
+            windows: ['dist/windows/'],
+            linux: ['dist/linux/'],
+            linux32: ['dist/linux32/'],
+            mac: ['dist/mac/'],
             i18n: 'i18n/*'
         },
         exec: {
             electron: 'electron .',
             stop_electron: 'killall electron || killall Electron || true',
-            mac_copy_python: 'cp -rp app/res/web2board/darwin/Web2Board.app/Contents/MacOS/python \'dist/mac/Bitbloq Offline.app/Contents/Resources/app/app/res/web2board/darwin/Web2Board.app/Contents/MacOS/python\'',
-            mac_python_symbolic_link: 'ln -sf /usr/bin/python \'dist/mac/Bitbloq Offline.app/Contents/Resources/app/app/res/web2board/darwin/Web2Board.app/Contents/MacOS/python\''
+            mac_copy_python: 'cp -rp app/res/web2board/darwin/Web2Board.app/Contents/MacOS/python \'dist/mac/Bitbloq.app/Contents/Resources/app/app/res/web2board/darwin/Web2Board.app/Contents/MacOS/python\'',
+            mac_python_symbolic_link: 'ln -sf /usr/bin/python \'dist/mac/Bitbloq.app/Contents/Resources/app/app/res/web2board/darwin/Web2Board.app/Contents/MacOS/python\''
         },
         watch: {
             sass: {
@@ -178,6 +195,7 @@ module.exports = function(grunt) {
             'build:windows',
             'build:mac',
             'build:linux',
+            'build:linux32',
         ]);
     });
     // Default task(s).
@@ -210,6 +228,16 @@ module.exports = function(grunt) {
                     'clean:linux',
                     'copy:prebuiltLinux',
                     'copy:linux',
+                    'shell'
+                ]);
+                break;
+            case 'linux32':
+                grunt.task.run([
+                    'sass',
+                    'svgstore',
+                    'clean:linux32',
+                    'copy:prebuiltLinux32',
+                    'copy:linux32',
                     'shell'
                 ]);
                 break;

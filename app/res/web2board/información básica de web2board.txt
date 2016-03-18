@@ -1,0 +1,8 @@
+arrancar web2board:
+	ir a la carpeta de web2board en:
+		<bitbloq path>/resources/app/app/res/web2board/win32
+	ejecutar web2board.exe
+
+obtener info.log:
+	<bitbloq path>/resources/app/app/res/web2board/win32/info.log
+		

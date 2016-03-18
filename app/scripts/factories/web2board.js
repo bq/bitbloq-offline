@@ -14,7 +14,7 @@ angular.module('bitbloqOffline')
         var web2board = this,
             ws,
             inProgress = false,
-            TIME_FOR_WEB2BOARD_TO_START = 500,
+            TIME_FOR_WEB2BOARD_TO_START = 700,
             w2bToast = null; //ms
 
         web2board.config = {
@@ -26,12 +26,15 @@ angular.module('bitbloqOffline')
         function getWeb2boardCommand() {
             var platformOs = process.platform;
             if (platformOs === 'win32') {
-                return common.appPath + "/app/res/web2board/win32/web2board.exe";
+                return common.appPath + "/app/res/web2board/win32/web2boardLauncher.exe";
             }
             if (platformOs === 'darwin') {
-                return common.appPath + "/app/res/web2board/darwin/Web2Board.app/Contents/MacOS/Web2Board";
+                return common.appPath + "/app/res/web2board/darwin/Web2Board.app/Contents/MacOS/web2boardLauncher";
             }
-            return common.appPath + "/app/res/web2board/linux/web2board";
+            if (process.arch === "x64"){
+                return common.appPath + "/app/res/web2board/linux/web2boardLauncher";
+            }
+            return common.appPath + "/app/res/web2board/linux32/web2boardLauncher";
         }
 
         function showUpdateModal() {
@@ -54,7 +57,7 @@ angular.module('bitbloqOffline')
                 w2bToast = alertsService.add('web2board_toast_startApp', 'web2board', 'loading');
             }
 
-            showUpdateModalFlag = showUpdateModalFlag === true && tryCount >= 12;
+            showUpdateModalFlag = showUpdateModalFlag === true && tryCount >= 20;
             callback = callback || function () {
                 };
             if (!ws.wsClient || (ws.wsClient.readyState !== WebSocket.CONNECTING && ws.wsClient.readyState !== WebSocket.OPEN)) {
@@ -101,7 +104,7 @@ angular.module('bitbloqOffline')
             });
         }
 
-        ws = WSHubsAPI.construct('ws:\\' + web2board.config.wsHost + ':' + web2board.config.wsPort, 45);
+        ws = WSHubsAPI.construct('ws://' + web2board.config.wsHost + ':' + web2board.config.wsPort, 45);
 
         ws.defaultErrorHandler = function (error) {
             $log.error('Error receiving message: ' + error);
@@ -118,6 +121,7 @@ angular.module('bitbloqOffline')
 
         ws.callbacks.onMessageError = function (error) {
             $log.error('Error receiving message: ' + error);
+            ws.wsClient.close();
         };
 
         ws.CodeHub.client.isCompiling = function () {

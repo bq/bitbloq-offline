@@ -10,7 +10,7 @@ const BrowserWindow = electron.BrowserWindow; // Module to create native browser
 electron.crashReporter.start({
     productName: PRODUCT_NAME,
     companyName: 'BQ',
-    submitURL: 'https://bq.com/bitbloq-offline',
+    submitURL: 'https://bitbloq.bq.com/bitbloq-offline',
     autoSubmit: false
 });
 
@@ -57,7 +57,7 @@ app.on('ready', function() {
     });
 
     // Open the DevTools.
-    //mainWindow.webContents.openDevTools();
+    // mainWindow.webContents.openDevTools();
 
     // Emitted when the window is closed.
     mainWindow.on('closed', function() {
