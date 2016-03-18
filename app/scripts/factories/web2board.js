@@ -121,6 +121,7 @@ angular.module('bitbloqOffline')
 
         ws.callbacks.onMessageError = function (error) {
             $log.error('Error receiving message: ' + error);
+            ws.wsClient.close();
         };
 
         ws.CodeHub.client.isCompiling = function () {

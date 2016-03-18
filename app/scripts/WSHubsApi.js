@@ -102,6 +102,10 @@
                 }
             };
 
+            this.wsClient.onerror = function () {
+                thisApi.callbacks.onMessageError(error)
+            };
+
             this.wsClient.onMessageError = function (error) {
                 openPromise.onError(error.message);
                 thisApi.callbacks.onMessageError(error);
