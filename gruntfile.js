@@ -77,7 +77,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: '',
                     src: getCopySrc("win32").concat(['!app/res/web2board/linux/**', '!app/res/web2board/darwin/**', '!app/res/web2board/linux32/**']),
-                    dest: 'dist/windows/resources/app/'
+                    dest: 'dist/windows/data/resources/app/'
                 }]
             },
             linux: {
@@ -101,7 +101,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: '',
                     src: getCopySrc("darwin").concat(['!app/res/web2board/linux/**', '!app/res/web2board/win32/**', '!app/res/web2board/linux32/**']),
-                    dest: 'dist/mac/Bitbloq Offline.app/Contents/Resources/app/'
+                    dest: 'dist/mac/Bitbloq.app/Contents/Resources/app/'
                 }]
             },
             prebuiltWindows: {
@@ -138,18 +138,17 @@ module.exports = function(grunt) {
             }
         },
         clean: {
-            windows: ['dist/windows/resources/app/'],
-            linux: ['dist/linux/resources/app/'],
-            linux32: ['dist/linux32/resources/app/'],
-            mac: ['dist/mac/Bitbloq Offline.app/Contents/Resources/app/'],
-            prebuilt: ['dist/windows/', 'dist/linux/'],
+            windows: ['dist/windows/'],
+            linux: ['dist/linux/'],
+            linux32: ['dist/linux32/'],
+            mac: ['dist/mac/'],
             i18n: 'i18n/*'
         },
         exec: {
             electron: 'electron .',
             stop_electron: 'killall electron || killall Electron || true',
-            mac_copy_python: 'cp -rp app/res/web2board/darwin/Web2Board.app/Contents/MacOS/python \'dist/mac/Bitbloq Offline.app/Contents/Resources/app/app/res/web2board/darwin/Web2Board.app/Contents/MacOS/python\'',
-            mac_python_symbolic_link: 'ln -sf /usr/bin/python \'dist/mac/Bitbloq Offline.app/Contents/Resources/app/app/res/web2board/darwin/Web2Board.app/Contents/MacOS/python\''
+            mac_copy_python: 'cp -rp app/res/web2board/darwin/Web2Board.app/Contents/MacOS/python \'dist/mac/Bitbloq.app/Contents/Resources/app/app/res/web2board/darwin/Web2Board.app/Contents/MacOS/python\'',
+            mac_python_symbolic_link: 'ln -sf /usr/bin/python \'dist/mac/Bitbloq.app/Contents/Resources/app/app/res/web2board/darwin/Web2Board.app/Contents/MacOS/python\''
         },
         watch: {
             sass: {
