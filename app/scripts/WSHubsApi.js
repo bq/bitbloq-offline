@@ -193,13 +193,13 @@
                         }
                     };
                     //check returnFunctions, memory leak
-                    respondsTimeout = undefined ? defaultRespondTimeout : respondsTimeout;
+                    respondsTimeout = respondsTimeout ? respondsTimeout : defaultRespondTimeout;
                     if(respondsTimeout >=0) {
                         setTimeout(function () {
                             if (returnFunctions[ID] && returnFunctions[ID].onError) {
                                 returnFunctions[ID].onError('timeOut Error');
                             }
-                        }, defaultRespondTimeout);
+                        }, respondsTimeout);
                     }
                     return self;
                 };

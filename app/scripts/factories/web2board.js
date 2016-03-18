@@ -60,8 +60,8 @@ angular.module('bitbloqOffline')
             showUpdateModalFlag = showUpdateModalFlag === true && tryCount >= 20;
             callback = callback || function () {
                 };
-            if (!ws.wsClient || (ws.wsClient.readyState !== WebSocket.CONNECTING && ws.wsClient.readyState !== WebSocket.OPEN)) {
 
+            if (!ws.wsClient || (ws.wsClient.readyState !== WebSocket.CONNECTING && ws.wsClient.readyState !== WebSocket.OPEN)) {
                 ws.connect().done(function () {
                         ws.wsClient.couldSuccessfullyConnect = true;
                         alertsService.close(w2bToast);
@@ -83,7 +83,11 @@ angular.module('bitbloqOffline')
                     }
                 );
             } else {
-                callback();
+                ws.UtilsAPIHub.server.getId().done(callback, function (){
+                    ws.wsClient = null;
+                    startWeb2board();
+                    openCommunication(callback, showUpdateModalFlag, 0);
+                }, 2000);
             }
         }
 
