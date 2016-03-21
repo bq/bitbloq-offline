@@ -1,5 +1,45 @@
+# Bitbloq Offline 
+
+[es_ES]
+
+Esta es la versión offline oficial del proyecto Bitbloq, una [herramienta de programación visual](https://es.wikipedia.org/wiki/Programaci%C3%B3n_visual) de [Arduino](https://www.arduino.cc/).
+
+Puedes utilizar la versión online [aquí](http://bitbloq.bq.com).
+
+En la versión actual soportamos las siguientes placas:
+
+ - Arduino UNO
+ - Freaduino UNO
+ - BQ ZUM
+
+Y los siguientes robots:
+
+ - ZOWI
+
+¿Utilizas otra placa o robot y quieres que la añadamos en Bitbloq? Escribenos a soporte.bitbloq@bq.com e intentaremos hablar con el fabricante para que nos permita introducirlo en Bitbloq. 
+Por supuesto es un proyecto Open Source y también aceptamos contribuciones de cualquier persona siempre que sean correctas.
+
+Actualmente Bitbloq offline funciona en las siguientes plataformas:
+
+ - Linux (Ubuntu 12.04 y superior, Fedora 21, Debian 8)
+ - Mac OS X 10.9 o superior
+ - Windows 7 y posterior, ambos 32 y 64 (la versión ARM de Windows no está soportada por ahora).
+
+Puedes encontrar los instaladores de la aplicación aquí:
+
+ - [Linux](https://github.com/bq/bitbloq-offline/releases/download/v1.0.1/linux.zip)
+ - [Mac](https://github.com/bq/bitbloq-offline/releases/download/v1.0.1/mac.zip)
+ - [Windows](https://github.com/bq/bitbloq-offline/releases/download/v1.0.1/windows.zip)
+
+
+Notas:
+ - Es una aplicación portable, no requiere instalación ni permisos de administrador para ejecutarse, pero tu placa es posible que requiera drivers, hemos añadido algunos en la carpeta driver del la aplicación. ¡ Acuerdate de instalarlos !
+ - Acuerdate de descomprimir el fichero que te descargas en una carpeta en la que luego el usuario tenga permisos, por ejemplo, en windows no la descomprimas directamente en c:, o en la carpeta de "c:/Archivos de programa", ejemplos válidos son la carpeta "Documentos" del usuario o en el escritorio.
+ - ¿No te detecta la placa y está conectada el ordenador? Revisa [este documento](docs/motherboard_troubleshooting.pdf) y si sigues teniendo problemas no dudes en escríbirnos a soporte.bitbloq@bq.com.
 
 # Bitbloq Offline
+
+[en_GB]
 
 This is the offline version of the Bitbloq project, a [visual programming tool](https://en.wikipedia.org/wiki/Visual_programming_language) for [Arduino](https://www.arduino.cc/).
 
@@ -14,6 +54,9 @@ The current version supports the following boards:
 And the following robots:
 
  - ZOWI
+
+Do you have another board or robot? email us to support.bitbloq.en@bq.com, and we will try to talk with the manufacturer to allow us to introduce it on Bitbloq.
+Bitbloq its an Open Source Project so we will accept contributions if this are correct.
 
 In this platforms:
 
