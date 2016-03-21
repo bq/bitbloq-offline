@@ -33,9 +33,16 @@ Puedes encontrar los instaladores de la aplicación aquí:
 
 
 Notas:
+ 
  - Es una aplicación portable, no requiere instalación ni permisos de administrador para ejecutarse, pero tu placa es posible que requiera drivers, hemos añadido algunos en la carpeta driver del la aplicación. ¡ Acuerdate de instalarlos !
- - Acuerdate de descomprimir el fichero que te descargas en una carpeta en la que luego el usuario tenga permisos, por ejemplo, en windows no la descomprimas directamente en c:, o en la carpeta de "c:/Archivos de programa", ejemplos válidos son la carpeta "Documentos" del usuario o en el escritorio.
+ 
+ - Acuerdate de descomprimir el fichero que te descargas en una carpeta en la que luego el usuario tenga permisos, por ejemplo, en windows no la descomprimas directamente en "c:", o en la carpeta de "c:/Archivos de programa", ejemplos válidos son la carpeta "Documentos" del usuario o en el escritorio.
+ 
  - ¿No te detecta la placa y está conectada el ordenador? Revisa [este documento](docs/motherboard_troubleshooting.pdf) y si sigues teniendo problemas no dudes en escríbirnos a soporte.bitbloq@bq.com.
+
+Recuerda que al ser una aplicación offline, no tendrás todas las ventajas ni novedades de la web, te recomendamos que la uses solo cuando no tienes conexión estable a internet.
+
+(docs/onlineVSoffline.png) 
 
 # Bitbloq Offline
 
