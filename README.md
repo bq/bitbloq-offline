@@ -42,7 +42,7 @@ Notas:
 
 Recuerda que al ser una aplicación offline, no tendrás todas las ventajas ni novedades de la web, te recomendamos que la uses solo cuando no tienes conexión estable a internet.
 
-![alt tag](docs/onlineVSoffline.png) 
+![alt tag](docs/onlineVSoffline.jpg) 
 
 # Bitbloq Offline
 
