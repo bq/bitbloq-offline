@@ -16,7 +16,7 @@ Y los siguientes robots:
 
  - ZOWI
 
-¿Utilizas otra placa o robot y quieres que la añadamos en Bitbloq? Escribenos a soporte.bitbloq@bq.com e intentaremos hablar con el fabricante para que nos permita introducirlo en Bitbloq. 
+¿Utilizas otra placa o robot y quieres que la añadamos en Bitbloq? Escríbenos a soporte.bitbloq@bq.com e intentaremos hablar con el fabricante para que nos permita introducirlo en Bitbloq. 
 Por supuesto es un proyecto Open Source y también aceptamos contribuciones de cualquier persona siempre que sean correctas.
 
 Actualmente Bitbloq offline funciona en las siguientes plataformas:
@@ -34,13 +34,13 @@ Puedes encontrar los instaladores de la aplicación aquí:
 
 Notas:
  
- - Es una aplicación portable, no requiere instalación ni permisos de administrador para ejecutarse, pero tu placa es posible que requiera drivers, hemos añadido algunos en la carpeta driver del la aplicación. ¡ Acuerdate de instalarlos !
+ - Es una aplicación portable, no requiere instalación ni permisos de administrador para ejecutarse, pero tu placa es posible que requiera drivers, hemos añadido algunos en la carpeta drivers de la aplicación. ¡ Acuérdate de instalarlos !
  
- - Acuerdate de descomprimir el fichero que te descargas en una carpeta en la que luego el usuario tenga permisos, por ejemplo, en windows no la descomprimas directamente en "c:", o en la carpeta de "c:/Archivos de programa", ejemplos válidos son la carpeta "Documentos" del usuario o en el escritorio.
+ - Acuérdate de descomprimir el fichero que te descargas en una carpeta en la que luego el usuario que lo utilice tenga permisos, por ejemplo, en windows no la descomprimas directamente en "c:", o en la carpeta de "c:/Archivos de programa", ejemplos válidos son la carpeta "Documentos" del usuario o en el escritorio.
  
- - ¿No te detecta la placa y está conectada el ordenador? Revisa [este documento](docs/motherboard_troubleshooting.pdf) y si sigues teniendo problemas no dudes en escríbirnos a soporte.bitbloq@bq.com.
+ - ¿No te detecta la placa y está conectada el ordenador? Revisa [este documento](docs/motherboard_troubleshooting.pdf) y si sigues teniendo incidencias, no dudes en escríbirnos a soporte.bitbloq@bq.com.
 
-Recuerda que al ser una aplicación offline, no tendrás todas las ventajas ni novedades de la web, te recomendamos que la uses solo cuando no tienes conexión estable a internet.
+Recuerda que al ser una aplicación offline, no tendrás todas las ventajas ni novedades de la web. Te recomendamos que la uses solo cuando no tienes conexión estable a internet.
 
 ![alt tag](docs/onlineVSoffline.jpg) 
 
