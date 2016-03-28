@@ -425,7 +425,6 @@
 #define    TXB8         0
 
 /* Constants */
-#define    RAMSTART 0x60
 #define    RAMEND   0x025F     /*Last On-Chip SRAM Location*/
 #define    XRAMEND  RAMEND
 #define    E2END    0x0000

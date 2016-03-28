@@ -492,7 +492,7 @@
 #define PRTIM1  4   /* Power Reduction Timer/Counter1 */
 #define PRTIM0  3   /* Power Reduction Timer/Counter0 */
 #define PRSPI   2   /* Power Reduction Serial Peripheral Interface */
-#define PRUSART0 1   /* Power Reduction USART */
+#define PRUSART 1   /* Power Reduction USART */
 #define PRADC   0   /* Power Reduction ADC */
 
 /* Oscillator Calibration Value */
@@ -1249,7 +1249,7 @@
 #define SIG_INPUT_CAPTURE1		_VECTOR(11)
 
 /* Timer/Counter1 Compare Match A */
-#define TIMER1_COMPA_vect_num	12
+#define TIMER1_COMPA_vect_num	_VECTOR(12)
 #define TIMER1_COMPA_vect		_VECTOR(12)
 #define SIG_OUTPUT_COMPARE1A		_VECTOR(12)
 #define SIG_OUTPUT_COMPARE1_A		_VECTOR(12)
@@ -1346,12 +1346,11 @@
 /* Constants */
 #define SPM_PAGESIZE    64
 
-#define RAMSTART    0x100
 #define RAMEND      0x02FF
 #define XRAMEND     RAMEND
 #define E2END       0x01FF
 #define E2PAGESIZE  4
-#define FLASHEND    0x1FFF
+#define FLASHEND    0x0FFF
 
 
 /* Fuse Information */

@@ -1,4 +1,4 @@
-prefix=/home/jenkins/jenkins/jobs/toolchain-avr-linux64/workspace/objdir
+prefix=/home/jenkins/jenkins/jobs/toolchain-avr-3.4.3-linux32/workspace/objdir
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include

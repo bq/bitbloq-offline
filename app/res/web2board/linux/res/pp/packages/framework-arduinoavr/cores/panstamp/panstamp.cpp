@@ -99,15 +99,14 @@ void PANSTAMP::rxOff(void)
  * Initialize panStamp board
  * 
  * @param freq Carrier frequency
- * @param mode Working mode (speed, ...)
  */
-void PANSTAMP::init(uint8_t freq, uint8_t mode)
+void PANSTAMP::init(uint8_t freq) 
 {
   // Calibrate internal RC oscillator
   rcOscCalibrate();
 
   // Setup CC1101
-  radio.init(freq, mode);
+  radio.init(freq);
 
   delayMicroseconds(50);  
 

@@ -172,6 +172,11 @@
 #define OCF1C 3
 #define ICF1 5
 
+#define TIFR2 _SFR_IO8(0x17)
+#define TOV2 0
+#define OCF2A 1
+#define OCF2B 2
+
 #define TIFR3 _SFR_IO8(0x18)
 #define TOV3 0
 #define OCF3A 1
@@ -535,7 +540,7 @@
 
 #define TIMSK5 _SFR_MEM8(0x73)
 
-#ifndef __ASSEMBLER__
+#ifndef _ASSEMBLER_
 #define ADC _SFR_MEM16(0x78)
 #endif
 #define ADCW _SFR_MEM16(0x78)
@@ -917,6 +922,51 @@
 
 #define UPDATX _SFR_MEM8(0xAF)
 
+#define TCCR2A _SFR_MEM8(0xB0)
+#define WGM20 0
+#define WGM21 1
+#define COM2B0 4
+#define COM2B1 5
+#define COM2A0 6
+#define COM2A1 7
+
+#define TCCR2B _SFR_MEM8(0xB1)
+#define CS20 0
+#define CS21 1
+#define CS22 2
+#define WGM22 3
+#define FOC2B 6
+#define FOC2A 7
+
+#define TCNT2 _SFR_MEM8(0xB2)
+#define TCNT2_0 0
+#define TCNT2_1 1
+#define TCNT2_2 2
+#define TCNT2_3 3
+#define TCNT2_4 4
+#define TCNT2_5 5
+#define TCNT2_6 6
+#define TCNT2_7 7
+
+#define OCR2A _SFR_MEM8(0xB3)
+#define OCR2_0 0
+#define OCR2_1 1
+#define OCR2_2 2
+#define OCR2_3 3
+#define OCR2_4 4
+#define OCR2_5 5
+#define OCR2_6 6
+#define OCR2_7 7
+
+#define OCR2B _SFR_MEM8(0xB4)
+#define OCR2_0 0
+#define OCR2_1 1
+#define OCR2_2 2
+#define OCR2_3 3
+#define OCR2_4 4
+#define OCR2_5 5
+#define OCR2_6 6
+#define OCR2_7 7
 
 #define TWBR _SFR_MEM8(0xB8)
 #define TWBR0 0
@@ -1095,10 +1145,6 @@
 #define UPM11 5
 #define UMSEL10 6
 #define UMSEL11 7
-
-#define UCSR1D _SFR_MEM8(0xCB)
-#define RTSEN 0
-#define CTSEN 1
 
 #define UBRR1 _SFR_MEM16(0xCC)
 

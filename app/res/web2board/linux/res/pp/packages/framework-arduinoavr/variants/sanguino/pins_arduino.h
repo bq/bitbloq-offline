@@ -25,8 +25,6 @@
   -----------
   11/25/11  - ryan@ryanmsutton.com - Add pins for Sanguino 644P and 1284P
   07/15/12  - ryan@ryanmsutton.com - Updated for arduino0101
-
-  Improvements by Kristian Sloth Lauszus, lauszus@gmail.com
 */
 
 #ifndef Pins_Arduino_h
@@ -34,15 +32,36 @@
 
 #include <avr/pgmspace.h>
 
-static const uint8_t SS   = 4;
-static const uint8_t MOSI = 5;
-static const uint8_t MISO = 6;
-static const uint8_t SCK  = 7;
+#define NOT_A_PIN 0
+#define NOT_A_PORT 0
+
+#define NOT_ON_TIMER 0
+#define TIMER0A 1
+#define TIMER0B 2
+#define TIMER1A 3
+#define TIMER1B 4
+#define TIMER2  5
+#define TIMER2A 6
+#define TIMER2B 7
+
+#define TIMER3A 8
+#define TIMER3B 9
+#define TIMER3C 10
+#define TIMER4A 11
+#define TIMER4B 12
+#define TIMER4C 13
+#define TIMER5A 14
+#define TIMER5B 15
+#define TIMER5C 16
+
+const static uint8_t SS   = 4;
+const static uint8_t MOSI = 5;
+const static uint8_t MISO = 6;
+const static uint8_t SCK  = 7;
 
 static const uint8_t SDA = 17;
 static const uint8_t SCL = 16;
-
-#define LED_BUILTIN 0
+static const uint8_t LED_BUILTIN = 13;
 
 static const uint8_t A0 = 31;
 static const uint8_t A1 = 30;
@@ -53,61 +72,80 @@ static const uint8_t A5 = 26;
 static const uint8_t A6 = 25;
 static const uint8_t A7 = 24;
 
-// ATMEL ATMEGA644/ATMEGA1284 / SANGUINO
+// On the ATmega1280, the addresses of some of the port registers are
+// greater than 255, so we can't store them in uint8_t's.
+// extern const uint16_t PROGMEM port_to_mode_PGM[];
+// extern const uint16_t PROGMEM port_to_input_PGM[];
+// extern const uint16_t PROGMEM port_to_output_PGM[];
+
+// extern const uint8_t PROGMEM digital_pin_to_port_PGM[];
+// extern const uint8_t PROGMEM digital_pin_to_bit_PGM[];
+// extern const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[];
+// extern const uint8_t PROGMEM digital_pin_to_timer_PGM[];
+
+// ATMEL ATMEGA644P / SANGUINO
 //
-//                        +---\/---+
-//            (D 0) PB0  1|        |40  PA0 (AI 0 / D31)
-//            (D 1) PB1  2|        |39  PA1 (AI 1 / D30)
-//       INT2 (D 2) PB2  3|        |38  PA2 (AI 2 / D29)
-//        PWM (D 3) PB3  4|        |37  PA3 (AI 3 / D28)
-//     SS PWM (D 4) PB4  5|        |36  PA4 (AI 4 / D27)
-//       MOSI (D 5) PB5  6|        |35  PA5 (AI 5 / D26)
-//       MISO (D 6) PB6  7|        |34  PA6 (AI 6 / D25)
-//        SCK (D 7) PB7  8|        |33  PA7 (AI 7 / D24)
-//                  RST  9|        |32  AREF
-//                  VCC 10|        |31  GND
-//                  GND 11|        |30  AVCC
-//                XTAL2 12|        |29  PC7 (D 23)
-//                XTAL1 13|        |28  PC6 (D 22)
-//       RX0 (D 8)  PD0 14|        |27  PC5 (D 21) TDI
-//       TX0 (D 9)  PD1 15|        |26  PC4 (D 20) TDO
-//  INT0 RX1 (D 10) PD2 16|        |25  PC3 (D 19) TMS
-//  INT1 TX1 (D 11) PD3 17|        |24  PC2 (D 18) TCK
-//       PWM (D 12) PD4 18|        |23  PC1 (D 17) SDA
-//       PWM (D 13) PD5 19|        |22  PC0 (D 16) SCL
-//       PWM (D 14) PD6 20|        |21  PD7 (D 15) PWM
-//                        +--------+
+//                   +---\/---+
+//  INT0 (D 0) PB0  1|        |40  PA0 (AI 0 / D31)
+//  INT1 (D 1) PB1  2|        |39  PA1 (AI 1 / D30)
+//  INT2 (D 2) PB2  3|        |38  PA2 (AI 2 / D29)
+//   PWM (D 3) PB3  4|        |37  PA3 (AI 3 / D28)
+//   PWM (D 4) PB4  5|        |36  PA4 (AI 4 / D27)
+//  MOSI (D 5) PB5  6|        |35  PA5 (AI 5 / D26)
+//  MISO (D 6) PB6  7|        |34  PA6 (AI 6 / D25)
+//   SCK (D 7) PB7  8|        |33  PA7 (AI 7 / D24)
+//             RST  9|        |32  AREF
+//             VCC 10|        |31  GND 
+//             GND 11|        |30  AVCC
+//           XTAL2 12|        |29  PC7 (D 23)
+//           XTAL1 13|        |28  PC6 (D 22)
+//  RX0 (D 8)  PD0 14|        |27  PC5 (D 21) TDI
+//  TX0 (D 9)  PD1 15|        |26  PC4 (D 20) TDO
+//  RX1 (D 10) PD2 16|        |25  PC3 (D 19) TMS
+//  TX1 (D 11) PD3 17|        |24  PC2 (D 18) TCK
+//  PWM (D 12) PD4 18|        |23  PC1 (D 17) SDA
+//  PWM (D 13) PD5 19|        |22  PC0 (D 16) SCL
+//  PWM (D 14) PD6 20|        |21  PD7 (D 15) PWM
+//                   +--------+
 //
 #define NUM_DIGITAL_PINS            24
 #define NUM_ANALOG_INPUTS           8
-
-#define analogInputToDigitalPin(p)  ((p < 8) ? 31 - (p): -1)
-#define analogPinToChannel(p)       ((p < 8) ? (p) : 31 - (p))
+#define analogInputToDigitalPin(p)  ((p < 7) ? (p) + 24 : -1)
 
 #define digitalPinHasPWM(p)         ((p) == 3 || (p) == 4 || (p) == 12 || (p) == 13 || (p) == 14 || (p) == 15 )
 
-#define digitalPinToPCICR(p)        ( (((p) >= 0) && ((p) <= 31)) ? (&PCICR) : ((uint8_t *)0) )
+#define digitalPinToPCICR(p)    ( (((p) >= 0) && ((p) <= 31)) ? (&PCICR) : ((uint8_t *)0) )
 
-#define digitalPinToPCICRbit(p)     ( (((p) >= 24) && ((p) <= 31)) ? 0 : \
-                                    ( (((p) >=  0) && ((p) <=  7)) ? 1 : \
-                                    ( (((p) >= 16) && ((p) <= 23)) ? 2 : \
-                                    ( (((p) >=  8) && ((p) <= 15)) ? 3 : \
-                                    0 ) ) ) )
+#define digitalPinToPCICRbit(p) ( (((p) >= 24) && ((p) <= 31)) ? 0 : \
+                                ( (((p) >=  0) && ((p) <=  7)) ? 1 : \
+                                ( (((p) >= 16) && ((p) <= 23)) ? 2 : \
+                                ( (((p) >=  8) && ((p) <= 15)) ? 3 : \
+                                0 ) ) ) )
 
-#define digitalPinToPCMSK(p)        ( (((p) >= 24) && ((p) <= 31)) ? (&PCMSK0) : \
-                                    ( (((p) >=  0) && ((p) <=  7)) ? (&PCMSK1) : \
-                                    ( (((p) >= 16) && ((p) <= 23)) ? (&PCMSK2) : \
-                                    ( (((p) >=  8) && ((p) <= 15)) ? (&PCMSK3) : \
-                                    ((uint8_t *)0) ) ) ) )
+#define digitalPinToPCMSK(p)    ( (((p) >= 24) && ((p) <= 31)) ? (&PCMSK0) : \
+                                ( (((p) >=  0) && ((p) <=  7)) ? (&PCMSK1) : \
+                                ( (((p) >= 16) && ((p) <= 23)) ? (&PCMSK2) : \
+                                ( (((p) >=  8) && ((p) <= 15)) ? (&PCMSK3) : \
+                                ((uint8_t *)0) ) ) ) )
 
 
-#define digitalPinToPCMSKbit(p)     ( (((p) >= 24) && ((p) <= 31)) ? (31 - (p)) : \
-                                    ( (((p) >=  0) && ((p) <=  7)) ? (p) : \
-                                    ( (((p) >= 16) && ((p) <= 23)) ? ((p) - 16) : \
-                                    ( (((p) >=  8) && ((p) <= 15)) ? ((p) - 8) : \
-                                    0 ) ) ) )
+#define digitalPinToPCMSKbit(p) ( (((p) >= 24) && ((p) <= 31)) ? (31 - (p)) : \
+                                ( (((p) >=  0) && ((p) <=  7)) ? (p) : \
+                                ( (((p) >= 16) && ((p) <= 23)) ? ((p) - 16) : \
+                                ( (((p) >=  8) && ((p) <= 15)) ? ((p) - 8) : \
+                                0 ) ) ) )
 
-#define digitalPinToInterrupt(p)    ((p) == 10 ? 0 : ((p) == 11 ? 1 : ((p) == 2 ? 2 : NOT_AN_INTERRUPT)))
+#define PA 1
+#define PB 2
+#define PC 3
+#define PD 4
+#define PE 5
+#define PF 6
+#define PG 7
+#define PH 8
+#define PJ 10
+#define PK 11
+#define PL 12
 
 #ifdef ARDUINO_MAIN
 // these arrays map port names (e.g. port B) to the
@@ -214,7 +252,7 @@ const uint8_t PROGMEM digital_pin_to_timer_PGM[] =
         NOT_ON_TIMER,   /* 1  - PB1 */
         NOT_ON_TIMER,   /* 2  - PB2 */
         TIMER0A,        /* 3  - PB3 */
-        TIMER0B,        /* 4  - PB4 */
+        TIMER0B,                /* 4  - PB4 */
         NOT_ON_TIMER,   /* 5  - PB5 */
         NOT_ON_TIMER,   /* 6  - PB6 */
         NOT_ON_TIMER,   /* 7  - PB7 */
@@ -244,29 +282,4 @@ const uint8_t PROGMEM digital_pin_to_timer_PGM[] =
         NOT_ON_TIMER   /* 31 - PA7 */
 };
 #endif
-
-// These serial port names are intended to allow libraries and architecture-neutral
-// sketches to automatically default to the correct port name for a particular type
-// of use.  For example, a GPS module would normally connect to SERIAL_PORT_HARDWARE_OPEN,
-// the first hardware serial port whose RX/TX pins are not dedicated to another use.
-//
-// SERIAL_PORT_MONITOR        Port which normally prints to the Arduino Serial Monitor
-//
-// SERIAL_PORT_USBVIRTUAL     Port which is USB virtual serial
-//
-// SERIAL_PORT_LINUXBRIDGE    Port which connects to a Linux system via Bridge library
-//
-// SERIAL_PORT_HARDWARE       Hardware serial port, physical RX & TX pins.
-//
-// SERIAL_PORT_HARDWARE_OPEN  Hardware serial ports which are open for use.  Their RX & TX
-//                            pins are NOT connected to anything by default.
-
-#define SERIAL_PORT_MONITOR         Serial
-#define SERIAL_PORT_HARDWARE        Serial
-
-#if defined(UBRR1H)
-    #define SERIAL_PORT_HARDWARE1       Serial1
-    #define SERIAL_PORT_HARDWARE_OPEN   Serial1
-#endif
-
 #endif

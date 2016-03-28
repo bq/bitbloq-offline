@@ -89,7 +89,7 @@
 /* Signature (ATmega164P) */
 #define SIGNATURE_0 0x1E
 #define SIGNATURE_1 0x94
-#define SIGNATURE_2 0x0A
+#define SIGNATURE_2 0x0A 
 
 
 #endif /* _AVR_IOM164_H_ */

@@ -1387,7 +1387,6 @@
 
 
 /* Memory Sizes */
-#define RAMSTART       0x100
 #define RAMEND         0x2FF
 #define XRAMSIZE       0
 #define XRAMEND        RAMEND

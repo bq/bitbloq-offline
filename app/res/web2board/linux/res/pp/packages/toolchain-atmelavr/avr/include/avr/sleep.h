@@ -383,7 +383,6 @@
 || defined(__AVR_ATmega168A__) \
 || defined(__AVR_ATmega168P__) \
 || defined(__AVR_ATmega168PA__) \
-|| defined(__AVR_ATmega168PB__) \
 || defined(__AVR_ATmega16HVA2__) \
 || defined(__AVR_ATmega16U4__) \
 || defined(__AVR_ATmega2560__) \
@@ -403,7 +402,6 @@
 || defined(__AVR_ATmega32U6__) \
 || defined(__AVR_ATmega48A__) \
 || defined(__AVR_ATmega48PA__) \
-|| defined(__AVR_ATmega48PB__) \
 || defined(__AVR_ATmega48P__) \
 || defined(__AVR_ATmega64__) \
 || defined(__AVR_ATmega64A__) \
@@ -419,8 +417,7 @@
 || defined(__AVR_ATmega8535__) \
 || defined(__AVR_ATmega88A__) \
 || defined(__AVR_ATmega88P__) \
-|| defined(__AVR_ATmega88PA__) \
-|| defined(__AVR_ATmega88PB__) 
+|| defined(__AVR_ATmega88PA__) 
 
     #define SLEEP_MODE_IDLE         (0)
     #define SLEEP_MODE_ADC          _BV(SM0)
@@ -585,27 +582,12 @@
 #elif defined (__AVR_ATA5790__) \
 || defined (__AVR_ATA5790N__) \
 || defined (__AVR_ATA5795__) \
-|| defined (__AVR_ATA5782__) \
 || defined (__AVR_ATA5831__)
 
     #define SLEEP_MODE_IDLE           (0)
     #define SLEEP_MODE_EXT_PWR_SAVE   (_BV(SM0))
     #define SLEEP_MODE_PWR_DOWN       (_BV(SM1))
     #define SLEEP_MODE_PWR_SAVE       (_BV(SM1) | _BV(SM0))     
-    
-    #define set_sleep_mode(mode) \
-    do { \
-        _SLEEP_CONTROL_REG = ((_SLEEP_CONTROL_REG & ~(_BV(SM0) | _BV(SM1) | _BV(SM2))) | (mode)); \
-    } while(0)
-
-#elif defined (__AVR_ATA5702M322__) 
-
-    #define SLEEP_MODE_IDLE           (0)
-    #define SLEEP_MODE_EXT_PWR_SAVE   (_BV(SM0))
-    #define SLEEP_MODE_PWR_DOWN       (_BV(SM1))
-    #define SLEEP_MODE_PWR_SAVE       (_BV(SM1) | _BV(SM0))     
-    #define SLEEP_MODE_EXT_PWR_DOWN   (_BV(SM2))
-    #define SLEEP_MODE_PWR_OFF        (_BV(SM2) | _BV(SM0))
     
     #define set_sleep_mode(mode) \
     do { \
@@ -723,16 +705,6 @@ extern void sleep_bod_disable (void);
 
 #if defined(BODS) && defined(BODSE)
 
-#ifdef BODCR
-
-#define BOD_CONTROL_REG BODCR
-
-#else
-
-#define BOD_CONTROL_REG MCUCR
-
-#endif
-
 #define sleep_bod_disable() \
 do { \
   uint8_t tempreg; \
@@ -742,7 +714,7 @@ do { \
                        "andi %[tempreg], %[not_bodse]" "\n\t" \
                        "out %[mcucr], %[tempreg]" \
                        : [tempreg] "=&d" (tempreg) \
-                       : [mcucr] "I" _SFR_IO_ADDR(BOD_CONTROL_REG), \
+                       : [mcucr] "I" _SFR_IO_ADDR(MCUCR), \
                          [bods_bodse] "i" (_BV(BODS) | _BV(BODSE)), \
                          [not_bodse] "i" (~_BV(BODSE))); \
 } while (0)

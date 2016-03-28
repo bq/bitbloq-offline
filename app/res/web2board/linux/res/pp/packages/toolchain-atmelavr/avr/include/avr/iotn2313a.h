@@ -28,7 +28,7 @@
   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE. */
 
-/* $Id: iotn2313a.h 2412 2014-03-20 11:21:20Z pitchumani $ */
+/* $Id: iotn2313a.h 2035 2009-11-02 02:44:17Z arcanum $ */
 
 /* avr/iotn2313a.h - definitions for ATtiny2313A */
 
@@ -51,16 +51,6 @@
 
 /* Registers and associated bit numbers. */
 
-#define USIBR _SFR_IO8(0x000)
-#define USIBR0 0
-#define USIBR1 1
-#define USIBR2 2
-#define USIBR3 3
-#define USIBR4 4
-#define USIBR5 5
-#define USIBR6 6
-#define USIBR7 7
-
 #define DIDR _SFR_IO8(0x001)
 #define AIN0D 0
 #define AIN1D 1
@@ -78,12 +68,7 @@
 #define USBS 3
 #define UPM0 4
 #define UPM1 5
-#define UMSEL0 6
-#define UMSEL1 7
-
-/* When in MSPIM mode */
-#define UCPHA 1
-#define UDORD 2
+#define UMSEL 6
 
 #define PCMSK1 _SFR_IO8(0x004)
 #define PCINT8 0
@@ -319,7 +304,6 @@
 #define EEAR6 6
 
 #define PCMSK _SFR_IO8(0x020)
-#define PCMSK0 _SFR_IO8(0x020)
 #define PCINT0 0
 #define PCINT1 1
 #define PCINT2 2
@@ -544,7 +528,6 @@
 #define OCIE1A 6
 #define TOIE1 7
 
-#define EIFR _SFR_IO8(0x03A)
 #define GIFR _SFR_IO8(0x03A)
 #define PCIF1 3
 #define PCIF2 4
@@ -586,22 +569,14 @@
 #define TIMER0_OVF_vect      _VECTOR(6)  /* Timer/Counter0 Overflow */
 #define USART0_RX_vect_num  7
 #define USART0_RX_vect      _VECTOR(7)  /* USART, Rx Complete */
-#define USART_RX_vect_num  7
-#define USART_RX_vect      _VECTOR(7)  /* alias */
 #define USART0_UDRE_vect_num  8
 #define USART0_UDRE_vect      _VECTOR(8)  /* USART Data Register Empty */
-#define USART_UDRE_vect_num  8
-#define USART_UDRE_vect      _VECTOR(8)  /* alias */
 #define USART0_TX_vect_num  9
 #define USART0_TX_vect      _VECTOR(9)  /* USART, Tx Complete */
-#define USART_TX_vect_num  9
-#define USART_TX_vect      _VECTOR(9)  /* alias */
 #define ANA_COMP_vect_num  10
 #define ANA_COMP_vect      _VECTOR(10)  /* Analog Comparator */
-#define PCINT0_vect_num  11
-#define PCINT0_vect      _VECTOR(11)  /* Pin Change Interrupt Request 0 */
 #define PCINT_B_vect_num  11
-#define PCINT_B_vect      _VECTOR(11)  /* alias */
+#define PCINT_B_vect      _VECTOR(11)  /* Pin Change Interrupt Request B */
 #define TIMER1_COMPB_vect_num  12
 #define TIMER1_COMPB_vect      _VECTOR(12)  /*  */
 #define TIMER0_COMPA_vect_num  13
@@ -612,18 +587,14 @@
 #define USI_START_vect      _VECTOR(15)  /* USI Start Condition */
 #define USI_OVERFLOW_vect_num  16
 #define USI_OVERFLOW_vect      _VECTOR(16)  /* USI Overflow */
-#define EEPROM_Ready_vect_num  17
-#define EEPROM_Ready_vect      _VECTOR(17)  /* EEPROM Ready */
 #define WDT_OVERFLOW_vect_num  18
 #define WDT_OVERFLOW_vect      _VECTOR(18)  /* Watchdog Timer Overflow */
-#define PCINT1_vect_num  19
-#define PCINT1_vect      _VECTOR(19)  /* Pin Change Interrupt Request 1 */
-#define PCINT_A_vect_num  19
-#define PCINT_A_vect      _VECTOR(19)  /* alias */
-#define PCINT2_vect_num  20
-#define PCINT2_vect      _VECTOR(20)  /* Pin Change Interrupt Request 2 */
 #define PCINT_D_vect_num  20
-#define PCINT_D_vect      _VECTOR(20)  /* alias */
+#define PCINT_D_vect      _VECTOR(20)  /* Pin Change Interrupt Request D */
+#define EEPROM_Ready_vect_num  17
+#define EEPROM_Ready_vect      _VECTOR(17)  /*  */
+#define PCINT_A_vect_num  19
+#define PCINT_A_vect      _VECTOR(19)  /* Pin Change Interrupt Request A */
 
 #define _VECTOR_SIZE 2 /* Size of individual vector. */
 #define _VECTORS_SIZE (21 * _VECTOR_SIZE)
@@ -657,14 +628,14 @@
 #define LFUSE_DEFAULT (FUSE_CKDIV8 & FUSE_SUT0 & FUSE_CKSEL3 & FUSE_CKSEL2 & FUSE_CKSEL0)
 
 /* High Fuse Byte */
-#define FUSE_RSTDISBL  (unsigned char)~_BV(0)  /* External reset disable */
-#define FUSE_BODLEVEL0  (unsigned char)~_BV(1)  /* Brown-out Detector trigger level */
-#define FUSE_BODLEVEL1  (unsigned char)~_BV(2)  /* Brown-out Detector trigger level */
-#define FUSE_BODLEVEL2  (unsigned char)~_BV(3)  /* Brown-out Detector trigger level */
+#define FUSE_BODLEVEL0  (unsigned char)~_BV(0)  /* Brown-out Detector trigger level */
+#define FUSE_BODLEVEL1  (unsigned char)~_BV(1)  /* Brown-out Detector trigger level */
+#define FUSE_BODLEVEL2  (unsigned char)~_BV(2)  /* Brown-out Detector trigger level */
+#define FUSE_EESAVE  (unsigned char)~_BV(3)  /* EEPROM memory is preserved through chip erase */
 #define FUSE_WDTON  (unsigned char)~_BV(4)  /* Watchdog Timer Always On */
 #define FUSE_SPIEN  (unsigned char)~_BV(5)  /* Enable Serial programming and Data Downloading */
-#define FUSE_EESAVE  (unsigned char)~_BV(6)  /* EEPROM memory is preserved through chip erase */
-#define FUSE_DWEN  (unsigned char)~_BV(7)  /* debugWIRE Enable */
+#define FUSE_DWEN  (unsigned char)~_BV(6)  /* debugWIRE Enable */
+#define FUSE_RSTDISBL  (unsigned char)~_BV(7)  /* External reset disable */
 #define HFUSE_DEFAULT (FUSE_SPIEN)
 
 /* Extended Fuse Byte */

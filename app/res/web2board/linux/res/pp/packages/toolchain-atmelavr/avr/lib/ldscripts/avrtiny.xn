@@ -1,13 +1,13 @@
 /* Script for -n: mix text and data on same page */
 OUTPUT_FORMAT("elf32-avr","elf32-avr","elf32-avr")
-OUTPUT_ARCH(avr:100)
+OUTPUT_ARCH(avr:90)
 MEMORY
 {
   text   (rx)   : ORIGIN = 0x0, LENGTH = 4K
   data   (rw!x) : ORIGIN = 0x0800040, LENGTH = 0x100
   /* Provide offsets for config, lock and signature to match
      production file format. Ignore offsets in datasheet.  */
-  config    (rw!x) : ORIGIN = 0x820000, LENGTH = 2
+  config(rw!x)     : ORIGIN = 0x820000, LENGTH = 2
   lock      (rw!x) : ORIGIN = 0x830000, LENGTH = 2
   signature (rw!x) : ORIGIN = 0x840000, LENGTH = 4
 }
@@ -150,7 +150,7 @@ SECTIONS
     KEEP (*(.fini0))
      _etext = . ;
   }  > text
-  .data          :
+  .data	  : AT (ADDR (.text) + SIZEOF (.text))
   {
      PROVIDE (__data_start = .) ;
     *(.data)
@@ -162,8 +162,8 @@ SECTIONS
     . = ALIGN(2);
      _edata = . ;
      PROVIDE (__data_end = .) ;
-  }  > data AT> text
-  .bss  ADDR(.data) + SIZEOF (.data)   : AT (ADDR (.bss))
+  }  > data
+  .bss   : AT (ADDR (.bss))
   {
      PROVIDE (__bss_start = .) ;
     *(.bss)

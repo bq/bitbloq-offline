@@ -1,6 +1,6 @@
 /*****************************************************************************
  *
- * Copyright (C) 2014 Atmel Corporation
+ * Copyright (C) 2013 Atmel Corporation
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -2389,6 +2389,30 @@
 /* Timer/Counter5 Overflow */
 #define TIMER5_OVF_vect            _VECTOR(50)
 #define TIMER5_OVF_vect_num        50
+
+/* USART2, Rx Complete */
+#define USART2_RX_vect            _VECTOR(51)
+#define USART2_RX_vect_num        51
+
+/* USART2 Data register Empty */
+#define USART2_UDRE_vect            _VECTOR(52)
+#define USART2_UDRE_vect_num        52
+
+/* USART2, Tx Complete */
+#define USART2_TX_vect            _VECTOR(53)
+#define USART2_TX_vect_num        53
+
+/* USART3, Rx Complete */
+#define USART3_RX_vect            _VECTOR(54)
+#define USART3_RX_vect_num        54
+
+/* USART3 Data register Empty */
+#define USART3_UDRE_vect            _VECTOR(55)
+#define USART3_UDRE_vect_num        55
+
+/* USART3, Tx Complete */
+#define USART3_TX_vect            _VECTOR(56)
+#define USART3_TX_vect_num        56
 
 /* TRX24 - PLL lock interrupt */
 #define TRX24_PLL_LOCK_vect            _VECTOR(57)

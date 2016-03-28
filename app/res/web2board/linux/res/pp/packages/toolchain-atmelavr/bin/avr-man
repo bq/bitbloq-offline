@@ -31,7 +31,7 @@
 ## man(1) replacement to access the avr-libc manual pages
 
 : ${DESTDIR:-}
-prefix=/home/jenkins/jenkins/jobs/toolchain-avr-linux64/workspace/objdir
-datadir=/home/jenkins/jenkins/jobs/toolchain-avr-linux64/workspace/objdir/share
+prefix=/home/jenkins/jenkins/jobs/toolchain-avr-3.4.3-linux32/workspace/objdir
+datadir=/home/jenkins/jenkins/jobs/toolchain-avr-3.4.3-linux32/workspace/objdir/share
 
-exec man -M /home/jenkins/jenkins/jobs/toolchain-avr-linux64/workspace/objdir/share/doc/avr-libc-1.8.0svn/man "$@"
+exec man -M /home/jenkins/jenkins/jobs/toolchain-avr-3.4.3-linux32/workspace/objdir/share/doc/avr-libc-1.8.0svn/man "$@"

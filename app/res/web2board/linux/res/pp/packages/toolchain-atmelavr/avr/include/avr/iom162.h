@@ -923,7 +923,6 @@
 
 /* Constants */
 #define SPM_PAGESIZE 128
-#define RAMSTART    0x100
 #define RAMEND		0x4FF
 #define XRAMEND		0xFFFF
 #define E2END		0x1FF

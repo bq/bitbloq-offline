@@ -23,7 +23,7 @@
  * \file
  * SdFile and SdVolume classes
  */
-#if defined (__AVR__) || defined (__CPU_ARC__) 
+#ifdef __AVR__
 #include <avr/pgmspace.h>
 #endif
 #include "Sd2Card.h"

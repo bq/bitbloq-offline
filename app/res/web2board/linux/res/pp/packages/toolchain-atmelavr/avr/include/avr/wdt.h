@@ -145,7 +145,6 @@
 || defined(__AVR_ATxmega8E5__) \
 || defined(__AVR_ATxmega16E5__) \
 || defined(__AVR_ATxmega32E5__) \
-|| defined(__AVR_ATxmega64A1__) \
 || defined(__AVR_ATxmega64A1U__) \
 || defined(__AVR_ATxmega64A3__) \
 || defined(__AVR_ATxmega64A3U__) \
@@ -179,57 +178,24 @@
 || defined(__AVR_ATxmega384D3__)
 
 /*
-   wdt_enable(timeout) for xmega devices
-** write signature (CCP_IOREG_gc) that enables change of protected I/O
-   registers to the CCP register
-** At the same time,
-   1) set WDT change enable (WDT_CEN_bm)
-   2) enable WDT (WDT_ENABLE_bm)
-   3) set timeout (timeout)
-** Synchronization starts when ENABLE bit of WDT is set. So, wait till it
-   finishes (SYNCBUSY of STATUS register is automatically cleared after the
-   sync is finished).
+    wdt_enable(WDT_PER_8KCLK_gc);
 */
-#define wdt_enable(timeout) \
-do { \
-uint8_t temp = 0; \
-__asm__ __volatile__ (         \
-    "in __tmp_reg__, %[rampd]"              "\n\t" \
-    "out %[rampd], __zero_reg__"            "\n\t" \
-    "out %[ccp_reg], %[ioreg_cen_mask]"     "\n\t" \
-    "sts %[wdt_reg], %[wdt_enable_timeout]" "\n\t" \
-    "1:lds %[tmp], %[wdt_status_reg]"       "\n\t" \
-    "sbrc  %[tmp], %[wdt_syncbusy_bit]"     "\n\t" \
-    "rjmp 1b"                               "\n\t" \
-    "out %[rampd], __tmp_reg__"             "\n\t" \
-    : "=r" (temp) \
-    : [rampd]              "M" (_SFR_MEM_ADDR(RAMPD)),      \
-      [ccp_reg]            "I" (_SFR_MEM_ADDR(CCP)),        \
-      [ioreg_cen_mask]     "r" ((uint8_t)CCP_IOREG_gc),     \
-      [wdt_reg]            "M" (_SFR_MEM_ADDR(WDT_CTRL)),   \
-      [wdt_enable_timeout] "r" ((uint8_t)(WDT_CEN_bm | WDT_ENABLE_bm | timeout)), \
-      [wdt_status_reg]     "M" (_SFR_MEM_ADDR(WDT_STATUS)), \
-      [wdt_syncbusy_bit]   "I" (WDT_SYNCBUSY_bm),           \
-      [tmp]                "r" (temp)                       \
-    : "r0" \
-); \
-} while(0)
-
-#define wdt_disable() \
-__asm__ __volatile__ (  \
-    "in __tmp_reg__, %[rampd]"          "\n\t" \
-    "out %[rampd], __zero_reg__"        "\n\t" \
-    "out %[ccp_reg], %[ioreg_cen_mask]" "\n\t" \
-    "sts %[wdt_reg], %[disable_mask]"    "\n\t" \
-    "out %[rampd], __tmp_reg__"         "\n\t" \
+#define wdt_enable(value) \
+__asm__ __volatile__ ( \
+    "in __tmp_reg__, %0"  "\n\t" \
+    "out %1, %3"          "\n\t" \
+    "sts %2, %4"          "\n\t" \
+    "wdr"                 "\n\t" \
+    "out %0, __tmp_reg__" "\n\t" \
     : \
-    : [rampd]             "M" (_SFR_MEM_ADDR(RAMPD)),    \
-      [ccp_reg]           "I" (_SFR_MEM_ADDR(CCP)),      \
-      [ioreg_cen_mask]    "r" ((uint8_t)CCP_IOREG_gc),   \
-      [wdt_reg]           "M" (_SFR_MEM_ADDR(WDT_CTRL)), \
-      [disable_mask]      "r" ((uint8_t)((~WDT_ENABLE_bm) | WDT_CEN_bm)) \
+    : "M" (_SFR_MEM_ADDR(RAMPD)), \
+      "M" (_SFR_MEM_ADDR(CCP)), \
+      "M" (_SFR_MEM_ADDR(WDT_CTRL)), \
+      "r" ((uint8_t)0xD8), \
+      "r" ((uint8_t)(WDT_CEN_bm | WDT_ENABLE_bm | value)) \
     : "r0" \
-);
+)
+
 
 #elif defined(__AVR_AT90CAN32__) \
 || defined(__AVR_AT90CAN64__) \
@@ -269,7 +235,6 @@ __asm__ __volatile__ (  \
 || defined(__AVR_ATmega168A__) \
 || defined(__AVR_ATmega168P__) \
 || defined(__AVR_ATmega168PA__) \
-|| defined(__AVR_ATmega168PB__) \
 || defined(__AVR_ATmega169__) \
 || defined(__AVR_ATmega169A__) \
 || defined(__AVR_ATmega169P__) \
@@ -319,7 +284,6 @@ __asm__ __volatile__ (  \
 || defined(__AVR_ATmega48__) \
 || defined(__AVR_ATmega48A__) \
 || defined(__AVR_ATmega48PA__) \
-|| defined(__AVR_ATmega48PB__) \
 || defined(__AVR_ATmega48P__) \
 || defined(__AVR_ATmega64A__) \
 || defined(__AVR_ATmega64RFR2__) \
@@ -350,7 +314,6 @@ __asm__ __volatile__ (  \
 || defined(__AVR_ATmega88A__) \
 || defined(__AVR_ATmega88P__) \
 || defined(__AVR_ATmega88PA__) \
-|| defined(__AVR_ATmega88PB__) \
 || defined(__AVR_ATmega8HVA__) \
 || defined(__AVR_ATmega8U2__) \
 || defined(__AVR_ATtiny48__) \
@@ -366,8 +329,6 @@ __asm__ __volatile__ (  \
 || defined(__AVR_ATA5790__) \
 || defined(__AVR_ATA5790N__) \
 || defined(__AVR_ATA5795__) \
-|| defined(__AVR_ATA5782__) \
-|| defined(__AVR_ATA5702M322__) \
 || defined(__AVR_ATA5831__) \
 || defined(__AVR_ATA6612C__) \
 || defined(__AVR_ATA6613C__) \
@@ -539,6 +500,42 @@ __asm__ __volatile__ ( \
     : "r16" \
 ); \
 }while(0)
+
+#elif defined(__AVR_ATxmega32X1__) \
+||defined(__AVR_ATxmega64A1__)
+
+#define wdt_enable(value) \
+__asm__ __volatile__ ( \
+    "in __tmp_reg__,__SREG__" "\n\t"  \
+    "cli" "\n\t"  \
+    "wdr" "\n\t"  \
+    "sts %[CCPADDRESS],%[SIGNATURE]" "\n\t"  \
+    "sts %[WDTREG],%[WDVALUE]" "\n\t"  \
+    "out __SREG__,__tmp_reg__" "\n\t"  \
+    : /* no outputs */  \
+    : [CCPADDRESS] "M" (_SFR_MEM_ADDR(CCP)),  \
+      [SIGNATURE] "r" ((uint8_t)0xD8), \
+      [WDTREG] "M" (_SFR_MEM_ADDR(_WD_CONTROL_REG)), \
+      [WDVALUE] "r" ((uint8_t)((_BV(WDT_ENABLE_bp)) | (_BV(WDT_CEN_bp)) | \
+                                   (value << WDT_PER_gp))) \
+    : "r0" \
+)
+
+#define wdt_disable() \
+__asm__ __volatile__ ( \
+    "in __tmp_reg__,__SREG__" "\n\t"  \
+    "cli" "\n\t"  \
+    "wdr" "\n\t"  \
+    "sts %[CCPADDRESS],%[SIGNATURE]" "\n\t"  \
+    "sts %[WDTREG],%[WDVALUE]" "\n\t"  \
+    "out __SREG__,__tmp_reg__" "\n\t"  \
+    : /* no outputs */  \
+    : [CCPADDRESS] "M" (_SFR_MEM_ADDR(CCP)),  \
+      [SIGNATURE] "r" ((uint8_t)0xD8), \
+      [WDTREG] "M" (_SFR_MEM_ADDR(_WD_CONTROL_REG)), \
+      [WDVALUE] "r" ((uint8_t)((_BV(WDT_CEN_bp)))) \
+    : "r0" \
+) 
 
 /**
 Undefining explicitly so that it produces an error.

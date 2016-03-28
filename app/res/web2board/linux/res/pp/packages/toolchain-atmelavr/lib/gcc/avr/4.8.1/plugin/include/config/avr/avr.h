@@ -88,9 +88,8 @@ enum
    __AVR_HAVE_8BIT_SP__ and __AVR_HAVE_16BIT_SP__.  During multilib generation
    there is always __AVR_SP8__ == __AVR_HAVE_8BIT_SP__.  */
 
-#define AVR_HAVE_8BIT_SP                                 \
-  ((avr_current_device->dev_attribute & AVR_SHORT_SP) || \
-   TARGET_TINY_STACK || avr_sp8)
+#define AVR_HAVE_8BIT_SP                                                \
+  (avr_current_device->short_sp || TARGET_TINY_STACK || avr_sp8)
 
 #define AVR_HAVE_SPH (!avr_sp8)
 
@@ -493,7 +492,6 @@ typedef struct avr_args
 extern const char *avr_device_to_as (int argc, const char **argv);
 extern const char *avr_device_to_ld (int argc, const char **argv);
 extern const char *avr_device_to_data_start (int argc, const char **argv);
-extern const char *avr_device_to_text_start (int argc, const char **argv);
 extern const char *avr_device_to_startfiles (int argc, const char **argv);
 extern const char *avr_device_to_devicelib (int argc, const char **argv);
 extern const char *avr_device_to_sp8 (int argc, const char **argv);
@@ -502,7 +500,6 @@ extern const char *avr_device_to_sp8 (int argc, const char **argv);
   { "device_to_as", avr_device_to_as },                 \
   { "device_to_ld", avr_device_to_ld },                 \
   { "device_to_data_start", avr_device_to_data_start }, \
-  { "device_to_text_start", avr_device_to_text_start }, \
   { "device_to_startfile", avr_device_to_startfiles },  \
   { "device_to_devicelib", avr_device_to_devicelib },   \
   { "device_to_sp8", avr_device_to_sp8 },
@@ -529,8 +526,7 @@ extern const char *avr_device_to_sp8 (int argc, const char **argv);
                                mmcu=at90can64*|\
                                mmcu=at90usb64*:--pmem-wrap-around=64k}}}\
 %:device_to_ld(%{mmcu=*:%*})\
-%:device_to_data_start(%{mmcu=*:%*})\
-%:device_to_text_start(%{mmcu=*:%*})"
+%:device_to_data_start(%{mmcu=*:%*})"
 
 #define LIB_SPEC \
   "%{!mmcu=at90s1*:%{!mmcu=attiny11:%{!mmcu=attiny12:%{!mmcu=attiny15:%{!mmcu=attiny28: -lc }}}}}"

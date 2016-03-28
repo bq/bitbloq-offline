@@ -434,7 +434,7 @@
 /* Power Reduction Register */
 #define PRR     _SFR_MEM8(0x64)
 #define PRADC   0   /* Power Reduction ADC */
-#define PRUSART0 1   /* Power Reduction USART0 */
+#define PRUSART 1   /* Power Reduction USART */
 #define PRSPI   2   /* Power Reduction Serial Peripheral Interface */
 #define PRTIM0  3   /* Power Reduction Timer/Counter0 */
 #define PRTIM1  4   /* Power Reduction Timer/Counter1 */
@@ -1191,7 +1191,6 @@
 
 /* Constants */
 
-#define RAMSTART       0x100
 #define RAMEND         0x4FF
 #define XRAMSIZE       0
 #define XRAMEND        RAMEND

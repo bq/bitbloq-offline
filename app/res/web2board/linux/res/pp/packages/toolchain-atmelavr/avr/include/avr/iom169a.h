@@ -32,13 +32,3 @@
  ****************************************************************************/
 
 #include "iom169.h"
-
-#ifdef PCIE1
-	#undef PCIE1
-	#define PCIE1  5
-#endif
-
-#ifdef PCIE0
-	#undef PCIE0
-	#define PCIE0 4
-#endif

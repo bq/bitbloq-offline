@@ -271,8 +271,6 @@
 # define _EEPROM_SUFFIX  _m168p
 #elif defined (__AVR_ATmega168PA__)
 # define _EEPROM_SUFFIX  _m168pa
-#elif defined (__AVR_ATmega168PB__)
-# define _EEPROM_SUFFIX  _m168pb
 #elif defined (__AVR_ATmega169__)
 # define _EEPROM_SUFFIX  _m169
 #elif defined (__AVR_ATmega169A__)
@@ -301,8 +299,6 @@
 # define _EEPROM_SUFFIX  _m48a
 #elif defined (__AVR_ATmega48PA__)
 # define _EEPROM_SUFFIX  _m48pa
-#elif defined (__AVR_ATmega48PB__)
-# define _EEPROM_SUFFIX  _m48pb
 #elif defined (__AVR_ATmega48P__)
 # define _EEPROM_SUFFIX  _m48p
 #elif defined (__AVR_ATmega88__)
@@ -313,8 +309,6 @@
 # define _EEPROM_SUFFIX  _m88p
 #elif defined (__AVR_ATmega88PA__)
 # define _EEPROM_SUFFIX  _m88pa
-#elif defined (__AVR_ATmega88PB__)
-# define _EEPROM_SUFFIX  _m88pb
 #elif defined (__AVR_ATmega8515__)
 # define _EEPROM_SUFFIX  _m8515
 #elif defined (__AVR_ATmega8535__)
@@ -509,10 +503,6 @@
 # define _EEPROM_SUFFIX _a5790n
 #elif defined (__AVR_ATA5795__)
 # define _EEPROM_SUFFIX _a5795
-#elif defined (__AVR_ATA5702M322__)
-# define _EEPROM_SUFFIX _a5702m322
-#elif defined (__AVR_ATA5782__)
-# define _EEPROM_SUFFIX _a5782
 #elif defined (__AVR_ATA5831__)
 # define _EEPROM_SUFFIX _a5831
 #elif defined (__AVR_ATA6612C__)

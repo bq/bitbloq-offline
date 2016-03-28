@@ -29,7 +29,7 @@
   POSSIBILITY OF SUCH DAMAGE. 
 */
 
-/* $Id: iom328p.h 2444 2014-08-11 22:10:47Z joerg_wunsch $ */
+/* $Id: iom328p.h 2225 2011-03-02 16:27:26Z arcanum $ */
 
 /* avr/iom328p.h - definitions for ATmega328P. */
 
@@ -339,14 +339,11 @@
 #define BODS 6
 
 #define SPMCSR _SFR_IO8(0x37)
-#define SELFPRGEN 0 /* only for backwards compatibility with previous
-		     * avr-libc versions; not an official name */
-#define SPMEN 0
+#define SELFPRGEN 0
 #define PGERS 1
 #define PGWRT 2
 #define BLBSET 3
 #define RWWSRE 4
-#define SIGRD 5
 #define RWWSB 6
 #define SPMIE 7
 
@@ -896,21 +893,21 @@
 #define LFUSE_DEFAULT (FUSE_CKSEL0 & FUSE_CKSEL2 & FUSE_CKSEL3 & FUSE_SUT0 & FUSE_CKDIV8)
 
 /* High Fuse Byte */
-#define FUSE_BOOTRST (unsigned char)~_BV(0)
-#define FUSE_BOOTSZ0 (unsigned char)~_BV(1)
-#define FUSE_BOOTSZ1 (unsigned char)~_BV(2)
+#define FUSE_BODLEVEL0 (unsigned char)~_BV(0)  /* Brown-out Detector trigger level */
+#define FUSE_BODLEVEL1 (unsigned char)~_BV(1)  /* Brown-out Detector trigger level */
+#define FUSE_BODLEVEL2 (unsigned char)~_BV(2)  /* Brown-out Detector trigger level */
 #define FUSE_EESAVE    (unsigned char)~_BV(3)  /* EEPROM memory is preserved through chip erase */
 #define FUSE_WDTON     (unsigned char)~_BV(4)  /* Watchdog Timer Always On */
 #define FUSE_SPIEN     (unsigned char)~_BV(5)  /* Enable Serial programming and Data Downloading */
 #define FUSE_DWEN      (unsigned char)~_BV(6)  /* debugWIRE Enable */
 #define FUSE_RSTDISBL  (unsigned char)~_BV(7)  /* External reset disable */
-#define HFUSE_DEFAULT (FUSE_BOOTSZ0 & FUSE_BOOTSZ1 & FUSE_SPIEN)
+#define HFUSE_DEFAULT (FUSE_SPIEN)
 
 /* Extended Fuse Byte */
-#define FUSE_BODLEVEL0 (unsigned char)~_BV(0)  /* Brown-out Detector trigger level */
-#define FUSE_BODLEVEL1 (unsigned char)~_BV(1)  /* Brown-out Detector trigger level */
-#define FUSE_BODLEVEL2 (unsigned char)~_BV(2)  /* Brown-out Detector trigger level */
-#define EFUSE_DEFAULT  (0xFF)
+#define FUSE_BOOTRST (unsigned char)~_BV(0)
+#define FUSE_BOOTSZ0 (unsigned char)~_BV(1)
+#define FUSE_BOOTSZ1 (unsigned char)~_BV(2)
+#define EFUSE_DEFAULT (FUSE_BOOTSZ0 & FUSE_BOOTSZ1)
 
 
 
@@ -923,11 +920,7 @@
 /* Signature */
 #define SIGNATURE_0 0x1E
 #define SIGNATURE_1 0x95
-#if defined(__AVR_ATmega328__)
-#  define SIGNATURE_2 0x14
-#else /* ATmega328P */
-#  define SIGNATURE_2 0x0F
-#endif
+#define SIGNATURE_2 0x0F
 
 
 #endif  /* _AVR_IOM328P_H_ */

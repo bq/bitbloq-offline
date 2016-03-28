@@ -6,7 +6,14 @@
 #define LiquidCrystal_I2C_h
 
 #include <inttypes.h>
-#include "Print.h"
+#include "Print.h" 
+
+#if defined(__AVR_ATtiny85__) || (__AVR_ATtiny2313__)  || (__AVR_ATtiny167__)
+#include "TinyWireM.h"      // include this if ATtiny85 or ATtiny2313
+#else 
+#include <Wire.h>           // original lib include
+#endif
+
 
 // commands
 #define LCD_CLEARDISPLAY 0x01
