@@ -10,7 +10,8 @@ module.exports = function(grunt) {
             '!app/res/web2board/{osValue}/**/info.log',
             '!app/res/web2board/{osValue}/**/info.log.*',
             '!app/res/web2board/{osValue}/**/config.json',
-            '!app/res/web2board/{osValue}/**/web2boardLauncher.log'
+            '!app/res/web2board/{osValue}/**/web2boardLauncher.log',
+            '!app/res/web2board/{osValue}/**/platformioWS*/**'
         ];
         array = array.map(function(src) {
             return src.replace("{osValue}", os);

@@ -8,3 +8,5 @@
 **/res/unitTestReport.html
 **/info.log.*
 **/res/TestSettings
+web2board-config.json
+**/platformioWS*/
