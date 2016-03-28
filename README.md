@@ -74,9 +74,10 @@ In this platforms:
 
 You can find binaries here:
 
- - [Linux](https://github.com/bq/bitbloq-offline/releases/download/v1.0.0/linux.zip)
- - [Mac](https://github.com/bq/bitbloq-offline/releases/download/v1.0.0/mac.zip)
- - [Windows](https://github.com/bq/bitbloq-offline/releases/download/v1.0.0/windows.zip)
+ - [Linux](https://github.com/bq/bitbloq-offline/releases/download/v1.0.1/linux.zip)
+ - [Linux 32](https://github.com/bq/bitbloq-offline/releases/download/v1.0.1/linux32.zip)
+ - [Mac](https://github.com/bq/bitbloq-offline/releases/download/v1.0.1/mac.zip)
+ - [Windows 32 y 64](https://github.com/bq/bitbloq-offline/releases/download/v1.0.1/windows.zip)
 
 ## Getting Started ##
 
