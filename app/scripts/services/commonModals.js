@@ -55,11 +55,9 @@ angular.module('bitbloqOffline')
                 $translate.use(modalOptions.lang);
             },
             translateLanguage = function(language) {
-                $translate.use(language);
                 common.translateTo(language);
             },
             rejectAction = function() {
-                $translate.use(oldLanguage);
                 common.translateTo(oldLanguage);
             },
             languageModal,

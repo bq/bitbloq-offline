@@ -11,6 +11,7 @@ angular.module('bitbloqOffline')
   .controller('BloqsProjectCtrl', function($scope, $rootScope, $timeout, hw2Bloqs, alertsService, commonModals, $window, $document, bloqsUtils, projectApi, nodeFs, common, _, $log, bloqs) {
     $log.debug('bloqsproject ctrl', $scope.$parent.$id);
     $scope.hw2Bloqs = hw2Bloqs;
+    this.common = common;
 
     $scope.setProject = function(project) {
       hw2Bloqs.removeAllComponents();
