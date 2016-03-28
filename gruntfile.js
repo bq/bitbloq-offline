@@ -156,7 +156,7 @@ module.exports = function(grunt) {
                 tasks: ['sass', 'svgstore']
             },
             scripts: {
-                files: ['app/**/*.*', 'bower.json', '!app/styles/main.css'],
+                files: ['app/**/*.*', 'bower.json', '!app/styles/main.css', '!app/res/config.json'],
                 tasks: ['exec:stop_electron', 'sass', 'exec:electron'],
                 options: {
                     atBegin: true,

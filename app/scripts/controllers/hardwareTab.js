@@ -195,7 +195,7 @@ angular.module('bitbloqOffline')
             var translatedList = _.each(_.flatten(list), function(item) {
                 item.name = $translate.instant(item.id);
             });
-            $scope.hardware.componentSortered = _.sortBy(translatedList, 'name');
+            common.hardware.componentSortered = _.sortBy(translatedList, 'name');
         };
         $scope.deleteRobot = function() {
             $scope.project.hardware.robot = null;
