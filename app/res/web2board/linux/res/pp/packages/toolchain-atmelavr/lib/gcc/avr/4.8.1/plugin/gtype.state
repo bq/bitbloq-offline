@@ -10981,53 +10981,53 @@ nil )
 (!type struct 439 
 (!type already_seen 438)
  gc_maybe_pointed_to "machine_function"
-(!srcfileloc  "config/avr/avr.h" 600)
+(!srcfileloc  "config/avr/avr.h" 604)
 
 (!fields 9 
 (!pair  "is_naked"
 (!type already_seen 9)
 
-(!srcfileloc  "config/avr/avr.h" 569)
+(!srcfileloc  "config/avr/avr.h" 573)
 nil )
 (!pair  "is_interrupt"
 (!type already_seen 9)
 
-(!srcfileloc  "config/avr/avr.h" 573)
+(!srcfileloc  "config/avr/avr.h" 577)
 nil )
 (!pair  "is_signal"
 (!type already_seen 9)
 
-(!srcfileloc  "config/avr/avr.h" 577)
+(!srcfileloc  "config/avr/avr.h" 581)
 nil )
 (!pair  "is_nmi"
 (!type already_seen 9)
 
-(!srcfileloc  "config/avr/avr.h" 581)
+(!srcfileloc  "config/avr/avr.h" 585)
 nil )
 (!pair  "is_OS_task"
 (!type already_seen 9)
 
-(!srcfileloc  "config/avr/avr.h" 585)
+(!srcfileloc  "config/avr/avr.h" 589)
 nil )
 (!pair  "is_OS_main"
 (!type already_seen 9)
 
-(!srcfileloc  "config/avr/avr.h" 589)
+(!srcfileloc  "config/avr/avr.h" 593)
 nil )
 (!pair  "stack_usage"
 (!type already_seen 9)
 
-(!srcfileloc  "config/avr/avr.h" 592)
+(!srcfileloc  "config/avr/avr.h" 596)
 nil )
 (!pair  "sibcall_fails"
 (!type already_seen 9)
 
-(!srcfileloc  "config/avr/avr.h" 595)
+(!srcfileloc  "config/avr/avr.h" 599)
 nil )
 (!pair  "attributes_checked_p"
 (!type already_seen 9)
 
-(!srcfileloc  "config/avr/avr.h" 599)
+(!srcfileloc  "config/avr/avr.h" 603)
 nil ))
 nil 511 nil )
 )
@@ -21212,35 +21212,35 @@ nil 0 nil )
 nil 0 nil )
 
 (!type struct 990 nil  gc_used "avr_builtin_description"
-(!srcfileloc  "config/avr/avr.c" 12530)
+(!srcfileloc  "config/avr/avr.c" 12543)
 
 (!fields 3 
 (!pair  "icode"
 (!type already_seen 9)
 
-(!srcfileloc  "config/avr/avr.c" 12527)
+(!srcfileloc  "config/avr/avr.c" 12540)
 nil )
 (!pair  "n_args"
 (!type already_seen 9)
 
-(!srcfileloc  "config/avr/avr.c" 12528)
+(!srcfileloc  "config/avr/avr.c" 12541)
 nil )
 (!pair  "fndecl"
 (!type already_seen 5)
 
-(!srcfileloc  "config/avr/avr.c" 12529)
+(!srcfileloc  "config/avr/avr.c" 12542)
 nil ))
 nil 511 nil )
 
-(!type struct 991 nil  gc_unused "anonymous:../../gcc-4.8.1/gcc/config/avr/avr.c:12263"nil 
+(!type struct 991 nil  gc_unused "anonymous:../../gcc-4.8.1/gcc/config/avr/avr.c:12276"nil 
 (!fields 0 )
 nil 0 nil )
 
-(!type struct 992 nil  gc_unused "anonymous:../../gcc-4.8.1/gcc/config/avr/avr.c:8371"nil 
+(!type struct 992 nil  gc_unused "anonymous:../../gcc-4.8.1/gcc/config/avr/avr.c:8384"nil 
 (!fields 0 )
 nil 0 nil )
 
-(!type struct 993 nil  gc_unused "anonymous:../../gcc-4.8.1/gcc/config/avr/avr.c:7765"nil 
+(!type struct 993 nil  gc_unused "anonymous:../../gcc-4.8.1/gcc/config/avr/avr.c:7778"nil 
 (!fields 0 )
 nil 0 nil )
 
@@ -24747,15 +24747,15 @@ nil 0 nil )
 (!fields 0 )
 nil 0 nil )
 
-(!type struct 1309 nil  gc_unused "anonymous:../../gcc-4.8.1/gcc/config/avr/avr-arch.h:147"nil 
+(!type struct 1309 nil  gc_unused "anonymous:../../gcc-4.8.1/gcc/config/avr/avr-arch.h:165"nil 
 (!fields 0 )
 nil 0 nil )
 
-(!type struct 1310 nil  gc_unused "anonymous:../../gcc-4.8.1/gcc/config/avr/avr-arch.h:101"nil 
+(!type struct 1310 nil  gc_unused "anonymous:../../gcc-4.8.1/gcc/config/avr/avr-arch.h:100"nil 
 (!fields 0 )
 nil 0 nil )
 
-(!type struct 1311 nil  gc_unused "anonymous:../../gcc-4.8.1/gcc/config/avr/avr-arch.h:51"nil 
+(!type struct 1311 nil  gc_unused "anonymous:../../gcc-4.8.1/gcc/config/avr/avr-arch.h:50"nil 
 (!fields 0 )
 nil 0 nil )
 
@@ -26406,7 +26406,7 @@ nil )
 (!pair  "avr_map_op_t"
 (!type already_seen 991)
 
-(!srcfileloc  "config/avr/avr.c" 12281)
+(!srcfileloc  "config/avr/avr.c" 12294)
 nil )
 (!pair  "avr_addr_t"
 (!type already_seen 994)
@@ -27548,17 +27548,17 @@ nil )
 (!pair  "avr_arch_info_t"
 (!type already_seen 1309)
 
-(!srcfileloc  "config/avr/avr-arch.h" 153)
+(!srcfileloc  "config/avr/avr-arch.h" 171)
 nil )
 (!pair  "avr_mcu_t"
 (!type already_seen 1310)
 
-(!srcfileloc  "config/avr/avr-arch.h" 142)
+(!srcfileloc  "config/avr/avr-arch.h" 124)
 nil )
 (!pair  "avr_arch_t"
 (!type already_seen 1311)
 
-(!srcfileloc  "config/avr/avr-arch.h" 95)
+(!srcfileloc  "config/avr/avr-arch.h" 94)
 nil )
 (!pair  "gt_pointer_operator"
 (!type already_seen 9)
@@ -30296,7 +30296,7 @@ nil )
 (!type already_seen 990)
 )
 
-(!srcfileloc  "config/avr/avr.c" 12538)
+(!srcfileloc  "config/avr/avr.c" 12551)
 nil )
 (!pair  "progmem_section"
 (!type array 1460 nil  gc_used "ADDR_SPACE_COUNT" 

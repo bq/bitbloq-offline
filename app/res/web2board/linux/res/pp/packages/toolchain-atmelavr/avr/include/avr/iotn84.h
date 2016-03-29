@@ -28,7 +28,7 @@
   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE. */
 
-/* $Id: iotn84.h 2115 2010-04-05 23:19:53Z arcanum $ */
+/* $Id: iotn84.h 2417 2014-04-16 11:34:47Z pitchumani $ */
 
 /* avr/iotn84.h - definitions for ATtiny84 */
 
@@ -70,7 +70,7 @@
 #define FUSE_SPIEN       (unsigned char)~_BV(5)
 #define FUSE_DWEN        (unsigned char)~_BV(6)
 #define FUSE_RSTDISBL    (unsigned char)~_BV(7)
-#define FUSE_HFUSE_DEFAULT (FUSE_SPIEN)
+#define HFUSE_DEFAULT    (FUSE_SPIEN)
 
 /* Extended Fuse Byte */
 #define FUSE_SELFPRGEN   (unsigned char)~_BV(0)

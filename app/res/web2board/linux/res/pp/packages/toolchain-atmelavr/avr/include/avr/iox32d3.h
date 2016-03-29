@@ -1,6 +1,6 @@
 /*****************************************************************************
  *
- * Copyright (C) 2013 Atmel Corporation
+ * Copyright (C) 2014 Atmel Corporation
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -342,9 +342,9 @@ typedef enum WDT_PER_enum
     WDT_PER_16CLK_gc = (0x01<<2),  /* 16 cycles (16ms @ 3.3V) */
     WDT_PER_32CLK_gc = (0x02<<2),  /* 32 cycles (32ms @ 3.3V) */
     WDT_PER_64CLK_gc = (0x03<<2),  /* 64 cycles (64ms @ 3.3V) */
-    WDT_PER_125CLK_gc = (0x04<<2),  /* 125 cycles (0.125s @ 3.3V) */
-    WDT_PER_250CLK_gc = (0x05<<2),  /* 250 cycles (0.25s @ 3.3V) */
-    WDT_PER_500CLK_gc = (0x06<<2),  /* 500 cycles (0.5s @ 3.3V) */
+    WDT_PER_128CLK_gc = (0x04<<2),  /* 128 cycles (0.128s @ 3.3V) */
+    WDT_PER_256CLK_gc = (0x05<<2),  /* 256 cycles (0.256s @ 3.3V) */
+    WDT_PER_512CLK_gc = (0x06<<2),  /* 512 cycles (0.512s @ 3.3V) */
     WDT_PER_1KCLK_gc = (0x07<<2),  /* 1K cycles (1s @ 3.3V) */
     WDT_PER_2KCLK_gc = (0x08<<2),  /* 2K cycles (2s @ 3.3V) */
     WDT_PER_4KCLK_gc = (0x09<<2),  /* 4K cycles (4s @ 3.3V) */
@@ -358,9 +358,9 @@ typedef enum WDT_WPER_enum
     WDT_WPER_16CLK_gc = (0x01<<2),  /* 16 cycles (16ms @ 3.3V) */
     WDT_WPER_32CLK_gc = (0x02<<2),  /* 32 cycles (32ms @ 3.3V) */
     WDT_WPER_64CLK_gc = (0x03<<2),  /* 64 cycles (64ms @ 3.3V) */
-    WDT_WPER_125CLK_gc = (0x04<<2),  /* 125 cycles (0.125s @ 3.3V) */
-    WDT_WPER_250CLK_gc = (0x05<<2),  /* 250 cycles (0.25s @ 3.3V) */
-    WDT_WPER_500CLK_gc = (0x06<<2),  /* 500 cycles (0.5s @ 3.3V) */
+    WDT_WPER_128CLK_gc = (0x04<<2),  /* 128 cycles (0.128s @ 3.3V) */
+    WDT_WPER_256CLK_gc = (0x05<<2),  /* 256 cycles (0.256s @ 3.3V) */
+    WDT_WPER_512CLK_gc = (0x06<<2),  /* 512 cycles (0.512s @ 3.3V) */
     WDT_WPER_1KCLK_gc = (0x07<<2),  /* 1K cycles (1s @ 3.3V) */
     WDT_WPER_2KCLK_gc = (0x08<<2),  /* 2K cycles (2s @ 3.3V) */
     WDT_WPER_4KCLK_gc = (0x09<<2),  /* 4K cycles (4s @ 3.3V) */
@@ -822,6 +822,13 @@ typedef enum BOOTRST_enum
     BOOTRST_APPLICATION_gc = (0x01<<6),  /* Application Reset */
 } BOOTRST_t;
 
+/* 32.768kHz Timer Oscillator Pin Selection */
+typedef enum TOSCSEL_enum
+{
+    TOSCSEL_ALTERNATE_gc = (0x00<<5),  /* TOSC1/2 on separate pins */
+    TOSCSEL_XTAL_gc = (0x01<<5),  /* TOSC1/2 shared with XTAL */
+} TOSCSEL_t;
+
 /* BOD operation */
 typedef enum BOD_enum
 {
@@ -854,17 +861,17 @@ typedef enum SUT_enum
     SUT_64MS_gc = (0x00<<2),  /* 64 ms */
 } SUT_t;
 
-/* Brown Out Detection Voltage Level */
+/* Brownout Detection Voltage Level */
 typedef enum BODLVL_enum
 {
     BODLVL_1V6_gc = (0x07<<0),  /* 1.6 V */
-    BODLVL_1V9_gc = (0x06<<0),  /* 1.9 V */
-    BODLVL_2V1_gc = (0x05<<0),  /* 2.1 V */
-    BODLVL_2V4_gc = (0x04<<0),  /* 2.4 V */
-    BODLVL_2V6_gc = (0x03<<0),  /* 2.6 V */
-    BODLVL_2V9_gc = (0x02<<0),  /* 2.9 V */
-    BODLVL_3V2_gc = (0x01<<0),  /* 3.2 V */
-    BODLVL_3V4_gc = (0x00<<0),  /* 3.4 V */
+    BODLVL_1V8_gc = (0x06<<0),  /* 1.8 V */
+    BODLVL_2V0_gc = (0x05<<0),  /* 2.0 V */
+    BODLVL_2V2_gc = (0x04<<0),  /* 2.2 V */
+    BODLVL_2V4_gc = (0x03<<0),  /* 2.4 V */
+    BODLVL_2V6_gc = (0x02<<0),  /* 2.6 V */
+    BODLVL_2V8_gc = (0x01<<0),  /* 2.8 V */
+    BODLVL_3V0_gc = (0x00<<0),  /* 3.0 V */
 } BODLVL_t;
 
 
@@ -1104,10 +1111,10 @@ typedef enum ADC_RESOLUTION_enum
 typedef enum ADC_REFSEL_enum
 {
     ADC_REFSEL_INT1V_gc = (0x00<<4),  /* Internal 1V */
-    ADC_REFSEL_VCC_gc = (0x01<<4),  /* Internal VCC / 1.6 */
+    ADC_REFSEL_INTVCC_gc = (0x01<<4),  /* Internal VCC / 1.6 */
     ADC_REFSEL_AREFA_gc = (0x02<<4),  /* External reference on PORT A */
     ADC_REFSEL_AREFB_gc = (0x03<<4),  /* External reference on PORT B */
-    ADC_REFSEL_VCCDIV2_gc = (0x04<<4),  /* Internal VCC / 2 */
+    ADC_REFSEL_INTVCC2_gc = (0x04<<4),  /* Internal VCC / 2 */
 } ADC_REFSEL_t;
 
 /* Event channel input selection */
@@ -1124,6 +1131,7 @@ typedef enum ADC_EVACT_enum
 {
     ADC_EVACT_NONE_gc = (0x00<<0),  /* No event action */
     ADC_EVACT_CH0_gc = (0x01<<0),  /* First event triggers channel 0 */
+    ADC_EVACT_SYNCSWEEP_gc = (0x06<<0),  /* The ADC is flushed and restarted for accurate timing */
 } ADC_EVACT_t;
 
 /* Interupt mode */
@@ -1302,6 +1310,15 @@ typedef enum TWI_SLAVE_CMD_enum
     TWI_SLAVE_CMD_COMPTRANS_gc = (0x02<<0),  /* Used To Complete a Transaction */
     TWI_SLAVE_CMD_RESPONSE_gc = (0x03<<0),  /* Used in Response to Address/Data Interrupt */
 } TWI_SLAVE_CMD_t;
+
+/* SDA hold time */
+typedef enum SDA_HOLD_TIME_enum
+{
+    SDA_HOLD_TIME_OFF_gc = (0x00<<1),  /* SDA hold time off */
+    SDA_HOLD_TIME_50NS_gc = (0x01<<1),  /* Typical 50ns hold time */
+    SDA_HOLD_TIME_300NS_gc = (0x02<<1),  /* Typical 300ns hold time */
+    SDA_HOLD_TIME_400NS_gc = (0x03<<1),  /* Typical 400ns hold time */
+} SDA_HOLD_TIME_t;
 
 
 /*
@@ -1966,6 +1983,7 @@ IO Module Instances. Mapped to memory.
 #define ACA    (*(AC_t *) 0x0380)  /* Analog Comparator */
 #define RTC    (*(RTC_t *) 0x0400)  /* Real-Time Counter */
 #define TWIC    (*(TWI_t *) 0x0480)  /* Two-Wire Interface */
+#define TWIE    (*(TWI_t *) 0x04A0)  /* Two-Wire Interface */
 #define PORTA    (*(PORT_t *) 0x0600)  /* I/O Ports */
 #define PORTB    (*(PORT_t *) 0x0620)  /* I/O Ports */
 #define PORTC    (*(PORT_t *) 0x0640)  /* I/O Ports */
@@ -2238,6 +2256,22 @@ IO Module Instances. Mapped to memory.
 #define TWIC_SLAVE_ADDR  _SFR_MEM8(0x048B)
 #define TWIC_SLAVE_DATA  _SFR_MEM8(0x048C)
 #define TWIC_SLAVE_ADDRMASK  _SFR_MEM8(0x048D)
+
+/* TWI - Two-Wire Interface */
+#define TWIE_CTRL  _SFR_MEM8(0x04A0)
+#define TWIE_MASTER_CTRLA  _SFR_MEM8(0x04A1)
+#define TWIE_MASTER_CTRLB  _SFR_MEM8(0x04A2)
+#define TWIE_MASTER_CTRLC  _SFR_MEM8(0x04A3)
+#define TWIE_MASTER_STATUS  _SFR_MEM8(0x04A4)
+#define TWIE_MASTER_BAUD  _SFR_MEM8(0x04A5)
+#define TWIE_MASTER_ADDR  _SFR_MEM8(0x04A6)
+#define TWIE_MASTER_DATA  _SFR_MEM8(0x04A7)
+#define TWIE_SLAVE_CTRLA  _SFR_MEM8(0x04A8)
+#define TWIE_SLAVE_CTRLB  _SFR_MEM8(0x04A9)
+#define TWIE_SLAVE_STATUS  _SFR_MEM8(0x04AA)
+#define TWIE_SLAVE_ADDR  _SFR_MEM8(0x04AB)
+#define TWIE_SLAVE_DATA  _SFR_MEM8(0x04AC)
+#define TWIE_SLAVE_ADDRMASK  _SFR_MEM8(0x04AD)
 
 /* PORT - I/O Ports */
 #define PORTA_DIR  _SFR_MEM8(0x0600)
@@ -3341,6 +3375,9 @@ IO Module Instances. Mapped to memory.
 #define NVM_FUSES_BOOTRST_bm  0x40  /* Boot Loader Section Reset Vector bit mask. */
 #define NVM_FUSES_BOOTRST_bp  6  /* Boot Loader Section Reset Vector bit position. */
 
+#define NVM_FUSES_TOSCSEL_bm  0x20  /* 32.768kHz Timer Oscillator Pin Selection bit mask. */
+#define NVM_FUSES_TOSCSEL_bp  5  /* 32.768kHz Timer Oscillator Pin Selection bit position. */
+
 #define NVM_FUSES_BODPD_gm  0x03  /* BOD Operation in Power-Down Mode group mask. */
 #define NVM_FUSES_BODPD_gp  0  /* BOD Operation in Power-Down Mode group position. */
 #define NVM_FUSES_BODPD0_bm  (1<<0)  /* BOD Operation in Power-Down Mode bit 0 mask. */
@@ -3373,14 +3410,14 @@ IO Module Instances. Mapped to memory.
 #define NVM_FUSES_EESAVE_bm  0x08  /* Preserve EEPROM Through Chip Erase bit mask. */
 #define NVM_FUSES_EESAVE_bp  3  /* Preserve EEPROM Through Chip Erase bit position. */
 
-#define NVM_FUSES_BODLVL_gm  0x07  /* Brown Out Detection Voltage Level group mask. */
-#define NVM_FUSES_BODLVL_gp  0  /* Brown Out Detection Voltage Level group position. */
-#define NVM_FUSES_BODLVL0_bm  (1<<0)  /* Brown Out Detection Voltage Level bit 0 mask. */
-#define NVM_FUSES_BODLVL0_bp  0  /* Brown Out Detection Voltage Level bit 0 position. */
-#define NVM_FUSES_BODLVL1_bm  (1<<1)  /* Brown Out Detection Voltage Level bit 1 mask. */
-#define NVM_FUSES_BODLVL1_bp  1  /* Brown Out Detection Voltage Level bit 1 position. */
-#define NVM_FUSES_BODLVL2_bm  (1<<2)  /* Brown Out Detection Voltage Level bit 2 mask. */
-#define NVM_FUSES_BODLVL2_bp  2  /* Brown Out Detection Voltage Level bit 2 position. */
+#define NVM_FUSES_BODLVL_gm  0x07  /* Brownout Detection Voltage Level group mask. */
+#define NVM_FUSES_BODLVL_gp  0  /* Brownout Detection Voltage Level group position. */
+#define NVM_FUSES_BODLVL0_bm  (1<<0)  /* Brownout Detection Voltage Level bit 0 mask. */
+#define NVM_FUSES_BODLVL0_bp  0  /* Brownout Detection Voltage Level bit 0 position. */
+#define NVM_FUSES_BODLVL1_bm  (1<<1)  /* Brownout Detection Voltage Level bit 1 mask. */
+#define NVM_FUSES_BODLVL1_bp  1  /* Brownout Detection Voltage Level bit 1 position. */
+#define NVM_FUSES_BODLVL2_bm  (1<<2)  /* Brownout Detection Voltage Level bit 2 mask. */
+#define NVM_FUSES_BODLVL2_bp  2  /* Brownout Detection Voltage Level bit 2 position. */
 
 /* AC - Analog Comparator */
 /* AC.AC0CTRL  bit masks and bit positions */
@@ -3741,12 +3778,12 @@ IO Module Instances. Mapped to memory.
 #define TWI_MASTER_ENABLE_bp  3  /* Enable TWI Master bit position. */
 
 /* TWI_MASTER.CTRLB  bit masks and bit positions */
-#define TWI_MASTER_TIMEOUT_gm  0x0C  /* Inactive Bus Timeout group mask. */
-#define TWI_MASTER_TIMEOUT_gp  2  /* Inactive Bus Timeout group position. */
-#define TWI_MASTER_TIMEOUT0_bm  (1<<2)  /* Inactive Bus Timeout bit 0 mask. */
-#define TWI_MASTER_TIMEOUT0_bp  2  /* Inactive Bus Timeout bit 0 position. */
-#define TWI_MASTER_TIMEOUT1_bm  (1<<3)  /* Inactive Bus Timeout bit 1 mask. */
-#define TWI_MASTER_TIMEOUT1_bp  3  /* Inactive Bus Timeout bit 1 position. */
+#define TWI_MASTER_TIMEOUT_gm  0x0C  /* Inactive Bus Tisdahmeout group mask. */
+#define TWI_MASTER_TIMEOUT_gp  2  /* Inactive Bus Tisdahmeout group position. */
+#define TWI_MASTER_TIMEOUT0_bm  (1<<2)  /* Inactive Bus Tisdahmeout bit 0 mask. */
+#define TWI_MASTER_TIMEOUT0_bp  2  /* Inactive Bus Tisdahmeout bit 0 position. */
+#define TWI_MASTER_TIMEOUT1_bm  (1<<3)  /* Inactive Bus Tisdahmeout bit 1 mask. */
+#define TWI_MASTER_TIMEOUT1_bp  3  /* Inactive Bus Tisdahmeout bit 1 position. */
 
 #define TWI_MASTER_QCEN_bm  0x02  /* Quick Command Enable bit mask. */
 #define TWI_MASTER_QCEN_bp  1  /* Quick Command Enable bit position. */
@@ -3875,8 +3912,12 @@ IO Module Instances. Mapped to memory.
 #define TWI_SLAVE_ADDREN_bp  0  /* Address Enable bit position. */
 
 /* TWI.CTRL  bit masks and bit positions */
-#define TWI_SDAHOLD_bm  0x02  /* SDA Hold Time Enable bit mask. */
-#define TWI_SDAHOLD_bp  1  /* SDA Hold Time Enable bit position. */
+#define TWI_SDAHOLD_gm  0x06  /* SDA Hold Time Enable group mask. */
+#define TWI_SDAHOLD_gp  1  /* SDA Hold Time Enable group position. */
+#define TWI_SDAHOLD0_bm  (1<<1)  /* SDA Hold Time Enable bit 0 mask. */
+#define TWI_SDAHOLD0_bp  1  /* SDA Hold Time Enable bit 0 position. */
+#define TWI_SDAHOLD1_bm  (1<<2)  /* SDA Hold Time Enable bit 1 mask. */
+#define TWI_SDAHOLD1_bp  2  /* SDA Hold Time Enable bit 1 position. */
 
 #define TWI_EDIEN_bm  0x01  /* External Driver Interface Enable bit mask. */
 #define TWI_EDIEN_bp  0  /* External Driver Interface Enable bit position. */
@@ -4572,6 +4613,12 @@ IO Module Instances. Mapped to memory.
 #define USART_CHSIZE2_bm  (1<<2)  /* Character Size bit 2 mask. */
 #define USART_CHSIZE2_bp  2  /* Character Size bit 2 position. */
 
+#define USART_UDORD_bm  0x04  /* SPI Master Mode, Data Order bit mask. */
+#define USART_UDORD_bp  2  /* SPI Master Mode, Data Order bit position. */
+
+#define USART_UCPHA_bm  0x02  /* SPI Master Mode, Clock Phase bit mask. */
+#define USART_UCPHA_bp  1  /* SPI Master Mode, Clock Phase bit position. */
+
 /* USART.BAUDCTRLA  bit masks and bit positions */
 #define USART_BSEL_gm  0xFF  /* Baud Rate Selection Bits [7:0] group mask. */
 #define USART_BSEL_gp  0  /* Baud Rate Selection Bits [7:0] group position. */
@@ -4768,6 +4815,12 @@ IO Module Instances. Mapped to memory.
 #define PORTE_INT0_vect      _VECTOR(43)  /* External Interrupt 0 */
 #define PORTE_INT1_vect_num  44
 #define PORTE_INT1_vect      _VECTOR(44)  /* External Interrupt 1 */
+
+/* TWIE interrupt vectors */
+#define TWIE_TWIS_vect_num  45
+#define TWIE_TWIS_vect      _VECTOR(45)  /* TWI Slave Interrupt */
+#define TWIE_TWIM_vect_num  46
+#define TWIE_TWIM_vect      _VECTOR(46)  /* TWI Master Interrupt */
 
 /* TCE0 interrupt vectors */
 #define TCE0_OVF_vect_num  47
@@ -4973,6 +5026,7 @@ IO Module Instances. Mapped to memory.
 /* Fuse Byte 2 */
 #define FUSE_BODPD0  (unsigned char)~_BV(0)  /* BOD Operation in Power-Down Mode Bit 0 */
 #define FUSE_BODPD1  (unsigned char)~_BV(1)  /* BOD Operation in Power-Down Mode Bit 1 */
+#define FUSE_TOSCSEL  (unsigned char)~_BV(5)  /* 32.768kHz Timer Oscillator Pin Selection */
 #define FUSE_BOOTRST  (unsigned char)~_BV(6)  /* Boot Loader Section Reset Vector */
 #define FUSE_DVSDON  (unsigned char)~_BV(7)  /* Spike Detector Enable */
 #define FUSE2_DEFAULT  (0xFF)
@@ -4987,9 +5041,9 @@ IO Module Instances. Mapped to memory.
 #define FUSE4_DEFAULT  (0xFF)
 
 /* Fuse Byte 5 */
-#define FUSE_BODLVL0  (unsigned char)~_BV(0)  /* Brown Out Detection Voltage Level Bit 0 */
-#define FUSE_BODLVL1  (unsigned char)~_BV(1)  /* Brown Out Detection Voltage Level Bit 1 */
-#define FUSE_BODLVL2  (unsigned char)~_BV(2)  /* Brown Out Detection Voltage Level Bit 2 */
+#define FUSE_BODLVL0  (unsigned char)~_BV(0)  /* Brownout Detection Voltage Level Bit 0 */
+#define FUSE_BODLVL1  (unsigned char)~_BV(1)  /* Brownout Detection Voltage Level Bit 1 */
+#define FUSE_BODLVL2  (unsigned char)~_BV(2)  /* Brownout Detection Voltage Level Bit 2 */
 #define FUSE_EESAVE  (unsigned char)~_BV(3)  /* Preserve EEPROM Through Chip Erase */
 #define FUSE_BODACT0  (unsigned char)~_BV(4)  /* BOD Operation in Active Mode Bit 0 */
 #define FUSE_BODACT1  (unsigned char)~_BV(5)  /* BOD Operation in Active Mode Bit 1 */

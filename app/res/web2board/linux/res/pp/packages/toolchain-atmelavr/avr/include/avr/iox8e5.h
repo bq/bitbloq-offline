@@ -1,6 +1,6 @@
 /*****************************************************************************
  *
- * Copyright (C) 2013 Atmel Corporation
+ * Copyright (C) 2014 Atmel Corporation
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -374,9 +374,9 @@ typedef enum WDT_PER_enum
     WDT_PER_16CLK_gc = (0x01<<2),  /* 16 cycles (16ms @ 3.3V) */
     WDT_PER_32CLK_gc = (0x02<<2),  /* 32 cycles (32ms @ 3.3V) */
     WDT_PER_64CLK_gc = (0x03<<2),  /* 64 cycles (64ms @ 3.3V) */
-    WDT_PER_125CLK_gc = (0x04<<2),  /* 125 cycles (0.125s @ 3.3V) */
-    WDT_PER_250CLK_gc = (0x05<<2),  /* 250 cycles (0.25s @ 3.3V) */
-    WDT_PER_500CLK_gc = (0x06<<2),  /* 500 cycles (0.5s @ 3.3V) */
+    WDT_PER_128CLK_gc = (0x04<<2),  /* 128 cycles (0.128s @ 3.3V) */
+    WDT_PER_256CLK_gc = (0x05<<2),  /* 256 cycles (0.256s @ 3.3V) */
+    WDT_PER_512CLK_gc = (0x06<<2),  /* 512 cycles (0.512s @ 3.3V) */
     WDT_PER_1KCLK_gc = (0x07<<2),  /* 1K cycles (1s @ 3.3V) */
     WDT_PER_2KCLK_gc = (0x08<<2),  /* 2K cycles (2s @ 3.3V) */
     WDT_PER_4KCLK_gc = (0x09<<2),  /* 4K cycles (4s @ 3.3V) */
@@ -390,9 +390,9 @@ typedef enum WDT_WPER_enum
     WDT_WPER_16CLK_gc = (0x01<<2),  /* 16 cycles (16ms @ 3.3V) */
     WDT_WPER_32CLK_gc = (0x02<<2),  /* 32 cycles (32ms @ 3.3V) */
     WDT_WPER_64CLK_gc = (0x03<<2),  /* 64 cycles (64ms @ 3.3V) */
-    WDT_WPER_125CLK_gc = (0x04<<2),  /* 125 cycles (0.125s @ 3.3V) */
-    WDT_WPER_250CLK_gc = (0x05<<2),  /* 250 cycles (0.25s @ 3.3V) */
-    WDT_WPER_500CLK_gc = (0x06<<2),  /* 500 cycles (0.5s @ 3.3V) */
+    WDT_WPER_128CLK_gc = (0x04<<2),  /* 128 cycles (0.128s @ 3.3V) */
+    WDT_WPER_256CLK_gc = (0x05<<2),  /* 256 cycles (0.256s @ 3.3V) */
+    WDT_WPER_512CLK_gc = (0x06<<2),  /* 512 cycles (0.512s @ 3.3V) */
     WDT_WPER_1KCLK_gc = (0x07<<2),  /* 1K cycles (1s @ 3.3V) */
     WDT_WPER_2KCLK_gc = (0x08<<2),  /* 2K cycles (2s @ 3.3V) */
     WDT_WPER_4KCLK_gc = (0x09<<2),  /* 4K cycles (4s @ 3.3V) */
@@ -1097,7 +1097,7 @@ typedef enum ADC_EVACT_enum
 {
     ADC_EVACT_NONE_gc = (0x00<<0),  /* No event action */
     ADC_EVACT_CH0_gc = (0x01<<0),  /* First event triggers channel conversion */
-    ADC_EVACT_SYNCHSWEEP_gc = (0x06<<0),  /* First event triggers synchronized sweep */
+    ADC_EVACT_SYNCSWEEP_gc = (0x06<<0),  /* The ADC is flushed and restarted for accurate timing */
 } ADC_EVACT_t;
 
 /* Clock prescaler */
@@ -2703,7 +2703,7 @@ typedef enum SUT_enum
     SUT_64MS_gc = (0x00<<2),  /* 64 ms */
 } SUT_t;
 
-/* Brown Out Detection Voltage Level */
+/* Brownout Detection Voltage Level */
 typedef enum BODLVL_enum
 {
     BODLVL_1V6_gc = (0x07<<0),  /* 1.6 V */
@@ -2756,8 +2756,8 @@ typedef struct NVM_PROD_SIGNATURES_struct
     register8_t reserved_0x1B;
     register8_t reserved_0x1C;
     register8_t reserved_0x1D;
-    register8_t reserved_0x1E;
-    register8_t reserved_0x1F;
+    register8_t ROOMTEMP;  /* Temperature corresponds to TEMPSENSE3/2 */
+    register8_t HOTTEMP;  /* Temperature corresponds to TEMPSENSE1/0 */
     register8_t ADCACAL0;  /* ADCA Calibration Byte 0 */
     register8_t ADCACAL1;  /* ADCA Calibration Byte 1 */
     register8_t reserved_0x22;
@@ -2883,6 +2883,8 @@ IO Module Instances. Mapped to memory.
 #define PRODSIGNATURES_COORDX1  _SFR_MEM8(0x0013)
 #define PRODSIGNATURES_COORDY0  _SFR_MEM8(0x0014)
 #define PRODSIGNATURES_COORDY1  _SFR_MEM8(0x0015)
+#define PRODSIGNATURES_ROOMTEMP  _SFR_MEM8(0x001E)
+#define PRODSIGNATURES_HOTTEMP  _SFR_MEM8(0x001F)
 #define PRODSIGNATURES_ADCACAL0  _SFR_MEM8(0x0020)
 #define PRODSIGNATURES_ADCACAL1  _SFR_MEM8(0x0021)
 #define PRODSIGNATURES_ACACURRCAL  _SFR_MEM8(0x0028)
@@ -7336,14 +7338,14 @@ IO Module Instances. Mapped to memory.
 #define NVM_FUSES_EESAVE_bm  0x08  /* Preserve EEPROM Through Chip Erase bit mask. */
 #define NVM_FUSES_EESAVE_bp  3  /* Preserve EEPROM Through Chip Erase bit position. */
 
-#define NVM_FUSES_BODLVL_gm  0x07  /* Brown Out Detection Voltage Level group mask. */
-#define NVM_FUSES_BODLVL_gp  0  /* Brown Out Detection Voltage Level group position. */
-#define NVM_FUSES_BODLVL0_bm  (1<<0)  /* Brown Out Detection Voltage Level bit 0 mask. */
-#define NVM_FUSES_BODLVL0_bp  0  /* Brown Out Detection Voltage Level bit 0 position. */
-#define NVM_FUSES_BODLVL1_bm  (1<<1)  /* Brown Out Detection Voltage Level bit 1 mask. */
-#define NVM_FUSES_BODLVL1_bp  1  /* Brown Out Detection Voltage Level bit 1 position. */
-#define NVM_FUSES_BODLVL2_bm  (1<<2)  /* Brown Out Detection Voltage Level bit 2 mask. */
-#define NVM_FUSES_BODLVL2_bp  2  /* Brown Out Detection Voltage Level bit 2 position. */
+#define NVM_FUSES_BODLVL_gm  0x07  /* Brownout Detection Voltage Level group mask. */
+#define NVM_FUSES_BODLVL_gp  0  /* Brownout Detection Voltage Level group position. */
+#define NVM_FUSES_BODLVL0_bm  (1<<0)  /* Brownout Detection Voltage Level bit 0 mask. */
+#define NVM_FUSES_BODLVL0_bp  0  /* Brownout Detection Voltage Level bit 0 position. */
+#define NVM_FUSES_BODLVL1_bm  (1<<1)  /* Brownout Detection Voltage Level bit 1 mask. */
+#define NVM_FUSES_BODLVL1_bp  1  /* Brownout Detection Voltage Level bit 1 position. */
+#define NVM_FUSES_BODLVL2_bm  (1<<2)  /* Brownout Detection Voltage Level bit 2 mask. */
+#define NVM_FUSES_BODLVL2_bp  2  /* Brownout Detection Voltage Level bit 2 position. */
 
 /* NVM_FUSES.FUSEBYTE6  bit masks and bit positions */
 #define NVM_FUSES_FDACT5_bm  0x80  /* Fault Dectection Action on TC5 bit mask. */
@@ -7627,9 +7629,9 @@ IO Module Instances. Mapped to memory.
 #define FUSE4_DEFAULT  (0xFF)
 
 /* Fuse Byte 5 */
-#define FUSE_BODLVL0  (unsigned char)~_BV(0)  /* Brown Out Detection Voltage Level Bit 0 */
-#define FUSE_BODLVL1  (unsigned char)~_BV(1)  /* Brown Out Detection Voltage Level Bit 1 */
-#define FUSE_BODLVL2  (unsigned char)~_BV(2)  /* Brown Out Detection Voltage Level Bit 2 */
+#define FUSE_BODLVL0  (unsigned char)~_BV(0)  /* Brownout Detection Voltage Level Bit 0 */
+#define FUSE_BODLVL1  (unsigned char)~_BV(1)  /* Brownout Detection Voltage Level Bit 1 */
+#define FUSE_BODLVL2  (unsigned char)~_BV(2)  /* Brownout Detection Voltage Level Bit 2 */
 #define FUSE_EESAVE  (unsigned char)~_BV(3)  /* Preserve EEPROM Through Chip Erase */
 #define FUSE_BODACT0  (unsigned char)~_BV(4)  /* BOD Operation in Active Mode Bit 0 */
 #define FUSE_BODACT1  (unsigned char)~_BV(5)  /* BOD Operation in Active Mode Bit 1 */

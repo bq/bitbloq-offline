@@ -1,6 +1,6 @@
 /*****************************************************************************
  *
- * Copyright (C) 2013 Atmel Corporation
+ * Copyright (C) 2014 Atmel Corporation
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -89,8 +89,8 @@
 #define MUX5    5
 
 #define ACSR0A  _SFR_IO8(0x0A)
-#define ACIS0   0
-#define ACIS1   1
+#define ACIS00  0
+#define ACIS01  1
 #define ACIC0   2
 #define ACIE0   3
 #define ACI0    4
@@ -108,6 +108,8 @@
 #define HSEL0   7
 
 #define ACSR1A  _SFR_IO8(0x0C)
+#define ACIS10  0
+#define ACIS11  1
 #define ACIC1   2
 #define ACIE1   3
 #define ACI1    4
@@ -373,8 +375,8 @@
 #define BBMA    0
 
 #define REMAP   _SFR_MEM8(0x65)
-#define U0MAP   1
-#define SPIMAP  0
+#define U0MAP   0
+#define SPIMAP  1
 
 #define TOCPMCOE _SFR_MEM8(0x66)
 #define TOCC0OE 0

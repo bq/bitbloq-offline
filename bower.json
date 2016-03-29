@@ -1,6 +1,6 @@
 {
   "name": "bitbloq-offline",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "dependencies": {
     "angular": "1.4.9",

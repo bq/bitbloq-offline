@@ -1,6 +1,6 @@
 /*****************************************************************************
  *
- * Copyright (C) 2013 Atmel Corporation
+ * Copyright (C) 2014 Atmel Corporation
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -360,12 +360,23 @@
 #define COM1A1  7
 
 #define SFIOR   _SFR_IO8(0x30)
+#define PSR2    0
+#define PSR10   0
+#define PUD     2
 #define ACME    3
 #define ADTS0   5
 #define ADTS1   6
 #define ADTS2   7
 
 #define OSCCAL  _SFR_IO8(0x31)
+#define OSCCAL0 0
+#define OSCCAL1 1
+#define OSCCAL2 2
+#define OSCCAL3 3
+#define OSCCAL4 4
+#define OSCCAL5 5
+#define OSCCAL6 6
+#define OSCCAL7 7
 
 #define TCNT0   _SFR_IO8(0x32)
 

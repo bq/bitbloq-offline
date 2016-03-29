@@ -28,7 +28,7 @@
   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE. */
 
-/* $Id$ */
+/* $Id: iotn84a.h 2435 2014-08-11 10:31:52Z joerg_wunsch $ */
 
 /* avr/iotn84a.h - definitions for ATtiny84A */
 
@@ -486,10 +486,12 @@
 #define MCUCR _SFR_IO8(0x35)
 #define ISC00 0
 #define ISC01 1
+#define BODSE 2
 #define SM0 3
 #define SM1 4
 #define SE 5
 #define PUD 6
+#define BODS 7
 
 #define OCR0A _SFR_IO8(0x36)
 #define OCR0A_0 0
@@ -603,7 +605,7 @@
 #define FUSE_SUT1  (unsigned char)~_BV(5)  /* Select start-up time */
 #define FUSE_CKOUT  (unsigned char)~_BV(6)  /* Clock Output Enable */
 #define FUSE_CKDIV8  (unsigned char)~_BV(7)  /* Divide clock by 8 */
-#define LFUSE_DEFAULT (FUSE_CKSEL0 & FUSE_CKSEL2 & FUSE_SUT0 & FUSE_CKDIV8)
+#define LFUSE_DEFAULT (FUSE_CKSEL0 & FUSE_CKSEL2 & FUSE_CKSEL3 & FUSE_SUT0 & FUSE_CKDIV8)
 
 /* High Fuse Byte */
 #define FUSE_BODLEVEL0  (unsigned char)~_BV(0)  /* Brown-out Detector trigger level */

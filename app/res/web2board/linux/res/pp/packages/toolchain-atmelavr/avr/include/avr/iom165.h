@@ -786,6 +786,7 @@
 
 /* Constants */
 #define SPM_PAGESIZE    128
+#define RAMSTART        0x100
 #define RAMEND          0x4FF
 #define XRAMEND         RAMEND
 #define E2END           0x1FF
@@ -835,7 +836,7 @@
 /* Signature */
 #define SIGNATURE_0 0x1E
 #define SIGNATURE_1 0x94
-#define SIGNATURE_2 0x07
+#define SIGNATURE_2 0x05
 
 
 /* Deprecated items */

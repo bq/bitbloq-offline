@@ -28,7 +28,7 @@
   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE. */
 
-/* $Id$ */
+/* $Id: iotn40.h 2435 2014-08-11 10:31:52Z joerg_wunsch $ */
 
 /* avr/iotn40.h - definitions for ATtiny40 */
 
@@ -565,8 +565,8 @@
 #define TIM0_OVF_vect      _VECTOR(12)  /* Timer/Counter0 Overflow */
 #define ANA_COMP_vect_num  13
 #define ANA_COMP_vect      _VECTOR(13)  /* Analog Comparator */
-#define ADC_ADC_vect_num  14
-#define ADC_ADC_vect      _VECTOR(14)  /* Conversion Complete */
+#define ADC_vect_num  14
+#define ADC_vect      _VECTOR(14)  /* Conversion Complete */
 #define TWI_SLAVE_vect_num  15
 #define TWI_SLAVE_vect      _VECTOR(15)  /* Two-Wire Interface */
 #define SPI_vect_num  16
@@ -575,7 +575,7 @@
 #define QTRIP_vect      _VECTOR(17)  /* Touch Sensing */
 
 #define _VECTOR_SIZE 2 /* Size of individual vector. */
-#define _VECTORS_SIZE (17 * _VECTOR_SIZE)
+#define _VECTORS_SIZE (18 * _VECTOR_SIZE)
 
 
 /* Constants */

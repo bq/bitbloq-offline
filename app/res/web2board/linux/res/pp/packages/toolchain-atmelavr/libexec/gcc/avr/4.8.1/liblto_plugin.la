@@ -38,4 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/home/jenkins/jenkins/jobs/toolchain-avr-3.4.3-linux32/workspace/objdir/libexec/gcc/avr/4.8.1'
+libdir='/home/jenkins/jenkins/jobs/toolchain-avr-linux64/workspace/objdir/libexec/gcc/avr/4.8.1'
