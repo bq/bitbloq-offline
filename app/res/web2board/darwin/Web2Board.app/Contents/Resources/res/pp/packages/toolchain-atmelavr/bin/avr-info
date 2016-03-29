@@ -1,0 +1,2 @@
+#!/bin/sh
+exec info -d "/usr/local/CrossPack-AVR-20131216/share/info" "$@"

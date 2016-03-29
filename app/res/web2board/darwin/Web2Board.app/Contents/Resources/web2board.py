@@ -12,6 +12,7 @@
 #          Sergio Morcuende <sergio.morcuende@bq.com>                   #
 #                                                                       #
 # -----------------------------------------------------------------------#
+
 import importlib
 import pprint
 import signal
@@ -19,7 +20,6 @@ import click
 from wshubsapi.HubsInspector import HubsInspector
 
 from Scripts.TestRunner import *
-from libs import utils
 from libs.LoggingUtils import initLogging
 from libs.PathsManager import PathsManager
 
@@ -38,6 +38,12 @@ def getEchoFunction(original):
 
 click.echo = getEchoFunction(originalEcho)
 click.secho = getEchoFunction(originalSEcho)
+
+def clickConfirm(message):
+    print message
+    return True
+
+click.confirm = clickConfirm
 
 
 def runSconsScript():
@@ -58,7 +64,7 @@ if __name__ == "__main__":
     try:
         importlib.import_module("libs.WSCommunication.Hubs")
         HubsInspector.inspectImplementedHubs()
-        from libs.MainApp import getMainApp
+        from libs.MainApp import getMainApp, forceQuit
         app = getMainApp()
 
         def closeSigHandler(signal, frame):
@@ -68,7 +74,7 @@ if __name__ == "__main__":
                 log.warning("server closed")
             except:
                 log.warning("unable to close server")
-            app.quit()
+            forceQuit()
             os._exit(1)
 
 

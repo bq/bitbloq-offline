@@ -1,0 +1,20 @@
+.TH "deprecated" 3 "Thu Dec 29 2011" "Version 1.8.0" "avr-libc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+deprecated \- Deprecated List 
+.IP "\fBGlobal \fBcbi\fP (port, bit)\fP" 1c
+.IP "\fBGlobal \fBenable_external_int\fP (mask)\fP" 1c
+.IP "\fBGlobal \fBinb\fP (port)\fP" 1c
+.IP "\fBGlobal \fBinp\fP (port)\fP" 1c
+.IP "\fBGlobal \fBINTERRUPT\fP (signame)\fP" 1c
+.IP "\fBGlobal \fBISR_ALIAS\fP (vector, target_vector)\fP" 1c
+For new code, the use of ISR(\&.\&.\&., ISR_ALIASOF(\&.\&.\&.)) is recommended\&. 
+.IP "\fBGlobal \fBoutb\fP (port, val)\fP" 1c
+.IP "\fBGlobal \fBoutp\fP (val, port)\fP" 1c
+.IP "\fBGlobal \fBsbi\fP (port, bit)\fP" 1c
+.IP "\fBGlobal \fBSIGNAL\fP (vector)\fP" 1c
+Do not use \fBSIGNAL()\fP in new code\&. Use \fBISR()\fP instead\&.  
+.IP "\fBGlobal \fBtimer_enable_int\fP (unsigned char ints)\fP" 1c
+.PP
+
