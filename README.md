@@ -63,8 +63,8 @@ And the following robots:
 
  - ZOWI
 
-Do you have another board or robot? email us to support.bitbloq.en@bq.com, and we will try to talk with the manufacturer to allow us to introduce it on Bitbloq.
-Bitbloq its an Open Source Project so we will accept contributions if this are correct.
+Do you have a board or robot that is not in Bitbloq? Email us to support.bitbloq.en@bq.com, and we will reach the manufacturer to introduce it on Bitbloq.
+Bitbloq is an Open Source project so we will accept contributions adding new boards / robots if they are correct.
 
 In this platforms:
 
