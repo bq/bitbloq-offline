@@ -5,10 +5,10 @@
 # It is necessary for linking the library.
 
 # The name that we can dlopen(3).
-dlname='liblto_plugin.so.0'
+dlname='liblto_plugin-0.dll'
 
 # Names of this library.
-library_names='liblto_plugin.so.0.0.0 liblto_plugin.so.0 liblto_plugin.so'
+library_names='liblto_plugin.dll.a'
 
 # The name of the static archive.
 old_library=''
@@ -17,7 +17,7 @@ old_library=''
 inherited_linker_flags=''
 
 # Libraries that this one depends upon.
-dependency_libs=''
+dependency_libs=' -L/home/jenkins/workspace/avr8-gnu-toolchain/avr8-gnu-toolchain-win32_x86/lib'
 
 # Names of additional weak libraries provided by this library
 weak_library_names=''
@@ -38,4 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/home/jenkins/jenkins/jobs/toolchain-avr-linux64/workspace/objdir/libexec/gcc/avr/4.8.1'
+libdir='/home/jenkins/workspace/avr8-gnu-toolchain/avr8-gnu-toolchain-win32_x86/libexec/gcc/avr/4.8.1'

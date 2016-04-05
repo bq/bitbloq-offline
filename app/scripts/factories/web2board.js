@@ -43,8 +43,13 @@ angular.module('bitbloqOffline')
 
         function startWeb2board() {
             console.log('starting Web2board...');
-            var spawn = require('child_process').spawn,
-                web2boardProcess = spawn(getWeb2boardCommand(), ["--port", web2board.config.wsPort]);
+            var spawn = require('child_process'),
+                web2boardProcess = spawn.execFile(getWeb2boardCommand(),
+                    ["--port", web2board.config.wsPort], function (err, stdout, stderr){
+                        console.log(stdout);
+                        console.log(stderr);
+                        console.log(err);
+                    });
             web2boardProcess.on("close", function (code) {
                 console.log("Web2board closed with code: " + code);
             });

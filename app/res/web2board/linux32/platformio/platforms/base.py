@@ -438,7 +438,7 @@ class BasePlatform(object):
                     "-j %d" % self.get_job_nums(),
                     "--warn=no-no-parallel-support",
                     "-f", join(util.get_source_dir(), "builder", "main.py")
-                    ] + variables + targets + [PathsManager.PLATFORMIO_WORKSPACE_PATH]
+                    ] + variables + targets + [os.getcwd()]
             if PathsManager.EXECUTABLE_FILE.endswith(".py"):
                 args = ["python"] + args
             # test that SCons is installed correctly

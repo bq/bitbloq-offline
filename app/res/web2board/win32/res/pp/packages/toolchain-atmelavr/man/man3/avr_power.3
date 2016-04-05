@@ -1,0 +1,453 @@
+.TH "<avr/power.h>: Power Reduction Management" 3 "7 Oct 2014" "Version 1.8.0svn" "avr-libc" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+<avr/power.h>: Power Reduction Management \- .PP
+.nf
+ #include <avr/power.h>
+.fi
+.PP
+.PP
+Many AVRs contain a Power Reduction Register (PRR) or Registers (PRRx) that allow you to reduce power consumption by disabling or enabling various on-board peripherals as needed. Some devices have the XTAL Divide Control Register (XDIV) which offer similar functionality as System Clock Prescale Register (CLKPR).
+.PP
+There are many macros in this header file that provide an easy interface to enable or disable on-board peripherals to reduce power. See the table below.
+.PP
+\fBNote:\fP
+.RS 4
+Not all AVR devices have a Power Reduction Register (for example the ATmega8). On those devices without a Power Reduction Register, the power reduction macros are not available..
+.PP
+Not all AVR devices contain the same peripherals (for example, the LCD interface), or they will be named differently (for example, USART and USART0). Please consult your device's datasheet, or the header file, to find out which macros are applicable to your device.
+.PP
+For device using the XTAL Divide Control Register (XDIV), when prescaler is used, Timer/Counter0 can only be used in asynchronous mode. Keep in mind that Timer/Counter0 source shall be less than ¼th of peripheral clock. Therefore, when using a typical 32.768 kHz crystal, one shall not scale the clock below 131.072 kHz.
+.RE
+.PP
+   \fBPower Macro\fP \fBDescription\fP \fBApplicable for device\fP 
+.PP
+power_aca_disable() Disable The Analog Comparator On PortA  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_aca_enable() Enable The Analog Comparator On PortA  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_acb_disable() Disable The Analog Comparator On PortB  ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_acb_enable() Enable The Analog Comparator On PortB  ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_adc_disable() Disable the Analog to Digital Converter module. ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561, ATmega128RFA1, AT90USB646, AT90USB647, AT90USB1286, AT90USB1287, ATmega32U4, ATmega16U4, ATmega32U6, AT90PWM1, AT90PWM2, AT90PWM2B, AT90PWM3, AT90PWM3B, AT90PWM216, AT90PWM316, AT90PWM81, AT90PWM161, ATmega165, ATmega165A, ATmega165P, ATmega165PA, ATmega325, ATmega325A, ATmega325PA, ATmega3250, ATmega3250A, ATmega3250PA, ATmega645, ATmega645A, ATmega645P, ATmega6450, ATmega6450A, ATmega6450P, ATmega169, ATmega169A, ATmega169P, ATmega169PA, ATmega329, ATmega329A, ATmega329P, ATmega329PA, ATmega3290, ATmega3290A, ATmega3290P, ATmega3290PA, ATmega649, ATmega649A, ATmega649P, ATmega6490, ATmega6490A, ATmega6490P, ATmega164A, ATmega164P, ATmega324A, ATmega324P, ATmega324PA, ATmega644P, ATmega644A, ATmega644PA, ATmega644, ATmega164PA, ATmega48, ATmega48A, ATmega48PA, ATmega48P, ATmega48PB, ATmega88, ATmega88A, ATmega88P, ATmega88PA, ATmega88PB, ATmega168, ATmega168A, ATmega168P, ATmega168PA, ATmega168PB, ATmega328, ATmega328P, ATtiny48, ATtiny88, ATtiny828, ATtiny441, ATtiny24, ATtiny24A, ATtiny44, ATtiny44A, ATtiny84, ATtiny84A, ATtiny25, ATtiny45, ATtiny85, ATtiny261, ATtiny261A, ATtiny461, ATtiny461A, ATtiny861, ATtiny861A, ATtiny43U, ATmega1284, ATmega1284P, ATmega16M1, ATmega32C1, ATmega32M1, ATmega64C1, ATmega64M1, ATtiny167, ATtiny87, ATA5505, ATA5272, ATA6612C, ATA6613C, ATA6614Q, ATA6616C, ATA6617C, ATA664251, ATtiny1634, ATtiny4, ATtiny5, ATtiny9, ATtiny10, ATtiny13A, ATtiny20, ATtiny40 
+.PP
+power_adc_enable() Enable the Analog to Digital Converter module. ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561, ATmega128RFA1, AT90USB646, AT90USB647, AT90USB1286, AT90USB1287, ATmega32U4, ATmega16U4, ATmega32U6, AT90PWM1, AT90PWM2, AT90PWM2B, AT90PWM3, AT90PWM3B, AT90PWM216, AT90PWM316, AT90PWM81, AT90PWM161, ATmega165, ATmega165A, ATmega165P, ATmega165PA, ATmega325, ATmega325A, ATmega325PA, ATmega3250, ATmega3250A, ATmega3250PA, ATmega645, ATmega645A, ATmega645P, ATmega6450, ATmega6450A, ATmega6450P, ATmega169, ATmega169A, ATmega169P, ATmega169PA, ATmega329, ATmega329A, ATmega329P, ATmega329PA, ATmega3290, ATmega3290A, ATmega3290P, ATmega3290PA, ATmega649, ATmega649A, ATmega649P, ATmega6490, ATmega6490A, ATmega6490P, ATmega164A, ATmega164P, ATmega324A, ATmega324P, ATmega324PA, ATmega644P, ATmega644A, ATmega644PA, ATmega644, ATmega164PA, ATmega48, ATmega48A, ATmega48PA, ATmega48P, ATmega48PB, ATmega88, ATmega88A, ATmega88P, ATmega88PA, ATmega88PB, ATmega168, ATmega168A, ATmega168P, ATmega168PA, ATmega168PB, ATmega328, ATmega328P, ATtiny48, ATtiny88, ATtiny828, ATtiny441, ATtiny24, ATtiny24A, ATtiny44, ATtiny44A, ATtiny84, ATtiny84A, ATtiny25, ATtiny45, ATtiny85, ATtiny261, ATtiny261A, ATtiny461, ATtiny461A, ATtiny861, ATtiny861A, ATtiny43U, ATmega1284, ATmega1284P, ATmega16M1, ATmega32C1, ATmega32M1, ATmega64C1, ATmega64M1, ATtiny167, ATtiny87, ATA5505, ATA5272, ATA6612C, ATA6613C, ATA6614Q, ATA6616C, ATA6617C, ATA664251, ATtiny1634, ATtiny4, ATtiny5, ATtiny9, ATtiny10, ATtiny13A, ATtiny20, ATtiny40 
+.PP
+power_adca_disable() Disable the Analog to Digital Converter module On PortA  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_adca_enable() Enable the Analog to Digital Converter module On PortA  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_adcb_disable() Disable the Analog to Digital Converter module On PortB  ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_adcb_enable() Enable the Analog to Digital Converter module On PortB  ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_aes_disable() Disable the AES module  ATxmega16A4, ATxmega16A4U, ATxmega32A4U, ATxmega32A4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega192A3, ATxmega192A3U, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3, AT90SCR100 
+.PP
+power_aes_enable() Enable the AES module  ATxmega16A4, ATxmega16A4U, ATxmega32A4U, ATxmega32A4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega192A3, ATxmega192A3U, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3, AT90SCR100 
+.PP
+power_all_disable() Disable all modules. ATxmega384C3, ATxmega256A3BU, ATxmega16A4U, ATxmega32A4U, ATxmega64A3U, ATxmega64A4U, ATxmega128A3U, ATxmega128A4U, ATxmega192A3U, ATxmega256A3U, ATxmega384C3, ATxmega256A3BU, ATxmega16A4U, ATxmega32A4U, ATxmega64A3U, ATxmega64A4U, ATxmega128A3U, ATxmega128A4U, ATxmega192A3U, ATxmega256A3U, ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega64D4, ATxmega128D4, ATxmega16D4, ATxmega32D4, ATxmega32D3, ATxmega64D3, ATxmega128D3, ATxmega192D3, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3, ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561, ATmega128RFA1, AT90USB646, AT90USB647, AT90USB1286, AT90USB1287, ATmega32U4, ATmega16U4, ATmega32U6, AT90PWM1, AT90PWM2, AT90PWM2B, AT90PWM3, AT90PWM3B, AT90PWM216, AT90PWM316, AT90PWM81, AT90PWM161, ATmega165, ATmega165A, ATmega165P, ATmega165PA, ATmega325, ATmega325A, ATmega325PA, ATmega3250, ATmega3250A, ATmega3250PA, ATmega645, ATmega645A, ATmega645P, ATmega6450, ATmega6450A, ATmega6450P, ATmega169, ATmega169A, ATmega169P, ATmega169PA, ATmega329, ATmega329A, ATmega329P, ATmega329PA, ATmega3290, ATmega3290A, ATmega3290P, ATmega3290PA, ATmega649, ATmega649A, ATmega649P, ATmega6490, ATmega6490A, ATmega6490P, ATmega164A, ATmega164P, ATmega324A, ATmega324P, ATmega324PA, ATmega644P, ATmega644A, ATmega644PA, ATmega644, ATmega164PA, ATmega406, ATtiny828, ATtiny828, ATtiny441, ATtiny24, ATtiny24A, ATtiny44, ATtiny44A, ATtiny84, ATtiny84A, ATtiny25, ATtiny45, ATtiny85, ATtiny261, ATtiny261A, ATtiny461, ATtiny461A, ATtiny861, ATtiny861A, ATtiny43U, ATmega1284, ATmega1284P, ATmega32HVB, ATmega32HVBrevB, ATmega16HVB, ATmega16HVBrevB, ATA5790, ATA5795, ATmega16M1, ATmega32C1, ATmega32M1, ATmega64C1, ATmega64M1, ATtiny167, ATtiny87, ATA5505, ATA5272, ATA6616C, ATA6617C, ATA664251, ATtiny1634, AT90USB82, AT90USB162, ATmega8U2, ATmega16U2, ATmega32U2, AT90SCR100, ATtiny4, ATtiny5, ATtiny9, ATtiny10, ATtiny13A, ATtiny20, ATtiny40 
+.PP
+power_all_enable() Enable all modules. ATxmega384C3, ATxmega256A3BU, ATxmega16A4U, ATxmega32A4U, ATxmega64A3U, ATxmega64A4U, ATxmega128A3U, ATxmega128A4U, ATxmega192A3U, ATxmega256A3U, ATxmega384C3, ATxmega256A3BU, ATxmega16A4U, ATxmega32A4U, ATxmega64A3U, ATxmega64A4U, ATxmega128A3U, ATxmega128A4U, ATxmega192A3U, ATxmega256A3U, ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega64D4, ATxmega128D4, ATxmega16D4, ATxmega32D4, ATxmega32D3, ATxmega64D3, ATxmega128D3, ATxmega192D3, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3, ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561, ATmega128RFA1, AT90USB646, AT90USB647, AT90USB1286, AT90USB1287, ATmega32U4, ATmega16U4, ATmega32U6, AT90PWM1, AT90PWM2, AT90PWM2B, AT90PWM3, AT90PWM3B, AT90PWM216, AT90PWM316, AT90PWM81, AT90PWM161, ATmega165, ATmega165A, ATmega165P, ATmega165PA, ATmega325, ATmega325A, ATmega325PA, ATmega3250, ATmega3250A, ATmega3250PA, ATmega645, ATmega645A, ATmega645P, ATmega6450, ATmega6450A, ATmega6450P, ATmega169, ATmega169A, ATmega169P, ATmega169PA, ATmega329, ATmega329A, ATmega329P, ATmega329PA, ATmega3290, ATmega3290A, ATmega3290P, ATmega3290PA, ATmega649, ATmega649A, ATmega649P, ATmega6490, ATmega6490A, ATmega6490P, ATmega164A, ATmega164P, ATmega324A, ATmega324P, ATmega324PA, ATmega644P, ATmega644A, ATmega644PA, ATmega644, ATmega164PA, ATmega406, ATtiny828, ATtiny828, ATtiny441, ATtiny24, ATtiny24A, ATtiny44, ATtiny44A, ATtiny84, ATtiny84A, ATtiny25, ATtiny45, ATtiny85, ATtiny261, ATtiny261A, ATtiny461, ATtiny461A, ATtiny861, ATtiny861A, ATtiny43U, ATmega1284, ATmega1284P, ATmega32HVB, ATmega32HVBrevB, ATmega16HVB, ATmega16HVBrevB, ATA5790, ATA5795, ATmega16M1, ATmega32C1, ATmega32M1, ATmega64C1, ATmega64M1, ATtiny167, ATtiny87, ATA5505, ATA5272, ATA6616C, ATA6617C, ATA664251, ATtiny1634, AT90USB82, AT90USB162, ATmega8U2, ATmega16U2, ATmega32U2, AT90SCR100, ATtiny4, ATtiny5, ATtiny9, ATtiny10, ATtiny13A, ATtiny20, ATtiny40 
+.PP
+power_can_disable() Disable the CAN module  ATmega16M1, ATmega32C1, ATmega32M1, ATmega64C1, ATmega64M1 
+.PP
+power_can_enable() Enable the CAN module  ATmega16M1, ATmega32C1, ATmega32M1, ATmega64C1, ATmega64M1 
+.PP
+power_cinterface_disable() Disable the CINTERFACE module  ATA5790, ATA5795, ATA5702M322 
+.PP
+power_cinterface_enable() Enable the CINTERFACE module  ATA5790, ATA5795, ATA5702M322 
+.PP
+power_crypto_disable() Disable the CRYPTO module  ATA5790, ATA5795, ATA5702M322 
+.PP
+power_crypto_enable() Enable the CRYPTO module  ATA5790, ATA5795, ATA5702M322 
+.PP
+power_daca_disable() Disable the DAC module on PortA  ATxmega16A4, ATxmega16A4U, ATxmega32A4U, ATxmega32A4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega192A3, ATxmega192A3U, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_daca_enable() Enable the DAC module on PortA  ATxmega16A4, ATxmega16A4U, ATxmega32A4U, ATxmega32A4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega192A3, ATxmega192A3U, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_dacb_disable() Disable the DAC module on PortB  ATxmega16A4, ATxmega16A4U, ATxmega32A4U, ATxmega32A4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega192A3, ATxmega192A3U, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_dacb_enable() Enable the DAC module on PortB  ATxmega16A4, ATxmega16A4U, ATxmega32A4U, ATxmega32A4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega192A3, ATxmega192A3U, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_dma_disable() Disable the DMA module  ATxmega16A4, ATxmega16A4U, ATxmega32A4U, ATxmega32A4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega192A3, ATxmega192A3U, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_dma_enable() Enable the DMA module  ATxmega16A4, ATxmega16A4U, ATxmega32A4U, ATxmega32A4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega192A3, ATxmega192A3U, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_ebi_disable() Disable the EBI module  ATxmega16A4, ATxmega16A4U, ATxmega32A4U, ATxmega32A4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega192A3, ATxmega192A3U, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_ebi_enable() Enable the EBI module  ATxmega16A4, ATxmega16A4U, ATxmega32A4U, ATxmega32A4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega192A3, ATxmega192A3U, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_evsys_disable() Disable the EVSYS module  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_evsys_enable() Enable the EVSYS module  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_hiresc_disable() Disable the HIRES module on PortC  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_hiresc_enable() Enable the HIRES module on PortC  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_hiresd_disable() Disable the HIRES module on PortD  ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_hiresd_enable() Enable the HIRES module on PortD  ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_hirese_disable() Disable the HIRES module on PortE  ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_hirese_enable() Enable the HIRES module on PortE  ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_hiresf_disable() Disable the HIRES module on PortF  ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_hiresf_enable() Enable the HIRES module on PortF  ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_hsspi_disable() Disable the HSPPI module  AT90SCR100 
+.PP
+power_hsspi_enable() Enable the HSPPI module  AT90SCR100 
+.PP
+power_irdriver_disable() Disable the IRDRIVER module  ATA5790, ATA5795 
+.PP
+power_irdriver_enable() Enable the IRDRIVER module  ATA5790, ATA5795 
+.PP
+power_kb_disable() Disable the KB module  AT90SCR100 
+.PP
+power_kb_enable() Enable the KB module  AT90SCR100 
+.PP
+power_lcd_disable() Disable the LCD module. ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3, ATmega169, ATmega169A, ATmega169P, ATmega169PA, ATmega329, ATmega329A, ATmega329P, ATmega329PA, ATmega3290, ATmega3290A, ATmega3290P, ATmega3290PA, ATmega649, ATmega649A, ATmega649P, ATmega6490, ATmega6490A, ATmega6490P 
+.PP
+power_lcd_enable() Enable the LCD module. ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3, ATmega169, ATmega169A, ATmega169P, ATmega169PA, ATmega329, ATmega329A, ATmega329P, ATmega329PA, ATmega3290, ATmega3290A, ATmega3290P, ATmega3290PA, ATmega649, ATmega649A, ATmega649P, ATmega6490, ATmega6490A, ATmega6490P 
+.PP
+power_lfreceiver_disable() Disable the LFRECEIVER module  ATA5790, ATA5702M322 
+.PP
+power_lfreceiver_enable() Enable the LFRECEIVER module  ATA5790, ATA5702M322 
+.PP
+power_lin_disable() Disable the LIN module  ATmega16M1, ATmega32C1, ATmega32M1, ATmega64C1, ATmega64M1, ATtiny167, ATtiny87, ATA5505, ATA5272, ATA6616C, ATA6617C, ATA664251 
+.PP
+power_lin_enable() Enable the LIN module  ATmega16M1, ATmega32C1, ATmega32M1, ATmega64C1, ATmega64M1, ATtiny167, ATtiny87, ATA5505, ATA5272, ATA6616C, ATA6617C, ATA664251 
+.PP
+power_psc0_disable() Disable the Power Stage Controller 0 module. AT90PWM1, AT90PWM2, AT90PWM2B, AT90PWM3, AT90PWM3B, AT90PWM216, AT90PWM316 
+.PP
+power_psc0_enable() Enable the Power Stage Controller 0 module. AT90PWM1, AT90PWM2, AT90PWM2B, AT90PWM3, AT90PWM3B, AT90PWM216, AT90PWM316 
+.PP
+power_psc1_disable() Disable the Power Stage Controller 1 module. AT90PWM1, AT90PWM2, AT90PWM2B, AT90PWM3, AT90PWM3B, AT90PWM216, AT90PWM316 
+.PP
+power_psc1_enable() Enable the Power Stage Controller 1 module. AT90PWM1, AT90PWM2, AT90PWM2B, AT90PWM3, AT90PWM3B, AT90PWM216, AT90PWM316 
+.PP
+power_psc2_disable() Disable the Power Stage Controller 2 module. AT90PWM1, AT90PWM2, AT90PWM2B, AT90PWM3, AT90PWM3B, AT90PWM216, AT90PWM316, AT90PWM81, AT90PWM161 
+.PP
+power_psc2_enable() Enable the Power Stage Controller 2 module. AT90PWM1, AT90PWM2, AT90PWM2B, AT90PWM3, AT90PWM3B, AT90PWM216, AT90PWM316, AT90PWM81, AT90PWM161 
+.PP
+power_psc_disable() Disable the Power Stage Controller module  ATmega16M1, ATmega32C1, ATmega32M1, ATmega64C1, ATmega64M1 
+.PP
+power_psc_enable() Enable the Power Stage Controller module  ATmega16M1, ATmega32C1, ATmega32M1, ATmega64C1, ATmega64M1 
+.PP
+power_pscr_disable() Disable the Reduced Power Stage Controller module. AT90PWM81, AT90PWM161 
+.PP
+power_pscr_enable() Enable the Reduced Power Stage Controller module. AT90PWM81, AT90PWM161 
+.PP
+power_rtc_disable() Disable the RTC module  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_rtc_enable() Enable the RTC module  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_sci_disable() Disable the SCI module  AT90SCR100 
+.PP
+power_sci_enable() Enable the SCI module  AT90SCR100 
+.PP
+power_spi_disable() Disable the Serial Peripheral Interface module. ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561, ATmega128RFA1, AT90USB646, AT90USB647, AT90USB1286, AT90USB1287, ATmega32U4, ATmega16U4, ATmega32U6, AT90PWM1, AT90PWM2, AT90PWM2B, AT90PWM3, AT90PWM3B, AT90PWM216, AT90PWM316, AT90PWM81, AT90PWM161, ATmega165, ATmega165A, ATmega165P, ATmega165PA, ATmega325, ATmega325A, ATmega325PA, ATmega3250, ATmega3250A, ATmega3250PA, ATmega645, ATmega645A, ATmega645P, ATmega6450, ATmega6450A, ATmega6450P, ATmega169, ATmega169A, ATmega169P, ATmega169PA, ATmega329, ATmega329A, ATmega329P, ATmega329PA, ATmega3290, ATmega3290A, ATmega3290P, ATmega3290PA, ATmega649, ATmega649A, ATmega649P, ATmega6490, ATmega6490A, ATmega6490P, ATmega164A, ATmega164P, ATmega324A, ATmega324P, ATmega324PA, ATmega644P, ATmega644A, ATmega644PA, ATmega644, ATmega164PA, ATmega48, ATmega48A, ATmega48PA, ATmega48P, ATmega48PB, ATmega88, ATmega88A, ATmega88P, ATmega88PA, ATmega88PB, ATmega168, ATmega168A, ATmega168P, ATmega168PA, ATmega168PB, ATmega328, ATmega328P, ATtiny48, ATtiny88, ATtiny828, ATtiny441, ATmega1284, ATmega1284P, ATmega32HVB, ATmega32HVBrevB, ATmega16HVB, ATmega16HVBrevB, ATA5790, ATA5795, ATmega16M1, ATmega32C1, ATmega32M1, ATmega64C1, ATmega64M1, ATtiny167, ATtiny87, ATA5505, ATA5272, ATA6612C, ATA6613C, ATA6614Q, ATA6616C, ATA6617C, ATA664251, AT90USB82, AT90USB162, ATmega8U2, ATmega16U2, ATmega32U2, AT90SCR100, ATtiny20, ATtiny40 
+.PP
+power_spi_enable() Enable the Serial Peripheral Interface module. ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561, ATmega128RFA1, AT90USB646, AT90USB647, AT90USB1286, AT90USB1287, ATmega32U4, ATmega16U4, ATmega32U6, AT90PWM1, AT90PWM2, AT90PWM2B, AT90PWM3, AT90PWM3B, AT90PWM216, AT90PWM316, AT90PWM81, AT90PWM161, ATmega165, ATmega165A, ATmega165P, ATmega165PA, ATmega325, ATmega325A, ATmega325PA, ATmega3250, ATmega3250A, ATmega3250PA, ATmega645, ATmega645A, ATmega645P, ATmega6450, ATmega6450A, ATmega6450P, ATmega169, ATmega169A, ATmega169P, ATmega169PA, ATmega329, ATmega329A, ATmega329P, ATmega329PA, ATmega3290, ATmega3290A, ATmega3290P, ATmega3290PA, ATmega649, ATmega649A, ATmega649P, ATmega6490, ATmega6490A, ATmega6490P, ATmega164A, ATmega164P, ATmega324A, ATmega324P, ATmega324PA, ATmega644P, ATmega644A, ATmega644PA, ATmega644, ATmega164PA, ATmega48, ATmega48A, ATmega48PA, ATmega48P, ATmega48PB, ATmega88, ATmega88A, ATmega88P, ATmega88PA, ATmega88PB, ATmega168, ATmega168A, ATmega168P, ATmega168PA, ATmega168PB, ATmega328, ATmega328P, ATtiny48, ATtiny88, ATtiny828, ATtiny441, ATmega1284, ATmega1284P, ATmega32HVB, ATmega32HVBrevB, ATmega16HVB, ATmega16HVBrevB, ATA5790, ATA5795, ATmega16M1, ATmega32C1, ATmega32M1, ATmega64C1, ATmega64M1, ATtiny167, ATtiny87, ATA5505, ATA5272, ATA6612C, ATA6613C, ATA6614Q, ATA6616C, ATA6617C, ATA664251, AT90USB82, AT90USB162, ATmega8U2, ATmega16U2, ATmega32U2, AT90SCR100, ATtiny20, ATtiny40 
+.PP
+power_spic_disable() Disable the SPI module on PortC  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_spic_enable() Enable the SPI module on PortC  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_spid_disable() Disable the SPI module on PortD  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4 
+.PP
+power_spid_enable() Enable the SPI module on PortD  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4 
+.PP
+power_spie_disable() Disable the SPI module on PortE  ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_spie_enable() Enable the SPI module on PortE  ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_spif_disable() Disable the SPI module on PortF  ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_spif_enable() Enable the SPI module on PortF  ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_tc0c_disable() Disable the TC0 module on PortC  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_tc0c_enable() Enable the TC0 module on PortC  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_tc0d_disable() Disable the TC0 module on PortD  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4 
+.PP
+power_tc0d_enable() Enable the TC0 module on PortD  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4 
+.PP
+power_tc0e_disable() Disable the TC0 module on PortE  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_tc0e_enable() Enable the TC0 module on PortE  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_tc0f_disable() Disable the TC0 module on PortF  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4 
+.PP
+power_tc0f_enable() Enable the TC0 module on PortF  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4 
+.PP
+power_tc1c_disable() Disable the TC1 module on PortC  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_tc1c_enable() Enable the TC1 module on PortC  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_tc1d_disable() Disable the TC1 module on PortD  ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_tc1d_enable() Enable the TC1 module on PortD  ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_tc1e_disable() Disable the TC1 module on PortE  ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_tc1e_enable() Enable the TC1 module on PortE  ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_tc1f_disable() Disable the TC1 module on PortF  ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_tc1f_enable() Enable the TC1 module on PortF  ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_timer0_disable() Disable the Timer 0 module. ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561, ATmega128RFA1, AT90USB646, AT90USB647, AT90USB1286, AT90USB1287, ATmega32U4, ATmega16U4, ATmega32U6, AT90PWM1, AT90PWM2, AT90PWM2B, AT90PWM3, AT90PWM3B, AT90PWM216, AT90PWM316, ATmega164A, ATmega164P, ATmega324A, ATmega324P, ATmega324PA, ATmega644P, ATmega644A, ATmega644PA, ATmega644, ATmega164PA, ATmega406, ATmega48, ATmega48A, ATmega48PA, ATmega48P, ATmega48PB, ATmega88, ATmega88A, ATmega88P, ATmega88PA, ATmega88PB, ATmega168, ATmega168A, ATmega168P, ATmega168PA, ATmega168PB, ATmega328, ATmega328P, ATtiny48, ATtiny88, ATtiny828, ATtiny24, ATtiny24A, ATtiny44, ATtiny44A, ATtiny84, ATtiny84A, ATtiny25, ATtiny45, ATtiny85, ATtiny261, ATtiny261A, ATtiny441, ATtiny461, ATtiny461A, ATtiny861, ATtiny861A, ATtiny43U, ATmega1284, ATmega1284P, ATmega32HVB, ATmega32HVBrevB, ATmega16HVB, ATmega16HVBrevB, ATmega16M1, ATmega32C1, ATmega32M1, ATmega64C1, ATmega64M1, ATtiny167, ATtiny87, ATA5505, ATA5272, ATA6612C, ATA6613C, ATA6614Q, ATA6616C, ATA6617C, ATA664251, ATtiny1634, AT90USB82, AT90USB162, ATmega8U2, ATmega16U2, ATmega32U2, AT90SCR100, ATtiny4, ATtiny5, ATtiny9, ATtiny10, ATtiny13A, ATtiny20, ATtiny40 
+.PP
+power_timer0_enable() Enable the Timer 0 module. ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561, ATmega128RFA1, AT90USB646, AT90USB647, AT90USB1286, AT90USB1287, ATmega32U4, ATmega16U4, ATmega32U6, AT90PWM1, AT90PWM2, AT90PWM2B, AT90PWM3, AT90PWM3B, AT90PWM216, AT90PWM316, ATmega164A, ATmega164P, ATmega324A, ATmega324P, ATmega324PA, ATmega644P, ATmega644A, ATmega644PA, ATmega644, ATmega164PA, ATmega406, ATmega48, ATmega48A, ATmega48PA, ATmega48P, ATmega48PB, ATmega88, ATmega88A, ATmega88P, ATmega88PB, ATmega88PA, ATmega168, ATmega168A, ATmega168P, ATmega168PA, ATmega168PB, ATmega328, ATmega328P, ATtiny48, ATtiny88, ATtiny828, ATtiny24, ATtiny24A, ATtiny44, ATtiny44A, ATtiny84, ATtiny84A, ATtiny25, ATtiny45, ATtiny85, ATtiny261, ATtiny261A, ATtiny441, ATtiny461, ATtiny461A, ATtiny861, ATtiny861A, ATtiny43U, ATmega1284, ATmega1284P, ATmega32HVB, ATmega32HVBrevB, ATmega16HVB, ATmega16HVBrevB, ATmega16M1, ATmega32C1, ATmega32M1, ATmega64C1, ATmega64M1, ATtiny167, ATtiny87, ATA5505, ATA5272, ATA6612C, ATA6613C, ATA6614Q, ATA6616C, ATA6617C, ATA664251, ATtiny1634, AT90USB82, AT90USB162, ATmega8U2, ATmega16U2, ATmega32U2, AT90SCR100, ATtiny4, ATtiny5, ATtiny9, ATtiny10, ATtiny13A, ATtiny20, ATtiny40 
+.PP
+power_timer1_disable() Disable the Timer 1 module. ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561, ATmega128RFA1, AT90USB646, AT90USB647, AT90USB1286, AT90USB1287, ATmega32U4, ATmega16U4, ATmega32U6, AT90PWM1, AT90PWM2, AT90PWM2B, AT90PWM3, AT90PWM3B, AT90PWM216, AT90PWM316, AT90PWM81, AT90PWM161, ATmega165, ATmega165A, ATmega165P, ATmega165PA, ATmega325, ATmega325A, ATmega325PA, ATmega3250, ATmega3250A, ATmega3250PA, ATmega645, ATmega645A, ATmega645P, ATmega6450, ATmega6450A, ATmega6450P, ATmega169, ATmega169A, ATmega169P, ATmega169PA, ATmega329, ATmega329A, ATmega329P, ATmega329PA, ATmega3290, ATmega3290A, ATmega3290P, ATmega3290PA, ATmega649, ATmega649A, ATmega649P, ATmega6490, ATmega6490A, ATmega6490P, ATmega164A, ATmega164P, ATmega324A, ATmega324P, ATmega324PA, ATmega644P, ATmega644A, ATmega644PA, ATmega644, ATmega164PA, ATmega406, ATmega48, ATmega48A, ATmega48PA, ATmega48P, ATmega48PB, ATmega88, ATmega88A, ATmega88P, ATmega88PA, ATmega88PB, ATmega168, ATmega168A, ATmega168P, ATmega168PA, ATmega168PB, ATmega328, ATmega328P, ATtiny48, ATtiny88, ATtiny828, ATtiny441, ATtiny24, ATtiny24A, ATtiny44, ATtiny44A, ATtiny84, ATtiny84A, ATtiny25, ATtiny45, ATtiny85, ATtiny261, ATtiny261A, ATtiny461, ATtiny461A, ATtiny861, ATtiny861A, ATtiny43U, ATmega1284, ATmega1284P, ATmega32HVB, ATmega32HVBrevB, ATmega16HVB, ATmega16HVBrevB, ATA5790, ATA5795, ATmega16M1, ATmega32C1, ATmega32M1, ATmega64C1, ATmega64M1, ATtiny167, ATtiny87, ATA5505, ATA5272, ATA6612C, ATA6613C, ATA6614Q, ATA6616C, ATA6617C, ATA664251, ATtiny1634, AT90USB82, AT90USB162, ATmega8U2, ATmega16U2, ATmega32U2, AT90SCR100, ATtiny20, ATtiny40 
+.PP
+power_timer1_enable() Enable the Timer 1 module. ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561, ATmega128RFA1, AT90USB646, AT90USB647, AT90USB1286, AT90USB1287, ATmega32U4, ATmega16U4, ATmega32U6, AT90PWM1, AT90PWM2, AT90PWM2B, AT90PWM3, AT90PWM3B, AT90PWM216, AT90PWM316, AT90PWM81, AT90PWM161, ATmega165, ATmega165A, ATmega165P, ATmega165PA, ATmega325, ATmega325A, ATmega325PA, ATmega3250, ATmega3250A, ATmega3250PA, ATmega645, ATmega645A, ATmega645P, ATmega6450, ATmega6450A, ATmega6450P, ATmega169, ATmega169A, ATmega169P, ATmega169PA, ATmega329, ATmega329A, ATmega329P, ATmega329PA, ATmega3290, ATmega3290A, ATmega3290P, ATmega3290PA, ATmega649, ATmega649A, ATmega649P, ATmega6490, ATmega6490A, ATmega6490P, ATmega164A, ATmega164P, ATmega324A, ATmega324P, ATmega324PA, ATmega644P, ATmega644A, ATmega644PA, ATmega644, ATmega164PA, ATmega406, ATmega48, ATmega48A, ATmega48PA, ATmega48P, ATmega48PB, ATmega88, ATmega88A, ATmega88P, ATmega88PA, ATmega88PB, ATmega168, ATmega168A, ATmega168P, ATmega168PA, ATmega168PB, ATmega328, ATmega328P, ATtiny48, ATtiny88, ATtiny828, ATtiny441, ATtiny24, ATtiny24A, ATtiny44, ATtiny44A, ATtiny84, ATtiny84A, ATtiny25, ATtiny45, ATtiny85, ATtiny261, ATtiny261A, ATtiny461, ATtiny461A, ATtiny861, ATtiny861A, ATtiny43U, ATmega1284, ATmega1284P, ATmega32HVB, ATmega32HVBrevB, ATmega16HVB, ATmega16HVBrevB, ATA5790, ATA5795, ATmega16M1, ATmega32C1, ATmega32M1, ATmega64C1, ATmega64M1, ATtiny167, ATtiny87, ATA5505, ATA5272, ATA6612C, ATA6613C, ATA6614Q, ATA6616C, ATA6617C, ATA664251, ATtiny1634, AT90USB82, AT90USB162, ATmega8U2, ATmega16U2, ATmega32U2, AT90SCR100, ATtiny20, ATtiny40 
+.PP
+power_timer2_disable() Disable the Timer 2 module. ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561, ATmega128RFA1, AT90USB646, AT90USB647, AT90USB1286, AT90USB1287, ATmega32U4, ATmega16U4, ATmega32U6, ATmega164A, ATmega164P, ATmega324A, ATmega324P, ATmega324PA, ATmega644P, ATmega644A, ATmega644PA, ATmega644, ATmega164PA, ATmega48, ATmega48A, ATmega48PA, ATmega48PB, ATmega48P, ATmega88, ATmega88A, ATmega88P, ATmega88PA, ATmega88PB, ATmega168, ATmega168A, ATmega168P, ATmega168PA, ATmega168PB, ATmega328, ATmega328P, ATtiny48, ATtiny88, ATtiny828, ATtiny441, ATmega1284, ATmega1284P, ATA5790, ATA5795, ATA6612C, ATA6613C, ATA6614Q, AT90SCR100 
+.PP
+power_timer2_enable() Enable the Timer 2 module. ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561, ATmega128RFA1, AT90USB646, AT90USB647, AT90USB1286, AT90USB1287, ATmega32U4, ATmega16U4, ATmega32U6, ATmega164A, ATmega164P, ATmega324A, ATmega324P, ATmega324PA, ATmega644P, ATmega644A, ATmega644PA, ATmega644, ATmega164PA, ATmega48, ATmega48A, ATmega48PA, ATmega48PB, ATmega48P, ATmega88, ATmega88A, ATmega88P, ATmega88PA, ATmega88PB, ATmega168, ATmega168A, ATmega168P, ATmega168PA, ATmega168PB, ATmega328, ATmega328P, ATtiny48, ATtiny88, ATtiny828, ATtiny441, ATmega1284, ATmega1284P, ATA5790, ATA5795, ATA6612C, ATA6613C, ATA6614Q, AT90SCR100 
+.PP
+power_timer3_disable() Disable the Timer 3 module. ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561, ATmega128RFA1, AT90USB646, AT90USB647, AT90USB1286, AT90USB1287, ATmega32U4, ATmega16U4, ATmega32U6, ATmega1284, ATmega1284P, ATA5790, ATA5795 
+.PP
+power_timer3_enable() Enable the Timer 3 module. ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561, ATmega128RFA1, AT90USB646, AT90USB647, AT90USB1286, AT90USB1287, ATmega32U4, ATmega16U4, ATmega32U6, ATmega1284, ATmega1284P, ATA5790, ATA5795 
+.PP
+power_timer4_disable() Disable the Timer 4 module. ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561, ATmega128RFA1 
+.PP
+power_timer4_enable() Enable the Timer 4 module. ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561, ATmega128RFA1 
+.PP
+power_timermodulator_disable() Disable the TIMERMODULATOR module  ATA5790, ATA5795 
+.PP
+power_timermodulator_enable() Enable the TIMERMODULATOR module  ATA5790, ATA5795 
+.PP
+power_twi_disable() Disable the Two Wire Interface module. ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561, ATmega128RFA1, AT90USB646, AT90USB647, AT90USB1286, AT90USB1287, ATmega32U4, ATmega16U4, ATmega32U6, ATmega164A, ATmega164P, ATmega324A, ATmega324P, ATmega324PA, ATmega644P, ATmega644A, ATmega644PA, ATmega644, ATmega164PA, ATmega406, ATmega48, ATmega48A, ATmega48PA, ATmega48P, ATmega48PB, ATmega88, ATmega88A, ATmega88P, ATmega88PA, ATmega88PB, ATmega168, ATmega168A, ATmega168P, ATmega168PA, ATmega168PB, ATmega328, ATmega328P, ATtiny48, ATtiny88, ATtiny828, ATtiny441, ATmega1284, ATmega1284P, ATmega32HVB, ATmega32HVBrevB, ATmega16HVB, ATmega16HVBrevB, ATA6612C, ATA6613C, ATA6614Q, ATtiny1634, AT90SCR100, ATtiny20, ATtiny40, ATA5702M322 
+.PP
+power_twi_enable() Enable the Two Wire Interface module. ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561, ATmega128RFA1, AT90USB646, AT90USB647, AT90USB1286, AT90USB1287, ATmega32U4, ATmega16U4, ATmega32U6, ATmega164A, ATmega164P, ATmega324A, ATmega324P, ATmega324PA, ATmega644P, ATmega644A, ATmega644PA, ATmega644, ATmega164PA, ATmega406, ATmega48, ATmega48A, ATmega48PA, ATmega48P, ATmega48PB, ATmega88, ATmega88A, ATmega88P, ATmega88PA, ATmega88PB, ATmega168, ATmega168A, ATmega168P, ATmega168PA, ATmega168PB, ATmega328, ATmega328P, ATtiny48, ATtiny88, ATtiny828, ATtiny441, ATmega1284, ATmega1284P, ATmega32HVB, ATmega32HVBrevB, ATmega16HVB, ATmega16HVBrevB, ATA6612C, ATA6613C, ATA6614Q, ATtiny1634, AT90SCR100, ATtiny20, ATtiny40, ATA5702M322 
+.PP
+power_twic_disable() Disable the Two Wire Interface module on PortC  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_twic_enable() Enable the Two Wire Interface module on PortC  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_twid_disable() Disable the Two Wire Interface module on PortD  ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_twid_enable() Enable the Two Wire Interface module on PortD  ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_twie_disable() Disable the Two Wire Interface module on PortE  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4 
+.PP
+power_twie_enable() Enable the Two Wire Interface module on PortE  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4 
+.PP
+power_twif_disable() Disable the Two Wire Interface module on PortF  ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_twif_enable() Disable the Two Wire Interface module on PortF  ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_usart0_disable() Disable the USART 0 module. ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561, ATmega128RFA1, ATmega32U4, ATmega16U4, ATmega165, ATmega165A, ATmega165P, ATmega165PA, ATmega325, ATmega325A, ATmega325PA, ATmega3250, ATmega3250A, ATmega3250PA, ATmega645, ATmega645A, ATmega645P, ATmega6450, ATmega6450A, ATmega6450P, ATmega169, ATmega169A, ATmega169P, ATmega169PA, ATmega329, ATmega329A, ATmega329P, ATmega329PA, ATmega3290, ATmega3290A, ATmega3290P, ATmega3290PA, ATmega649, ATmega649A, ATmega649P, ATmega6490, ATmega6490A, ATmega6490P, ATmega164A, ATmega164P, ATmega324A, ATmega324P, ATmega324PA, ATmega644P, ATmega644A, ATmega644PA, ATmega644, ATmega164PA, ATmega48, ATmega48A, ATmega48PA, ATmega48PB, ATmega48P, ATmega88, ATmega88A, ATmega88P, ATmega88PA, ATmega88PB, ATmega168, ATmega168A, ATmega168P, ATmega168PA, ATmega168PB, ATmega328, ATmega328P, ATtiny48, ATtiny88, ATtiny828, ATtiny441, ATA6612C, ATA6613C, ATA6614Q, ATmega1284, ATmega1284P, ATtiny1634, AT90SCR100 
+.PP
+power_usart0_enable() Enable the USART 0 module. ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561, ATmega128RFA1, ATmega32U4, ATmega16U4, ATmega165, ATmega165A, ATmega165P, ATmega165PA, ATmega325, ATmega325A, ATmega325PA, ATmega3250, ATmega3250A, ATmega3250PA, ATmega645, ATmega645A, ATmega645P, ATmega6450, ATmega6450A, ATmega6450P, ATmega169, ATmega169A, ATmega169P, ATmega169PA, ATmega329, ATmega329A, ATmega329P, ATmega329PA, ATmega3290, ATmega3290A, ATmega3290P, ATmega3290PA, ATmega649, ATmega649A, ATmega649P, ATmega6490, ATmega6490A, ATmega6490P, ATmega164A, ATmega164P, ATmega324A, ATmega324P, ATmega324PA, ATmega644P, ATmega644A, ATmega644PA, ATmega644, ATmega164PA, ATmega48, ATmega48A, ATmega48PA, ATmega48PB, ATmega48P, ATmega88, ATmega88A, ATmega88P, ATmega88PA, ATmega88PB, ATmega168, ATmega168A, ATmega168P, ATmega168PA, ATmega168PB, ATmega328, ATmega328P, ATtiny48, ATtiny88, ATtiny828, ATtiny441, ATA6612C, ATA6613C, ATA6614Q, ATmega1284, ATmega1284P, ATtiny1634, AT90SCR100 
+.PP
+power_usart1_disable() Disable the USART 1 module. ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561, ATmega128RFA1, AT90USB646, AT90USB647, AT90USB1286, AT90USB1287, ATmega32U4, ATmega16U4, ATmega32U6, ATmega164A, ATmega164P, ATmega324A, ATmega324P, ATmega324PA, ATmega644P, ATmega644A, ATmega644PA, ATmega1284P, ATtiny441, ATtiny1634, AT90USB82, AT90USB162, ATmega8U2, ATmega16U2, ATmega32U2 
+.PP
+power_usart1_enable() Enable the USART 1 module. ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561, ATmega128RFA1, AT90USB646, AT90USB647, AT90USB1286, AT90USB1287, ATmega32U4, ATmega16U4, ATmega32U6, ATmega164A, ATmega164P, ATmega324A, ATmega324P, ATmega324PA, ATmega644P, ATmega644A, ATmega644PA, ATmega1284P, ATtiny441, ATtiny1634, AT90USB82, AT90USB162, ATmega8U2, ATmega16U2, ATmega32U2 
+.PP
+power_usart2_disable() Disable the USART 2 module. ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561 
+.PP
+power_usart2_enable() Enable the USART 2 module. ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561 
+.PP
+power_usart3_disable() Disable the USART 3 module. ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561 
+.PP
+power_usart3_enable() Enable the USART 3 module. ATmega640, ATmega1280, ATmega1281, ATmega2560, ATmega2561 
+.PP
+power_usart_disable() Disable the USART module. AT90PWM2, AT90PWM2B, AT90PWM3, AT90PWM3B, AT90PWM216, AT90PWM316 
+.PP
+power_usart_enable() Enable the USART module. AT90PWM2, AT90PWM2B, AT90PWM3, AT90PWM3B, AT90PWM216, AT90PWM316 
+.PP
+power_usartc0_disable() Disable the USART0 module on PortC  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_usartc0_enable() Enable the USART0 module on PortC  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_usartc1_disable() Disable the USART1 module on PortC  ATxmega16A4, ATxmega16A4U, ATxmega32A4U, ATxmega32A4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega192A3, ATxmega192A3U, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3 
+.PP
+power_usartc1_enable() Enable the USART1 module on PortC  ATxmega16A4, ATxmega16A4U, ATxmega32A4U, ATxmega32A4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega192A3, ATxmega192A3U, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3 
+.PP
+power_usartd0_disable() Disable the USART0 module on PortD  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4 
+.PP
+power_usartd0_enable() Enable the USART0 module on PortD  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4 
+.PP
+power_usartd1_disable() Disable the USART1 module on PortD  ATxmega16A4, ATxmega16A4U, ATxmega32A4U, ATxmega32A4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega192A3, ATxmega192A3U, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_usartd1_enable() Enable the USART1 module on PortE  ATxmega16A4, ATxmega16A4U, ATxmega32A4U, ATxmega32A4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega192A3, ATxmega192A3U, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_usarte0_disable() Disable the USART0 module on PortE  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_usarte0_enable() Enable the USART0 module on PortE  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3 
+.PP
+power_usarte1_disable() Disable the USART1 module on PortE  ATxmega16A4, ATxmega16A4U, ATxmega32A4U, ATxmega32A4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega192A3, ATxmega192A3U, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_usarte1_enable() Enable the USART1 module on PortE  ATxmega16A4, ATxmega16A4U, ATxmega32A4U, ATxmega32A4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega192A3, ATxmega192A3U, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_usartf0_disable() Disable the USART0 module on PortF  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4 
+.PP
+power_usartf0_enable() Enable the USART0 module on PortF  ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega16A4, ATxmega16A4U, ATxmega16D4, ATxmega32A4, ATxmega32A4U, ATxmega32D4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega32D3, ATxmega64D3, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega128D3, ATxmega192A3, ATxmega192A3U, ATxmega192D3, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3, ATxmega64D4, ATxmega128D4 
+.PP
+power_usartf1_disable() Disable the USART1 module on PortF  ATxmega16A4, ATxmega16A4U, ATxmega32A4U, ATxmega32A4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega192A3, ATxmega192A3U, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_usartf1_enable() Enable the USART1 module on PortF  ATxmega16A4, ATxmega16A4U, ATxmega32A4U, ATxmega32A4, ATxmega64A1, ATxmega64A1U, ATxmega64A3, ATxmega64A3U, ATxmega64A4U, ATxmega128A1, ATxmega128A1U, ATxmega128A3, ATxmega128A3U, ATxmega128A4U, ATxmega192A3, ATxmega192A3U, ATxmega256A3, ATxmega256A3U, ATxmega256A3B, ATxmega256A3BU, ATxmega384C3 
+.PP
+power_usb_disable() Disable the USB module. ATxmega384C3, ATxmega256A3BU, ATxmega16A4U, ATxmega32A4U, ATxmega64A3U, ATxmega64A4U, ATxmega128A3U, ATxmega128A4U, ATxmega192A3U, ATxmega256A3U, ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3, AT90USB646, AT90USB647, AT90USB1286, AT90USB1287, ATmega32U4, ATmega16U4, ATmega32U6, AT90USB82, AT90USB162, ATmega8U2, ATmega16U2, ATmega32U2, AT90SCR100 
+.PP
+power_usb_enable() Enable the USB module. ATxmega384C3, ATxmega256A3BU, ATxmega16A4U, ATxmega32A4U, ATxmega64A3U, ATxmega64A4U, ATxmega128A3U, ATxmega128A4U, ATxmega192A3U, ATxmega256A3U, ATxmega16C4, ATxmega32C4, ATxmega32C3, ATxmega64C3, ATxmega128C3, ATxmega192C3, ATxmega256C3, ATxmega64B1, ATxmega64B3, ATxmega128B1, ATxmega128B3, AT90USB646, AT90USB647, AT90USB1286, AT90USB1287, ATmega32U4, ATmega16U4, ATmega32U6, AT90USB82, AT90USB162, ATmega8U2, ATmega16U2, ATmega32U2, AT90SCR100 
+.PP
+power_usbh_disable() Disable the USBH module  AT90SCR100 
+.PP
+power_usbh_enable() Enable the USBH module  AT90SCR100 
+.PP
+power_usi_disable() Disable the Universal Serial Interface module. ATtiny24, ATtiny24A, ATtiny44, ATtiny44A, ATtiny84, ATtiny84A, ATtiny25, ATtiny45, ATtiny85, ATtiny261, ATtiny261A, ATtiny461, ATtiny461A, ATtiny861, ATtiny861A, ATtiny43U, ATtiny167, ATtiny87, ATA5505, ATA5272, ATA6616C, ATA6617C, ATA664251, ATtiny1634 
+.PP
+power_usi_enable() Enable the Universal Serial Interface module. ATtiny24, ATtiny24A, ATtiny44, ATtiny44A, ATtiny84, ATtiny84A, ATtiny25, ATtiny45, ATtiny85, ATtiny261, ATtiny261A, ATtiny461, ATtiny461A, ATtiny861, ATtiny861A, ATtiny43U, ATtiny167, ATtiny87, ATA5505, ATA5272, ATA6616C, ATA6617C, ATA664251, ATtiny1634 
+.PP
+power_vadc_disable() Disable the Voltage ADC module. ATmega406, ATmega32HVB, ATmega32HVBrevB, ATmega16HVB, ATmega16HVBrevB 
+.PP
+power_vadc_enable() Enable the Voltage ADC module. ATmega406, ATmega32HVB, ATmega32HVBrevB, ATmega16HVB, ATmega16HVBrevB 
+.PP
+power_vmonitor_disable() Disable the VMONITOR module  ATA5790, ATA5795 
+.PP
+power_vmonitor_enable() Enable the VMONITOR module  ATA5790, ATA5795 
+.PP
+power_vrm_disable() Disable the VRM module  ATmega32HVB, ATmega32HVBrevB, ATmega16HVB, ATmega16HVBrevB 
+.PP
+power_vrm_enable() Enable the VRM module  ATmega32HVB, ATmega32HVBrevB, ATmega16HVB, ATmega16HVBrevB 
+.PP
+power_clock_output_enable() Enable clock output module ATA5702M322, ATA5782, ATA5831 
+.PP
+power_clock_output_disable() Enable clock output module ATA5702M322, ATA5782, ATA5831 
+.PP
+power_voltage_monitor_enable() Enable voltage monitor module ATA5702M322, ATA5782, ATA5831 
+.PP
+power_voltage_monitor_disable() Disable voltage monitor module ATA5702M322, ATA5782, ATA5831 
+.PP
+power_crc_enable() Enable CRC module ATA5702M322, ATA5782, ATA5831 
+.PP
+power_crc_disable() Disable CRC module ATA5702M322, ATA5782, ATA5831 
+.PP
+power_transmit_dsp_control_enable() Enable Transmit DSP control module ATA5702M322, ATA5782, ATA5831 
+.PP
+power_transmit_dsp_control_disable() Disable Transmit DSP control module ATA5702M322, ATA5782, ATA5831 
+.PP
+power_receive_dsp_control_enable() Enable Receive DSP control module ATA5782, ATA5831 
+.PP
+power_receive_dsp_control_disable() Disable Receive DSP control module ATA5782, ATA5831 
+.PP
+power_sequencer_state_machine_enable() Enable power sequencer state machine ATA5702M322, ATA5782, ATA5831 
+.PP
+power_sequencer_state_machine_disable() Disable power sequencer state machine ATA5702M322, ATA5782, ATA5831 
+.PP
+power_tx_modulator_enable() Enable Tx modulator ATA5702M322, ATA5782, ATA5831 
+.PP
+power_tx_modulator_disable() Disable Tx modulator ATA5702M322, ATA5782, ATA5831 
+.PP
+power_rssi_buffer_enable() Enable RSSI buffer ATA5782, ATA5831 
+.PP
+power_rssi_buffer_disable() Disable RSSI buffer ATA5782, ATA5831 
+.PP
+power_id_scan_enable() Enable ID Scan ATA5782, ATA5831 
+.PP
+power_id_scan_disable() Disable ID Scan ATA5782, ATA5831 
+.PP
+power_data_fifo_enable() Enable data FIFO ATA5702M322, ATA5782, ATA5831 
+.PP
+power_data_fifo_disable() Disable data FIFO ATA5702M322, ATA5782, ATA5831 
+.PP
+power_preamble_rssi_fifo_enable() Enable preamble/RSSI FIFO ATA5702M322, ATA5782, ATA5831 
+.PP
+power_preamble_rssi_fifo_disable() Disable preamble/RSSI FIFO ATA5702M322, ATA5782, ATA5831 
+.PP
+power_rx_buffer_A_enable() Enable receive buffer for data path A ATA5782, ATA5831 
+.PP
+power_rx_buffer_A_disable() Disable receive buffer for data path A ATA5782, ATA5831 
+.PP
+power_rx_buffer_B_enable() Enable receive buffer for data path B ATA5782, ATA5831 
+.PP
+power_rx_buffer_B_disable() Disable receive buffer for data path B ATA5782, ATA5831 
+.PP
+ 
+.PP
+Some of the newer AVRs contain a System Clock Prescale Register (CLKPR) that allows you to decrease the system clock frequency and the power consumption when the need for processing power is low. On some earlier AVRs (ATmega103, ATmega64, ATmega128), similar functionality can be achieved through the XTAL Divide Control Register. Below are two macros and an enumerated type that can be used to interface to the Clock Prescale Register or XTAL Divide Control Register.
+.PP
+\fBNote:\fP
+.RS 4
+Not all AVR devices have a clock prescaler. On those devices without a Clock Prescale Register or XTAL Divide Control Register, these macros are not available.
+.RE
+.PP
+.PP
+.nf
+typedef enum
+{
+    clock_div_1 = 0,
+    clock_div_2 = 1,
+    clock_div_4 = 2,
+    clock_div_8 = 3,
+    clock_div_16 = 4,
+    clock_div_32 = 5,
+    clock_div_64 = 6,
+    clock_div_128 = 7,
+    clock_div_256 = 8,
+    clock_div_1_rc = 15, // ATmega128RFA1 only
+} clock_div_t;
+.fi
+.PP
+ Clock prescaler setting enumerations for device using System Clock Prescale Register.
+.PP
+.PP
+.nf
+typedef enum
+{
+    clock_div_1 = 1,
+    clock_div_2 = 2,
+    clock_div_4 = 4,
+    clock_div_8 = 8,
+    clock_div_16 = 16,
+    clock_div_32 = 32,
+    clock_div_64 = 64,
+    clock_div_128 = 128
+} clock_div_t;
+.fi
+.PP
+ Clock prescaler setting enumerations for device using XTAL Divide Control Register.
+.PP
+.PP
+.nf
+ clock_prescale_set(x) 
+.fi
+.PP
+.PP
+Set the clock prescaler register select bits, selecting a system clock division setting. This function is inlined, even if compiler optimizations are disabled.
+.PP
+The type of \fCx\fP is \fCclock_div_t\fP.
+.PP
+\fBNote:\fP
+.RS 4
+For device with XTAL Divide Control Register (XDIV), \fCx\fP can actually range from 1 to 129. Thus, one does not need to use \fCclock_div_t\fP type as argument.
+.RE
+.PP
+.PP
+.nf
+ clock_prescale_get() 
+.fi
+.PP
+ Gets and returns the clock prescaler register setting. The return type is \fCclock_div_t\fP.
+.PP
+\fBNote:\fP
+.RS 4
+For device with XTAL Divide Control Register (XDIV), return can actually range from 1 to 129. Care should be taken has the return value could differ from the typedef enum clock_div_t. This should only happen if clock_prescale_set was previously called with a value other than those defined by \fCclock_div_t\fP. 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for avr-libc from the source code.

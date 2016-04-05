@@ -9,6 +9,7 @@ MEMORY
   fuse      (rw!x) : ORIGIN = 0x820000, LENGTH = 1K
   lock      (rw!x) : ORIGIN = 0x830000, LENGTH = 1K
   signature (rw!x) : ORIGIN = 0x840000, LENGTH = 1K
+  user_signatures (rw!x) : ORIGIN = 0x850000, LENGTH = 1K
 }
 SECTIONS
 {
@@ -128,15 +129,12 @@ SECTIONS
   }
   .data        0 :
   {
-    /* --gc-sections will delete empty .data. This leads to wrong start
-       addresses for subsequent sections because -Tdata= from the command
-       line will have no effect, see PR13697.  Thus, keep .data  */
-    KEEP (*(.data))
+    *(.data)
     *(.rodata)  /* We need to include .rodata here if gcc is used */
      /* with -fdata-sections.  */
     *(.gnu.linkonce.d*)
   }
-  .bss 0 :
+  .bss  0 :
   {
     *(.bss)
     *(COMMON)
@@ -165,6 +163,10 @@ SECTIONS
   .signature 0:
   {
     KEEP(*(.signature*))
+  }
+  .user_signatures 0:
+  {
+    KEEP(*(.user_signatures*))
   }
   /* Stabs debugging sections.  */
   .stab 0 : { *(.stab) }
