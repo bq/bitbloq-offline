@@ -98,6 +98,14 @@ module.exports = function(grunt) {
                     dest: 'dist/linux32/resources/app/'
                 }]
             },
+            linuxArm: {
+                files: [{
+                    expand: true,
+                    cwd: '',
+                    src: getCopySrc("linuxArm").concat(['!app/res/web2board/win32/**', '!app/res/web2board/darwin/**', '!app/res/web2board/linux/**']),
+                    dest: 'dist/linuxArm/resources/app/'
+                }]
+            },
             mac: {
                 files: [{
                     expand: true,
@@ -130,6 +138,14 @@ module.exports = function(grunt) {
                     dest: 'dist/linux32/'
                 }]
             },
+            prebuiltLinuxArm: {
+                files: [{
+                    expand: true,
+                    cwd: 'res/linuxArm-prebuilt',
+                    src: ['**'],
+                    dest: 'dist/linuxArm/'
+                }]
+            },
             prebuiltMac: {
                 files: [{
                     expand: true,
@@ -143,6 +159,7 @@ module.exports = function(grunt) {
             windows: ['dist/windows/'],
             linux: ['dist/linux/'],
             linux32: ['dist/linux32/'],
+            linuxArm: ['dist/linuxArm/'],
             mac: ['dist/mac/'],
             i18n: 'i18n/*'
         },
@@ -198,6 +215,7 @@ module.exports = function(grunt) {
             'build:mac',
             'build:linux',
             'build:linux32',
+            'build:linuxArm'
         ]);
     });
     // Default task(s).
@@ -240,6 +258,16 @@ module.exports = function(grunt) {
                     'clean:linux32',
                     'copy:prebuiltLinux32',
                     'copy:linux32',
+                    'shell'
+                ]);
+                break;
+            case 'linuxArm':
+                grunt.task.run([
+                    'sass',
+                    'svgstore',
+                    'clean:linuxArm',
+                    'copy:prebuiltLinuxArm',
+                    'copy:linuxArm',
                     'shell'
                 ]);
                 break;
