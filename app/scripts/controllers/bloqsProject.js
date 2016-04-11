@@ -29,6 +29,8 @@ angular.module('bitbloqOffline')
     };
 
     $scope.tabsClick = function() {
+      // todo: remove after refactor (reference problem)
+      window.bloqs.componentsArray = $scope.componentsArray;
       $scope.refreshCode();
       $timeout(function() {
           $rootScope.$emit('bloqs:updated');
