@@ -116,6 +116,7 @@ angular.module('bitbloqOffline')
                                 projectApi.projectChanged = false;
                                 hw2Bloqs.repaint();
                                 $scope.refreshCode();
+                                $scope.refreshComponentsArray();
                                 $scope.$apply();
                                 projectApi.save(project);
                                 $rootScope.$emit('refreshScroll');
