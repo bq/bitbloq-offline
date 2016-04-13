@@ -50,14 +50,13 @@ def runSconsScript():
     pprint.pprint(sys.path)
     platformioPath = sys.argv.pop(-1)
     pathDiff = os.path.relpath(os.path.dirname(PathsManager.SCONS_EXECUTABLE_PATH), platformioPath)
-    print
     os.chdir(platformioPath)
     sys.path.extend([pathDiff + os.sep + 'sconsFiles'])
     execfile(pathDiff + os.sep + "sconsFiles" + os.sep + "scons.py")
 
-
 if "-Q" in sys.argv:
     runSconsScript()
+    os._exit(1)
 
 if __name__ == "__main__":
     qtApp = None
@@ -85,6 +84,7 @@ if __name__ == "__main__":
         pass
     except Exception as e:
         if log is None:
+            print(20)
             raise e
         else:
             log.critical("critical exception", exc_info=1)
