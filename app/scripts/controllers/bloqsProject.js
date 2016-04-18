@@ -15,6 +15,7 @@ angular.module('bitbloqOffline')
 
         $scope.setProject = function (project) {
             hw2Bloqs.removeAllComponents();
+            bloqs.clearSoftwareArrays();
             $scope.deleteBoard();
             $scope.refreshComponentsArray();
             $scope.project = project;
