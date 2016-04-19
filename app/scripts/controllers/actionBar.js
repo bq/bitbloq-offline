@@ -105,7 +105,10 @@ angular.module('bitbloqOffline')
                         } else {
                             var project = JSON.parse(data);
 
-                            if (project.bloqsVersion > common.bloqsVersion) {
+							var projectVersion = project.bloqsVersion.split('.');
+                            var commonVersion = common.bloqsVersion.split('.');
+                            //project.bloqsVersion > common.bloqsVersion
+                            if (parseInt(projectVersion[0]) >= parseInt(commonVersion[0]) && parseInt(projectVersion[1]) >= parseInt(commonVersion[1]) && parseInt(projectVersion[2]) > parseInt(commonVersion[2]) ) {
                                 alertsService.add('offline-load-project-error', 'error', 'error', 5000, null, false, false, 'offline-update', redirect, 'http://bitbloq.bq.com/#/offline');
                             } else {
                                 if (project.bitbloqOfflineVersion > common.version) {
