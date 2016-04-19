@@ -8,7 +8,7 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-    .controller('hardwareTabCtrl', function($scope, $q, $timeout, $log, $window, $rootScope, $translate, $document, utils, common, hw2Bloqs, _, alertsService) {
+    .controller('hardwareTabCtrl', function($scope, $q, $timeout, $log, $window, $rootScope, $translate, $document, utils, common, hw2Bloqs, _, alertsService, bloqsUtils) {
         var container = utils.getDOMElement('.protocanvas');
         var $componentContextMenu = $('#component-context-menu');
         var $boardContextMenu = $('#board-context-menu');
@@ -110,7 +110,7 @@ angular.module('bitbloqOffline')
 
             function _detectConnected(pins) {
                 var filtered = _.filter(pins, function(pin) {
-                    return pin !== undefined;
+                    return !!pin;
                 });
                 return filtered.length > 0;
             }
@@ -512,6 +512,7 @@ angular.module('bitbloqOffline')
                 $scope.hardware.firstLoad = false;
                 //Fix components dimensions
                 _.forEach($scope.project.hardware.components, function(item) {
+                    item = bloqsUtils.checkPins(item);
                     _fixComponentsDimension(item);
                 });
             } else {
