@@ -74,6 +74,19 @@ angular.module('bitbloqOffline')
             win.show();
         }
 
+        function isANewerVersion(projectVersion, currentVersion){
+            projectVersion = projectVersion || "0.0.0";
+            currentVersion = currentVersion || "0.0.0";
+            projectVersion =  projectVersion.split('.');
+            currentVersion = currentVersion.split('.');
+            for(var i=0; i< projectVersion.length; i++){
+                if (parseInt(projectVersion[i]) < parseInt(currentVersion[i])){
+                    return false;
+                }
+            }
+            return true;
+        }
+
         function openProject(force) {
             if (projectApi.hasChanged($scope.getCurrentProject()) && !force) {
                 commonModals.launchNotSavedModal(function(confirmed) {
@@ -105,13 +118,11 @@ angular.module('bitbloqOffline')
                         } else {
                             var project = JSON.parse(data);
 
-							var projectVersion = project.bloqsVersion.split('.');
-                            var commonVersion = common.bloqsVersion.split('.');
                             //project.bloqsVersion > common.bloqsVersion
-                            if (parseInt(projectVersion[0]) >= parseInt(commonVersion[0]) && parseInt(projectVersion[1]) >= parseInt(commonVersion[1]) && parseInt(projectVersion[2]) > parseInt(commonVersion[2]) ) {
+                            if (isANewerVersion(project.bloqsVersion, common.bloqsVersion)) {
                                 alertsService.add('offline-load-project-error', 'error', 'error', 5000, null, false, false, 'offline-update', redirect, 'http://bitbloq.bq.com/#/offline');
                             } else {
-                                if (project.bitbloqOfflineVersion > common.version) {
+                                if (isANewerVersion(project.bitbloqOfflineVersion, common.version)) {
                                     alertsService.add('offline-new-version-available', 'info', 'info', 5000, null, false, false, 'offline-update', redirect, 'http://bitbloq.bq.com/#/offline');
                                 }
                                 $scope.setProject(project);
