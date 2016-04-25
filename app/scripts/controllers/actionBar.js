@@ -74,18 +74,17 @@ angular.module('bitbloqOffline')
             win.show();
         }
 
-        function isANewerVersion(projectVersionStr, currentVersionStr){
-            var projectVersion = projectVersionStr || "0.0.0",
-                currentVersion = currentVersionStr || "0.0.0";
+        function isANewerVersion(projectVersion, currentVersion){
+            projectVersion = projectVersion || "0.0.0";
+            currentVersion = currentVersion || "0.0.0";
             projectVersion =  projectVersion.split('.');
             currentVersion = currentVersion.split('.');
             for(var i=0; i< projectVersion.length; i++){
-                if (parseInt(projectVersion[i]) < parseInt(currentVersion[i])){
-                    return false;
+                if (parseInt(projectVersion[i]) > parseInt(currentVersion[i])){
+                    return true;
                 }
             }
-            // if versions are the same, it isn't a new version
-            return projectVersionStr !== currentVersionStr;
+            return false;
         }
 
         function openProject(force) {
