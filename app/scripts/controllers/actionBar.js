@@ -120,10 +120,10 @@ angular.module('bitbloqOffline')
 
                             //project.bloqsVersion > common.bloqsVersion
                             if (isANewerVersion(project.bloqsVersion, common.bloqsVersion)) {
-                                alertsService.add('offline-load-project-error', 'warning', 'warning', 5000, null, false, false, 'offline-update', redirect, 'http://bitbloq.bq.com/#/offline');
+                                alertsService.add('offline-load-project-error', 'warning', 'warning', 5000, null, false, false, 'offline-update');
                             }
                             if (isANewerVersion(project.bitbloqOfflineVersion, common.version)) {
-                                alertsService.add('offline-new-version-available', 'info', 'info', 5000, null, false, false, 'offline-update', redirect, 'http://bitbloq.bq.com/#/offline');
+                                alertsService.add('offline-new-version-available', 'info', 'info', 5000, null, false, false, 'offline-update');
                             }
                             $scope.setProject(project);
                             projectApi.savedProjectPath = filePath[0];

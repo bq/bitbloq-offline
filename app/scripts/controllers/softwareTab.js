@@ -40,6 +40,7 @@ angular.module('bitbloqOffline')
             $rootScope.$on('$translateChangeStart', function(evt, key) {
                 bloqs.translateBloqs(key.language);
             });
+            $scope.updateBloqs();
         };
 
         $scope.onFieldKeyUp = function(event) {

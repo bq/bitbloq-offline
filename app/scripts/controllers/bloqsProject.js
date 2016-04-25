@@ -85,13 +85,12 @@ angular.module('bitbloqOffline')
                     }
 
                 };
-                var bloqCanvasEl = null;
+                var bloqCanvasEl = document.getElementsByClassName('bloqs-tab')[0];
                 //Update dropdowns values from bloqs canvas
                 for (var type in $scope.componentsArray) {
                     if (!$scope.componentsArray[type].length) {
                         continue;
                     }
-                    bloqCanvasEl = document.getElementsByClassName('bloqs-tab')[0];
                     var nodeList = bloqCanvasEl.querySelectorAll('select[data-dropdowncontent="' + type + '"]');
                     for (var i = 0, len = nodeList.length; i < len; i++) {
                         updateBloq(nodeList[i], $scope.componentsArray[type]);
