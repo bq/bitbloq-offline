@@ -15,7 +15,8 @@ angular
         'ngWebSocket',
         'pascalprecht.translate',
         'angular-clipboard',
-        'ngDialog'
+        'ngDialog',
+        'chart.js'
     ]).config(['$routeProvider', '$translateProvider',
         function($routeProvider, $translateProvider) {
 

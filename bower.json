@@ -17,7 +17,8 @@
     "prism": "1.4.1",
     "ng-dialog": "0.5.8",
     "jquery-auto-grow-input": "*",
-    "autogrow": "1.0.3"
+    "autogrow": "1.0.3",
+    "angular-chart.js": "^0.10.2"
   },
   "resolutions": {
     "lodash": "3.10.1",

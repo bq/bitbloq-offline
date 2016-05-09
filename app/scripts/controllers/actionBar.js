@@ -174,8 +174,11 @@ angular.module('bitbloqOffline')
             web2board.serialMonitor(boardReference);
         }
 
-        function showWeb2board() {
-            web2board.showWeb2board();
+        function showPlotter() {
+            var boardReference = _.find($scope.hardware.boardList, function(b) {
+                return b.name === $scope.project.hardware.board;
+            });
+            web2board.showPlotter(boardReference);
         }
 
         $scope.menuTree = {
@@ -232,7 +235,12 @@ angular.module('bitbloqOffline')
                 }, {
                     name: 'show-web2board',
                     icon: '#web2board',
-                    action: showWeb2board,
+                    action: web2board.showWeb2board,
+                    disabled: false
+                }, {
+                    name: 'Show plotter',
+                    icon: '#web2board',
+                    action: showPlotter,
                     disabled: false
                 }]
             }
