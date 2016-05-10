@@ -126,12 +126,7 @@ angular.module('bitbloqOffline')
                 modalOptions = parent.$new();
             _.extend(modalOptions, {
                 contentTemplate: 'file://' + __dirname + '/views/modals/plotter.html',
-                modalTitle: 'modal-update-web2board-title',
-                confirmButton: 'close',
-                modalButtons: true,
-                closeDialog: function () {
-                    dialog.close();
-                },
+                modalTitle: 'Plotter',
                 serial: {
                     board: board.mcu,
                     port: port

@@ -12,10 +12,9 @@
                     <div>
                         <button class="btn btn--secondary btn--small" ng-click="onPause()">{{pauseText}}</button>
                         <button class="btn btn--secondary btn--small" ng-click="onClear()">Clear</button>
-                        <label for="baudrateOptions">Baudrate</label>
-                        <select name="baudrateOptions" ng-model="serial.baudrate" ng-options="baudrate for baudrate in baudrateOptions"
-                                ng-change="onBaudrateChanged()" class="right">
-                        </select>
+                        <common-dropdown options="baudrateOptions" class="plotter--dropdown"
+                                         heading-option="serial.baudrate"
+                                         options-click="onBaudrateChanged"></common-dropdown>
                     </div>
 
                 </fieldset>

@@ -1769,3 +1769,8 @@ code {
 .toolbox-hw .robot-image {
   width: 75px;
   cursor: -webkit-grab; }
+
+.plotter--dropdown {
+  display: inline-block;
+  width: 100px;
+  float: right; }

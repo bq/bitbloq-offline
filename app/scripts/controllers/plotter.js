@@ -12,7 +12,8 @@ angular.module('bitbloqOffline')
     .controller('PlotterCtrl', function ($scope, _, web2board) {
         // todo: create a serialHandler service to remove duplicated code
         var serialHub = web2board.api.SerialMonitorHub,
-            data_parser = {
+            lastIter = -1,
+            dataParser = {
                 buf: '',
                 separator: '\r\n',
                 retrieve_messages: function (data) {
@@ -21,8 +22,12 @@ angular.module('bitbloqOffline')
                     this.buf = split_data.pop();
                     return split_data;
                 }
-            };
-        $scope.baudrateOptions = [9600, 19200, 115200];
+            },
+            clearClicked = false,
+            receivedDataCount = 0,
+            plotterLength = 300,
+            plotterStepper = 20;
+        $scope.baudrateOptions = [9600, 19200, 115200, 115201, 115202, 115203, 115204];
         $scope.serial = {
             dataReceived: '',
             port: $scope.serial.port || '',
@@ -32,37 +37,38 @@ angular.module('bitbloqOffline')
         $scope.pause = false;
         $scope.pauseText = "Pause";
 
-        $scope.labels = [];
         $scope.series = ['Data received'];
-        $scope.data = [
-            []
-        ];
 
         $scope.chartOptions = {
             animation: false,
             pointDot: true,
-            pointHitDetectionRadius : 0.1
+            pointHitDetectionRadius: 1
         };
-        
+
         web2board.api.callbacks.onClientFunctionNotFound = function (hub, func) {
             console.error(hub, func);
         };
 
         serialHub.client.received = function (port, data) {
-            if($scope.pause) {
-                return;
+            if (!$scope.pause && clearClicked) {
+                $scope.data = [[]];
+                clearClicked = false;
             }
-            var messages = data_parser.retrieve_messages(data);
-            messages.forEach(function(message) {
+
+            var messages = dataParser.retrieve_messages(data);
+            messages.forEach(function (message) {
                 var number = parseInt(message);
-                if (!isNaN(number)) {
+                if (!$scope.pause && !isNaN(number)) {
                     $scope.data[0].push(number);
-                    $scope.labels.push('');
-                    if ($scope.labels.length > 20) {
+
+                    if ($scope.data[0] > 20) {
                         $scope.chartOptions.pointDot = false;
                     }
-                    if($scope.labels.length > 300) {
+
+                    if ($scope.data[0].length > plotterLength) {
                         $scope.labels.shift();
+                        $scope.labels.push(receivedDataCount % plotterStepper ? '' : receivedDataCount);
+                        receivedDataCount++;
                         $scope.data[0].shift();
                     }
                 }
@@ -75,7 +81,7 @@ angular.module('bitbloqOffline')
         };
 
         serialHub.client.baudrateChanged = function (port, baudrate) {
-            if(port === $scope.serial.port){
+            if (port === $scope.serial.port) {
                 $scope.serial.baudrate = baudrate;
             }
         };
@@ -87,29 +93,35 @@ angular.module('bitbloqOffline')
         $scope.onBaudrateChanged = function () {
             serialHub.server.changeBaudrate($scope.serial.port, $scope.serial.baudrate);
         };
-        
+
         $scope.onClear = function () {
             $scope.labels = [];
-            $scope.data = [
-                []
-            ];
+            for (receivedDataCount = 0; receivedDataCount < plotterLength; receivedDataCount++) {
+                $scope.labels[receivedDataCount] = receivedDataCount % plotterStepper ? '' : receivedDataCount;
+            }
+            $scope.data = [[0]];
+            clearClicked = true;
         };
 
         $scope.onPause = function () {
             $scope.pause = !$scope.pause;
-            $scope.pauseText = $scope.pause? "Continue": "Pause";
+            $scope.pauseText = $scope.pause ? "Continue" : "Pause";
         };
 
-        web2board.api.connect().done(function () {
-            serialHub.server.subscribeToHub().done(function () {
-                console.log('subscribed');
-            });
-            serialHub.server.isPortConnected($scope.serial.port).done(function (connected) {
-                if (!connected) {
-                    serialHub.server.startConnection($scope.serial.port, $scope.serial.baudrate);
-                } else {
-                    $scope.onBaudrateChanged();
-                }
-            });
+        $scope.onClear();
+
+        serialHub.server.getSubscribedClientsToHub().done(function (subscribedClients) {
+            if(subscribedClients.indexOf("Bitbloq") <= -1){
+                serialHub.server.subscribeToHub();
+                console.log("subscribed");
+            }
+        });
+
+        serialHub.server.isPortConnected($scope.serial.port).done(function (connected) {
+            if (!connected) {
+                serialHub.server.startConnection($scope.serial.port, $scope.serial.baudrate);
+            } else {
+                $scope.onBaudrateChanged();
+            }
         });
     });
