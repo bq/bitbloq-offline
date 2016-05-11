@@ -1,0 +1,13 @@
+<div class="form"
+     style="min-width: 500px; height: calc(100vh - 20px); display:flex; flex-direction: column; margin:10px">
+    <nvd3 id="chart" options="chartOptions" data="data" class="with-3d-shadow with-transitions"></nvd3>
+    <!-- Submit Form -->
+    <div>
+        <button class="btn btn--secondary btn--small" ng-click="onPause()">{{pauseText}}</button>
+        <button class="btn btn--secondary btn--small" ng-click="onClear()">Clear</button>
+        <common-dropdown options="baudrateOptions" class="plotter--dropdown"
+                         heading-option="serial.baudrate"
+                         options-click="onBaudrateChanged"
+                         direction="up"></common-dropdown>
+    </div>
+</div>

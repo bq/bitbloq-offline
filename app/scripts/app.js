@@ -16,13 +16,17 @@ angular
         'pascalprecht.translate',
         'angular-clipboard',
         'ngDialog',
-        'chart.js'
+        'nvd3'
     ]).config(['$routeProvider', '$translateProvider',
         function($routeProvider, $translateProvider) {
-
             $routeProvider
                 .when('/', {
                     templateUrl: 'views/bloqs-project.html'
+                })
+                .when('/plotter/:port/:board', {
+                    templateUrl: 'views/plotter.html',
+                    controller: 'PlotterCtrl',
+                    islogin: true
                 })
                 .otherwise({
                     redirectTo: '/'

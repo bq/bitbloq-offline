@@ -18,7 +18,9 @@
     "ng-dialog": "0.5.8",
     "jquery-auto-grow-input": "*",
     "autogrow": "1.0.3",
-    "angular-chart.js": "^0.10.2"
+    "d3": "3.5.2",
+    "nvd3": "^1.8.3",
+    "angular-nvd3": "^1.0.7"
   },
   "resolutions": {
     "lodash": "3.10.1",

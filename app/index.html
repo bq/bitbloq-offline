@@ -2,6 +2,7 @@
 <html data-ng-app="bitbloqOffline">
 
 <head>
+    <meta charset="UTF-8">
     <title>Bitbloq Offline</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- bower:css -->
@@ -9,7 +10,7 @@
     <link rel="stylesheet" href="../bower_components/prism/themes/prism.css" />
     <link rel="stylesheet" href="../bower_components/ng-dialog/css/ngDialog.css" />
     <link rel="stylesheet" href="../bower_components/ng-dialog/css/ngDialog-theme-default.css" />
-    <link rel="stylesheet" href="../bower_components/angular-chart.js/dist/angular-chart.css">
+    <link rel="stylesheet" href="../bower_components/nvd3/build/nv.d3.min.css"/>
     <!-- endbower -->
     <link rel="stylesheet" href="../bower_components/prism/plugins/line-numbers/prism-line-numbers.css" />
     <link rel="stylesheet" href="styles/main.css" />
@@ -41,8 +42,9 @@
     <script src="../bower_components/prism/prism.js"></script>
     <script src="../bower_components/ng-dialog/js/ngDialog.js"></script>
     <script src="../bower_components/ng-dialog/js/ngDialog.js"></script>
-    <script src="../bower_components/Chart.js/Chart.js"></script>
-    <script src="../bower_components/angular-chart.js/dist/angular-chart.js"></script>
+    <script src="../bower_components/d3/d3.js"></script>
+    <script src="../bower_components/nvd3/build/nv.d3.js"></script>
+    <script src="../bower_components/angular-nvd3/dist/angular-nvd3.js"></script>
 
     <!-- endbower -->
     <script src="../bower_components/prism/plugins/line-numbers/prism-line-numbers.min.js"></script>
@@ -60,6 +62,7 @@
     <script src="scripts/services/nodeUtils.js"></script>
     <script src="scripts/services/projectApi.js"></script>
     <script src="scripts/services/alerts.js"></script>
+    <script src="scripts/services/openWindow.js"></script>
     <script src="scripts/directives/tab.js"></script>
     <script src="scripts/directives/tabset.js"></script>
     <script src="scripts/directives/dropdown.js"></script>

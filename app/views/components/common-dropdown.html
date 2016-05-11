@@ -7,8 +7,8 @@
             <use xlink:href="#dropdown"></use>
         </svg>
     </button>
-    <ul class="dropwdown__menu" data-ng-show="collapsed === false">
-        <li data-ng-repeat="item in options" class="dropdown__menu__item">
+    <ul class="dropwdown__menu" data-ng-show="collapsed === false" data-ng-class="dropdownMenuClass">
+        <li data-ng-repeat="item in options" class="dropdown__menu__item" >
             <button data-ng-click="selectOption($index)" data-element="{{item}}">{{ item | translate}}</button>
         </li>
     </ul>

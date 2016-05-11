@@ -9,10 +9,8 @@
  * Controller of the bitbloqApp
  */
 angular.module('bitbloqOffline')
-    .controller('PlotterCtrl', function ($scope, _, web2board) {
-        // todo: create a serialHandler service to remove duplicated code
+    .controller('PlotterCtrl', function ($scope, _, web2board, $route) {
         var serialHub = web2board.api.SerialMonitorHub,
-            lastIter = -1,
             dataParser = {
                 buf: '',
                 separator: '\r\n',
@@ -23,53 +21,24 @@ angular.module('bitbloqOffline')
                     return split_data;
                 }
             },
-            clearClicked = false,
-            receivedDataCount = 0,
-            plotterLength = 300,
-            plotterStepper = 20;
-        $scope.baudrateOptions = [9600, 19200, 115200, 115201, 115202, 115203, 115204];
-        $scope.serial = {
-            dataReceived: '',
-            port: $scope.serial.port || '',
-            baudrate: 9600,
-            board: $scope.serial.board || 'bt328'
-        };
-        $scope.pause = false;
-        $scope.pauseText = "Pause";
-
-        $scope.series = ['Data received'];
-
-        $scope.chartOptions = {
-            animation: false,
-            pointDot: true,
-            pointHitDetectionRadius: 1
-        };
+            plotterLength = 500,
+            receivedDataCount = 0;
+        // refactor port param to get "/"
+        $route.current.params.port = $route.current.params.port.split("_").join("/");
 
         web2board.api.callbacks.onClientFunctionNotFound = function (hub, func) {
             console.error(hub, func);
         };
 
         serialHub.client.received = function (port, data) {
-            if (!$scope.pause && clearClicked) {
-                $scope.data = [[]];
-                clearClicked = false;
-            }
-
             var messages = dataParser.retrieve_messages(data);
             messages.forEach(function (message) {
                 var number = parseInt(message);
                 if (!$scope.pause && !isNaN(number)) {
-                    $scope.data[0].push(number);
+                    $scope.data[0].values.push({x: receivedDataCount++, y: number + receivedDataCount % 10});
 
-                    if ($scope.data[0] > 20) {
-                        $scope.chartOptions.pointDot = false;
-                    }
-
-                    if ($scope.data[0].length > plotterLength) {
-                        $scope.labels.shift();
-                        $scope.labels.push(receivedDataCount % plotterStepper ? '' : receivedDataCount);
-                        receivedDataCount++;
-                        $scope.data[0].shift();
+                    if ($scope.data[0].values.length > plotterLength) {
+                        $scope.data[0].values.shift();
                     }
                 }
             });
@@ -86,6 +55,22 @@ angular.module('bitbloqOffline')
             }
         };
 
+        $scope.baudrateOptions = [300, 1200, 2400, 4800, 9600, 14400, 19200, 28800, 38400, 57600, 115200];
+
+        $scope.serial = {
+            dataReceived: '',
+            port: $route.current.params.port,
+            baudrate: 9600,
+            board: $route.current.params.board
+        };
+        $scope.pause = false;
+        $scope.pauseText = "Pause";
+        $scope.data = [{
+            values: [],
+            color: '#6a8d2f',
+            key: 'Measure'
+        }];
+
         $scope.onClick = function (points, evt) {
             console.log(points, evt);
         };
@@ -95,33 +80,68 @@ angular.module('bitbloqOffline')
         };
 
         $scope.onClear = function () {
-            $scope.labels = [];
-            for (receivedDataCount = 0; receivedDataCount < plotterLength; receivedDataCount++) {
-                $scope.labels[receivedDataCount] = receivedDataCount % plotterStepper ? '' : receivedDataCount;
-            }
-            $scope.data = [[0]];
-            clearClicked = true;
+            receivedDataCount = 0;
+            $scope.data[0].values = [];
         };
 
         $scope.onPause = function () {
             $scope.pause = !$scope.pause;
-            $scope.pauseText = $scope.pause ? "Continue" : "Pause";
+            $scope.pauseText = $scope.pause ? "Play" : "Pause";
         };
 
         $scope.onClear();
 
-        serialHub.server.getSubscribedClientsToHub().done(function (subscribedClients) {
-            if(subscribedClients.indexOf("Bitbloq") <= -1){
-                serialHub.server.subscribeToHub();
-                console.log("subscribed");
-            }
+        web2board.api.connect().done(function () {
+            web2board.api.UtilsAPIHub.server.setId("Plotter").done(function () {
+                serialHub.server.getSubscribedClientsToHub().done(function (subscribedClients) {
+                    if (subscribedClients.indexOf("Plotter") <= -1) {
+                        serialHub.server.subscribeToHub();
+                        console.log("subscribed");
+                    }
+                });
+
+                serialHub.server.isPortConnected($scope.serial.port).done(function (connected) {
+                    if (!connected) {
+                        serialHub.server.startConnection($scope.serial.port, $scope.serial.baudrate);
+                    } else {
+                        $scope.onBaudrateChanged();
+                    }
+                });
+            });
         });
 
-        serialHub.server.isPortConnected($scope.serial.port).done(function (connected) {
-            if (!connected) {
-                serialHub.server.startConnection($scope.serial.port, $scope.serial.baudrate);
-            } else {
-                $scope.onBaudrateChanged();
+
+        $scope.chartOptions = {
+            chart: {
+                type: 'lineChart',
+                margin: {
+                    top: 20,
+                    right: 20,
+                    bottom: 40,
+                    left: 55
+                },
+                duration: 0,
+                x: function (d) {
+                    return d.x;
+                },
+                y: function (d) {
+                    return d.y;
+                },
+                useInteractiveGuideline: true,
+                xAxis: {
+                    axisLabel: 'Measure'
+                },
+                yAxis: {
+                    tickFormat: function (d) {
+                        return d3.format('.02f')(d);
+                    }
+                }
+            },
+            title: {
+                enable: true,
+                text: 'Plotter'
             }
-        });
+        };
+
+
     });

@@ -8,7 +8,7 @@
  * Service in the bitbloqOffline.
  */
 angular.module('bitbloqOffline')
-    .factory('web2board', function ($rootScope, $log, $q, _, $timeout, common, alertsService, WSHubsAPI, ngDialog) {
+    .factory('web2board', function ($rootScope, $log, $q, _, $timeout, common, alertsService, WSHubsAPI, OpenWindow, $location) {
 
         /** Variables */
         var web2board = this,
@@ -121,24 +121,19 @@ angular.module('bitbloqOffline')
         }
 
         function openChartModal(board, port) {
-            var dialog,
-                parent = $rootScope,
-                modalOptions = parent.$new();
-            _.extend(modalOptions, {
-                contentTemplate: 'file://' + __dirname + '/views/modals/plotter.html',
-                modalTitle: 'Plotter',
-                serial: {
-                    board: board.mcu,
-                    port: port
-                }
-            });
-            ngDialog.closeAll();
-            dialog = ngDialog.open({
-                template: 'file://' + __dirname + '/views/modals/modal.html',
-                className: 'modal--container modal--download-web2board',
-                scope: modalOptions,
-                showClose: false,
-                controller: 'PlotterCtrl'
+            port = port.split("/").join("_");
+            var windowArguments = {
+                url: 'plotter/' + port + '/' + board.mcu,
+                title: 'Plotter',
+                width: 500,
+                height: 700
+            };
+
+            OpenWindow.open(windowArguments, function () {
+                window.setTimeout(function () {
+                    // api.SerialMonitorHub.server.closeConnection(port);
+                    api.SerialMonitorHub.server.unsubscribeFromHub();
+                }, 100);
             });
         }
 
@@ -270,4 +265,5 @@ angular.module('bitbloqOffline')
             },
             api: api
         };
+
     });

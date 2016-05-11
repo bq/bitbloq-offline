@@ -56,6 +56,7 @@ app.on('ready', function() {
         mainWindow.setTitle(PRODUCT_NAME_WITH_VERSION);
     });
 
+
     // Open the DevTools.
     mainWindow.webContents.openDevTools();
 
