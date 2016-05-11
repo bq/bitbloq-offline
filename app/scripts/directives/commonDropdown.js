@@ -34,7 +34,7 @@ angular.module('bitbloqOffline')
                     scope.selected = common.translate(scope.selectedOption);
                     scope.optionsClick(scope.selectedOption);
                 }
-                scope.dropdownMenuClass = "dropdown__menu__up";
+                scope.dropdownMenuClass = "dropdown__menu__down";
                 if(attrs.direction === "up"){
                     scope.dropdownMenuClass = "dropdown__menu__up";
                     var dropdownMenu = el.find('.dropwdown__menu');

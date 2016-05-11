@@ -36,8 +36,6 @@ common-dropdown {
   max-height                        : 275px;
   overflow-y                        : scroll;
   overflow-x                        : hidden;
-  position                          : absolute;
-  left                              : 0px;
 }
 
 .dropdown__menu__down {
@@ -58,6 +56,8 @@ common-dropdown {
   -moz-border-radius-topleft        : .3em;
   border-top-right-radius           : .3em;
   border-top-left-radius            : .3em;
+  position                          : absolute;
+  left                              : 0px;
 }
 
 .dropdown__menu__item {
