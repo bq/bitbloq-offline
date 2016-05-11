@@ -15,7 +15,8 @@ angular.module('bitbloqOffline')
             api,
             inProgress = false,
             TIME_FOR_WEB2BOARD_TO_START = 700,
-            w2bToast = null; //ms
+            w2bToast = null,
+            plotterWin = null; //ms
 
         web2board.config = {
             wsHost: 'localhost',
@@ -120,16 +121,18 @@ angular.module('bitbloqOffline')
             return board;
         }
 
-        function openChartModal(board, port) {
+        function openPlotter(board, port) {
             port = port.split("/").join("_");
             var windowArguments = {
                 url: 'plotter/' + port + '/' + board.mcu,
                 title: 'Plotter',
-                width: 500,
-                height: 700
+                width: 800,
+                height: 600,
+                'min-width': 500,
+                'min-height': 200
             };
 
-            OpenWindow.open(windowArguments, function () {
+            plotterWin = OpenWindow.open(windowArguments, function () {
                 window.setTimeout(function () {
                     // api.SerialMonitorHub.server.closeConnection(port);
                     api.SerialMonitorHub.server.unsubscribeFromHub();
@@ -186,6 +189,10 @@ angular.module('bitbloqOffline')
 
         web2board.upload = function (board, code) {
             if (!inProgress) {
+                if(plotterWin){
+                    plotterWin.close();
+                    plotterWin = null;
+                }
                 if (!code || !board) {
                     alertsService.add('alert-web2board-boardNotReady', 'web2board', 'warning');
                     return;
@@ -243,7 +250,7 @@ angular.module('bitbloqOffline')
                     var chartMonitorAlert = alertsService.add('alert-web2board-openSerialMonitor', 'web2board', 'loading');
                     api.SerialMonitorHub.server.findBoardPort(board.mcu).done(function (port) {
                         alertsService.close(chartMonitorAlert);
-                        openChartModal(board, port);
+                        openPlotter(board, port);
                     }, function () {
                         alertsService.close(chartMonitorAlert);
                         alertsService.add('alert-web2board-no-port-found', 'web2board', 'warning');

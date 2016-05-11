@@ -1,8 +1,15 @@
+.plotter {
+  min-width     : 500px;
+  height        : calc(100vh - 20px);
+  display       : flex;
+  flex-direction: column;
+  margin         : 10px
+}
 
 .plotter--dropdown {
-  display:  inline-block;
-  width:    100px;
-  float:    right
+  display  :inline-block;
+  width    :100px;
+  float    :right
 }
 
 #chart {

@@ -35,7 +35,7 @@ angular.module('bitbloqOffline')
             messages.forEach(function (message) {
                 var number = parseInt(message);
                 if (!$scope.pause && !isNaN(number)) {
-                    $scope.data[0].values.push({x: receivedDataCount++, y: number + receivedDataCount % 10});
+                    $scope.data[0].values.push({x: receivedDataCount++, y: number});
 
                     if ($scope.data[0].values.length > plotterLength) {
                         $scope.data[0].values.shift();
@@ -128,9 +128,6 @@ angular.module('bitbloqOffline')
                     return d.y;
                 },
                 useInteractiveGuideline: true,
-                xAxis: {
-                    axisLabel: 'Measure'
-                },
                 yAxis: {
                     tickFormat: function (d) {
                         return d3.format('.02f')(d);
