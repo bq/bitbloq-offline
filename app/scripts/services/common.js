@@ -8,11 +8,15 @@
  * Service in the bitbloqOffline.
  */
 angular.module('bitbloqOffline')
-    .service('common', function($http, $filter, $rootScope, $translate) {
+    .service('common', function($http, $filter, $rootScope, $translate, utils) {
 
         var exports = {};
         var settings = {};
         var fs = require('fs');
+        var ua = require('universal-analytics');
+        exports.analyticsVisitor;
+
+
 
         exports.webPath = process.mainModule.filename.substring(0, process.mainModule.filename.lastIndexOf('/'));
 
@@ -26,19 +30,32 @@ angular.module('bitbloqOffline')
         exports.bloqsVersion = JSON.parse(fs.readFileSync(exports.appPath + '/bower.json', 'utf8')).dependencies.bloqs;
         exports.translate = $filter('translate');
 
+        startAnalytics();
+
         settings.language = JSON.parse(fs.readFileSync(exports.appPath + '/app/res/config.json', 'utf8')).language;
         $translate.use(settings.language);
 
         exports.translateTo = function(lang) {
-          settings.language = lang;
+            settings.language = lang;
 
-          fs.writeFile(exports.appPath + '/app/res/config.json', JSON.stringify(settings), 'utf8', function(err) {
-            if (err) {
-              throw err;
-            }
-          });
-          $translate.use(lang);
+            fs.writeFile(exports.appPath + '/app/res/config.json', JSON.stringify(settings), 'utf8', function(err) {
+                if (err) {
+                    throw err;
+                }
+            });
+            $translate.use(lang);
         };
-        return exports;
 
+        function startAnalytics() {
+            if (!localStorage.analyticsVisitorUUID) {
+                localStorage.analyticsVisitorUUID = utils.generateUUID();
+            }
+            if (!exports.analyticsVisitor) {
+                exports.analyticsVisitor = ua('UA-77651241-1', localStorage.analyticsVisitorUUID);
+            }
+
+            exports.analyticsVisitor.pageview('/', 'Bloqs Project').send();
+        }
+
+        return exports;
     });

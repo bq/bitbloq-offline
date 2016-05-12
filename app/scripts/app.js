@@ -40,6 +40,12 @@ angular
             $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
             $translateProvider.preferredLanguage('es-ES');
             $translateProvider.fallbackLanguage('es-ES');
+            // AnalyticsProvider.setAccount('UA-77651241-1');
+            // AnalyticsProvider.trackPages(true);
+            // AnalyticsProvider.trackUrlParams(false);
+            // AnalyticsProvider.useAnalytics(false);
+            // AnalyticsProvider.logAllCalls(true);
+            // AnalyticsProvider.setHybridMobileSupport(true);
         }
 
     ])
@@ -55,5 +61,4 @@ angular
 
         console.log('Start Bitbloq Offline');
         // console.log(process);
-
     });

@@ -41,7 +41,7 @@ module.exports = function(grunt) {
                 // Point to the files that should be updated when
                 // you run `grunt wiredep`
                 src: ['app/index.html'],
-                exclude: ['bower_components/jquery/dist/jquery.js']
+                exclude: ['bower_components/jquery/dist/jquery.js', 'bower_components/angular/angular.js']
             }
         },
         svgstore: {

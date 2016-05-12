@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../bower_components/prism/themes/prism.css" />
     <link rel="stylesheet" href="../bower_components/ng-dialog/css/ngDialog.css" />
     <link rel="stylesheet" href="../bower_components/ng-dialog/css/ngDialog-theme-default.css" />
-    <link rel="stylesheet" href="../bower_components/nvd3/build/nv.d3.min.css"/>
+    <link rel="stylesheet" href="../bower_components/nvd3/build/nv.d3.css" />
     <!-- endbower -->
     <link rel="stylesheet" href="../bower_components/prism/plugins/line-numbers/prism-line-numbers.css" />
     <link rel="stylesheet" href="styles/main.css" />
@@ -22,9 +22,9 @@
     <div data-ng-view=""></div>
     <script>
     window.$ = window.JQuery = window.jQuery = require('jquery');
+    window.angular = require('angular');
     </script>
     <!-- bower:js -->
-    <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/angular-route/angular-route.js"></script>
     <script src="../bower_components/angular-websocket/angular-websocket.min.js"></script>
     <script src="../bower_components/angular-clipboard/angular-clipboard.js"></script>
@@ -35,17 +35,15 @@
     <script src="../bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
     <script src="../bower_components/jquery-auto-grow-input/jquery.auto-grow-input.min.js"></script>
     <script src="../bower_components/autogrow/autogrow.js"></script>
-    <script src="../bower_components/bloqs/dist/bloqs.js"></script>
+    <script src="../bower_components/bloqs/dist/bloqs.min.js"></script>
     <script src="../bower_components/js-beautify/js/lib/beautify.js"></script>
     <script src="../bower_components/js-beautify/js/lib/beautify-css.js"></script>
     <script src="../bower_components/js-beautify/js/lib/beautify-html.js"></script>
     <script src="../bower_components/prism/prism.js"></script>
     <script src="../bower_components/ng-dialog/js/ngDialog.js"></script>
-    <script src="../bower_components/ng-dialog/js/ngDialog.js"></script>
     <script src="../bower_components/d3/d3.js"></script>
     <script src="../bower_components/nvd3/build/nv.d3.js"></script>
     <script src="../bower_components/angular-nvd3/dist/angular-nvd3.js"></script>
-
     <!-- endbower -->
     <script src="../bower_components/prism/plugins/line-numbers/prism-line-numbers.min.js"></script>
     <script src="scripts/app.js"></script>
@@ -79,8 +77,7 @@
     <script src="scripts/controllers/hardwareTab.js"></script>
     <script src="scripts/controllers/alerts.js"></script>
     <script src="scripts/controllers/plotter.js"></script>
-
-  <!-- endbower -->
+    <!-- endbower -->
 </body>
 
 </html>
