@@ -9,7 +9,7 @@
  * Controller of the bitbloqApp
  */
 angular.module('bitbloqOffline')
-    .controller('PlotterCtrl', function ($scope, _, web2board, $route) {
+    .controller('PlotterCtrl', function ($scope, _, web2board, $route, $translate) {
         var serialHub = web2board.api.SerialMonitorHub,
             dataParser = {
                 buf: '',
@@ -64,52 +64,11 @@ angular.module('bitbloqOffline')
             board: $route.current.params.board
         };
         $scope.pause = false;
-        $scope.pauseText = "Pause";
+        $scope.pauseText = $translate.instant('plotter-pause');
         $scope.data = [{
             values: [],
-            color: '#6a8d2f',
-            key: 'Measure'
+            color: '#6a8d2f'
         }];
-
-        $scope.onClick = function (points, evt) {
-            console.log(points, evt);
-        };
-
-        $scope.onBaudrateChanged = function () {
-            serialHub.server.changeBaudrate($scope.serial.port, $scope.serial.baudrate);
-        };
-
-        $scope.onClear = function () {
-            receivedDataCount = 0;
-            $scope.data[0].values = [];
-        };
-
-        $scope.onPause = function () {
-            $scope.pause = !$scope.pause;
-            $scope.pauseText = $scope.pause ? "Play" : "Pause";
-        };
-
-        $scope.onClear();
-
-        web2board.api.connect().done(function () {
-            web2board.api.UtilsAPIHub.server.setId("Plotter").done(function () {
-                serialHub.server.getSubscribedClientsToHub().done(function (subscribedClients) {
-                    if (subscribedClients.indexOf("Plotter") <= -1) {
-                        serialHub.server.subscribeToHub();
-                        console.log("subscribed");
-                    }
-                });
-
-                serialHub.server.isPortConnected($scope.serial.port).done(function (connected) {
-                    if (!connected) {
-                        serialHub.server.startConnection($scope.serial.port, $scope.serial.baudrate);
-                    } else {
-                        $scope.onBaudrateChanged();
-                    }
-                });
-            });
-        });
-
 
         $scope.chartOptions = {
             chart: {
@@ -136,9 +95,46 @@ angular.module('bitbloqOffline')
             },
             title: {
                 enable: true,
-                text: 'Plotter'
+                text: $translate.instant('plotter')
             }
         };
 
+        $scope.onClick = function (points, evt) {
+            console.log(points, evt);
+        };
+
+        $scope.onBaudrateChanged = function (baudrate) {
+            $scope.serial.baudrate = baudrate;
+            serialHub.server.changeBaudrate($scope.serial.port, baudrate);
+        };
+
+        $scope.onClear = function () {
+            receivedDataCount = 0;
+            $scope.data[0].values = [];
+        };
+
+        $scope.onPause = function () {
+            $scope.pause = !$scope.pause;
+            $scope.pauseText = $scope.pause ? $translate.instant('plotter-play') : $translate.instant('plotter-pause');
+        };
+
+        web2board.api.connect().done(function () {
+            web2board.api.UtilsAPIHub.server.setId("Plotter").done(function () {
+                serialHub.server.getSubscribedClientsToHub().done(function (subscribedClients) {
+                    if (subscribedClients.indexOf("Plotter") <= -1) {
+                        serialHub.server.subscribeToHub();
+                        console.log("subscribed");
+                    }
+                });
+
+                serialHub.server.isPortConnected($scope.serial.port).done(function (connected) {
+                    if (!connected) {
+                        serialHub.server.startConnection($scope.serial.port, $scope.serial.baudrate);
+                    } else {
+                        $scope.onBaudrateChanged();
+                    }
+                });
+            });
+        });
 
     });

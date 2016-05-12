@@ -3,7 +3,7 @@
     <!-- Submit Form -->
     <div>
         <button class="btn btn--secondary btn--small" ng-click="onPause()">{{pauseText}}</button>
-        <button class="btn btn--secondary btn--small" ng-click="onClear()">Clear</button>
+        <button class="btn btn--secondary btn--small" ng-click="onClear()">{{'plotter-clear' | translate}}</button>
         <common-dropdown options="baudrateOptions" class="plotter--dropdown"
                          heading-option="serial.baudrate"
                          options-click="onBaudrateChanged"

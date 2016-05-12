@@ -997,9 +997,7 @@ common-dropdown {
   background-color: #fff;
   max-height: 275px;
   overflow-y: scroll;
-  overflow-x: hidden;
-  position: absolute;
-  left: 0px; }
+  overflow-x: hidden; }
 
 .dropdown__menu__down {
   border-bottom: 1px solid #cfcfcf;
@@ -1017,7 +1015,9 @@ common-dropdown {
   -moz-border-radius-topright: .3em;
   -moz-border-radius-topleft: .3em;
   border-top-right-radius: .3em;
-  border-top-left-radius: .3em; }
+  border-top-left-radius: .3em;
+  position: absolute;
+  left: 0px; }
 
 .dropdown__menu__item {
   flex: 1 100%;
