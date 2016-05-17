@@ -60,7 +60,7 @@ angular.module('bitbloqOffline')
         }
 
         function _preventAnalitycsToLoseUserActivity() {
-            exports.analyticsVisitor.event('still working').send();
+            exports.analyticsVisitor.event('still working', 'im alive').send();
         }
 
         exports.sendAnalyticsEvent = function(eventName, eventData) {
