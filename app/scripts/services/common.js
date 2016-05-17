@@ -30,7 +30,7 @@ angular.module('bitbloqOffline')
         exports.bloqsVersion = JSON.parse(fs.readFileSync(exports.appPath + '/bower.json', 'utf8')).dependencies.bloqs;
         exports.translate = $filter('translate');
 
-        startAnalytics();
+        _startAnalytics();
 
         settings.language = JSON.parse(fs.readFileSync(exports.appPath + '/app/res/config.json', 'utf8')).language;
         $translate.use(settings.language);
@@ -46,7 +46,7 @@ angular.module('bitbloqOffline')
             $translate.use(lang);
         };
 
-        function startAnalytics() {
+        function _startAnalytics() {
             if (!localStorage.analyticsVisitorUUID) {
                 localStorage.analyticsVisitorUUID = utils.generateUUID();
             }
@@ -55,7 +55,17 @@ angular.module('bitbloqOffline')
             }
 
             exports.analyticsVisitor.pageview('/', 'Bloqs Project').send();
+            //240000 = 4 mins
+            setInterval(_preventAnalitycsToLoseUserActivity, 240000);
         }
+
+        function _preventAnalitycsToLoseUserActivity() {
+            exports.analyticsVisitor.event('still working').send();
+        }
+
+        exports.sendAnalyticsEvent = function(eventName, eventData) {
+            exports.analyticsVisitor.pageview(eventName + '-' + eventData).send();
+        };
 
         return exports;
     });

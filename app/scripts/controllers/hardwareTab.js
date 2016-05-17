@@ -164,7 +164,7 @@ angular.module('bitbloqOffline')
             $scope.refreshComponentsArray();
 
             $rootScope.$broadcast('toolboxSelect', 'components');
-            common.analyticsVisitor.event('Add board', board.name).send();
+            common.sendAnalyticsEvent('Add Board', board.name);
 
         };
 
@@ -182,8 +182,7 @@ angular.module('bitbloqOffline')
             $scope.project.hardware.components = [];
 
             $scope.refreshComponentsArray();
-
-            common.analyticsVisitor.event('Add robot', robot.id).send();
+            common.sendAnalyticsEvent('Add Robot', board.id);
         };
 
         $scope.hardware.sortToolbox = function() {
@@ -229,7 +228,7 @@ angular.module('bitbloqOffline')
             _focusComponent(componentDOMRef);
             $scope.boardSelected = false;
             hw2Bloqs.unselectAllConnections();
-            common.analyticsVisitor.event('Add component', data.id).send();
+            common.sendAnalyticsEvent('Add Component', data.id);
         }
 
         $scope.deleteBoard = function() {
