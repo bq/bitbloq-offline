@@ -14,4 +14,4 @@ IF EXIST "%PROGRAMFILES(X86)%" (
 ) ELSE  (
 "data/dpinst32.exe" /lm
 )
-"data/CDM v2.10.00 WHQL Certified.exe" /lm
+"data/CDM21216_Setup.exe" /lm
