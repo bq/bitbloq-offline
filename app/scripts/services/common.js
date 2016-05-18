@@ -51,20 +51,24 @@ angular.module('bitbloqOffline')
                 localStorage.analyticsVisitorUUID = utils.generateUUID();
             }
             if (!exports.analyticsVisitor) {
-                exports.analyticsVisitor = ua('UA-77651241-1', localStorage.analyticsVisitorUUID);
+                exports.analyticsVisitor = ua('UA-20299199-1', localStorage.analyticsVisitorUUID);
             }
 
-            exports.analyticsVisitor.pageview('/', 'Bloqs Project').send();
+            exports.analyticsVisitor.pageview('/', 'bitbloqoffline.bq.com', 'Bitbloq offline start').send();
             //240000 = 4 mins
             setInterval(_preventAnalitycsToLoseUserActivity, 240000);
         }
 
         function _preventAnalitycsToLoseUserActivity() {
-            exports.analyticsVisitor.event('still working', 'im alive').send();
+            exports.analyticsVisitor.event({
+                documentHostName: 'bitbloqoffline.bq.com',
+                eventAction: 'Bitbloq offline still working',
+                eventCategory: 'im alive'
+            }).send();
         }
 
         exports.sendAnalyticsEvent = function(eventName, eventData) {
-            exports.analyticsVisitor.pageview(eventName + '-' + eventData).send();
+            exports.analyticsVisitor.pageview(eventName + '-' + eventData, 'bitbloqoffline.bq.com', 'Bitbloq offline event').send();
         };
 
         return exports;

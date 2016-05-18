@@ -182,7 +182,7 @@ angular.module('bitbloqOffline')
             $scope.project.hardware.components = [];
 
             $scope.refreshComponentsArray();
-            common.sendAnalyticsEvent('Add Robot', board.id);
+            common.sendAnalyticsEvent('Add Robot', robot.id);
         };
 
         $scope.hardware.sortToolbox = function() {
