@@ -5,8 +5,18 @@ module.exports = function(grunt) {
     grunt.loadTasks('tasks');
 
     function getCopySrc(os) {
-        var array = ['app/**', 'bower_components/**', 'node_modules/jquery/**', 'node_modules/ws/**', 'node_modules/ultron/**', 'node_modules/options/**',
-            'LICENSE', 'main.js', 'package.json', 'bower.json',
+        var array = ['app/**',
+            'bower_components/**',
+            'node_modules/jquery/**',
+            'node_modules/angular/**',
+            'node_modules/universal-analytics/**',
+            'node_modules/ws/**',
+            'node_modules/ultron/**',
+            'node_modules/options/**',
+            'LICENSE',
+            'main.js',
+            'package.json',
+            'bower.json',
             '!app/res/web2board/{osValue}/**/info.log',
             '!app/res/web2board/{osValue}/**/info.log.*',
             '!app/res/web2board/{osValue}/**/config.json',
