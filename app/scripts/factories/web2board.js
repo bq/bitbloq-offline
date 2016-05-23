@@ -131,7 +131,7 @@ angular.module('bitbloqOffline')
                 'min-width': 500,
                 'min-height': 200
             };
-            if(plotterWin){
+            if (plotterWin) {
                 plotterWin.close();
             }
 
@@ -193,7 +193,7 @@ angular.module('bitbloqOffline')
 
         web2board.upload = function (board, code) {
             if (!inProgress) {
-                if(plotterWin){
+                if (plotterWin) {
                     plotterWin.close();
                     plotterWin = null;
                 }
