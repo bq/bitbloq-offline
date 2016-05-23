@@ -33,7 +33,7 @@ angular.module('bitbloqOffline')
         serialHub.client.received = function (port, data) {
             var messages = dataParser.retrieve_messages(data);
             messages.forEach(function (message) {
-                var number = parseInt(message);
+                var number = parseFloat(message);
                 if (!$scope.pause && !isNaN(number)) {
                     $scope.data[0].values.push({x: receivedDataCount++, y: number});
 
@@ -50,7 +50,7 @@ angular.module('bitbloqOffline')
         };
 
         serialHub.client.baudrateChanged = function (port, baudrate) {
-            if (port === $scope.serial.port) {
+            if (port === $scope.serial.port && baudrate) {
                 $scope.serial.baudrate = baudrate;
             }
         };
@@ -104,8 +104,10 @@ angular.module('bitbloqOffline')
         };
 
         $scope.onBaudrateChanged = function (baudrate) {
-            $scope.serial.baudrate = baudrate;
-            serialHub.server.changeBaudrate($scope.serial.port, baudrate);
+            if(baudrate){
+                $scope.serial.baudrate = baudrate;
+                serialHub.server.changeBaudrate($scope.serial.port, baudrate);
+            }
         };
 
         $scope.onClear = function () {

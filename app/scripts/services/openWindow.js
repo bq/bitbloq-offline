@@ -11,7 +11,7 @@ angular.module('bitbloqOffline')
                 console.log($location);
                 win.loadURL('file://' + __dirname + '/index.html#/' + windowArguments.url);
                 win.show();
-                // win.webContents.openDevTools();
+                win.webContents.openDevTools();
                 return win;
             }
         };

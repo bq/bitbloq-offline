@@ -131,12 +131,16 @@ angular.module('bitbloqOffline')
                 'min-width': 500,
                 'min-height': 200
             };
+            if(plotterWin){
+                plotterWin.close();
+            }
 
             plotterWin = OpenWindow.open(windowArguments, function () {
-                window.setTimeout(function () {
+                plotterWin = null;
+                $timeout(function () {
                     // api.SerialMonitorHub.server.closeConnection(port);
                     api.SerialMonitorHub.server.unsubscribeFromHub();
-                }, 100);
+                }, 0);
             });
         }
 
@@ -247,7 +251,7 @@ angular.module('bitbloqOffline')
         web2board.showPlotter = function (board) {
             if (!inProgress && isBoardReady(board)) {
                 openCommunication(function () {
-                    var chartMonitorAlert = alertsService.add('alert-web2board-openSerialMonitor', 'web2board', 'loading');
+                    var chartMonitorAlert = alertsService.add('alert-web2board-openPlotter', 'web2board', 'loading');
                     api.SerialMonitorHub.server.findBoardPort(board.mcu).done(function (port) {
                         alertsService.close(chartMonitorAlert);
                         openPlotter(board, port);
