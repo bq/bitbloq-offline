@@ -235,10 +235,11 @@ angular.module('bitbloqOffline')
                             api.SerialMonitorHub.server.startApp(port, board.mcu).done(function () {
                                 alertsService.close(serialMonitorAlert);
                             }, function () {
-                                alertsService.close(serialMonitorAlert);
                                 alertsService.add('alert-web2board-no-port-found', 'web2board', 'warning');
                             }).finally(removeInProgressFlag);
-                        });
+                        }, function () {
+                            alertsService.add('alert-web2board-no-port-found', 'web2board', 'warning');
+                        }).finally(removeInProgressFlag);
                     });
                 });
             }
