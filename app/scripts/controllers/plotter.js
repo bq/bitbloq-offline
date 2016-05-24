@@ -9,7 +9,7 @@
  * Controller of the bitbloqApp
  */
 angular.module('bitbloqOffline')
-    .controller('PlotterCtrl', function ($scope, _, web2board, $route, $translate) {
+    .controller('PlotterCtrl', function ($scope, _, web2board, $route, $translate, $interval) {
         var serialHub = web2board.api.SerialMonitorHub,
             dataParser = {
                 buf: '',
@@ -104,7 +104,7 @@ angular.module('bitbloqOffline')
         };
 
         $scope.onBaudrateChanged = function (baudrate) {
-            if(baudrate){
+            if (baudrate) {
                 $scope.serial.baudrate = baudrate;
                 serialHub.server.changeBaudrate($scope.serial.port, baudrate);
             }
@@ -138,5 +138,14 @@ angular.module('bitbloqOffline')
                 });
             });
         });
+
+        $interval(function () {
+            serialHub.server.isPortConnected($scope.serial.port)
+                .done(function (connected) {
+                    if (!connected) {
+                        serialHub.server.startConnection($scope.serial.port, $scope.serial.baudrate)
+                    }
+                })
+        }, 2000)
 
     });

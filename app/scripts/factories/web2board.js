@@ -14,6 +14,7 @@ angular.module('bitbloqOffline')
         var web2board = this,
             api,
             inProgress = false,
+            usingPort = null,
             TIME_FOR_WEB2BOARD_TO_START = 700,
             w2bToast = null,
             plotterWin = null; //ms
@@ -131,17 +132,28 @@ angular.module('bitbloqOffline')
                 'min-width': 500,
                 'min-height': 200
             };
-            if (plotterWin) {
+            try{
                 plotterWin.close();
+            }catch (e) {
+                // catching error if plotterWin is already closed
             }
 
             plotterWin = OpenWindow.open(windowArguments, function () {
-                plotterWin = null;
                 $timeout(function () {
                     // api.SerialMonitorHub.server.closeConnection(port);
                     api.SerialMonitorHub.server.unsubscribeFromHub();
                 }, 0);
             });
+        }
+
+        function closeUsingPort(cb) {
+            if (usingPort) {
+                console.log("closing port", usingPort);
+                api.SerialMonitorHub.server.closeConnection(usingPort)
+                    .done(cb, cb, 2000);
+            } else {
+                cb()
+            }
         }
 
         api = WSHubsAPI.construct('ws://' + web2board.config.wsHost + ':' + web2board.config.wsPort, 45);
@@ -215,13 +227,18 @@ angular.module('bitbloqOffline')
             if (!inProgress && isBoardReady(board)) {
                 inProgress = true;
                 openCommunication(function () {
-                    var serialMonitorAlert = alertsService.add('alert-web2board-openSerialMonitor', 'web2board', 'loading');
-                    api.SerialMonitorHub.server.startApp(web2board.serialPort, board.mcu).done(function () {
-                        alertsService.close(serialMonitorAlert);
-                    }, function () {
-                        alertsService.close(serialMonitorAlert);
-                        alertsService.add('alert-web2board-no-port-found', 'web2board', 'warning');
-                    }).finally(removeInProgressFlag);
+                    closeUsingPort(function () {
+                        var serialMonitorAlert = alertsService.add('alert-web2board-openSerialMonitor', 'web2board', 'loading');
+                        api.SerialMonitorHub.server.findBoardPort(board.mcu).done(function (port) {
+                            usingPort = port;
+                            api.SerialMonitorHub.server.startApp(port, board.mcu).done(function () {
+                                alertsService.close(serialMonitorAlert);
+                            }, function () {
+                                alertsService.close(serialMonitorAlert);
+                                alertsService.add('alert-web2board-no-port-found', 'web2board', 'warning');
+                            }).finally(removeInProgressFlag);
+                        });
+                    });
                 });
             }
         };
@@ -251,14 +268,18 @@ angular.module('bitbloqOffline')
         web2board.showPlotter = function (board) {
             if (!inProgress && isBoardReady(board)) {
                 openCommunication(function () {
-                    var chartMonitorAlert = alertsService.add('alert-web2board-openPlotter', 'web2board', 'loading');
-                    api.SerialMonitorHub.server.findBoardPort(board.mcu).done(function (port) {
-                        alertsService.close(chartMonitorAlert);
-                        openPlotter(board, port);
-                    }, function () {
-                        alertsService.close(chartMonitorAlert);
-                        alertsService.add('alert-web2board-no-port-found', 'web2board', 'warning');
-                    }).finally(removeInProgressFlag);
+                    closeUsingPort(function () {
+                        api.SerialMonitorHub.server.closeConnection();
+                        var chartMonitorAlert = alertsService.add('alert-web2board-openPlotter', 'web2board', 'loading');
+                        api.SerialMonitorHub.server.findBoardPort(board.mcu).done(function (port) {
+                            usingPort = port;
+                            alertsService.close(chartMonitorAlert);
+                            openPlotter(board, port);
+                        }, function () {
+                            alertsService.close(chartMonitorAlert);
+                            alertsService.add('alert-web2board-no-port-found', 'web2board', 'warning');
+                        }).finally(removeInProgressFlag);
+                    });
                 });
             }
         };
