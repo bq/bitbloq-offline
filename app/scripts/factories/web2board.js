@@ -132,11 +132,6 @@ angular.module('bitbloqOffline')
                 'min-width': 500,
                 'min-height': 200
             };
-            try{
-                plotterWin.close();
-            }catch (e) {
-                // catching error if plotterWin is already closed
-            }
 
             plotterWin = OpenWindow.open(windowArguments, function () {
                 $timeout(function () {
@@ -146,7 +141,16 @@ angular.module('bitbloqOffline')
             });
         }
 
+        function closePlotter() {
+            try {
+                plotterWin.close();
+            } catch (e) {
+                // catching error if plotterWin is already closed
+            }
+        }
+
         function closeUsingPort(cb) {
+            closePlotter();
             if (usingPort) {
                 console.log("closing port", usingPort);
                 api.SerialMonitorHub.server.closeConnection(usingPort)
@@ -205,10 +209,7 @@ angular.module('bitbloqOffline')
 
         web2board.upload = function (board, code) {
             if (!inProgress) {
-                if (plotterWin) {
-                    plotterWin.close();
-                    plotterWin = null;
-                }
+                closePlotter();
                 if (!code || !board) {
                     alertsService.add('alert-web2board-boardNotReady', 'web2board', 'warning');
                     return;
@@ -248,6 +249,7 @@ angular.module('bitbloqOffline')
         };
 
         web2board.uploadHex = function (boardMcu, hexText) {
+            closePlotter();
             openCommunication(function () {
                 alertsService.add('alert-web2board-settingBoard', 'web2board', 'loading');
                 api.CodeHub.server.uploadHex(hexText, boardMcu).done(function (port) {
@@ -269,7 +271,6 @@ angular.module('bitbloqOffline')
             if (!inProgress && isBoardReady(board)) {
                 openCommunication(function () {
                     closeUsingPort(function () {
-                        api.SerialMonitorHub.server.closeConnection();
                         var chartMonitorAlert = alertsService.add('alert-web2board-openPlotter', 'web2board', 'loading');
                         api.SerialMonitorHub.server.findBoardPort(board.mcu).done(function (port) {
                             usingPort = port;

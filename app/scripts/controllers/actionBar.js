@@ -181,6 +181,16 @@ angular.module('bitbloqOffline')
             web2board.showPlotter(boardReference);
         }
 
+        $scope.$watch(function() {
+            return $scope.isInProcess();
+        },
+            function(newValue) {
+                $scope.menuTree.viewMenuItems.items.forEach(function (item) {
+                    item.disabled = newValue;
+                })
+            }
+        );
+
         $scope.menuTree = {
             fileMenuItems: {
                 name: 'file',
