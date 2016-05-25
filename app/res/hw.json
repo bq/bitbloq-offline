@@ -398,7 +398,7 @@
             "width": 67,
             "height": 79,
             "pins": {
-                "digital": ["r", "g", "b"]
+                "digital": ["b", "g", "r"]
             }
         }],
         "sensors": [{
