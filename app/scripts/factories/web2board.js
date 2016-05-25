@@ -20,7 +20,7 @@ angular.module('bitbloqOffline')
             plotterWin = null; //ms
 
         web2board.config = {
-            wsHost: 'localhost',
+            wsHost: '127.0.0.1',
             wsPort: 9877,
             serialPort: ''
         };
