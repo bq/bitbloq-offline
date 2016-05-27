@@ -48,14 +48,14 @@ angular.module('bitbloqOffline')
         }
 
         function resetVars() {
-          if ($scope.arduinoMainBloqs.varsBloq) {
-              bloqs.removeBloq($scope.arduinoMainBloqs.varsBloq.uuid, true);
-              $scope.arduinoMainBloqs.varsBloq = null;
-              bloqs.removeBloq($scope.arduinoMainBloqs.setupBloq.uuid, true);
-              $scope.arduinoMainBloqs.setupBloq = null;
-              bloqs.removeBloq($scope.arduinoMainBloqs.loopBloq.uuid, true);
-              $scope.arduinoMainBloqs.loopBloq = null;
-          }
+            if ($scope.arduinoMainBloqs.varsBloq) {
+                bloqs.removeBloq($scope.arduinoMainBloqs.varsBloq.uuid, true);
+                $scope.arduinoMainBloqs.varsBloq = null;
+                bloqs.removeBloq($scope.arduinoMainBloqs.setupBloq.uuid, true);
+                $scope.arduinoMainBloqs.setupBloq = null;
+                bloqs.removeBloq($scope.arduinoMainBloqs.loopBloq.uuid, true);
+                $scope.arduinoMainBloqs.loopBloq = null;
+            }
         }
 
         function redirect(url) {
@@ -74,13 +74,13 @@ angular.module('bitbloqOffline')
             win.show();
         }
 
-        function isANewerVersion(projectVersion, currentVersion){
+        function isANewerVersion(projectVersion, currentVersion) {
             projectVersion = projectVersion || "0.0.0";
             currentVersion = currentVersion || "0.0.0";
-            projectVersion =  projectVersion.split('.');
+            projectVersion = projectVersion.split('.');
             currentVersion = currentVersion.split('.');
-            for(var i=0; i< projectVersion.length; i++){
-                if (parseInt(projectVersion[i]) > parseInt(currentVersion[i])){
+            for (var i = 0; i < projectVersion.length; i++) {
+                if (parseInt(projectVersion[i]) > parseInt(currentVersion[i])) {
                     return true;
                 }
             }
@@ -182,10 +182,10 @@ angular.module('bitbloqOffline')
         }
 
         $scope.$watch(function() {
-            return $scope.isInProcess();
-        },
+                return $scope.isInProcess();
+            },
             function(newValue) {
-                $scope.menuTree.viewMenuItems.items.forEach(function (item) {
+                $scope.menuTree.viewMenuItems.items.forEach(function(item) {
                     item.disabled = newValue;
                 })
             }
@@ -248,8 +248,8 @@ angular.module('bitbloqOffline')
                     action: web2board.showWeb2board,
                     disabled: false
                 }, {
-                    name: 'Show plotter',
-                    icon: '#web2board',
+                    name: 'Ver plotter',
+                    icon: '#Ver_verSerialMonitor',
                     action: showPlotter,
                     disabled: false
                 }]
