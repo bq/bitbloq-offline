@@ -8,7 +8,7 @@
  * Service in the bitbloqOffline.
  */
 angular.module('bitbloqOffline')
-    .factory('web2board', function ($rootScope, $log, $q, _, $timeout, common, alertsService, WSHubsAPI, OpenWindow, $location) {
+    .factory('web2board', function ($rootScope, $log, $q, _, $timeout, common, alertsService, WSHubsAPI, OpenWindow) {
 
         /** Variables */
         var web2board = this,
@@ -69,10 +69,10 @@ angular.module('bitbloqOffline')
                 };
 
             if (!api.wsClient || (api.wsClient.readyState !== WebSocket.CONNECTING && api.wsClient.readyState !== WebSocket.OPEN)) {
-                api.connect().done(function () {
+                api.connect().then(function () {
                         api.wsClient.couldSuccessfullyConnect = true;
                         alertsService.close(w2bToast);
-                        api.UtilsAPIHub.server.setId("Bitbloq").done(callback);
+                        api.UtilsAPIHub.server.setId("Bitbloq").then(callback);
                     },
                     function () { //on error
                         if (showUpdateModalFlag) {
@@ -90,7 +90,7 @@ angular.module('bitbloqOffline')
                     }
                 );
             } else {
-                api.UtilsAPIHub.server.getId().done(callback, function () {
+                api.UtilsAPIHub.server.getId().then(callback, function () {
                     api.wsClient = null;
                     startWeb2board();
                     openCommunication(callback, showUpdateModalFlag, 0);
@@ -110,9 +110,7 @@ angular.module('bitbloqOffline')
         }
 
         function removeInProgressFlag() {
-            $rootScope.$apply(function () {
-                inProgress = false;
-            });
+            inProgress = false;
         }
 
         function isBoardReady(board) {
@@ -154,13 +152,15 @@ angular.module('bitbloqOffline')
             if (usingPort) {
                 console.log("closing port", usingPort);
                 api.SerialMonitorHub.server.closeConnection(usingPort)
-                    .done(cb, cb, 2000);
+                    .then(cb, cb, 2000);
             } else {
                 cb()
             }
         }
 
-        api = WSHubsAPI.construct('ws://' + web2board.config.wsHost + ':' + web2board.config.wsPort, 45);
+        api = WSHubsAPI.construct(45000, require('ws'), $q);
+
+        api.connect('ws://' + web2board.config.wsHost + ':' + web2board.config.wsPort);
 
         api.defaultErrorHandler = function (error) {
             $log.error('Error receiving message: ' + error);
@@ -198,7 +198,7 @@ angular.module('bitbloqOffline')
             if (!inProgress) {
                 inProgress = true;
                 openCommunication(function () {
-                    api.CodeHub.server.compile(code).done(function () {
+                    api.CodeHub.server.compile(code).then(function () {
                         alertsService.add('alert-web2board-compile-verified', 'web2board', 'ok', 5000);
                     }, function (error) {
                         alertsService.add('alert-web2board-compile-error', 'web2board', 'warning', undefined, error);
@@ -217,7 +217,7 @@ angular.module('bitbloqOffline')
                 inProgress = true;
                 openCommunication(function () {
                     alertsService.add('alert-web2board-settingBoard', 'web2board', 'loading');
-                    api.CodeHub.server.upload(code, board.mcu).done(function () {
+                    api.CodeHub.server.upload(code, board.mcu).then(function () {
                         alertsService.add('alert-web2board-code-uploaded', 'web2board', 'ok', 5000);
                     }, handleUploadError).finally(removeInProgressFlag);
                 });
@@ -230,9 +230,9 @@ angular.module('bitbloqOffline')
                 openCommunication(function () {
                     closeUsingPort(function () {
                         var serialMonitorAlert = alertsService.add('alert-web2board-openSerialMonitor', 'web2board', 'loading');
-                        api.SerialMonitorHub.server.findBoardPort(board.mcu).done(function (port) {
+                        api.SerialMonitorHub.server.findBoardPort(board.mcu).then(function (port) {
                             usingPort = port;
-                            api.SerialMonitorHub.server.startApp(port, board.mcu).done(function () {
+                            api.SerialMonitorHub.server.startApp(port, board.mcu).then(function () {
                                 alertsService.close(serialMonitorAlert);
                             }, function () {
                                 alertsService.add('alert-web2board-no-port-found', 'web2board', 'warning');
@@ -253,7 +253,7 @@ angular.module('bitbloqOffline')
             closePlotter();
             openCommunication(function () {
                 alertsService.add('alert-web2board-settingBoard', 'web2board', 'loading');
-                api.CodeHub.server.uploadHex(hexText, boardMcu).done(function (port) {
+                api.CodeHub.server.uploadHex(hexText, boardMcu).then(function (port) {
                     alertsService.add('alert-web2board-code-uploaded', 'web2board', 'ok', 5000, port);
                 }, handleUploadError).finally(removeInProgressFlag);
             });
@@ -262,7 +262,7 @@ angular.module('bitbloqOffline')
         web2board.showApp = function () {
             openCommunication(function () {
                 alertsService.add('web2board_toast_showingApp', 'web2board', 'loading');
-                api.WindowHub.server.showApp().done(function () {
+                api.WindowHub.server.showApp().then(function () {
                     alertsService.add('web2board_toast_successfullyOpened', 'web2board', 'ok', 3000);
                 });
             });
@@ -273,7 +273,7 @@ angular.module('bitbloqOffline')
                 openCommunication(function () {
                     closeUsingPort(function () {
                         var chartMonitorAlert = alertsService.add('alert-web2board-openPlotter', 'web2board', 'loading');
-                        api.SerialMonitorHub.server.findBoardPort(board.mcu).done(function (port) {
+                        api.SerialMonitorHub.server.findBoardPort(board.mcu).then(function (port) {
                             usingPort = port;
                             alertsService.close(chartMonitorAlert);
                             openPlotter(board, port);
