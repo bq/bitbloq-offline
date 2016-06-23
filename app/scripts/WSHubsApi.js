@@ -69,7 +69,7 @@
                     thisApi.wsClient = wsClientClass === undefined ? new WebSocket(url) : new wsClientClass(url);
                 } catch (error) {
                     reconnect(error);
-                    reject(error);
+                    return reject(error);
                 }
 
                 thisApi.wsClient.onopen = function () {

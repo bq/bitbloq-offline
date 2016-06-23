@@ -1,0 +1,59 @@
+<h1 class="h2">{{ 'web2board-settings-title ' | translate }}</h1>
+<div>
+    <div>
+        <div class="form">
+            <form name="formSocial" autocomplete="off" novalidate>
+                <fieldset>
+                    <div class="w2b__settings__param">
+                        <label>{{ 'web2board-proxy-label' | translate }}</label>
+                            <span class="form--input input--default"
+                                  data-ng-class="{'input--error':proxyError, 'input--focused':focus === 'proxy'}">
+                                <input ng-model="settings.proxy" ng-blur="focus = false; testProxy()"
+                                       type="text" placeholder="Proxy (default None)"
+                                       ng-focus="focus = 'proxy'">
+                                <svg ng-if="proxyTestIcon" class="svg-icon icon--form--validating"
+                                     ng-class="{'w2b__settings_error': proxyError, 'w2b__settings_ok': !proxyError}">
+                                    <use xlink:href="{{proxyTestIcon}}"></use>
+                                </svg>
+                            </span>
+                            <span class="form--error" ng-if="proxyError">
+                                    <small>{{ 'web2board-proxyTest-error' | translate }}</small>
+                            </span>
+                    </div>
+                    <div class="w2b__settings__param">
+                        <label>{{ 'web2board-libsDir-label' | translate }}</label>
+                            <span class="form--input input--default"
+                                  data-ng-class="{'input--error':libsError, 'input--focused':focus === 'library_path'}">
+                                <input ng-model="settings.libraries_path" ng-blur="focus = false; testLibrariesPath()"
+                                       type="text" placeholder="Libraries path"
+                                       ng-focus="focus = 'library_path'">
+                                <svg ng-if="libsPathIcon" class="svg-icon icon--form--validating"
+                                     ng-class="{'w2b__settings_error': libsError, 'w2b__settings_ok': !libsError}">
+                                    <use xlink:href="{{libsPathIcon}}"></use>
+                                </svg>
+                            </span>
+                            <span class="form--error" ng-if="libsError">
+                                    <small>{{ 'web2board-libsDir-error ' | translate }}</small>
+                            </span>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="modal--projects--action">
+            <span class="input input--checkbox">
+                <input ng-model="settings.check_online_updates" type="checkbox" id="checkOnlineUpdates">
+                <label for="checkOnlineUpdates">
+                    {{ 'web2board-checkForUpdates' | translate: web2boardVersion }}
+                </label>
+            </span>
+        </div>
+        <div class="modal--projects--action">
+            <span class="input input--checkbox">
+                <input ng-model="settings.check_libraries_updates" type="checkbox" id="checkLibsUpdates">
+                <label for="checkLibsUpdates">
+                    {{ 'web2board-checkLibrariesUpdates' | translate: libsVersion }}
+                </label>
+            </span>
+        </div>
+    </div>
+</div>

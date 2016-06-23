@@ -8,7 +8,8 @@
  * Service in the bitbloqOffline.
  */
 angular.module('bitbloqOffline')
-    .factory('web2board', function ($rootScope, $log, $q, _, $timeout, common, alertsService, WSHubsAPI, OpenWindow) {
+    .factory('web2board', function ($rootScope, $log, $q, _, $timeout, common, alertsService, WSHubsAPI, OpenWindow,
+                                    ngDialog, ConsoleMessageParser) {
 
         /** Variables */
         var web2board = this,
@@ -17,7 +18,10 @@ angular.module('bitbloqOffline')
             usingPort = null,
             TIME_FOR_WEB2BOARD_TO_START = 700,
             w2bToast = null,
-            plotterWin = null; //ms
+            plotterWin = null,
+            w2bProcess,
+            INIT = '_$INIT$_',
+            END = '_$END$_\n'; //ms
 
         web2board.config = {
             wsHost: '127.0.0.1',
@@ -28,32 +32,57 @@ angular.module('bitbloqOffline')
         function getWeb2boardCommand() {
             var platformOs = process.platform;
             if (platformOs === 'win32') {
-                return common.appPath + "/app/res/web2board/win32/web2boardLauncher.exe";
+                return common.appPath + '/app/res/web2board/win32/web2boardLauncher.exe';
             }
             if (platformOs === 'darwin') {
-                return common.appPath + "/app/res/web2board/darwin/Web2Board.app/Contents/MacOS/web2boardLauncher";
+                return common.appPath + '/app/res/web2board/darwin/Web2Board.app/Contents/MacOS/web2boardLauncher';
             }
-            if (process.arch === "x64") {
-                return common.appPath + "/app/res/web2board/linux/web2boardLauncher";
+            if (process.arch === 'x64') {
+                return common.appPath + '/app/res/web2board/linux/web2boardLauncher';
             }
-            return common.appPath + "/app/res/web2board/linux32/web2boardLauncher";
+            return common.appPath + '/app/res/web2board/linux32/web2boardLauncher';
         }
 
         function showUpdateModal() {
-            alert("W2b not detected");
+            alert('W2b not detected');
+        }
+
+        function startW2bProcess() {
+            console.log('starting Web2board...');
+            var spawn = require('child_process').spawn;
+            w2bProcess = spawn('python', ['/home/startic/repos/web2boardOffline/src/web2board.py',
+                '--port', web2board.config.wsPort, '--offline', '--logLevel', 'DEBUG']);
+            w2bProcess.stdout.setEncoding('utf8');
+            w2bProcess.stdin.setEncoding('utf8');
+            w2bProcess.ready = false;
         }
 
         function startWeb2board() {
-            console.log('starting Web2board...');
-            var spawn = require('child_process'),
-                web2boardProcess = spawn.execFile(getWeb2boardCommand(),
-                    ["--port", web2board.config.wsPort], function (err, stdout, stderr) {
-                        console.log(stdout);
-                        console.log(stderr);
-                        console.log(err);
-                    });
-            web2boardProcess.on("close", function (code) {
-                console.log("Web2board closed with code: " + code);
+            new $q(function (resolve, reject) {
+                var watchdog = $timeout(function () {
+                    reject();
+                }, 5000);
+                startW2bProcess();
+                w2bProcess.stdout.on('data', function (data) {
+                    var str = data.toString();
+                    if (!w2bProcess.ready && str.indexOf('listening console...') > -1) {
+                        $timeout.cancel(watchdog);
+                        w2bProcess.ready = true;
+                        api.wsClient.onopen();
+                        api.wsClient.readyState = WebSocket.OPEN;
+                        resolve()
+                    } else if (w2bProcess.ready) {
+                        var messages = ConsoleMessageParser.addData(str);
+                        messages.forEach(function (msg) {
+                            api.wsClient.onmessage({data: msg});
+                        })
+                    }
+                    console.log(str);
+                });
+
+                w2bProcess.on('close', function (code) {
+                    console.log('Web2board closed with code: ' + code);
+                });
             });
         }
 
@@ -64,15 +93,14 @@ angular.module('bitbloqOffline')
                 w2bToast = alertsService.add('web2board_toast_startApp', 'web2board', 'loading');
             }
 
-            showUpdateModalFlag = showUpdateModalFlag === true && tryCount >= 20;
-            callback = callback || function () {
-                };
+            showUpdateModalFlag = showUpdateModalFlag === true && tryCount >= 2;
+            callback = callback || angular.noop;
 
-            if (!api.wsClient || (api.wsClient.readyState !== WebSocket.CONNECTING && api.wsClient.readyState !== WebSocket.OPEN)) {
+            if (!w2bProcess) {
                 api.connect().then(function () {
                         api.wsClient.couldSuccessfullyConnect = true;
                         alertsService.close(w2bToast);
-                        api.UtilsAPIHub.server.setId("Bitbloq").then(callback);
+                        api.UtilsAPIHub.server.setId('Bitbloq').then(callback);
                     },
                     function () { //on error
                         if (showUpdateModalFlag) {
@@ -89,6 +117,7 @@ angular.module('bitbloqOffline')
                         }
                     }
                 );
+                startWeb2board();
             } else {
                 api.UtilsAPIHub.server.getId().then(callback, function () {
                     api.wsClient = null;
@@ -121,7 +150,7 @@ angular.module('bitbloqOffline')
         }
 
         function openPlotter(board, port) {
-            port = port.split("/").join("_");
+            port = port.split('/').join('_');
             var windowArguments = {
                 url: 'plotter/' + port + '/' + board.mcu,
                 title: 'Plotter',
@@ -150,7 +179,7 @@ angular.module('bitbloqOffline')
         function closeUsingPort(cb) {
             closePlotter();
             if (usingPort) {
-                console.log("closing port", usingPort);
+                console.log('closing port', usingPort);
                 api.SerialMonitorHub.server.closeConnection(usingPort)
                     .then(cb, cb, 2000);
             } else {
@@ -158,9 +187,15 @@ angular.module('bitbloqOffline')
             }
         }
 
-        api = WSHubsAPI.construct(45000, require('ws'), $q);
+        function messageWrapper(url) {
+            this.send = function (message) {
+                w2bProcess.stdin.write(INIT + message + END)
+            };
+        }
 
-        api.connect('ws://' + web2board.config.wsHost + ':' + web2board.config.wsPort);
+        api = WSHubsAPI.construct(45000, messageWrapper, $q);
+
+        // api.connect('ws://' + web2board.config.wsHost + ':' + web2board.config.wsPort + '/Bitbloq');
 
         api.defaultErrorHandler = function (error) {
             $log.error('Error receiving message: ' + error);
@@ -177,7 +212,6 @@ angular.module('bitbloqOffline')
 
         api.callbacks.onMessageError = function (error) {
             $log.error('Error receiving message: ' + error);
-            api.wsClient.close();
         };
 
         api.CodeHub.client.isCompiling = function () {
@@ -260,12 +294,30 @@ angular.module('bitbloqOffline')
         };
 
         web2board.showApp = function () {
-            openCommunication(function () {
-                alertsService.add('web2board_toast_showingApp', 'web2board', 'loading');
-                api.WindowHub.server.showApp().then(function () {
-                    alertsService.add('web2board_toast_successfullyOpened', 'web2board', 'ok', 3000);
+            if (!inProgress) {
+                openCommunication(function () {
+                    inProgress = false;
+                    var parent = $rootScope,
+                        modalOptions = parent.$new();
+                    _.extend(modalOptions, {
+                        contentTemplate: '/views/modals/web2boardSettings.html',
+                        modalTitle: 'modal-update-web2board-title',
+                        modalText: 'modal-download-web2board-text',
+                        confirmButton: 'save',
+                        rejectButton: 'cancel',
+                        modalButtons: true
+                    });
+                    // modalOptions.envData = envData;
+                    ngDialog.closeAll();
+                    ngDialog.open({
+                        template: '/views/modals/modal.html',
+                        className: 'modal--container modal--download-web2board',
+                        scope: modalOptions,
+                        showClose: false,
+                        controller: 'Web2boardSettingsCtrl'
+                    });
                 });
-            });
+            }
         };
 
         web2board.showPlotter = function (board) {
