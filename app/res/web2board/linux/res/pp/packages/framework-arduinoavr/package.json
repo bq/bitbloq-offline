@@ -1,0 +1,7 @@
+{
+    "description":"Arduino Wiring-based Framework (AVR Core, 1.6)",
+    "name":"framework-arduinoavr",
+    "system":"all",
+    "url":"http://arduino.cc/en/Reference/HomePage",
+    "version":"1.10608.0"
+}

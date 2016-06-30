@@ -5,7 +5,13 @@
  */
 #include "Arduino.h"
 
-int a = 1
+int sum(int a, int b) {
+    return a + b + "test";
+}
+
+int sum2() {
+ return sum(3, 5)
+}
 
 void setup()
 {

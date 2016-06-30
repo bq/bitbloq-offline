@@ -1,9 +1,25 @@
 {
-    "version": "2.0.1",
-    "file2DownloadUrl": {
-        "linux32": "https://raw.githubusercontent.com/bq/web2board/devel/res/common/config.json",
-        "linux64": "https://raw.githubusercontent.com/bq/web2board/devel/res/common/config.json",
-        "mac": "https://raw.githubusercontent.com/bq/web2board/devel/res/common/config.json",
-        "windows": "https://raw.githubusercontent.com/bq/web2board/devel/res/common/config.json"
+    "version": "2.1.2",
+    "bitbloqLibs": {
+        "version": "0.1.2",
+        "librariesNames": [
+            "BitbloqJoystick",
+            "BitbloqHTS221",
+            "BitbloqLedMatrix",
+            "BitbloqSoftwareSerial",
+            "BitbloqEvolution",
+            "BitbloqZowiSerialCommand",
+            "BitbloqButtonPad",
+            "BitbloqLineFollower",
+            "BitbloqBatteryReader",
+            "BitbloqRGB",
+            "BitbloqEncoder",
+            "BitbloqLiquidCrystal",
+            "BitbloqOscillator",
+            "BitbloqZowi",
+            "BitbloqEnableInterrupt",
+            "BitbloqRTC",
+            "BitbloqUS"
+        ]
     }
 }
