@@ -21,24 +21,24 @@
 
 # === Variables set by makesetup ===
 
-MODOBJS=          Modules/threadmodule.o  Modules/signalmodule.o  Modules/arraymodule.o  Modules/cmathmodule.o  Modules/mathmodule.o Modules/_math.o  Modules/_struct.o  Modules/timemodule.o  Modules/operator.o  Modules/_randommodule.o  Modules/_collectionsmodule.o  Modules/_heapqmodule.o  Modules/itertoolsmodule.o  Modules/stropmodule.o  Modules/_functoolsmodule.o  Modules/datetimemodule.o  Modules/_bisectmodule.o  Modules/unicodedata.o  Modules/_localemodule.o  Modules/bufferedio.o Modules/bytesio.o Modules/fileio.o Modules/iobase.o Modules/_iomodule.o Modules/stringio.o Modules/textio.o  Modules/fcntlmodule.o  Modules/spwdmodule.o  Modules/grpmodule.o  Modules/selectmodule.o  Modules/socketmodule.o Modules/timemodule.o  Modules/md5module.o Modules/md5.o  Modules/shamodule.o  Modules/sha256module.o  Modules/sha512module.o  Modules/syslogmodule.o  Modules/binascii.o  Modules/cStringIO.o  Modules/cPickle.o  Modules/zlibmodule.o  Modules/posixmodule.o  Modules/errnomodule.o  Modules/pwdmodule.o  Modules/_sre.o  Modules/_codecsmodule.o  Modules/_weakref.o  Modules/zipimport.o  Modules/symtablemodule.o  Modules/xxsubtype.o
+MODOBJS=          Modules/threadmodule.o  Modules/signalmodule.o  Modules/arraymodule.o  Modules/cmathmodule.o  Modules/mathmodule.o Modules/_math.o  Modules/_struct.o  Modules/timemodule.o  Modules/operator.o  Modules/_randommodule.o  Modules/_collectionsmodule.o  Modules/_heapqmodule.o  Modules/itertoolsmodule.o  Modules/stropmodule.o  Modules/_functoolsmodule.o  Modules/_bisectmodule.o  Modules/unicodedata.o  Modules/_localemodule.o  Modules/bufferedio.o Modules/bytesio.o Modules/fileio.o Modules/iobase.o Modules/_iomodule.o Modules/stringio.o Modules/textio.o  Modules/fcntlmodule.o  Modules/spwdmodule.o  Modules/grpmodule.o  Modules/selectmodule.o  Modules/socketmodule.o Modules/timemodule.o  Modules/md5module.o Modules/md5.o  Modules/shamodule.o  Modules/sha256module.o  Modules/sha512module.o  Modules/syslogmodule.o  Modules/binascii.o  Modules/cStringIO.o  Modules/cPickle.o  Modules/zlibmodule.o  Modules/posixmodule.o  Modules/errnomodule.o  Modules/pwdmodule.o  Modules/_sre.o  Modules/_codecsmodule.o  Modules/_weakref.o  Modules/zipimport.o  Modules/symtablemodule.o  Modules/xxsubtype.o
 MODLIBS=        $(LOCALMODLIBS) $(BASEMODLIBS)
 
 # === Variables set by configure
 VERSION=	2.7
 srcdir=		..
 VPATH=		..
-abs_srcdir=	/build/python2.7-HpIZBG/python2.7-2.7.11/build-shared/..
-abs_builddir=	/build/python2.7-HpIZBG/python2.7-2.7.11/build-shared
-build=		x86_64-pc-linux-gnu
-host=		x86_64-pc-linux-gnu
+abs_srcdir=	/build/python2.7-FiyQI8/python2.7-2.7.11/build-shared/..
+abs_builddir=	/build/python2.7-FiyQI8/python2.7-2.7.11/build-shared
+build=		x86_64-unknown-linux-gnu
+host=		x86_64-unknown-linux-gnu
 
 CC=		x86_64-linux-gnu-gcc -pthread
 CXX=		c++ -pthread
 MAINCC=		$(CC)
 LINKCC=		$(PURIFY) $(MAINCC)
-AR=		x86_64-linux-gnu-gcc-ar
-RANLIB=		x86_64-linux-gnu-gcc-ranlib
+AR=		ar
+RANLIB=		ranlib
 SVNVERSION=	echo Unversioned directory
 HGVERSION=	
 HGTAG=		
@@ -74,8 +74,8 @@ MAKESETUP=      $(srcdir)/Modules/makesetup
 # Compiler options
 OPT=		-DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes
 BASECFLAGS=	 -fno-strict-aliasing
-CONFIGURE_CFLAGS=	-Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security 
-CONFIGURE_CPPFLAGS=	
+CONFIGURE_CFLAGS=	-D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security 
+CONFIGURE_CPPFLAGS=	 -I/usr/include/ncursesw
 CONFIGURE_LDFLAGS=	-Wl,-Bsymbolic-functions -Wl,-z,relro
 # Avoid assigning CFLAGS, LDFLAGS, etc. so users can use them on the
 # command line to append to these values without stomping the pre-set
@@ -171,7 +171,7 @@ EXEMODE=	755
 FILEMODE=	644
 
 # configure script arguments
-CONFIG_ARGS=	 '--enable-shared' '--prefix=/usr' '--enable-ipv6' '--enable-unicode=ucs4' '--with-dbmliborder=bdb:gdbm' '--with-system-expat' '--with-computed-gotos' '--with-system-ffi' '--with-fpectl' 'CC=x86_64-linux-gnu-gcc' 'CFLAGS=-Wdate-time -D_FORTIFY_SOURCE=2 -g -fstack-protector-strong -Wformat -Werror=format-security ' 'LDFLAGS=-Wl,-Bsymbolic-functions -Wl,-z,relro'
+CONFIG_ARGS=	 '--enable-shared' '--prefix=/usr' '--enable-ipv6' '--enable-unicode=ucs4' '--with-dbmliborder=bdb:gdbm' '--with-system-expat' '--with-system-ffi' '--with-fpectl' 'CC=x86_64-linux-gnu-gcc' 'CFLAGS=-D_FORTIFY_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security ' 'LDFLAGS=-Wl,-Bsymbolic-functions -Wl,-z,relro'
 
 
 # Subdirectories with code
@@ -214,7 +214,7 @@ BUILDPYTHON=	python$(BUILDEXE)
 
 PYTHON_FOR_BUILD=./$(BUILDPYTHON) -E
 _PYTHON_HOST_PLATFORM=
-HOST_GNU_TYPE=  x86_64-pc-linux-gnu
+HOST_GNU_TYPE=  x86_64-unknown-linux-gnu
 
 # Tcl and Tk config info from --with-tcltk-includes and -libs options
 TCLTK_INCLUDES=	
@@ -223,14 +223,9 @@ TCLTK_LIBS=
 # The task to run while instrument when building the profile-opt target
 PROFILE_TASK=-m test.regrtest --pgo
 
-# report files for gcov / lcov coverage report
-COVERAGE_INFO=	$(abs_builddir)/coverage.info
-COVERAGE_REPORT=$(abs_builddir)/lcov-report
-COVERAGE_REPORT_OPTIONS=--no-branch-coverage --title "CPython lcov report"
-
 # === Definitions added by makesetup ===
 
-LOCALMODLIBS=                                  -L$(exec_prefix)/lib -lz         
+LOCALMODLIBS=                                 -L$(exec_prefix)/lib -lz         
 BASEMODLIBS=
 GLHACK=-Dclear=__GLclear
 PYTHONPATH=$(COREPYTHONPATH)
@@ -459,7 +454,7 @@ build_all:	$(BUILDPYTHON) oldsharedmods sharedmods gdbhooks
 
 # Compile a binary with profile guided optimization.
 profile-opt:
-	@if [ $(LLVM_PROF_ERR) = yes ]; then \
+	@if [ $(LLVM_PROF_ERR) == yes ]; then \
 		echo "Error: Cannot perform PGO build because llvm-profdata was not found in PATH" ;\
 		echo "Please add it to PATH and run ./configure again" ;\
 		exit 1;\
@@ -478,7 +473,7 @@ profile-opt:
 	$(MAKE) profile-removal
 
 build_all_generate_profile:
-	$(MAKE) all CFLAGS="$(CFLAGS) $(PGO_PROF_GEN_FLAG)" LDFLAGS="$(LDFLAGS) $(PGO_PROF_GEN_FLAG)" LIBS="$(LIBS)"
+	$(MAKE) all PY_CFLAGS="$(PY_CFLAGS) $(PGO_PROF_GEN_FLAG)" LDFLAGS="$(LDFLAGS) $(PGO_PROF_GEN_FLAG)" LIBS="$(LIBS)"
 
 run_profile_task:
 	: # FIXME: can't run for a cross build
@@ -488,47 +483,12 @@ build_all_merge_profile:
 	$(LLVM_PROF_MERGER)
 
 build_all_use_profile:
-	$(MAKE) all CFLAGS="$(CFLAGS) $(PGO_PROF_USE_FLAG)"
+	$(MAKE) all PY_CFLAGS="$(PY_CFLAGS) $(PGO_PROF_USE_FLAG)"
 
-# Compile and run with gcov
-.PHONY=coverage coverage-lcov coverage-report
 coverage:
 	@echo "Building with support for coverage checking:"
-	$(MAKE) clean profile-removal
-	$(MAKE) all CFLAGS="$(CFLAGS) -O0 -pg -fprofile-arcs -ftest-coverage" LIBS="$(LIBS) -lgcov"
-
-coverage-lcov:
-	@echo "Creating Coverage HTML report with LCOV:"
-	@rm -f $(COVERAGE_INFO)
-	@rm -rf $(COVERAGE_REPORT)
-	@lcov --capture --directory $(abs_builddir) \
-	    --base-directory $(realpath $(abs_builddir)) \
-	    --path $(realpath $(abs_srcdir)) \
-	    --output-file $(COVERAGE_INFO)
-	: # remove 3rd party modules and system headers
-	@lcov --remove $(COVERAGE_INFO) \
-	    '*/Modules/_ctypes/libffi*/*' \
-	    '*/Modules/expat/*' \
-	    '*/Modules/zlib/*' \
-	    '*/Include/*' \
-	    '/usr/include/*' \
-	    '/usr/local/include/*' \
-	    --output-file $(COVERAGE_INFO)
-	@genhtml $(COVERAGE_INFO) --output-directory $(COVERAGE_REPORT) \
-	    $(COVERAGE_REPORT_OPTIONS)
-	@echo
-	@echo "lcov report at $(COVERAGE_REPORT)/index.html"
-	@echo
-
-coverage-report:
-	: # force rebuilding of parser
-	@touch $(GRAMMAR_INPUT)
-	: # build with coverage info
-	$(MAKE) coverage
-	: # run tests, ignore failures
-	$(TESTPYTHON) $(TESTPROG) $(TESTOPTS) || true
-	: # build lcov report
-	$(MAKE) coverage-lcov
+	$(MAKE) clean
+	$(MAKE) all PY_CFLAGS="$(PY_CFLAGS) -O0 -pg -fprofile-arcs -ftest-coverage" LIBS="$(LIBS) -lgcov"
 
 
 # Build the interpreter
@@ -556,15 +516,11 @@ pybuilddir.txt: $(BUILDPYTHON)
 		exit 1 ; \
 	fi
 
-# This is shared by the math and cmath modules
-Modules/_math.o: Modules/_math.c Modules/_math.h
-	$(CC) -c $(CCSHARED) $(PY_CORE_CFLAGS) -o $@ $<
-
 # Build the shared modules
 # Under GNU make, MAKEFLAGS are sorted and normalized; the 's' for
 # -s, --silent or --quiet is always the first char.
 # Under BSD make, MAKEFLAGS might be " -s -v x=y".
-sharedmods: $(BUILDPYTHON) pybuilddir.txt Modules/_math.o
+sharedmods: $(BUILDPYTHON) pybuilddir.txt
 	@case "$$MAKEFLAGS" in \
 	    *\ -s*|s*) quiet="-q";; \
 	    *) quiet="";; \
@@ -690,8 +646,6 @@ Modules/getbuildinfo.o: $(PARSER_OBJS) \
 	      -DHGVERSION="\"`LC_ALL=C $(HGVERSION)`\"" \
 	      -DHGTAG="\"`LC_ALL=C $(HGTAG)`\"" \
 	      -DHGBRANCH="\"`LC_ALL=C $(HGBRANCH)`\"" \
-	      $(if $(BUILD_DATE),-DDATE='"$(BUILD_DATE)"') \
-	      $(if $(BUILD_TIME),-DTIME='"$(BUILD_TIME)"') \
 	      -o $@ $(srcdir)/Modules/getbuildinfo.c
 
 Modules/getpath.o: $(srcdir)/Modules/getpath.c Makefile
@@ -992,10 +946,6 @@ $(DESTSHARED):
 #  $(PYTHON) -> python2 -> python$(VERSION))
 # Also create equivalent chains for other installed files
 bininstall:	altbininstall
-	if test ! -d $(DESTDIR)$(LIBPC); then \
-		echo "Creating directory $(LIBPC)"; \
-		$(INSTALL) -d -m $(DIRMODE) $(DESTDIR)$(LIBPC); \
-	fi
 	-if test -f $(DESTDIR)$(BINDIR)/$(PYTHON) -o -h $(DESTDIR)$(BINDIR)/$(PYTHON); \
 	then rm -f $(DESTDIR)$(BINDIR)/$(PYTHON); \
 	else true; \
@@ -1435,7 +1385,6 @@ clean: pycremoval
 profile-removal:
 	find . -name '*.gc??' -exec rm -f {} ';'
 	find . -name '*.profclang?' -exec rm -f {} ';'
-	find . -name '*.dyn' -exec rm -f {} ';'
 
 clobber: clean profile-removal
 	-rm -f $(BUILDPYTHON) $(PGEN) $(LIBRARY) $(LDLIBRARY) $(DLLLIBRARY) \
@@ -1532,6 +1481,7 @@ Modules/arraymodule$(SO):  Modules/arraymodule.o; $(BLDSHARED)  Modules/arraymod
 Modules/cmathmodule.o: $(srcdir)/Modules/cmathmodule.c; $(CC) $(PY_CORE_CFLAGS)  -c $(srcdir)/Modules/cmathmodule.c -o Modules/cmathmodule.o
 Modules/cmathmodule$(SO):  Modules/cmathmodule.o; $(BLDSHARED)  Modules/cmathmodule.o   -o Modules/cmathmodule$(SO)
 Modules/mathmodule.o: $(srcdir)/Modules/mathmodule.c; $(CC) $(PY_CORE_CFLAGS)  -c $(srcdir)/Modules/mathmodule.c -o Modules/mathmodule.o
+Modules/_math.o: $(srcdir)/Modules/_math.c; $(CC) $(PY_CORE_CFLAGS)  -c $(srcdir)/Modules/_math.c -o Modules/_math.o
 Modules/math$(SO):  Modules/mathmodule.o Modules/_math.o; $(BLDSHARED)  Modules/mathmodule.o Modules/_math.o   -o Modules/math$(SO)
 Modules/_struct.o: $(srcdir)/Modules/_struct.c; $(CC) $(PY_CORE_CFLAGS)  -c $(srcdir)/Modules/_struct.c -o Modules/_struct.o
 Modules/_struct$(SO):  Modules/_struct.o; $(BLDSHARED)  Modules/_struct.o   -o Modules/_struct$(SO)
@@ -1551,8 +1501,6 @@ Modules/stropmodule.o: $(srcdir)/Modules/stropmodule.c; $(CC) $(PY_CORE_CFLAGS) 
 Modules/stropmodule$(SO):  Modules/stropmodule.o; $(BLDSHARED)  Modules/stropmodule.o   -o Modules/stropmodule$(SO)
 Modules/_functoolsmodule.o: $(srcdir)/Modules/_functoolsmodule.c; $(CC) $(PY_CORE_CFLAGS)  -c $(srcdir)/Modules/_functoolsmodule.c -o Modules/_functoolsmodule.o
 Modules/_functoolsmodule$(SO):  Modules/_functoolsmodule.o; $(BLDSHARED)  Modules/_functoolsmodule.o   -o Modules/_functoolsmodule$(SO)
-Modules/datetimemodule.o: $(srcdir)/Modules/datetimemodule.c; $(CC) $(PY_CORE_CFLAGS)  -c $(srcdir)/Modules/datetimemodule.c -o Modules/datetimemodule.o
-Modules/datetimemodule$(SO):  Modules/datetimemodule.o; $(BLDSHARED)  Modules/datetimemodule.o   -o Modules/datetimemodule$(SO)
 Modules/_bisectmodule.o: $(srcdir)/Modules/_bisectmodule.c; $(CC) $(PY_CORE_CFLAGS)  -c $(srcdir)/Modules/_bisectmodule.c -o Modules/_bisectmodule.o
 Modules/_bisectmodule$(SO):  Modules/_bisectmodule.o; $(BLDSHARED)  Modules/_bisectmodule.o   -o Modules/_bisectmodule$(SO)
 Modules/unicodedata.o: $(srcdir)/Modules/unicodedata.c; $(CC) $(PY_CORE_CFLAGS)  -c $(srcdir)/Modules/unicodedata.c -o Modules/unicodedata.o

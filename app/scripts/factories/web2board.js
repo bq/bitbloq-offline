@@ -21,6 +21,11 @@ angular.module('bitbloqOffline')
             serialMonitorPanel = null,
             plotterPanel = null;
 
+        function MessageWrapper() {
+            this.send = function (message) {
+                w2bProcess.stdin.write(consoleMessageParser.INIT + message + consoleMessageParser.END + '\n');
+            };
+        }
 
         function getWeb2boardCommand() {
             var platformOs = process.platform;
@@ -31,7 +36,7 @@ angular.module('bitbloqOffline')
                 return common.appPath + '/app/res/web2board/darwin/Web2Board.app/Contents/MacOS/web2boardLauncher';
             }
             if (process.arch === 'x64') {
-                return common.appPath + '/app/res/web2board/linux/web2boardLauncher';
+                return common.appPath + '/app/res/web2board/linux/web2board';
             }
             return common.appPath + '/app/res/web2board/linux32/web2boardLauncher';
         }
@@ -43,8 +48,7 @@ angular.module('bitbloqOffline')
         function startW2bProcess() {
             console.log('starting Web2board...');
             var spawn = require('child_process').spawn;
-            w2bProcess = spawn('python', ['/home/startic/repos/web2boardOffline/src/web2board.py',
-                '--offline', '--logLevel', 'DEBUG']);
+            w2bProcess = spawn(getWeb2boardCommand(), ['--offline', '--logLevel', 'DEBUG']);
             w2bProcess.stdout.setEncoding('utf8');
             w2bProcess.stdin.setEncoding('utf8');
             w2bProcess.ready = false;
@@ -70,11 +74,14 @@ angular.module('bitbloqOffline')
                             api.wsClient.onmessage({data: msg});
                         });
                     }
-                    console.log(str);
+                    // console.log(str);
                 });
 
                 w2bProcess.on('close', function (code) {
-                    console.log('Web2board closed with code: ' + code);
+                    $log.error('web2board disconnected with error: ' + code);
+                    api.clearTriggers();
+                    inProgress = false;
+                    alertsService.add('web2board_toast_closedUnexpectedly', 'web2board', 'warning');
                 });
             });
         }
@@ -140,12 +147,6 @@ angular.module('bitbloqOffline')
                 alertsService.add('alert-web2board-boardNotReady', 'web2board', 'warning');
             }
             return board;
-        }
-
-        function messageWrapper() {
-            this.send = function (message) {
-                w2bProcess.stdin.write(consoleMessageParser.INIT + message + consoleMessageParser.END + '\n');
-            };
         }
 
         function prepareSerialConnectionScope(board, toastId) {
@@ -224,7 +225,7 @@ angular.module('bitbloqOffline')
             return false;
         }
 
-        api = WSHubsAPI.construct(45000, messageWrapper, $q);
+        api = WSHubsAPI.construct(45000, MessageWrapper, $q);
 
         // api.connect('ws://' + web2board.config.wsHost + ':' + web2board.config.wsPort + '/Bitbloq');
 

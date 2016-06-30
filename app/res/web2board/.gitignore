@@ -3,10 +3,11 @@
 **/src/main.ino
 **/info.log
 **/web2boardLauncher.log
+**/.web2boardLauncher.log
 **/config.json
 **/res/integrationTestReport.html
 **/res/unitTestReport.html
 **/info.log.*
 **/res/TestSettings
-web2board-config.json
+.web2board-config.json
 **/platformioWS*/

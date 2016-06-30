@@ -6,31 +6,13 @@
 # elif defined(__i386__)
 #  include <i386-linux-gnu/python2.7/pyconfig.h>
 # elif defined(__aarch64__) && defined(__AARCH64EL__)
-#  if defined(__ILP32__)
-#  include <aarch64_ilp32-linux-gnu/python2.7/pyconfig.h>
-#  else
 #  include <aarch64-linux-gnu/python2.7/pyconfig.h>
-#  endif
-# elif defined(__aarch64__) && defined(__AARCH64EB__)
-#  if defined(__ILP32__)
-#  include <aarch64_be_ilp32-linux-gnu/python2.7/pyconfig.h>
-#  else
-#  include <aarch64_be-linux-gnu/python2.7/pyconfig.h>
-#  endif
 # elif defined(__alpha__)
 #  include <alpha-linux-gnu/python2.7/pyconfig.h>
 # elif defined(__ARM_EABI__) && defined(__ARM_PCS_VFP)
-#  if defined(__ARMEL__)
 #  include <arm-linux-gnueabihf/python2.7/pyconfig.h>
-#  else
-#  include <armeb-linux-gnueabihf/python2.7/pyconfig.h>
-#  endif
 # elif defined(__ARM_EABI__) && !defined(__ARM_PCS_VFP)
-#  if defined(__ARMEL__)
 #  include <arm-linux-gnueabi/python2.7/pyconfig.h>
-#  else
-#  include <armeb-linux-gnueabi/python2.7/pyconfig.h>
-#  endif
 # elif defined(__hppa__)
 #  include <hppa-linux-gnu/python2.7/pyconfig.h>
 # elif defined(__ia64__)

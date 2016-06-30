@@ -58,7 +58,8 @@ CC1101::CC1101(void)
   syncWord[0] = CC1101_DEFVAL_SYNC1;
   syncWord[1] = CC1101_DEFVAL_SYNC0;
   devAddress = CC1101_DEFVAL_ADDR;
-  paTableByte = PA_LowPower;            // Priority = Low power
+
+  hgmEnabled = false;
 }
 
 /**
@@ -230,7 +231,12 @@ void CC1101::setCCregs(void)
   // Set default carrier frequency = 868 MHz
   setCarrierFreq(carrierFreq);
 
-  writeReg(CC1101_MDMCFG4,  CC1101_DEFVAL_MDMCFG4);
+  // RF speed
+  if (workMode == MODE_LOW_SPEED)
+    writeReg(CC1101_MDMCFG4,  CC1101_DEFVAL_MDMCFG4_4800);
+  else
+    writeReg(CC1101_MDMCFG4,  CC1101_DEFVAL_MDMCFG4_38400);
+    
   writeReg(CC1101_MDMCFG3,  CC1101_DEFVAL_MDMCFG3);
   writeReg(CC1101_MDMCFG2,  CC1101_DEFVAL_MDMCFG2);
   writeReg(CC1101_MDMCFG1,  CC1101_DEFVAL_MDMCFG1);
@@ -274,10 +280,12 @@ void CC1101::setCCregs(void)
  * Initialize CC1101 radio
  *
  * @param freq Carrier frequency
+ * @param mode Working mode (speed, ...)
  */
-void CC1101::init(uint8_t freq)
+void CC1101::init(uint8_t freq, uint8_t mode)
 {
   carrierFreq = freq;
+  workMode = mode;
   
   spi.init();                           // Initialize SPI interface
   pinMode(GDO0, INPUT);                 // Config GDO0 as input
@@ -285,8 +293,7 @@ void CC1101::init(uint8_t freq)
   reset();                              // Reset CC1101
 
   // Configure PATABLE
-  //writeBurstReg(CC1101_PATABLE, (byte*)paTable, 8);
-  writeReg(CC1101_PATABLE, paTableByte);
+  setTxPowerAmp(PA_LowPower);
 }
 
 /**
@@ -386,6 +393,10 @@ void CC1101::setCarrierFreq(byte freq)
  */
 void CC1101::setPowerDownState() 
 {
+  // Disable LNA on LD-board if any
+  if (hgmEnabled)
+    disableLNA();
+
   // Comming from RX state, we need to enter the IDLE state first
   cmdStrobe(CC1101_SIDLE);
   // Enter Power-down state
@@ -527,6 +538,10 @@ void CC1101::setRxState(void)
 {
   cmdStrobe(CC1101_SRX);
   rfState = RFSTATE_RX;
+
+  // Enable LNA on LD-board if any
+  if (hgmEnabled)
+    enableLNA();
 }
 
 /**
@@ -536,6 +551,72 @@ void CC1101::setRxState(void)
  */
 void CC1101::setTxState(void)
 {
-   cmdStrobe(CC1101_STX);
+  // Enable PA on LD-board if any
+  if (hgmEnabled)
+    enablePA();
+
+  cmdStrobe(CC1101_STX);
   rfState = RFSTATE_TX;
 }
+
+/**
+ * enablePA
+ *
+ * Enable PA and disable LNA on the LD-Board
+ */
+void CC1101::enablePA(void)
+{
+ digitalWrite(PA_EN, HIGH);
+ digitalWrite(LNA_EN, LOW);
+}
+
+/**
+ * enableLNA
+ *
+ * Enable LNA and disable PA on the LD-Board
+ */
+void CC1101::enableLNA(void)
+{
+ digitalWrite(LNA_EN, HIGH);
+ digitalWrite(PA_EN, LOW);
+}
+
+/**
+ * disableLNA
+ *
+ * Disable LNA and PA on the LD-Board
+ */
+void CC1101::disableLNA(void)
+{
+ digitalWrite(LNA_EN, LOW);
+ digitalWrite(PA_EN, LOW);
+}
+
+/**
+ * enableHGM
+ *
+ * Enable Long-distance board with CC1190 IC in high-gain mode
+ */
+void CC1101::enableHGM(void)
+{
+ hgmEnabled = true;
+
+ pinMode(HGM, OUTPUT);
+ pinMode(LNA_EN, OUTPUT);
+ pinMode(PA_EN, OUTPUT);
+
+ digitalWrite(HGM, HIGH);
+}
+
+/**
+ * disableHGM
+ *
+ * Disable high-gain mode on the LD-Board
+ */
+void CC1101::disableHGM(void)
+{
+ hgmEnabled = false;
+
+ digitalWrite(HGM, LOW);
+}
+

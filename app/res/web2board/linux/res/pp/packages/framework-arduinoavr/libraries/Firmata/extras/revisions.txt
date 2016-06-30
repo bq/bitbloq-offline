@@ -1,4 +1,31 @@
-FIRMATA 2.5.0 0 Nov 7, 2015
+FIRMATA 2.5.2 - Feb 15, 2016
+
+[core library]
+* Added Wi-Fi transport (Jesse Frush)
+* Added support for Arduino MKR1000 (Jesse Frush)
+* Moved Serial feature to own class SerialFimata
+* Moved pin config and pin state handling to Firmata.cpp
+* Added new method disableBlinkVersion to provide a way to optionally bypass startup blink sequence
+
+[StandardFirmata & variants]
+* Added StandardFirmataWiFi (Jesse Frush)
+* Added ethernetConfig.h for StandardFirmataEthernet and StandardFirmtaEthernetPlus
+* Removed serialUtils.h and using SerialFirmata class instead for Serial feature
+
+FIRMATA 2.5.1 - Dec 26, 2015
+
+[core library]
+* Added support for Arduino 101
+* Make VERSION_BLINK_PIN optional
+* Separate protocol version from firmware version.
+  Use FIRMATA_PROTOCOL_VERSION_[MAJOR/MINOR/BUGFIX] for protocol and use
+  FIRMATA_FIRMWARE_VERSION_[MAJOR/MINOR/BUGFIX] for firmware (library version).
+
+[StandardFirmata & variants]
+* Added ability to auto-restart I2C transmission by setting bit 6 of byte 3
+  of the I2C_REQUEST message.
+
+FIRMATA 2.5.0 - Nov 7, 2015
 
 [core library]
 * Added Serial feature for interfacing with serial devices via hardware

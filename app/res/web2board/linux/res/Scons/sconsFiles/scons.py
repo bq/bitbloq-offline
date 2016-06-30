@@ -22,7 +22,7 @@
 # LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-from libs.utils import getModulePath
+from libs.utils import get_module_path
 
 from libs.PathsManager import PathsManager
 
@@ -178,9 +178,9 @@ else:
 # then for 'scons'.
 libs.extend([os.path.join(x, scons_version) for x in prefs])
 libs.extend([os.path.join(x, 'scons') for x in prefs])
-libs.extend([getModulePath()])
-libs.extend([getModulePath() + os.sep + "sconsFiles"])
-libs.extend([getModulePath() + os.sep + "sconsFiles" + "SCons"])
+libs.extend([get_module_path()])
+libs.extend([get_module_path() + os.sep + "sconsFiles"])
+libs.extend([get_module_path() + os.sep + "sconsFiles" + "SCons"])
 
 sys.path = libs + sys.path
 
