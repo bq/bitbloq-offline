@@ -9,9 +9,10 @@
  * Controller of the bitbloqApp
  */
 angular.module('bitbloqOffline')
-    .controller('Web2boardSettingsCtrl', function ($scope, _, web2boardV2, alertsService) {
-        var configHub = web2boardV2.api.ConfigHub,
-            versionHub = web2boardV2.api.VersionsHandlerHub;
+    .controller('Web2boardSettingsCtrl', function ($scope, _, web2board, alertsService) {
+        var configHub = web2board.api.ConfigHub,
+            versionHub = web2board.api.VersionsHandlerHub;
+
         $scope.settings = {
             libraries_path: '',
             proxy: '',
@@ -24,10 +25,6 @@ angular.module('bitbloqOffline')
         $scope.libsError = null;
         $scope.focus = false;
 
-        web2boardV2.api.callbacks.onClientFunctionNotFound = function (hub, func) {
-            console.error(hub, func);
-        };
-
         $scope.testLibrariesPath = function () {
             $scope.libsPathIcon = '#loading';
             $scope.libsPathClass = 'w2b__settings_w2b__settings_loading';
@@ -38,6 +35,8 @@ angular.module('bitbloqOffline')
                 });
         };
 
+        /*
+        NO NEEDED IN OFFLINE
         $scope.testProxy = function () {
             $scope.proxyTestIcon = '#loading';
             $scope.proxyTestClass = 'w2b__settings_w2b__settings_loading';
@@ -50,29 +49,25 @@ angular.module('bitbloqOffline')
                     $scope.proxyTestIcon = '#error';
                     $scope.proxyError = true;
                 });
-        };
+        };*/
 
         $scope.confirmAction = function () {
+            $scope.settings.proxy = $scope.settings.proxy === '' ? null : $scope.settings.proxy;
             $scope.testProxy()
                 .then(function () {
                     return $scope.testLibrariesPath();
                 })
                 .then(function () {
-                    if (!$scope.proxyError && !$scope.libsError) {
-                        return configHub.server.setValues($scope.settings)
-                            .then(function () {
-                                alertsService.add('web2board-settings-confirmSaved', 'web2board', 'ok', 2000);
-                                $scope.closeThisDialog();
-                            });
-                    }
+                    $scope.closeThisDialog();
                 })
-                .catch(function () {
+                .catch(function (error) {
                     alertsService.add('web2board-settings-savingError ', 'web2board', 'error');
                 });
         };
 
         configHub.server.getConfig().then(function (config) {
             $scope.settings = config;
+            $scope.settings.proxy = $scope.settings.proxy || ''; //if null use empty string (w2b will consider it as no proxy)
             return versionHub.server.getLibVersion();
         }).then(function (version) {
             $scope.libsVersion = {version: version};

@@ -9,7 +9,7 @@
  * Controller of the bitbloqApp
  */
 angular.module('bitbloqOffline')
-    .controller('PlotterCtrl', function ($scope, _, web2board, $route, $translate, $interval) {
+    .controller('PlotterCtrl', function ($scope, _, web2board, $route, $translate, serialHandler) {
         var serialHub = web2board.api.SerialMonitorHub,
             dataParser = {
                 buf: '',
@@ -23,14 +23,8 @@ angular.module('bitbloqOffline')
             },
             plotterLength = 500,
             receivedDataCount = 0;
-        // refactor port param to get "/"
-        $route.current.params.port = $route.current.params.port.split("_").join("/");
 
-        web2board.api.callbacks.onClientFunctionNotFound = function (hub, func) {
-            console.error(hub, func);
-        };
-
-        serialHub.client.received = function (port, data) {
+        $scope.onReceived = function (port, data) {
             var messages = dataParser.retrieve_messages(data);
             messages.forEach(function (message) {
                 var number = parseFloat(message);
@@ -45,24 +39,23 @@ angular.module('bitbloqOffline')
             $scope.$apply();
         };
 
-        serialHub.client.written = function (message) {
+        $scope.onWritten = function (message) {
             $scope.serial.dataReceived += message;
         };
 
-        serialHub.client.baudrateChanged = function (port, baudrate) {
-            if (port === $scope.serial.port && baudrate) {
+        $scope.onExternalBaudrateChanged = function (port, baudrate) {
+            if (baudrate) {
                 $scope.serial.baudrate = baudrate;
             }
         };
 
-        $scope.baudrateOptions = [300, 1200, 2400, 4800, 9600, 14400, 19200, 28800, 38400, 57600, 115200];
+        $scope.baudrateOptions = serialHandler.baudrateOptions;
 
         $scope.serial = {
             dataReceived: '',
-            port: $route.current.params.port,
-            baudrate: 9600,
-            board: $route.current.params.board
+            baudrate: serialHandler.defaultBaudrate
         };
+        
         $scope.pause = false;
         $scope.pauseText = $translate.instant('plotter-pause');
         $scope.data = [{
@@ -106,7 +99,7 @@ angular.module('bitbloqOffline')
         $scope.onBaudrateChanged = function (baudrate) {
             if (baudrate) {
                 $scope.serial.baudrate = baudrate;
-                serialHub.server.changeBaudrate($scope.serial.port, baudrate);
+                serialHub.server.changeBaudrate($scope.port, baudrate);
             }
         };
 
@@ -120,32 +113,5 @@ angular.module('bitbloqOffline')
             $scope.pauseText = $scope.pause ? $translate.instant('plotter-play') : $translate.instant('plotter-pause');
         };
 
-        web2board.api.connect().done(function () {
-            web2board.api.UtilsAPIHub.server.setId("Plotter").done(function () {
-                serialHub.server.getSubscribedClientsToHub().done(function (subscribedClients) {
-                    if (subscribedClients.indexOf("Plotter") <= -1) {
-                        serialHub.server.subscribeToHub();
-                        console.log("subscribed");
-                    }
-                });
-
-                serialHub.server.isPortConnected($scope.serial.port).done(function (connected) {
-                    if (!connected) {
-                        serialHub.server.startConnection($scope.serial.port, $scope.serial.baudrate);
-                    } else {
-                        $scope.onBaudrateChanged();
-                    }
-                });
-            });
-        });
-
-        $interval(function () {
-            serialHub.server.isPortConnected($scope.serial.port)
-                .done(function (connected) {
-                    if (!connected) {
-                        serialHub.server.startConnection($scope.serial.port, $scope.serial.baudrate)
-                    }
-                })
-        }, 2000)
-
+        serialHandler.subscribeToSerialEvents($scope);
     });

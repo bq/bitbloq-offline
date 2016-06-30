@@ -75,8 +75,8 @@ angular.module('bitbloqOffline')
         }
 
         function isANewerVersion(projectVersion, currentVersion) {
-            projectVersion = projectVersion || "0.0.0";
-            currentVersion = currentVersion || "0.0.0";
+            projectVersion = projectVersion || '0.0.0';
+            currentVersion = currentVersion || '0.0.0';
             projectVersion = projectVersion.split('.');
             currentVersion = currentVersion.split('.');
             for (var i = 0; i < projectVersion.length; i++) {
@@ -187,7 +187,7 @@ angular.module('bitbloqOffline')
             function(newValue) {
                 $scope.menuTree.viewMenuItems.items.forEach(function(item) {
                     item.disabled = newValue;
-                })
+                });
             }
         );
 

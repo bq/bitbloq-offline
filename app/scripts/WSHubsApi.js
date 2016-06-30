@@ -1,7 +1,7 @@
+'use strict';
+/* jshint ignore:start */
+/* ignore jslint start */
 (function(WSHubsAPI) {
-
-    /* jshint ignore:start */
-    /* ignore jslint start */
     function HubsAPI(serverTimeout, wsClientClass, PromiseClass) {
 
         var messageID = 0,
@@ -9,7 +9,7 @@
             defaultRespondTimeout = serverTimeout || 5000,
             thisApi = this,
             messagesBeforeOpen = [],
-            emptyFunction = function () {},
+            emptyFunction = function () {return function () {}}, //redefine any empty function as required
             onOpenTriggers = [];
 
         PromiseClass = PromiseClass || Promise;
@@ -60,8 +60,8 @@
                     if (reconnectTimeout !== -1) {
                         window.setTimeout(function () {
                             thisApi.connect(url, reconnectTimeout);
-                            thisApi.callbacks.onReconnecting(error);
-                        }, reconnectTimeout * 1000);
+                            thisApi.onReconnecting(error);
+                        }, reconnectTimeout);
                     }
                 }
 
@@ -69,12 +69,12 @@
                     thisApi.wsClient = wsClientClass === undefined ? new WebSocket(url) : new wsClientClass(url);
                 } catch (error) {
                     reconnect(error);
-                    return reject(error);
+                    reject(error);
                 }
 
                 thisApi.wsClient.onopen = function () {
                     resolve();
-                    thisApi.callbacks.onOpen(thisApi);
+                    thisApi.onOpen(thisApi);
                     onOpenTriggers.forEach(function (trigger) {
                         trigger();
                     });
@@ -85,7 +85,7 @@
 
                 thisApi.wsClient.onclose = function (error) {
                     reject(error);
-                    thisApi.callbacks.onClose(error);
+                    thisApi.onClose(error);
                     reconnect(error);
                 };
 
@@ -134,7 +134,7 @@
                                     }
                                 }
                             } else {
-                                thisApi.callbacks.onClientFunctionNotFound(msgObj.hub, msgObj.function);
+                                thisApi.onClientFunctionNotFound(msgObj.hub, msgObj.function);
                             }
                         }
                     } catch (err) {
@@ -143,18 +143,16 @@
                 };
 
                 thisApi.wsClient.onMessageError = function (error) {
-                    thisApi.callbacks.onMessageError(error);
+                    thisApi.onMessageError(error);
                 };
             });
         };
 
-        this.callbacks = {
-            onClose: emptyFunction,
-            onOpen: emptyFunction,
-            onReconnecting: emptyFunction,
-            onMessageError: emptyFunction,
-            onClientFunctionNotFound: emptyFunction
-        };
+        this.onClose = emptyFunction();
+        this.onOpen = emptyFunction();
+        this.onReconnecting = emptyFunction();
+        this.onMessageError = emptyFunction();
+        this.onClientFunctionNotFound = emptyFunction();
 
         this.defaultErrorHandler = null;
 
@@ -232,7 +230,19 @@
                 return constructMessage('CodeHub', 'unsubscribe_from_hub', arguments);
             }
         };
-        this.CodeHub.client = {};
+        this.CodeHub.client = {
+            __HUB_NAME : 'CodeHub',
+
+        };
+        this.CodeHub.getClients = function(clientsIds){
+            return {
+                clientsIds: clientsIds,
+                call: function (functionName, functionArgs) {
+                    var bodyArgs = [this.clientsIds, functionName, functionArgs];
+                    return constructMessage('CodeHub', '_client_to_clients_bridge', bodyArgs);
+                },
+            }
+        };
         this.VersionsHandlerHub = {};
         this.VersionsHandlerHub.server = {
             __HUB_NAME : 'VersionsHandlerHub',
@@ -272,7 +282,19 @@
                 return constructMessage('VersionsHandlerHub', 'unsubscribe_from_hub', arguments);
             }
         };
-        this.VersionsHandlerHub.client = {};
+        this.VersionsHandlerHub.client = {
+            __HUB_NAME : 'VersionsHandlerHub',
+
+        };
+        this.VersionsHandlerHub.getClients = function(clientsIds){
+            return {
+                clientsIds: clientsIds,
+                call: function (functionName, functionArgs) {
+                    var bodyArgs = [this.clientsIds, functionName, functionArgs];
+                    return constructMessage('VersionsHandlerHub', '_client_to_clients_bridge', bodyArgs);
+                },
+            }
+        };
         this.LoggingHub = {};
         this.LoggingHub.server = {
             __HUB_NAME : 'LoggingHub',
@@ -297,7 +319,19 @@
                 return constructMessage('LoggingHub', 'get_subscribed_clients_ids', arguments);
             }
         };
-        this.LoggingHub.client = {};
+        this.LoggingHub.client = {
+            __HUB_NAME : 'LoggingHub',
+
+        };
+        this.LoggingHub.getClients = function(clientsIds){
+            return {
+                clientsIds: clientsIds,
+                call: function (functionName, functionArgs) {
+                    var bodyArgs = [this.clientsIds, functionName, functionArgs];
+                    return constructMessage('LoggingHub', '_client_to_clients_bridge', bodyArgs);
+                },
+            }
+        };
         this.WindowHub = {};
         this.WindowHub.server = {
             __HUB_NAME : 'WindowHub',
@@ -322,7 +356,19 @@
                 return constructMessage('WindowHub', 'get_subscribed_clients_ids', arguments);
             }
         };
-        this.WindowHub.client = {};
+        this.WindowHub.client = {
+            __HUB_NAME : 'WindowHub',
+
+        };
+        this.WindowHub.getClients = function(clientsIds){
+            return {
+                clientsIds: clientsIds,
+                call: function (functionName, functionArgs) {
+                    var bodyArgs = [this.clientsIds, functionName, functionArgs];
+                    return constructMessage('WindowHub', '_client_to_clients_bridge', bodyArgs);
+                },
+            }
+        };
         this.UtilsAPIHub = {};
         this.UtilsAPIHub.server = {
             __HUB_NAME : 'UtilsAPIHub',
@@ -362,7 +408,19 @@
                 return constructMessage('UtilsAPIHub', 'set_id', arguments);
             }
         };
-        this.UtilsAPIHub.client = {};
+        this.UtilsAPIHub.client = {
+            __HUB_NAME : 'UtilsAPIHub',
+
+        };
+        this.UtilsAPIHub.getClients = function(clientsIds){
+            return {
+                clientsIds: clientsIds,
+                call: function (functionName, functionArgs) {
+                    var bodyArgs = [this.clientsIds, functionName, functionArgs];
+                    return constructMessage('UtilsAPIHub', '_client_to_clients_bridge', bodyArgs);
+                },
+            }
+        };
         this.SerialMonitorHub = {};
         this.SerialMonitorHub.server = {
             __HUB_NAME : 'SerialMonitorHub',
@@ -447,7 +505,19 @@
                 return constructMessage('SerialMonitorHub', 'close_connection', arguments);
             }
         };
-        this.SerialMonitorHub.client = {};
+        this.SerialMonitorHub.client = {
+            __HUB_NAME : 'SerialMonitorHub',
+
+        };
+        this.SerialMonitorHub.getClients = function(clientsIds){
+            return {
+                clientsIds: clientsIds,
+                call: function (functionName, functionArgs) {
+                    var bodyArgs = [this.clientsIds, functionName, functionArgs];
+                    return constructMessage('SerialMonitorHub', '_client_to_clients_bridge', bodyArgs);
+                },
+            }
+        };
         this.ConfigHub = {};
         this.ConfigHub.server = {
             __HUB_NAME : 'ConfigHub',
@@ -522,16 +592,27 @@
                 return constructMessage('ConfigHub', 'unsubscribe_from_hub', arguments);
             }
         };
-        this.ConfigHub.client = {};
+        this.ConfigHub.client = {
+            __HUB_NAME : 'ConfigHub',
+
+        };
+        this.ConfigHub.getClients = function(clientsIds){
+            return {
+                clientsIds: clientsIds,
+                call: function (functionName, functionArgs) {
+                    var bodyArgs = [this.clientsIds, functionName, functionArgs];
+                    return constructMessage('ConfigHub', '_client_to_clients_bridge', bodyArgs);
+                },
+            }
+        };
     }
-    /* jshint ignore:end */
-    /* ignore jslint end */
-
-
-
+    
     WSHubsAPI.construct = function(serverTimeout, wsClientClass, promiseClass) {
         return new HubsAPI(serverTimeout, wsClientClass, promiseClass);
     };
     return WSHubsAPI;
+
 })(window.WSHubsAPI = window.WSHubsAPI || {}, undefined);
+/* jshint ignore:end */
+/* ignore jslint end */
     

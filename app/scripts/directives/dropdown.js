@@ -1,5 +1,6 @@
+'use strict';
 angular.module('bitbloqOffline')
-  .directive('dropdown', function($parse, $timeout, $filter, $translate) {
+  .directive('dropdown', function($parse, $timeout, $filter) {
     return {
       restrict: 'E',
       templateUrl: 'file://' + __dirname + '/views/components/dropdown.html',
@@ -10,7 +11,6 @@ angular.module('bitbloqOffline')
       controllerAs: 'dropdown',
       controller: function($scope, $element, $attrs, common) {
         var self = this;
-        var mainContent;
         self.activeMenu = null;
 
         self.select = function(menu) {
@@ -23,7 +23,7 @@ angular.module('bitbloqOffline')
 
         self.changeTitle = function(item) {
           if ($scope.tree.languages) {
-            translate = $filter('translate');
+            var translate = $filter('translate');
             $scope.tree.languages.name = translate(item.name);
             common.translateTo(item.name);
           }

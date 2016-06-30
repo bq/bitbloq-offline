@@ -1,0 +1,27 @@
+<div data-ng-controller="SerialMonitorCtrl" class="form serial--panel">
+
+    <div class="serial--form-control">
+        <span class="serial--send--content">
+            <input class="serial--send--input"
+                   type="text"
+                   data-ng-model="serial.input"
+                   placeholder="Send text to board"
+                   data-element="login-emailusername-intput"
+                   ng-keypress="onKeyPressedInInput($event)">
+            <button class="btn btn--secondary btn--small" ng-click="send()">{{'serial-send' | translate}}</button>
+        </span>
+    </div>
+    <div class="form-control" style="flex: auto; position: relative">
+                <textarea id="serialData" data-ng-model="serial.dataReceived"
+                          class="serial--textArea" readonly></textarea>
+    </div>
+    <!-- Submit Form -->
+    <!-- We can create a directive because it is the same in Plotter -->
+    <div>
+        <button class="btn btn--secondary btn--small" ng-click="onPause()">{{pauseText}}</button>
+        <button class="btn btn--secondary btn--small" ng-click="onClear()">{{'serial-clear' | translate}}</button>
+        <common-dropdown options="baudrateOptions" class="projects--sort-dropdown right" style="width:150px; float: right; "
+                         direction="up"
+                         heading-option="serial.baudrate" options-click="onBaudrateChanged"></common-dropdown>
+    </div>
+</div>

@@ -20,7 +20,8 @@
     "autogrow": "1.0.3",
     "d3": "3.5.2",
     "nvd3": "^1.8.3",
-    "angular-nvd3": "^1.0.7"
+    "angular-nvd3": "^1.0.7",
+    "jspanel": "^2.6.2"
   },
   "resolutions": {
     "lodash": "3.10.1",

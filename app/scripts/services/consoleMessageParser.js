@@ -8,7 +8,7 @@
  * */
 'use strict';
 angular.module('bitbloqOffline')
-    .service('ConsoleMessageParser', function () {
+    .service('consoleMessageParser', function () {
         var buffer = '',
             self = this;
 
@@ -19,10 +19,10 @@ angular.module('bitbloqOffline')
             data = buffer + data;
 
             var messages = [],
-                messages_to_end = data.split(this.END);
+                messagesToEnd = data.split(this.END);
 
-            this.buffer = messages_to_end.pop();
-            messages_to_end.forEach(function (m2e) {
+            this.buffer = messagesToEnd.pop();
+            messagesToEnd.forEach(function (m2e) {
                 var splitMessage = m2e.split(self.INIT);
                 if (splitMessage.length > 0) {
                     messages.push(splitMessage.pop());
