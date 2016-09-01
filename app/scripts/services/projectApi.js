@@ -33,7 +33,7 @@ angular.module('bitbloqOffline')
             project.exportedFromBitbloqOffline = true;
             project.bitbloqOfflineVersion = common.version;
             project.bloqsVersion = common.bloqsVersion;
-            nodeUtils.downloadFile(filename.substring(0, 30) + '.json', JSON.stringify(project), '.json', function(path) {
+            nodeUtils.downloadFile(filename.substring(0, 30) + '.bitbloq', JSON.stringify(project), '.bitbloq', function(path) {
                 exports.savedProjectPath = path;
                 exports.oldProject = project;
                 exports.projectChanged = false;

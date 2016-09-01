@@ -21,6 +21,9 @@ angular
         function($routeProvider, $translateProvider) {
             $routeProvider
                 .when('/', {
+                    templateUrl: 'views/python-bloqs-project.html'
+                })
+                .when('/arduino', {
                     templateUrl: 'views/bloqs-project.html'
                 })
                 .when('/plotter/:port/:board', {

@@ -104,7 +104,7 @@ angular.module('bitbloqOffline')
                     properties: ['openFile', 'createDirectory'],
                     filters: [{
                         name: 'Bitbloq',
-                        extensions: ['json']
+                        extensions: ['json', 'bitbloq']
                     }, {
                         name: 'All Files',
                         extensions: ['*']

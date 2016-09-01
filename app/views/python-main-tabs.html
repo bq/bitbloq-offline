@@ -1,0 +1,12 @@
+<tabset>
+    <tab icon="'#hardware'" icon-size="'small'" callback="hw2Bloqs.repaint()">
+        <div ng-include="'views/hardware-tab.html'"></div>
+        <toolbox class="toolbox-hw" tree="bloqsProject.common.hardware" type="hardware"></toolbox>
+    </tab>
+    <tab icon="'#software'" class="bloqs-tab" icon-size="'small'">
+        <div class="container software" data-ng-include="'views/python-software-tab.html'"></div>
+    </tab>
+    <tab icon="'#codigo'" class="code-tab" icon-size="'small'">
+        <pythonprism class="console--content" data-code="code"></pythonprism>
+    </tab>
+</tabset>

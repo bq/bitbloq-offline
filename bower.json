@@ -24,6 +24,7 @@
   },
   "resolutions": {
     "lodash": "3.10.1",
-    "angular": "1.4.9"
+    "angular": "1.4.9",
+    "bloqs": "python-generation"
   }
 }
