@@ -6,4 +6,6 @@ angular.module('bitbloqOffline').factory('nodeRemote', function() {
     return nodeRemote.require('dialog');
 }).factory('nodeFs', function() {
     return require('fs');
+}).factory('nodeSequest', function() {
+    return require('sequest');
 });

@@ -8,7 +8,9 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-    .controller('ActionBarCtrl', function($rootScope, $scope, $route, bloqs, $log, web2board, _, clipboard, bloqsUtils, utils, hw2Bloqs, projectApi, nodeDialog, nodeFs, nodeUtils, common, commonModals, alertsService) {
+    .controller('ActionBarCtrl', function($rootScope, $scope, $route, bloqs, $log, web2board, _,
+        clipboard, bloqsUtils, utils, hw2Bloqs, projectApi, nodeDialog, nodeFs, nodeUtils, common,
+        commonModals, alertsService, nodeSequest) {
         $log.debug('ActionBarCtrl', $scope.$parent.$id);
 
         $scope.actions = {
@@ -153,12 +155,18 @@ angular.module('bitbloqOffline')
         }
 
         function loadToBoard() {
-            var code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
-            var pretty = utils.prettyCode(code);
-            var boardReference = _.find($scope.hardware.boardList, function(b) {
-                return b.name === $scope.project.hardware.board;
+            var bloqFullDefinition = $scope.pythonBloqs.pythonMainBloq.getBloqsStructure(true);
+            var code = pythonGeneration.getCode(bloqFullDefinition);
+            nodeFs.writeFile('program.py', code, (err) => {
+                if (err) throw err;
+                console.log('It\'s saved!');
+                var writer = nodeSequest.put('root@127.0.0.1', '/remote/path/to/file');
+                nodeFs.createReadStream('program.py').pipe(writer);
+                writer.on('close', function(err) {
+
+                    console.log('closed', err);
+                })
             });
-            web2board.upload(boardReference, pretty);
         }
 
         function verifyCode() {
