@@ -158,14 +158,30 @@ angular.module('bitbloqOffline')
             var bloqFullDefinition = $scope.pythonBloqs.pythonMainBloq.getBloqsStructure(true);
             var code = pythonGeneration.getCode(bloqFullDefinition);
             nodeFs.writeFile('program.py', code, (err) => {
-                if (err) throw err;
+                /*if (err) throw err;
                 console.log('It\'s saved!');
                 var writer = nodeSequest.put('root@127.0.0.1', '/remote/path/to/file');
                 nodeFs.createReadStream('program.py').pipe(writer);
                 writer.on('close', function(err) {
 
                     console.log('closed', err);
-                })
+                })*/
+
+                /*nodeSequest('tom@172.18.2.210', { command: 'ls', username: 'tom', password: '*********' }, function(err, stdout) {
+                    if (err) throw err;
+                    console.log('all go god');
+                    console.log(stdout.split('n'));
+                });*/
+
+                var client = require('scp2');
+                client.scp('/Users/tom/bitbloq-offline/program.py', {
+                    host: '172.18.2.210',
+                    username: 'tom',
+                    password: '******',
+                    path: '/Users/tom/temp/'
+                }, function(err) {
+                    console.log('ok', err);
+                });
             });
         }
 
