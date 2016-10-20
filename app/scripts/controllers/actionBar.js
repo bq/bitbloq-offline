@@ -186,9 +186,29 @@ angular.module('bitbloqOffline')
         }
 
         function verifyCode() {
-            var code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
-            var pretty = utils.prettyCode(code);
-            web2board.verify(pretty);
+            var bloqFullDefinition = $scope.pythonBloqs.pythonMainBloq.getBloqsStructure(true);
+            var code = pythonGeneration.getCode(bloqFullDefinition);
+            nodeFs.writeFile('pythonCode/program.py', code, (err) => {
+                const spawn = require('child_process').spawn;
+                const python = spawn('python', ['-m', 'py_compile', 'pythonCode/program.py']);
+
+                python.stdout.on('data', (data) => {
+                    console.log('stdout:', data.toString('utf8'));
+                });
+
+                python.stderr.on('data', (data) => {
+                    console.log('stderr:', data.toString('utf8'));
+                    alertsService.add('alert-web2board-compile-error', 'python', 'warning', undefined, data.toString('utf8'));
+                });
+
+                python.on('close', (code) => {
+                    console.log('child process exited with code:', code);
+                    if (code === 0) {
+                        alertsService.add('alert-web2board-compile-verified', 'python', 'ok', 5000);
+                    }
+                });
+            });
+
         }
 
         function startSM() {

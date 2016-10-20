@@ -1591,6 +1591,9 @@ code {
     .protocanvas .robot.evolution {
       background-image: url("../images/robots/evolution.svg");
       background-color: transparent; }
+    .protocanvas .robot.car {
+      background-image: url("../images/robots/car.svg");
+      background-color: transparent; }
     .protocanvas .robot.robot--selected {
       outline: 4px solid #f1c933 !important;
       background-color: transparent; }
