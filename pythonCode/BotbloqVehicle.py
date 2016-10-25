@@ -56,13 +56,13 @@ class BotbloqVehicle():
 
         exit()
     
-    def readIRSensor(side):
+    def readIRSensor(self, side):
     	if side == "LEFT":
     		address = 0x32
     	else:
     		address = 0x33
-        x.address(address)
-        return x.readByte()
+        self.x.address(address)
+        return self.x.readByte()
    
     
 
