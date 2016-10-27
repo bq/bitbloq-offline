@@ -1,11 +1,18 @@
 <div ng-if="type === 'software'" class="toolbox layer-7" ng-class="{'active':toolbox.menuLevel === 0, 'inactive--1':toolbox.menuLevel === 1, 'inactive--2': toolbox.menuLevel === 2}">
     <div class="toolbox-shadow absolute-center level--1" ng-show="toolbox.menuLevel !== 0"></div>
     <ul class="toolbox__list">
-        <!-- ZOWI TITLE -->
+        <!-- BOTBLOQ CAR -->
         <li class="toolbox__list__item" ng-show="showRobots('car')">
-            <button class="toolbox__list__item__button btn--zowi" ng-click="toolbox.select('car')" ng-class="{'active':toolbox.activeMenu === 'car'}">
+            <button class="toolbox__list__item__button btn--car" ng-click="toolbox.select('car')" ng-class="{'active':toolbox.activeMenu === 'car'}">
                 <span class="toolbox__title--color car"></span>
                 <span class="toolbox__title">{{'Vehículo' | translate}}</span>
+            </button>
+        </li>
+        <!-- BOTBLOQ MANIPULATOR -->
+        <li class="toolbox__list__item" ng-show="showRobots('manipulator')">
+            <button class="toolbox__list__item__button btn--manipulator" ng-click="toolbox.select('manipulator')" ng-class="{'active':toolbox.activeMenu === 'manipulator'}">
+                <span class="toolbox__title--color manipulator"></span>
+                <span class="toolbox__title">{{'Manipulador' | translate}}</span>
             </button>
         </li>
         <!-- ZOWI TITLE -->
@@ -51,11 +58,20 @@
             </button>
         </div>
         <div class="toolbox__content__item" ng-show="toolbox.activeMenu === 'car'">
-            <h3>{{'make-swtoolbox-car' | translate}}</h3>
+            <h3>{{'Vehículo' | translate}}</h3>
             <ul class="content__list has-advanced">
                 <li class="content__list__item" ng-repeat="item in tree.robots[1].items track by $index" bitbloq-bloq-creator bloq-schema="item.name"></li>
             </ul>
             <button class="toolbox__advanced__button toolbox__list__item__button last" ng-click="toolbox.select('car', true)" ng-class="{'active':toolbox.activeMenu === item.contentId}">
+                <span>{{'make-swtoolbox-advanced' | translate}}</span>
+            </button>
+        </div>
+        <div class="toolbox__content__item" ng-show="toolbox.activeMenu === 'manipulator'">
+            <h3>{{'Manipulador' | translate}}</h3>
+            <ul class="content__list has-advanced">
+                <li class="content__list__item" ng-repeat="item in tree.robots[2].items track by $index" bitbloq-bloq-creator bloq-schema="item.name"></li>
+            </ul>
+            <button class="toolbox__advanced__button toolbox__list__item__button last" ng-click="toolbox.select('manipulator', true)" ng-class="{'active':toolbox.activeMenu === item.contentId}">
                 <span>{{'make-swtoolbox-advanced' | translate}}</span>
             </button>
         </div>
@@ -95,6 +111,12 @@
             <h3>{{'make-swtoolbox-zowi' | translate}} > {{'make-swtoolbox-advanced' | translate}}</h3>
             <ul class="content__list">
                 <li class="content__list__item" ng-repeat="item in tree.robots[0].advancedItems track by $index" bitbloq-bloq-creator bloq-schema="item.name"></li>
+            </ul>
+        </div>
+        <div class="toolbox__content__item" ng-show="toolbox.activeMenu === 'manipulator'">
+            <h3>{{'Manipulador > Avanzados' | translate}} > {{'make-swtoolbox-advanced' | translate}}</h3>
+            <ul class="content__list">
+                <li class="content__list__item" ng-repeat="item in tree.robots[2].advancedItems track by $index" bitbloq-bloq-creator bloq-schema="item.name"></li>
             </ul>
         </div>
         <!-- div class="toolbox__content__item" ng-show="toolbox.activeMenu === 'evolution'">
@@ -155,7 +177,7 @@
             <ul class="content__list">
                 <li class="content__list__item" ng-repeat="robot in tree.robots track by $index">
                     <div class="board-name   name title"><span>{{robot.name | translate}}</span></div>
-                    <img class="robot-image" draggable dragid="{{robot.id}}" dragtype="robots" ng-src="images/robots/{{robot.id}}.svg" ng-style="{width:robot.width + 'px'}">
+                    <img class="robot-image" draggable dragid="{{robot.id}}" dragtype="robots" ng-src="images/robots/{{robot.id}}.png" ng-style="{width:robot.width + 'px'}">
                 </li>
             </ul>
         </div>

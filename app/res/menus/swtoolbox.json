@@ -164,6 +164,23 @@
         }, {
             "name": "botbloqVehicleIRSensor"
         }]
+    }, {
+        "title": "manipulator",
+        "titleId": "manipulator",
+        "items": [{
+            "name": "botbloqManipulatorCanMove"
+        }, {
+            "name": "botbloqManipulatorMoveOnSpace"
+        }, {
+            "name": "botbloqManipulatorMoveClamp"
+        }, {
+            "name": "botbloqManipulatorRotateJoints"
+        }],
+        "advancedItems": [{
+            "name": "botbloqManipulatorCanMoveAdvanced"
+        }, {
+            "name": "botbloqManipulatorMoveOnSpaceAdvanced"
+        }]
     }],
     "toolboxContents": [{
         "title": "make-swtoolbox-classes",

@@ -155,35 +155,93 @@ angular.module('bitbloqOffline')
         }
 
         function loadToBoard() {
+            deleteFolder('pythonCode');
             var bloqFullDefinition = $scope.pythonBloqs.pythonMainBloq.getBloqsStructure(true);
             var code = pythonGeneration.getCode(bloqFullDefinition);
-            nodeFs.writeFile('program.py', code, (err) => {
-                /*if (err) throw err;
-                console.log('It\'s saved!');
-                var writer = nodeSequest.put('root@127.0.0.1', '/remote/path/to/file');
-                nodeFs.createReadStream('program.py').pipe(writer);
-                writer.on('close', function(err) {
+            var robot = _.find($scope.hardware.robotList, { id: $scope.project.hardware.robot });
+            copyFile('app/res/botbloq/' + robot.class, 'pythonCode/' + robot.class, function(err) {
+                if (err) {
+                    alertsService.add('Error al copiar la clase', 'python', 'error', 10000);
+                } else {
+                    nodeFs.writeFile('pythonCode/program.py', code, (err) => {
+                        if (err) {
+                            alertsService.add('Error al copiar el fichero del programa', 'python', 'error', 10000);
+                        } else {
+                            alertsService.add('Proyecto copiado', 'python', 'ok', 5000);
+                        }
 
-                    console.log('closed', err);
-                })*/
+                        /*if (err) throw err;
+                        console.log('It\'s saved!');
+                        var writer = nodeSequest.put('root@127.0.0.1', '/remote/path/to/file');
+                        nodeFs.createReadStream('program.py').pipe(writer);
+                        writer.on('close', function(err) {
 
-                /*nodeSequest('tom@172.18.2.210', { command: 'ls', username: 'tom', password: '*********' }, function(err, stdout) {
-                    if (err) throw err;
-                    console.log('all go god');
-                    console.log(stdout.split('n'));
-                });*/
+                            console.log('closed', err);
+                        })*/
 
-                var client = require('scp2');
-                client.scp('/Users/tom/bitbloq-offline/program.py', {
-                    host: '172.18.2.210',
-                    username: 'tom',
-                    password: '******',
-                    path: '/Users/tom/temp/'
-                }, function(err) {
-                    console.log('ok', err);
-                });
+                        /*nodeSequest('tom@172.18.2.210', { command: 'ls', username: 'tom', password: '*********' }, function(err, stdout) {
+                            if (err) throw err;
+                            console.log('all go god');
+                            console.log(stdout.split('n'));
+                        });*/
+
+
+                        var client = require('scp2');
+                        client.scp('/Users/tom/bitbloq-offline/program.py', {
+                            host: '172.18.2.210',
+                            username: 'tom',
+                            password: '******',
+                            path: '/Users/tom/temp/'
+                        }, function(err) {
+                            console.log('ok', err);
+                        });
+                    });
+                }
             });
+
         }
+
+        function copyFile(source, target, cb) {
+            var cbCalled = false;
+
+            var rd = nodeFs.createReadStream(source);
+            rd.on("error", function(err) {
+                done(err);
+            });
+            var wr = nodeFs.createWriteStream(target);
+            wr.on("error", function(err) {
+                done(err);
+            });
+            wr.on("close", function(ex) {
+                done();
+            });
+            rd.pipe(wr);
+
+            function done(err) {
+                if (!cbCalled) {
+                    cb(err);
+                    cbCalled = true;
+                }
+            }
+        }
+
+        function deleteFolder(dirPath) {
+            try {
+                var files = nodeFs.readdirSync(dirPath);
+            } catch (e) {
+                return;
+            }
+            if (files.length > 0) {
+                for (var i = 0; i < files.length; i++) {
+                    var filePath = dirPath + '/' + files[i];
+                    if (nodeFs.statSync(filePath).isFile())
+                        nodeFs.unlinkSync(filePath);
+                    else
+                        rmDir(filePath);
+                }
+            }
+
+        };
 
         function verifyCode() {
             var bloqFullDefinition = $scope.pythonBloqs.pythonMainBloq.getBloqsStructure(true);

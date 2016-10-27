@@ -1594,6 +1594,9 @@ code {
     .protocanvas .robot.car {
       background-image: url("../images/robots/car.svg");
       background-color: transparent; }
+    .protocanvas .robot.manipulator {
+      background-image: url("../images/robots/manipulator.png");
+      background-color: transparent; }
     .protocanvas .robot.robot--selected {
       outline: 4px solid #f1c933 !important;
       background-color: transparent; }
@@ -1742,6 +1745,14 @@ code {
 
 .btn--zowi {
   background-color: #60bcc9;
+  color: white; }
+
+.btn--car {
+  background-color: #60bcc9;
+  color: white; }
+
+.btn--manipulator {
+  background-color: #058723;
   color: white; }
 
 .btn--evolution {

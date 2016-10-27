@@ -1,80 +1,77 @@
 .toolbox-sw {
-  .content__list {
-    padding-top: 10px;
-  }
-
-  .content__list__item {
-    text-align: left;
-    padding   : 5px 15px;
-    .bloq {
-      position: relative;
+    .content__list {
+        padding-top: 10px;
     }
-  }
-
-  .toolbox__title {
-    display: block;
-    width  : calc(100% - 20px);
-    float  : left;
-  }
-  .toolbox__title--color {
-    height      : 100%;
-    display     : block;
-    width       : 10px;
-    float       : left;
-    margin-right: 10px;
-
-    &.components {
-      background-color: #cf1c22;
+    .content__list__item {
+        text-align: left;
+        padding: 5px 15px;
+        .bloq {
+            position: relative;
+        }
     }
-
-    &.functions {
-      background-color: #dd5a0a;
+    .toolbox__title {
+        display: block;
+        width: calc(100% - 20px);
+        float: left;
     }
-
-    &.variables {
-      background-color: #d9b032;
+    .toolbox__title--color {
+        height: 100%;
+        display: block;
+        width: 10px;
+        float: left;
+        margin-right: 10px;
+        &.components {
+            background-color: #cf1c22;
+        }
+        &.functions {
+            background-color: #dd5a0a;
+        }
+        &.variables {
+            background-color: #d9b032;
+        }
+        &.codes {
+            background-color: #58b42d;
+        }
+        &.maths {
+            background-color: #01c0c8;
+        }
+        &.texts {
+            background-color: #0294cf;
+        }
+        &.controls {
+            background-color: #11489a;
+        }
+        &.logics {
+            background-color: #7c0dd6;
+        }
+        &.classes {
+            background-color: #e30b9a;
+        }
+        &.zowi {
+            background-color: #4e929b;
+        }
+        &.evolution {
+            background-color: #94999C;
+        }
     }
-
-    &.codes {
-      background-color: #58b42d;
-    }
-
-    &.maths {
-      background-color: #01c0c8;
-    }
-
-    &.texts {
-      background-color: #0294cf;
-    }
-
-    &.controls {
-      background-color: #11489a;
-    }
-
-    &.logics {
-      background-color: #7c0dd6;
-    }
-
-    &.classes {
-      background-color: #e30b9a;
-    }
-
-    &.zowi {
-      background-color: #4e929b;
-    }
-
-    &.evolution {
-      background-color: #94999C;
-    }
-  }
 }
 
 .btn--zowi {
-  background-color: #60bcc9;
-  color           : white;
+    background-color: #60bcc9;
+    color: white;
+}
+
+.btn--car {
+    background-color: #60bcc9;
+    color: white;
+}
+
+.btn--manipulator {
+    background-color: #058723;
+    color: white;
 }
 
 .btn--evolution {
-  background-color: #BABFC3;
-  color           : white;
+    background-color: #BABFC3;
+    color: white;
 }
