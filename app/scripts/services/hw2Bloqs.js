@@ -131,6 +131,11 @@
             robotDOMElement = document.getElementById(robotContainerId);
             robotDOMElement.classList.remove('zowi');
             robotDOMElement.classList.remove('evolution');
+            robotDOMElement.classList.remove('car');
+            robotDOMElement.classList.remove('manipulator');
+            robotDOMElement.classList.remove('human');
+            robotDOMElement.classList.remove('snake');
+            robotDOMElement.classList.remove('hexapod');
             robotDOMElement.classList.add(newRobot.id);
             robotDOMElement.classList.add('opaque');
             boardDOMElement = document.getElementById(boardContainerId);

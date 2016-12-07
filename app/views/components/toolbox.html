@@ -15,6 +15,27 @@
                 <span class="toolbox__title">{{'Manipulador' | translate}}</span>
             </button>
         </li>
+        <!-- BOTBLOQ HUMAN -->
+        <li class="toolbox__list__item" ng-show="showRobots('human')">
+            <button class="toolbox__list__item__button btn--human" ng-click="toolbox.select('human')" ng-class="{'active':toolbox.activeMenu === 'human'}">
+                <span class="toolbox__title--color human"></span>
+                <span class="toolbox__title">{{'Humanoide' | translate}}</span>
+            </button>
+        </li>
+        <!-- BOTBLOQ SNAKE -->
+        <li class="toolbox__list__item" ng-show="showRobots('snake')">
+            <button class="toolbox__list__item__button btn--snake" ng-click="toolbox.select('snake')" ng-class="{'active':toolbox.activeMenu === 'snake'}">
+                <span class="toolbox__title--color snake"></span>
+                <span class="toolbox__title">{{'Serpiente' | translate}}</span>
+            </button>
+        </li>
+        <!-- BOTBLOQ HEXAPOD -->
+        <li class="toolbox__list__item" ng-show="showRobots('hexapod')">
+            <button class="toolbox__list__item__button btn--hexapod" ng-click="toolbox.select('hexapod')" ng-class="{'active':toolbox.activeMenu === 'hexapod'}">
+                <span class="toolbox__title--color hexapod"></span>
+                <span class="toolbox__title">{{'Hexápodo' | translate}}</span>
+            </button>
+        </li>
         <!-- ZOWI TITLE -->
         <li class="toolbox__list__item" ng-show="showRobots('zowi')">
             <button class="toolbox__list__item__button btn--zowi" ng-click="toolbox.select('zowi')" ng-class="{'active':toolbox.activeMenu === 'zowi'}">
@@ -72,6 +93,33 @@
                 <li class="content__list__item" ng-repeat="item in tree.robots[2].items track by $index" bitbloq-bloq-creator bloq-schema="item.name"></li>
             </ul>
             <button class="toolbox__advanced__button toolbox__list__item__button last" ng-click="toolbox.select('manipulator', true)" ng-class="{'active':toolbox.activeMenu === item.contentId}">
+                <span>{{'make-swtoolbox-advanced' | translate}}</span>
+            </button>
+        </div>
+        <div class="toolbox__content__item" ng-show="toolbox.activeMenu === 'human'">
+            <h3>{{'Humanoide' | translate}}</h3>
+            <ul class="content__list has-advanced">
+                <li class="content__list__item" ng-repeat="item in tree.robots[3].items track by $index" bitbloq-bloq-creator bloq-schema="item.name"></li>
+            </ul>
+            <button class="toolbox__advanced__button toolbox__list__item__button last" ng-click="toolbox.select('human', true)" ng-class="{'active':toolbox.activeMenu === item.contentId}">
+                <span>{{'make-swtoolbox-advanced' | translate}}</span>
+            </button>
+        </div>
+        <div class="toolbox__content__item" ng-show="toolbox.activeMenu === 'snake'">
+            <h3>{{'Serpiente' | translate}}</h3>
+            <ul class="content__list has-advanced">
+                <li class="content__list__item" ng-repeat="item in tree.robots[4].items track by $index" bitbloq-bloq-creator bloq-schema="item.name"></li>
+            </ul>
+            <button class="toolbox__advanced__button toolbox__list__item__button last" ng-click="toolbox.select('snake', true)" ng-class="{'active':toolbox.activeMenu === item.contentId}">
+                <span>{{'make-swtoolbox-advanced' | translate}}</span>
+            </button>
+        </div>
+        <div class="toolbox__content__item" ng-show="toolbox.activeMenu === 'hexapod'">
+            <h3>{{'Hexápodo' | translate}}</h3>
+            <ul class="content__list has-advanced">
+                <li class="content__list__item" ng-repeat="item in tree.robots[5].items track by $index" bitbloq-bloq-creator bloq-schema="item.name"></li>
+            </ul>
+            <button class="toolbox__advanced__button toolbox__list__item__button last" ng-click="toolbox.select('hexapod', true)" ng-class="{'active':toolbox.activeMenu === item.contentId}">
                 <span>{{'make-swtoolbox-advanced' | translate}}</span>
             </button>
         </div>

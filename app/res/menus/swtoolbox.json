@@ -181,6 +181,46 @@
         }, {
             "name": "botbloqManipulatorMoveOnSpaceAdvanced"
         }]
+    }, {
+        "title": "human",
+        "titleId": "human",
+        "items": [{
+            "name": "botbloqHumanMove"
+        }, {
+            "name": "botbloqHumanStop"
+        }, {
+            "name": "botbloqHumanLateralDisplacement"
+        }, {
+            "name": "botbloqHumanRotateByFoot"
+        }, {
+            "name": "botbloqHumanBendDown"
+        }, {
+            "name": "botbloqHumanUpstairs"
+        }]
+    }, {
+        "title": "snake",
+        "titleId": "snake",
+        "items": [{
+            "name": "botbloqSnakeMove"
+        }, {
+            "name": "botbloqSnakeStop"
+        }, {
+            "name": "botbloqSnakeLateralDisplacement"
+        }, {
+            "name": "botbloqSnakeRoll"
+        }, {
+            "name": "botbloqSnakeRotate"
+        }]
+    }, {
+        "title": "hexapod",
+        "titleId": "hexapod",
+        "items": [{
+            "name": "botbloqHexapodMove"
+        }, {
+            "name": "botbloqHexapodStop"
+        }, {
+            "name": "botbloqHexapodLateralDisplacement"
+        }]
     }],
     "toolboxContents": [{
         "title": "make-swtoolbox-classes",

@@ -270,6 +270,18 @@ $color_hover: #f19833;
             background-image: url('../images/robots/manipulator.png');
             background-color: transparent;
         }
+        &.snake {
+            background-image: url('../images/robots/snake.png');
+            background-color: transparent;
+        }
+        &.human {
+            background-image: url('../images/robots/human.png');
+            background-color: transparent;
+        }
+        &.hexapod {
+            background-image: url('../images/robots/hexapod.png');
+            background-color: transparent;
+        }
         &.robot--selected {
             outline: 4px solid $color !important;
             background-color: transparent;

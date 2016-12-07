@@ -1597,6 +1597,15 @@ code {
     .protocanvas .robot.manipulator {
       background-image: url("../images/robots/manipulator.png");
       background-color: transparent; }
+    .protocanvas .robot.snake {
+      background-image: url("../images/robots/snake.png");
+      background-color: transparent; }
+    .protocanvas .robot.human {
+      background-image: url("../images/robots/human.png");
+      background-color: transparent; }
+    .protocanvas .robot.hexapod {
+      background-image: url("../images/robots/hexapod.png");
+      background-color: transparent; }
     .protocanvas .robot.robot--selected {
       outline: 4px solid #f1c933 !important;
       background-color: transparent; }
@@ -1748,11 +1757,23 @@ code {
   color: white; }
 
 .btn--car {
-  background-color: #60bcc9;
+  background-color: #4B0082;
   color: white; }
 
 .btn--manipulator {
   background-color: #058723;
+  color: white; }
+
+.btn--human {
+  background-color: #6495ED;
+  color: white; }
+
+.btn--snake {
+  background-color: #3CB371;
+  color: white; }
+
+.btn--hexapod {
+  background-color: #FF6347;
   color: white; }
 
 .btn--evolution {

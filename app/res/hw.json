@@ -11,5 +11,23 @@
         "class": "BotbloqManipulator.py",
         "width": 75,
         "height": 86
+    }, {
+        "id": "human",
+        "name": "Humanoide",
+        "class": "BotbloqHuman.py",
+        "width": 75,
+        "height": 86
+    }, {
+        "id": "snake",
+        "name": "Serpiente",
+        "class": "BotbloqSnake.py",
+        "width": 75,
+        "height": 86
+    }, {
+        "id": "hexapod",
+        "name": "Hexápodo",
+        "class": "BotbloqHex.py",
+        "width": 75,
+        "height": 86
     }]
 }
