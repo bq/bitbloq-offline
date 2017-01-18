@@ -170,35 +170,53 @@ angular.module('bitbloqOffline')
                             alertsService.add('Proyecto copiado', 'python', 'ok', 5000);
                         }
 
-                        /*if (err) throw err;
-                        console.log('It\'s saved!');
-                        var writer = nodeSequest.put('root@127.0.0.1', '/remote/path/to/file');
-                        nodeFs.createReadStream('program.py').pipe(writer);
-                        writer.on('close', function(err) {
-
-                            console.log('closed', err);
-                        })*/
-
-                        /*nodeSequest('tom@172.18.2.210', { command: 'ls', username: 'tom', password: '*********' }, function(err, stdout) {
-                            if (err) throw err;
-                            console.log('all go god');
-                            console.log(stdout.split('n'));
+                        /*sendFileBySCP('/Users/tom/bitbloq-offline/program.py', function(err) {
+                            if (err) {
+                                alertsService.add('Error enviando el programa', 'python', 'error');
+                            }
                         });*/
 
-
-                        var client = require('scp2');
-                        client.scp('/Users/tom/bitbloq-offline/program.py', {
-                            host: '172.18.2.210',
-                            username: 'tom',
-                            password: '******',
-                            path: '/Users/tom/temp/'
-                        }, function(err) {
-                            console.log('ok', err);
+                        sendFileByFTP('/Users/tom/bitbloq-offline/program.py', '/Users/remoteuser/programFolder/program.py', function(err) {
+                            if (err) {
+                                alertsService.add('Error enviando el programa:' + err, 'python', 'error');
+                            }
                         });
+
                     });
                 }
             });
 
+        }
+
+        function sendFileBySCP(filePath, callback) {
+            var client = require('scp2');
+            client.scp(filePath, {
+                host: '172.18.2.210',
+                username: 'tom',
+                password: '******',
+                path: '/Users/tom/temp/'
+            }, callback);
+        }
+
+        function sendFileByFTP(filePath, remoteFilePath, callback) {
+            var FTP = require('ftp');
+            var FTPConnection = new FTP();
+            FTPConnection.on('ready', function() {
+                FTPConnection.put(filePath, remoteFilePath, function(err) {
+                    FTPConnection.end();
+                    callback(err);
+                });
+            });
+            FTPConnection.on('error', function(err) {
+                callback(err);
+            });
+
+            FTPConnection.connect({
+                host: 'localhost',
+                port: '21',
+                user: 'anonymous',
+                password: 'anonymous@'
+            });
         }
 
         function copyFile(source, target, cb) {
