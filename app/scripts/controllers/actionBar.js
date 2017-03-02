@@ -159,7 +159,7 @@ angular.module('bitbloqOffline')
             var bloqFullDefinition = $scope.pythonBloqs.pythonMainBloq.getBloqsStructure(true);
             var code = pythonGeneration.getCode(bloqFullDefinition);
             var robot = _.find($scope.hardware.robotList, { id: $scope.project.hardware.robot });
-            copyFile('app/res/botbloq/' + robot.class, 'pythonCode/' + robot.class, function(err) {
+            copyFile('app/res/botbloq/' + robot.class, 'pythonCode/class.py', function(err) {
                 if (err) {
                     alertsService.add('Error al copiar la clase', 'python', 'error', 10000);
                 } else {
@@ -169,54 +169,27 @@ angular.module('bitbloqOffline')
                         } else {
                             alertsService.add('Proyecto copiado', 'python', 'ok', 5000);
                         }
-
-                        /*sendFileBySCP('/Users/tom/bitbloq-offline/program.py', function(err) {
-                            if (err) {
-                                alertsService.add('Error enviando el programa', 'python', 'error');
-                            }
-                        });*/
-
-                        sendFileByFTP('/Users/tom/bitbloq-offline/program.py', '/Users/remoteuser/programFolder/program.py', function(err) {
-                            if (err) {
-                                alertsService.add('Error enviando el programa:' + err, 'python', 'error');
-                            }
+                        var client = require('scp2');
+                        client.scp('/<ruta>/bitbloq-offline/pythonCode/class.py', {
+                            host: '192.168.1.130',
+                            username: 'root',
+                            password: 'edison',
+                            path: '/home/robind/BOTBLOQ/'
+                        }, function(err) {
+                            console.log('ok', err);
                         });
-
+			client.scp('/<ruta>/bitbloq-offline/pythonCode/program.py', {
+                            host: '192.168.1.130',
+                            username: 'root',
+                            password: 'edison',
+                            path: '/home/robind/BOTBLOQ/'
+                        }, function(err) {
+                            console.log('ok', err);
+                        });
                     });
                 }
             });
 
-        }
-
-        function sendFileBySCP(filePath, callback) {
-            var client = require('scp2');
-            client.scp(filePath, {
-                host: '172.18.2.210',
-                username: 'tom',
-                password: '******',
-                path: '/Users/tom/temp/'
-            }, callback);
-        }
-
-        function sendFileByFTP(filePath, remoteFilePath, callback) {
-            var FTP = require('ftp');
-            var FTPConnection = new FTP();
-            FTPConnection.on('ready', function() {
-                FTPConnection.put(filePath, remoteFilePath, function(err) {
-                    FTPConnection.end();
-                    callback(err);
-                });
-            });
-            FTPConnection.on('error', function(err) {
-                callback(err);
-            });
-
-            FTPConnection.connect({
-                host: 'localhost',
-                port: '21',
-                user: 'anonymous',
-                password: 'anonymous@'
-            });
         }
 
         function copyFile(source, target, cb) {
