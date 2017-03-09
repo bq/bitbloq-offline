@@ -178,7 +178,7 @@ angular.module('bitbloqOffline')
                         }, function(err) {
                             console.log('ok', err);
                         });
-			client.scp('/<ruta>/bitbloq-offline/pythonCode/program.py', {
+                        client.scp('/<ruta>/bitbloq-offline/pythonCode/program.py', {
                             host: '192.168.1.130',
                             username: 'root',
                             password: 'edison',
@@ -228,7 +228,7 @@ angular.module('bitbloqOffline')
                     if (nodeFs.statSync(filePath).isFile())
                         nodeFs.unlinkSync(filePath);
                     else
-                        rmDir(filePath);
+                        deleteFolder(filePath);
                 }
             }
 
