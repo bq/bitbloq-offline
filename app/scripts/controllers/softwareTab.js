@@ -206,6 +206,14 @@ angular.module('bitbloqOffline')
                         throw err;
                     } else {
                         bloqsSchemas = JSON.parse(data.toString());
+                        bloqs.setOptions({
+                            fieldOffsetLeft: 48,
+                            fieldOffsetTopForced: 41,
+                            forcedScrollTop: 0,
+                            bloqSchemas: bloqsSchemas,
+                            suggestionWindowParent: document.getElementById('bloqs--field')
+                        });
+
                         $scope.$watch('project.software', function(newValue) {
                             if (newValue) {
                                 $scope.init();

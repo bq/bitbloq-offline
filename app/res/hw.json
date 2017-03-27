@@ -383,6 +383,19 @@
                 "uid": "6be0dd9d-2e52-4b7d-9dfc-c9edad53ac05"
             }]
         }
+    }, {
+        "name": "MCore",
+        "id": "mcore",
+        "mcu": "uno"
+    }, {
+        "name": "Me Auriga",
+        "id": "meauriga",
+        "mcu": "mega",
+        "compileExtraParam": ":cpu=atmega2560"
+    }, {
+        "name": "Me Orion",
+        "id": "meorion",
+        "mcu": "uno"
     }],
     "components": {
         "leds": [{
@@ -584,6 +597,41 @@
     "robots": [{
         "id": "zowi",
         "name": "Zowi",
+        "width": 75,
+        "height": 86
+    }, {
+        "id": "evolution",
+        "name": "Evolution",
+        "width": 75,
+        "height": 86
+    }, {
+        "id": "mbot",
+        "name": "mBot",
+        "width": 75,
+        "height": 86
+    }, {
+        "id": "rangerlandraider",
+        "name": "Ranger Land Raider",
+        "width": 75,
+        "height": 86
+    }, {
+        "id": "rangernervousbird",
+        "name": "Ranger Nervous Bird",
+        "width": 75,
+        "height": 86
+    }, {
+        "id": "rangerraptor",
+        "name": "Ranger Raptor",
+        "width": 75,
+        "height": 86
+    }, {
+        "id": "startertank",
+        "name": "Starter Tank",
+        "width": 75,
+        "height": 86
+    }, {
+        "id": "starterthreewheels",
+        "name": "Starter Three Wheels",
         "width": 75,
         "height": 86
     }]

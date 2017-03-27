@@ -23,7 +23,8 @@
     "angular-nvd3": "^1.0.7"
   },
   "resolutions": {
-    "lodash": "3.10.1",
-    "angular": "1.4.9"
+    "lodash": "^4.17.4",
+    "angular": "1.4.9",
+    "bloqs": "^0.12.11"
   }
 }

@@ -8,7 +8,9 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-    .controller('ActionBarCtrl', function($rootScope, $scope, $route, bloqs, $log, web2board, _, clipboard, bloqsUtils, utils, hw2Bloqs, projectApi, nodeDialog, nodeFs, nodeUtils, common, commonModals, alertsService) {
+    .controller('ActionBarCtrl', function($rootScope, $scope, $route, bloqs, $log, web2board, _,
+        clipboard, bloqsUtils, utils, hw2Bloqs, projectApi, nodeDialog, nodeFs, nodeUtils, common,
+        commonModals, alertsService, arduinoGeneration) {
         $log.debug('ActionBarCtrl', $scope.$parent.$id);
 
         $scope.actions = {
@@ -104,7 +106,7 @@ angular.module('bitbloqOffline')
                     properties: ['openFile', 'createDirectory'],
                     filters: [{
                         name: 'Bitbloq',
-                        extensions: ['json']
+                        extensions: ['json', 'bitbloq']
                     }, {
                         name: 'All Files',
                         extensions: ['*']
@@ -146,24 +148,87 @@ angular.module('bitbloqOffline')
         }
 
         function copyCodeToClipboard() {
-            var code = utils.prettyCode(bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs));
+            var code = utils.prettyCode($scope.getCurrentProject().code);
             $log.debug(code);
             alertsService.add('make-code-clipboard', 'code-clipboard', 'ok', 3000);
             clipboard.copyText(code);
         }
 
         function loadToBoard() {
-            var code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
-            var pretty = utils.prettyCode(code);
+            //var code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
+            var pretty = utils.prettyCode($scope.getCurrentProject().code);
             var boardReference = _.find($scope.hardware.boardList, function(b) {
                 return b.name === $scope.project.hardware.board;
             });
-            web2board.upload(boardReference, pretty);
+            console.log(boardReference, pretty);
+            var savedPath = 'file.ino';
+            var Avrgirl = require('avrgirl-arduino');
+            //Store the ino
+            nodeFs.writeFile(savedPath, pretty, 'utf8', function(err) {
+                if (err) {
+                    console.log(err);
+                    alertsService.add(error, 'web2board', 'loading');
+                } else {
+                    alertsService.add('alert-web2board-compiling', 'web2board', 'loading');
+                    var avrpizza = require('avr-pizza');
+
+                    var packageData = {
+                        sketch: savedPath,
+                        libraries: [],
+                        board: boardReference.mcu + (boardReference.compileExtraParam || ''),
+                        builder: {
+                            location: 'app/res/arduinoIDE/Arduino.app'
+                        }
+                    };
+                    //app/res/arduinoIDE/Arduino.app/Contents/Java/arduino-builder -compile -hardware="app/res/arduinoIDE/Arduino.app/Contents/Java/hardware" -tools="app/res/arduinoIDE/Arduino.app/Contents/Java/hardware/tools" -tools="app/res/arduinoIDE/Arduino.app/Contents/Java/tools-builder" -fqbn="arduino:avr:mega:cpu=atmega2560" -built-in-libraries="app/res/arduinoIDE/Arduino.app/Contents/Java/libraries"    -ide-version="10609" -build-path="/Users/tom/.avrpizza/tmp/16dedc80-0f1a-11e7-8af1-13b2873aba9b" -debug-level="10" /Users/tom/bitbloq-offline/file.ino
+
+                    // avrpizza will now build using `/Applications/Arduino.app`
+                    avrpizza.compile(packageData, function(error, hex) {
+                        console.log('compiled');
+                        console.log(error, hex);
+                        if (error) {
+                            alertsService.add(error, 'web2board', 'loading');
+                        } else {
+                            alertsService.add('alert-web2board-uploading', 'web2board', 'loading');
+                            nodeFs.writeFile('file.hex', hex, 'utf8', function(err) {
+                                console.log('hex saved', error);
+                            });
+                            var avrgirl = new Avrgirl({
+                                board: boardReference.mcu,
+                                debug: true
+                            });
+
+                            // convert the file contents to a buffer, as avrgirl is expecting
+                            var hex = new Buffer(hex);
+
+                            // call flash method
+                            avrgirl.flash(hex, function(error) {
+                                console.log('flashed');
+                                console.log(error);
+                                if (error) {
+                                    alertsService.add('alert-web2board-compile-error', 'web2board', 'warning', undefined, error);
+                                } else {
+                                    alertsService.add('alert-web2board-compile-verified', 'web2board', 'ok', 5000);
+                                }
+                            });
+                        }
+
+                    });
+
+                }
+            });
+
+
+            //web2board.upload(boardReference, pretty);
+        }
+
+        function ideCompiling() {
+
         }
 
         function verifyCode() {
-            var code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
-            var pretty = utils.prettyCode(code);
+            //var code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
+            var pretty = utils.prettyCode($scope.getCurrentProject().code);
             web2board.verify(pretty);
         }
 
@@ -180,6 +245,7 @@ angular.module('bitbloqOffline')
             });
             web2board.showPlotter(boardReference);
         }
+
 
         $scope.$watch(function() {
                 return $scope.isInProcess();

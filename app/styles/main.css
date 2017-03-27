@@ -1586,10 +1586,28 @@ code {
     width: 355px;
     outline: 4px dashed #c0c3c9; }
     .protocanvas .robot.zowi {
-      background-image: url("../images/robots/zowi.svg");
+      background-image: url("../images/robots/zowi.png");
       background-color: transparent; }
     .protocanvas .robot.evolution {
-      background-image: url("../images/robots/evolution.svg");
+      background-image: url("../images/robots/evolution.png");
+      background-color: transparent; }
+    .protocanvas .robot.mbot {
+      background-image: url("../images/robots/mbot.png");
+      background-color: transparent; }
+    .protocanvas .robot.rangerlandraider {
+      background-image: url("../images/robots/rangerlandraider.png");
+      background-color: transparent; }
+    .protocanvas .robot.rangernervousbird {
+      background-image: url("../images/robots/rangernervousbird.png");
+      background-color: transparent; }
+    .protocanvas .robot.rangerraptor {
+      background-image: url("../images/robots/rangerraptor.png");
+      background-color: transparent; }
+    .protocanvas .robot.startertank {
+      background-image: url("../images/robots/startertank.png");
+      background-color: transparent; }
+    .protocanvas .robot.starterthreewheels {
+      background-image: url("../images/robots/starterthreewheels.png");
       background-color: transparent; }
     .protocanvas .robot.robot--selected {
       outline: 4px solid #f1c933 !important;
@@ -1736,6 +1754,18 @@ code {
     background-color: #4e929b; }
   .toolbox-sw .toolbox__title--color.evolution {
     background-color: #94999C; }
+  .toolbox-sw .toolbox__title--color.mbot {
+    background-color: #0076b4; }
+  .toolbox-sw .toolbox__title--color.rangerlandraider {
+    background-color: #0076b4; }
+  .toolbox-sw .toolbox__title--color.rangernervousbird {
+    background-color: #0076b4; }
+  .toolbox-sw .toolbox__title--color.rangerraptor {
+    background-color: #0076b4; }
+  .toolbox-sw .toolbox__title--color.startertank {
+    background-color: #0076b4; }
+  .toolbox-sw .toolbox__title--color.starterthreewheels {
+    background-color: #0076b4; }
 
 .btn--zowi {
   background-color: #60bcc9;

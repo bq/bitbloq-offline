@@ -175,8 +175,24 @@ angular.module('bitbloqOffline')
             });
             $scope.project.hardware.robot = robot.id;
             hw2Bloqs.addRobot(robotReference);
+            var boardName;
+            switch (robot.id) {
+                case 'zowi':
+                    $scope.project.hardware.board = 'Arduino UNO';
+                    break;
+                case 'mbot':
+                    $scope.project.hardware.board = 'MCore';
+                    break;
+                case 'meauriga':
+                    $scope.project.hardware.board = 'Me Auriga';
+                    break;
+                case 'meorion':
+                    $scope.project.hardware.board = 'Me Orion';
+                    break;
+                default:
+                    $scope.project.hardware.board = 'Arduino UNO';
+            }
 
-            $scope.project.hardware.board = 'Arduino UNO';
 
             $scope.componentSelected = null;
             $scope.project.hardware.components = [];

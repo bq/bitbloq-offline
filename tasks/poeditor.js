@@ -19,7 +19,7 @@ module.exports = function(grunt) {
         var querystring = require('querystring'),
             https = require('https');
 
-        params.api_token = '699438eb390462fd41382e1cae60edd4';
+        params.api_token = 'e26f5671b9e6bd2987b459c62ffb7ec9';
 
         var postData = querystring.stringify(params);
 
