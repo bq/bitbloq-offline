@@ -29,5 +29,17 @@
         "class": "BotbloqHex.py",
         "width": 75,
         "height": 86
-    }]
+    }],
+    "components": {
+        "serialElements": [{
+            "id": "device",
+            "manufacturer": "standard",
+            "category": "serialElements",
+            "baudRate": 19200,
+            "dragType": "btComponent",
+            "width": 74,
+            "height": 102,
+            "pins": {}
+        }]
+    }
 }

@@ -13,6 +13,7 @@ angular.module('bitbloqOffline')
         var $componentContextMenu = $('#component-context-menu');
         var $boardContextMenu = $('#board-context-menu');
         var $robotContextMenu = $('#robot-context-menu');
+        var $btConnectContextMenu = $('#btconnect-context-menu');
         var hwJSON = common.hardware;
 
         function _initialize() {
@@ -89,6 +90,12 @@ angular.module('bitbloqOffline')
                 }
             } else if (ev.target.classList.contains('robot')) {
                 $robotContextMenu.css({
+                    display: 'block',
+                    left: event.pageX + 'px',
+                    top: event.pageY + 'px'
+                });
+            } else if (ev.target.classList.contains('hardware-bitbloqconnect')) {
+                $btConnectContextMenu.css({
                     display: 'block',
                     left: event.pageX + 'px',
                     top: event.pageY + 'px'
@@ -474,14 +481,32 @@ angular.module('bitbloqOffline')
                     alertsService.add('bloqs-project_alert_no-board', 'error_noboard', 'error');
                     return false;
                 } else if ($scope.project.hardware.robot) {
-                    alertsService.add('bloqs-project_alert_component_on_robot', 'error_noboard', 'error');
-                    return false;
+                    _addBtComponent(data);
+                } else {
+                    _addComponent(data);
                 }
-                _addComponent(data);
+
             } else if (data.type === 'robots') {
                 $scope.hardware.cleanSchema();
                 _addRobot(data);
             }
+        };
+
+        function _addBtComponent(data) {
+            if (!$scope.project.useBitbloqConnect) {
+                $scope.project.useBitbloqConnect = true;
+                $scope.project.bitbloqConnectBT = {};
+                var btConnected = _.cloneDeep(common.hardware.components.serialElements[0]);
+                btConnected.connected = true;
+                btConnected.name = 'device';
+                $scope.project.hardware.components.push(btConnected);
+                //$scope.serialElements
+                $scope.refreshComponentsArray();
+            }
+        }
+
+        $scope.deleteBTConnect = function($event) {
+            $scope.project.useBitbloqConnect = false;
         };
 
         function loadHardwareProject(hardwareProject) {

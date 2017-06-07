@@ -203,6 +203,14 @@
                 <span>{{'robots' | translate}}</span>
             </button>
         </li>
+        <li class="toolbox__list__item">
+            <button class="toolbox__list__item__button" ng-click="toolbox.select('components')" ng-class="{'active':toolbox.activeMenu === 'components'}">
+                <svg class="icon--large icon--text">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#componentes"></use>
+                </svg>
+                <span>{{'components' | translate}}</span>
+            </button>
+        </li>
     </ul>
     <div class="toolbox__content" ng-class="{'active': toolbox.activeMenu !== null}">
         <div class="toolbox__content__item boards" ng-show="toolbox.activeMenu === 'boards'">

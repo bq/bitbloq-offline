@@ -26,6 +26,32 @@
     }],
     "components": [{
         "items": [{
+            "name": "phoneEmitSound"
+        }, {
+            "name": "phoneSendText"
+        }, {
+            "name": "phoneReceive"
+        }, {
+            "name": "phoneTurnOnLight"
+        }, {
+            "name": "phoneTurnOffLight"
+        }, {
+            "name": "phoneConfigTwitter"
+        }, {
+            "name": "phoneSendTweet"
+        }, {
+            "name": "phoneReadAccel"
+        }, {
+            "name": "phoneReadGyroscope"
+        }, {
+            "name": "phoneReadMagnetic"
+        }, {
+            "name": "phoneReadOrientation"
+        }, {
+            "name": "phoneisCovered"
+        }, {
+            "name": "phoneReadLight"
+        }, {
             "name": "hts221Temperature"
         }, {
             "name": "hts221Humidity"

@@ -146,6 +146,24 @@ angular.module('bitbloqOffline')
                             }
                         });
                     }
+                } else if ($scope.project.useBitbloqConnect) {
+                    switch (item) {
+                        case 'phoneEmitSound':
+                        case 'phoneSendText':
+                        case 'phoneReceive':
+                        case 'phoneTurnOnLight':
+                        case 'phoneTurnOffLight':
+                        case 'phoneConfigTwitter':
+                        case 'phoneSendTweet':
+                        case 'phoneReadAccel':
+                        case 'phoneReadGyroscope':
+                        case 'phoneReadMagnetic':
+                        case 'phoneReadOrientation':
+                        case 'phoneisCovered':
+                        case 'phoneReadLight':
+                            result = true;
+                            break;
+                    }
                 }
                 return result;
             } else {

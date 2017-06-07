@@ -10,7 +10,7 @@
 angular.module('bitbloqOffline')
     .controller('ActionBarCtrl', function($rootScope, $scope, $route, bloqs, $log, web2board, _,
         clipboard, bloqsUtils, utils, hw2Bloqs, projectApi, nodeDialog, nodeFs, nodeUtils, common,
-        commonModals, alertsService, nodeSequest) {
+        commonModals, alertsService, nodeSequest, pythonGeneration) {
         $log.debug('ActionBarCtrl', $scope.$parent.$id);
 
         $scope.actions = {
@@ -148,8 +148,8 @@ angular.module('bitbloqOffline')
         }
 
         function copyCodeToClipboard() {
-            var code = utils.prettyCode(bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs));
-            $log.debug(code);
+            var bloqFullDefinition = $scope.pythonBloqs.pythonMainBloq.getBloqsStructure(true);
+            var code = pythonGeneration.getCode(bloqFullDefinition);
             alertsService.add('make-code-clipboard', 'code-clipboard', 'ok', 3000);
             clipboard.copyText(code);
         }
