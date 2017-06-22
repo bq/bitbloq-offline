@@ -36,10 +36,6 @@
         }, {
             "name": "phoneTurnOffLight"
         }, {
-            "name": "phoneConfigTwitter"
-        }, {
-            "name": "phoneSendTweet"
-        }, {
             "name": "phoneReadAccel"
         }, {
             "name": "phoneReadGyroscope"

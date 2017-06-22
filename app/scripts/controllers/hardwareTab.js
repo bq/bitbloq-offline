@@ -426,6 +426,8 @@ angular.module('bitbloqOffline')
         };
 
         $scope.hardware.cleanSchema = function() {
+            $scope.project.useBitbloqConnect = false;
+            $scope.project.bitbloqConnectBT = {};
             hw2Bloqs.removeAllComponents();
             $scope.deleteBoard();
             $scope.refreshComponentsArray();
