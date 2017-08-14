@@ -104,7 +104,7 @@ angular.module('bitbloqOffline')
                     properties: ['openFile', 'createDirectory'],
                     filters: [{
                         name: 'Bitbloq',
-                        extensions: ['json']
+                        extensions: ['json', 'bitbloq']
                     }, {
                         name: 'All Files',
                         extensions: ['*']
@@ -146,15 +146,15 @@ angular.module('bitbloqOffline')
         }
 
         function copyCodeToClipboard() {
-            var code = utils.prettyCode(bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs));
-            $log.debug(code);
+            var pretty = utils.prettyCode($scope.getCurrentProject().code);
+            //var code = utils.prettyCode(bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs));
+            $log.debug(pretty);
             alertsService.add('make-code-clipboard', 'code-clipboard', 'ok', 3000);
-            clipboard.copyText(code);
+            clipboard.copyText(pretty);
         }
 
         function loadToBoard() {
-            var code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
-            var pretty = utils.prettyCode(code);
+            var pretty = utils.prettyCode($scope.getCurrentProject().code);
             var boardReference = _.find($scope.hardware.boardList, function(b) {
                 return b.name === $scope.project.hardware.board;
             });
@@ -162,8 +162,7 @@ angular.module('bitbloqOffline')
         }
 
         function verifyCode() {
-            var code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
-            var pretty = utils.prettyCode(code);
+            var pretty = utils.prettyCode($scope.getCurrentProject().code);
             web2board.verify(pretty);
         }
 

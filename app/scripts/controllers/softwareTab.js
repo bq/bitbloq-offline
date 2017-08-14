@@ -199,31 +199,36 @@ angular.module('bitbloqOffline')
             });
         };
 
+        function initBloqs(schemas) {
+            bloqsSchemas = JSON.parse(schemas.toString());
+            bloqs.setOptions({
+                fieldOffsetLeft: 48,
+                fieldOffsetTopForced: 41,
+                forcedScrollTop: 0,
+                bloqSchemas: bloqsSchemas,
+                suggestionWindowParent: document.getElementById('bloqs--field')
+            });
+
+            $scope.$watch('project.software', function(newValue) {
+                if (newValue) {
+                    $scope.init();
+                }
+            });
+            $scope.init();
+        }
+
         fs.readFile(common.resourcesPath + '/app/bower_components/bloqs/dist/bloqsmap.json', function(err, data) {
             if (err) {
                 fs.readFile(common.appPath + '/bower_components/bloqs/dist/bloqsmap.json', function(err, data) {
                     if (err) {
                         throw err;
                     } else {
-                        bloqsSchemas = JSON.parse(data.toString());
-                        $scope.$watch('project.software', function(newValue) {
-                            if (newValue) {
-                                $scope.init();
-                            }
-                        });
-                        $scope.init();
+                        initBloqs(data);
 
                     }
                 });
             } else {
-                bloqsSchemas = JSON.parse(data.toString());
-                // $scope.$watch('project.software', function(newValue) {
-                //   if (newValue) {
-                //     console.log('refersh project software');
-                //     $scope.init();
-                //   }
-                // });
-                $scope.init();
+                initBloqs(data);
             }
         });
         $document.on('contextmenu', contextMenuDocumentHandler);

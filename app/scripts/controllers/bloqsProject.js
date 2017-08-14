@@ -40,7 +40,8 @@ angular.module('bitbloqOffline')
 
         $scope.refreshCode = function() {
             $scope.updateBloqs();
-            $scope.project.code = $scope.code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
+            $scope.project.code = $scope.code = $scope.getCurrentProject().code;
+
 
             // var codeContainer = $('code');
             // codeContainer.text(js_beautify($scope.project.code || ''));
@@ -263,7 +264,12 @@ angular.module('bitbloqOffline')
                 };
             }
             project.hardware = $scope.getHardwareSchema();
-            $scope.project.code = bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs);
+            $scope.project.code = arduinoGeneration.getCode({
+                varsBloq: $scope.arduinoMainBloqs.varsBloq.getBloqsStructure(true),
+                setupBloq: $scope.arduinoMainBloqs.setupBloq.getBloqsStructure(true),
+                loopBloq: $scope.arduinoMainBloqs.loopBloq.getBloqsStructure(true)
+            }, project.hardware);
+
             project.code = $scope.project.code;
 
             return project;
