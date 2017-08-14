@@ -11,7 +11,7 @@ angular.module('bitbloqOffline')
     .service('common', function($http, $filter, $rootScope, $translate, utils) {
 
         var exports = {};
-        var settings = {};
+        exports.settings = {};
         var fs = require('fs');
         var ua = require('universal-analytics');
         exports.analyticsVisitor;
@@ -32,18 +32,23 @@ angular.module('bitbloqOffline')
 
         _startAnalytics();
 
-        settings.language = JSON.parse(fs.readFileSync(exports.appPath + '/app/res/config.json', 'utf8')).language;
-        $translate.use(settings.language);
+        exports.settings = JSON.parse(fs.readFileSync(exports.appPath + '/app/res/config.json', 'utf8'));
+        exports.settings.zoomFactor = exports.settings.zoomFactor || 1;
+        $translate.use(exports.settings.language);
 
         exports.translateTo = function(lang) {
-            settings.language = lang;
+            exports.settings.language = lang;
 
-            fs.writeFile(exports.appPath + '/app/res/config.json', JSON.stringify(settings), 'utf8', function(err) {
+            exports.saveSettings();
+            $translate.use(lang);
+        };
+
+        exports.saveSettings = function() {
+            fs.writeFile(exports.appPath + '/app/res/config.json', JSON.stringify(exports.settings), 'utf8', function(err) {
                 if (err) {
                     throw err;
                 }
             });
-            $translate.use(lang);
         };
 
         function _startAnalytics() {

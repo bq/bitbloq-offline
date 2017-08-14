@@ -180,6 +180,26 @@ angular.module('bitbloqOffline')
             web2board.showPlotter(boardReference);
         }
 
+        require('electron').webFrame.setZoomFactor(common.settings.zoomFactor);
+
+        function zoomIn() {
+            common.settings.zoomFactor += 0.1;
+            require('electron').webFrame.setZoomFactor(common.settings.zoomFactor)
+            common.saveSettings();
+        }
+
+        function zoomOut() {
+            common.settings.zoomFactor -= 0.1;
+            require('electron').webFrame.setZoomFactor(common.settings.zoomFactor)
+            common.saveSettings();
+        }
+
+        function resetZoom() {
+            common.settings.zoomFactor = 1;
+            require('electron').webFrame.setZoomFactor(common.settings.zoomFactor)
+            common.saveSettings();
+        }
+
         $scope.$watch(function() {
                 return $scope.isInProcess();
             },
@@ -252,6 +272,27 @@ angular.module('bitbloqOffline')
                     action: showPlotter,
                     disabled: false
                 }]
+            },
+            viewMenuItems: {
+                name: 'Zoom',
+                items: [{
+                        name: 'more-zoom',
+                        icon: '#zoomin',
+                        action: zoomIn,
+                        disabled: false
+                    }, {
+                        name: 'less-zoom',
+                        icon: '#zoomout',
+                        action: zoomOut,
+                        disabled: false
+                    },
+                    {
+                        name: 'reset-zoom',
+                        icon: '#versionAnterior',
+                        action: resetZoom,
+                        disabled: false
+                    }
+                ]
             }
 
         };
