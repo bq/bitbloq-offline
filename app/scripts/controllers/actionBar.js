@@ -273,7 +273,7 @@ angular.module('bitbloqOffline')
                     disabled: false
                 }]
             },
-            viewMenuItems: {
+            zoomMenuItems: {
                 name: 'Zoom',
                 items: [{
                         name: 'more-zoom',
