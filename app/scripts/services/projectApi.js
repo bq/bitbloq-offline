@@ -8,7 +8,7 @@
  * Service in the bitbloqOffline.
  */
 angular.module('bitbloqOffline')
-    .service('projectApi', function(utils, nodeUtils, common, _, nodeFs, alertsService) {
+    .service('projectApi', function(utils, nodeUtils, common, _, nodeFs, alertsService, arduinoGeneration) {
         var exports = {};
         exports.savedProjectPath = null;
         exports.oldProject = null;
@@ -42,8 +42,13 @@ angular.module('bitbloqOffline')
         }
 
         exports.exportArduinoCode = function(componentsArray, arduinoMainBloqs) {
-            var code = utils.prettyCode(bloqsUtils.getCode(componentsArray, arduinoMainBloqs)),
-                filename = utils.removeDiacritics(common.translate('new-project'));
+            var code = utils.prettyCode(arduinoGeneration.getCode({
+                varsBloq: arduinoMainBloqs.varsBloq.getBloqsStructure(true),
+                setupBloq: arduinoMainBloqs.setupBloq.getBloqsStructure(true),
+                loopBloq: arduinoMainBloqs.loopBloq.getBloqsStructure(true)
+            }, componentsArray));
+            //var code = utils.prettyCode(bloqsUtils.getCode(componentsArray, arduinoMainBloqs)),
+            var filename = utils.removeDiacritics(common.translate('new-project'));
 
             nodeUtils.downloadFile(filename.substring(0, 30) + '.ino', code, '.ino', function(path) {
                 alertsService.add('make-saved-project', 'project-saved', 'ok', 3000);
