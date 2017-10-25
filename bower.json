@@ -1,6 +1,6 @@
 {
     "name": "bitbloq-offline",
-    "version": "1.1.3",
+    "version": "1.2.0",
     "description": "",
     "dependencies":
     {
@@ -27,6 +27,6 @@
     {
         "lodash": "3.10.1",
         "angular": "1.4.9",
-        "bloqs": "^0.14.12"
+        "bloqs": "^0.27.0"
     }
 }

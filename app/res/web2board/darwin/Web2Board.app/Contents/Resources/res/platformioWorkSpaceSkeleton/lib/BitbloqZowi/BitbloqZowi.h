@@ -88,6 +88,7 @@ class Zowi
     //-- Sensors functions
     float getDistance(); //US sensor
     int getNoise();      //Noise Sensor
+    float getSensor(String sensorName);//generic
 
     //-- Battery
     double getBatteryLevel();

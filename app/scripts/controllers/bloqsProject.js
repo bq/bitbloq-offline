@@ -143,6 +143,10 @@ angular.module('bitbloqOffline')
                                     }
                                 } else if ((value.includes('SERVO') || value === 'OSCILLATOR') && (item === 'SERVOATTACH' || item === 'SERVODETACH')) {
                                     result = true;
+                                } else if (item.includes('MOTORSETSPEED')) {
+                                    if (value.includes('DRIVEGEARMOTOR')) {
+                                        result = true;
+                                    }
                                 } else if (item.includes(value) || value.includes(item)) {
                                     result = true;
                                 }

@@ -466,6 +466,167 @@
         }
     },
     {
+        "name": "eBotics 4in1",
+        "id": "buildandcode",
+        "mcu": "uno",
+        "pinSize":
+        {
+            "digital":
+            {
+                "w": 12,
+                "h": 40
+            },
+            "analog":
+            {
+                "w": 12,
+                "h": 40
+            },
+            "serial":
+            {
+                "w": 25,
+                "h": 37
+            },
+            "greymotor":
+            {
+                "w": 25,
+                "h": 41
+            }
+        },
+        "pins":
+        {
+            "digital": [
+            {
+                "x": 0.39622,
+                "y": 0.129,
+                "name": "13",
+                "uid": "buildandcode-digital-13"
+            },
+            {
+                "x": 0.43,
+                "y": 0.129,
+                "name": "12",
+                "uid": "buildandcode-digital-12"
+            },
+            {
+                "x": 0.465,
+                "y": 0.129,
+                "name": "11",
+                "uid": "buildandcode-digital-11"
+            },
+            {
+                "x": 0.4985,
+                "y": 0.129,
+                "name": "10",
+                "uid": "buildandcode-digital-10"
+            },
+            {
+                "x": 0.532,
+                "y": 0.129,
+                "name": "9",
+                "uid": "buildandcode-digital-09"
+            },
+            {
+                "x": 0.565,
+                "y": 0.129,
+                "name": "8",
+                "uid": "buildandcode-digital-08"
+            },
+            {
+                "x": 0.599,
+                "y": 0.129,
+                "name": "7",
+                "uid": "buildandcode-digital-07"
+            },
+            {
+                "x": 0.633,
+                "y": 0.129,
+                "name": "6",
+                "uid": "buildandcode-digital-06"
+            },
+            {
+                "x": 0.666,
+                "y": 0.129,
+                "name": "5",
+                "uid": "buildandcode-digital-05"
+            },
+            {
+                "x": 0.7,
+                "y": 0.129,
+                "name": "4",
+                "uid": "buildandcode-digital-04"
+            },
+            {
+                "x": 0.735,
+                "y": 0.129,
+                "name": "3",
+                "uid": "buildandcode-digital-03"
+            },
+            {
+                "x": 0.768,
+                "y": 0.129,
+                "name": "2",
+                "uid": "buildandcode-digital-02"
+            }],
+            "analog": [
+            {
+                "x": 0.4,
+                "y": 0.87,
+                "name": "A0",
+                "uid": "buildandcode-analog-00"
+            },
+            {
+                "x": 0.435,
+                "y": 0.87,
+                "name": "A1",
+                "uid": "buildandcode-analog-01"
+            },
+            {
+                "x": 0.467,
+                "y": 0.87,
+                "name": "A2",
+                "uid": "buildandcode-analog-02"
+            },
+            {
+                "x": 0.5,
+                "y": 0.87,
+                "name": "A3",
+                "uid": "buildandcode-analog-03"
+            },
+            {
+                "x": 0.535,
+                "y": 0.87,
+                "name": "A4",
+                "uid": "buildandcode-analog-04"
+            },
+            {
+                "x": 0.568,
+                "y": 0.87,
+                "name": "A5",
+                "uid": "buildandcode-analog-05"
+            }],
+            "serial": [
+            {
+                "x": 0.09,
+                "y": 0.783,
+                "name": "serial",
+                "uid": "buildandcode-serial-00"
+            }],
+            "greymotor": [
+            {
+                "uid": "buildandcode-greymotor-00",
+                "name": "AO",
+                "x": 0.915,
+                "y": 0.448
+            },
+            {
+                "uid": "buildandcode-greymotor-01",
+                "name": "BO",
+                "x": 0.915,
+                "y": 0.72
+            }]
+        }
+    },
+    {
         "name": "Arduino Nano 168",
         "id": "ArduinoNano168",
         "mcu": "nanoatmega168",
@@ -642,7 +803,9 @@
             "height": 83,
             "pins":
             {
-                "digital": ["s"]
+                "digital": [
+                    "s"
+                ]
             }
         }],
         "rgbs": [
@@ -653,7 +816,11 @@
             "height": 79,
             "pins":
             {
-                "digital": ["b", "g", "r"]
+                "digital": [
+                    "b",
+                    "g",
+                    "r"
+                ]
             }
         }],
         "sensors": [
@@ -666,7 +833,10 @@
             "dataReturnType": "float",
             "pins":
             {
-                "digital": ["trigger", "echo"]
+                "digital": [
+                    "trigger",
+                    "echo"
+                ]
             }
         },
         {
@@ -678,7 +848,9 @@
             "dataReturnType": "float",
             "pins":
             {
-                "digital": ["s"]
+                "digital": [
+                    "s"
+                ]
             }
         },
         {
@@ -690,7 +862,9 @@
             "height": 92,
             "pins":
             {
-                "digital": ["s"]
+                "digital": [
+                    "s"
+                ]
             }
         },
         {
@@ -707,7 +881,11 @@
             },
             "pins":
             {
-                "digital": ["k", "sa", "sb"]
+                "digital": [
+                    "k",
+                    "sa",
+                    "sb"
+                ]
             }
         },
         {
@@ -719,7 +897,9 @@
             "dataReturnType": "float",
             "pins":
             {
-                "digital": ["s"]
+                "digital": [
+                    "s"
+                ]
             }
         },
         {
@@ -731,7 +911,9 @@
             "dataReturnType": "char",
             "pins":
             {
-                "analog": ["s"]
+                "analog": [
+                    "s"
+                ]
             }
         },
         {
@@ -743,7 +925,9 @@
             "dataReturnType": "float",
             "pins":
             {
-                "digital": ["s"]
+                "digital": [
+                    "s"
+                ]
             }
         },
         {
@@ -755,7 +939,10 @@
             "dataReturnType": "float *",
             "pins":
             {
-                "digital": ["s1", "s2"]
+                "digital": [
+                    "s1",
+                    "s2"
+                ]
             }
         },
         {
@@ -767,8 +954,13 @@
             "dataReturnType": "float *",
             "pins":
             {
-                "analog": ["x", "y"],
-                "digital": ["k"]
+                "analog": [
+                    "x",
+                    "y"
+                ],
+                "digital": [
+                    "k"
+                ]
             }
         },
         {
@@ -780,7 +972,9 @@
             "dataReturnType": "float",
             "pins":
             {
-                "analog": ["s"]
+                "analog": [
+                    "s"
+                ]
             }
         },
         {
@@ -792,7 +986,9 @@
             "dataReturnType": "float",
             "pins":
             {
-                "analog": ["s"]
+                "analog": [
+                    "s"
+                ]
             }
         }],
         "clocks": [
@@ -809,7 +1005,10 @@
             },
             "pins":
             {
-                "analog": ["sda", "scl"]
+                "analog": [
+                    "sda",
+                    "scl"
+                ]
             }
         }],
         "hts221": [
@@ -826,7 +1025,10 @@
             },
             "pins":
             {
-                "analog": ["sda", "scl"]
+                "analog": [
+                    "sda",
+                    "scl"
+                ]
             }
         }],
         "buzzers": [
@@ -838,7 +1040,9 @@
             "height": 80,
             "pins":
             {
-                "digital": ["s"]
+                "digital": [
+                    "s"
+                ]
             }
         }],
         "servos": [
@@ -849,7 +1053,9 @@
             "height": 106,
             "pins":
             {
-                "digital": ["s"]
+                "digital": [
+                    "s"
+                ]
             },
             "oscillator": "false"
         }],
@@ -861,7 +1067,9 @@
             "height": 106,
             "pins":
             {
-                "digital": ["s"]
+                "digital": [
+                    "s"
+                ]
             }
         }],
         "oscillators": [
@@ -879,7 +1087,10 @@
             },
             "pins":
             {
-                "analog": ["sda", "scl"]
+                "analog": [
+                    "sda",
+                    "scl"
+                ]
             }
         }],
         "serialElements": [
@@ -891,7 +1102,10 @@
             "height": 88,
             "pins":
             {
-                "digital": ["rx", "tx"]
+                "digital": [
+                    "rx",
+                    "tx"
+                ]
             }
         },
         {
@@ -906,7 +1120,22 @@
             },
             "pins":
             {
-                "serial": ["s"]
+                "serial": [
+                    "s"
+                ]
+            }
+        }],
+        "drivegearmotor": [
+        {
+            "id": "drivegearmotor",
+            "uuid": "drivegearmotor",
+            "width": 106,
+            "height": 150,
+            "pins":
+            {
+                "greymotor": [
+                    "s"
+                ]
             }
         }]
     },

@@ -66,6 +66,10 @@
         background-image: url('../images/boards/ArduinoNano168.png');
         background-color: transparent;
     }
+    &.buildandcode {
+        background-image: url('../images/boards/buildandcode.svg'), url('../images/boards/buildandcode.png');
+        background-color: transparent;
+    }
 }
 
 .component__container--visible {

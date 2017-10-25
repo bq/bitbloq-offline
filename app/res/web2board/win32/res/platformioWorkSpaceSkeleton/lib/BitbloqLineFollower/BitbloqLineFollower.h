@@ -5,8 +5,11 @@
 class LineFollower
 {
 public:
+	LineFollower();
 	LineFollower(int pinLeft, int pinRight);
-	int * read();
+	void init (int pinLeft, int pinRight);
+	float * read();
+	// int * read();
 	int readLeftSensor();
 	int readRightSensor();
 private:

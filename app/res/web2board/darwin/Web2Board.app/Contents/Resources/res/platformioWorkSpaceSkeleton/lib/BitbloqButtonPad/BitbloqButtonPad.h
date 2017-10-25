@@ -22,4 +22,17 @@ class ButtonPad
 
 };
 
+class BitbloqMe4ButtonPad
+{
+public:
+	BitbloqMe4ButtonPad(char pin);
+	void setup() const;
+	int read() const;
+
+private:
+	const char _pin;
+	const int _values[5];
+	int _threshold[4];
+};
+
 #endif //BUTTONPAD_H

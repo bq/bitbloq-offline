@@ -40,7 +40,7 @@ char ButtonPad::read(){
   {
     return _keys[_key];
   }
-  return NULL;
+  return 0;
 }
 int ButtonPad::get_key(int input)
 {
@@ -53,4 +53,27 @@ int ButtonPad::get_key(int input)
     }
   }
   return -1;
+}
+
+BitbloqMe4ButtonPad::BitbloqMe4ButtonPad(char pin):
+	_pin(pin),
+	_values{0, 489, 651, 733, 980}
+{
+	_threshold[0] = (_values[0]+_values[1])/2;
+	_threshold[1] = (_values[1]+_values[2])/2;
+	_threshold[2] = (_values[2]+_values[3])/2;
+	_threshold[3] = (_values[3]+_values[4])/2;
+}
+
+void BitbloqMe4ButtonPad::setup() const{
+	pinMode(_pin,INPUT);
+}
+
+int BitbloqMe4ButtonPad::read() const{
+	int value = analogRead(_pin);
+	if (value < _threshold[0]) return 1; //button 1 pressed
+	else if (value < _threshold[1]) return 2; //button 2 pressed
+	else if (value < _threshold[2]) return 3; //button 3 pressed
+	else if (value < _threshold[3]) return 4; //button 4 pressed
+	else return 0; //no button pressed
 }

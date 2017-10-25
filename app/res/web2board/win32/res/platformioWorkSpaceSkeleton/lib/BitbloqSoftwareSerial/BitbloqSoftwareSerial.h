@@ -13,7 +13,8 @@ public:
 		bqSoftwareSerial::flush();
 	}
 	String readString();
+	int readInt();
+
 };
 
 #endif //bqSoftwareSerial_h
-

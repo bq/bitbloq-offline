@@ -1434,6 +1434,9 @@ code {
   .board.ArduinoNano168 {
     background-image: url("../images/boards/ArduinoNano168.png");
     background-color: transparent; }
+  .board.buildandcode {
+    background-image: url("../images/boards/buildandcode.svg"), url("../images/boards/buildandcode.png");
+    background-color: transparent; }
 
 .component__container--visible {
   opacity: .4;

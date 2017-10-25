@@ -17,8 +17,8 @@ angular
         'angular-clipboard',
         'ngDialog',
         'nvd3'
-    ]).config(['$routeProvider', '$translateProvider',
-        function($routeProvider, $translateProvider) {
+    ]).config(['$routeProvider', '$translateProvider', '$sceProvider',
+        function($routeProvider, $translateProvider, $sceProvider) {
             $routeProvider
                 .when('/', {
                     templateUrl: 'views/bloqs-project.html'
@@ -40,6 +40,8 @@ angular
             $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
             $translateProvider.preferredLanguage('es-ES');
             $translateProvider.fallbackLanguage('es-ES');
+            //its safe here
+            //console.log($sceProvider.enabled(false));
         }
 
     ])
