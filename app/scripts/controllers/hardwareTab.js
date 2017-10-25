@@ -164,6 +164,7 @@ angular.module('bitbloqOffline')
             $scope.refreshComponentsArray();
 
             $rootScope.$broadcast('toolboxSelect', 'components');
+            $scope.hardware.sortToolbox();
             common.sendAnalyticsEvent('Add Board', board.name);
 
         };
@@ -194,7 +195,11 @@ angular.module('bitbloqOffline')
                 });
                 list.push(item);
             });
-            var translatedList = _.each(_.flatten(list), function(item) {
+            list = _.flatten(list);
+            if ($scope.project.hardware.board !== 'eBotics 4in1') {
+                list = _.reject(list, { uuid: 'drivegearmotor' })
+            }
+            var translatedList = _.each(list, function(item) {
                 item.name = $translate.instant(item.id);
             });
             common.hardware.componentSortered = _.sortBy(translatedList, 'name');
