@@ -76,5 +76,7 @@ angular.module('bitbloqOffline')
             exports.analyticsVisitor.pageview(eventName + '-' + eventData, 'bitbloqoffline.bq.com', 'Bitbloq offline event').send();
         };
 
+
+
         return exports;
     });

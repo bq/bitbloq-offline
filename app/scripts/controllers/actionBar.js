@@ -28,12 +28,10 @@ angular.module('bitbloqOffline')
                 commonModals.launchNotSavedModal(function(confirmed) {
                     if (confirmed === 0) {
                         $scope.saveProject($scope.getCurrentProject());
-                        resetVars();
                         $route.reload();
                     } else if (confirmed === -1) {
                         projectApi.projectChanged = false;
                         projectApi.savedProjectPath = false;
-                        resetVars();
                         $route.reload();
                     }
                 });
@@ -42,19 +40,7 @@ angular.module('bitbloqOffline')
                 // If continues, newProject(), else, cancel
             } else {
                 projectApi.savedProjectPath = false;
-                resetVars();
                 $route.reload();
-            }
-        }
-
-        function resetVars() {
-            if ($scope.arduinoMainBloqs.varsBloq) {
-                bloqs.removeBloq($scope.arduinoMainBloqs.varsBloq.uuid, true);
-                $scope.arduinoMainBloqs.varsBloq = null;
-                bloqs.removeBloq($scope.arduinoMainBloqs.setupBloq.uuid, true);
-                $scope.arduinoMainBloqs.setupBloq = null;
-                bloqs.removeBloq($scope.arduinoMainBloqs.loopBloq.uuid, true);
-                $scope.arduinoMainBloqs.loopBloq = null;
             }
         }
 
@@ -117,10 +103,11 @@ angular.module('bitbloqOffline')
                             throw err;
                         } else {
                             var project = JSON.parse(data);
+                            //console.log(project.bloqsVersion, common.bloqsVersion);
+                            //console.log(project.bitbloqOfflineVersion, common.version);
 
-                            //project.bloqsVersion > common.bloqsVersion
                             if (isANewerVersion(project.bloqsVersion, common.bloqsVersion)) {
-                                alertsService.add('offline-load-project-error', 'warning', 'warning', 5000, null, false, false);
+                                alertsService.add('bigger-bloqs-version-detected', 'warning', 'warning', 5000, null, false, false);
                             }
                             if (isANewerVersion(project.bitbloqOfflineVersion, common.version)) {
                                 alertsService.add('offline-new-version-available', 'info', 'info', 5000, null, false, false);
@@ -131,7 +118,7 @@ angular.module('bitbloqOffline')
                             hw2Bloqs.repaint();
                             $scope.refreshCode();
                             $scope.refreshComponentsArray();
-                            $scope.$apply();
+                            utils.apply($scope);
                             projectApi.save(project);
                             $rootScope.$emit('refreshScroll');
                             bloqs.updateDropdowns();
@@ -147,8 +134,6 @@ angular.module('bitbloqOffline')
 
         function copyCodeToClipboard() {
             var pretty = utils.prettyCode($scope.getCurrentProject().code);
-            //var code = utils.prettyCode(bloqsUtils.getCode($scope.componentsArray, $scope.arduinoMainBloqs));
-            $log.debug(pretty);
             alertsService.add('make-code-clipboard', 'code-clipboard', 'ok', 3000);
             clipboard.copyText(pretty);
         }

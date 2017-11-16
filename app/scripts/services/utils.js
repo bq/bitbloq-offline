@@ -463,5 +463,11 @@ angular.module('bitbloqOffline')
             return uuid;
         };
 
+        exports.apply = function($scope) {
+            if (!$scope.$$phase) {
+                $scope.$apply();
+            }
+        };
+
         return exports;
     });

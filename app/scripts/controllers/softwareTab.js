@@ -12,15 +12,8 @@ angular.module('bitbloqOffline')
         $log.debug('SoftwareTabCtrl', $scope.$parent.$id);
 
         $scope.init = function() {
-            if ($scope.arduinoMainBloqs.varsBloq) {
-                bloqs.removeBloq($scope.arduinoMainBloqs.varsBloq.uuid, true);
-                $scope.arduinoMainBloqs.varsBloq = null;
-                bloqs.removeBloq($scope.arduinoMainBloqs.setupBloq.uuid, true);
-                $scope.arduinoMainBloqs.setupBloq = null;
-                bloqs.removeBloq($scope.arduinoMainBloqs.loopBloq.uuid, true);
-                $scope.arduinoMainBloqs.loopBloq = null;
-            }
-
+            console.log('init');
+            bloqs.removeAllBloqs();
             $scope.arduinoMainBloqs.varsBloq = bloqs.buildBloqWithContent($scope.project.software.vars, $scope.componentsArray, bloqsSchemas, $scope.$field);
             $scope.arduinoMainBloqs.setupBloq = bloqs.buildBloqWithContent($scope.project.software.setup, $scope.componentsArray, bloqsSchemas);
             $scope.arduinoMainBloqs.loopBloq = bloqs.buildBloqWithContent($scope.project.software.loop, $scope.componentsArray, bloqsSchemas);

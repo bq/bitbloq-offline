@@ -3,6 +3,7 @@
     {
         "name": "bq ZUM",
         "id": "bqZUM",
+        "uuid": "bqZUM",
         "mcu": "bt328",
         "pinSize":
         {
@@ -153,11 +154,25 @@
                 "name": "serial",
                 "uid": "6be0dd9d-2e52-4b7d-9dfc-c9edad53bc05"
             }]
-        }
+        },
+        "integratedComponents": [
+        {
+            "uid": "bq-bqzum-bt",
+            "baudRate": "19200",
+            "category": "serialElements",
+            "pin":
+            {
+                "tx": "1",
+                "rx": "0"
+            },
+            "name": "default-var-name-standard_integrated_bt",
+            "id": "bt"
+        }]
     },
     {
         "name": "Freaduino UNO",
         "id": "FreaduinoUNO",
+        "uuid": "FreaduinoUNO",
         "mcu": "uno",
         "pinSize":
         {
@@ -313,6 +328,7 @@
     {
         "name": "Arduino UNO",
         "id": "ArduinoUNO",
+        "uuid": "ArduinoUNO",
         "mcu": "uno",
         "pinSize":
         {
@@ -468,6 +484,7 @@
     {
         "name": "eBotics 4in1",
         "id": "buildandcode",
+        "uuid": "buildandcode",
         "mcu": "uno",
         "pinSize":
         {
@@ -629,6 +646,7 @@
     {
         "name": "Arduino Nano 168",
         "id": "ArduinoNano168",
+        "uuid": "ArduinoNano168",
         "mcu": "nanoatmega168",
         "pinSize":
         {

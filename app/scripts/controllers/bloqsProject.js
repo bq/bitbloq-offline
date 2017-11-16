@@ -8,14 +8,13 @@
  * Controller of the bitbloqOffline
  */
 angular.module('bitbloqOffline')
-    .controller('BloqsProjectCtrl', function($scope, $rootScope, $timeout, hw2Bloqs, alertsService, commonModals, $window, $document, bloqsUtils, projectApi, nodeFs, common, _, $log, bloqs) {
+    .controller('BloqsProjectCtrl', function($scope, $rootScope, $timeout, $translate, hw2Bloqs, alertsService, commonModals, $window, $document, bloqsUtils, projectApi, nodeFs, common, _, $log, bloqs) {
         $log.debug('bloqsproject ctrl', $scope.$parent.$id);
         $scope.hw2Bloqs = hw2Bloqs;
         this.common = common;
 
         $scope.setProject = function(project) {
             hw2Bloqs.removeAllComponents();
-            bloqs.clearSoftwareArrays();
             $scope.deleteBoard();
             $scope.refreshComponentsArray();
             $scope.project = project;
@@ -240,6 +239,30 @@ angular.module('bitbloqOffline')
             }
         };
 
+        $scope.getIntegratedComponents = function(board) {
+            var componentsList = [];
+            if (board && board.integratedComponents) {
+                var tempComponent;
+                for (var i = 0; i < board.integratedComponents.length; i++) {
+
+                    tempComponent = _.find($scope.hardware.componentList[board.integratedComponents[i].category], function(component) {
+                        return component.uuid === board.integratedComponents[i].id;
+                    });
+                    tempComponent = _.clone(tempComponent, true);
+                    _.extend(tempComponent, board.integratedComponents[i]);
+
+                    tempComponent.name = $translate.instant(board.integratedComponents[i].name);
+                    tempComponent.integratedComponent = true;
+                    tempComponent.connected = true;
+                    componentsList.push(tempComponent);
+                    //$scope.currentProject.hardware.components.push(tempComponent);
+                    //$scope.project.hardware.components.push(tempComponent);
+                    //currentProjectService.addComponentInComponentsArray(tempComponent.category, tempComponent);
+                }
+            }
+            return componentsList;
+        }
+
         $scope.getHardwareSchema = function() {
             var schema = hw2Bloqs.saveSchema();
             if (schema) { //If project is loaded on protocanvas
@@ -252,6 +275,15 @@ angular.module('bitbloqOffline')
                 });
                 schema.board = $scope.project.hardware.board;
                 schema.robot = $scope.project.hardware.robot;
+                var board = _.find($scope.hardware.boardList, {
+                    'name': schema.board
+                });
+                if (!board) {
+                    board = _.find($scope.hardware.boardList, {
+                        'uuid': schema.board
+                    });
+                }
+                schema.components = schema.components.concat($scope.getIntegratedComponents(board));
                 return schema;
             } else { //If project is not loading yet on protocanvas
                 return _.cloneDeep($scope.project.hardware);

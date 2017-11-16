@@ -15,11 +15,24 @@ angular.module('bitbloqOffline')
         var $robotContextMenu = $('#robot-context-menu');
         var hwJSON = common.hardware;
 
+        function _getComponentsMap(components) {
+            var map = {};
+
+            for (var category in components) {
+                for (var i = 0; i < components[category].length; i++) {
+                    map[components[category][i].uuid] = components[category][i];
+                }
+            }
+
+            return map;
+        }
+
         function _initialize() {
             $scope.hardware.componentList = hwJSON.components;
             $scope.hardware.boardList = hwJSON.boards;
             $scope.hardware.robotList = hwJSON.robots;
             $scope.hardware.sortToolbox($scope.hardware.componentList);
+            $scope.componentsMap = _getComponentsMap($scope.hardware.componentList);
             generateFullComponentList(hwJSON);
             hw2Bloqs.initialize(container, 'boardSchema', 'robotSchema');
             container.addEventListener('mousedown', _mouseDownHandler, true);
@@ -152,20 +165,21 @@ angular.module('bitbloqOffline')
         };
 
         var _addBoard = function(board) {
-            if ($scope.project.hardware.board === board.name && !$scope.project.hardware.robot) {
+            if ($scope.project.hardware.board === board.uuid && !$scope.project.hardware.robot) {
                 return false;
             }
             $scope.project.hardware.robot = null;
 
             hw2Bloqs.addBoard(board);
+            $scope.project.hardware.components = $scope.project.hardware.components.concat($scope.getIntegratedComponents(board));
 
-            $scope.project.hardware.board = board.name;
+            $scope.project.hardware.board = board.uuid;
 
             $scope.refreshComponentsArray();
 
             $rootScope.$broadcast('toolboxSelect', 'components');
             $scope.hardware.sortToolbox();
-            common.sendAnalyticsEvent('Add Board', board.name);
+            common.sendAnalyticsEvent('Add Board', board.uuid);
 
         };
 
@@ -494,9 +508,24 @@ angular.module('bitbloqOffline')
             if (hardwareProject.anonymousTransient) {
                 delete hardwareProject.anonymousTransient;
             }
+            //fill hardware
+            var tempComponent;
+            for (var i = 0; i < $scope.project.hardware.components.length; i++) {
+                if ($scope.project.hardware.components[i].uuid) {
+                    $scope.project.hardware.components[i] = _.extend($scope.project.hardware.components[i],
+                        $scope.componentsMap[$scope.project.hardware.components[i].uuid]);
+                } else {
+                    $scope.project.hardware.components[i] = _.extend($scope.project.hardware.components[i],
+                        $scope.componentsMap[$scope.project.hardware.components[i].id]);
+                }
 
-            var hwSchema = {};
-            hwSchema.components = _.cloneDeep($scope.project.hardware.components);
+            }
+
+            var hwSchema = {},
+                conectableComponents = _.filter($scope.project.hardware.components, function(item) {
+                    return !item.integratedComponent;
+                });
+            hwSchema.components = _.cloneDeep(conectableComponents);
             hwSchema.connections = _.cloneDeep($scope.project.hardware.connections);
 
             // hwBasicsLoaded.promise.then(function() {
@@ -509,6 +538,14 @@ angular.module('bitbloqOffline')
                 var boardReference = _.find($scope.hardware.boardList, function(board) {
                     return board.name === $scope.project.hardware.board;
                 });
+                if (!boardReference) {
+                    boardReference = _.find($scope.hardware.boardList, function(board) {
+                        return board.id === $scope.project.hardware.board;
+                    });
+                }
+                if (!boardReference) {
+                    console.log('Board not found');
+                }
                 hwSchema.board = boardReference; //The whole board object is passed
             }
 
@@ -519,7 +556,7 @@ angular.module('bitbloqOffline')
                 $scope.refreshComponentsArray();
                 $scope.hardware.firstLoad = false;
                 //Fix components dimensions
-                _.forEach($scope.project.hardware.components, function(item) {
+                _.forEach(conectableComponents, function(item) {
                     item = bloqsUtils.checkPins(item);
                     _fixComponentsDimension(item);
                 });
