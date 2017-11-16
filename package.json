@@ -1,6 +1,6 @@
 {
   "name": "bitbloq-offline",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "main": "main.js",
   "license": "GPL-3.0",
   "dependencies": {
