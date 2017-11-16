@@ -641,7 +641,20 @@
                 "x": 0.915,
                 "y": 0.72
             }]
-        }
+        },
+        "integratedComponents": [
+        {
+            "uid": "ebotics-buildandcode-bt",
+            "baudRate": "19200",
+            "category": "serialElements",
+            "pin":
+            {
+                "tx": "1",
+                "rx": "0"
+            },
+            "name": "default-var-name-standard_integrated_bt",
+            "id": "bt"
+        }]
     },
     {
         "name": "Arduino Nano 168",
