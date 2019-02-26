@@ -2,6 +2,8 @@
 
 [es_ES]
 
+ESTE PROYECTO ESTÁ DISCONTINUADO Y NO RECIBIRÁ SOPORTE
+
 Esta es la versión offline oficial del proyecto Bitbloq, una [herramienta de programación visual](https://es.wikipedia.org/wiki/Programaci%C3%B3n_visual) de [Arduino](https://www.arduino.cc/).
 
 Puedes utilizar la versión online [aquí](http://bitbloq.bq.com).
@@ -48,6 +50,8 @@ Recuerda que al ser una aplicación offline, no tendrás todas las ventajas ni n
 # Bitbloq Offline
 
 [en_GB]
+
+THIS PROJECT IS DISCONTINUED AND WILL NO RECEIVE FURTHER SUPPORT
 
 This is the offline version of the Bitbloq project, a [visual programming tool](https://en.wikipedia.org/wiki/Visual_programming_language) for [Arduino](https://www.arduino.cc/).
 
